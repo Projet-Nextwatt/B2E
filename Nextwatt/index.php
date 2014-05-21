@@ -10,8 +10,9 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
+        Hey salut c'est un test connardo
         <?php
-        // put your code here
+        
         ?>
     </body>
 </html>
