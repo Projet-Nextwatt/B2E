@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-$this->load->helper('url');
+
 
 if (!function_exists('css_url')) {
 
