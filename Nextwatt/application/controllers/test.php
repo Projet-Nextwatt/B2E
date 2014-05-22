@@ -11,10 +11,10 @@ class Test extends CI_Controller {
 
         $data = array();
         $data['jquery'] = js_url('jquery.min');
-        $data['bootsrap'] = js_url('bootsrap');
-        $data['bootsrap.min'] = js_url('bootsrap.min');
+        $data['bootstrap'] = js_url('bootstrap');
+        $data['bootstrapmin'] = js_url('bootstrap.min');
         $data['test'] = js_url('test');
-        $data['bootsrap.min'] = css_url('bootsrap.min');
+        $data['bootstrapcss'] = css_url('bootstrap');
         $this->load->view('test', $data);
     }
 

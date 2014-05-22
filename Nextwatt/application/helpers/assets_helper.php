@@ -8,7 +8,7 @@ if (!defined('BASEPATH'))
 if (!function_exists('css_url')) {
 
     function css_url($nom) {
-        return base_url() . 'application/helper/assets/css/' . $nom . '.css';
+        return base_url() . 'application/helpers/assets/css/' . $nom . '.css';
     }
 
 }
