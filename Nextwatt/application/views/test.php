@@ -59,8 +59,6 @@
     </div>
 </div>
 
-<script language="JavaScript" type="text/javascript" src="<?php echo $test ?>"></script> 
 <script language="JavaScript" type="text/javascript" src="<?php echo $jquery ?>"></script> 
-<script language="JavaScript" type="text/javascript" src="<?php echo $bootstrapmin ?>"></script> 
 <script language="JavaScript" type="text/javascript" src="<?php echo $bootstrap ?>"></script>
 
