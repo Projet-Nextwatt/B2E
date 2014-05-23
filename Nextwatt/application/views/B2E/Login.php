@@ -10,8 +10,11 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <?php
-        echo "Hi";
-        ?>
+        <div style ='position:absolute; z-index:2; background-color:blue;'>
+            BLEU BLEU BLEU BLEU BLEU BLEU 
+        </div>
+        <div style ='position:absolute; z-index:1; background-color:green;'>
+            VERT VERT VERT VERT VERT VERT 
+        </div>
     </body>
 </html>
