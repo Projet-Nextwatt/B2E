@@ -1,6 +1,32 @@
+<<<<<<< HEAD
+/Nextwatt/nbproject/private/
+=======
 *.php
 Nextwatt/application/helpers/assets_helper.php
 Nextwatt/application/helpers/assets/javascript/bootstrap.js
 Nextwatt/application/controllers/test.php
 *.php
 !/Nextwatt/application/views/theme/sidebar.php
+>>>>>>> 3a907a91de60eeff2259e24d09419bdb9388d105
+!/Nextwatt/application/models/Mappage/CL_Mapp_User.php
+!/Nextwatt/application/models/Mappage/CL_Mapp_User_Hierarchie.php
+!/Nextwatt/application/models/Mappage/CL_Mapp_Etude.php
+!/Nextwatt/application/models/Mappage/CL_Mapp_SousTypes.php
+!/Nextwatt/application/models/Mappage/CL_Mapp_Categorie.php
+!/Nextwatt/application/models/Mappage/CL_Mapp_Articles.php
+!/Nextwatt/application/models/Mappage/CL_Mapp_Dossier.php
+!/Nextwatt/application/models/Mappage/CL_Mapp_Catalogue.php
+!/Nextwatt/application/models/Mappage/CL_Mapp_Client.php
+!/Nextwatt/application/models/Mappage/CL_Mapp_Hierarchie.php
+!/Nextwatt/application/models/Mappage/CL_Mapp_PrixEnergie.php
+!/Nextwatt/application/models/Mappage/Cl_Mapp_Liens_Catalogue.php
+!/Nextwatt/application/models/CL_CAD.php
+!/Nextwatt/application/models/Mappage/CL_Mapp_Types.php
+!/Nextwatt/application/controllers/Controller_Catalogue.php
+!/Nextwatt/application/controllers/Controller_Dossier.php
+!/Nextwatt/application/controllers/Controller_PV.php
+!/Nextwatt/application/controllers/Controller_User.php
+!/Nextwatt/application/controllers/Controller_ECS.php
+!/Nextwatt/application/controllers/Controller_Client.php
+!/Nextwatt/application/controllers/Controller_BE.php
+!/Nextwatt/application/controllers/Controller_Devis.php
