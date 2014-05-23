@@ -2,6 +2,7 @@ body{
     margin:0;
     font-family: 'terminal dosis', sans-serif;
 }
+/*
 #wrapper {
     padding-left: 250px;
     transition: all 0.4s ease 0s;
@@ -26,7 +27,7 @@ body{
 .sidebar-nav {
     position: absolute;
     top: 0; bottom: 0;left: 0; right:0; 
-    /* width: 00px; */
+     width: 00px; 
     list-style: none;
     margin: 0;
     padding: 0 ;
@@ -56,7 +57,7 @@ body{
 }
 
 .sidebar-nav > .sidebar-brand {
-    /* height: 65px; */
+     height: 65px; 
     line-height: 60px;
     font-size: 18px;
     margin-left: 0;
@@ -125,7 +126,7 @@ body{
         padding: 15px;
     }
 
-}
+}*/
 
 //TEST CSS AVEC LA DIVE PAGE
 
@@ -133,7 +134,8 @@ body{
     position: absolute;
     top:0;bottom: 0;left: 0;right: 0;
     background-color: #FDFDFD;
-/*    z-index: 1;*/
+    z-index: 3;
+    left:150px;
 }
 .sidebar{
     position: absolute;
@@ -141,6 +143,7 @@ body{
     width:300px;
     background-color: #9FC345;
     padding: 0 30px;
+    z-index: 2;
 }
 
 .sidebar-profil{
