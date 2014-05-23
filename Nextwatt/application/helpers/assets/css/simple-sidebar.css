@@ -2,6 +2,12 @@ body{
     margin:0;
     font-family: 'terminal dosis', sans-serif;
 }
+
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 /*
 #wrapper {
     padding-left: 250px;
@@ -130,12 +136,12 @@ body{
 
 //TEST CSS AVEC LA DIVE PAGE
 
-.page{
+.contenu{
     position: absolute;
-    top:0;bottom: 0;left: 0;right: 0;
-    background-color: #FDFDFD;
+    top:0;left: 0;right: 0;bottom: 0;
+    background-color: blue;
     z-index: 3;
-    left:150px;
+    /*-webkit-transform: translateX(300px);*/
 }
 .sidebar{
     position: absolute;
@@ -143,20 +149,20 @@ body{
     width:300px;
     background-color: #9FC345;
     padding: 0 30px;
-    z-index: 2;
+    z-index:2;
 }
 
 .sidebar-profil{
-  margin-bottom: 50px;
-  line-height: 1.9;
+    margin-bottom: 50px;
+    line-height: 1.9;
 }
-.sidebar-profil img{;
+.sidebar-profil img{
     float:left;
 }
 
 .sidebar-profil strong{
     display:block;
-    top: auto;
+    margin-top: 20px;
 }
 
 .sidebar-item{
@@ -167,6 +173,6 @@ body{
     text-decoration: none;
     font-weight: bold;
     border-top:2px solid #3a3e46;
-    
+
 }
 //---------------------
