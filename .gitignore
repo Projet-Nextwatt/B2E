@@ -3,3 +3,4 @@ Nextwatt/application/helpers/assets_helper.php
 Nextwatt/application/helpers/assets/javascript/bootstrap.js
 Nextwatt/application/controllers/test.php
 *.php
+!/Nextwatt/application/views/theme/sidebar.php
