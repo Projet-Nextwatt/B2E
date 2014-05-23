@@ -2,6 +2,21 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+<<<<<<< HEAD
+            <file>file:/C:/wamp/www/Stage/B2E/Nextwatt/application/controllers/test.php</file>
+            <file>file:/C:/wamp/www/Stage/B2E/Nextwatt/application/index.html</file>
+            <file>file:/C:/wamp/www/Stage/B2E/Nextwatt/index.php</file>
+            <file>file:/C:/wamp/www/Stage/B2E/Nextwatt/application/controllers/index.html</file>
+            <file>file:/C:/wamp/www/Stage/B2E/Nextwatt/application/controllers/welcome.php</file>
+=======
+            <file>file:/C:/wamp/www/B2E/Nextwatt/application/views/B2E/Login.php</file>
+            <file>file:/C:/wamp/www/B2E/Nextwatt/application/views/B2E/Accueil.php</file>
+>>>>>>> 3a907a91de60eeff2259e24d09419bdb9388d105
+        </group>
+>>>>>>> 9f23827be22f7b360d6dcab0b5ba4ad96c719900
     </open-files>
 </project-private>

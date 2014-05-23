@@ -1,6 +1,10 @@
+<<<<<<< HEAD
+/Nextwatt/nbproject/private/
+=======
 *.php
 Nextwatt/application/helpers/assets_helper.php
 Nextwatt/application/helpers/assets/javascript/bootstrap.js
 Nextwatt/application/controllers/test.php
 *.php
 !/Nextwatt/application/views/theme/sidebar.php
+>>>>>>> 3a907a91de60eeff2259e24d09419bdb9388d105
