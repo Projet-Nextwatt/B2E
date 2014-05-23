@@ -22,3 +22,11 @@ Nextwatt/application/controllers/test.php
 !/Nextwatt/application/models/Mappage/Cl_Mapp_Liens_Catalogue.php
 !/Nextwatt/application/models/CL_CAD.php
 !/Nextwatt/application/models/Mappage/CL_Mapp_Types.php
+!/Nextwatt/application/controllers/Controller_Catalogue.php
+!/Nextwatt/application/controllers/Controller_Dossier.php
+!/Nextwatt/application/controllers/Controller_PV.php
+!/Nextwatt/application/controllers/Controller_User.php
+!/Nextwatt/application/controllers/Controller_ECS.php
+!/Nextwatt/application/controllers/Controller_Client.php
+!/Nextwatt/application/controllers/Controller_BE.php
+!/Nextwatt/application/controllers/Controller_Devis.php
