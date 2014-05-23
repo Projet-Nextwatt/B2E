@@ -13,6 +13,7 @@ if (!function_exists('css_url')) {
 
 }
 
+
 if (!function_exists('js_url')) {
 
     function js_url($nom) {
@@ -24,7 +25,7 @@ if (!function_exists('js_url')) {
 if (!function_exists('img_url')) {
 
     function img_url($nom) {
-        return base_url() . 'application/helper/assets/images/' . $nom;
+        return base_url() . 'application/helpers/assets/images/' . $nom;
     }
 
 }
