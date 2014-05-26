@@ -47,4 +47,3 @@ class _model extends CI_Model {
     
     
     }
-

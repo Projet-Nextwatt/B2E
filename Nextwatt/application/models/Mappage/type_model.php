@@ -1,50 +1,40 @@
 <?php
 
-class _model extends CI_Model {
+class Type_model extends CI_Model {
     
     /*var $has_one = 
     var $has_many = */
     
-    /*
-    var $ = "";
-    var $ = "";
-    var $ = "";
-    var $ = "";
-    var $ = "";
-    var $ = "";
-    var $ = "";
-    var $ = "";
-    var $ = "";
-    var $ = "";
-    var $ = "";
-    var $ = "";
-    */
+    
+    var $ID_Type = "";
+    var $Nom_Type = "";
+    var $Code_Type = "";
+    
     
     function __construct() 
     {
         parent ::__construct();
     }
     
-    function select_()
+    function select_type()
     {
         //Fonction de selection
     }
     
-    function ajouter_()
+    function ajouter_type()
     {
         // Fonction d'ajout
     }
     
-    function modifier_()
+    function modifier_type()
     {
         //Fonction de modification
     }
     
-    function supprimer_()
+    function supprimer_type()
     {
         //Fonction de suppression
     }
     
     
     }
-
