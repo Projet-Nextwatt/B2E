@@ -3,16 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/B2E/Nextwatt/application/config/autoload.php</file>
-            <file>file:/C:/wamp/www/B2E/Nextwatt/application/models/Mappage/liencatalogue_model.php</file>
-            <file>file:/C:/wamp/www/B2E/Nextwatt/application/models/Mappage/hierarchie_model.php</file>
-            <file>file:/C:/wamp/www/B2E/Nextwatt/application/models/Mappage/prixenergie_model.php</file>
-            <file>file:/C:/wamp/www/B2E/Nextwatt/application/models/Mappage/userhierarchie_model.php</file>
             <file>file:/C:/wamp/www/B2E/Nextwatt/application/config/database.php</file>
-            <file>file:/C:/wamp/www/B2E/Nextwatt/application/models/Mappage/categorie_model.php</file>
-            <file>file:/C:/wamp/www/B2E/Nextwatt/application/models/Mappage/type_model.php</file>
-            <file>file:/C:/wamp/www/B2E/Nextwatt/application/models/Mappage/soustypes_model.php</file>
-            <file>file:/C:/wamp/www/B2E/Nextwatt/application/models/Mappage/user_model.php</file>
+            <file>file:/C:/wamp/www/B2E/Nextwatt/application/models/Mappage/article_model.php</file>
         </group>
     </open-files>
 </project-private>
