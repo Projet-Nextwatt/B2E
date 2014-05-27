@@ -39,7 +39,7 @@
           <file leaf-file-name="sidebar.php" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/theme/sidebar.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="20" column="21" selection-start="636" selection-end="636" vertical-scroll-proportion="0.4874372" vertical-offset="49" max-vertical-offset="646">
+                <state line="17" column="42" selection-start="528" selection-end="528" vertical-scroll-proportion="0.40201005" vertical-offset="49" max-vertical-offset="646">
                   <folding />
                 </state>
               </provider>
@@ -767,7 +767,11 @@
       <created>1401193342906</created>
       <updated>1401193342906</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Commit avec la sidebar (volé) qui marche bien comme il faut ! Lol 2">
+      <created>1401193512485</created>
+      <updated>1401193512486</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -792,7 +796,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-167" width="1936" height="1096" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.066450566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32829374" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -806,7 +810,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32829374" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2428115" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32960597" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13951011" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13951011" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32181427" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1201,7 +1205,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/theme/sidebar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="21" selection-start="636" selection-end="636" vertical-scroll-proportion="0.4874372" vertical-offset="49" max-vertical-offset="646">
+        <state line="17" column="42" selection-start="528" selection-end="528" vertical-scroll-proportion="0.40201005" vertical-offset="49" max-vertical-offset="646">
           <folding />
         </state>
       </provider>
