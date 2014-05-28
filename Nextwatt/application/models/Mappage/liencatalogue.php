@@ -1,6 +1,6 @@
 <?php
 
-class _model extends DataMapper {
+class Liencatalogue extends DataMapper {
     
     /*var $has_one = 
     var $has_many = */
@@ -47,3 +47,4 @@ class _model extends DataMapper {
     
     
     }
+

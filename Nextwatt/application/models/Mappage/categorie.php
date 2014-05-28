@@ -1,9 +1,9 @@
 <?php
 
-class Categorie_model extends DataMapper {
+class Categorie extends DataMapper {
     
-    /*var $has_one = 
-    var $has_many = */
+    
+    var $has_many = array('User');
     
     
     var $ID_Categorie = "";

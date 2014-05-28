@@ -1,17 +1,14 @@
 <?php
 
-class Prixenergie_model extends DataMapper {
+class Type extends DataMapper {
     
     /*var $has_one = 
     var $has_many = */
     
     
-    var $ID_PrixEnergie = "";
-    var $Energie = "";
-    var $Prix = "";
-    var $Inflation = "";
-    var $CO2 = "";
-    var $Abonnement = "";
+    var $ID_Type = "";
+    var $Nom_Type = "";
+    var $Code_Type = "";
     
     
     function __construct() 
@@ -19,26 +16,25 @@ class Prixenergie_model extends DataMapper {
         parent ::__construct();
     }
     
-    function select_prixenergie()
+    function select_type()
     {
         //Fonction de selection
     }
     
-    function ajouter_prixenergie()
+    function ajouter_type()
     {
         // Fonction d'ajout
     }
     
-    function modifier_prixenergie()
+    function modifier_type()
     {
         //Fonction de modification
     }
     
-    function supprimer_prixenergie()
+    function supprimer_type()
     {
         //Fonction de suppression
     }
     
     
     }
-

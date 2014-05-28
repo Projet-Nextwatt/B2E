@@ -1,9 +1,9 @@
 <?php
 
-class Article_model extends DataMapper {
+class Article extends DataMapper {
     
-    /*var $has_one = array("article", "dossier", "soustype");
-    var $has_many = array("article");*/
+    var $has_one = array("article", "dossier", "soustype");
+    var $has_many = array("article");
     
     var $ID_Article = "";
     var $ID_Dossier = "";

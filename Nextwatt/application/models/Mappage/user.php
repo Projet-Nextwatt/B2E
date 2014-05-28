@@ -1,23 +1,23 @@
 <?php
 
-class client_model extends DataMapper {
+class User extends DataMapper {
     
     /*var $has_one = 
     var $has_many = */
     
     
-    var $ID_Client = "";
     var $ID_User = "";
-    var $FK_User = "";
+    var $Login = "";
+    var $Password = "";
+    var $ID_Categorie = "";
     var $Nom = "";
     var $Prenom = "";
-    var $Adresse = "";
-    var $Code_Postale = "";
-    var $Ville = "";
+    var $Email = "";
     var $Tel_1 = "";
     var $Tel_2 = "";
-    var $Email = "";
     var $Date_Ajout = "";
+    var $Derniere_Connexion = "";
+    var $Actif = "";
     
     
     function __construct() 
@@ -25,29 +25,26 @@ class client_model extends DataMapper {
         parent ::__construct();
     }
     
-    function select_client()
+    function select_user()
     {
         //Fonction de selection
     }
     
-    function ajouter_client()
+    function ajouter_user()
     {
         // Fonction d'ajout
     }
     
-    function modifier_client()
+    function modifier_user()
     {
         //Fonction de modification
     }
     
-    function supprimer_client()
+    function supprimer_user()
     {
-        $this->db->where('Nom', 'Nom');
-        $this->db->delete('Client');
+        $this->db->where('Login', '');
+        $this->db->delete('Article');
     }
     
     
-    
-    
     }
-

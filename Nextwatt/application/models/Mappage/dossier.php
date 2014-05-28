@@ -1,9 +1,9 @@
 <?php
 
-class Dossier_model extends DataMapper {
+class Dossier extends DataMapper {
     
-    /*var $has_one = 
-    var $has_many = */
+    var $has_one = array ('Client');
+    var $has_many = array ('Article');
     
     var $table ="dossier";
     

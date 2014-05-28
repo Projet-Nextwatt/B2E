@@ -1,14 +1,17 @@
 <?php
 
-class _model extends DataMapper 
-{
+class Prixenergie extends DataMapper {
     
     /*var $has_one = 
     var $has_many = */
     
     
-    var $ID_Hierarchie = "";
-    var $FK_Chef = "";
+    var $ID_PrixEnergie = "";
+    var $Energie = "";
+    var $Prix = "";
+    var $Inflation = "";
+    var $CO2 = "";
+    var $Abonnement = "";
     
     
     function __construct() 
@@ -16,25 +19,26 @@ class _model extends DataMapper
         parent ::__construct();
     }
     
-    function select_hierarchie()
+    function select_prixenergie()
     {
         //Fonction de selection
     }
     
-    function ajouter_hierarchie()
+    function ajouter_prixenergie()
     {
         // Fonction d'ajout
     }
     
-    function modifier_hierarchie()
+    function modifier_prixenergie()
     {
         //Fonction de modification
     }
     
-    function supprimer_hierarchie()
+    function supprimer_prixenergie()
     {
         //Fonction de suppression
     }
     
-}
     
+    }
+

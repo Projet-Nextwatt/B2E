@@ -1,9 +1,9 @@
 <?php
 
-class Catalogue_model extends DataMapper {
+class Catalogue extends DataMapper {
     
-    /*var $has_one = 
-    var $has_many = */
+    var $has_one = array ('Soustype');
+    var $has_many = array('Catalogue');
     
     var $ID_Catalogue = "";
     var $ID_SousType = "";

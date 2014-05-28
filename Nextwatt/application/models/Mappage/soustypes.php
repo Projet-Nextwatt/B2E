@@ -1,14 +1,18 @@
 <?php
 
-class Type_model extends DataMapper {
+class Soustype extends DataMapper {
     
     /*var $has_one = 
     var $has_many = */
     
     
+    var $ID_SousType = "";
     var $ID_Type = "";
-    var $Nom_Type = "";
-    var $Code_Type = "";
+    var $Nom_SousType = "";
+    var $Nom_Devis = "";
+    var $Categorie_BouquetCI = "";
+    var $Categorie_BouqetEcoPTZ = "";
+    var $CI_Unitaire = "";
     
     
     function __construct() 
@@ -16,22 +20,22 @@ class Type_model extends DataMapper {
         parent ::__construct();
     }
     
-    function select_type()
+    function select_soustype()
     {
         //Fonction de selection
     }
     
-    function ajouter_type()
+    function ajouter_soustype()
     {
         // Fonction d'ajout
     }
     
-    function modifier_type()
+    function modifier_soustype()
     {
         //Fonction de modification
     }
     
-    function supprimer_type()
+    function supprimer_soustype()
     {
         //Fonction de suppression
     }

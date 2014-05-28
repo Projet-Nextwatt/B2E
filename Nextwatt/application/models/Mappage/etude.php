@@ -1,5 +1,5 @@
 <?php
-class Etude_model extends DataMapper {
+class Etude extends DataMapper {
     
     /*var $has_one = 
     var $has_many = */
