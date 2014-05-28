@@ -39,3 +39,16 @@ Nextwatt/application/controllers/test.php
 !/Nextwatt/application/third_party/datamapper/system/Lang.php
 !/Nextwatt/application/third_party/datamapper/system/Loader.php
 !/Nextwatt/application/models/Mappage/voiture.php
+!/Nextwatt/application/libraries/datamapper.php
+!/Nextwatt/application/datamapper/nestedsets.php
+!/Nextwatt/application/datamapper/simplecache.php
+!/Nextwatt/application/datamapper/htmlform.php
+!/Nextwatt/application/datamapper/translate.php
+!/Nextwatt/application/datamapper/csv.php
+!/Nextwatt/application/datamapper/array.php
+!/Nextwatt/application/datamapper/rowindex.php
+!/Nextwatt/application/datamapper/json.php
+!/Nextwatt/application/config/datamapper.php
+!/Nextwatt/application/core/controller.php
+!/Nextwatt/application/core/model.php
+!/Nextwatt/application/models/_template.php
