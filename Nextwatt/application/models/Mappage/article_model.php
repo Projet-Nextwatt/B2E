@@ -51,7 +51,8 @@ class Article_model extends CI_Model {
     
     function supprimer_article()
     {
-        //Fonction de suppression
+        $this->db->where('Nom', 'Nom');
+        $this->db->delete('Article');
     }
     
     

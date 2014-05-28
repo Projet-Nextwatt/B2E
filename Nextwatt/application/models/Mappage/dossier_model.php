@@ -1,14 +1,15 @@
 <?php
 
-class Dossier_model extends CI_Model {
+class Dossier_model extends DataMapper {
     
     /*var $has_one = 
     var $has_many = */
     
+    var $table ="dossier";
     
     var $ID_Dossier = "";
-    var $FK_Client = "";
-    var $FK_Client = "";
+    var $ID_Client = "";
+    var $FK_Etude = "";
     var $Titre = "";
     var $Montant = "";
     var $Date_Creation = "";
@@ -19,7 +20,7 @@ class Dossier_model extends CI_Model {
     {
         parent ::__construct();
     }
-    
+    /*
     function select_dossier()
     {
         //Fonction de selection
@@ -37,11 +38,8 @@ class Dossier_model extends CI_Model {
     
     function supprimer_dossier()
     {
-        //Fonction de suppression
-    }
-    
-    
-    
-    
+        $this->db->where('ID_Dossier', 'ID_Dossier');
+        $this->db->delete('Dossier');
+    }*/
     }
 

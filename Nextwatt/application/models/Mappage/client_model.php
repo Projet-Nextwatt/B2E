@@ -42,7 +42,8 @@ class client_model extends CI_Model {
     
     function supprimer_client()
     {
-        //Fonction de suppression
+        $this->db->where('Nom', 'Nom');
+        $this->db->delete('Client');
     }
     
     

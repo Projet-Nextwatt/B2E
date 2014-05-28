@@ -42,7 +42,8 @@ class User_model extends CI_Model {
     
     function supprimer_user()
     {
-        //Fonction de suppression
+        $this->db->where('Login', '');
+        $this->db->delete('Article');
     }
     
     

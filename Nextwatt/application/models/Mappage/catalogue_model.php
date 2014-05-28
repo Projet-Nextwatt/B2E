@@ -52,7 +52,8 @@ class Catalogue_model extends CI_Model {
     
     function supprimer_article_catalogue()
     {
-        //Fonction de suppression
+        $this->db->where('Nom', 'Nom');
+        $this->db->delete('Catalogue');
     }
     
     
