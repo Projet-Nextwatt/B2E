@@ -1,6 +1,6 @@
 <?php
 
-class Categorie_model extends CI_Model {
+class Categorie_model extends DataMapper {
     
     /*var $has_one = 
     var $has_many = */

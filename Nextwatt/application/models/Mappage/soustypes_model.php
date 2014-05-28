@@ -1,6 +1,6 @@
 <?php
 
-class Soustype_model extends CI_Model {
+class Soustype_model extends DataMapper {
     
     /*var $has_one = 
     var $has_many = */

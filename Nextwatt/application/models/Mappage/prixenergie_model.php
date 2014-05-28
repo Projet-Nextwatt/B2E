@@ -1,6 +1,6 @@
 <?php
 
-class Prixenergie_model extends CI_Model {
+class Prixenergie_model extends DataMapper {
     
     /*var $has_one = 
     var $has_many = */

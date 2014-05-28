@@ -1,6 +1,6 @@
 <?php
 
-class Article_model extends CI_Model {
+class Article_model extends DataMapper {
     
     /*var $has_one = array("article", "dossier", "soustype");
     var $has_many = array("article");*/

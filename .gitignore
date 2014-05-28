@@ -38,3 +38,4 @@ Nextwatt/application/controllers/test.php
 !/Nextwatt/application/third_party/datamapper/system/DB_driver.php
 !/Nextwatt/application/third_party/datamapper/system/Lang.php
 !/Nextwatt/application/third_party/datamapper/system/Loader.php
+!/Nextwatt/application/models/Mappage/voiture.php

@@ -1,6 +1,6 @@
 <?php
 
-class Catalogue_model extends CI_Model {
+class Catalogue_model extends DataMapper {
     
     /*var $has_one = 
     var $has_many = */
