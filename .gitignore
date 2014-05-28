@@ -30,3 +30,11 @@ Nextwatt/application/controllers/test.php
 !/Nextwatt/application/controllers/Controller_Client.php
 !/Nextwatt/application/controllers/Controller_BE.php
 !/Nextwatt/application/controllers/Controller_Devis.php
+!/Nextwatt/application/third_party/datamapper/bootstrap.php
+!/Nextwatt/application/views/catalogue_index.php
+!/Nextwatt/application/views/catalogue_test.php
+!/Nextwatt/application/index.php
+!/Nextwatt/application/third_party/datamapper/system/DB.php
+!/Nextwatt/application/third_party/datamapper/system/DB_driver.php
+!/Nextwatt/application/third_party/datamapper/system/Lang.php
+!/Nextwatt/application/third_party/datamapper/system/Loader.php

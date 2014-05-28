@@ -6,7 +6,7 @@ class Dossier extends CI_Controller {
 		echo 'Hello World!';
 	}
         
-        public function test(){
+        public function add_dossier(){
             $dossier = new Dossier_model();
             $dossier->Titre = "Mon premier Dossier";
             $dossier->Montant = "2250,51";
