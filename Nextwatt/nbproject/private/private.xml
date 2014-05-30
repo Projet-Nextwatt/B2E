@@ -2,11 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/wamp/www/B2E/Nextwatt/application/models/Mappage/etude.php</file>
             <file>file:/C:/wamp/www/B2E/Nextwatt/application/models/Mappage/prixenergie.php</file>
             <file>file:/C:/wamp/www/B2E/Nextwatt/application/models/Mappage/liencatalogue.php</file>
             <file>file:/C:/wamp/www/B2E/Nextwatt/application/models/Mappage/hierarchie.php</file>
         </group>
+=======
+        <group/>
+>>>>>>> 2a868fde7dfc26d61aaad1e1f026d2466b42d2e0
     </open-files>
 </project-private>
