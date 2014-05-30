@@ -1,10 +1,18 @@
 <?php
-
+/*
+ * Classe Modèle pour la table Catalogue, définir ici toutes les fonctionnalitées utilisant la table Catalogue
+ * CRUD de base mis en place.
+ */
 class Catalogue extends DataMapper {
-    
+    /*
+     * Variables de relation (entre tables)
+     */
     var $has_one = array ('Soustype');
     var $has_many = array('Catalogue');
     
+    /*
+     * Variables correspondantes aux colonnes de la table.
+     */
     var $ID_Catalogue = "";
     var $ID_SousType = "";
     var $Reference = "";

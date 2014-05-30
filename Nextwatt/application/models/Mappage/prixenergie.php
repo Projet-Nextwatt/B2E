@@ -1,11 +1,12 @@
 <?php
-
+/*
+ * Classe Modèle pour la table PrixEnergie, définir ici toutes les fonctionnalitées utilisant la table PrixEnergie
+ * CRUD de base mis en place.
+ */
 class Prixenergie extends DataMapper {
-    
-    /*var $has_one = 
-    var $has_many = */
-    
-    
+     /*
+     * Variables correspondantes aux colonnes de la table.
+     */
     var $ID_PrixEnergie = "";
     var $Energie = "";
     var $Prix = "";

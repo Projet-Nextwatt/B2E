@@ -59,3 +59,4 @@ Nextwatt/application/controllers/test.php
 !/Nextwatt/application/language/nl/datamapper_lang.php
 !/Nextwatt/application/language/fr/datamapper_lang.php
 !/Nextwatt/application/language/it/datamapper_lang.php
+*.xml

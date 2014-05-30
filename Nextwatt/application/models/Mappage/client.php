@@ -1,11 +1,18 @@
 <?php
-
+/*
+ * Classe Modèle pour la table Client, définir ici toutes les fonctionnalitées utilisant la table Client
+ * CRUD de base mis en place.
+ */
 class Client extends DataMapper {
-    
+    /*
+     * Variables de relation (entre tables)
+     */
     var $has_one = array('User');
     var $has_many = array('Dossier');
     
-    
+    /*
+     * Variables correspondantes aux colonnes de la table.
+     */
     var $ID_Client = "";
     var $ID_User = "";
     var $FK_User = "";

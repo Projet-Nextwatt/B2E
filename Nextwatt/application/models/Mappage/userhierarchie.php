@@ -1,5 +1,8 @@
 <?php
-
+/*
+ * Classe Modèle pour la table UserHierarchie, définir ici toutes les fonctionnalitées utilisant la table Hierarchie
+ * CRUD de base mis en place.
+ */
 class Userhierarchie extends DataMapper {
     
     /*var $has_one = 

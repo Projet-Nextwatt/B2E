@@ -1,10 +1,18 @@
 <?php
-
+/*
+ * Classe Modèle pour la table Article, définir ici toutes les fonctionnalitées utilisant la table Article
+ * CRUD de base mis en place.
+ */
 class Article extends DataMapper {
-    
+    /*
+     * Variables de relation (entre tables)
+     */
     var $has_one = array("article", "dossier", "soustype");
     var $has_many = array("article");
     
+    /*
+     * Variables correspondantes aux colonnes de la table.
+     */
     var $ID_Article = "";
     var $ID_Dossier = "";
     var $TB_ID_Article = "";

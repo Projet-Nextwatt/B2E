@@ -1,12 +1,19 @@
 <?php
-
+/*
+ * Classe Modèle pour la table Dossier, définir ici toutes les fonctionnalitées utilisant la table Dosier
+ * CRUD de base mis en place.
+ */
 class Dossier extends DataMapper {
-    
+    /*
+     * Variables de relation (entre tables)
+     */
     var $has_one = array ('Client');
     var $has_many = array ('Article');
     
     var $table ="dossier";
-    
+    /*
+     * Variables correspondantes aux colonnes de la table.
+     */
     var $ID_Dossier = "";
     var $ID_Client = "";
     var $FK_Etude = "";

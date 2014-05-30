@@ -1,11 +1,18 @@
 <?php
-
+/*
+ * Classe Modèle pour la table Categorie, définir ici toutes les fonctionnalitées utilisant la table Categorie
+ * CRUD de base mis en place.
+ */
 class Categorie extends DataMapper {
     
-    
+    /*
+     * Variables de relation (entre tables)
+     */
     var $has_many = array('User');
     
-    
+    /*
+     * Variables correspondantes aux colonnes de la table.
+     */
     var $ID_Categorie = "";
     var $Categorie_Groupe = "";
     var $Nom_Categorie = "";

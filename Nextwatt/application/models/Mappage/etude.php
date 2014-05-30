@@ -1,10 +1,12 @@
 <?php
+/*
+ * Classe Modèle pour la table Etude, définir ici toutes les fonctionnalitées utilisant la table Etude
+ * CRUD de base mis en place.
+ */
 class Etude extends DataMapper {
-    
-    /*var $has_one = 
-    var $has_many = */
-    
-    
+     /*
+     * Variables correspondantes aux colonnes de la table.
+     */
     var $ID_Etude = "";
     var $ID_Dossier = "";
     var $HEPP = "";

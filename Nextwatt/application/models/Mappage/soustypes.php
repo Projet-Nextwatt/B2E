@@ -1,11 +1,18 @@
 <?php
-
+/*
+ * Classe Modèle pour la table Soustype, définir ici toutes les fonctionnalitées utilisant la table Soustype
+ * CRUD de base mis en place.
+ */
 class Soustype extends DataMapper {
+    /*
+     * Variables de relation (entre tables)
+     */
+    var $has_one = array ('Type');
+    var $has_many = array ('Catalogue', 'Article');
     
-    /*var $has_one = 
-    var $has_many = */
-    
-    
+    /*
+     * Variables correspondantes aux colonnes de la table.
+     */
     var $ID_SousType = "";
     var $ID_Type = "";
     var $Nom_SousType = "";
