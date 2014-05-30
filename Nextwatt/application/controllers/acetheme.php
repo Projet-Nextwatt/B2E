@@ -20,7 +20,7 @@ class Acetheme extends CI_Controller
         $data['acebootstrap'] = css_url('acebootstrap');
         $data['nextwattico'] = img_url('Mininextwatt.png');
         //$this->load->view('test', $data);
-        $this->load->view('theme/acebootstrap', $data);
+        $this->load->view('theme/sidebar', $data);
     }
 
 }
