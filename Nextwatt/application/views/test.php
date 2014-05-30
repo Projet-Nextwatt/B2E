@@ -12,8 +12,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 </head>
-</body>
-</html>
+<body>
 <div class="navbar navbar-default">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -59,5 +58,8 @@
     </div>
 </div>
 
+
 <script language="JavaScript" type="text/javascript" src="<?php echo $jquery ?>"></script>
 <script language="JavaScript" type="text/javascript" src="<?php echo $bootstrap ?>"></script>
+</body>
+</html>

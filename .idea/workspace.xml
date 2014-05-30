@@ -1,7 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYSIS_IN_BACKGROUND" value="true" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b81fc606-2ef6-49a8-ae90-e72935e30c96" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/fonts/DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/fonts/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/images/mini-logo-nextwatt+baseline-fond-transparent.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/ace-fonts.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/ace-ie.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/ace-part2.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/js/ace.sidebar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/js/bootstrap.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/js/excanvas.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/font-awesome.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/js/jquery.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/js/jquery1x.min.js" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\css\OpenSans.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\css\bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\css\simple-sidebar.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\javascript\ace-extra.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\javascript\bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\javascript\flot\jquery.flot.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\javascript\flot\jquery.flot.pie.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\javascript\flot\jquery.flot.resize.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\javascript\jquery-ui.custom.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\javascript\jquery.easypiechart.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\javascript\jquery.hammer.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\javascript\jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\javascript\jquery.sparkline.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\javascript\jquery.ui.touch-punch.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\javascript\sidebar.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\javascript\zepto.fx.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\javascript\zepto.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\views\theme\acebootstrap.php" afterPath="" />
+      <change type="MOVED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\css\acebootstrap.css" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/bootstrap.min.css" />
+      <change type="MOVED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\javascript\ace-elements.min.js" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/js/ace-elements.min.js" />
+      <change type="MOVED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\javascript\ace.min.js" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/js/ace.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/system/libraries/Image_lib.php" afterPath="$PROJECT_DIR$/Nextwatt/system/libraries/Image_lib.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/system/libraries/Profiler.php" afterPath="$PROJECT_DIR$/Nextwatt/system/libraries/Profiler.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/system/libraries/Unit_test.php" afterPath="$PROJECT_DIR$/Nextwatt/system/libraries/Unit_test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/ace-skins.min.css" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/ace-skins.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/ace.min.css" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/ace.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/helpers/assets_helper.php" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets_helper.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/system/helpers/captcha_helper.php" afterPath="$PROJECT_DIR$/Nextwatt/system/helpers/captcha_helper.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/datamapper/htmlform.php" afterPath="$PROJECT_DIR$/Nextwatt/application/datamapper/htmlform.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/system/language/english/imglib_lang.php" afterPath="$PROJECT_DIR$/Nextwatt/system/language/english/imglib_lang.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/views/theme/sidebar.php" afterPath="$PROJECT_DIR$/Nextwatt/application/views/theme/sidebar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/user_guide/doc_style/template.html" afterPath="$PROJECT_DIR$/Nextwatt/user_guide/doc_style/template.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/controllers/test.php" afterPath="$PROJECT_DIR$/Nextwatt/application/controllers/test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/views/test.php" afterPath="$PROJECT_DIR$/Nextwatt/application/views/test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/system/helpers/text_helper.php" afterPath="$PROJECT_DIR$/Nextwatt/system/helpers/text_helper.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="B2E.iws" />
@@ -24,58 +74,31 @@
     <favorites_list name="B2E" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4694737">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="jquery.hammer.js" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/javascript/jquery.hammer.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="2162" column="11" selection-start="69437" selection-end="69437" vertical-scroll-proportion="0.0" vertical-offset="36239" max-vertical-offset="36856">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="sidebar.php" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/theme/sidebar.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="17" column="42" selection-start="528" selection-end="528" vertical-scroll-proportion="0.40201005" vertical-offset="49" max-vertical-offset="646">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="Login.php" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/B2E/Login.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-                  <folding>
-                    <marker date="1400967237114" expanded="true" signature="20:190" placeholder="..." />
-                    <marker date="1400967237114" expanded="true" signature="199:577" placeholder="..." />
-                    <marker date="1400967237114" expanded="true" signature="210:277" placeholder="..." />
-                    <marker date="1400967237114" expanded="true" signature="288:569" placeholder="..." />
-                    <marker date="1400967237114" expanded="true" signature="311:363" placeholder="..." />
-                    <marker date="1400967237114" expanded="true" signature="364:422" placeholder="..." />
-                    <marker date="1400967237114" expanded="true" signature="445:498" placeholder="..." />
-                    <marker date="1400967237114" expanded="true" signature="499:557" placeholder="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="test.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/test.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="18" column="50" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="510">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="acetheme.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/acetheme.php">
+          <file leaf-file-name="test.php" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/test.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="20" column="36" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="578">
+                <state line="16" column="30" selection-start="327" selection-end="327" vertical-scroll-proportion="0.30088496" vertical-offset="0" max-vertical-offset="904">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="client.php" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/client.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
                   <folding />
                 </state>
               </provider>
@@ -85,37 +108,28 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="sidebar.php" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="sidebar.php" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/theme/sidebar.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="16" column="6" selection-start="438" selection-end="485" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="646">
+                <state line="13" column="54" selection-start="677" selection-end="677" vertical-scroll-proportion="0.24446903" vertical-offset="0" max-vertical-offset="2839">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="welcome_message.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/welcome_message.php">
+          <file leaf-file-name="template.html" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Nextwatt/user_guide/doc_style/template.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="83" column="47" selection-start="1939" selection-end="1939" vertical-scroll-proportion="0.0" vertical-offset="683" max-vertical-offset="1632">
+                <state line="14" column="7" selection-start="619" selection-end="619" vertical-scroll-proportion="-8.5" vertical-offset="17" max-vertical-offset="2261">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="acebootstrap.php" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/theme/acebootstrap.php">
+          <file leaf-file-name="ace.min.js" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/js/ace.min.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="5" column="50" selection-start="165" selection-end="165" vertical-scroll-proportion="0.113902844" vertical-offset="17" max-vertical-offset="7820">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="OpenSans.css" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/OpenSans.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="12" column="0" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="306">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
                   <folding />
                 </state>
               </provider>
@@ -147,14 +161,11 @@
         <option value="$PROJECT_DIR$/Nextwatt/application/helpers/assets/javascript/zepto.min.js" />
         <option value="$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/simple-sidebar.css" />
         <option value="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-        <option value="$PROJECT_DIR$/Nextwatt/application/views/test.php" />
         <option value="$PROJECT_DIR$/Nextwatt/application/helpers/assets/javascript/jquery.hammer.js" />
         <option value="$PROJECT_DIR$/Nextwatt/application/views/B2E/Accueil.php" />
         <option value="$PROJECT_DIR$/Nextwatt/application/helpers/assets/javascript/sidebarv2.js" />
         <option value="$PROJECT_DIR$/Nextwatt/application/helpers/assets/javascript/sidebar.js" />
-        <option value="$PROJECT_DIR$/Nextwatt/application/views/theme/sidebar.php" />
         <option value="$PROJECT_DIR$/Nextwatt/application/views/welcome_message.php" />
-        <option value="$PROJECT_DIR$/Nextwatt/application/controllers/test.php" />
         <option value="$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/acebootstrape.css" />
         <option value="$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/ace.min.css" />
         <option value="$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/ace-skins.min.css" />
@@ -163,6 +174,12 @@
         <option value="$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/OpenSans.css" />
         <option value="$PROJECT_DIR$/Nextwatt/application/controllers/acetheme.php" />
         <option value="$PROJECT_DIR$/Nextwatt/application/views/theme/acebootstrap.php" />
+        <option value="$PROJECT_DIR$/Nextwatt/application/helpers/assets_helper.php" />
+        <option value="$PROJECT_DIR$/Nextwatt/user_guide/doc_style/template.html" />
+        <option value="$PROJECT_DIR$/Nextwatt/application/views/test.php" />
+        <option value="$PROJECT_DIR$/Nextwatt/application/datamapper/htmlform.php" />
+        <option value="$PROJECT_DIR$/Nextwatt/application/controllers/test.php" />
+        <option value="$PROJECT_DIR$/Nextwatt/application/views/theme/sidebar.php" />
       </list>
     </option>
   </component>
@@ -208,6 +225,266 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="theme" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helpers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helpers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helpers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helpers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fonts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helpers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Default">
           <PATH>
@@ -501,128 +778,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="B2E" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="B2E" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="B2E" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="B2E" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="B2E" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nextwatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="B2E" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="B2E" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nextwatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="B2E" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="B2E" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nextwatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="B2E" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="B2E" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nextwatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="theme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="B2E" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="B2E" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nextwatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -657,6 +812,14 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="438" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\B2E\Nextwatt\application\helpers\assets" />
+      <recent name="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\javascript" />
+      <recent name="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\images" />
+      <recent name="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\css" />
+    </key>
+  </component>
   <component name="RunManager" selected="PHP Web Application.Run normal">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
@@ -668,10 +831,10 @@
     <configuration default="true" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application" browser="CHROME" server_name="Localhost" start_url="http://localhost/B2E/Nextwatt/">
       <method />
     </configuration>
-    <configuration default="true" type="PhpRemoteDebugRunConfigurationType" factoryName="PHP Remote Debug">
+    <configuration default="true" type="PhpHttpRequestRunConfigurationType" factoryName="PHP HTTP Request">
       <method />
     </configuration>
-    <configuration default="true" type="PhpHttpRequestRunConfigurationType" factoryName="PHP HTTP Request">
+    <configuration default="true" type="PhpRemoteDebugRunConfigurationType" factoryName="PHP Remote Debug">
       <method />
     </configuration>
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
@@ -796,29 +959,29 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-167" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.066450566" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32829374" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31682146" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31540847" sideWeight="0.6192758" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3987034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49270666" sideWeight="0.62034076" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31540847" sideWeight="0.38019168" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15511893" sideWeight="0.44621938" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3137255" sideWeight="0.3796592" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32829374" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2428115" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32960597" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13951011" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32960597" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14217253" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32181427" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297414" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15511893" sideWeight="0.44621938" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3987034" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -838,9 +1001,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24322917" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19939578" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32181427" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32181427" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -871,124 +1034,62 @@
     <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/B2E/Login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-          <folding>
-            <marker date="1400967237114" expanded="true" signature="20:190" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="199:577" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="210:277" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="288:569" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="311:363" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="364:422" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="445:498" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="499:557" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/test.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="50" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="510">
+        <state line="32" column="21" selection-start="1087" selection-end="1087" vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="782">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/acetheme.php">
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/client.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="36" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="578">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/theme/sidebar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="6" selection-start="438" selection-end="485" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="646">
+        <state line="13" column="57" selection-start="677" selection-end="677" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="2839">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/user_guide/doc_style/template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="48" selection-start="375" selection-end="375" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2261">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="7" selection-start="2862" selection-end="2862" vertical-scroll-proportion="0.0" vertical-offset="1088" max-vertical-offset="1190">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/js/ace.sidebar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="25" selection-start="1122" selection-end="1122" vertical-scroll-proportion="0.0" vertical-offset="299" max-vertical-offset="2737">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/js/ace.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/welcome_message.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="47" selection-start="1939" selection-end="1939" vertical-scroll-proportion="0.0" vertical-offset="683" max-vertical-offset="1632">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/theme/acebootstrap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="415" column="23" selection-start="13026" selection-end="13026" vertical-scroll-proportion="0.0" vertical-offset="5576" max-vertical-offset="7820">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/OpenSans.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="306">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/javascript/jquery.hammer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2162" column="11" selection-start="69437" selection-end="69437" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="36856">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/B2E/Login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-          <folding>
-            <marker date="1400967237114" expanded="true" signature="20:190" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="199:577" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="210:277" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="288:569" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="311:363" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="364:422" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="445:498" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="499:557" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="50" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="510">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/acetheme.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="23" selection-start="335" selection-end="335" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="578">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/theme/sidebar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="6" selection-start="438" selection-end="485" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="646">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/welcome_message.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="47" selection-start="1939" selection-end="1939" vertical-scroll-proportion="0.0" vertical-offset="683" max-vertical-offset="1632">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/theme/acebootstrap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="5" selection-start="452" selection-end="452" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="11747">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/OpenSans.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="306">
-          <folding />
-        </state>
+        <state line="83" column="47" selection-start="1939" selection-end="1939" vertical-scroll-proportion="0.0" vertical-offset="683" max-vertical-offset="1632" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/test.php">
@@ -1022,16 +1123,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1615" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/javascript/bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="33" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="35343" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/javascript/jquery.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Nextwatt/application/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="14" selection-start="31" selection-end="31" vertical-scroll-proportion="0.020190023" vertical-offset="0" max-vertical-offset="842" />
@@ -1042,24 +1133,9 @@
         <state line="1" column="14" selection-start="31" selection-end="31" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/javascript/bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="33" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="35343" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/javascript/jquery.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="616" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="393" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets_helper.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="748" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/scopes/scope_settings.xml">
@@ -1072,140 +1148,192 @@
         <state line="11" column="78" selection-start="524" selection-end="524" vertical-scroll-proportion="0.3321492" vertical-offset="0" max-vertical-offset="1190" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/javascript/sidebar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="36" selection-start="319" selection-end="319" vertical-scroll-proportion="0.22911051" vertical-offset="0" max-vertical-offset="935" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/javascript/jquery.hammer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2162" column="11" selection-start="69437" selection-end="69437" vertical-scroll-proportion="0.0" vertical-offset="36267" max-vertical-offset="36856">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.30583215" vertical-offset="215" max-vertical-offset="1173" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="742" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Nextwatt/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.6529161" vertical-offset="459" max-vertical-offset="3570" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/ace-rtl.min.css">
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/ecs.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="142034" selection-start="142034" selection-end="142034" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="708" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/ace-skins.min.css">
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/dossier.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="75918" selection-start="75918" selection-end="75918" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="708" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/ace.min.css">
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/bilan_etude.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="360103" selection-start="360103" selection-end="360103" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="636" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/bootstrap.css">
+    <entry file="file://$PROJECT_DIR$/Nextwatt/manual/images/nav_toggle_darker.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/manual/images/nav_separator_darker.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/manual/images/nav_bg_darker.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/manual/images/favicon.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/examples/img/icon/64/users.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/manual/images/arrow.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/manual/images/dmz.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/manual/images/dmzlogo.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/manual/images/donate_button.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/manual/images/download.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/manual/images/example.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/manual/images/feed.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/acetheme.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="122298" />
+        <state line="17" column="53" selection-start="414" selection-end="414" vertical-scroll-proportion="0.40083218" vertical-offset="0" max-vertical-offset="721">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/B2E/Login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="589">
-          <folding>
-            <marker date="1400967237114" expanded="true" signature="20:190" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="199:577" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="210:277" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="288:569" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="311:363" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="364:422" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="445:498" placeholder="..." />
-            <marker date="1400967237114" expanded="true" signature="499:557" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="50" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="510">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/OpenSans.css">
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/js/ace.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="379">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets_helper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="58" selection-start="357" selection-end="357" vertical-scroll-proportion="-11.269231" vertical-offset="30" max-vertical-offset="748">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="718" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/catalogue_index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="744">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/catalogue_test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="744">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/welcome_message.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="47" selection-start="1939" selection-end="1939" vertical-scroll-proportion="0.0" vertical-offset="683" max-vertical-offset="1632">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/acetheme.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="36" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="578">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/acebootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="66" selection-start="66" selection-end="66" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="490" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/theme/acebootstrap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="50" selection-start="165" selection-end="165" vertical-scroll-proportion="0.113902844" vertical-offset="17" max-vertical-offset="7820">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/ecs.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/dossier.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
+        <state line="83" column="47" selection-start="1939" selection-end="1939" vertical-scroll-proportion="0.9035461" vertical-offset="774" max-vertical-offset="1632">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/client.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="721">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/bilan_etude.php">
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/ace.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="636">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="334101">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/js/ace.sidebar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="25" selection-start="1122" selection-end="1122" vertical-scroll-proportion="0.56666666" vertical-offset="0" max-vertical-offset="2737">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="42" selection-start="1295" selection-end="1295" vertical-scroll-proportion="0.39823008" vertical-offset="133" max-vertical-offset="1190">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/user_guide/doc_style/template.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="7" selection-start="619" selection-end="619" vertical-scroll-proportion="-8.5" vertical-offset="17" max-vertical-offset="2261">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/datamapper/htmlform.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="268" column="73" selection-start="6626" selection-end="6626" vertical-scroll-proportion="0.2289823" vertical-offset="4145" max-vertical-offset="13464">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/theme/sidebar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="42" selection-start="528" selection-end="528" vertical-scroll-proportion="0.40201005" vertical-offset="49" max-vertical-offset="646">
+        <state line="13" column="54" selection-start="677" selection-end="677" vertical-scroll-proportion="0.24446903" vertical-offset="0" max-vertical-offset="2839">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="30" selection-start="327" selection-end="327" vertical-scroll-proportion="0.30088496" vertical-offset="0" max-vertical-offset="904">
           <folding />
         </state>
       </provider>

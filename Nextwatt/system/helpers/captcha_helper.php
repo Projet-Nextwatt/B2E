@@ -34,7 +34,7 @@
  * @param	array	array of data for the CAPTCHA
  * @param	string	path to create the image in
  * @param	string	URL to the CAPTCHA image folder
- * @param	string	server path to font
+ * @param	string	server path to fonts
  * @return	string
  */
 if ( ! function_exists('create_captcha'))

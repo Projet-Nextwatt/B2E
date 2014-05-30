@@ -266,7 +266,7 @@ class DMZ_HTMLForm {
 		else
 		{
 			log_message('error', 'FormMaker: Unable to find a renderer for '.$type);
-			return '<span style="color: Maroon; background-color: White; font-weight: bold">FormMaker: UNABLE TO FIND A RENDERER FOR '.$type.'</span>';
+			return '<span style="color: Maroon; background-color: White; fonts-weight: bold">FormMaker: UNABLE TO FIND A RENDERER FOR '.$type.'</span>';
 		}
 
 	}
