@@ -105,9 +105,9 @@
             </li>
         </ul>
 
-        <div class="sidebar-toggle sidebar-collapse">
-            <i class="fa-arrows-h" ></i>
-        </div>
+<!--        <div class="sidebar-toggle sidebar-collapse">-->
+<!--            <i class="fa-arrows-h" ></i>-->
+<!--        </div>-->
 
     </div>
 
