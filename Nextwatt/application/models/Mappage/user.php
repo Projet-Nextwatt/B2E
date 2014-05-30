@@ -1,11 +1,18 @@
 <?php
-
+/*
+ * Classe Modèle pour la table User, définir ici toutes les fonctionnalitées utilisant la table USER
+ * CRUD de base mis en place.
+ */
 class User extends DataMapper {
+    /*
+     * Variables de relation (entre tables)
+     */
+    var $has_one = array('Categorie');
+    var $has_many = array('Hierarchie','Client');
     
-    /*var $has_one = 
-    var $has_many = */
-    
-    
+    /*
+     * Variables correspondantes aux colonnes de la table.
+     */
     var $ID_User = "";
     var $Login = "";
     var $Password = "";

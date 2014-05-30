@@ -1,11 +1,17 @@
 <?php
-
+/*
+ * Classe Modèle pour la table Type, définir ici toutes les fonctionnalitées utilisant la table Type
+ * CRUD de base mis en place.
+ */
 class Type extends DataMapper {
+    /*
+     * Variables de relation (entre tables)
+     */
+    var $has_many = array ('Soustype');
     
-    /*var $has_one = 
-    var $has_many = */
-    
-    
+    /*
+     * Variables correspondantes aux colonnes de la table.
+     */
     var $ID_Type = "";
     var $Nom_Type = "";
     var $Code_Type = "";

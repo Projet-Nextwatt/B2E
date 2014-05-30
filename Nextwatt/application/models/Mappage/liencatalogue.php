@@ -1,7 +1,12 @@
 <?php
-
+/*
+ * Classe Modèle pour la table LienCatalogue, définir ici toutes les fonctionnalitées utilisant la table LienCatalogue
+ * CRUD de base mis en place.
+ */
 class Liencatalogue extends DataMapper {
-    
+    /*
+     * Variables de relation (entre tables)
+     */
     /*var $has_one = 
     var $has_many = */
     
