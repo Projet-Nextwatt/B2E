@@ -117,17 +117,29 @@
         </div>
 
         <div class="page-content">
-
-            <!-- setting box goes here if needed -->
-
-            <div class="row">
-                <div class="col-xs-12">
-                    <!-- page content goes here -->
-                </div>
-                <!-- /.col -->
+            <div class="ace-settings-container" id="ace-settings-container">
+                <!-- settings box goes here -->
             </div>
-            <!-- /.row -->
 
+            <div class="page-header">
+                <h1 align="center">
+                    <p>
+                        <img src="/assets/images/mini_logo_NW.png" alt="Photo de montagne" />
+                    </p>
+                    Bienvenue sur Techniwatt.fr !</br>
+                   <small><i class="ace-icon fa fa-angle-double-right"></i> Que souhaitez vous faire ?</small>
+                </h1>
+            </div>
+            
+            <div class="row">
+                </br></br></br></br>
+                <div align="center" class="col-xl-14">
+                   <button type="button" class="btn btn-xxl">
+                        Faire un nouveau dossier
+                   </button>
+                </div>
+            </div>
+            
         </div>
         <!-- /.page-content -->
     </div>
@@ -135,6 +147,7 @@
 
     <!-- footer area -->
 
+    
 </div>
 <!-- /.main-container -->
 
