@@ -83,7 +83,7 @@
         <a  href="<?php echo site_url("test"); ?>">Sidebar</a>
         <a  href="<?php echo site_url("Login"); ?>">Test page Login</a>
         <!-- <a  href="<?php echo site_url("acetheme"); ?>">Utiliser le theme ace</a> -->
-        <a  href="<?php echo site_url("catalogue"); ?>">Test</a>
+        <a  href="<?php echo site_url("newclient"); ?>">Test formulaire inscription</a>
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
 </div>
 

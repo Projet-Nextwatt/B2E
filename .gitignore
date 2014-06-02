@@ -60,3 +60,9 @@ Nextwatt/application/controllers/test.php
 !/Nextwatt/application/language/fr/datamapper_lang.php
 !/Nextwatt/application/language/it/datamapper_lang.php
 *.xml
+!/Nextwatt/application/controllers/login.php
+!/Nextwatt/application/controllers/newclient.php
+!/Nextwatt/application/helpers/inflector_helper.php
+!/Nextwatt/application/views/vueclient.php
+!/Nextwatt/application/controllers/accueil.php
+!/Nextwatt/application/controllers/personnalisation.php

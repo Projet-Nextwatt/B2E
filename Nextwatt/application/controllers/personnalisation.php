@@ -1,12 +1,11 @@
 <?php
-class Client extends CI_Controller {
+class Personnalisation extends CI_Controller {
 
 	public function index()
 	{
 		echo 'Hello World!';
 	}
-        
-        public function consult_client()
+        public function accueil_perso()
         {
             $this->load->helper('url');
             $this->load->helper('assets_helper');
@@ -33,6 +32,6 @@ class Client extends CI_Controller {
             $data['acemin']= js_url('ace.min');
 
             // Charge la page
-            $this->load->view('B2E/Client/Accueil_Client', $data);
+            $this->load->view('B2E/Personnalisation/Menu_Personnalisation', $data);
         }
 }

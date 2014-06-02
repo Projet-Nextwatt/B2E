@@ -69,7 +69,7 @@
         <ul class="nav nav-list">
             <!-- first level item -->
             <li>
-                <a href="#">
+                <a href="<?php echo site_url("catalogue/consult_catalogue"); ?>">
                     <i class="menu-icon fa fa-book"></i>
                     Catalogue
                 </a>
