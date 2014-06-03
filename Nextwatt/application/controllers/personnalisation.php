@@ -1,12 +1,11 @@
 <?php
-class Dossier extends CI_Controller {
+class Personnalisation extends CI_Controller {
 
 	public function index()
 	{
 		echo 'Hello World!';
 	}
-        
-        public function consult_dossier()
+        public function accueil_perso()
         {
             $this->load->helper('url');
             $this->load->helper('assets_helper');
@@ -33,25 +32,6 @@ class Dossier extends CI_Controller {
             $data['acemin']= js_url('ace.min');
 
             // Charge la page
-            $this->load->view('B2E/Dossier_Archives/Accueil_Dossier_Archive', $data);
-        }
-        
-        public function add_dossier()
-        {
-            $dossier = new Dossier_model();
-            $dossier->Titre = "Mon premier Dossier";
-            $dossier->Montant = "2250,51";
-            
-            $dossier->save();
-            
-        }
-        public function select_dossier()
-        {
-            $dossier = new Dossier_model();
-            $dossier->where('')->get();
-            
-            echo "ID dossier :".$dossier->id."<br/>Titre :".$dossier->Titre."<br/> montant :".$dossier->Montant."<br/><br/>";
+            $this->load->view('B2E/Personnalisation/Menu_Personnalisation', $data);
         }
 }
-
-

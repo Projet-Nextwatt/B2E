@@ -1,10 +1,5 @@
 <?php
-
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
-
-class Test extends CI_Controller
-{
+class Accueil extends CI_Controller {
 
     public function index()
     {
@@ -33,10 +28,7 @@ class Test extends CI_Controller
         $data['acemin']= js_url('ace.min');
 
         // Charge la page
-        $this->load->view('sidebar/content/sidebar', $data);
+        $this->layout->set_theme('sidebar'); 	// On choisit le thème 'admin'
+        $this->layout->view('accueil');		// On affiche la vue home
     }
-
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */

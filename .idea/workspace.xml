@@ -5,8 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b81fc606-2ef6-49a8-ae90-e72935e30c96" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
+    <list id="0c8a6eec-bf41-41fb-8392-c76746a3ded9" name="Failed commit: Default" comment="Merge branch 'Developpement' of https://github.com/Projet-Nextwatt/B2E into Developpement&#10;&#10;Conflicts:&#10;&#9;Nextwatt/application/config/autoload.php&#10;&#9;Nextwatt/application/views/B2E/Login.php&#10;&#9;Nextwatt/application/views/theme/sidebar.php&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/.idea/dataSources.ids" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/.idea/Nextwatt.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/controllers/accueil.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/inflector_helper.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/controllers/login.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/controllers/newclient.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/controllers/personnalisation.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/views/Sidebar/sidebar.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nextwatt/application/views/vueclient.php" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\views\test.php" afterPath="" />
+      <change type="MOVED" beforePath="C:\wamp\www\B2E\Nextwatt\application\views\theme\sidebar.php" afterPath="$PROJECT_DIR$/Nextwatt/application/views/B2E/Accueil.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/views/B2E/Client/Accueil_Client.php" afterPath="$PROJECT_DIR$/Nextwatt/application/views/B2E/Client/Accueil_Client.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/views/B2E/Dossier_Archives/Accueil_Dossier_Archive.php" afterPath="$PROJECT_DIR$/Nextwatt/application/views/B2E/Dossier_Archives/Accueil_Dossier_Archive.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/views/B2E/User/Accueil_User.php" afterPath="$PROJECT_DIR$/Nextwatt/application/views/B2E/User/Accueil_User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/views/B2E/Client/Add_Client.php" afterPath="$PROJECT_DIR$/Nextwatt/application/views/B2E/Client/Add_Client.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/views/B2E/Catalogue/Consulter_Catalogue.php" afterPath="$PROJECT_DIR$/Nextwatt/application/views/B2E/Catalogue/Consulter_Catalogue.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/views/B2E/Login.php" afterPath="$PROJECT_DIR$/Nextwatt/application/views/B2E/Login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/views/B2E/Personnalisation/Menu_Personnalisation.php" afterPath="$PROJECT_DIR$/Nextwatt/application/views/B2E/Personnalisation/Menu_Personnalisation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/ace.min.css" afterPath="$PROJECT_DIR$/Nextwatt/application/helpers/assets/css/ace.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/config/autoload.php" afterPath="$PROJECT_DIR$/Nextwatt/application/config/autoload.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/controllers/catalogue.php" afterPath="$PROJECT_DIR$/Nextwatt/application/controllers/catalogue.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/controllers/client.php" afterPath="$PROJECT_DIR$/Nextwatt/application/controllers/client.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/controllers/dossier.php" afterPath="$PROJECT_DIR$/Nextwatt/application/controllers/dossier.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/nbproject/private/private.properties" afterPath="$PROJECT_DIR$/Nextwatt/nbproject/private/private.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/nbproject/private/private.xml" afterPath="$PROJECT_DIR$/Nextwatt/nbproject/private/private.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/nbproject/project.properties" afterPath="$PROJECT_DIR$/Nextwatt/nbproject/project.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/controllers/test.php" afterPath="$PROJECT_DIR$/Nextwatt/application/controllers/test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/controllers/user.php" afterPath="$PROJECT_DIR$/Nextwatt/application/controllers/user.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/views/welcome_message.php" afterPath="$PROJECT_DIR$/Nextwatt/application/views/welcome_message.php" />
     </list>
     <ignored path="B2E.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,16 +64,7 @@
       <file leaf-file-name="pv.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Nextwatt/application/controllers/pv.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="15" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="595">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ensoleillement.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Nextwatt/application/models/Mappage/ensoleillement.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="0" selection-start="694" selection-end="694" vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="1020">
+            <state line="16" column="15" selection-start="343" selection-end="343" vertical-scroll-proportion="-0.0" vertical-offset="272" max-vertical-offset="595">
               <folding />
             </state>
           </provider>
@@ -73,19 +96,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sidebar.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/theme/sidebar.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="165" column="0" selection-start="5274" selection-end="5275" vertical-scroll-proportion="-25.384615" vertical-offset="2145" max-vertical-offset="3060">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="autoload.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Nextwatt/application/config/autoload.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="1" selection-start="1891" selection-end="1891" vertical-scroll-proportion="0.6256324" vertical-offset="683" max-vertical-offset="2057">
+            <state line="74" column="1" selection-start="2196" selection-end="2196" vertical-scroll-proportion="1.9101124" vertical-offset="748" max-vertical-offset="2057">
               <folding />
             </state>
           </provider>
@@ -121,11 +135,10 @@
       <file leaf-file-name="Accueil.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/B2E/Accueil.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3060">
               <folding>
-                <marker date="1401464145732" expanded="true" signature="21:208" placeholder="..." />
-                <marker date="1401464145732" expanded="true" signature="32:142" placeholder="..." />
-                <marker date="1401464145732" expanded="true" signature="154:200" placeholder="..." />
+                <marker date="1401787137041" expanded="true" signature="21:5733" placeholder="..." />
+                <marker date="1401787137041" expanded="true" signature="5719:5725" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -180,11 +193,11 @@
         <option value="192.168.1.10/B2E/Nextwatt/index.php/Login" />
         <option value="$PROJECT_DIR$/Nextwatt/application/config/datamapper.php" />
         <option value="$PROJECT_DIR$/Nextwatt/application/models/Mappage/ensoleillement.php" />
-        <option value="$PROJECT_DIR$/Nextwatt/application/config/autoload.php" />
         <option value="$PROJECT_DIR$/Nextwatt/application/views/B2E/Login.php" />
         <option value="$PROJECT_DIR$/Nextwatt/application/controllers/pv.php" />
         <option value="$PROJECT_DIR$/Nextwatt/application/views/B2E/Etudes/Solaire/etudesolaire.php" />
         <option value="$PROJECT_DIR$/Nextwatt/application/views/theme/sidebar.php" />
+        <option value="$PROJECT_DIR$/Nextwatt/application/config/autoload.php" />
       </list>
     </option>
   </component>
@@ -199,10 +212,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1928" />
-    <option name="y" value="-167" />
-    <option name="width" value="1936" />
-    <option name="height" value="1096" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -259,6 +272,158 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Sidebar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libraries" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -744,7 +909,11 @@
       <created>1401786985671</created>
       <updated>1401786985671</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Commit travail shany (form client)&#10;">
+      <created>1401787101787</created>
+      <updated>1401787101787</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -768,22 +937,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-167" width="1936" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15511893" sideWeight="0.44621938" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33298862" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5377456" sideWeight="0.44621938" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33298862" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.327818" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32829374" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12990937" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32960597" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2428115" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15974441" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2265861" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3987034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19186991" sideWeight="0.62034076" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32181427" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3063209" sideWeight="0.3796592" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4813008" sideWeight="0.3796592" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -839,7 +1008,8 @@
     <MESSAGE value="Commit avec le theme ace&#10;" />
     <MESSAGE value="Commit récup travail shany&#10;" />
     <MESSAGE value="Commit travail shany (form client)&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit travail shany (form client)&#10;" />
+    <MESSAGE value="Merge branch 'Developpement' of https://github.com/Projet-Nextwatt/B2E into Developpement&#10;&#10;Conflicts:&#10;&#9;Nextwatt/application/config/autoload.php&#10;&#9;Nextwatt/application/views/B2E/Login.php&#10;&#9;Nextwatt/application/views/theme/sidebar.php&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'Developpement' of https://github.com/Projet-Nextwatt/B2E into Developpement&#10;&#10;Conflicts:&#10;&#9;Nextwatt/application/config/autoload.php&#10;&#9;Nextwatt/application/views/B2E/Login.php&#10;&#9;Nextwatt/application/views/theme/sidebar.php&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -847,15 +1017,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/B2E/Login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="20" selection-start="1639" selection-end="1639" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="5593">
-          <folding>
-            <marker date="1401711698637" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Nextwatt/manual/images/example.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -894,11 +1055,6 @@
     <entry file="file://$PROJECT_DIR$/Nextwatt/application/helpers/assets/js/ace.sidebar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="25" selection-start="1122" selection-end="1122" vertical-scroll-proportion="0.56666666" vertical-offset="0" max-vertical-offset="2737" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="42" selection-start="1295" selection-end="1295" vertical-scroll-proportion="0.39823008" vertical-offset="133" max-vertical-offset="1190" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Nextwatt/application/datamapper/htmlform.php">
@@ -1057,7 +1213,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="45" column="20" selection-start="1639" selection-end="1639" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="5593">
           <folding>
-            <marker date="1401711698637" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1401787306136" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1066,9 +1222,8 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="941">
           <folding>
-            <marker date="1401464145732" expanded="true" signature="21:208" placeholder="..." />
-            <marker date="1401464145732" expanded="true" signature="32:142" placeholder="..." />
-            <marker date="1401464145732" expanded="true" signature="154:200" placeholder="..." />
+            <marker date="1401787137041" expanded="true" signature="21:5733" placeholder="..." />
+            <marker date="1401787137041" expanded="true" signature="5719:5725" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1136,16 +1291,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Nextwatt/application/views/theme/sidebar.php">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="165" column="0" selection-start="5274" selection-end="5275" vertical-scroll-proportion="-25.384615" vertical-offset="2145" max-vertical-offset="3060">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="19992">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Nextwatt/application/config/autoload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="1" selection-start="1891" selection-end="1891" vertical-scroll-proportion="0.6256324" vertical-offset="683" max-vertical-offset="2057">
+        <state line="74" column="1" selection-start="2196" selection-end="2196" vertical-scroll-proportion="1.9101124" vertical-offset="748" max-vertical-offset="2057">
           <folding />
         </state>
       </provider>
