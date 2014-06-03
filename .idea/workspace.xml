@@ -4,14 +4,7 @@
     <option name="ANALYSIS_IN_BACKGROUND" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b81fc606-2ef6-49a8-ae90-e72935e30c96" name="Default" comment="Commit récup travail shany&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/B2E.iml" afterPath="$PROJECT_DIR$/.idea/B2E.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/views/B2E/Login.php" afterPath="$PROJECT_DIR$/Nextwatt/application/views/B2E/Login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/config/autoload.php" afterPath="$PROJECT_DIR$/Nextwatt/application/config/autoload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/config/datamapper.php" afterPath="$PROJECT_DIR$/Nextwatt/application/config/datamapper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/controllers/pv.php" afterPath="$PROJECT_DIR$/Nextwatt/application/controllers/pv.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nextwatt/application/views/theme/sidebar.php" afterPath="$PROJECT_DIR$/Nextwatt/application/views/theme/sidebar.php" />
+    <list default="true" id="b81fc606-2ef6-49a8-ae90-e72935e30c96" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="B2E.iws" />
@@ -1120,7 +1113,11 @@
       <created>1401464089795</created>
       <updated>1401464089795</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Commit travail shany (form client)&#10;">
+      <created>1401786912239</created>
+      <updated>1401786912239</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
@@ -1148,13 +1145,13 @@
     <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15511893" sideWeight="0.44621938" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33298862" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33298862" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.327818" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32829374" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12990937" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.32960597" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2428115" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15974441" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15974441" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3987034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19186991" sideWeight="0.62034076" order="8" side_tool="true" content_ui="tabs" />
@@ -1214,7 +1211,8 @@
     <MESSAGE value="Commit avec la sidebar (volé) qui marche bien comme il faut ! Lol 2" />
     <MESSAGE value="Commit avec le theme ace&#10;" />
     <MESSAGE value="Commit récup travail shany&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit récup travail shany&#10;" />
+    <MESSAGE value="Commit travail shany (form client)&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit travail shany (form client)&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
