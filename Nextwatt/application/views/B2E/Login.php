@@ -45,7 +45,7 @@
 							<div class="center">
 								<h1>
                                                                     <p>
-                                                                        <a href="../application/helpers/assets/images/mini_logo_NW.png"><img src="img/montagne_mini.jpg" alt="Photo de montagne" title="Cliquez pour agrandir" /></a>
+                                                                        <img src="/assets/images/mini-logo-nextwatt+baseline-fond-transparent.png" alt="Nextwatt" title="Logo Nextwatt" /></a>
                                                                     </p>
 									<span class="green">Nextwatt</span>
 									<span class="white" id="id-text2">B2E</span>

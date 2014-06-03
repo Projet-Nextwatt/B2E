@@ -33,7 +33,7 @@ class Test extends CI_Controller
         $data['acemin']= js_url('ace.min');
 
         // Charge la page
-        $this->load->view('theme/sidebar', $data);
+        $this->load->view('sidebar/content/sidebar', $data);
     }
 
 }
