@@ -161,9 +161,9 @@
 
 <script src="<?php echo $bootstrapmin ?>"></script>
 
-
-<script src="<?php echo $aceelementsmin ?>"></script>
 <script src="<?php echo $acemin ?>"></script>
+<script src="<?php echo $aceelementsmin ?>"></script>
+
 
 <script type="text/javascript">
     //If page has any inline scripts, it goes here
