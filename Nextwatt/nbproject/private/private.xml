@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/wamp/www/Stage/B2E/Nextwatt/application/helpers/assets/images/Mininextwatt.png</file>
             <file>file:/C:/wamp/www/Stage/B2E/Nextwatt/application/hooks/index.html</file>
             <file>file:/C:/wamp/www/Stage/B2E/Nextwatt/application/helpers/assets/css/font-awesome.min.css</file>
@@ -14,6 +15,17 @@
             <file>file:/C:/wamp/www/Stage/B2E/Nextwatt/application/helpers/assets/images/logonextwatt.gif</file>
             <file>file:/C:/wamp/www/Stage/B2E/Nextwatt/application/helpers/assets/images/logonextwatt.png</file>
             <file>file:/C:/wamp/www/Stage/B2E/Nextwatt/application/helpers/assets/css/ace-skins.min.css</file>
+=======
+            <file>file:/C:/wamp/www/B2E/Nextwatt/application/views/B2E/Client/Accueil_Client.php</file>
+            <file>file:/C:/wamp/www/B2E/Nextwatt/application/views/welcome_message.php</file>
+            <file>file:/C:/wamp/www/B2E/Nextwatt/application/views/B2E/Catalogue/Consulter_Catalogue.php</file>
+            <file>file:/C:/wamp/www/B2E/Nextwatt/application/controllers/accueil.php</file>
+            <file>file:/C:/wamp/www/B2E/Nextwatt/application/helpers/assets_helper.php</file>
+            <file>file:/C:/wamp/www/B2E/Nextwatt/application/controllers/client.php</file>
+            <file>file:/C:/wamp/www/B2E/Nextwatt/application/controllers/catalogue.php</file>
+            <file>file:/C:/wamp/www/B2E/Nextwatt/application/views/B2E/Accueil.php</file>
+            <file>file:/C:/wamp/www/B2E/Nextwatt/application/views/B2E/Client/Add_Client.php</file>
+>>>>>>> 395940bac791ce772e2f624da7a4da73876a0fb7
         </group>
     </open-files>
 </project-private>

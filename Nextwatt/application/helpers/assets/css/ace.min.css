@@ -63,15 +63,13 @@ body {
     margin: 0 8px;
     font-size: 24px;
     font-weight: lighter;
-    color: #2679b5
-}
+    color: #1FA03E;}
 
 .page-header h1 small {
     margin: 0 6px;
     font-size: 14px;
     font-weight: normal;
-    color: #8089a0
-}
+    color: #6E756F;}
 
 .ace-icon {
     text-align: center
@@ -5816,9 +5814,8 @@ button.btn:active {
 }
 
 .btn, .btn-default, .btn:focus, .btn-default:focus {
-    background-color: #abbac3 !important;
-    border-color: #abbac3
-}
+    background-color: #24A338 !important;
+    border-color: #094B0C;}
 
 .btn:hover, .btn-default:hover, .btn:active, .btn-default:active, .open .btn.dropdown-toggle, .open .btn-default.dropdown-toggle {
     background-color: #8b9aa3 !important;
@@ -7190,8 +7187,7 @@ button.btn:active {
     text-shadow: none;
     font-weight: normal;
     display: inline-block;
-    background-color: #abbac3 !important
-}
+    background-color: #0A810F !important;}
 
 .label[class*="col-"][class*="arrow"] {
     min-height: 0
