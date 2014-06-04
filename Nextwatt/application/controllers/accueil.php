@@ -28,7 +28,6 @@ class Accueil extends CI_Controller {
         $data['acemin']= js_url('ace.min');
 
         // Charge la page
-        $this->layout->set_theme('sidebar'); 	// On choisit le thème 'admin'
-        $this->layout->view('accueil');		// On affiche la vue home
+        $this->load->view('B2E/Accueil', $data);
     }
 }

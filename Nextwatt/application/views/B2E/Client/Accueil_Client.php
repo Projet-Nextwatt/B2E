@@ -123,9 +123,6 @@
 
                     <div class="page-header">
                         <h1 align="center">
-                            <p>
-                                <img src="/assets/images/mini_logo_NW.png" alt="NextWatt" />
-                            </p>
                             PAGE CLIENT</br>
                             <small><i class="ace-icon fa fa-angle-double-right"></i> Accueil des clients</small>
                         </h1>

@@ -123,14 +123,21 @@
 
             <div class="page-header">
                 <h1 align="center">
-                    <p>
-                        <img src="/assets/images/mini_logo_NW.png" alt="NextWatt" />
-                    </p>
                     PAGE DES USERS</br>
                    <small><i class="ace-icon fa fa-angle-double-right"></i> Accueil des users</small>
                 </h1>
             </div>
-            
+
+            <div class="row">
+                </br></br></br></br>
+                <div align="center" class="col-xl-14">
+                    <a href="<?php echo site_url("user/add_user"); ?>"><button type="button" class="btn btn-success">
+                            <i class="ace-icon fa  fa-user"></i>
+                            Faire un nouveau utilisateur
+                        </button>
+                </div>
+            </div>
+
         </div>
         <!-- /.page-content -->
     </div>

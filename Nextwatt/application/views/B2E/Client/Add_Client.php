@@ -13,11 +13,11 @@
         <link rel="stylesheet" href="<?php echo $acefonts ?>"/>
         <link rel="stylesheet" href="<?php echo $acemincss ?>"/>
         <!--[if lte IE 9]>
-        <!--<link rel="stylesheet" href="<?php echo $acepart2 ?>"/>-->
+        <link rel="stylesheet" href="<?php echo $acepart2 ?>"/>
         <![endif]-->
         <link rel="stylesheet" href="<?php echo $acertl ?>"/>
         <!--[if lte IE 9]>
-        <!--<link href="<?php echo $aceie ?>" rel="stylesheet"/>-->
+        <link href="<?php echo $aceie ?>" rel="stylesheet"/>
         <![endif]-->
         <link rel="stylesheet" href="<?php echo $aceskins ?>"/>
         <!-- some scripts should be  here, refer to files/javascript documentation -->
@@ -134,7 +134,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-5 control-label">Civilité</label>
                             <div class="col-sm-3">
-                                <select name="myselect" class="dropdown">
+                                <select name="myselect" id="civilite" class="dropdown">
                                     <option value="1" >Madame</option>
                                     <option value="2">Mademoiselle</option>
                                     <option value="3" selected>Monsieur</option>
@@ -146,34 +146,34 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-5 control-label">Nom et Prénom </label>
                             <div class="col-sm-2">
-                                <input type="text" class="form-control" placeholder="Votre Nom">
+                                <input type="text" class="form-control" id="nom1" placeholder="Votre Nom">
                             </div>
                             <div  class="col-sm-2">
-                                <input  type="text" class="form-control" placeholder="Votre prénom">
+                                <input  type="text" class="form-control" id="prenom1" placeholder="Votre prénom">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-5 control-label">Nom et Prénom (Conjoint)</label>
                             <div class="col-sm-2">
-                                <input type="text" class="form-control" placeholder="Votre Nom">
+                                <input type="text" class="form-control"id="nom2" placeholder="Votre Nom">
                             </div>
                             <div  class="col-sm-2">
-                                <input  type="text" class="form-control" placeholder="Votre prénom">
+                                <input  type="text" class="form-control" id="prenom2" placeholder="Votre prénom">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-5 control-label">Adresse</label>
                             <div class="col-sm-4">
-                                <textarea class="col-sm-9" rows="3" placeholder="Votre adresse"></textarea>
+                                <textarea class="col-sm-9" rows="3" id="adresse" placeholder="Votre adresse"></textarea>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-5 control-label">Code Postal et Vile </label>
                             <div class="col-sm-2">
-                                <input type="text" class="form-control" placeholder="Code Postal">
+                                <input type="text" class="form-control" id="codepostal" placeholder="Code Postal">
                             </div>
                             <div  class="col-sm-2">
                                 <input  type="text" class="form-control" placeholder="Ville">
@@ -183,17 +183,17 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-5 control-label">Email</label>
                             <div class="col-sm-3">
-                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email" required value>
+                                <input type="email" class="form-control" id="email" placeholder="Email" required value>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="inputPassword3" class="col-sm-5 control-label">Téléphone (fixe et portable)</label>
+                            <label for="inputPassword3" class="col-sm-5 control-label">Téléphone (fixe et/ou portable)</label>
                             <div class="col-sm-2">
-                                <input type="text" class="form-control" id="inputPassword3" placeholder="Teléphone fixe">
+                                <input type="text" class="form-control" id="tel1" placeholder="Teléphone fixe">
                             </div>
                             <div class="col-sm-2">
-                                <input type="text" class="form-control" id="inputPassword3" placeholder="Teléphone portable">
+                                <input type="text" class="form-control" id="tel2" placeholder="Teléphone portable">
                             </div>
                         </div>
 
@@ -209,8 +209,8 @@
                         </div></br>
 
                         <div class="form-group">
-                            <div class="col-sm-offset-5 col-sm-10">
-                                <button class="btn btn-sm btn-info btn-white">
+                            <div class="col-sm-offset-5 col-sm-2">
+                                <a href="<?php echo site_url("client/verif_form_client"); ?>"<button class="btn btn-sm btn-info btn-white">
                                     <i class="ace-icon fa fa-floppy-o bigger-160"></i>
                                     Enregistrer
                                 </button>
