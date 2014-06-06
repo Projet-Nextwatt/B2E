@@ -1,8 +1,10 @@
 <?php
 
-class Catalogue extends CI_Controller {
+class Catalogue extends CI_Controller
+{
 
-    public function index() {
+    public function index()
+    {
         $this->load->helper('url');
         $this->load->helper('assets_helper');
 
@@ -20,6 +22,7 @@ class Catalogue extends CI_Controller {
         $this->load->view('catalogue_index');
     }
 
+<<<<<<< HEAD
     public function test() {
         $voiture = new Voiture();
         $voiture->name = "renault clio";
@@ -35,9 +38,21 @@ class Catalogue extends CI_Controller {
         $voiture->where('id', '2')->get();
         $voiture->color = "blue";
         $voiture->save();
+=======
+    public function test()
+    {
+        $voiture = new Voiture();
+        $voiture->name = "renault clio";
+        $voiture->color = "rouge";
+
+        $voiture->save();
 
 
-
+        /* $voiture = new Voiture();
+          $voiture->where('id', '2')->get();
+          $voiture->color = "blue";
+          $voiture->save(); */
+>>>>>>> 95984bcd75541610beff21225b4a696e4164cd3d
 
 
         $voitures = new Voiture();
@@ -55,7 +70,12 @@ class Catalogue extends CI_Controller {
 
     public function consult_catalogue()
     {
+<<<<<<< HEAD
         $this->load->model('Mappage/catalogue');
+=======
+        $this->load->helper('url');
+        $this->load->helper('assets_helper');
+>>>>>>> 95984bcd75541610beff21225b4a696e4164cd3d
 
         $data = array();
         $rqt_sql = $this->Catalogue->select_article_catalogue();
