@@ -1,8 +1,10 @@
 <?php
 
-class Catalogue extends CI_Controller {
+class Catalogue extends CI_Controller
+{
 
-    public function index() {
+    public function index()
+    {
         $this->load->helper('url');
         $this->load->helper('assets_helper');
 
@@ -20,24 +22,19 @@ class Catalogue extends CI_Controller {
         $this->load->view('catalogue_index');
     }
 
-    public function test() {
-        /* $voiture = new Voiture();
-          $voiture->name = "renault clio";
-          $voiture->color = "rouge";
+    public function test()
+    {
+        $voiture = new Voiture();
+        $voiture->name = "renault clio";
+        $voiture->color = "rouge";
 
-          $voiture->save(); */
-
-
-
+        $voiture->save();
 
 
         /* $voiture = new Voiture();
           $voiture->where('id', '2')->get();
           $voiture->color = "blue";
           $voiture->save(); */
-
-
-
 
 
         $voitures = new Voiture();
@@ -53,7 +50,8 @@ class Catalogue extends CI_Controller {
         $this->load->view('catalogue_test', $data);
     }
 
-    public function consult_catalogue() {
+    public function consult_catalogue()
+    {
         $this->load->helper('url');
         $this->load->helper('assets_helper');
 
@@ -72,11 +70,11 @@ class Catalogue extends CI_Controller {
         $data['minilogonextwatt'] = img_url('mini-logo-nextwatt+baseline-fond-transparent.png');
 
         // Liens vers les fichiers javascripts
-        $data['jquerymin']= js_url('jquery.min');
-        $data['jquery1xmin']= js_url('jquery1x.min');
-        $data['bootstrapmin']= js_url('bootstrap.min');
-        $data['aceelementsmin']= js_url('ace-elements.min');
-        $data['acemin']= js_url('ace.min');
+        $data['jquerymin'] = js_url('jquery.min');
+        $data['jquery1xmin'] = js_url('jquery1x.min');
+        $data['bootstrapmin'] = js_url('bootstrap.min');
+        $data['aceelementsmin'] = js_url('ace-elements.min');
+        $data['acemin'] = js_url('ace.min');
 
         // Charge la page
         $this->load->view('B2E/Catalogue/Consulter_Catalogue', $data);
