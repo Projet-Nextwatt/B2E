@@ -107,7 +107,7 @@
         </ul>
 
         <div class="sidebar-toggle sidebar-collapse">
-            <i class="fa-arrows-h" ></i>
+            <i class="fa-arrows-h"></i>
         </div>
 
     </div>
@@ -129,82 +129,132 @@
                 </h1>
             </div>
 
-            <form class="form-horizontal" role="form">
+            <?php echo form_open('user/verif_form_user');
 
-                <div class="form-group">
-                    <label for="identifiant" class="col-sm-5 control-label">Identifiant</label>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" id="identifiant" value="<?php echo set_value('identifiant'); ?>" placeholder="Votre Pseudo">
-                        <p><?php echo form_error('identifiant'); ?></p>
-                    </div>
+            $id_categorie = 'id="categorie"';
+
+            $categorie = array(
+                'commercial'  => 'Commercial',
+                'dirco'    => 'Directeur Commercial',
+                'admin'   => 'Administrateur',
+            );
+
+            $attribut = array(
+                'class' => 'col - sm - 2 control - label',
+            );
+            $form = array(
+                'class' => 'form - horizontal',
+            );
+            $lblnom2 = array(
+            'class' => 'col - sm - 5 align = "center"',
+            );
+            $identifiant = array(
+                'name' => 'identifiant',
+                'id' => 'identifiant',
+                'class' => 'form - control',
+                'value' => set_value('identifiant')
+            );
+            $mdp = array(
+                'name' => 'mdp',
+                'id' => 'mdp',
+                'class' => 'form - control',
+                'value' => set_value('mdp')
+            );
+            $confmdp = array(
+                'name' => 'confmdp',
+                'id' => 'confmdp',
+                'class' => 'form - control',
+                'value' => set_value('confmdp')
+            );
+            $prenom = array(
+                'name' => 'prenom',
+                'id' => 'prenom',
+                'class' => 'col - sm - offset - 1',
+                'value' => set_value('prenom')
+            );
+            $nom = array(
+                'name' => 'nom',
+                'id' => 'nom',
+                'class' => 'col - sm - offset - 1',
+                'value' => set_value('nom')
+            );
+            $email = array(
+                'name' => 'email',
+                'id' => 'email',
+                'class' => 'col - sm - offset - 1',
+                'value' => set_value('email')
+            );
+            $tel = array(
+                'name' => 'tel',
+                'id' => 'tel',
+                'class' => 'col - sm - offset - 1',
+                'value' => set_value('tel')
+            );
+
+
+            echo form_open('', $form);?>
+
+            <?php echo validation_errors();?>
+
+            <div class="form-group">
+                <?php echo form_label('Identifiant', 'identifiant', $lblnom2); ?>
+                <div class="col-sm-2">
+                    <?php echo form_input($identifiant); ?>
                 </div>
-
-                <div class="form-group">
-                    <label for="mdp" class="col-sm-5 control-label">Mot de passe</label>
-                    <div class="col-sm-2">
-                        <?php echo form_error('mdp'); ?>
-                        <input type="password" class="form-control" id="mdp" value="<?php echo set_value('mdp'); ?>" placeholder="Votre mot de passe">
-                    </div>
-                    <div class="col-sm-2">
-                        <?php echo form_error('confmdp'); ?>
-                        <input type="password" class="form-control" id="confmdp" value="<?php echo set_value('confmdp'); ?>" placeholder="Confirmation MDP">
-                    </div>
+            </div>
+            </br></br></br>
+            <div class="form-group">
+                <?php echo form_label('Mot de passe', 'mdp', $lblnom2); ?>
+                <div class="col-sm-2">
+                    <?php echo form_password($mdp); ?>
                 </div>
-
-                <div class="form-group">
-                    <label for="prenom" class="col-sm-5 control-label">Prénom</label>
-                    <div  class="col-sm-3">
-                        <?php echo form_error('prenom'); ?>
-                        <input  type="text" class="form-control" id="prenom" value="" placeholder="Votre prénom">
-                    </div>
+            </div>
+            </br></br>
+            <div class="form-group">
+                <?php echo form_label('Confirmation mot de passe', 'confmdp', $lblnom2); ?>
+                <div class="col-sm-2">
+                    <?php echo form_password($confmdp); ?>
                 </div>
-
-                <div class="form-group">
-                    <label for="nom" class="col-sm-5 control-label">Nom</label>
-                    <div class="col-sm-3">
-                        <?php echo form_error('nom'); ?>
-                        <input type=text" class="form-control" id="nom" value="<?php echo set_value('nom'); ?>" placeholder="Nom"></textarea>
-                    </div>
+            </div>
+            </br></br>
+            <div class="form-group">
+                <?php echo form_label('Prénom', 'prenom', $lblnom2); ?>
+                <div class="col-sm-2">
+                    <?php echo form_input($prenom); ?>
                 </div>
-
-                <div class="form-group">
-                    <label for="email" class="col-sm-5 control-label">Email</label>
-                    <div class="col-sm-3">
-                        <?php echo form_error('email'); ?>
-                        <input type="email" class="form-control" id="email" value="<?php echo set_value('email'); ?>" placeholder="Email">
-                    </div>
+            </div>
+            </br></br>
+            <div class="form-group">
+                <?php echo form_label('Nom', 'nom', $lblnom2); ?>
+                <div class="col-sm-2">
+                    <?php echo form_input($nom); ?>
                 </div>
-
-                <div class="form-group">
-                    <label for="tel" class="col-sm-5 control-label">Téléphone</label>
-                    <div class="col-sm-3">
-                        <?php echo form_error('tel'); ?>
-                        <input type="text" class="form-control" id="tel" value="<?php echo set_value('tel'); ?>" placeholder="Teléphone">
-                    </div>
+            </div>
+            </br></br>
+            <div class="form-group">
+                <?php echo form_label('E - mail', 'email', $lblnom2); ?>
+                <div class="col-sm-2">
+                    <?php echo form_input($email); ?>
                 </div>
-
-                <div class="form-group">
-                    <label for="categorie" class="col-sm-5 control-label">Catégorie</label>
-                    <div class="col-sm-3">
-                        <select name="salutkoko" class="dropdown"id="categorie">
-                            <option value="1">Commercial</option>
-                            <option value="2">Directeur Co</option>
-                            <option value="2">Grand Chef</option>
-                        </select>
-                    </div>
-                </div></br>
-
-                <div class="form-group">
-                    <div class="col-sm-offset-5 col-sm-2">
-                        <a href="<?php echo site_url("user/verif_form_user"); ?>"><button class="btn btn-sm btn-info btn-white">
-                            <i class="ace-icon fa fa-floppy-o bigger-160"></i>
-                            Enregistrer
-                        </button>
-                        </a>
-                    </div>
+            </div>
+            </br></br>
+            <div class="form-group">
+                <?php echo form_label('Téléphone', 'tel', $lblnom2); ?>
+                <div class="col-sm-2">
+                    <?php echo form_input($tel); ?>
                 </div>
-            </form>
+            </div>
+            </br></br>
+            <div class="form-group">
+                <?php echo form_label('Catégorie', 'categorie', $lblnom2); ?>
+                <div class="col-sm-2">
+                    <?php echo form_dropdown('commercial',$categorie,'commercial', $id_categorie); ?>
+                </div>
+            </div>
 
+            <?php echo form_submit('confirmform', 'Valider');?>
+
+            <?php echo form_close();?>
 
 
         </div>
@@ -216,6 +266,7 @@
 
 
 </div>
+<!-- /.main-container -->
 <!-- /.main-container -->
 
 <!-- list of script files -->

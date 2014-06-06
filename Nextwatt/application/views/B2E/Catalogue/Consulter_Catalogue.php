@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <title> page tite </title>
+    <title>Catalogue</title>
     <meta name="description" content="page description"/>
     <link rel="stylesheet" href="<?php echo $bootstrapmincss ?>"/>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -130,6 +130,11 @@
                    <small><i class="ace-icon fa fa-angle-double-right"></i> Page d'accueil Catalogue</small>
                 </h1>
             </div>
+<!--            <div>-->
+<!--                --><?php
+//                    echo($data['catalogue']);
+//                ?>
+<!--            </div>-->
             
         </div>
         <!-- /.page-content -->
