@@ -21,20 +21,20 @@ class Catalogue extends CI_Controller {
     }
 
     public function test() {
-        /* $voiture = new Voiture();
-          $voiture->name = "renault clio";
-          $voiture->color = "rouge";
+        $voiture = new Voiture();
+        $voiture->name = "renault clio";
+        $voiture->color = "rouge";
 
-          $voiture->save(); */
+        $voiture->get();
+
+        $produit = new Catalogue();
+        $produit->get();
 
 
-
-
-
-        /* $voiture = new Voiture();
-          $voiture->where('id', '2')->get();
-          $voiture->color = "blue";
-          $voiture->save(); */
+        $voiture = new Voiture();
+        $voiture->where('id', '2')->get();
+        $voiture->color = "blue";
+        $voiture->save();
 
 
 
@@ -42,9 +42,9 @@ class Catalogue extends CI_Controller {
 
         $voitures = new Voiture();
         $voitures->get();
-        /* foreach($voitures as $voiture){
+        foreach($voitures as $voiture){
           echo "voiture ID: ".$voiture->id."<br/>name: ".$voiture->name."<br/>color: ".$voiture->color."<br/><br/>";
-          } */
+          }
 
         $data = array();
 
@@ -53,12 +53,15 @@ class Catalogue extends CI_Controller {
         $this->load->view('catalogue_test', $data);
     }
 
-    public function consult_catalogue() {
-        $this->load->helper('url');
-        $this->load->helper('assets_helper');
+    public function consult_catalogue()
+    {
+        $this->load->model('Mappage/catalogue');
 
         $data = array();
+        $rqt_sql = $this->Catalogue->select_article_catalogue();
 
+
+        $data['catalogue'] = $rqt_sql;
         // Liens vers les fichiers CSS
         $data['bootstrapmincss'] = css_url('bootstrap.min');
         $data['acefonts'] = css_url('ace-fonts');
@@ -72,14 +75,15 @@ class Catalogue extends CI_Controller {
         $data['minilogonextwatt'] = img_url('mini-logo-nextwatt+baseline-fond-transparent.png');
 
         // Liens vers les fichiers javascripts
-        $data['jquerymin']= js_url('jquery.min');
-        $data['jquery1xmin']= js_url('jquery1x.min');
-        $data['bootstrapmin']= js_url('bootstrap.min');
-        $data['aceelementsmin']= js_url('ace-elements.min');
-        $data['acemin']= js_url('ace.min');
+        $data['jquerymin'] = js_url('jquery.min');
+        $data['jquery1xmin'] = js_url('jquery1x.min');
+        $data['bootstrapmin'] = js_url('bootstrap.min');
+        $data['aceelementsmin'] = js_url('ace-elements.min');
+        $data['acemin'] = js_url('ace.min');
 
         // Charge la page
         $this->load->view('B2E/Catalogue/Consulter_Catalogue', $data);
+
     }
 
 }
