@@ -23,7 +23,7 @@ class Test extends CI_Controller
         $data['aceskins'] = css_url('ace-skins.min');
 
         // Liens vers les fichiers images
-        $data['minilogonextwatt'] = img_url('mini-logo-nextwatt+baseline-fond-transparent.png');
+        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
 
         // Liens vers les fichiers javascripts
         $data['jquerymin']= js_url('jquery.min');

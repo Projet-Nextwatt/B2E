@@ -1,7 +1,9 @@
 <?php
 
-class Client extends CI_Controller
+class Client extends MY_Controller
 {
+    // Layout used in this controller
+    public $layout_view = 'B2E/layout/default';
 
     public function index()
     {
@@ -10,89 +12,30 @@ class Client extends CI_Controller
 
     public function consult_client()
     {
-        $this->load->helper('url');
-        $this->load->helper('assets_helper');
-
         $data = array();
+        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
 
-        // Liens vers les fichiers CSS
-        $data['bootstrapmincss'] = css_url('bootstrap.min');
-        $data['acefonts'] = css_url('ace-fonts');
-        $data['acemincss'] = css_url('ace.min');
-        $data['acepart2'] = css_url('ace-part2.min');
-        $data['acertl'] = css_url('ace-rtl.min');
-        $data['aceie'] = css_url('ace-ie.min');
-        $data['aceskins'] = css_url('ace-skins.min');
+        $this->layout->title('Consultation client');
+        $this->layout->view('B2E/Client/Accueil_Client', $data); // Render view and layout
 
-        // Liens vers les fichiers images
-        $data['minilogonextwatt'] = img_url('mini-logo-nextwatt+baseline-fond-transparent.png');
-
-        // Liens vers les fichiers javascripts
-        $data['jquerymin'] = js_url('jquery.min');
-        $data['jquery1xmin'] = js_url('jquery1x.min');
-        $data['bootstrapmin'] = js_url('bootstrap.min');
-        $data['aceelementsmin'] = js_url('ace-elements.min');
-        $data['acemin'] = js_url('ace.min');
-
-        // Charge la page
-        $this->load->view('B2E/Client/Accueil_Client', $data);
     }
 
     public function add_client()
     {
-        $this->load->helper('url');
-        $this->load->helper('assets_helper');
-
         $data = array();
+        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
 
-        // Liens vers les fichiers CSS
-        $data['bootstrapmincss'] = css_url('bootstrap.min');
-        $data['acefonts'] = css_url('ace-fonts');
-        $data['acemincss'] = css_url('ace.min');
-        $data['acepart2'] = css_url('ace-part2.min');
-        $data['acertl'] = css_url('ace-rtl.min');
-        $data['aceie'] = css_url('ace-ie.min');
-        $data['aceskins'] = css_url('ace-skins.min');
+        $this->layout->title('Ajout client');
+        $this->layout->view('B2E/Client/Add_Client', $data); // Render view and layout
 
-        // Liens vers les fichiers images
-        $data['minilogonextwatt'] = img_url('mini-logo-nextwatt+baseline-fond-transparent.png');
-
-        // Liens vers les fichiers javascripts
-        $data['jquerymin'] = js_url('jquery.min');
-        $data['jquery1xmin'] = js_url('jquery1x.min');
-        $data['bootstrapmin'] = js_url('bootstrap.min');
-        $data['aceelementsmin'] = js_url('ace-elements.min');
-        $data['acemin'] = js_url('ace.min');
-
-        // Charge la page
-        $this->load->view('B2E/Client/Add_Client', $data);
     }
 
     public function verif_form_client()
     {
-        $this->load->helper('url');
-        $this->load->helper('assets_helper');
-
         $data = array();
+        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
 
-        // Liens vers les fichiers CSS
-        $data['bootstrapmincss'] = css_url('bootstrap.min');
-        $data['acefonts'] = css_url('ace-fonts');
-        $data['acemincss'] = css_url('ace.min');
-        $data['acepart2'] = css_url('ace-part2.min');
-        $data['acertl'] = css_url('ace-rtl.min');
-        $data['aceie'] = css_url('ace-ie.min');
-        $data['aceskins'] = css_url('ace-skins.min');
 
-        // Liens vers les fichiers images
-        $data['minilogonextwatt'] = img_url('mini-logo-nextwatt+baseline-fond-transparent.png');
-
-        // Liens vers les fichiers javascripts
-        $data['jquerymin'] = js_url('jquery.min');
-        $data['jquery1xmin'] = js_url('jquery1x.min');
-        $data['bootstrapmin'] = js_url('bootstrap.min');
-        $data['aceelementsmin'] = js_url('ace-elements.min');
-        $data['acemin'] = js_url('ace.min');
 
         $config = array(
             array(
@@ -141,11 +84,14 @@ class Client extends CI_Controller
         $this->form_validation->set_rules($config);
 
 
+
         if ($this->form_validation->run() == FALSE) {
             // On charge la page
-            $this->load->view('B2E/Client/Add_Client', $data);
+            $this->layout->title('Erreur d\'ajout client');
+            $this->layout->view('B2E/Client/Add_Client', $data); // Render view and layout
         } else {
-            $this->load->view('formsuccess');
+            $this->layout->title('Ajout client');
+            $this->layout->view('formsuccess'); //render view and layout
         }
 
 
