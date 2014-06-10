@@ -6,12 +6,7 @@ class Client extends CI_Controller
     public function index()
     {
         echo 'Hello World!';
-<<<<<<< HEAD
-
-=======
->>>>>>> 95984bcd75541610beff21225b4a696e4164cd3d
     }
-
     public function consult_client()
     {
         $this->load->helper('url');
@@ -74,12 +69,10 @@ class Client extends CI_Controller
 
     public function verif_form_client()
     {
-<<<<<<< HEAD
-=======
+
         $this->load->helper('url');
         $this->load->helper('assets_helper');
 
->>>>>>> 95984bcd75541610beff21225b4a696e4164cd3d
         $data = array();
 
         // Liens vers les fichiers CSS
@@ -104,7 +97,6 @@ class Client extends CI_Controller
 
             $config = array(
             array(
-<<<<<<< HEAD
                 'field' => 'nom1',
                 'label' => 'Nom',
                 'rules' => 'required'
@@ -134,7 +126,6 @@ class Client extends CI_Controller
             array(
                 'field' => 'ville',
                 'label' => 'Ville',
-=======
                 'field' => 'identifiant',
                 'label' => 'Identifiant',
                 'rules' => 'required'
@@ -167,12 +158,10 @@ class Client extends CI_Controller
             array(
                 'field' => 'tel',
                 'label' => 'Telephone',
->>>>>>> 95984bcd75541610beff21225b4a696e4164cd3d
                 'rules' => 'required'
             ),
 
             array(
-<<<<<<< HEAD
                 'field' => 'email',
                 'label' => 'e-mail',
                 'rules' => 'required|valid_email'
@@ -188,24 +177,17 @@ class Client extends CI_Controller
             array(
                 'field' => 'responsable',
                 'label' => 'responsable',
-=======
                 'field' => 'categorie',
                 'label' => 'Categorie',
                 'rules' => 'required'
->>>>>>> 95984bcd75541610beff21225b4a696e4164cd3d
             ),
         );
 
         $this->form_validation->set_rules($config);
 
-<<<<<<< HEAD
         //Si le formulaire est mal remplit !
         if ($this->form_validation->run() == FALSE) {
-=======
-
-        if ($this->form_validation->run() == FALSE) {
             // On charge la page
->>>>>>> 95984bcd75541610beff21225b4a696e4164cd3d
             $this->load->view('B2E/Client/Add_Client', $data);
         } else {
             $this->load->view('formsuccess');

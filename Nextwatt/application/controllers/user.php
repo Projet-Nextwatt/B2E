@@ -65,7 +65,10 @@ class User extends CI_Controller
         $data['acemin'] = js_url('ace.min');
 
         // Charge la page
+        $this->load->view('Layout/sidebar', $data);
+        $this->load->view('Layout/header', $data);
         $this->load->view('B2E/User/Add_User', $data);
+
     }
 
     public function verif_form_user()
@@ -139,6 +142,8 @@ class User extends CI_Controller
 
         if ($this->form_validation->run() == FALSE)
         {
+            $this->load->view('Layout/sidebar', $data);
+            $this->load->view('Layout/header', $data);
             $this->load->view('B2E/User/Add_User', $data);
         }
         else
