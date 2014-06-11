@@ -1,84 +1,25 @@
 <?php
 
-class Catalogue extends CI_Controller {
+class Catalogue extends MY_Controller
+{
+    // Layout used in this controller
+    public $layout_view = 'B2E/layout/default';
 
-    public function index() {
-        $this->load->helper('url');
-        $this->load->helper('assets_helper');
-
+    public function index()
+    {
         $data = array();
+        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
 
-        $data['acertl'] = css_url('ace-rtl.min');
-        $data['OpenSans'] = css_url('OpenSans');
-        $data['aceskins'] = css_url('ace-skins.min');
-        $data['acemin'] = css_url('ace.min');
-        $data['acebootstrap'] = css_url('acebootstrap');
-        $data['nextwattico'] = img_url('Mininextwatt.png');
-        //$this->load->view('test', $data);
-        $this->load->view('theme/sidebar', $data);
-
-        $this->load->view('catalogue_index');
+        $this->layout->title('Catalogue B2E');
+        $this->layout->view('B2E/Catalogue/Consulter_Catalogue', $data);
     }
 
-    public function test() {
-        /* $voiture = new Voiture();
-          $voiture->name = "renault clio";
-          $voiture->color = "rouge";
-
-          $voiture->save(); */
-
-
-
-
-
-        /* $voiture = new Voiture();
-          $voiture->where('id', '2')->get();
-          $voiture->color = "blue";
-          $voiture->save(); */
-
-
-
-
-
-        $voitures = new Voiture();
-        $voitures->get();
-        /* foreach($voitures as $voiture){
-          echo "voiture ID: ".$voiture->id."<br/>name: ".$voiture->name."<br/>color: ".$voiture->color."<br/><br/>";
-          } */
-
+    public function consult_catalogue()
+    {
         $data = array();
+        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
 
-        $data['voitures'] = $voitures;
-
-        $this->load->view('catalogue_test', $data);
-    }
-
-    public function consult_catalogue() {
-        $this->load->helper('url');
-        $this->load->helper('assets_helper');
-
-        $data = array();
-
-        // Liens vers les fichiers CSS
-        $data['bootstrapmincss'] = css_url('bootstrap.min');
-        $data['acefonts'] = css_url('ace-fonts');
-        $data['acemincss'] = css_url('ace.min');
-        $data['acepart2'] = css_url('ace-part2.min');
-        $data['acertl'] = css_url('ace-rtl.min');
-        $data['aceie'] = css_url('ace-ie.min');
-        $data['aceskins'] = css_url('ace-skins.min');
-
-        // Liens vers les fichiers images
-        $data['minilogonextwatt'] = img_url('mini-logo-nextwatt+baseline-fond-transparent.png');
-
-        // Liens vers les fichiers javascripts
-        $data['jquerymin']= js_url('jquery.min');
-        $data['jquery1xmin']= js_url('jquery1x.min');
-        $data['bootstrapmin']= js_url('bootstrap.min');
-        $data['aceelementsmin']= js_url('ace-elements.min');
-        $data['acemin']= js_url('ace.min');
-
-        // Charge la page
+        $this->layout->title('Catalogue B2E');
         $this->load->view('B2E/Catalogue/Consulter_Catalogue', $data);
     }
 
