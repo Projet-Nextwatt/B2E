@@ -60,7 +60,7 @@ class Test extends CI_Controller
         $data['acemin']= js_url('ace.min');
 
         // Charge la page
-        $this->load->view('Layout/sidebar', $data);
+        $this->load->view('layout/sidebar', $data);
     }
 
     public function layout_header()
@@ -87,7 +87,7 @@ class Test extends CI_Controller
         $data['acemin']= js_url('ace.min');
 
         // Charge la page
-        $this->load->view('Layout/header', $data);
+        $this->load->view('layout/header', $data);
 
     }
 
@@ -115,7 +115,7 @@ class Test extends CI_Controller
         $data['acemin']= js_url('ace.min');
 
         // Charge la page
-        $this->load->view('Layout/test_integration', $data);
+        $this->load->view('layout/test_integration', $data);
 
     }
 
@@ -143,9 +143,9 @@ class Test extends CI_Controller
         $data['acemin']= js_url('ace.min');
 
         // Charge la page
-        $this->load->view('Layout/sidebar', $data);
-        $this->load->view('Layout/header', $data);
-        $this->load->view('Layout/test_integration', $data);
+        $this->load->view('layout/sidebar', $data);
+        $this->load->view('layout/header', $data);
+        $this->load->view('layout/test_integration', $data);
 
     }
     public function upload()

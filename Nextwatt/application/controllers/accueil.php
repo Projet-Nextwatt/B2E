@@ -1,5 +1,5 @@
 <?php
-
+//Controleur accueil
 /**
  * Created by PhpStorm.
  * User: Kévin Nérino
@@ -8,7 +8,7 @@
  */
 class Accueil extends MY_Controller
 {
-    // Layout used in this controller
+    // layout used in this controller
     public $layout_view = 'B2E/layout/default';
 
 

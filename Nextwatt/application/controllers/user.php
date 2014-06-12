@@ -85,8 +85,10 @@ class User extends MY_Controller
 
         $this->form_validation->set_rules($config);
 
+        var_dump($this->form_validation->run());
+
         if ($this->form_validation->run() == FALSE) {
-            $this->layout->view('Add_User');
+            $this->layout->view('B2E/User/Add_User');
         } else {
             $this->layout->view('formsuccess');
         }

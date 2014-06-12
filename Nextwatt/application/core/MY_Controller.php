@@ -17,8 +17,8 @@ class MY_Controller extends CI_Controller
         $this->layout->js(js_url('jquery.min'));
 //        $this->layout->js(js_url('jquery1x.min')); Fichier pour IE
         $this->layout->js(js_url('bootstrap.min'));
-        $this->layout->js(js_url('ace-elements.min'));
         $this->layout->js(js_url('ace.min'));
+        $this->layout->js(js_url('ace-elements.min'));
 
 
         //CSS

@@ -1,8 +1,15 @@
 <?php
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        // Controleur client
+                        // fonctions pour afficher la page d'accueil des clients (consult_client)
+                        //           pour afficher le formulaire d'ajout (add_client)
+                        //           pour vérifier le formulaire (verif_form_client
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 class Client extends MY_Controller
 {
-    // Layout used in this controller
+    // layout used in this controller
     public $layout_view = 'B2E/layout/default';
 
     public function index()
@@ -12,9 +19,10 @@ class Client extends MY_Controller
 
     public function consult_client()
     {
+        //Remplissage de la variable $data avec l'image pour le layout
         $data = array();
         $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
-
+        //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Consultation client');
         $this->layout->view('B2E/Client/Accueil_Client', $data); // Render view and layout
 
@@ -22,9 +30,10 @@ class Client extends MY_Controller
 
     public function add_client()
     {
+        //Remplissage de la variable $data avec l'image pour le layout
         $data = array();
         $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
-
+        //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Ajout client');
         $this->layout->view('B2E/Client/Add_Client', $data); // Render view and layout
 
@@ -32,11 +41,12 @@ class Client extends MY_Controller
 
     public function verif_form_client()
     {
+        //Remplissage de la variable $data avec l'image pour le layout
         $data = array();
         $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
 
 
-
+        //Configuration des règles
         $config = array(
             array(
                 'field' => 'identifiant',

@@ -6338,8 +6338,8 @@ button.btn:active {
 }
 
 .btn-white.btn-primary {
-    border-color: #8aafce;
-    color: #6688a6 !important
+    border-color: #92CE8A;
+    color: #104B0B !important
 }
 
 .btn-white.btn-primary:hover, .btn-white.btn-primary:focus, .btn-white.btn-primary.active, .btn-white.btn-primary:active, .open .btn-white.btn-primary.dropdown-toggle {

@@ -10,6 +10,7 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
+        <?php form_open('client/verif_form_client')?>
         <form class="form-horizontal" role="form">
 
             <div class="form-group">
@@ -101,8 +102,8 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-5 col-sm-2">
-                    <a href="<?php echo site_url("client/verif_form_client"); ?>"
-                    <button class="btn btn-sm btn-info btn-white">
+                    <a href="<?php echo site_url("client/verif_form_client"); ?>">
+                    <button type="submit" class="btn btn-sm btn-info btn-white">
                         <i class="ace-icon fa fa-floppy-o bigger-160"></i>
                         Enregistrer
                     </button>
