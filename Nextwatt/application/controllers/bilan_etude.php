@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -12,3 +13,13 @@ class Bilan_etude extends CI_Controller {
 		echo 'Hello World!';
 	}
 }
+=======
+<?php
+class Bilan_etude extends CI_Controller {
+
+	public function index()
+	{
+		echo 'Hello World!';
+	}
+}
+>>>>>>> origin/Developpement
