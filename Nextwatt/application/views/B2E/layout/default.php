@@ -91,6 +91,12 @@
                     Mon compte
                 </a>
             </li>
+            <li>
+                <a href="<?php echo site_url("parametre/ma_methode"); ?>">
+                    <i class="menu-icon fa fa-cog"></i>
+                    Param&egrave;tres
+                </a>
+            </li>
 
         </ul>
 
