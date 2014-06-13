@@ -737,7 +737,7 @@ class DMZ_HTMLForm {
 		}
 	}
 
-	// render a file upload input
+	// render a file Essais input
     function _input_file($object, $id, $value, $options)
     {
         $a = $options + array(

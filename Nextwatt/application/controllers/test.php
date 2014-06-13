@@ -182,8 +182,8 @@ class Test extends CI_Controller
         // set the filter image types
         $config['allowed_types'] = 'gif|jpg|png';
 
-        //load the upload library
-        $this->load->library('upload', $config);
+        //load the Essais library
+        $this->load->library('Essais', $config);
 
         $this->upload->initialize($config);
 
@@ -202,11 +202,11 @@ class Test extends CI_Controller
 
         }
 
-        //load the view/upload.php
-        $this->load->view('upload', $data);
+        //load the view/Essais.php
+        $this->load->view('Essais', $data);
 
         // Charge la page
-        $this->load->view('upload', $data);
+        $this->load->view('Essais', $data);
 
     }
 

@@ -61,7 +61,7 @@
  * @property CI_Trackback $trackback              Trackback Sending/Receiving Class
  * @property CI_Typography $typography            Typography Class
  * @property CI_Unit_test $unit_test              Simple testing class
- * @property CI_Upload $upload                    File Uploading Class
+ * @property CI_Upload $Essais                    File Uploading Class
  * @property CI_URI $uri                          Parses URIs and determines routing
  * @property CI_User_agent $user_agent            Identifies the platform, browser, robot, or mobile devise of the browsing agent
  * @property CI_Validation $validation            //dead
@@ -106,7 +106,7 @@ class CI_Controller{}
  * @property CI_Trackback $trackback              Trackback Sending/Receiving Class
  * @property CI_Typography $typography            Typography Class
  * @property CI_Unit_test $unit_test              Simple testing class
- * @property CI_Upload $upload                    File Uploading Class
+ * @property CI_Upload $Essais                    File Uploading Class
  * @property CI_URI $uri                          Parses URIs and determines routing
  * @property CI_User_agent $user_agent            Identifies the platform, browser, robot, or mobile devise of the browsing agent
  * @property CI_Validation $validation            //dead

@@ -8,9 +8,10 @@
         <small><i class="ace-icon fa fa-angle-double-right"></i> Ajouter un nouvel utilisateur</small>
     </h1>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
+
+
+    <div class="row col-centered">
+        <div class="col-centered">
 
 
             <?php
@@ -19,11 +20,11 @@
             ?>
             <!--        <form class="form-horizontal" role="form">-->
 
-            <form class="form-horizontal" method="post" action="/B2E/Nextwatt/index.php/user/verif_form_user">
-                <div class="control-group">
-                    <label class="control-label" for="identifiant">Identifiant</label>
+            <form class="form-horizontal col-centered" method="post" action="/B2E/Nextwatt/index.php/user/verif_form_user">
+                <div class="form-group col-centered">
+                    <label class=" control-label no-padding-right" for="identifiant">Identifiant</label>
 
-                    <div class="controls">
+                    <div class="">
                         <?php echo form_error('identifiant'); ?>
                         <input type="text" id="identifiant" value="<?php echo set_value('identifiant'); ?>" placeholder="Identifiant">
                     </div>
