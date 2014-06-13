@@ -275,7 +275,7 @@ $region = NULL;
     <span id="flouzcumulee"></span>
 </fieldset>
 
-<script type="text/javascript" src="<?php echo $jquerymin ?>"></script>
+<!--<script type="text/javascript" src="--><?php //echo $jquerymin ?><!--"></script>-->
 <script type="text/javascript">
 $("#station").change(function () {
 

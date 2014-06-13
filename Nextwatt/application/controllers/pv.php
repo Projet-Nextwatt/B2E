@@ -1,16 +1,16 @@
 <?php
 
-class PV extends CI_Controller
+class PV extends MY_Controller
 {
+    // layout used in this controller
+    public $layout_view = 'B2E/layout/default';
 
     public function index()
     {
         $this->load->model('Mappage/ensoleillement', 'ensoleillement');
 
         $data = array();
-
-        //Javascript
-        $data['jquerymin'] = js_url('jquery.min');
+        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
 
         //Image
         $data['tablorientation'] = img_url('Tableau-orientation.png');
@@ -22,7 +22,9 @@ class PV extends CI_Controller
 
 
         $data['station'] = $this->ensoleillement->select_ensoleillement();
-        $this->load->view('B2E/Etudes/Solaire/etudesolaire', $data);
+        $this->layout->title('Accueil B2E');
+        $this->layout->js(js_url('etudesolaire'));
+        $this->layout->view('B2E/Etudes/Solaire/etudesolaire', $data); // Render view and layout
     }
 
     public function heppstation()
