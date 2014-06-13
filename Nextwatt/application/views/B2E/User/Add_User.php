@@ -8,118 +8,84 @@
         <small><i class="ace-icon fa fa-angle-double-right"></i> Ajouter un nouvel utilisateur</small>
     </h1>
 </div>
-<div class="row">
-    <div class="col-xs-12">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
 
 
+            <?php
+            $this->load->helper('form');
+            $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
+            ?>
+            <!--        <form class="form-horizontal" role="form">-->
 
-        <?php
-        $this->load->helper('form');
-        $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
-        echo form_open('user/verif_form_user', $attributes);
-        ?>
-<!--        <form class="form-horizontal" role="form">-->
+            <form class="form-horizontal" method="post" action="/B2E/Nextwatt/index.php/user/verif_form_user">
+                <div class="control-group">
+                    <label class="control-label" for="identifiant">Identifiant</label>
 
-            <div class="form-group">
-                <label for="identifiant" class="col-sm-5 control-label">Identifiant</label>
-
-                <div class="col-sm-2">
-<!--                    --><?php
-//                    $data = array(
-//                        'type'        => 'text',
-//
-//                        'id'          => 'identifiant',
-//                        'class'       => 'form-control',
-//                        'value'       => set_value('identifiant'),
-//                        'placeholder'  => 'Votre Pseudo'
-//
-//                    );
-//                    echo form_input($data);
-//                    ?>
-                    <input type="text" class="form-control" id="identifiant" value="<?php echo set_value('identifiant'); ?>" placeholder="Votre Pseudo">
-
-                    <?php echo form_error('identifiant'); ?>
+                    <div class="controls">
+                        <?php echo form_error('identifiant'); ?>
+                        <input type="text" id="identifiant" value="<?php echo set_value('identifiant'); ?>" placeholder="Identifiant">
+                    </div>
                 </div>
-            </div>
+                <div class="control-group">
+                    <label class="control-label" for="mdp">Mot de passe</label>
 
-            <div class="form-group">
-                <label for="mdp" class="col-sm-5 control-label">Mot de passe</label>
-
-                <div class="col-sm-2">
-                    <?php echo form_error('mdp'); ?>
-                    <input type="password" class="form-control" id="mdp"
-                           value="<?php echo set_value('mdp'); ?>"
-                           placeholder="Votre mot de passe">
+                    <div class="controls">
+                        <input type="password" id="mdp" placeholder="Mot de passe ">
+                        <input type="password" id="confmdp" placeholder="Confirmation mdp">
+                        <?php echo form_error('mdp'); ?>
+                    </div>
                 </div>
-                <div class="col-sm-2">
-                    <?php echo form_error('confmdp'); ?>
-                    <input type="password" class="form-control" id="confmdp"
-                           value="<?php echo set_value('confmdp'); ?>" placeholder="Confirmation MDP">
+                <div class="control-group">
+                    <label class="control-label" for="prenom">Prénom</label>
+
+                    <div class="controls">
+                        <input type="text" id="prenom" placeholder="Votre Prénom">
+                        <?php echo form_error('prenom'); ?>
+                    </div>
                 </div>
-            </div>
+                <div class="control-group">
+                    <label class="control-label" for="nom">Nom</label>
 
-            <div class="form-group">
-                <label for="prenom" class="col-sm-5 control-label">Prénom</label>
-
-                <div class="col-sm-3">
-                    <?php echo form_error('prenom'); ?>
-                    <input type="text" class="form-control" id="prenom" value="" placeholder="Votre prénom">
+                    <div class="controls">
+                        <input type="text" id="nom" placeholder="Votre Nom">
+                        <?php echo form_error('nom'); ?>
+                    </div>
                 </div>
-            </div>
+                <div class="control-group">
+                    <label class="control-label" for="mdp">Email</label>
 
-            <div class="form-group">
-                <label for="nom" class="col-sm-5 control-label">Nom</label>
-
-                <div class="col-sm-3">
-                    <?php echo form_error('nom'); ?>
-                    <input type=text" class="form-control" id="nom" value="<?php echo set_value('nom'); ?>"
-                           placeholder="Nom"></textarea>
+                    <div class="controls">
+                        <input type="email" id="email" placeholder="exemple@nextwatt.fr">
+                        <?php echo form_error('email'); ?>
+                    </div>
                 </div>
-            </div>
+                <div class="control-group">
+                    <label class="control-label" for="tel">Nom</label>
 
-            <div class="form-group">
-                <label for="email" class="col-sm-5 control-label">Email</label>
-
-                <div class="col-sm-3">
-                    <?php echo form_error('email'); ?>
-                    <input type="email" class="form-control" id="email"
-                           value="<?php echo set_value('email'); ?>"
-                           placeholder="Email">
+                    <div class="controls">
+                        <input type="text" id="tel" placeholder="Votre numéro de telephone">
+                        <?php echo form_error('tel'); ?>
+                    </div>
                 </div>
-            </div>
+                <div class="control-group">
+                    <label class="control-label" for="categorie">Catégorie</label>
 
-            <div class="form-group">
-                <label for="tel" class="col-sm-5 control-label">Téléphone</label>
-
-                <div class="col-sm-3">
-                    <?php echo form_error('tel'); ?>
-                    <input type="text" class="form-control" id="tel" value="<?php echo set_value('tel'); ?>"
-                           placeholder="Teléphone"/>
+                    <div class="controls">
+                        <?php echo form_error('categorie'); ?>
+                        <select name="categorie" class="dropdown" id="categorie">
+                            <option value="1">Commercial</option>
+                            <option value="2">Directeur Co</option>
+                            <option value="2">Grand Chef</option>
+                        </select>
+                        <br/>
+                        <br/>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
                 </div>
-            </div>
+            </form>
 
-            <div class="form-group">
-                <label for="categorie" class="col-sm-5 control-label">Catégorie</label>
-
-                <div class="col-sm-3">
-                    <select name="categorie" class="dropdown" id="categorie">
-                        <option value="1">Commercial</option>
-                        <option value="2">Directeur Co</option>
-                        <option value="2">Grand Chef</option>
-                    </select>
-                </div>
-            </div>
-            <br/>
-
-            <div class="form-group">
-                <div class="col-sm-offset-5 col-sm-2">
-                    <?php
-                    echo form_submit('confformuser','Valider !');
-                    ?>
-<!--                    <input type="submit" value="Enregistrer" class="btn btn-sm btn-info btn-white">-->
-<!--                    <!--                                        <i class="ace-icon fa fa-floppy-o bigger-160"></i>-->
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
 </div>

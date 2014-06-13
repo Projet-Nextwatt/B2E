@@ -5,22 +5,27 @@
 <body>
 
 <?php
-var_dump($error);
-echo $error;
+//echo $error;
 ?>
 
 <?= form_open_multipart('upload/uploadfile') ?>
-
-<input type="file" name="userfile" size="20" />
-<br/>
-<input type="submit" />
+    <fieldset align="center">
+        <legend>Upload d'un nouveau catalogue</legend>
+        <br/>
+        <br/>
+        <div align="center">
+            <input align="center" type="file" name="choosefile" />
+        </div>
+        <br/>
+        <br/>
+        <button type="submit" class=" btn btn-white btn-sm btn-primary ">Envoyer !</button>
+    </fieldset>
 
 <?php
 
-echo 'ok';
 form_close();
 
-print_r($_SERVER);
+
 ?>
 
 </body>

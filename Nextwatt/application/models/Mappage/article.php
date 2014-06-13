@@ -1,7 +1,6 @@
 <?php
 /*
  * Classe Modèle pour la table Article, définir ici toutes les fonctionnalitées utilisant la table Article
- * CRUD de base mis en place.
  */
 class Article extends DataMapper {
     /*

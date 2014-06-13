@@ -46,7 +46,7 @@ class Client extends MY_Controller
         $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
 
 
-        //Configuration des règles
+        //Configuration des règles par champs
         $config = array(
             array(
                 'field' => 'identifiant',
@@ -91,10 +91,12 @@ class Client extends MY_Controller
 
         );
 
+        //On applique les règles
         $this->form_validation->set_rules($config);
 
 
-
+        //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
+        //Et on agit en conséquence
         if ($this->form_validation->run() == FALSE) {
             // On charge la page
             $this->layout->title('Erreur d\'ajout client');
