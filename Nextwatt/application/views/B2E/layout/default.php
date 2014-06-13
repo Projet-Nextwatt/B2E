@@ -92,7 +92,7 @@
                 </a>
             </li>
             <li>
-                <a href="<?php echo site_url("parametre/ma_methode"); ?>">
+                <a href="<?php echo site_url("parametre"); ?>">
                     <i class="menu-icon fa fa-cog"></i>
                     Param&egrave;tres
                 </a>
