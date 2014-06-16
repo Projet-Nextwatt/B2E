@@ -31,8 +31,8 @@ class CI_Form_validation {
 	protected $_config_rules		= array();
 	protected $_error_array			= array();
 	protected $_error_messages		= array();
-	protected $_error_prefix		= '<p>';  //'<li class="text-warning bigger-110 orange"> <i class="ace-icon fa fa-exclamation-triangle"></i>'
-	protected $_error_suffix		= '</p>'; //'</li>'
+	protected $_error_prefix		= '<li class="text-warning bigger-110 orange"> <i class="ace-icon fa fa-exclamation-triangle"></i>'; //'<p>';
+	protected $_error_suffix		= '</li>'; //'</p>';
 	protected $error_string			= '';
 	protected $_safe_form_data		= FALSE;
 

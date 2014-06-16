@@ -15,7 +15,6 @@
 
 
             <?php
-            $this->load->helper('form');
             $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
             ?>
             <!--        <form class="form-horizontal" role="form">-->
@@ -42,7 +41,7 @@
                     <label class="control-label" for="prenom">Prénom</label>
 
                     <div class="controls">
-                        <input type="text" id="prenom" placeholder="Votre Prénom">
+                        <input type="text" id="prenom" value="<?php echo set_value('identifiant'); ?>" placeholder="Votre Prénom">
                         <?php echo form_error('prenom'); ?>
                     </div>
                 </div>
@@ -63,7 +62,7 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <label class="control-label" for="tel">Nom</label>
+                    <label class="control-label" for="tel">Telephone</label>
 
                     <div class="controls">
                         <input type="text" id="tel" placeholder="Votre numéro de telephone">
