@@ -103,6 +103,7 @@ class PV extends MY_Controller
         $this->load->model('Mappage/ensoleillement', 'ensoleillement'); // Chargement model "Ensoleillement"
         $data = array();
         $data['station'] = $this->ensoleillement->select_ensoleillement(); // Recup des données station avec le model "ensoleillement"
+
         if (isset($_POST['idVille'])) {
             foreach ($data['station'] as $station) { // Parcours les données du select pour trouver la station correspondante
                 if ($station['ID_Ensoleillement'] == $_POST['idVille']['keyname']) {

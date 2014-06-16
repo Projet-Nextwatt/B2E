@@ -14,7 +14,7 @@
 		background-color: #fff;
 		margin: 40px;
 		font: 13px/20px normal Helvetica, Arial, sans-serif;
-		color: #4F5155;
+		color: #4F5155;S
 	}
 
 	a {
@@ -82,6 +82,7 @@
 	</div>
         <a  href="<?php echo site_url("accueil"); ?>">Accès au site</a></br></br></br>
 
+        <a  href="<?php echo site_url("test/test_catalogue"); ?>">TEST CATALOGUE SHANY</a>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
 </div>

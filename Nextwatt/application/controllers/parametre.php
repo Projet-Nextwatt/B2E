@@ -25,34 +25,25 @@ class Parametre extends MY_Controller {
     public function add_energie() {
         $data = array();
 
-        $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[1]|max_length[12]|xss_clean|callback_username_check');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|matches[passconf]|md5');
-        $this->form_validation->set_rules('passconf', 'Password Confirm', 'trim|required');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('Energie', 'Energie', 'required|min_length[1]|max_length[255]');
+        $this->form_validation->set_rules('Prix', 'Prix', 'required|numeric');
+        $this->form_validation->set_rules('Inflation', 'Inflation', 'required|numeric');
+        $this->form_validation->set_rules('Abonnement', 'Abonement', 'numeric');
+        $this->form_validation->set_rules('CO2', 'C02', 'required|numeric');
 
-        $this->form_validation->set_message('required', 'le champs %s est requis   banane');
 
         if ($this->form_validation->run() == FALSE) {
 
             $this->layout->title('Ajouter une energie');
             $this->layout->view('B2E/Parametre/add_energie.php', $data); // Render view and layout
         } else {
+            
+            
+            $this->form_validation->set_rules('Energie', 'Energie', 'xss_clean|prep_for_form|htmlentities');
+            $this->form_validation->run();
             $this->layout->title('Reussi ajouter une energie');
             $this->layout->view('B2E/Parametre/add_energie_success.php', $data); // Render view and layout
         }
     }
-    
-    
-    
-
-    public function username_check($str) {
-        if ($str == 'test') {
-            $this->form_validation->set_message('username_check', 'The %s field can not be the word "test"');
-            return FALSE;
-        } else {
-            return TRUE;
-        }
-    }
-
 }
 
