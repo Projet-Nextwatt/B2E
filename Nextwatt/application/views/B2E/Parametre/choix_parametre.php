@@ -7,7 +7,11 @@
     <p>page-header</p>
 </div>
 
-<div class="row">
-    <a href="<?php echo site_url("parametre/add_energie"); ?>">Prix de l'&eacute;nergie</a>
+<div class="row" align="center">
+        <a href="<?php echo site_url("parametre/add_energie"); ?>" class="btn btn-primary btn-lg col-centered">
+            <i class="ace-icon fa fa-bolt bigger-160"></i>
+            Prix de l'&eacute;nergie
+        </a>
 </div>
+
 
