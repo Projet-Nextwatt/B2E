@@ -11,4 +11,7 @@
     <p>C'est la maitrise gros</p>
 
     <p><?php echo anchor('parametre/add_energie', 'Try it again!'); ?></p>
+
+
+        <?php var_dump($_POST); ?>
 </div>
