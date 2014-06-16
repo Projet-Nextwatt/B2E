@@ -4,7 +4,7 @@
 $("#station").change(function () {
 
     $.post(
-        'pv/heppstation',
+        'ajax_heppstation',
         {
             idVille: {keyname: $('#station option:selected').val()}
         },
@@ -23,7 +23,7 @@ $("#station").change(function () {
 $(".orientation").click(function () {
     var choixorient = $(this).text();
     $.post(
-        'pv/orientation',
+        'ajax_orientation',
         {
             orientation: choixorient
         },
@@ -38,7 +38,7 @@ $(".orientation").click(function () {
 $('input[name="envoiratioc"]').click(function () {
     var ratioc = $('#ratioc').val();
     $.post(
-        'pv/envoiratioc',
+        'ajax_envoiratioc',
         {
             ratioc: ratioc
         },
@@ -56,7 +56,7 @@ $('#calculhepp').click(function () {
     var orient = document.getElementById('choixorient').innerHTML.substr(0, (document.getElementById('choixorient').innerHTML).length - 1);
     var choisiratioc = document.getElementById('resultratioc').innerHTML.substr(0, (document.getElementById('resultratioc').innerHTML).length - 1);
     $.post(
-        'pv/calculhepp',
+        'ajax_calculhepp',
         {
             hepp: heppbrut,
             choixorient: orient,
@@ -76,7 +76,7 @@ $('input[name="calculprod"]').click(function () {
     var heppnet = document.getElementById('heppnet').value;
     var bonus = $('#bonus').val();
     $.post(
-        'pv/calculprod',
+        'ajax_calculprod',
         {
             systeme: systeme,
             heppnet: heppnet,
@@ -95,7 +95,7 @@ $('input[name="recetteannuelles"]').click(function () {
     var production = document.getElementById('production').value;
     var tarifedf = document.getElementById('tarifedf').value;
     $.post(
-        'pv/recetteannuelle',
+        'ajax_recetteannuelle',
         {
             production: production,
             tarifedf: tarifedf
@@ -113,7 +113,7 @@ $('input[name="recetteannuelles"]').click(function () {
 $('input[name="BTNanneeprod"]').click(function () {
     var prodAnneeZero = document.getElementById('prodcalc').innerHTML;
     $.post(
-        'pv/prodannuelle',
+        'ajax_prodannuelle',
         {
             prodanneezero: prodAnneeZero
         },
@@ -136,7 +136,7 @@ $('input[name="BTNanneeprod"]').click(function () {
 $('input[name="BTNcumulprod"]').click(function () {
     var prodAnneeZero = document.getElementById('prodcalc').innerHTML;
     $.post(
-        'pv/cumulprod',
+        'ajax_cumulprod',
         {
             prodanneezero: prodAnneeZero
         },
@@ -160,7 +160,7 @@ $('input[name="BTNtarif"]').click(function () {
     var tarifAnneeZero = $('#tarifedf').val();
     var raccordement = $('#raccordementflouz').val();
     $.post(
-        'pv/tarif',
+        'ajax_tarif',
         {
             tarifAnneeZero: tarifAnneeZero,
             raccordement: raccordement
@@ -186,7 +186,7 @@ $('input[name="BTNanneeflouz"]').click(function () {
     var productionAnneeZero = document.getElementById('prodcalc').innerHTML; // Récup la prod à l'année zéro
     var raccordement = $('#raccordementflouz').val();
     $.post(
-        'pv/anneeflouz',
+        'ajax_anneeflouz',
         {
             tarifAnneeZero: tarifAnneeZero,
             productionAnneeZero: productionAnneeZero,
@@ -213,7 +213,7 @@ $('input[name="BTNcumulflouz"]').click(function () {
     var productionAnneeZero = document.getElementById('prodcalc').innerHTML; // Récup la prod à l'année zéro
     var raccordement = $('#raccordementflouz').val();
     $.post(
-        'pv/cumulflouz',
+        'ajax_cumulflouz',
         {
             tarifAnneeZero: tarifAnneeZero,
             productionAnneeZero: productionAnneeZero,
@@ -223,8 +223,8 @@ $('input[name="BTNcumulflouz"]').click(function () {
             if (data) {
                 var flouz = JSON.parse(data);
                 var content = "<table>"
-                $.each(flouz, function (annee, flouzannee) {
-                    content += '<tr><td>' + 'Flouz cumul&eacute; jusqu\'&acirc; l\'ann&eacute;e ' + (i + 1) + ' : ' + flouzCumul + ' &euro;/an </td></tr>';
+                $.each(flouz, function (annee, flouzcumul) {
+                    content += '<tr><td>' + 'Flouz cumul&eacute; jusqu\'&acirc; l\'ann&eacute;e ' + (annee + 1) + ' : ' + flouzcumul + ' &euro;/an </td></tr>';
                 });
                 content += "</table>"
 
@@ -234,31 +234,4 @@ $('input[name="BTNcumulflouz"]').click(function () {
         },
         'text'
     );
-});
-$('input[name="BTNcumulflouz"]').click(function () {
-    var tarifAnneeZero = $('#tarifedf').val(); // Récup le tarif à l'année zéro
-    var productionAnneeZero = document.getElementById('prodcalc').innerHTML; // Récup la prod à l'année zéro
-    var flouztotal = tarifAnneeZero * productionAnneeZero;
-
-
-    var raccordement = $('#raccordementflouz').val();
-    var raisontarif = 1 + (raccordement / 100);
-    var raisonprod = 1 - (0.5 / 100);
-    var raisontotale = raisontarif * raisonprod;
-
-
-    var raisonflouz;
-    var flouzCumul;
-
-
-    var content = "<table>"
-    for (var i = 0; i < 20; i++) {
-        raisonflouz = Math.pow(raisontotale, (i + 1))
-        flouzCumul = (flouztotal * ((1 - raisonflouz) / (1 - raisontotale))).toFixed();
-        content += '<tr><td>' + 'Flouz cumul&eacute; jusqu\'&acirc; l\'ann&eacute;e ' + (i + 1) + ' : ' + flouzCumul + ' &euro;/an </td></tr>';
-    }
-    content += "</table>"
-
-    $('#flouzcumulee').empty();
-    $('#flouzcumulee').append(content);
 });

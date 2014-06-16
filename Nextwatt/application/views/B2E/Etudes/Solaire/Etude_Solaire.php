@@ -220,7 +220,7 @@ $region = NULL;
 <br/>
 <br/>
 <fieldset style="display:inline-block">
-    <legend>Production &acirc; l'ann&eacute;e</legend>
+    <legend>Production &agrave; l'ann&eacute;e</legend>
     <?php
     echo form_submit('BTNanneeprod', 'valider');
     ?>
@@ -228,7 +228,7 @@ $region = NULL;
     <span id="prodannuelle"></span>
 </fieldset>
 <fieldset style="display:inline-block">
-    <legend>Production cumul&eacute;e jusqu'&acirc; l'ann&eacute;e</legend>
+    <legend>Production cumul&eacute;e jusqu'&agrave; l'ann&eacute;e</legend>
     <?php
     echo form_submit('BTNcumulprod', 'valider');
     ?>
@@ -236,7 +236,7 @@ $region = NULL;
     <span id="prodcumulee"></span>
 </fieldset>
 <fieldset style="display:inline-block">
-    <legend>Tarif &acirc; l'ann&eacute;e</legend>
+    <legend>Tarif &agrave; l'ann&eacute;e</legend>
     <?php
 
     echo form_submit('BTNtarif', 'valider');
@@ -245,7 +245,7 @@ $region = NULL;
     <span id="tarifannee"></span>
 </fieldset>
 <fieldset style="display:inline-block">
-    <legend>Flouz &acirc; l'ann&eacute;e</legend>
+    <legend>Flouz &agrave; l'ann&eacute;e</legend>
     <?php
     $id = 'id="raccordementflouz"';
     $option = array(
@@ -260,7 +260,7 @@ $region = NULL;
     <span id="flouzannuel"></span>
 </fieldset>
 <fieldset style="display:inline-block">
-    <legend>Flouz cumul&eacute; &acirc; l'ann&eacute;e</legend>
+    <legend>Flouz cumul&eacute; &agrave; l'ann&eacute;e</legend>
     <?php
     $id = 'id="raccordementflouz"';
     $option = array(
