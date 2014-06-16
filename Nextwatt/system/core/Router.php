@@ -269,7 +269,7 @@ class CI_Router {
 		}
 
 		// Does the requested controller exist in the root folder?
-		if (file_exists(APPPATH.'controllers/'.$segments[0].'test.php'))
+		if (file_exists(APPPATH.'controllers/'.$segments[0].'.php'))
 		{
 			return $segments;
 		}
@@ -284,7 +284,7 @@ class CI_Router {
 			if (count($segments) > 0)
 			{
 				// Does the requested controller exist in the sub-folder?
-				if ( ! file_exists(APPPATH.'controllers/'.$this->fetch_directory().$segments[0].'test.php'))
+				if ( ! file_exists(APPPATH.'controllers/'.$this->fetch_directory().$segments[0].'.php'))
 				{
 					if ( ! empty($this->routes['404_override']))
 					{
@@ -319,7 +319,7 @@ class CI_Router {
 				}
 
 				// Does the default controller exist in the sub-folder?
-				if ( ! file_exists(APPPATH.'controllers/'.$this->fetch_directory().$this->default_controller.'test.php'))
+				if ( ! file_exists(APPPATH.'controllers/'.$this->fetch_directory().$this->default_controller.'.php'))
 				{
 					$this->directory = '';
 					return array();

@@ -43,13 +43,13 @@ if ( ! function_exists('load_class'))
 		// thenin the local application/libraries folder
 		foreach (array(BASEPATH, APPPATH) as $path)
 		{
-			if (file_exists($path.$directory.'/'.$class.'test.php'))
+			if (file_exists($path.$directory.'/'.$class.'.php'))
 			{
 				$name = $prefix.$class;
 
 				if (class_exists($name) === FALSE)
 				{
-					require($path.$directory.'/'.$class.'test.php');
+					require($path.$directory.'/'.$class.'.php');
 				}
 
 				break;
@@ -57,18 +57,18 @@ if ( ! function_exists('load_class'))
 		}
 
 		// Is the request a class extension?  If so we load it too
-		if (file_exists(APPPATH.$directory.'/'.config_item('subclass_prefix').$class.'test.php'))
+		if (file_exists(APPPATH.$directory.'/'.config_item('subclass_prefix').$class.'.php'))
 		{
 			$name = config_item('subclass_prefix').$class;
 
 			if (class_exists($name) === FALSE)
 			{
-				require(APPPATH.$directory.'/'.config_item('subclass_prefix').$class.'test.php');
+				require(APPPATH.$directory.'/'.config_item('subclass_prefix').$class.'.php');
 			}
 		}
 
 		// Do we have a DataMapper extension for this class?
-		if (file_exists($file = APPPATH.'third_party/datamapper/system/'.$class.'test.php'))
+		if (file_exists($file = APPPATH.'third_party/datamapper/system/'.$class.'.php'))
 		{
 			require_once($file);
 		}
@@ -78,7 +78,7 @@ if ( ! function_exists('load_class'))
 		{
 			// Note: We use exit() rather then show_error() in order to avoid a
 			// self-referencing loop with the Excptions class
-			exit('Unable to locate the specified class: '.$class.'test.php');
+			exit('Unable to locate the specified class: '.$class.'.php');
 		}
 
 		// Keep track of what we just loaded

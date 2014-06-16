@@ -117,7 +117,7 @@ class CI_Migration {
 		// But first let's make sure that everything is the way it should be
 		for ($i = $start; $i != $stop; $i += $step)
 		{
-			$f = glob(sprintf($this->_migration_path . '%03d_*test.php', $i));
+			$f = glob(sprintf($this->_migration_path . '%03d_*.php', $i));
 
 			// Only one migration per step is permitted
 			if (count($f) > 1)
@@ -143,7 +143,7 @@ class CI_Migration {
 			}
 
 			$file = basename($f[0]);
-			$name = basename($f[0], 'test.php');
+			$name = basename($f[0], '.php');
 
 			// Filename validations
 			if (preg_match('/^\d{3}_(\w+)$/', $name, $match))
@@ -264,14 +264,14 @@ class CI_Migration {
 	 */
 	protected function find_migrations()
 	{
-		// Load all *_*test.php files in the migrations path
-		$files = glob($this->_migration_path . '*_*test.php');
+		// Load all *_*.php files in the migrations path
+		$files = glob($this->_migration_path . '*_*.php');
 		$file_count = count($files);
 
 		for ($i = 0; $i < $file_count; $i++)
 		{
 			// Mark wrongly formatted files as false for later filtering
-			$name = basename($files[$i], 'test.php');
+			$name = basename($files[$i], '.php');
 			if ( ! preg_match('/^\d{3}_(\w+)$/', $name))
 			{
 				$files[$i] = FALSE;
