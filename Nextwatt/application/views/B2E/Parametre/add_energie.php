@@ -84,12 +84,18 @@
         </div>
 
 
-
-        <div><input type="submit" value="Submit" /></div>
+        <div class='row form-group'>
+            <div class='col-md-offset-4 col-md-4'>
+                <button type="submit" class="btn btn-sm btn-info ">
+                    <i class="ace-icon fa fa-floppy-o bigger-160"></i>
+                    Enregistrer
+                </button>
+            </div>
+        </div>
 
         <?php echo form_close(); ?>
 
-        <?php var_dump($_POST);?>
+        <?php var_dump($_POST); ?>
 
 
 
