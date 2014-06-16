@@ -22,9 +22,23 @@ class Parametre extends MY_Controller {
 
     
     
+    public function consulter_energie() {
+        $Energies=new Prixenergie();
+        $Energies->get();
+        
+        $data = array();
+        $data['Energies']=$Energies;
+        $this->layout->title('Liste des énergies');
+        $this->layout->view('B2E/Parametre/Consulter_Energie.php', $data); // Render view and layout
+    }
+    
+    
+    
+
     public function add_energie() {
         $data = array();
 
+        //Validation du formualire
         $this->form_validation->set_rules('Energie', 'Energie', 'required|min_length[1]|max_length[255]');
         $this->form_validation->set_rules('Prix', 'Prix', 'required|numeric');
         $this->form_validation->set_rules('Inflation', 'Inflation', 'required|numeric');
@@ -33,17 +47,52 @@ class Parametre extends MY_Controller {
 
 
         if ($this->form_validation->run() == FALSE) {
-
+            //Formualire invalide, retour à celui-ci
             $this->layout->title('Ajouter une energie');
             $this->layout->view('B2E/Parametre/add_energie.php', $data); // Render view and layout
         } else {
-            
-            
+
+            //Formulaire ok, traitement des données
+            //Clean des données
             $this->form_validation->set_rules('Energie', 'Energie', 'xss_clean|prep_for_form|htmlentities');
             $this->form_validation->run();
-            $this->layout->title('Reussi ajouter une energie');
-            $this->layout->view('B2E/Parametre/add_energie_success.php', $data); // Render view and layout
+
+            $Energie = new Prixenergie();
+
+            foreach ($_POST as $variable => $valeur) {
+                //if (isset($Energie->$variable)) { Ce test ne fonctionne pas, mais ne faudrait il pas passer par des set?? ***************************
+                $Energie->$variable = $valeur;
+                //}
+            }
+
+            /*
+              $Energie->Energie = $_POST['Energie'];
+              $Energie->Prix = $_POST['Prix'];
+              $Energie->Inflation = $_POST['Inflation'];
+              $Energie->Abonnement = $_POST['Abonnement'];
+              $Energie->CO2 = $_POST['CO2'];
+             */
+
+            if ($Energie->save()) {
+                // Energie object now has an ID
+
+                $this->layout->title('Reussi ajouter une energie');
+                $this->layout->view('B2E/Parametre/add_energie_success.php', $data); // Render view and layout
+            } else {
+
+                /*                                     //Comment j'envoi le tableau à la vue? -********************************************************
+                  foreach ($u->error->all as $error) {
+                  echo $error;
+                  }
+                 * 
+                 * 
+                 */
+                
+                //$data['error']=$error;
+                $this->layout->title('Erreur');
+                $this->layout->view('B2E/Parametre/add_energie.php', $data); // Render view and layout
+            }
         }
     }
-}
 
+}
