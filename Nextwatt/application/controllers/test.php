@@ -209,6 +209,12 @@ class Test extends CI_Controller
 
     }
 
+    public function test_catalogue()
+    {
+        $this->layout->title('TEST CATALOGUE SHANY');
+        $this->layout->view('Essais/test'); //render view and layout
+    }
+
 }
 
 /* End of file welcome.php */
