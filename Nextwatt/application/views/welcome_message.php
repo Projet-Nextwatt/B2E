@@ -82,10 +82,6 @@
 	</div>
         <a  href="<?php echo site_url("accueil"); ?>">Accès au site</a></br></br></br>
 
-        <a  href="<?php echo site_url("test/layout_sidebar"); ?>">TEST LAYOUT "sidebar"</a></br>
-        <a  href="<?php echo site_url("test/layout_header"); ?>">TEST LAYOUT "header"</a></br>
-        <a  href="<?php echo site_url("test/layout_core"); ?>">TEST LAYOUT "core"</a></br>
-        <a  href="<?php echo site_url("Essais/index"); ?>">test upload</a></br>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
 </div>

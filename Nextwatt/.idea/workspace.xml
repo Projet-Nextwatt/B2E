@@ -2,12 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a260d5e-75f8-4f03-8baa-61a468c11107" name="Default" comment="Commit avec le probleme de THE COMMIT">
-      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\views\catalogue_index.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\views\catalogue_test.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\views\formsuccess.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\views\myform.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\views\upload.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\views\uploadsuccess.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\helpers\assets\images\mini_logo_NW.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\views\B2E\layout\header.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\views\B2E\layout\sidebar.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\views\B2E\layout\test_integration.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\views\dmz_htmlform\form.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\views\dmz_htmlform\row.php" afterPath="" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\views\dmz_htmlform\section.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/helpers/assets/images/MiniLogoNextwatt.png" afterPath="$PROJECT_DIR$/application/helpers/assets/images/MiniLogoNextwatt.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/B2E/User/Add_User.php" afterPath="$PROJECT_DIR$/application/views/B2E/User/Add_User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/libraries/Form_validation.php" afterPath="$PROJECT_DIR$/system/libraries/Form_validation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/test.php" afterPath="$PROJECT_DIR$/application/controllers/test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/welcome_message.php" afterPath="$PROJECT_DIR$/application/views/welcome_message.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Nextwatt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,16 +40,82 @@
       <file leaf-file-name="Add_User.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/B2E/User/Add_User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="51" selection-start="798" selection-end="798" vertical-scroll-proportion="-0.0" vertical-offset="391" max-vertical-offset="1666">
+            <state line="29" column="22" selection-start="1150" selection-end="1150" vertical-scroll-proportion="-15.384615" vertical-offset="93" max-vertical-offset="1649">
+              <folding>
+                <marker date="1402905237292" expanded="true" signature="1193:1541" placeholder="..." />
+                <marker date="1402905237292" expanded="true" signature="1317:1541" placeholder="..." />
+                <marker date="1402905237292" expanded="true" signature="1645:1944" placeholder="..." />
+                <marker date="1402905237292" expanded="true" signature="1766:1944" placeholder="..." />
+                <marker date="1402905237292" expanded="true" signature="2051:2290" placeholder="..." />
+                <marker date="1402905237292" expanded="true" signature="2166:2290" placeholder="..." />
+                <marker date="1402905237292" expanded="true" signature="2394:2648" placeholder="..." />
+                <marker date="1402905237292" expanded="true" signature="2511:2648" placeholder="..." />
+                <marker date="1402905237292" expanded="true" signature="2754:3015" placeholder="..." />
+                <marker date="1402905237292" expanded="true" signature="2875:3015" placeholder="..." />
+                <marker date="1402905237292" expanded="true" signature="3119:3293" placeholder="..." />
+                <marker date="1402905237292" expanded="true" signature="3246:3293" placeholder="..." />
+                <marker date="1402905237292" expanded="true" signature="3391:3625" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="acetheme.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/acetheme.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="0" selection-start="790" selection-end="790" vertical-scroll-proportion="-20.26923" vertical-offset="0" max-vertical-offset="646">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Form_validation.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/system/libraries/Form_validation.php">
+      <file leaf-file-name="bilan_etude.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/bilan_etude.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="392" column="30" selection-start="9064" selection-end="9064" vertical-scroll-proportion="0.32990867" vertical-offset="6375" max-vertical-offset="23596">
+            <state line="15" column="0" selection-start="448" selection-end="448" vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="357">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="article.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/Mappage/article.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="31" selection-start="694" selection-end="694" vertical-scroll-proportion="-11.769231" vertical-offset="102" max-vertical-offset="1258">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/test.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="69" column="0" selection-start="2252" selection-end="2252" vertical-scroll-proportion="-20.307692" vertical-offset="645" max-vertical-offset="3740">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="welcome_message.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/welcome_message.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="64" column="12" selection-start="1266" selection-end="1266" vertical-scroll-proportion="-12.115385" vertical-offset="773" max-vertical-offset="1649">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MiniLogoNextwatt.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/helpers/assets/images/MiniLogoNextwatt.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
               <folding />
             </state>
           </provider>
@@ -67,7 +140,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/application/views/B2E/Success_Error/formsuccess.php" />
         <option value="$PROJECT_DIR$/application/controllers/inscription.php" />
         <option value="$PROJECT_DIR$/application/views/inscription_vue.php" />
         <option value="$PROJECT_DIR$/application/views/formsuccess.php" />
@@ -104,9 +176,7 @@
         <option value="$PROJECT_DIR$/application/controllers/accueil.php" />
         <option value="$PROJECT_DIR$/application/controllers/acetheme.php" />
         <option value="$PROJECT_DIR$/application/controllers/bilan_etude.php" />
-        <option value="$PROJECT_DIR$/application/controllers/test.php" />
         <option value="$PROJECT_DIR$/application/core/MY_Controller.php" />
-        <option value="$PROJECT_DIR$/application/views/welcome_message.php" />
         <option value="$PROJECT_DIR$/nbproject/private/private.xml" />
         <option value="$PROJECT_DIR$/application/controllers/client.php" />
         <option value="$PROJECT_DIR$/application/models/Mappage/article.php" />
@@ -114,10 +184,13 @@
         <option value="$PROJECT_DIR$/application/views/B2E/Catalogue/Consulter_Catalogue.php" />
         <option value="$PROJECT_DIR$/application/controllers/catalogue.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Catalogue/Charger_Catalogue.php" />
-        <option value="$PROJECT_DIR$/application/controllers/user.php" />
         <option value="$PROJECT_DIR$/application/helpers/assets/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/application/config/autoload.php" />
+        <option value="$PROJECT_DIR$/system/libraries/Form_validation.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/User/Add_User.php" />
+        <option value="$PROJECT_DIR$/application/controllers/user.php" />
+        <option value="$PROJECT_DIR$/application/controllers/test.php" />
+        <option value="$PROJECT_DIR$/application/views/welcome_message.php" />
       </list>
     </option>
   </component>
@@ -159,6 +232,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -177,41 +251,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nextwatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nextwatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="system" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nextwatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nextwatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="system" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -354,7 +395,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15015975" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1517572" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -391,16 +432,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/datamapper/csv.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="26" selection-start="2975" selection-end="2975" vertical-scroll-proportion="1.875286" vertical-offset="61" max-vertical-offset="3740" />
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/web-forms.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="529" column="27" selection-start="12165" selection-end="12165" vertical-scroll-proportion="0.8244445" vertical-offset="8251" max-vertical-offset="10132" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/Mappage/user.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="4" selection-start="688" selection-end="688" vertical-scroll-proportion="0.31922197" vertical-offset="180" max-vertical-offset="1054" />
@@ -431,24 +462,9 @@
         <state line="23" column="0" selection-start="499" selection-end="499" vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="510" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/acetheme.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="790" selection-end="790" vertical-scroll-proportion="0.80491805" vertical-offset="36" max-vertical-offset="646" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/bilan_etude.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="357" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/libraries/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="614" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/welcome_message.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="0" selection-start="2385" selection-end="2385" vertical-scroll-proportion="0.80491805" vertical-offset="1107" max-vertical-offset="1717" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nbproject/private/private.xml">
@@ -514,11 +530,6 @@
     <entry file="file://$PROJECT_DIR$/application/controllers/client.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="64" column="14" selection-start="2489" selection-end="2489" vertical-scroll-proportion="-18.961538" vertical-offset="595" max-vertical-offset="1989" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Mappage/article.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="106" selection-start="115" selection-end="115" vertical-scroll-proportion="-1.3076923" vertical-offset="0" max-vertical-offset="1258" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/Mappage/catalogue.php">
@@ -611,11 +622,6 @@
         <state line="72" column="38" selection-start="2817" selection-end="2856" vertical-scroll-proportion="-17.923077" vertical-offset="758" max-vertical-offset="2074" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="14" selection-start="3025" selection-end="3025" vertical-scroll-proportion="-18.346153" vertical-offset="866" max-vertical-offset="1853" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/helpers/assets/css/bootstrap.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="13" selection-start="168" selection-end="180" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="106267">
@@ -623,31 +629,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="198" column="54" selection-start="7111" selection-end="7111" vertical-scroll-proportion="0.70983607" vertical-offset="2933" max-vertical-offset="3757" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/config/autoload.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="54" column="73" selection-start="1703" selection-end="1703" vertical-scroll-proportion="0.34754097" vertical-offset="706" max-vertical-offset="2057" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/dmz_htmlform/form.php">
+    <entry file="file://$PROJECT_DIR$/system/libraries/Form_validation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="902" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/B2E/User/Add_User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="51" selection-start="798" selection-end="798" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1666">
+        <state line="192" column="0" selection-start="4890" selection-end="4890" vertical-scroll-proportion="1.8129412" vertical-offset="1723" max-vertical-offset="23596">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/system/libraries/Form_validation.php">
+    <entry file="file://$PROJECT_DIR$/application/controllers/user.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="392" column="30" selection-start="9064" selection-end="9064" vertical-scroll-proportion="0.32990867" vertical-offset="6375" max-vertical-offset="23596">
+        <state line="46" column="0" selection-start="1876" selection-end="1876" vertical-scroll-proportion="-15.384615" vertical-offset="297" max-vertical-offset="1853">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/B2E/User/Add_User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="22" selection-start="1150" selection-end="1150" vertical-scroll-proportion="-15.384615" vertical-offset="93" max-vertical-offset="1649">
+          <folding>
+            <marker date="1402905237292" expanded="true" signature="1193:1541" placeholder="..." />
+            <marker date="1402905237292" expanded="true" signature="1317:1541" placeholder="..." />
+            <marker date="1402905237292" expanded="true" signature="1645:1944" placeholder="..." />
+            <marker date="1402905237292" expanded="true" signature="1766:1944" placeholder="..." />
+            <marker date="1402905237292" expanded="true" signature="2051:2290" placeholder="..." />
+            <marker date="1402905237292" expanded="true" signature="2166:2290" placeholder="..." />
+            <marker date="1402905237292" expanded="true" signature="2394:2648" placeholder="..." />
+            <marker date="1402905237292" expanded="true" signature="2511:2648" placeholder="..." />
+            <marker date="1402905237292" expanded="true" signature="2754:3015" placeholder="..." />
+            <marker date="1402905237292" expanded="true" signature="2875:3015" placeholder="..." />
+            <marker date="1402905237292" expanded="true" signature="3119:3293" placeholder="..." />
+            <marker date="1402905237292" expanded="true" signature="3246:3293" placeholder="..." />
+            <marker date="1402905237292" expanded="true" signature="3391:3625" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/acetheme.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="0" selection-start="790" selection-end="790" vertical-scroll-proportion="-20.26923" vertical-offset="0" max-vertical-offset="646">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/bilan_etude.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="448" selection-end="448" vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="357">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Mappage/article.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="31" selection-start="694" selection-end="694" vertical-scroll-proportion="-11.769231" vertical-offset="102" max-vertical-offset="1258">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="0" selection-start="2252" selection-end="2252" vertical-scroll-proportion="-20.307692" vertical-offset="645" max-vertical-offset="3740">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/welcome_message.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="12" selection-start="1266" selection-end="1266" vertical-scroll-proportion="-12.115385" vertical-offset="773" max-vertical-offset="1649">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/helpers/assets/images/MiniLogoNextwatt.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
           <folding />
         </state>
       </provider>

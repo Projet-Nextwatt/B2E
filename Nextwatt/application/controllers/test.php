@@ -197,7 +197,6 @@ class Test extends CI_Controller
 
         } else { //else, set the success message
             $data = array('msg' => "Upload success!");
-
             $data['upload_data'] = $this->upload->data();
 
         }
