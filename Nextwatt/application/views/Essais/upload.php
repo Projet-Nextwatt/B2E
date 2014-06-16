@@ -9,7 +9,7 @@ var_dump($error);
 echo $error;
 ?>
 
-<?= form_open_multipart('upload/uploadfile') ?>
+<?= form_open_multipart('Essais/uploadfile') ?>
 
 <input type="file" name="userfile" size="20" />
 <br/>

@@ -5,6 +5,11 @@ html {
     -webkit-text-size-adjust: 100%
 }
 
+.col-centered{
+    margin: 0 auto;
+    float: none;
+}
+
 body {
     margin: 0
 }

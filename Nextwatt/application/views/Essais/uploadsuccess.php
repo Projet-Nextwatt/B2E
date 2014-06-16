@@ -11,6 +11,6 @@
         echo "<br/>".$k." => ".$v;
     }
 ?>
-<?php echo anchor("upload", 'Upload more files ') ?> ?
+<?php echo anchor("Essais", 'Upload more files ') ?> ?
 </body>
 </html>

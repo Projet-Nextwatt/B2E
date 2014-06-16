@@ -42,7 +42,7 @@ class Catalogue extends MY_Controller
 
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Catalogue B2E');
-        $this->layout->view('upload', $data);
+        $this->layout->view('B2E/Catalogue/Charger_Catalogue', $data);
     }
 
 }

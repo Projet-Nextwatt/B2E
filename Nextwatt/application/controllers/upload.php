@@ -10,7 +10,7 @@ class Upload extends MY_Controller
 
     function index()
     {
-        $this->layout->view('upload', array('error' => ''));
+        $this->layout->view('Essais', array('error' => ''));
     }
 
     function uploadfile()
@@ -24,11 +24,11 @@ class Upload extends MY_Controller
         $config['max_height'] = '1428';
 
         $this->upload->initialize($config);
-        $this->load->library('upload', $config);
+        $this->load->library('Essais', $config);
 
         if (!$this->upload->do_upload()) {
             $error = array('error' => $this->upload->display_errors());
-            $this->layout->view('upload', $error);
+            $this->layout->view('Essais', $error);
         } else {
             $data = array('upload_data' => $this->upload->data());
             $this->layout->view('uploadsuccess', $data);

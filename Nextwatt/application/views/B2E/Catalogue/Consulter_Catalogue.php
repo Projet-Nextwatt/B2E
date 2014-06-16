@@ -9,7 +9,8 @@
     </h1>
 
     <div class="btn-group">
-        <button type="button" class="btn btn-white btn-sm btn-primary">1er choix Yolo</button>
+        <a href="<?php echo site_url("catalogue/load_catalogue"); ?>">
+        <button  type="button" class="btn btn-white btn-sm btn-primary">Charger catalogue</button>
         <button type="button" class="btn btn-white btn-sm btn-primary">2eme choix Swag</button>
         <button type="button" class="btn btn-white btn-sm btn-primary">Combo YoloSwag</button>
         <button type="button" class="btn btn-white btn-sm btn-primary">Combo breaker</button>
