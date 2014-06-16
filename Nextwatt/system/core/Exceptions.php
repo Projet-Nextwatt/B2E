@@ -143,7 +143,7 @@ class CI_Exceptions {
 			ob_end_flush();
 		}
 		ob_start();
-		include(APPPATH.'errors/'.$template.'.php');
+		include(APPPATH.'errors/'.$template.'test.php');
 		$buffer = ob_get_contents();
 		ob_end_clean();
 		return $buffer;

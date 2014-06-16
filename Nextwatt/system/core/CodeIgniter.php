@@ -242,12 +242,12 @@
 	// Load the local application controller
 	// Note: The Router class automatically validates the controller path using the router->_validate_request().
 	// If this include fails it means that the default controller in the Routes.php file is not resolving to something valid.
-	if ( ! file_exists(APPPATH.'controllers/'.$RTR->fetch_directory().$RTR->fetch_class().'.php'))
+	if ( ! file_exists(APPPATH.'controllers/'.$RTR->fetch_directory().$RTR->fetch_class().'test.php'))
 	{
 		show_error('Unable to load your default controller. Please make sure the controller specified in your Routes.php file is valid.');
 	}
 
-	include(APPPATH.'controllers/'.$RTR->fetch_directory().$RTR->fetch_class().'.php');
+	include(APPPATH.'controllers/'.$RTR->fetch_directory().$RTR->fetch_class().'test.php');
 
 	// Set a mark point for benchmarking
 	$BM->mark('loading_time:_base_classes_end');
@@ -276,12 +276,12 @@
 			$method = (isset($x[1]) ? $x[1] : 'index');
 			if ( ! class_exists($class))
 			{
-				if ( ! file_exists(APPPATH.'controllers/'.$class.'.php'))
+				if ( ! file_exists(APPPATH.'controllers/'.$class.'test.php'))
 				{
 					show_404("{$class}/{$method}");
 				}
 
-				include_once(APPPATH.'controllers/'.$class.'.php');
+				include_once(APPPATH.'controllers/'.$class.'test.php');
 			}
 		}
 		else
@@ -338,12 +338,12 @@
 				$method = (isset($x[1]) ? $x[1] : 'index');
 				if ( ! class_exists($class))
 				{
-					if ( ! file_exists(APPPATH.'controllers/'.$class.'.php'))
+					if ( ! file_exists(APPPATH.'controllers/'.$class.'test.php'))
 					{
 						show_404("{$class}/{$method}");
 					}
 
-					include_once(APPPATH.'controllers/'.$class.'.php');
+					include_once(APPPATH.'controllers/'.$class.'test.php');
 					unset($CI);
 					$CI = new $class();
 				}

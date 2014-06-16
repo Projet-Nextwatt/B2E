@@ -136,13 +136,13 @@ if ( ! function_exists('load_class'))
 		// then in the native system/libraries folder
 		foreach (array(APPPATH, BASEPATH) as $path)
 		{
-			if (file_exists($path.$directory.'/'.$class.'.php'))
+			if (file_exists($path.$directory.'/'.$class.'test.php'))
 			{
 				$name = $prefix.$class;
 
 				if (class_exists($name) === FALSE)
 				{
-					require($path.$directory.'/'.$class.'.php');
+					require($path.$directory.'/'.$class.'test.php');
 				}
 
 				break;
@@ -150,13 +150,13 @@ if ( ! function_exists('load_class'))
 		}
 
 		// Is the request a class extension?  If so we load it too
-		if (file_exists(APPPATH.$directory.'/'.config_item('subclass_prefix').$class.'.php'))
+		if (file_exists(APPPATH.$directory.'/'.config_item('subclass_prefix').$class.'test.php'))
 		{
 			$name = config_item('subclass_prefix').$class;
 
 			if (class_exists($name) === FALSE)
 			{
-				require(APPPATH.$directory.'/'.config_item('subclass_prefix').$class.'.php');
+				require(APPPATH.$directory.'/'.config_item('subclass_prefix').$class.'test.php');
 			}
 		}
 
@@ -165,7 +165,7 @@ if ( ! function_exists('load_class'))
 		{
 			// Note: We use exit() rather then show_error() in order to avoid a
 			// self-referencing loop with the Excptions class
-			exit('Unable to locate the specified class: '.$class.'.php');
+			exit('Unable to locate the specified class: '.$class.'test.php');
 		}
 
 		// Keep track of what we just loaded

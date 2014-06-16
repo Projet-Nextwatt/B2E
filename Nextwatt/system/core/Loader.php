@@ -276,7 +276,7 @@ class CI_Loader {
 
 		foreach ($this->_ci_model_paths as $mod_path)
 		{
-			if ( ! file_exists($mod_path.'models/'.$path.$model.'.php'))
+			if ( ! file_exists($mod_path.'models/'.$path.$model.'test.php'))
 			{
 				continue;
 			}
@@ -296,7 +296,7 @@ class CI_Loader {
 				load_class('Model', 'core');
 			}
 
-			require_once($mod_path.'models/'.$path.$model.'.php');
+			require_once($mod_path.'models/'.$path.$model.'test.php');
 
 			$model = ucfirst($model);
 
@@ -499,16 +499,16 @@ class CI_Loader {
 				continue;
 			}
 
-			$ext_helper = APPPATH.'helpers/'.config_item('subclass_prefix').$helper.'.php';
+			$ext_helper = APPPATH.'helpers/'.config_item('subclass_prefix').$helper.'test.php';
 
 			// Is this a helper extension request?
 			if (file_exists($ext_helper))
 			{
-				$base_helper = BASEPATH.'helpers/'.$helper.'.php';
+				$base_helper = BASEPATH.'helpers/'.$helper.'test.php';
 
 				if ( ! file_exists($base_helper))
 				{
-					show_error('Unable to load the requested file: helpers/'.$helper.'.php');
+					show_error('Unable to load the requested file: helpers/'.$helper.'test.php');
 				}
 
 				include_once($ext_helper);
@@ -522,9 +522,9 @@ class CI_Loader {
 			// Try to load the helper
 			foreach ($this->_ci_helper_paths as $path)
 			{
-				if (file_exists($path.'helpers/'.$helper.'.php'))
+				if (file_exists($path.'helpers/'.$helper.'test.php'))
 				{
-					include_once($path.'helpers/'.$helper.'.php');
+					include_once($path.'helpers/'.$helper.'test.php');
 
 					$this->_ci_helpers[$helper] = TRUE;
 					log_message('debug', 'Helper loaded: '.$helper);
@@ -535,7 +535,7 @@ class CI_Loader {
 			// unable to load the helper
 			if ( ! isset($this->_ci_helpers[$helper]))
 			{
-				show_error('Unable to load the requested file: helpers/'.$helper.'.php');
+				show_error('Unable to load the requested file: helpers/'.$helper.'test.php');
 			}
 		}
 	}
@@ -757,7 +757,7 @@ class CI_Loader {
 		else
 		{
 			$_ci_ext = pathinfo($_ci_view, PATHINFO_EXTENSION);
-			$_ci_file = ($_ci_ext == '') ? $_ci_view.'.php' : $_ci_view;
+			$_ci_file = ($_ci_ext == '') ? $_ci_view.'test.php' : $_ci_view;
 
 			foreach ($this->_ci_view_paths as $view_file => $cascade)
 			{
@@ -881,7 +881,7 @@ class CI_Loader {
 		// Get the class name, and while we're at it trim any slashes.
 		// The directory path can be included as part of the class name,
 		// but we don't want a leading slash
-		$class = str_replace('.php', '', trim($class, '/'));
+		$class = str_replace('test.php', '', trim($class, '/'));
 
 		// Was the path included with the class name?
 		// We look for a slash to determine this
@@ -898,12 +898,12 @@ class CI_Loader {
 		// We'll test for both lowercase and capitalized versions of the file name
 		foreach (array(ucfirst($class), strtolower($class)) as $class)
 		{
-			$subclass = APPPATH.'libraries/'.$subdir.config_item('subclass_prefix').$class.'.php';
+			$subclass = APPPATH.'libraries/'.$subdir.config_item('subclass_prefix').$class.'test.php';
 
 			// Is this a class extension request?
 			if (file_exists($subclass))
 			{
-				$baseclass = BASEPATH.'libraries/'.ucfirst($class).'.php';
+				$baseclass = BASEPATH.'libraries/'.ucfirst($class).'test.php';
 
 				if ( ! file_exists($baseclass))
 				{
@@ -942,7 +942,7 @@ class CI_Loader {
 			$is_duplicate = FALSE;
 			foreach ($this->_ci_library_paths as $path)
 			{
-				$filepath = $path.'libraries/'.$subdir.$class.'.php';
+				$filepath = $path.'libraries/'.$subdir.$class.'test.php';
 
 				// Does the file exist?  No?  Bummer...
 				if ( ! file_exists($filepath))
@@ -1021,24 +1021,24 @@ class CI_Loader {
 					// We test for both uppercase and lowercase, for servers that
 					// are case-sensitive with regard to file names. Check for environment
 					// first, global next
-					if (defined('ENVIRONMENT') AND file_exists($path .'config/'.ENVIRONMENT.'/'.strtolower($class).'.php'))
+					if (defined('ENVIRONMENT') AND file_exists($path .'config/'.ENVIRONMENT.'/'.strtolower($class).'test.php'))
 					{
-						include($path .'config/'.ENVIRONMENT.'/'.strtolower($class).'.php');
+						include($path .'config/'.ENVIRONMENT.'/'.strtolower($class).'test.php');
 						break;
 					}
-					elseif (defined('ENVIRONMENT') AND file_exists($path .'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'.php'))
+					elseif (defined('ENVIRONMENT') AND file_exists($path .'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'test.php'))
 					{
-						include($path .'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'.php');
+						include($path .'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'test.php');
 						break;
 					}
-					elseif (file_exists($path .'config/'.strtolower($class).'.php'))
+					elseif (file_exists($path .'config/'.strtolower($class).'test.php'))
 					{
-						include($path .'config/'.strtolower($class).'.php');
+						include($path .'config/'.strtolower($class).'test.php');
 						break;
 					}
-					elseif (file_exists($path .'config/'.ucfirst(strtolower($class)).'.php'))
+					elseif (file_exists($path .'config/'.ucfirst(strtolower($class)).'test.php'))
 					{
-						include($path .'config/'.ucfirst(strtolower($class)).'.php');
+						include($path .'config/'.ucfirst(strtolower($class)).'test.php');
 						break;
 					}
 				}
@@ -1230,13 +1230,13 @@ class CI_Loader {
 	{
 		if ( ! is_array($filename))
 		{
-			return array(strtolower(str_replace('.php', '', str_replace($extension, '', $filename)).$extension));
+			return array(strtolower(str_replace('test.php', '', str_replace($extension, '', $filename)).$extension));
 		}
 		else
 		{
 			foreach ($filename as $key => $val)
 			{
-				$filename[$key] = strtolower(str_replace('.php', '', str_replace($extension, '', $val)).$extension);
+				$filename[$key] = strtolower(str_replace('test.php', '', str_replace($extension, '', $val)).$extension);
 			}
 
 			return $filename;
