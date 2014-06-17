@@ -215,6 +215,10 @@ class Test extends CI_Controller
         $this->layout->view('Essais/test'); //render view and layout
     }
 
+    public function upload_catalogue()
+    {
+        
+    }
 }
 
 /* End of file welcome.php */

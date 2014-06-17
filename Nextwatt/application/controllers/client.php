@@ -49,43 +49,58 @@ class Client extends MY_Controller
         //Configuration des règles par champs
         $config = array(
             array(
-                'field' => 'identifiant',
-                'label' => 'Identifiant',
+                'field' => 'civilite',
+                'label' => 'Civilité',
                 'rules' => 'required'
             ),
             array(
-                'field' => 'mdp',
-                'label' => 'Mot de Passe',
-                'rules' => 'required|matches[confmdp]'
-            ),
-            array(
-                'field' => 'confmdp',
-                'label' => 'Confirmation mot de passe',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'prenom',
-                'label' => 'Prenom',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'nom',
+                'field' => 'nom1',
                 'label' => 'Nom',
                 'rules' => 'required'
             ),
             array(
-                'field' => 'email',
-                'label' => 'E-mail',
-                'rules' => 'required|valid_email'
-            ),
-            array(
-                'field' => 'tel',
-                'label' => 'Telephone',
+                'field' => 'prenom1',
+                'label' => 'Prenom',
                 'rules' => 'required'
             ),
             array(
-                'field' => 'categorie',
-                'label' => 'Categorie',
+                'field' => 'nom2',
+                'label' => 'Nom du conjoint',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'prenom2',
+                'label' => 'Prenom du conjoint',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'adresse',
+                'label' => 'Adresse',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'codepostal',
+                'label' => 'Code Postal',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'ville',
+                'label' => 'Ville',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'email',
+                'label' => 'Email',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'tel1',
+                'label' => 'Téléphone fixe',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'tel2',
+                'label' => 'Téléphone portable',
                 'rules' => 'required'
             ),
 
@@ -103,7 +118,7 @@ class Client extends MY_Controller
             $this->layout->view('B2E/Client/Add_Client', $data); // Render view and layout
         } else {
             $this->layout->title('Ajout client');
-            $this->layout->view('formsuccess'); //render view and layout
+            $this->layout->view('B2E/Success_Error/formsuccess'); //render view and layout
         }
 
 
