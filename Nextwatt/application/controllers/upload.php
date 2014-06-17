@@ -28,10 +28,10 @@ class Upload extends MY_Controller
 
         if (!$this->upload->do_upload()) {
             $error = array('error' => $this->upload->display_errors());
-            $this->layout->view('Essais', $error);
+            $this->layout->view('Essais/upload', $error);
         } else {
             $data = array('upload_data' => $this->upload->data());
-            $this->layout->view('uploadsuccess', $data);
+            $this->layout->view('Essais/uploadsuccess', $data);
         }
     }
 }

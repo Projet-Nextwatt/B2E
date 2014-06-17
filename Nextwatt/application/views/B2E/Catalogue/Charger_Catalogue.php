@@ -8,7 +8,7 @@
 //echo $error;
 ?>
 
-<?= form_open_multipart('Essais/uploadfile') ?>
+<?= form_open_multipart('upload/uploadfile') ?>
     <fieldset align="center">
         <legend>Upload d'un nouveau catalogue</legend>
         <br/>
