@@ -235,3 +235,147 @@ $('input[name="BTNcumulflouz"]').click(function () {
         'text'
     );
 });
+function init() {
+
+    var canvas15 = document.getElementById("angle15");
+    var canvas20 = document.getElementById("angle20");
+    var canvas30 = document.getElementById("angle30");
+    var canvas45 = document.getElementById("angle45");
+    var canvas60 = document.getElementById("angle60");
+
+
+    if (canvas15.getContext) {
+
+        var context = canvas15.getContext("2d");
+
+// Set the style properties.
+        context.fillStyle = '#F4F4F4';
+        context.strokeStyle = '#A4CE3B';
+        context.lineWidth = 5;
+
+
+        context.beginPath();
+// Start from the top-left point.
+        context.moveTo(0, 110); // give the (x,y) coordinates
+        context.lineTo(0, 150);
+        context.lineTo(150, 150);
+        context.lineTo(0, 110);
+
+// Done! Now fill the shape, and draw the stroke.
+// Note: your shape will not be visible until you call any of the two methods.
+        context.fill();
+
+//        context.fillStyle = '#000';
+//        context.font = "35px Open Sans";
+//
+//        context.fillText("15°", 30, 137);
+//        context.font = "20px Open Sans";
+        context.stroke();
+        context.closePath();
+
+    }
+    if (canvas20.getContext) {
+
+        var context = canvas20.getContext("2d");
+
+// Set the style properties.
+        context.fillStyle = '#F4F4F4';
+        context.strokeStyle = '#A4CE3B';
+        context.lineWidth = 5;
+
+
+        context.beginPath();
+// Start from the top-left point.
+        context.moveTo(0, 96); // give the (x,y) coordinates
+        context.lineTo(0, 150);
+        context.lineTo(150, 150);
+        context.lineTo(0, 96);
+
+
+// Done! Now fill the shape, and draw the stroke.
+// Note: your shape will not be visible until you call any of the two methods.
+        context.fill();
+        context.stroke();
+        context.closePath();
+
+    }
+    if (canvas30.getContext) {
+
+        var context = canvas30.getContext("2d");
+
+// Set the style properties.
+        context.fillStyle = '#F4F4F4';
+        context.strokeStyle = '#A4CE3B';
+        context.lineWidth = 5;
+
+
+        context.beginPath();
+// Start from the top-left point.
+        context.moveTo(0, 64); // give the (x,y) coordinates
+        context.lineTo(0, 150);
+        context.lineTo(150, 150);
+        context.lineTo(0, 64);
+
+
+// Done! Now fill the shape, and draw the stroke.
+// Note: your shape will not be visible until you call any of the two methods.
+        context.fill();
+        context.stroke();
+        context.closePath();
+
+    }
+    if (canvas45.getContext) {
+
+        var context = canvas45.getContext("2d");
+
+// Set the style properties.
+        context.fillStyle = '#F4F4F4';
+        context.strokeStyle = '#A4CE3B';
+        context.lineWidth = 5;
+
+
+        context.beginPath();
+// Start from the top-left point.
+        context.moveTo(0, 50); // give the (x,y) coordinates
+        context.lineTo(0, 150);
+        context.lineTo(100, 150);
+        context.lineTo(0, 50);
+
+
+// Done! Now fill the shape, and draw the stroke.
+// Note: your shape will not be visible until you call any of the two methods.
+        context.fill();
+        context.stroke();
+        context.closePath();
+
+
+    }
+    if (canvas60.getContext) {
+
+        var context = canvas60.getContext("2d");
+
+// Set the style properties.
+        context.fillStyle = '#F4F4F4';
+        context.strokeStyle = '#A4CE3B';
+        context.lineWidth = 5;
+
+
+        context.beginPath();
+// Start from the top-left point.
+        context.moveTo(50, 50); // give the (x,y) coordinates
+        context.lineTo(50, 150);
+        context.lineTo(107, 150);
+        context.lineTo(50, 50);
+
+
+// Done! Now fill the shape, and draw the stroke.
+// Note: your shape will not be visible until you call any of the two methods.
+        context.fill();
+        context.stroke();
+        context.closePath();
+
+
+    }
+}
+
+onload = init;

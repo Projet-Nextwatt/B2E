@@ -1,83 +1,61 @@
-<table style="text-align: center">
+<table id="sample-table-1" class="table table-striped table-bordered table-hover text-center">
+    <thead>
     <tr>
-        <td>
-        </td>
-        <td>
-            <img src="<?php echo $quinze ?>" height="251" width="200">
-        </td>
-        <td>
-            <img src="<?php echo $vingt ?>" height="251" width="200">
-        </td>
-        <td>
-            <img src="<?php echo $trente ?>" height="251" width="200">
-        </td>
-        <td>
-            <img src="<?php echo $quarantecinq ?>" height="251" width="200">
-        </td>
-        <td>
-            <img src="<?php echo $soixante ?>" height="251" width="200">
-        </td>
+        <th></th>
+        <th class="text-center">
+            <canvas id="angle15" height="150" width="150"></canvas>
+            <h2 class="bolder">15 °</h2>
+        </th>
+        <th class="text-center">
+            <canvas id="angle20" height="150" width="150"></canvas>
+            <h2 class="bolder">20 °</h2>
+        </th>
+        <th class="text-center">
+            <canvas id="angle30" height="150" width="150"></canvas>
+            <h2 class="bolder">30 °</h2>
+        </th>
+        <th class="text-center">
+            <canvas id="angle45" height="150" width="150"></canvas>
+            <h2 class="bolder">45 °</h2>
+        </th>
+        <th class="text-center">
+            <canvas id="angle60" height="150" width="150"></canvas>
+            <h2 class="bolder">60 °</h2>
+        </th>
     </tr>
+    </thead>
+
+    <tbody>
     <tr>
-        <td>
-            <b> SUD</b>
-        </td>
-        <td>
-            <span class="orientation"> 98 %</span>
-        </td>
-        <td>
-            <span class="orientation"> 100 %</span>
-        </td>
-        <td>
-            <span class="orientation"> 100 %</span>
-        </td>
-        <td>
-            <span class="orientation"> 100 %</span>
-        </td>
-        <td>
-            <span class="orientation"> 91 %</span>
-        </td>
+
+        <td><b> SUD</b></td>
+        <td><span class="orientation"> 98 %</span></td>
+        <td><span class="orientation"> 100 %</span></td>
+        <td><span class="orientation"> 100 %</span></td>
+        <td><span class="orientation"> 100 %</span></td>
+        <td><span class="orientation"> 91 %</span></td>
+
     </tr>
+
     <tr>
-        <td>
-            <b> SUD-EST / SUD-OUEST</b>
-        </td>
-        <td>
-            <span class="orientation"> 93 %</span>
-        </td>
-        <td>
-            <span class="orientation"> 96 %</span>
-        </td>
-        <td>
-            <span class="orientation"> 95 %</span>
-        </td>
-        <td>
-            <span class="orientation"> 91 %</span>
-        </td>
-        <td>
-            <span class="orientation"> 84 %</span>
-        </td>
+
+        <td><b> SUD-EST / SUD-OUEST</b></td>
+        <td><span class="orientation"> 93 %</span></td>
+        <td><span class="orientation"> 96 %</span></td>
+        <td><span class="orientation"> 95 %</span></td>
+        <td><span class="orientation"> 91 %</span></td>
+        <td><span class="orientation"> 84 %</span></td>
     </tr>
+
     <tr>
-        <td>
-            <b> EST / OUEST</b>
-        </td>
-        <td>
-            <span class="orientation"> 85 %</span>
-        </td>
-        <td>
-            <span class="orientation">  88 %</span>
-        </td>
-        <td>
-            <span class="orientation"> 84 %</span>
-        </td>
-        <td>
-            <span class="orientation"> 77 %</span>
-        </td>
-        <td>
-            <span class="orientation"> 68 %</span>
-        </td>
+        <td><b> EST / OUEST</b></td>
+        <td><span class="orientation"> 85 %</span></td>
+        <td><span class="orientation">  88 %</span></td>
+        <td><span class="orientation"> 84 %</span></td>
+        <td><span class="orientation"> 77 %</span></td>
+        <td><span class="orientation"> 68 %</span></td>
     </tr>
+    </tbody>
 </table>
 <br/>
 <span class="choixorient"></span>
