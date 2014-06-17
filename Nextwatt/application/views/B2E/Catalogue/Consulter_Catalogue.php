@@ -9,11 +9,12 @@
     </h1>
 
 <div class="btn-group">
-<!--        <a href="--><?php //echo site_url("catalogue/load_catalogue"); ?><!--">-->
-        <button  type="button" class="btn btn-white btn-sm btn-primary">Charger catalogue</button>
-        <button type="button" class="btn btn-white btn-sm btn-primary">2eme choix Swag</button>
-        <button type="button" class="btn btn-white btn-sm btn-primary">Combo YoloSwag</button>
-        <button type="button" class="btn btn-white btn-sm btn-primary">Combo breaker</button>
+        <a href="<?php echo site_url("catalogue/load_catalogue"); ?>">
+        <button  type="button" class="btn btn-white btn-sm btn-primary">Lier type au produit</button>
+        <button type="button" class="btn btn-white btn-sm btn-primary">Gérer la liste des types</button>
+        <button type="button" class="btn btn-white btn-sm btn-primary">Lier options</button>
+        <a href="<?php echo site_url("catalogue/load_catalogue"); ?>">
+        <button type="button" class="btn btn-white btn-sm btn-primary">Charger Catalogue</button></a>
     </div>
 
     <div id="nav-search" class="nav-search">
