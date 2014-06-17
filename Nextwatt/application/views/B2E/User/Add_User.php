@@ -10,82 +10,127 @@
 </div>
 
 
-    <div class="row col-centered">
-        <div class="col-centered">
+<div class="row">
+    <div class="col-xs-12">
 
 
-            <?php
-            $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
-            ?>
-            <!--        <form class="form-horizontal" role="form">-->
+        <?php
+        echo validation_errors();
 
-            <form class="form-horizontal col-centered" method="post" action="/B2E/Nextwatt/index.php/user/verif_form_user">
-                <div class="form-group col-centered">
-                    <label class=" control-label no-padding-right" for="identifiant">Identifiant</label>
+        $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
+        $hiden = array();
+        echo form_open('user/verif_form_user', $attributes, $hiden);
+        ?>
+        <!--        <form class="form-horizontal" role="form">-->
 
-                    <div class="">
-                        <?php echo form_error('identifiant'); ?>
-                        <input type="text" id="identifiant" value="<?php echo set_value('identifiant'); ?>" placeholder="Identifiant">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="mdp">Mot de passe</label>
+        <div class='row form-group'>
+            <label class="col-sm-4 no-padding-right control-label" for='Identifiant'>Identifiant</label>
 
-                    <div class="controls">
-                        <input type="password" id="mdp" placeholder="Mot de passe ">
-                        <input type="password" id="confmdp" placeholder="Confirmation mdp">
-                        <?php echo form_error('mdp'); ?>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="prenom">Prénom</label>
+            <div class="col-sm-4">
+                <?php
+                $data = array('name' => 'Identifiant',
+                    'id' => 'Identifiant',
+                    'class' => 'form-control',
+                    'value' => set_value('Identifiant'),
+                    'maxlength' => '255',
+                    'size' => '50',
+                    'placeholder' => 'Identifiant',
+                    'onClick' => 'some_function()');
+                echo form_input($data);
+                ?>
+            </div>
+            <div class="col-sm-4">
+                <?php echo form_error('Identifiant'); ?>
+            </div>
+        </div>
 
-                    <div class="controls">
-                        <input type="text" id="prenom" value="<?php echo set_value('identifiant'); ?>" placeholder="Votre Prénom">
-                        <?php echo form_error('prenom'); ?>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="nom">Nom</label>
 
-                    <div class="controls">
-                        <input type="text" id="nom" placeholder="Votre Nom">
-                        <?php echo form_error('nom'); ?>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="mdp">Email</label>
+        <div class="row form-group">
+            <label class="col-sm-4 no-padding-right control-label" for='mdp'>Mot de passe</label>
 
-                    <div class="controls">
-                        <input type="email" id="email" placeholder="exemple@nextwatt.fr">
-                        <?php echo form_error('email'); ?>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="tel">Telephone</label>
+            <div class="col-sm-4">
+                <input type="password" name='mdp' id="mdp" placeholder="Mot de passe" class="form-control">
+            </div>
+            <div class="col-sm-4">
+                <?php echo form_error('mdp'); ?>
+            </div>
+        </div>
 
-                    <div class="controls">
-                        <input type="text" id="tel" placeholder="Votre numéro de telephone">
-                        <?php echo form_error('tel'); ?>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="categorie">Catégorie</label>
+        <div class="row form-group">
+            <label class="col-sm-4 no-padding-right control-label" for="mdp">Confirmation mdp</label>
+            <div class="col-sm-4">
+                <input type="password" name='confmdp' id="confmdp" placeholder="Confirmation mdp" class="form-control">
+            </div>
+            <div class="col-sm-4">
+                <?php echo form_error('confmdp'); ?>
+            </div>
+        </div>
 
-                    <div class="controls">
-                        <?php echo form_error('categorie'); ?>
-                        <select name="categorie" class="dropdown" id="categorie">
-                            <option value="1">Commercial</option>
-                            <option value="2">Directeur Co</option>
-                            <option value="2">Grand Chef</option>
-                        </select>
-                        <br/>
-                        <br/>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </form>
+        <div class="row form-group">
+            <label class="col-sm-4 no-padding-right control-label" for="prenom">Prénom</label>
+
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="prenom" id="prenom" value="<?php echo set_value('identifiant'); ?>" placeholder="Votre Prénom">
+            </div>
+
+            <div class="col-sm-4">
+                <?php echo form_error('prenom'); ?>
+            </div>
 
         </div>
+
+        <div class="row form-group">
+            <label class="col-sm-4 no-padding-right control-label" for="nom">Nom</label>
+
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="nom" id="nom" placeholder="Votre Nom"
+                       value="<?php echo set_value('nom'); ?>">
+            </div>
+            <div class="col-sm-4">
+                <?php echo form_error('nom'); ?>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <label class="col-sm-4 no-padding-right control-label" for="mdp">Email</label>
+
+            <div class="col-sm-4">
+                <input type="email" class="form-control" name="email" id="email" placeholder="exemple@nextwatt.fr">
+            </div>
+            <div class="col-sm-4">
+                <?php echo form_error('email'); ?>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <label class="col-sm-4 no-padding-right control-label" for="tel">Telephone</label>
+
+            <div class="col-sm-4">
+                <input type="text" class="form-control" name="tel" id="tel" placeholder="Votre numéro de telephone">
+            </div>
+            <div class="col-sm-4">
+                <?php echo form_error('tel'); ?>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-sm-4 no-padding-right control-label" for="categorie">Catégorie</label>
+
+            <div class="col-sm-4">
+                <?php echo form_error('categorie'); ?>
+                <select name="categorie" class="dropdown" id="categorie">
+                    <option value="1">Commercial</option>
+                    <option value="2">Directeur Co</option>
+                    <option value="2">Grand Chef</option>
+                </select>
+            </div>
+        </div>
+
+        <div algin="center"><input type="submit" value="Submit"/></div>
+
+        <?php echo form_close(); ?>
+
+        <?php var_dump($_POST); ?>
+
     </div>
+</div>
 </div>

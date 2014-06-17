@@ -49,7 +49,7 @@ class User extends MY_Controller
         //Configuration des règles par champs
         $config = array(
             array(
-                'field' => 'identifiant',
+                'field' => 'Identifiant',
                 'label' => 'Identifiant',
                 'rules' => 'required'
             ),
@@ -93,16 +93,14 @@ class User extends MY_Controller
         //On applique les règles
         $this->form_validation->set_rules($config);
 
-        var_dump($this->form_validation->run());
-
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
         //Et on agit en conséquence
         if ($this->form_validation->run() == FALSE) {
             $this->layout->title('Verif utilisateur B2E');
             $this->layout->view('B2E/User/Add_User');
         } else {
-            $this->layout->title('Verif utilisateur B2E');
-            $this->layout->view('formsuccess');
+            $this->layout->title('Bravo GG !');
+            $this->layout->view('B2E/Success_Error/formsuccess');
         }
     }
 }
