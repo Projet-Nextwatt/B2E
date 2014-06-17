@@ -1,6 +1,11 @@
-
-
-<div><p> HEPP : <span id="valeurhepp"><?php echo $_SESSION['Etude']['HEPP'] ?></span></p></div>
+<div><p> HEPP : <span id="valeurhepp">
+            <?php
+            if (isset($_SESSION['Etude']['HEPP'])) {
+                echo $_SESSION['Etude']['HEPP'];
+            }else{
+                //
+            }
+            ?></span></p></div>
 <div><p> Orientation : <span id="choixorient"><?php echo $_SESSION['Etude']['Orientation'] ?></span></p></div>
 <div><p> Ratio C :<span id="resultratioc"><?php echo $_SESSION['Etude']['Ratioc'] ?></span></p></div>
 
