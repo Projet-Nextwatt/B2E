@@ -8,6 +8,7 @@
 </div>
 
 <div class="row">
-    <a href="<?php echo site_url("parametre/add_energie"); ?>">Prix de l'&eacute;nergie</a>
+    <a class="btn btn-primary" href="<?php echo site_url("parametre/Consulter_Energie"); ?>">
+        <i class="ace-icon fa fa-flash align-top bigger-125"/></i>Prix de l'&eacute;nergie
+    </a>
 </div>
-

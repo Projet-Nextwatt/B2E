@@ -73,7 +73,7 @@
         </div>
 
         <div class='row form-group'>
-            <label class="col-sm-4 no-padding-right control-label" for='CO2'>Polution CO<sup>2</sup></label>
+            <label class="col-sm-4 no-padding-right control-label" for='CO2'>Polution CO<sub>2</sub></label>
             <div class="col-sm-4">
                 <input type="text" name="CO2" id="CO2" value="<?php echo set_value('CO2'); ?>" class='form-control' />
             </div>
@@ -94,10 +94,6 @@
         </div>
 
         <?php echo form_close(); ?>
-
-        <?php var_dump($_POST); ?>
-
-
 
     </div>
 </div>

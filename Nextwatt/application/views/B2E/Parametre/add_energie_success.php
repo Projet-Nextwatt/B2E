@@ -10,8 +10,9 @@
 <div class="row">
     <p>C'est la maitrise gros</p>
 
-    <p><?php echo anchor('parametre/add_energie', 'Try it again!'); ?></p>
+    <p><?php echo anchor('parametre/consulter_energie', 'Retour à la liste!'); ?></p>
 
 
         <?php var_dump($_POST); ?>
+    
 </div>
