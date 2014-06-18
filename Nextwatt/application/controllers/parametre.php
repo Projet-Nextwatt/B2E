@@ -58,13 +58,14 @@ class Parametre extends MY_Controller {
             $Energie = new Prixenergie();
 
             foreach ($_POST as $variable => $valeur) {
-                //if (isset($Energie->$variable)) { Ce test ne fonctionne pas, mais ne faudrait il pas passer par des set?? ***************************
+                //if (isset($Energie->$variable)) //{ Ce test ne fonctionne pas, mais ne faudrait il pas passer par des set?? ***************************
                 $Energie->$variable = $valeur;
                 //}
             }
 
             /*
-              $Energie->Energie = $_POST['Energie'];
+              $Energie->
+            Energie = $_POST['Energie'];
               $Energie->Prix = $_POST['Prix'];
               $Energie->Inflation = $_POST['Inflation'];
               $Energie->Abonnement = $_POST['Abonnement'];
