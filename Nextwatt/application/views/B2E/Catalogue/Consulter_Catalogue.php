@@ -32,12 +32,12 @@
     <div class="col-xs-12">
         <?php
 
-        $entete = array('En tête ');
+        $entete = array('Référence','Nom','Marque','Puissance','Libellé Mat','Libellé Mat sans marque','Libellé MO','Libellé Garantie','Prix MO','Prix Mat plancher','Prix annonce TTC','CEE TTC','TVA_MO','TVA Mat','Facturation','Type','Spec','Fiche Technique','Note');
         $nbLigneLu=0;
 //        'rien'=>''
         $fichier=array()	;
 
-        $fichierCatalogue = fopen("C:/wamp/www/B2E/Nextwatt/application/third_party/testupload/catalogue.txt", "r");
+        $fichierCatalogue = fopen("C:/wamp/www/B2E/Nextwatt/upload/catalogue.txt", "r");
         if (!$fichierCatalogue)
         {
             echo "Echec de l'ouverture du fichier, le fichier catalogue.txt � l'adresse ressources/catalogue.txt";
@@ -67,16 +67,7 @@
             // echo "Nombre de lignes lues => ".$nbLigneLu."<br />";
             unset ($fichier['rien']);
 
-            $this->fonctionspersos->creerTableau($entete,$fichier);
-
-//            foreach($fichier as $produit)
-//            {
-//                foreach($produit as $ligneproduit)
-//                {
-//                    echo $ligneproduit . '<br/>';
-//                }
-//            }
-
+            $this->fonctionspersos->creerTableau($fichier,$entete);
 
         }
         ?>
