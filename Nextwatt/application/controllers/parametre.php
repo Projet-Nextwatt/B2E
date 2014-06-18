@@ -79,8 +79,16 @@ class Parametre extends MY_Controller {
             if ($Energie->save()) {
                 // Energie object now has an ID
 
-                $this->layout->title('Reussi ajouter une energie');
-                $this->layout->view('B2E/Parametre/add_energie_success.php', $data); // Render view and layout
+                        $energies=new Prixenergie();
+        $energies->get();
+        $energies=$energies->all_to_array();
+        
+        $data = array();
+        
+        $data['energies']=$energies;
+        $data['eneteteEnergies']=array('Id','Nom','Prix du kWh','Inflation','Pollution CO<sub>2</sub>','Abonnement');
+        $this->layout->title('Liste des énergies');
+        $this->layout->view('B2E/Parametre/Consulter_Energie.php', $data); // Render view and layout
             } else {
 
                 /*                                     //Comment j'envoi le tableau à la vue? -********************************************************

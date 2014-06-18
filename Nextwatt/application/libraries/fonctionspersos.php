@@ -4,7 +4,7 @@ class Fonctionspersos {
 
     public function creerTableau(array $contenu, array $entetes = NULL) {
         if ($contenu == NULL OR ( isset($contenu[0]) AND $contenu[0] == '')) {
-            echo '<p>Attention: Aucune donn&eacutees &agrave; afficher dans le tableau.</p>';
+            echo '<h2>Attention: Aucune donn&eacutees &agrave; afficher dans le tableau</h2>';
         } else {
             //Requette pour voir si le tableau posède une colonne ID_*
             $presenceDunID = false;
@@ -26,7 +26,7 @@ class Fonctionspersos {
 
             //Lancement d'un compteur pour indetifier les colonnes
             $id=0;
-            
+            echo '<div class="table-responsive">';
             echo '<table id="sample-table-1" class="table table-striped table-bordered table-hover">';
 
             //En-tete
@@ -57,6 +57,7 @@ class Fonctionspersos {
             }
             echo '</tbody>' . "\n";
             echo '</table>';
+            echo '</div>';
         }
     }
 
