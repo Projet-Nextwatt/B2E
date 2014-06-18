@@ -1,6 +1,7 @@
 <?php
 $region = NULL;
 ?>
+<span id="position"></span>
 <form name='formhepp'>
     <select name='station' id='station'>
         <?php

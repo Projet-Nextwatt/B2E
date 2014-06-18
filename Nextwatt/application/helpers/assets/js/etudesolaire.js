@@ -1,8 +1,25 @@
 /**
  * Created by Kévin Nérino on 13/06/14.
  */
+function geolocalisestation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            $.post(
+                'ajax_geoposition',
+                {
+                    'latitude': position.coords.latitude,
+                    'longitude': position.coords.longitude
+                },
+                function (data) {
+                    var stationtrouvee = JSON.parse(data);
+                    console.log(stationtrouvee);
+                }
+            );
+        })
+    }
+}
+;
 $("#station").change(function () {
-
     $.post(
         'ajax_heppstation',
         {
@@ -37,6 +54,7 @@ $(".orientation").click(function () {
 });
 $('input[name="envoiratioc"]').click(function () {
     var ratioc = $('#ratioc').val();
+    console.log(ratioc);
     $.post(
         'ajax_envoiratioc',
         {
@@ -44,6 +62,7 @@ $('input[name="envoiratioc"]').click(function () {
         },
         function (data) {
             if (data) {
+                console.log(data);
                 $(".resultratioc").html("Ration C : <span id='resultratioc'>" + data + " %</span>");
             }
         },
@@ -54,7 +73,7 @@ $('#calculhepp').click(function () {
 
     var heppbrut = document.getElementById('valeurhepp').innerHTML;
     var orient = document.getElementById('choixorient').innerHTML.substr(0, (document.getElementById('choixorient').innerHTML).length - 1);
-    var choisiratioc = document.getElementById('resultratioc').innerHTML.substr(0, (document.getElementById('resultratioc').innerHTML).length - 1);
+    var choisiratioc = document.getElementById('resultratioc').innerHTML;
     $.post(
         'ajax_calculhepp',
         {
@@ -64,6 +83,7 @@ $('#calculhepp').click(function () {
         },
         function (data) {
             if (data) {
+                data= parseInt(data);
                 $("#heppnette").html("HEPP \"nette\" : " + data + " h/an");
                 $("#heppnet").val(data);
             }
@@ -237,6 +257,7 @@ $('input[name="BTNcumulflouz"]').click(function () {
 });
 function init() {
 
+
     var canvas15 = document.getElementById("angle15");
     var canvas20 = document.getElementById("angle20");
     var canvas30 = document.getElementById("angle30");
@@ -244,7 +265,7 @@ function init() {
     var canvas60 = document.getElementById("angle60");
 
 
-    if (canvas15.getContext) {
+    if (canvas15 && canvas15.getContext) {
 
         var context = canvas15.getContext("2d");
 
@@ -256,25 +277,19 @@ function init() {
 
         context.beginPath();
 // Start from the top-left point.
-        context.moveTo(0, 110); // give the (x,y) coordinates
-        context.lineTo(0, 150);
-        context.lineTo(150, 150);
-        context.lineTo(0, 110);
+        context.moveTo(0, 60); // give the (x,y) coordinates
+        context.lineTo(0, 100);
+        context.lineTo(150, 100);
+        context.lineTo(0, 60);
 
 // Done! Now fill the shape, and draw the stroke.
 // Note: your shape will not be visible until you call any of the two methods.
         context.fill();
-
-//        context.fillStyle = '#000';
-//        context.font = "35px Open Sans";
-//
-//        context.fillText("15°", 30, 137);
-//        context.font = "20px Open Sans";
         context.stroke();
         context.closePath();
 
     }
-    if (canvas20.getContext) {
+    if (canvas20 && canvas20.getContext) {
 
         var context = canvas20.getContext("2d");
 
@@ -286,10 +301,10 @@ function init() {
 
         context.beginPath();
 // Start from the top-left point.
-        context.moveTo(0, 96); // give the (x,y) coordinates
-        context.lineTo(0, 150);
-        context.lineTo(150, 150);
-        context.lineTo(0, 96);
+        context.moveTo(0, 46); // give the (x,y) coordinates
+        context.lineTo(0, 100);
+        context.lineTo(150, 100);
+        context.lineTo(0, 46);
 
 
 // Done! Now fill the shape, and draw the stroke.
@@ -299,7 +314,7 @@ function init() {
         context.closePath();
 
     }
-    if (canvas30.getContext) {
+    if (canvas30 && canvas30.getContext) {
 
         var context = canvas30.getContext("2d");
 
@@ -311,10 +326,10 @@ function init() {
 
         context.beginPath();
 // Start from the top-left point.
-        context.moveTo(0, 64); // give the (x,y) coordinates
-        context.lineTo(0, 150);
-        context.lineTo(150, 150);
-        context.lineTo(0, 64);
+        context.moveTo(0, 14); // give the (x,y) coordinates
+        context.lineTo(0, 100);
+        context.lineTo(150, 100);
+        context.lineTo(0, 14);
 
 
 // Done! Now fill the shape, and draw the stroke.
@@ -324,7 +339,7 @@ function init() {
         context.closePath();
 
     }
-    if (canvas45.getContext) {
+    if (canvas45 && canvas45.getContext) {
 
         var context = canvas45.getContext("2d");
 
@@ -336,10 +351,10 @@ function init() {
 
         context.beginPath();
 // Start from the top-left point.
-        context.moveTo(0, 50); // give the (x,y) coordinates
-        context.lineTo(0, 150);
-        context.lineTo(100, 150);
-        context.lineTo(0, 50);
+        context.moveTo(0, 0); // give the (x,y) coordinates
+        context.lineTo(0, 100);
+        context.lineTo(100, 100);
+        context.lineTo(0, 0);
 
 
 // Done! Now fill the shape, and draw the stroke.
@@ -350,7 +365,7 @@ function init() {
 
 
     }
-    if (canvas60.getContext) {
+    if (canvas60 && canvas60.getContext) {
 
         var context = canvas60.getContext("2d");
 
@@ -362,10 +377,10 @@ function init() {
 
         context.beginPath();
 // Start from the top-left point.
-        context.moveTo(50, 50); // give the (x,y) coordinates
-        context.lineTo(50, 150);
-        context.lineTo(107, 150);
-        context.lineTo(50, 50);
+        context.moveTo(0, 0); // give the (x,y) coordinates
+        context.lineTo(0, 100);
+        context.lineTo(57, 100);
+        context.lineTo(0, 0);
 
 
 // Done! Now fill the shape, and draw the stroke.
@@ -378,4 +393,6 @@ function init() {
     }
 }
 
-onload = init;
+onload = init();
+geolocalisestation();
+

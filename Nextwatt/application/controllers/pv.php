@@ -88,6 +88,7 @@ class PV extends MY_Controller
         $this->layout->js(js_url('etudesolaire'));
         $this->layout->view('B2E/Etudes/Solaire/Calcul_Masque'); // Render view and layout
     }
+
     public function calculhepp()
     {
         session_start();
@@ -97,7 +98,31 @@ class PV extends MY_Controller
         $this->layout->view('B2E/Etudes/Solaire/Calcul_Hepp'); // Render view and layout
     }
 
-    public function ajax_heppstation()
+    public function ajax_geoposition()
+    {
+        $this->load->model('Mappage/ensoleillement', 'ensoleillement'); // Chargement model "Ensoleillement"
+        $data = array();
+        $data['station'] = $this->ensoleillement->select_ensoleillement(); // Recup des données station avec le model "ensoleillement"
+        $distanceMin = 100;
+        if (isset($_POST['latitude']) && isset($_POST['longitude'])) {
+            foreach ($data['station'] as $station) {
+                $distance = sqrt(abs($_POST['latitude'] - $station['Latitude'])) + sqrt(abs($_POST['longitude'] - $station['Longitude']));
+                if ($distanceMin > $distance) {
+                    $stationtrouvee = $station;
+                    $distanceMin = $distance;
+
+                }
+
+            }
+            $jsonstationtrouvee = json_encode($stationtrouvee);
+            echo $jsonstationtrouvee;
+
+        }
+    }
+
+
+    public
+    function ajax_heppstation()
     {
         session_start();
         $this->load->model('Mappage/ensoleillement', 'ensoleillement'); // Chargement model "Ensoleillement"
@@ -121,7 +146,8 @@ class PV extends MY_Controller
 
     }
 
-    public function ajax_orientation()
+    public
+    function ajax_orientation()
     {
         session_start();
 
@@ -135,15 +161,16 @@ class PV extends MY_Controller
     }
 
 
-    public function ajax_envoiratioc()
+    public
+    function ajax_envoiratioc()
     {
 
         session_start();
 
         if (isset($_POST['ratioc'])) {
-            $_SESSION['Etude'] = array( 'HEPP' => $_SESSION['Etude']['HEPP'],
-                                        'Orientation' => $_SESSION['Etude']['Orientation'],
-                                        'Ratioc' => $_POST['ratioc']);
+            $_SESSION['Etude'] = array('HEPP' => $_SESSION['Etude']['HEPP'],
+                'Orientation' => $_SESSION['Etude']['Orientation'],
+                'Ratioc' => $_POST['ratioc']);
             echo $_POST['ratioc'];
         } else {
             $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
@@ -152,7 +179,8 @@ class PV extends MY_Controller
     }
 
 
-    public function ajax_calculhepp()
+    public
+    function ajax_calculhepp()
     {
         session_start();
         if (isset($_POST['hepp']) && isset($_POST['choixorient']) && isset($_POST['ratioc'])) {
@@ -164,7 +192,8 @@ class PV extends MY_Controller
         }
     }
 
-    public function ajax_calculprod()
+    public
+    function ajax_calculprod()
     {
         if (isset($_POST['heppnet']) && isset($_POST['systeme']) && isset($_POST['bonus'])) {
             $prod = $_POST['systeme'] * $_POST['heppnet'];
@@ -176,7 +205,8 @@ class PV extends MY_Controller
         }
     }
 
-    public function ajax_recetteannuelle()
+    public
+    function ajax_recetteannuelle()
     {
         if (isset($_POST['production']) && isset($_POST['tarifedf'])) {
             $recetteannuelle = $_POST['production'] * $_POST['tarifedf']; // Prod * tarif edf
@@ -192,7 +222,8 @@ class PV extends MY_Controller
         }
     }
 
-    public function ajax_prodannuelle()
+    public
+    function ajax_prodannuelle()
     {
         if (isset($_POST['prodanneezero'])) {
             $prodAnneeZero = $_POST['prodanneezero'];
@@ -213,7 +244,8 @@ class PV extends MY_Controller
         }
     }
 
-    public function ajax_cumulprod()
+    public
+    function ajax_cumulprod()
     {
         if (isset($_POST['prodanneezero'])) {
             $prodAnneeZero = $_POST['prodanneezero'];
@@ -235,7 +267,8 @@ class PV extends MY_Controller
         }
     }
 
-    public function ajax_tarif()
+    public
+    function ajax_tarif()
     {
         if (isset($_POST['tarifAnneeZero']) && isset($_POST['raccordement'])) {
             $tarifAnneeZero = $_POST['tarifAnneeZero'];
@@ -256,7 +289,8 @@ class PV extends MY_Controller
         }
     }
 
-    public function ajax_anneeflouz()
+    public
+    function ajax_anneeflouz()
     {
         if (isset($_POST['tarifAnneeZero']) && isset($_POST['productionAnneeZero']) && isset($_POST['raccordement'])) {
             $tarifAnnee = $_POST['tarifAnneeZero'];
@@ -284,7 +318,8 @@ class PV extends MY_Controller
         }
     }
 
-    public function ajax_cumulflouz()
+    public
+    function ajax_cumulflouz()
     {
         if (isset($_POST['tarifAnneeZero']) && isset($_POST['productionAnneeZero']) && isset($_POST['raccordement'])) {
             $tarifAnnee = $_POST['tarifAnneeZero'];
