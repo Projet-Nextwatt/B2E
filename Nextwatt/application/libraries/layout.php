@@ -17,7 +17,7 @@ class Layout {
     private $obj;
     private $layout_view;
     private $title = '';
-    private $css_list = array(), $js_list = array(), $img_list = array();
+    private $css_list = array(), $js_list = array(), $img_list = array(),$funcjs_list = array();
     private $block_list, $block_new, $block_replace = false;
 
     function Layout() {
@@ -36,7 +36,9 @@ class Layout {
         $data['js_for_layout'] = '';
         foreach ($this->js_list as $v)
             $data['js_for_layout'] .= sprintf('<script type="text/javascript" src="%s"></script>', $v);
-
+        $data['funcjs_for_layout'] = '';
+        foreach ($this->funcjs_list as $v)
+            $data['funcjs_for_layout'] .= sprintf('<script type="text/javascript">onload=%s</script>', $v);
         $data['css_for_layout'] = '';
         foreach ($this->css_list as $v)
             $data['css_for_layout'] .= sprintf('<link rel="stylesheet" type="text/css"  href="%s" />', $v);
@@ -67,6 +69,13 @@ class Layout {
      */
     function js($item) {
         $this->js_list[] = $item;
+    }
+    /**
+     * Adds Javascript resource to current page
+     * @param $item
+     */
+    function function_js($item) {
+        $this->funcjs_list[] = $item;
     }
 
     /**

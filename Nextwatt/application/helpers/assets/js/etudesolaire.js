@@ -11,8 +11,16 @@ function geolocalisestation() {
                     'longitude': position.coords.longitude
                 },
                 function (data) {
-                    var stationtrouvee = JSON.parse(data);
-                    console.log(stationtrouvee);
+                    if (data) {
+                        var stationtrouvee = JSON.parse(data);
+                        $('#station').append(stationtrouvee);
+
+                        // Have you tried add this???
+                        $('#station').val(stationtrouvee.ID_Ensoleillement);
+                        $('.HEPP').html("Ville : <b>" + stationtrouvee.Ville + "</b> - HEPP : <span id='valeurhepp'>" + stationtrouvee.HEPP + "</span>");
+                    } else {
+                        $('.HEPP').html('Problème choix de station');
+                    }
                 }
             );
         })
@@ -54,7 +62,6 @@ $(".orientation").click(function () {
 });
 $('input[name="envoiratioc"]').click(function () {
     var ratioc = $('#ratioc').val();
-    console.log(ratioc);
     $.post(
         'ajax_envoiratioc',
         {
@@ -62,7 +69,6 @@ $('input[name="envoiratioc"]').click(function () {
         },
         function (data) {
             if (data) {
-                console.log(data);
                 $(".resultratioc").html("Ration C : <span id='resultratioc'>" + data + " %</span>");
             }
         },
@@ -83,7 +89,7 @@ $('#calculhepp').click(function () {
         },
         function (data) {
             if (data) {
-                data= parseInt(data);
+                data = parseInt(data);
                 $("#heppnette").html("HEPP \"nette\" : " + data + " h/an");
                 $("#heppnet").val(data);
             }
@@ -255,7 +261,7 @@ $('input[name="BTNcumulflouz"]').click(function () {
         'text'
     );
 });
-function init() {
+function canvasorient() {
 
 
     var canvas15 = document.getElementById("angle15");
@@ -392,7 +398,4 @@ function init() {
 
     }
 }
-
-onload = init();
-geolocalisestation();
 

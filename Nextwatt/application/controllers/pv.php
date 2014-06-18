@@ -60,6 +60,7 @@ class PV extends MY_Controller
         $data['station'] = $this->ensoleillement->select_ensoleillement();
         $this->layout->title('Station B2E');
         $this->layout->js(js_url('etudesolaire'));
+        $this->layout->function_js('geolocalisestation();');
         $this->layout->view('B2E/Etudes/Solaire/Choix_Station', $data); // Render view and layout
     }
 
@@ -77,6 +78,7 @@ class PV extends MY_Controller
 
         $this->layout->title('Orientation B2E');
         $this->layout->js(js_url('etudesolaire'));
+        $this->layout->function_js('canvasorient();');
         $this->layout->view('B2E/Etudes/Solaire/Choix_Orientation', $data); // Render view and layout
     }
 
@@ -100,21 +102,25 @@ class PV extends MY_Controller
 
     public function ajax_geoposition()
     {
+
         $this->load->model('Mappage/ensoleillement', 'ensoleillement'); // Chargement model "Ensoleillement"
         $data = array();
         $data['station'] = $this->ensoleillement->select_ensoleillement(); // Recup des données station avec le model "ensoleillement"
         $distanceMin = 100;
         if (isset($_POST['latitude']) && isset($_POST['longitude'])) {
-            foreach ($data['station'] as $station) {
-                $distance = sqrt(abs($_POST['latitude'] - $station['Latitude'])) + sqrt(abs($_POST['longitude'] - $station['Longitude']));
+            foreach ($data['station'] as $stationtemp) {
+                $distance = sqrt(abs($_POST['latitude'] - $stationtemp['Latitude'])) + sqrt(abs($_POST['longitude'] - $stationtemp['Longitude']));
                 if ($distanceMin > $distance) {
-                    $stationtrouvee = $station;
+                    $station = $stationtemp;
                     $distanceMin = $distance;
 
                 }
 
             }
-            $jsonstationtrouvee = json_encode($stationtrouvee);
+            $this->session_orientation( $station['HEPP']);
+//            $tabsession = array('HEPP' => $station['HEPP']);
+//            $_SESSION['Etude'] = $tabsession;
+            $jsonstationtrouvee = json_encode($station);
             echo $jsonstationtrouvee;
 
         }
@@ -124,7 +130,6 @@ class PV extends MY_Controller
     public
     function ajax_heppstation()
     {
-        session_start();
         $this->load->model('Mappage/ensoleillement', 'ensoleillement'); // Chargement model "Ensoleillement"
         $data = array();
         $data['station'] = $this->ensoleillement->select_ensoleillement(); // Recup des données station avec le model "ensoleillement"
@@ -133,8 +138,7 @@ class PV extends MY_Controller
             foreach ($data['station'] as $station) { // Parcours les données du select pour trouver la station correspondante
                 if ($station['ID_Ensoleillement'] == $_POST['idVille']['keyname']) {
                     $tabstation = array('Ville' => $station['Ville'], 'HEPP' => $station['HEPP']); // Création tableau pour la conversion en json avec la ville et le HEPP correspondant
-                    $tabsession = array('HEPP' => $station['HEPP']);
-                    $_SESSION['Etude'] = $tabsession;
+                    $this->session_orientation( $station['HEPP']);
                     $jsonstation = json_encode($tabstation); // Création du JSON avec le tableau
                     echo $jsonstation; // Envoi du JSON
                 }
@@ -145,7 +149,12 @@ class PV extends MY_Controller
         }
 
     }
+    public function session_orientation($hepp){
+        session_start();
+        $tabsession = array('HEPP' => $hepp);
+        $_SESSION['Etude'] = $tabsession;
 
+    }
     public
     function ajax_orientation()
     {
@@ -161,6 +170,8 @@ class PV extends MY_Controller
     }
 
 
+
+
     public
     function ajax_envoiratioc()
     {
@@ -168,7 +179,8 @@ class PV extends MY_Controller
         session_start();
 
         if (isset($_POST['ratioc'])) {
-            $_SESSION['Etude'] = array('HEPP' => $_SESSION['Etude']['HEPP'],
+            $_SESSION['Etude'] = array(
+                'HEPP' => $_SESSION['Etude']['HEPP'],
                 'Orientation' => $_SESSION['Etude']['Orientation'],
                 'Ratioc' => $_POST['ratioc']);
             echo $_POST['ratioc'];

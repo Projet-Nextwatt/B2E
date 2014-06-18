@@ -1,5 +1,3 @@
-
-
 <fieldset style="display: inline-block">
     <legend>Pertes dues au masques</legend>
     <span> Ratio C (100% - perte): </span>

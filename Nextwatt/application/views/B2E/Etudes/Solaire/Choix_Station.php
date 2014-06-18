@@ -2,7 +2,7 @@
 $region = NULL;
 ?>
 <span id="position"></span>
-<form name='formhepp'>
+<form name='formhepp' ">
     <select name='station' id='station'>
         <?php
         if (isset($station)) {

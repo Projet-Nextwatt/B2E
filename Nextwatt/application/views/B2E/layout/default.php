@@ -123,5 +123,6 @@
 
 <!-- /.main-container -->
 <?php echo $js_for_layout; ?>
+<?php echo $funcjs_for_layout; ?>
 </body>
 </html>

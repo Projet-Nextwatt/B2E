@@ -55,7 +55,7 @@
             <tr>
                 <td><b> EST / OUEST</b></td>
                 <td><span class="orientation"> 85 %</span></td>
-                <td><span class="orientation">  88 %</span></td>
+                <td><span class="orientation"> 88 %</span></td>
                 <td><span class="orientation"> 84 %</span></td>
                 <td><span class="orientation"> 77 %</span></td>
                 <td><span class="orientation"> 68 %</span></td>
