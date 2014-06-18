@@ -23,11 +23,14 @@ class Parametre extends MY_Controller {
     
     
     public function consulter_energie() {
-        $Energies=new Prixenergie();
-        $Energies->get();
+        $energies=new Prixenergie();
+        $energies->get();
+        $energies=$energies->all_to_array();
         
         $data = array();
-        $data['Energies']=$Energies;
+        
+        $data['energies']=$energies;
+        $data['eneteteEnergies']=array('Id','Nom','Prix du kWh','Inflation','Abonnement','Pollution CO<sub>2</sub>');
         $this->layout->title('Liste des énergies');
         $this->layout->view('B2E/Parametre/Consulter_Energie.php', $data); // Render view and layout
     }
