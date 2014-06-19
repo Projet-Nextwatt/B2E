@@ -80,7 +80,6 @@
             <div class="col-sm-4">
                 <?php echo form_error('CO2'); ?>
             </div>
-
         </div>
 
 

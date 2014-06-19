@@ -27,7 +27,7 @@ class Fonctionspersos {
             //Lancement d'un compteur pour identifier les colonnes
             $id=0;
             echo '<div class="table-responsive">';
-            echo '<table id="sample-table-1" class="table table-striped table-bordered table-hover">';
+            echo '<table class="table table-striped table-bordered table-hover">';
 
             //En-tete
             echo '<thead>' . "\n";

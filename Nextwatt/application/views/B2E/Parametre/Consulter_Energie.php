@@ -27,9 +27,6 @@
             <div class="panel-heading align-left">Liste des énergies</div>
             <?php $this->fonctionspersos->creerTableau($energies,$eneteteEnergies); ?>
         </div>
-
-        
-        Modal box
     </div>
 </div>
 
