@@ -124,6 +124,16 @@ class Parametre extends MY_Controller {
             //Clean des données
             $this->form_validation->set_rules($this->configTraitementAddEnergie);
             $this->form_validation->run();
+            if ($this->prixenergie->modifier_prixenergie($_POST)) {
+                // Energie object now has an ID                
+                $data['energies'] = $this->prixenergie->select_prixenergie();
+
+                $data['eneteteEnergies'] = array('Id', 'Nom', 'Prix du kWh', 'Inflation', 'Pollution CO<sub>2</sub>', 'Abonnement');
+                $this->layout->title('Liste des énergies');
+                $this->layout->view('B2E/Parametre/Consulter_Energie.php', $data); // Render view and layout
+            } else {
+                echo 'error';
+            }
         }
     }
 

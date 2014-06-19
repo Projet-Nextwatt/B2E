@@ -65,11 +65,21 @@ class Prixenergie extends DataMapper {
          */
     }
 
-    function modifier_prixenergie() {
-        //Fonction de modification
+    function modifier_prixenergie($data) {
+        //Fonction de modification        
+        $id=$data['ID_PrixEnergie'];
+        unset ($data['ID_PrixEnergie']);
+        
+        $energie = new Prixenergie();
+        //$energie->where('ID_PrixEnergie', $id)->get();
+        //Appliquer les datas
+        //$energie->save()
+                
+        return $energie->where('ID_PrixEnergie', $id)->update($data);
+        
     }
 
-    function supprimer_prixenergie() {
+    function supprimer_prixenergie($data) {
         //Fonction de suppression
     }
 

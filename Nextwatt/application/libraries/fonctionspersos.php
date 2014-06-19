@@ -61,13 +61,13 @@ class Fonctionspersos {
 
                 //Bouton modifier
                 if ($form != NULL) {
-                    echo '<td><button onclick="modifier(';
+                    echo '<td><button class = "btn btn-xs btn-info" onclick="modifier(';
                     if (!($presenceDunID == false)) {
                         echo $ligne[$presenceDunID];
                     } else {
                         echo $id;
                     }
-                    echo ')">Modifier</button></td>';
+                    echo ')"><i class = "ace-icon fa fa-pencil bigger-120"></i></button></td>';
                 }
 
                 echo '</tr>' . "\n";
@@ -75,7 +75,6 @@ class Fonctionspersos {
             echo '</tbody>' . "\n";
             echo '</table>';
             echo '</div>';
-
 
             //Script qui permet de metre l'identifiant de la ligne à modifier en session codeigniter
             if ($form != NULL) {
@@ -85,7 +84,7 @@ class Fonctionspersos {
                                 '../ajaxfonctionspersos/sessionpourform',
                                 {'id':id},
                                 function (){
-                                    self.location.href='".site_url($form)."'                               }
+                                    self.location.href='" . site_url($form) . "'                               }
                             );
                         }
                     </script>";
