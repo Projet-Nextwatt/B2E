@@ -1,7 +1,7 @@
 <div><p> HEPP : <span id="valeurhepp">
             <?php
-            if (isset($_SESSION['Etude']['HEPP'])) {
-                echo $_SESSION['Etude']['HEPP'];
+            if (isset($this->session->userdata['HEPP'])) {
+                echo $this->session->userdata['HEPP'];
             } else {
                 ?>
                 <br/>
@@ -9,8 +9,8 @@
                 <a href="<?php echo site_url("pv/choixstation") ?>">Choisir station</a>
             <?php } ?></span></p></div>
 <div><p> Orientation : <span id="choixorient"><?php
-            if (isset($_SESSION['Etude']['Orientation'])) {
-                echo $_SESSION['Etude']['Orientation'];
+            if (isset($this->session->userdata['Orientation'])) {
+                echo $this->session->userdata['Orientation'];
             } else {
                 ?>
                 <br/>
@@ -18,8 +18,8 @@
                 <a href="<?php echo site_url("pv/choixorientation") ?>">Choisir orientation</a>
             <?php } ?></span></p></div>
 <div><p> Ratio C :<span id="resultratioc"><?php
-            if (isset($_SESSION['Etude']['Ratioc'])) {
-                echo $_SESSION['Etude']['Ratioc'];
+            if (isset($this->session->userdata['Ratioc'])) {
+                echo $this->session->userdata['Ratioc'];
             } else {
                 ?>
                 <br/>

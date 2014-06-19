@@ -1,5 +1,6 @@
 <?php
 $region = NULL;
+var_dump($this->session->userdata('ID_Ensoleillement'));
 ?>
 <span id="position"></span>
 <form name='formhepp' ">
@@ -21,7 +22,8 @@ $region = NULL;
     </select>
 </form>
 
-<fieldset style="display: inline-block">
+
+<fieldset style="display: inline">
     <legend>R&eacute;sultat</legend>
     <span class="HEPP"></span>
 </fieldset>

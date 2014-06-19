@@ -34,31 +34,31 @@
             <tr>
 
                 <td><b> SUD</b></td>
-                <td><span class="orientation"> 98 %</span></td>
-                <td><span class="orientation"> 100 %</span></td>
-                <td><span class="orientation"> 100 %</span></td>
-                <td><span class="orientation"> 100 %</span></td>
-                <td><span class="orientation"> 91 %</span></td>
+                <td><span class="orientation btn-link"> 98 %</span></td>
+                <td><span class="orientation btn-link"> 100 %</span></td>
+                <td><span class="orientation btn-link"> 100 %</span></td>
+                <td><span class="orientation btn-link"> 100 %</span></td>
+                <td><span class="orientation btn-link"> 91 %</span></td>
 
             </tr>
 
             <tr>
 
                 <td><b> SUD-EST / SUD-OUEST</b></td>
-                <td><span class="orientation"> 93 %</span></td>
-                <td><span class="orientation"> 96 %</span></td>
-                <td><span class="orientation"> 95 %</span></td>
-                <td><span class="orientation"> 91 %</span></td>
-                <td><span class="orientation"> 84 %</span></td>
+                <td><span class="orientation btn-link"> 93 %</span></td>
+                <td><span class="orientation btn-link"> 96 %</span></td>
+                <td><span class="orientation btn-link"> 95 %</span></td>
+                <td><span class="orientation btn-link"> 91 %</span></td>
+                <td><span class="orientation btn-link"> 84 %</span></td>
             </tr>
 
             <tr>
                 <td><b> EST / OUEST</b></td>
-                <td><span class="orientation"> 85 %</span></td>
-                <td><span class="orientation"> 88 %</span></td>
-                <td><span class="orientation"> 84 %</span></td>
-                <td><span class="orientation"> 77 %</span></td>
-                <td><span class="orientation"> 68 %</span></td>
+                <td><span class="orientation btn-link"> 85 %</span></td>
+                <td><span class="orientation btn-link"> 88 %</span></td>
+                <td><span class="orientation btn-link"> 84 %</span></td>
+                <td><span class="orientation btn-link"> 77 %</span></td>
+                <td><span class="orientation btn-link"> 68 %</span></td>
             </tr>
             </tbody>
         </table>
