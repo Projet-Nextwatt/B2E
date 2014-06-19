@@ -10,7 +10,7 @@
 
 <div class="btn-group">
         <a href="<?php echo site_url("catalogue/load_catalogue"); ?>">
-        <button  type="button" class="btn btn-white btn-sm btn-primary">Lier type au produit</button>
+        <button  type="button" class="btn btn-white btn-sm btn-primary">Lier type au produit</button></a>
         <button type="button" class="btn btn-white btn-sm btn-primary">Gérer la liste des types</button>
         <button type="button" class="btn btn-white btn-sm btn-primary">Lier options</button>
         <a href="<?php echo site_url("test/upload_catalogue_form"); ?>">
@@ -66,7 +66,7 @@
             fclose($fichierCatalogue);
             // echo "Nombre de lignes lues => ".$nbLigneLu."<br />";
             unset ($fichier['rien']);
-
+    var_dump($fichier);
             $this->fonctionspersos->creerTableau($fichier,$entete);
 
         }

@@ -45,13 +45,21 @@ class Catalogue extends DataMapper
         parent ::__construct();
     }
 
+    public function get_bdd()
+    {
+        $bdd = new Catalogue();
+        $bdd->get(10);
+
+        return $bdd;
+    }
+
     function select_article_catalogue()
     {
 //        $catalogues = new Catalogue();
 //        $catalogue = new Catalogue();
 //
-//        $retourn_catalogue = array();
-//        $retourn_catalogue['catalogues'] = $catalogues;
+//        $retour_catalogue = array();
+//        $retour_catalogue['catalogues'] = $catalogues;
 //
 //
 //        $catalogue->get();
