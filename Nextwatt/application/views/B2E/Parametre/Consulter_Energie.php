@@ -15,9 +15,10 @@
         <a class="btn btn-primary" href="<?php echo site_url("parametre/add_energie"); ?>">
             <i class="ace-icon fa fa-plus align-top bigger-125"/></i>Ajouter une &eacute;nergie
         </a>
-        
+        <br/>
     </div>
 </div>
+
 
 
 <div class="row">
@@ -25,7 +26,7 @@
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading align-left">Liste des énergies</div>
-            <?php $this->fonctionspersos->creerTableau($energies,$eneteteEnergies); ?>
+            <?php $this->fonctionspersos->creerTableau($energies,$eneteteEnergies,'parametre/modif_energie'); ?>
         </div>
     </div>
 </div>

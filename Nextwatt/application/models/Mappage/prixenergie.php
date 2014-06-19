@@ -32,10 +32,17 @@ class Prixenergie extends DataMapper {
                 "</p>";
     }
 
-    function select_prixenergie() {
+    function select_prixenergie($id = NULL) {
         $energies = new Prixenergie();
-        $energies->get();
-        return $energies->all_to_array();
+        if ($id != NULL) {
+            $energies->where('ID_PrixEnergie', $id);
+            $energies->get();
+            $retour=$energies->all_to_array();
+            return $retour['0'];
+        } else {
+            $energies->get();
+            return $energies->all_to_array();
+        }
     }
 
     function ajouter_prixenergie($data) {
@@ -43,19 +50,19 @@ class Prixenergie extends DataMapper {
         $energie = new Prixenergie();
         foreach ($data as $variable => $valeur) {
             //if (isset($Energie->$variable)) { // Ce test ne fonctionne pas, mais ne faudrait il pas passer par des set?? ***************************
-                $energie->$variable = $valeur;
+            $energie->$variable = $valeur;
             //}
         }
         return $energie->save();
-        
+
         /*
-              $Energie->
-              Energie = $_POST['Energie'];
-              $Energie->Prix = $_POST['Prix'];
-              $Energie->Inflation = $_POST['Inflatiosn'];
-              $Energie->Abonnement = $_POST['Abonnement'];
-              $Energie->CO2 = $_POST['CO2'];
-             */
+          $Energie->
+          Energie = $_POST['Energie'];
+          $Energie->Prix = $_POST['Prix'];
+          $Energie->Inflation = $_POST['Inflatiosn'];
+          $Energie->Abonnement = $_POST['Abonnement'];
+          $Energie->CO2 = $_POST['CO2'];
+         */
     }
 
     function modifier_prixenergie() {

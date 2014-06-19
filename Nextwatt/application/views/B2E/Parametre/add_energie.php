@@ -12,13 +12,21 @@
 
 <div class="row">
     <div class="col-xs-12">
-
         <?php //echo validation_errors(); ?>
 
 
         <?php
         $attributes = array('role' => 'form', 'id' => 'myform', 'class' => 'form-horizontal');
         $hidden = array();
+        if (isset($energie)) {
+            $hidden = array('ID' => $energie['ID_PrixEnergie']);
+
+            
+             
+            
+        }
+        
+        var_dump($this->session->all_userdata());
         echo form_open('parametre/add_energie', $attributes, $hidden);
         ?>
 
@@ -43,11 +51,17 @@
 
 
         <div class='row form-group'>
-            <label class="col-sm-4 no-padding-right control-label" for='Prix'>Prix du kWh</label>
-            <div class="col-sm-4">
-                <input type="text" name="Prix" id='Prix' value="<?php echo set_value('Prix'); ?>" class='form-control' />
+            <label class="col-xs-4 no-padding-right control-label" for='Prix'>Prix du kWh</label>
+            <div class="col-xs-4">
+                <input type="text" 
+                       name="Prix" 
+                       id='Prix' 
+                       value="<?php if (empty($_POST) AND isset($energie)) {echo $energie['Prix'];}else{echo set_value('Prix');} ?>" 
+                       class='form-control'
+                       <?php if (isset($energie)) {echo 'disabled';} ?>
+                        />
             </div>
-            <div class="col-sm-4">
+            <div class="col-xs-4">
                 <?php echo form_error('Prix'); ?>
             </div>
         </div>
