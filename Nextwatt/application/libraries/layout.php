@@ -13,24 +13,29 @@
 
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Layout {
+class Layout
+{
     private $obj;
     private $layout_view;
     private $title = '';
-    private $css_list = array(), $js_list = array(), $img_list = array(),$funcjs_list = array();
+    private $bread = '';
+    private $css_list = array(), $js_list = array(), $img_list = array(), $funcjs_list = array();
     private $block_list, $block_new, $block_replace = false;
 
-    function Layout() {
+    function Layout()
+    {
         $this->obj =& get_instance();
         $this->layout_view = "layout/default.php";
         // Grab layout from called controller
         if (isset($this->obj->layout_view)) $this->layout_view = $this->obj->layout_view;
     }
 
-    function view($view, $data = null, $return = false) {
+    function view($view, $data = null, $return = false)
+    {
         // Render template
         $data['content_for_layout'] = $this->obj->load->view($view, $data, true);
         $data['title_for_layout'] = $this->title;
+
 
         // Render resources
         $data['js_for_layout'] = '';
@@ -44,8 +49,28 @@ class Layout {
             $data['css_for_layout'] .= sprintf('<link rel="stylesheet" type="text/css"  href="%s" />', $v);
 
         $data['images_layout'] = '';
-        foreach ($this->img_list as $v)
-            $data['images_layout'].= sprintf('<img src="%s"/>', $v);
+        $tabimages = array();
+        foreach ($this->img_list as $v) {
+            $img = '<img src="' . $v . '"/>';
+            array_push($tabimages, $img);
+        }
+        $data['images_layout'] = $tabimages;
+
+
+        if ($this->bread != '') {
+            $data['breadcrumbs_for_layout'] = '  <div id="my-wizard" data-target="#step-container">
+                                             <ul class="wizard-steps">';
+            $step = 1;
+            foreach ($this->bread as $v) {
+                $data['breadcrumbs_for_layout'] .=
+                    '   <li data-target="#step' . $step . '" class=' . $v['actif'] . '>
+                    <span class="step">' . $step . '</span>
+                    <span class="title">' . $v['title'] . '</span>
+                    </li>';
+                $step++;
+            }
+            $data['breadcrumbs_for_layout'] .= '</ul></div>';
+        }
 
         // Render template
         $this->block_replace = true;
@@ -59,7 +84,8 @@ class Layout {
      *
      * @param $title
      */
-    function title($title) {
+    function title($title)
+    {
         $this->title = $title;
     }
 
@@ -67,14 +93,17 @@ class Layout {
      * Adds Javascript resource to current page
      * @param $item
      */
-    function js($item) {
+    function js($item)
+    {
         $this->js_list[] = $item;
     }
+
     /**
      * Adds Javascript resource to current page
      * @param $item
      */
-    function function_js($item) {
+    function function_js($item)
+    {
         $this->funcjs_list[] = $item;
     }
 
@@ -82,15 +111,23 @@ class Layout {
      * Adds CSS resource to current page
      * @param $item
      */
-    function css($item) {
+    function css($item)
+    {
         $this->css_list[] = $item;
     }
+
     /**
      * Adds Images resource to current page
      * @param $item
      */
-    function image($item) {
+    function image($item)
+    {
         $this->img_list[] = $item;
+    }
+
+    function breadcrumbs($item)
+    {
+        $this->bread = $item;
     }
 
     /**
@@ -98,7 +135,8 @@ class Layout {
      *
      * @param string $name
      */
-    function block($name = '') {
+    function block($name = '')
+    {
         if ($name != '') {
             $this->block_new = $name;
             ob_start();

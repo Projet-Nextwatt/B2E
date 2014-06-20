@@ -23,21 +23,26 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <div class="navbar-header pull-left">
+        <div class="navbar-header pull-left col-xs-1">
             <!-- brand text here -->
-            <a href="<?php echo site_url("Accueil"); ?>"><?php echo $images_layout; ?></a>
+            <a href="<?php echo site_url("Accueil"); ?>" class="visible-lg visible-md"><?php  echo $images_layout[0]; ?></a>
+            <a href="<?php echo site_url("Accueil"); ?>" class="visible-xs visible-sm"><?php echo $images_layout[1]; ?></a>
         </div>
         <!-- /.navbar-header -->
 
-        <div class="navbar-buttons navbar-header pull-right">
-            <ul class="nav ace-nav">
-                <!-- user buttons such as messages, notifications and user menu -->
-            </ul>
-        </div>
+<!--        <div class="navbar-buttons navbar-header pull-right">-->
+<!--            <ul class="nav ace-nav">-->
+<!---->
+<!--                <!-- user buttons such as messages, notifications and user menu -->
+<!--            </ul>-->
+<!--        </div>-->
         <!-- /.navbar-buttons -->
 
 
-        <nav class="navbar-menu pull-left">
+        <nav class="navbar-menu pull-right col-xs-8">
+            <?php if (isset($breadcrumbs_for_layout)) {
+                echo $breadcrumbs_for_layout;
+            } ?>
             <!-- optional menu & form inside navbar -->
         </nav>
         <!-- /.navbar-menu -->
@@ -107,9 +112,9 @@
     </div>
 
     <div class="main-content">
-        <div class="breadcrumbs">
-            <!-- breadcrumbs goes here -->
-        </div>
+        <!--        <div class="breadcrumbs">-->
+        <!---->
+        <!--        </div>-->
         <div class="page-content">
 
             <?php echo $content_for_layout; ?>

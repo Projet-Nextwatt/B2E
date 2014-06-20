@@ -1,3 +1,10 @@
+<div class="page-header">
+    <h1 align="center">
+        CHOIX DE L'ORIENTATION</br>
+        <small><i class="ace-icon fa fa-angle-double-right"></i> Définition de l'orientation en fonction de l'inclinaison du toit et de l'orientation de la maison</small>
+    </h1>
+</div>
+
 <div class="panel-default">
     <div class="panel-heading">Cliquer sur l'orientation désirée</div>
     <div class="table-responsive">
@@ -65,7 +72,13 @@
     </div>
 </div>
 <br/>
-<span class="choixorient"></span>
+<span class="choixorient">
+    <?php
+    if($this->session->userdata('Orientation'))
+        echo "Orientation choisie : " . $this->session->userdata('Orientation');
+    ?>
+
+</span>
 
 <ul class="pager">
     <li class="previous">
@@ -73,6 +86,6 @@
     </li>
 
     <li class="next">
-        <a href="<?php echo site_url("pv/calculmasque"); ?>"#">Masque →</a>
+        <a href="<?php echo site_url("pv/calculmasque"); ?>">Masque →</a>
     </li>
 </ul>

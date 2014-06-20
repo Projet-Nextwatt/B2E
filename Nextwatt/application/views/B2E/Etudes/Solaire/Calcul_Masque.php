@@ -1,7 +1,21 @@
+<div class="page-header">
+    <h1 align="center">
+        CALCUL DU MASQUE</br>
+        <small><i class="ace-icon fa fa-angle-double-right"></i> Calculer le masque</small>
+    </h1>
+</div>
+
 <fieldset style="display: inline-block">
     <legend>Pertes dues au masques</legend>
     <span> Ratio C (100% - perte): </span>
     <?php
+    $value = '100';
+
+    if(isset($this->session->userdata['Ratioc'])){
+        $value = $this->session->userdata['Ratioc'];
+    }
+
+
     $ratioc = array(
 
         'name' => 'ratioc',
@@ -10,14 +24,21 @@
 
         'placeholder' => '100%',
 
-        'value' => '100'
+        'value' => $value
 
     );
     echo form_input($ratioc);
     echo form_submit('envoiratioc', 'valider');
     ?>
     <br/>
-    <span class="resultratioc"></span>
+    <span class="resultratioc">
+        <?php
+        if(isset($this->session->userdata['Ratioc'])){
+            echo "Ration C : <span id='resultratioc'>" . $this->session->userdata['Ratioc'] . " %</span>";
+        }
+        ?>
+
+    </span>
 </fieldset>
 
 

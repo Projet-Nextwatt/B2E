@@ -1,25 +1,35 @@
 <?php
 $region = NULL;
-var_dump($this->session->userdata('ID_Ensoleillement'));
 ?>
+
+<div class="page-header">
+    <h1 align="center">
+        CHOIX DE LA STATION</br>
+        <small><i class="ace-icon fa fa-angle-double-right"></i> Choix de la station pour le calcul d'HEPP
+            (Géolocalisation active)
+        </small>
+    </h1>
+
+</div>
+
 <span id="position"></span>
 <form name='formhepp' ">
-    <select name='station' id='station'>
+<select name='station' id='station'>
+    <?php
+    if (isset($station)) {
+    foreach ($station as $ensol) {
+    if ($ensol['Region'] != $region) {
+    ?>
+    <optgroup label="<?php echo $ensol['Region'] ?>">
+        <?php $region = $ensol['Region'];
+        } ?>
+        <option value="<?php echo $ensol['ID_Ensoleillement'] ?>"><?php echo $ensol['Ville'] ?></option>
         <?php
-        if (isset($station)) {
-        foreach ($station as $ensol) {
-        if ($ensol['Region'] != $region) {
-        ?>
-        <optgroup label="<?php echo $ensol['Region'] ?>">
-            <?php $region = $ensol['Region'];
-            } ?>
-            <option value="<?php echo $ensol['ID_Ensoleillement'] ?>"><?php echo $ensol['Ville'] ?></option>
-            <?php
 
-            }
-            }
-            ?>
-    </select>
+        }
+        }
+        ?>
+</select>
 </form>
 
 
@@ -34,6 +44,6 @@ var_dump($this->session->userdata('ID_Ensoleillement'));
     </li>
 
     <li class="next">
-        <a href="<?php echo site_url("pv/choixorientation"); ?>"#">Orientation →</a>
+        <a href="<?php echo site_url("pv/choixorientation"); ?>">Orientation →</a>
     </li>
 </ul>

@@ -59,6 +59,26 @@ class PV extends MY_Controller
         $this->layout->title('Station B2E');
         $this->layout->js(js_url('etudesolaire'));
 
+        $breadcrumps = array(
+            array(
+                'title' => 'Station',
+                'actif' => 'active'
+            ),
+            array(
+                'title' => 'Orientation',
+                'actif' => ''
+            ),
+            array(
+                'title' => 'Masque',
+                'actif' => ''
+            ),
+            array(
+                'title' => 'HEPP NETTE',
+                'actif' => ''
+            )
+        );
+
+        $this->layout->breadcrumbs($breadcrumps);
         $IDEnsol = $this->session->userdata('ID_Ensoleillement');
 
         if ($IDEnsol) {
@@ -156,8 +176,6 @@ class PV extends MY_Controller
     {
         $tabsession = array('ID_Ensoleillement' => $idEnsol, 'HEPP' => $hepp);
         $this->session->set_userdata($tabsession);
-        $_SESSION['Etude'] = $tabsession;
-
     }
 
     public
