@@ -1,3 +1,10 @@
+<div class="page-header">
+    <h1 align="center">
+        CHOIX DE L'ORIENTATION</br>
+        <small><i class="ace-icon fa fa-angle-double-right"></i> Définition de l'orientation en fonction de l'inclinaison du toit et de l'orientation de la maison</small>
+    </h1>
+</div>
+
 <div class="panel-default">
     <div class="panel-heading">Cliquer sur l'orientation désirée</div>
     <div class="table-responsive">
@@ -34,38 +41,44 @@
             <tr>
 
                 <td><b> SUD</b></td>
-                <td><span class="orientation"> 98 %</span></td>
-                <td><span class="orientation"> 100 %</span></td>
-                <td><span class="orientation"> 100 %</span></td>
-                <td><span class="orientation"> 100 %</span></td>
-                <td><span class="orientation"> 91 %</span></td>
+                <td><span class="orientation btn-link"> 98 %</span></td>
+                <td><span class="orientation btn-link"> 100 %</span></td>
+                <td><span class="orientation btn-link"> 100 %</span></td>
+                <td><span class="orientation btn-link"> 100 %</span></td>
+                <td><span class="orientation btn-link"> 91 %</span></td>
 
             </tr>
 
             <tr>
 
                 <td><b> SUD-EST / SUD-OUEST</b></td>
-                <td><span class="orientation"> 93 %</span></td>
-                <td><span class="orientation"> 96 %</span></td>
-                <td><span class="orientation"> 95 %</span></td>
-                <td><span class="orientation"> 91 %</span></td>
-                <td><span class="orientation"> 84 %</span></td>
+                <td><span class="orientation btn-link"> 93 %</span></td>
+                <td><span class="orientation btn-link"> 96 %</span></td>
+                <td><span class="orientation btn-link"> 95 %</span></td>
+                <td><span class="orientation btn-link"> 91 %</span></td>
+                <td><span class="orientation btn-link"> 84 %</span></td>
             </tr>
 
             <tr>
                 <td><b> EST / OUEST</b></td>
-                <td><span class="orientation"> 85 %</span></td>
-                <td><span class="orientation"> 88 %</span></td>
-                <td><span class="orientation"> 84 %</span></td>
-                <td><span class="orientation"> 77 %</span></td>
-                <td><span class="orientation"> 68 %</span></td>
+                <td><span class="orientation btn-link"> 85 %</span></td>
+                <td><span class="orientation btn-link"> 88 %</span></td>
+                <td><span class="orientation btn-link"> 84 %</span></td>
+                <td><span class="orientation btn-link"> 77 %</span></td>
+                <td><span class="orientation btn-link"> 68 %</span></td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
 <br/>
-<span class="choixorient"></span>
+<span class="choixorient">
+    <?php
+    if($this->session->userdata('Orientation'))
+        echo "Orientation choisie : " . $this->session->userdata('Orientation');
+    ?>
+
+</span>
 
 <ul class="pager">
     <li class="previous">
@@ -73,6 +86,6 @@
     </li>
 
     <li class="next">
-        <a href="<?php echo site_url("pv/calculmasque"); ?>"#">Masque →</a>
+        <a href="<?php echo site_url("pv/calculmasque"); ?>">Masque →</a>
     </li>
 </ul>

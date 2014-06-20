@@ -32,6 +32,7 @@ class MY_Controller extends CI_Controller
 
         //Image
         $this->layout->image(img_url('minilogonextwatt.png'));
+        $this->layout->image(img_url('feuillenextwatt.png'));
     }
 }
 

@@ -14,8 +14,6 @@ function geolocalisestation() {
                     if (data) {
                         var stationtrouvee = JSON.parse(data);
                         $('#station').append(stationtrouvee);
-
-                        // Have you tried add this???
                         $('#station').val(stationtrouvee.ID_Ensoleillement);
                         $('.HEPP').html("Ville : <b>" + stationtrouvee.Ville + "</b> - HEPP : <span id='valeurhepp'>" + stationtrouvee.HEPP + "</span>");
                     } else {
@@ -27,6 +25,25 @@ function geolocalisestation() {
     }
 }
 ;
+
+function preselectstation(idEnsol) {
+    $.post(
+        'ajax_heppstation',
+        {
+            idVille: {keyname : idEnsol}
+        },
+        function (data) {
+            if (data) {
+                var station = JSON.parse(data)
+                $('#station').append(station);
+                $('#station').val(station.ID_Ensoleillement);
+                $('.HEPP').html("Ville : <b>" + station.Ville + "</b> - HEPP : <span id='valeurhepp'>" + station.HEPP + "</span>");
+            } else {
+                $('.HEPP').html('Problème choix de station');
+            }
+        }
+    )
+}
 $("#station").change(function () {
     $.post(
         'ajax_heppstation',
