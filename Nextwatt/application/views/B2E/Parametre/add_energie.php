@@ -7,7 +7,13 @@
 </div>
 
 <div class="page-header">
-    <h1>Ajouter une énergie</h1>
+    <?php if (isset($energie)) { 
+    echo '<h1>Modifier une énergie</h1>';
+    }
+    else{
+        echo '<h1>Ajouter une énergie</h1>'; 
+    }
+    ?>
 </div>
 
 <div class="row">
@@ -101,7 +107,6 @@
             </div>
         </div>
 
-
         <div class='row form-group'>
             <div class='col-md-offset-4 col-md-4'>
                 <button type="submit" class="btn btn-sm btn-info ">
@@ -112,7 +117,6 @@
         </div>
 
         <?php echo form_close(); ?>
-
     </div>
 </div>
 
