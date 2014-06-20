@@ -76,8 +76,8 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
 <div class="col-xs-12">
     <fieldset style="display: inline-block">
         <legend>HEPP "nette"</legend>
-        <button id="calculhepp">Calculer</button>
-        <span id="heppnette"></span>
+
+        <h4 id="heppnette"></h4>
     </fieldset>
 
     <ul class="pager">

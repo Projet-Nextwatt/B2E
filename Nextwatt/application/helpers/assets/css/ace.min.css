@@ -5771,7 +5771,7 @@ body.mob-safari .sidebar.sidebar-fixed {
 
 .btn {
     display: inline-block;
-    color: #FFF !important;
+    color: #fff !important;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
     background-image: none !important;
     border: 5px solid #FFF;
@@ -5786,7 +5786,7 @@ body.mob-safari .sidebar.sidebar-fixed {
 }
 
 .btn-lg {
-    border-width: 5px;
+    border-width: 1px;
     line-height: 1.35;
     padding: 7px 16px
 }
@@ -5814,11 +5814,11 @@ button.btn:active {
 }
 
 .btn, .btn-default, .btn:focus, .btn-default:focus {
-    background-color: #24A338 !important;
-    border-color: #094B0C;}
+    background-color: #fff !important;
+    border-color: #A4CE3B;}
 
 .btn:hover, .btn-default:hover, .btn:active, .btn-default:active, .open .btn.dropdown-toggle, .open .btn-default.dropdown-toggle {
-    background-color: #8b9aa3 !important;
+    background-color: #DAF298 !important;
     border-color: #abbac3
 }
 
@@ -16492,7 +16492,7 @@ div.dataTables_scrollFoot table {
 }
 
 .wizard-steps li .step {
-    border: 5px solid #ced1d6;
+    border: 5px solid #4BAB51;
     color: #546474;
     font-size: 15px;
     border-radius: 100%;
@@ -16513,7 +16513,7 @@ div.dataTables_scrollFoot table {
     height: 1px;
     font-size: 0;
     overflow: hidden;
-    border-top: 4px solid #CED1D6;
+    border-top: 4px solid #4BAB51;
     position: relative;
     top: 21px;
     z-index: 1
@@ -16530,7 +16530,7 @@ div.dataTables_scrollFoot table {
 }
 
 .wizard-steps li.active:before, .wizard-steps li.complete:before, .wizard-steps li.active .step, .wizard-steps li.complete .step {
-    border-color: #5293c4
+    border-color: #000
 }
 
 .wizard-steps li.complete .step {
@@ -16575,7 +16575,7 @@ div.dataTables_scrollFoot table {
     display: block;
     margin-top: 4px;
     max-width: 100%;
-    color: #949ea7;
+    color: #000;
     font-size: 14px;
     z-index: 104;
     text-align: center;

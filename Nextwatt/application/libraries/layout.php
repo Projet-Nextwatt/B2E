@@ -63,10 +63,11 @@ class Layout
             $step = 1;
             foreach ($this->bread as $v) {
                 $data['breadcrumbs_for_layout'] .=
-                    '   <li data-target="#step' . $step . '" class=' . $v['actif'] . '>
+                    '<li data-target="#step' . $step . '" class=' . $v['actif'] . '>
+                    <a href="'.$v['link'].'">
                     <span class="step">' . $step . '</span>
                     <span class="title">' . $v['title'] . '</span>
-                    </li>';
+                    </a></li>';
                 $step++;
             }
             $data['breadcrumbs_for_layout'] .= '</ul></div>';
