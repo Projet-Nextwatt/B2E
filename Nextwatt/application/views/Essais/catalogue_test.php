@@ -32,10 +32,12 @@
 <div class="row">
     <div class="col-xs-12">
         <?php
+        $this->load->library('fonctionspersos');
+        $this->fonctionspersos->creerTableau($ajouts);
 
-        $this->load->models('Mappage/catalogue', 'catalogue');
-        $this->catalogue->get_bdd();
-
+        var_dump($ajouts);
+        var_dump($bdd);
+        var_dump($fichier);
 
         ?>
     </div>

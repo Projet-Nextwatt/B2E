@@ -45,10 +45,62 @@ class Catalogue extends DataMapper
         parent ::__construct();
     }
 
-    public function get_bdd()
+    public function get_ref_bdd()
+    {
+        $refbddtest = new Catalogue();
+
+        $refbddtest->select('Reference');
+        $refbddtest->get();
+
+        $refbddtest = $refbddtest->all_to_array();
+
+        /************************************************  GROS TEST DE LA MORT QUI TUE !!!  ***************************************/
+
+        $rslt = array();
+        foreach($refbddtest as $element)
+        {
+            unset ($element['ID_Catalogue']);
+            unset ($element['ID_SousType']);
+            unset ($element['Nom']);
+            unset ($element['Marque']);
+            unset ($element['Puissance']);
+            unset ($element['Libelle_Mat']);
+            unset ($element['Libelle_Mat_SansMarque']);
+            unset ($element['Libelle_MO']);
+            unset ($element['Libelle_Garantie']);
+            unset ($element['Prix_MO']);
+            unset ($element['Prix_Mat_Plancher']);
+            unset ($element['Prix_Annonce_TTC']);
+            unset ($element['CEE_TTC']);
+            unset ($element['TVA_MO']);
+            unset ($element['TVA_Mat']);
+            unset ($element['Facturation']);
+            unset ($element['Type_Produit']);
+            unset ($element['Spec']);
+            unset ($element['Actif']);
+            unset ($element['Fiche_Tech']);
+            unset ($element['Note']);
+
+            $i=0;
+            foreach ($element as $sub_element)
+            {
+                $rslt[$element['Reference']][$i]=$sub_element;
+                $i++;
+            }
+
+        }
+        return $rslt;
+    }
+
+    public function get_full_bdd()
     {
         $bdd = new Catalogue();
-        $bdd->get(10);
+
+        $bdd->select('Reference, Nom, Marque, Puissance, Libelle_Mat, Libelle_Mat_SansMarque, Libelle_MO, Libelle_Garantie,
+        Prix_MO, Prix_Mat_Plancher, Prix_Annonce_TTC, CEE_TTC, TVA_MO, TVA_Mat, Facturation, Type_Produit, Spec, Fiche_Tech, Note');
+        $bdd->get();
+
+        $bdd = $bdd->all_to_array();
 
         return $bdd;
     }

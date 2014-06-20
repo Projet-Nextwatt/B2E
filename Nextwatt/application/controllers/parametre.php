@@ -83,12 +83,8 @@ class Parametre extends MY_Controller {
             $this->form_validation->run();
 
             if ($this->prixenergie->ajouter_prixenergie($_POST)) {
-                // Energie object now has an ID                
-                $data['energies'] = $this->prixenergie->select_prixenergie();
-
-                $data['eneteteEnergies'] = array('Id', 'Nom', 'Prix du kWh', 'Inflation', 'Pollution CO<sub>2</sub>', 'Abonnement');
-                $this->layout->title('Liste des énergies');
-                $this->layout->view('B2E/Parametre/Consulter_Energie.php', $data); // Render view and layout
+                // Energie object now has an ID              
+                $this->consulter_energie();
             } else {
                 /*    //Comment j'envoi le tableau à la vue? -********************************************************
                   foreach ($u->error->all as $error) {
@@ -117,7 +113,7 @@ class Parametre extends MY_Controller {
             $data['modif'] = $this->session->userdata['form'];
             
 
-            $this->layout->title('Ajouter une energie');
+            $this->layout->title('Moifier une énergie');
             $this->layout->view('B2E/Parametre/add_energie.php', $data); // Render view and layout
         } else {
             //Formulaire ok, traitement des données
@@ -125,12 +121,7 @@ class Parametre extends MY_Controller {
             $this->form_validation->set_rules($this->configTraitementAddEnergie);
             $this->form_validation->run();
             if ($this->prixenergie->modifier_prixenergie($_POST)) {
-                // Energie object now has an ID                
-                $data['energies'] = $this->prixenergie->select_prixenergie();
-
-                $data['eneteteEnergies'] = array('Id', 'Nom', 'Prix du kWh', 'Inflation', 'Pollution CO<sub>2</sub>', 'Abonnement');
-                $this->layout->title('Liste des énergies');
-                $this->layout->view('B2E/Parametre/Consulter_Energie.php', $data); // Render view and layout
+                $this->consulter_energie();
             } else {
                 echo 'error';
             }
