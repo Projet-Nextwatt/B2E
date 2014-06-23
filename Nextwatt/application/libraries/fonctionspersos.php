@@ -102,7 +102,7 @@ class Fonctionspersos {
 //        'rien'=>''
         $fichier=array();
 
-        $fichierCatalogue = fopen("C:/wamp/www/B2E/Nextwatt/upload/catalogue.txt", "r");
+        $fichierCatalogue = fopen("./upload/catalogue.txt", "r");
         if (!$fichierCatalogue)
         {
             echo "Echec de l'ouverture du fichier, le fichier catalogue.txt � l'adresse ressources/catalogue.txt";
