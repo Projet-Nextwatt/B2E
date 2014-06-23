@@ -11,7 +11,7 @@
 <div class="row">
     </br></br></br></br>
     <div align="center" class="col-xl-14">
-        <a href="<?php echo site_url("client/add_client"); ?>">
+        <a href="<?php echo site_url("CI_client/add_client"); ?>">
             <button type="button" class="btn btn-success">
                 <i class="ace-icon fa  fa-user"></i>
                 Faire un nouveau client

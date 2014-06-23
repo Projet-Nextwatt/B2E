@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/Stage/b2e/B2E/Nextwatt/application/models/Mappage/ensoleillement.php</file>
-            <file>file:/C:/wamp/www/Stage/B2E/B2E/Nextwatt/application/views/B2E/Parametre/add_energie_success.php</file>
+            <file>file:/C:/wamp/www/Stage/B2E/B2E/Nextwatt/application/controllers/ajaxfonctionspersos.php</file>
             <file>file:/C:/wamp/www/Stage/B2E/B2E/Nextwatt/application/views/B2E/Parametre/Consulter_Energie.php</file>
             <file>file:/C:/wamp/www/Stage/b2e/B2E/Nextwatt/application/libraries/fonctionspersos.php</file>
             <file>file:/C:/wamp/www/Stage/b2e/B2E/Nextwatt/application/models/Mappage/prixenergie.php</file>
-            <file>file:/C:/wamp/www/Stage/B2E/B2E/Nextwatt/application/views/B2E/Parametre/choix_parametre.php</file>
             <file>file:/C:/wamp/www/Stage/B2E/B2E/Nextwatt/application/controllers/parametre.php</file>
             <file>file:/C:/wamp/www/Stage/B2E/B2E/Nextwatt/application/views/B2E/Parametre/add_energie.php</file>
         </group>

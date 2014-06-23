@@ -7,7 +7,7 @@
                         //           pour vérifier le formulaire (verif_form_client
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class Client extends MY_Controller
+class CI_Client extends MY_Controller
 {
     // layout used in this controller
     public $layout_view = 'B2E/layout/default';
@@ -41,6 +41,8 @@ class Client extends MY_Controller
 
     public function verif_form_client()
     {
+        $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
+
         //Remplissage de la variable $data avec l'image pour le layout
         $data = array();
         $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
@@ -112,15 +114,37 @@ class Client extends MY_Controller
 
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
         //Et on agit en conséquence
-        if ($this->form_validation->run() == FALSE) {
+        if ($this->form_validation->run() == FALSE)
+        {
             // On charge la page
             $this->layout->title('Erreur d\'ajout client');
             $this->layout->view('B2E/Client/Add_Client', $data); // Render view and layout
-        } else {
+        }
+        else
+        {
+            if ($this->mapclient->ajouter_client($_POST))
+            {
+                // Energie object now has an ID
+                $this->consulter_client();
+            }
+            else
+            {
             $this->layout->title('Ajout client');
             $this->layout->view('B2E/Success_Error/formsuccess'); //render view and layout
+            }
         }
 
 
+    }
+
+    public function consulter_client() {
+        $this->load->model('Mappage/client', 'mapclient'); //Chargement du model
+        $data = array();
+
+        $data['client'] = $this->mapclient->select_client();
+        $data['eneteteEnergies'] = array('Id', 'Nom', 'Prix du kWh', 'Inflation', 'Pollution CO<sub>2</sub>', 'Abonnement');
+
+        $this->layout->title('Liste des clients');
+        $this->layout->view('B2E/Client/Consulter_Client.php', $data); // Render view and layout
     }
 }
