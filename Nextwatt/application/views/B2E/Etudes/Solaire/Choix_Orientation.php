@@ -1,7 +1,7 @@
 <div class="page-header">
     <h1 align="center">
         CHOIX DE L'ORIENTATION</br>
-        <small><i class="ace-icon fa fa-angle-double-right"></i> Définition de l'orientation en fonction de l'inclinaison du toit et de l'orientation de la maison</small>
+        <small><i class="ace-icon fa fa-angle-double-right"></i> Définition de l'orientation et de l'inclinaison du toit de la maison</small>
     </h1>
 </div>
 
@@ -41,31 +41,45 @@
             <tr>
 
                 <td><b> SUD</b></td>
-                <td><span class="orientation btn-link"> 98 %</span></td>
-                <td><span class="orientation btn-link"> 100 %</span></td>
-                <td><span class="orientation btn-link"> 100 %</span></td>
-                <td><span class="orientation btn-link"> 100 %</span></td>
-                <td><span class="orientation btn-link"> 91 %</span></td>
-
+                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                      <span  style="color:black">98 %</span></td></button>
+                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                        <span  style="color:black">100 %</span></td></button>
+                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                        <span  style="color:black">100 %</span></td></button>
+                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                        <span  style="color:black">100 %</span></td></button>
+                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                        <span  style="color:black">91 %</span></td></button>
             </tr>
 
             <tr>
 
                 <td><b> SUD-EST / SUD-OUEST</b></td>
-                <td><span class="orientation btn-link"> 93 %</span></td>
-                <td><span class="orientation btn-link"> 96 %</span></td>
-                <td><span class="orientation btn-link"> 95 %</span></td>
-                <td><span class="orientation btn-link"> 91 %</span></td>
-                <td><span class="orientation btn-link"> 84 %</span></td>
+                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                        <span  style="color:black">93 %</span></td></button>
+                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                        <span  style="color:black">96 %</span></td></button>
+                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                        <span  style="color:black">95 %</span></td></button>
+                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                        <span  style="color:black">91 %</span></td></button>
+                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                        <span  style="color:black">84 %</span></td></button>
             </tr>
 
             <tr>
                 <td><b> EST / OUEST</b></td>
-                <td><span class="orientation btn-link"> 85 %</span></td>
-                <td><span class="orientation btn-link"> 88 %</span></td>
-                <td><span class="orientation btn-link"> 84 %</span></td>
-                <td><span class="orientation btn-link"> 77 %</span></td>
-                <td><span class="orientation btn-link"> 68 %</span></td>
+                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                        <span  style="color:black">85 %</span></td></button>
+                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                        <span  style="color:black">88 %</span></td></button>
+                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                        <span  style="color:black">84 %</span></td></button>
+                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                        <span  style="color:black">77 %</span></td></button>
+                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                        <span  style="color:black">68 %</span></td></button>
             </tr>
             </tbody>
         </table>

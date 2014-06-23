@@ -33,7 +33,7 @@
     <br/>
     <span class="resultratioc">
         <?php
-        if(isset($this->session->userdata['Ratioc'])){
+        if(isset($this->session->userdata['Ratioc']) && $this->session->userdata['Ratioc'] !=''){
             echo "Ration C : <span id='resultratioc'>" . $this->session->userdata['Ratioc'] . " %</span>";
         }
         ?>

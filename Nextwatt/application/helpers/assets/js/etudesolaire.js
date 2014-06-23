@@ -92,7 +92,7 @@ $('input[name="envoiratioc"]').click(function () {
         'text'
     );
 });
-$('#calculhepp').click(function () {
+function calculhepp() {
 
     var heppbrut = document.getElementById('valeurhepp').innerHTML;
     var orient = document.getElementById('choixorient').innerHTML.substr(0, (document.getElementById('choixorient').innerHTML).length - 1);
@@ -105,15 +105,17 @@ $('#calculhepp').click(function () {
             ratioc: choisiratioc
         },
         function (data) {
-            if (data) {
+            if (data != 0 && data) {
                 data = parseInt(data);
-                $("#heppnette").html("HEPP \"nette\" : " + data + " h/an");
+                $("#heppnette").html("Résultat : " + data + " h/an");
                 $("#heppnet").val(data);
+            }else{
+                $("#heppnette").html("<span class='text-danger'>Calcul impossible donnée(s) manquante(s)</span> ");
             }
         },
         'text'
     );
-});
+};
 $('input[name="calculprod"]').click(function () {
     var systeme = document.getElementById('systeme').value;
     var heppnet = document.getElementById('heppnet').value;
@@ -126,9 +128,11 @@ $('input[name="calculprod"]').click(function () {
             bonus: bonus
         },
         function (data) {
-            if (data) {
+            if (data != 0) {
                 $("#resultprod").html("Production : <span id='prodcalc'>" + data + "</span> kWh/an");
                 $('#production').val(data);
+            }else{
+                $("#resultprod").html("<span class='text-danger'>Calcul impossible donnée(s) manquante(s)</span> ");
             }
         },
         'text'

@@ -62,19 +62,28 @@ class PV extends MY_Controller
         $breadcrumps = array(
             array(
                 'title' => 'Station',
-                'actif' => 'active'
+                'actif' => 'active',
+                'link' => site_url("pv/choixstation")
             ),
             array(
                 'title' => 'Orientation',
-                'actif' => ''
+                'actif' => '',
+                'link' => site_url("pv/choixorientation")
             ),
             array(
                 'title' => 'Masque',
-                'actif' => ''
+                'actif' => '',
+                'link' => site_url("pv/calculmasque")
             ),
             array(
                 'title' => 'HEPP NETTE',
-                'actif' => ''
+                'actif' => '',
+                'link' => site_url("pv/calculhepp")
+            ),
+            array(
+                'title' => 'Production',
+                'actif' => '',
+                'link' => site_url("pv/calculprod")
             )
         );
 
@@ -93,6 +102,36 @@ class PV extends MY_Controller
 
     public function choixorientation()
     {
+        $breadcrumps = array(
+            array(
+                'title' => 'Station',
+                'actif' => '',
+                'link' => site_url("pv/choixstation")
+            ),
+            array(
+                'title' => 'Orientation',
+                'actif' => 'active',
+                'link' => site_url("pv/choixorientation")
+            ),
+            array(
+                'title' => 'Masque',
+                'actif' => '',
+                'link' => site_url("pv/calculmasque")
+            ),
+            array(
+                'title' => 'HEPP NETTE',
+                'actif' => '',
+                'link' => site_url("pv/calculhepp")
+            ),
+            array(
+                'title' => 'Production',
+                'actif' => '',
+                'link' => site_url("pv/calculprod")
+            )
+        );
+
+        $this->layout->breadcrumbs($breadcrumps);
+
         //Image
         $data['tablorientation'] = img_url('Tableau-orientation.png');
         $data['quinze'] = img_url('15.png');
@@ -110,7 +149,35 @@ class PV extends MY_Controller
 
     public function calculmasque()
     {
+        $breadcrumps = array(
+            array(
+                'title' => 'Station',
+                'actif' => '',
+                'link' => site_url("pv/choixstation")
+            ),
+            array(
+                'title' => 'Orientation',
+                'actif' => '',
+                'link' => site_url("pv/choixorientation")
+            ),
+            array(
+                'title' => 'Masque',
+                'actif' => 'active',
+                'link' => site_url("pv/calculmasque")
+            ),
+            array(
+                'title' => 'HEPP NETTE',
+                'actif' => '',
+                'link' => site_url("pv/calculhepp")
+            ),
+            array(
+                'title' => 'Production',
+                'actif' => '',
+                'link' => site_url("pv/calculprod")
+            )
+        );
 
+        $this->layout->breadcrumbs($breadcrumps);
         $this->layout->title('Calcul du masque B2E');
         $this->layout->js(js_url('etudesolaire'));
         $this->layout->view('B2E/Etudes/Solaire/Calcul_Masque'); // Render view and layout
@@ -118,12 +185,75 @@ class PV extends MY_Controller
 
     public function calculhepp()
     {
+        $breadcrumps = array(
+            array(
+                'title' => 'Station',
+                'actif' => '',
+                'link' => site_url("pv/choixstation")
+            ),
+            array(
+                'title' => 'Orientation',
+                'actif' => '',
+                'link' => site_url("pv/choixorientation")
+            ),
+            array(
+                'title' => 'Masque',
+                'actif' => '',
+                'link' => site_url("pv/calculmasque")
+            ),
+            array(
+                'title' => 'HEPP NETTE',
+                'actif' => 'active',
+                'link' => site_url("pv/calculhepp")
+            ),
+            array(
+                'title' => 'Production',
+                'actif' => '',
+                'link' => site_url("pv/calculprod")
+            )
+        );
 
+        $this->layout->breadcrumbs($breadcrumps);
         $this->layout->title('Calcul de HEPP B2E');
         $this->layout->js(js_url('etudesolaire'));
+        $this->layout->function_js('calculhepp()');
         $this->layout->view('B2E/Etudes/Solaire/Calcul_Hepp'); // Render view and layout
     }
+    public function calculprod()
+    {
+        $breadcrumps = array(
+            array(
+                'title' => 'Station',
+                'actif' => '',
+                'link' => site_url("pv/choixstation")
+            ),
+            array(
+                'title' => 'Orientation',
+                'actif' => '',
+                'link' => site_url("pv/choixorientation")
+            ),
+            array(
+                'title' => 'Masque',
+                'actif' => '',
+                'link' => site_url("pv/calculmasque")
+            ),
+            array(
+                'title' => 'HEPP NETTE',
+                'actif' => '',
+                'link' => site_url("pv/calculhepp")
+            ),
+            array(
+                'title' => 'Production',
+                'actif' => 'active',
+                'link' => site_url("pv/calculprod")
+            )
+        );
 
+        $this->layout->breadcrumbs($breadcrumps);
+        $this->layout->title('Calcul de Production B2E');
+        $this->layout->js(js_url('etudesolaire'));
+        $this->layout->view('B2E/Etudes/Solaire/Calcul_Production'); // Render view and layout
+    }
     public function ajax_geoposition()
     {
 
@@ -216,6 +346,12 @@ class PV extends MY_Controller
     {
         if (isset($_POST['hepp']) && isset($_POST['choixorient']) && isset($_POST['ratioc'])) {
             $heppnette = ($_POST['hepp'] * ($_POST['choixorient'] / 100) * ($_POST['ratioc']) / 100);
+            $tabsession = array(
+                'HEPP' => $this->session->userdata('HEPP'),
+                'Orientation' => $this->session->userdata('Orientation'),
+                'Ratioc' => $this->session->userdata('Ratioc'),
+                'Heppnet' => $heppnette);
+            $this->session->set_userdata($tabsession);
             echo $heppnette;
         } else {
             $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
@@ -229,6 +365,13 @@ class PV extends MY_Controller
         if (isset($_POST['heppnet']) && isset($_POST['systeme']) && isset($_POST['bonus'])) {
             $prod = $_POST['systeme'] * $_POST['heppnet'];
             $prodtotal = ($prod + $prod * ($_POST['bonus'] / 100)) / 1000; // Calcul de la prod totale = prod + la prod avec le bonus (0 ou 10 % ) et divisé par mille
+            $tabsession = array(
+                'HEPP' => $this->session->userdata('HEPP'),
+                'Orientation' => $this->session->userdata('Orientation'),
+                'Ratioc' => $this->session->userdata('Ratioc'),
+                'Ratioc' => $this->session->userdata('Heppnet'),
+                'Heppnet' => $prodtotal);
+            $this->session->set_userdata($tabsession);
             echo $prodtotal;
         } else {
             $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";

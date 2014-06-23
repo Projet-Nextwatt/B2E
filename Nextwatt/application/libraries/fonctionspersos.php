@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 class Fonctionspersos
 {
 
@@ -7,6 +8,25 @@ class Fonctionspersos
         public
         function creerTableau(array $contenu, array $entetes = NULL, $form = NULL)
         {
+=======
+class Fonctionspersos {
+
+    public function creerTableau(array $contenu, array $entetes = NULL)
+    {
+        function creerTableau(array $contenu, array $entetes = NULL, $form = NULL) {
+    
+        if ($contenu == NULL OR ( isset($contenu[0]) AND $contenu[0] == '')) {
+            echo '<h2>Attention: Aucune donn&eacutees &agrave; afficher dans le tableau</h2>';
+        } else {
+            //Requette pour voir si le tableau posède une colonne ID_*
+            $presenceDunID = false;
+            $tableau1 = current($contenu);
+            foreach ($tableau1 as $nomDeLaColonne => $contenuDeLaColonne) {
+                if (preg_match('#^ID#', $nomDeLaColonne)) {
+                    $presenceDunID = $nomDeLaColonne; //Je stocke l'index de la colonne ID dans la varaible $presenceDunID
+                }
+            }
+>>>>>>> origin/Developpement
 
             if ($contenu == NULL OR (isset($contenu[0]) AND $contenu[0] == '')) {
                 echo '<h2>Attention: Aucune donn&eacutees &agrave; afficher dans le tableau</h2>';
@@ -97,11 +117,18 @@ class Fonctionspersos
             }
         }
 
+<<<<<<< HEAD
         public
         function lire_fichier_catalogue()
         {
             $data = array();
             $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
+=======
+    function lire_fichier_catalogue()
+    {
+        $data = array();
+        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
+>>>>>>> origin/Developpement
 
             $nbLigneLu = 0;
 //        'rien'=>''
@@ -145,5 +172,13 @@ class Fonctionspersos
             return $entete;
         }
 
+<<<<<<< HEAD
+=======
+    function set_entete()
+    {
+        $entete = array('Référence','Nom','Marque','Puissance','Libellé Mat','Libellé Mat sans marque','Libellé MO','Libellé Garantie','Prix MO','Prix Mat plancher','Prix annonce TTC','CEE TTC','TVA_MO','TVA Mat','Facturation','Type','Spec','Fiche Technique','Note');
+        return $entete;
+    }
+>>>>>>> origin/Developpement
 
-}
+}}

@@ -23,10 +23,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <div class="navbar-header pull-left col-xs-1">
+        <div class="navbar-header pull-left ">
             <!-- brand text here -->
-            <a href="<?php echo site_url("Accueil"); ?>" class="visible-lg visible-md"><?php  echo $images_layout[0]; ?></a>
-            <a href="<?php echo site_url("Accueil"); ?>" class="visible-xs visible-sm"><?php echo $images_layout[1]; ?></a>
+            <a href="<?php echo site_url("Accueil"); ?>" ><?php  echo $images_layout[0]; ?></a>
         </div>
         <!-- /.navbar-header -->
 
@@ -39,7 +38,7 @@
         <!-- /.navbar-buttons -->
 
 
-        <nav class="navbar-menu pull-right col-xs-8">
+        <nav class="navbar-menu pull-right col-md-9">
             <?php if (isset($breadcrumbs_for_layout)) {
                 echo $breadcrumbs_for_layout;
             } ?>
