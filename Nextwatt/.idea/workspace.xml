@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a260d5e-75f8-4f03-8baa-61a468c11107" name="Default" comment="Mini commit">
-      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\config\catalogueconfig.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\controllers\acetheme.php" afterPath="" />
-      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\controllers\bilan_etude.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/libraries/fonctionspersos.php" afterPath="$PROJECT_DIR$/application/libraries/fonctionspersos.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\libraries\fonctionspersos.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gitignore" afterPath="$PROJECT_DIR$/../.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/B2E/Parametre/Consulter_Energie.php" afterPath="$PROJECT_DIR$/application/views/B2E/Parametre/Consulter_Energie.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nbproject/private/private.xml" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" />
     </list>
     <list id="7b96de8a-67ec-49a7-af8c-87846cbb2ecd" name="Rejected commit: Default" comment="Mini commit" />
     <ignored path="Nextwatt.iws" />
@@ -32,17 +31,7 @@
     <favorites_list name="Nextwatt" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="fonctionspersos.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/libraries/fonctionspersos.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="0" selection-start="3508" selection-end="3508" vertical-scroll-proportion="0.32534248" vertical-offset="1330" max-vertical-offset="2516">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -175,7 +164,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -334,6 +322,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -480,7 +469,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-153" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3088553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -488,7 +477,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39870688" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14217253" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14323749" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16271552" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -519,9 +508,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1421801" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12958963" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12958963" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -546,6 +535,13 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/application/libraries/fonctionspersos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="0" selection-start="3608" selection-end="3608" vertical-scroll-proportion="0.0" vertical-offset="1615" max-vertical-offset="2941">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/system/libraries/Migration.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="262" column="46" selection-start="6589" selection-end="6593" vertical-scroll-proportion="0.33294117" vertical-offset="4171" max-vertical-offset="5661" />
@@ -745,9 +741,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/Mappage/client.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="32" selection-start="906" selection-end="906" vertical-scroll-proportion="0.13325608" vertical-offset="616" max-vertical-offset="1479">
-          <folding />
-        </state>
+        <state line="43" column="32" selection-start="906" selection-end="906" vertical-scroll-proportion="0.13325608" vertical-offset="616" max-vertical-offset="1479" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/parametre.php">
@@ -773,9 +767,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/config/autoload.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="0" selection-start="2030" selection-end="2030" vertical-scroll-proportion="1.6153846" vertical-offset="1181" max-vertical-offset="2057">
-          <folding />
-        </state>
+        <state line="67" column="0" selection-start="2030" selection-end="2030" vertical-scroll-proportion="1.6153846" vertical-offset="1181" max-vertical-offset="2057" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/config/smileys.php">
@@ -815,7 +807,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/libraries/fonctionspersos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="0" selection-start="3508" selection-end="3508" vertical-scroll-proportion="0.32534248" vertical-offset="1330" max-vertical-offset="2516">
+        <state line="17" column="0" selection-start="745" selection-end="745" vertical-scroll-proportion="-2.972332" vertical-offset="1793" max-vertical-offset="2669">
           <folding />
         </state>
       </provider>
