@@ -113,12 +113,12 @@ class Fonctionspersos {
             {
                 $ligneFichier=	explode('_',								//Pour d�composer la ligne en tableau
                     //convertCarSpe
-                    htmlspecialchars_decode(
+
                         htmlentities(								//Pour convertir les � en &eacute;
                             addslashes( 								//Pour eviteer les probl�me de '
                                 mb_convert_encoding (						//Pour convertir le ANSII vers UTF-8
                                     fgets(
-                                        $fichierCatalogue), 'UTF-8', 'ASCII')))));
+                                        $fichierCatalogue), 'UTF-8', 'ASCII'))));
                 unset($ligneFichier[count($ligneFichier)-1]);				//On vire le dernier caract�re qui est le retour � la ligne
                 if (!(empty($ligneFichier)))			//Si il y a une colone vide, on s'en ocuupe pas
                 {

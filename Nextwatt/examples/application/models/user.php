@@ -158,5 +158,5 @@ class User extends DataMapper {
 	}
 }
 
-/* End of file user.php */
-/* Location: ./application/models/user.php */
+/* End of file CI_user.php */
+/* Location: ./application/models/CI_user.php */

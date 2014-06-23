@@ -5,7 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a260d5e-75f8-4f03-8baa-61a468c11107" name="Default" comment="Mini commit">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/controllers/CI_catalogue.php" />
+      <change type="DELETED" beforePath="C:\wamp\www\B2E\Nextwatt\application\controllers\catalogue.php" afterPath="" />
+      <change type="MOVED" beforePath="C:\wamp\www\B2E\Nextwatt\application\controllers\user.php" afterPath="$PROJECT_DIR$/application/controllers/CI_user.php" />
+      <change type="MOVED" beforePath="C:\wamp\www\B2E\Nextwatt\application\views\Essais\catalogue_test.php" afterPath="$PROJECT_DIR$/application/views/B2E/Catalogue/catalogue_diff.php" />
+      <change type="MOVED" beforePath="C:\wamp\www\B2E\Nextwatt\application\views\Essais\upload.php" afterPath="$PROJECT_DIR$/application/views/B2E/Catalogue/upload.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/B2E/User/Accueil_User.php" afterPath="$PROJECT_DIR$/application/views/B2E/User/Accueil_User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/B2E/User/Add_User.php" afterPath="$PROJECT_DIR$/application/views/B2E/User/Add_User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/CI_client.php" afterPath="$PROJECT_DIR$/application/controllers/CI_client.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/B2E/Catalogue/Consulter_Catalogue.php" afterPath="$PROJECT_DIR$/application/views/B2E/Catalogue/Consulter_Catalogue.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/B2E/Client/Consulter_Client.php" afterPath="$PROJECT_DIR$/application/views/B2E/Client/Consulter_Client.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Mappage/client.php" afterPath="$PROJECT_DIR$/application/models/Mappage/client.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/B2E/layout/default.php" afterPath="$PROJECT_DIR$/application/views/B2E/layout/default.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/libraries/fonctionspersos.php" afterPath="$PROJECT_DIR$/application/libraries/fonctionspersos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/test.php" afterPath="$PROJECT_DIR$/application/controllers/test.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Mappage/user.php" afterPath="$PROJECT_DIR$/application/models/Mappage/user.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/application/models/user.php" afterPath="$PROJECT_DIR$/examples/application/models/user.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="7b96de8a-67ec-49a7-af8c-87846cbb2ecd" name="Rejected commit: Default" comment="Mini commit" />
@@ -30,10 +45,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="fonctionspersos.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/libraries/fonctionspersos.php">
+      <file leaf-file-name="welcome_message.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/welcome_message.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="57" selection-start="3766" selection-end="3788" vertical-scroll-proportion="0.5627854" vertical-offset="1275" max-vertical-offset="2584">
+            <state line="84" column="58" selection-start="1956" selection-end="1975" vertical-scroll-proportion="-24.461538" vertical-offset="792" max-vertical-offset="1666">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/test.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="0" selection-start="418" selection-end="418" vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="561">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CI_catalogue.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/CI_catalogue.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="9" selection-start="466" selection-end="466" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="2652">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Consulter_Catalogue.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/Consulter_Catalogue.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="41" selection-start="356" selection-end="356" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="816">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Charger_Catalogue.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/Charger_Catalogue.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="13" selection-start="512" selection-end="512" vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="663">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gerer_Liste_Types.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/Gerer_Liste_Types.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="864">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="catalogue_diff.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/catalogue_diff.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="26" selection-start="1468" selection-end="1468" vertical-scroll-proportion="-24.846153" vertical-offset="0" max-vertical-offset="867">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="catalogue.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/Mappage/catalogue.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="88" column="13" selection-start="2543" selection-end="2543" vertical-scroll-proportion="-14.653846" vertical-offset="1115" max-vertical-offset="2176">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="upload.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/upload.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="61" selection-start="423" selection-end="423" vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="544">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/B2E/layout/default.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="63" column="49" selection-start="2260" selection-end="2260" vertical-scroll-proportion="-6.923077" vertical-offset="891" max-vertical-offset="2346">
               <folding />
             </state>
           </provider>
@@ -58,12 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/application/views/B2E/Catalogue/Gerer_Liste_Types.php" />
-        <option value="$PROJECT_DIR$/application/helpers/assets/css/bootstrap.min.css" />
-        <option value="$PROJECT_DIR$/system/libraries/Form_validation.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Accueil_Dossier_Archive.php" />
-        <option value="$PROJECT_DIR$/application/views/B2E/Accueil.php" />
         <option value="$PROJECT_DIR$/application/views/Essais/test.php" />
         <option value="$PROJECT_DIR$/application/third_party/datamapper/bootstrap.php" />
         <option value="$PROJECT_DIR$/index.php" />
@@ -78,9 +168,7 @@
         <option value="$PROJECT_DIR$/system/libraries/Log.php" />
         <option value="$PROJECT_DIR$/system/libraries/Migration.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Parametre/add_energie.php" />
-        <option value="$PROJECT_DIR$/application/views/B2E/User/Add_User.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Success_Error/formsuccess.php" />
-        <option value="$PROJECT_DIR$/application/controllers/user.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Catalogue/Charger_Catalogue.php" />
         <option value="$PROJECT_DIR$/application/controllers/upload.php" />
         <option value="$PROJECT_DIR$/application/libraries/catalogue.php" />
@@ -90,25 +178,33 @@
         <option value="$PROJECT_DIR$/upload/catalogue.txt" />
         <option value="$PROJECT_DIR$/application/models/catalogue.php" />
         <option value="$PROJECT_DIR$/application/config/autoload.php" />
-        <option value="$PROJECT_DIR$/application/views/B2E/Catalogue/Consulter_Catalogue.php" />
-        <option value="$PROJECT_DIR$/application/controllers/catalogue.php" />
         <option value="$PROJECT_DIR$/application/libraries/library_catalogue.php" />
         <option value="$PROJECT_DIR$/application/libraries/libcatalogue.php" />
         <option value="$PROJECT_DIR$/application/views/welcome_message.php" />
-        <option value="$PROJECT_DIR$/application/controllers/test.php" />
         <option value="$PROJECT_DIR$/application/views/Essais/catalogue_test.php" />
         <option value="$PROJECT_DIR$/application/models/Mappage/catalogue.php" />
-        <option value="$PROJECT_DIR$/application/controllers/parametre.php" />
         <option value="$PROJECT_DIR$/application/models/Mappage/mapclient.php" />
         <option value="$PROJECT_DIR$/application/controllers/client.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Client/Add_Client.php" />
-        <option value="$PROJECT_DIR$/application/views/B2E/Client/Consulter_Client.php" />
-        <option value="$PROJECT_DIR$/application/views/B2E/layout/default.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Client/Accueil_Client.php" />
-        <option value="$PROJECT_DIR$/application/models/Mappage/client.php" />
-        <option value="$PROJECT_DIR$/application/controllers/CI_client.php" />
         <option value="$PROJECT_DIR$/application/config/catalogueconfig.php" />
+        <option value="$PROJECT_DIR$/application/models/Mappage/client.php" />
+        <option value="$PROJECT_DIR$/application/controllers/user.php" />
+        <option value="$PROJECT_DIR$/application/views/B2E/User/Accueil_User.php" />
+        <option value="$PROJECT_DIR$/application/controllers/CI_client.php" />
+        <option value="$PROJECT_DIR$/application/views/B2E/User/Add_User.php" />
+        <option value="$PROJECT_DIR$/application/models/Mappage/user.php" />
+        <option value="$PROJECT_DIR$/application/controllers/parametre.php" />
+        <option value="$PROJECT_DIR$/application/views/B2E/Client/Consulter_Client.php" />
+        <option value="$PROJECT_DIR$/application/controllers/CI_user.php" />
         <option value="$PROJECT_DIR$/application/libraries/fonctionspersos.php" />
+        <option value="$PROJECT_DIR$/application/views/B2E/Catalogue/catalogue_test.php" />
+        <option value="$PROJECT_DIR$/application/controllers/test.php" />
+        <option value="$PROJECT_DIR$/application/views/B2E/Catalogue/upload.php" />
+        <option value="$PROJECT_DIR$/application/controllers/catalogue.php" />
+        <option value="$PROJECT_DIR$/application/views/B2E/layout/default.php" />
+        <option value="$PROJECT_DIR$/application/controllers/CI_catalogue.php" />
+        <option value="$PROJECT_DIR$/application/views/B2E/Catalogue/Consulter_Catalogue.php" />
       </list>
     </option>
   </component>
@@ -266,7 +362,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Client" />
+              <option name="myItemId" value="Catalogue" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -284,47 +380,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nextwatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nextwatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mappage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nextwatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nextwatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -370,11 +426,11 @@
       <recent name="C:\wamp\www\B2E\Nextwatt\application" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\B2E\Nextwatt\application\views\B2E\Catalogue" />
       <recent name="C:\wamp\www\B2E\Nextwatt\application\models\Mappage" />
       <recent name="C:\wamp\www\B2E\Nextwatt\application\models" />
       <recent name="C:\wamp\www\B2E\Nextwatt\application\views\B2E\Success_Error" />
       <recent name="C:\wamp\www\B2E\Nextwatt\application\views\upload" />
-      <recent name="C:\wamp\www\B2E\Nextwatt" />
     </key>
   </component>
   <component name="RunManager" selected="PHP Web Application.Run">
@@ -479,10 +535,10 @@
     <frame x="1358" y="-153" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3088553" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.010799136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286638" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39870688" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39848813" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14323749" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -543,21 +599,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/system/libraries/Migration.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="262" column="46" selection-start="6589" selection-end="6593" vertical-scroll-proportion="0.33294117" vertical-offset="4171" max-vertical-offset="5661" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/B2E/Parametre/choix_parametre.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="902" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/B2E/User/Add_User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="129" selection-start="2566" selection-end="2613" vertical-scroll-proportion="0.8030127" vertical-offset="531" max-vertical-offset="2414" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="902" />
@@ -623,26 +664,6 @@
         <state line="15" column="10" selection-start="305" selection-end="305" vertical-scroll-proportion="0.29109588" vertical-offset="0" max-vertical-offset="5916" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="51" selection-start="3274" selection-end="3274" vertical-scroll-proportion="0.6609589" vertical-offset="917" max-vertical-offset="1819" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/libraries/layout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="7" selection-start="1972" selection-end="1972" vertical-scroll-proportion="0.40753424" vertical-offset="680" max-vertical-offset="1768" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/Essais/upload.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="58" selection-start="316" selection-end="316" vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="527" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/B2E/Parametre/Consulter_Energie.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="8" selection-start="861" selection-end="861" vertical-scroll-proportion="0.5627854" vertical-offset="0" max-vertical-offset="876" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/upload/catalogue.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="0" selection-start="1561" selection-end="1561" vertical-scroll-proportion="0.059027776" vertical-offset="0" max-vertical-offset="864" />
@@ -671,39 +692,9 @@
         <state line="33" column="23" selection-start="687" selection-end="687" vertical-scroll-proportion="-19.615385" vertical-offset="0" max-vertical-offset="969" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/Consulter_Catalogue.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="72" selection-start="1311" selection-end="1384" vertical-scroll-proportion="-21.576923" vertical-offset="0" max-vertical-offset="816" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/upload.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="1" selection-start="991" selection-end="991" vertical-scroll-proportion="0.7002288" vertical-offset="0" max-vertical-offset="874" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/Charger_Catalogue.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="13" selection-start="512" selection-end="512" vertical-scroll-proportion="0.48627" vertical-offset="0" max-vertical-offset="874" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/Essais/catalogue_test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="9" selection-start="289" selection-end="289" vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="850" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Mappage/catalogue.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="13" selection-start="2543" selection-end="2543" vertical-scroll-proportion="-27.73077" vertical-offset="775" max-vertical-offset="2176" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/welcome_message.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="522" selection-end="522" vertical-scroll-proportion="0.46575344" vertical-offset="0" max-vertical-offset="1666" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="285" column="48" selection-start="9824" selection-end="9873" vertical-scroll-proportion="0.58219177" vertical-offset="4335" max-vertical-offset="5236" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/system/database/DB_active_rec.php">
@@ -718,45 +709,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/B2E/layout/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="49" selection-start="2668" selection-end="2668" vertical-scroll-proportion="0.74703085" vertical-offset="595" max-vertical-offset="2363" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/B2E/Client/Accueil_Client.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="21" selection-start="620" selection-end="620" vertical-scroll-proportion="0.32990867" vertical-offset="0" max-vertical-offset="876" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/B2E/Client/Add_Client.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="1063" selection-end="1063" vertical-scroll-proportion="-2.0998838" vertical-offset="2420" max-vertical-offset="3281" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/B2E/Client/Consulter_Client.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="30" selection-start="334" selection-end="334" vertical-scroll-proportion="0.2522831" vertical-offset="0" max-vertical-offset="876">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Mappage/client.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="32" selection-start="906" selection-end="906" vertical-scroll-proportion="0.13325608" vertical-offset="616" max-vertical-offset="1479" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/parametre.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="44" selection-start="2933" selection-end="2950" vertical-scroll-proportion="-25.923077" vertical-offset="788" max-vertical-offset="2329">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Mappage/prixenergie.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="9" selection-start="1284" selection-end="1284" vertical-scroll-proportion="-2.6153846" vertical-offset="629" max-vertical-offset="1513">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/B2E/Parametre/add_energie.php">
@@ -778,13 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/accueil.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="499" selection-end="499" vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="510">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/ajaxfonctionspersos.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="50" selection-start="318" selection-end="318" vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="408">
@@ -792,23 +740,190 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/catalogue.php">
+    <entry file="file://$PROJECT_DIR$/application/controllers/accueil.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="5" selection-start="1455" selection-end="1455" vertical-scroll-proportion="-18.961538" vertical-offset="0" max-vertical-offset="867">
+        <state line="23" column="0" selection-start="499" selection-end="499" vertical-scroll-proportion="0.4473684" vertical-offset="0" max-vertical-offset="874">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/B2E/User/Accueil_User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="6" selection-start="641" selection-end="641" vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="476">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/CI_client.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="38" selection-start="2184" selection-end="2184" vertical-scroll-proportion="0.86415523" vertical-offset="76" max-vertical-offset="2567">
+        <state line="38" column="8" selection-start="1721" selection-end="1721" vertical-scroll-proportion="0.55284554" vertical-offset="85" max-vertical-offset="2516">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Mappage/client.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="32" selection-start="1417" selection-end="1417" vertical-scroll-proportion="0.960511" vertical-offset="159" max-vertical-offset="1955">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/B2E/Client/Add_Client.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="173" column="8" selection-start="6517" selection-end="6822" vertical-scroll-proportion="0.6407323" vertical-offset="2381" max-vertical-offset="3281">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/B2E/User/Add_User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="0" selection-start="4234" selection-end="4234" vertical-scroll-proportion="0.49427918" vertical-offset="1540" max-vertical-offset="2533">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Mappage/prixenergie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="8" selection-start="961" selection-end="1284" vertical-scroll-proportion="-3.9615386" vertical-offset="441" max-vertical-offset="1513">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/B2E/User/Consulter_User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Mappage/user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="25" selection-start="1063" selection-end="1063" vertical-scroll-proportion="-18.307692" vertical-offset="255" max-vertical-offset="1360">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/parametre.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="33" selection-start="1978" selection-end="1978" vertical-scroll-proportion="-12.192307" vertical-offset="788" max-vertical-offset="2329">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/B2E/Parametre/Consulter_Energie.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="1123" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="765">
+          <folding>
+            <marker date="1403512786609" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1403512786609" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1403512786609" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1403512786609" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1403512786609" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1403512786609" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1403512786609" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1403512786609" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1403512786609" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1403512786609" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/B2E/Client/Consulter_Client.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="102" selection-start="1019" selection-end="1019" vertical-scroll-proportion="-18.961538" vertical-offset="0" max-vertical-offset="680">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/CI_user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="0" selection-start="1477" selection-end="1477" vertical-scroll-proportion="23.26923" vertical-offset="1149" max-vertical-offset="2023">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/libraries/fonctionspersos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="57" selection-start="3766" selection-end="3788" vertical-scroll-proportion="0.5627854" vertical-offset="1275" max-vertical-offset="2584">
+        <state line="106" column="9" selection-start="3838" selection-end="3838" vertical-scroll-proportion="-17.0" vertical-offset="1360" max-vertical-offset="2584">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/welcome_message.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="58" selection-start="1956" selection-end="1975" vertical-scroll-proportion="-24.461538" vertical-offset="792" max-vertical-offset="1666">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="418" selection-end="418" vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="561">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/catalogue_diff.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="26" selection-start="1468" selection-end="1468" vertical-scroll-proportion="-24.846153" vertical-offset="0" max-vertical-offset="867">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Mappage/catalogue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="13" selection-start="2543" selection-end="2543" vertical-scroll-proportion="-14.653846" vertical-offset="1115" max-vertical-offset="2176">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/libraries/layout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="7" selection-start="2510" selection-end="2510" vertical-scroll-proportion="-0.7604167" vertical-offset="1694" max-vertical-offset="2584">
+          <folding>
+            <marker date="1403507998600" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/upload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="61" selection-start="423" selection-end="423" vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="544">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/B2E/layout/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="49" selection-start="2260" selection-end="2260" vertical-scroll-proportion="-6.923077" vertical-offset="891" max-vertical-offset="2346">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/CI_catalogue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="9" selection-start="466" selection-end="466" vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="2652">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/Consulter_Catalogue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="41" selection-start="356" selection-end="356" vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="816">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/Charger_Catalogue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="13" selection-start="512" selection-end="512" vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="663">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/Gerer_Liste_Types.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="890">
           <folding />
         </state>
       </provider>
