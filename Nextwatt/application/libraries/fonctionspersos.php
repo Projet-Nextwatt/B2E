@@ -2,12 +2,9 @@
 
 class Fonctionspersos {
 
-<<<<<<< HEAD
-    public function creerTableau(array $contenu, array $entetes = NULL)
-    {
-=======
+
     public function creerTableau(array $contenu, array $entetes = NULL, $form = NULL) {
->>>>>>> origin/Developpement
+
         if ($contenu == NULL OR ( isset($contenu[0]) AND $contenu[0] == '')) {
             echo '<h2>Attention: Aucune donn&eacutees &agrave; afficher dans le tableau</h2>';
         } else {
