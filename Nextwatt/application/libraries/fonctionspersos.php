@@ -1,11 +1,13 @@
 <?php
 
-class Fonctionspersos {
+class Fonctionspersos
+{
 
 
-    public function creerTableau(array $contenu, array $entetes = NULL, $form = NULL) {
+    public function creerTableau(array $contenu, array $entetes = NULL, $form = NULL)
+    {
 
-        if ($contenu == NULL OR ( isset($contenu[0]) AND $contenu[0] == '')) {
+        if ($contenu == NULL OR (isset($contenu[0]) AND $contenu[0] == '')) {
             echo '<h2>Attention: Aucune donn&eacutees &agrave; afficher dans le tableau</h2>';
         } else {
             //Requette pour voir si le tableau posède une colonne ID_*
@@ -99,34 +101,30 @@ class Fonctionspersos {
         $data = array();
         $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
 
-        $nbLigneLu=0;
+        $nbLigneLu = 0;
 //        'rien'=>''
-        $fichier=array();
+        $fichier = array();
 
         $fichierCatalogue = fopen("C:/wamp/www/B2E/Nextwatt/upload/catalogue.txt", "r");
-        if (!$fichierCatalogue)
-        {
+        if (!$fichierCatalogue) {
             echo "Echec de l'ouverture du fichier, le fichier catalogue.txt � l'adresse ressources/catalogue.txt";
-        }
-        else
-        {
-            while(!feof($fichierCatalogue))
-            {
-                $ligneFichier=	explode('_',								//Pour d�composer la ligne en tableau
+        } else {
+            while (!feof($fichierCatalogue)) {
+                $ligneFichier = explode('_', //Pour d�composer la ligne en tableau
                     //convertCarSpe
                     htmlspecialchars_decode(
-                        htmlentities(								//Pour convertir les � en &eacute;
-                            addslashes( 								//Pour eviteer les probl�me de '
-                                mb_convert_encoding (						//Pour convertir le ANSII vers UTF-8
+                        htmlentities( //Pour convertir les � en &eacute;
+                            addslashes( //Pour eviteer les probl�me de '
+                                mb_convert_encoding( //Pour convertir le ANSII vers UTF-8
                                     fgets(
                                         $fichierCatalogue), 'UTF-8', 'ASCII')))));
-                unset($ligneFichier[count($ligneFichier)-1]);				//On vire le dernier caract�re qui est le retour � la ligne
-                if (!(empty($ligneFichier)))			//Si il y a une colone vide, on s'en ocuupe pas
+                unset($ligneFichier[count($ligneFichier) - 1]); //On vire le dernier caract�re qui est le retour � la ligne
+                if (!(empty($ligneFichier))) //Si il y a une colone vide, on s'en ocuupe pas
                 {
-                    $nbLigneLu++;											//On incr�mente le compteur
-                    if(array_key_exists($ligneFichier[0],$fichier))			//On v�rifie si il y a doublon dans les r�f�rences
-                        echo 'ATTENTION il y a un doublon sur la r&eacute;f&eacute;rence ------- '.$ligneFichier[0].'<br/>';
-                    $fichier[$ligneFichier[0]]=$ligneFichier;				//On range dans un tableau associatif avec la r�f�rence produit
+                    $nbLigneLu++; //On incr�mente le compteur
+                    if (array_key_exists($ligneFichier[0], $fichier)) //On v�rifie si il y a doublon dans les r�f�rences
+                        echo 'ATTENTION il y a un doublon sur la r&eacute;f&eacute;rence ------- ' . $ligneFichier[0] . '<br/>';
+                    $fichier[$ligneFichier[0]] = $ligneFichier; //On range dans un tableau associatif avec la r�f�rence produit
                 }
             }
             fclose($fichierCatalogue);
@@ -140,7 +138,7 @@ class Fonctionspersos {
 
     public function set_entete()
     {
-        $entete = array('Référence','Nom','Marque','Puissance','Libellé Mat','Libellé Mat sans marque','Libellé MO','Libellé Garantie','Prix MO','Prix Mat plancher','Prix annonce TTC','CEE TTC','TVA_MO','TVA Mat','Facturation','Type','Spec','Fiche Technique','Note');
+        $entete = array('Référence', 'Nom', 'Marque', 'Puissance', 'Libellé Mat', 'Libellé Mat sans marque', 'Libellé MO', 'Libellé Garantie', 'Prix MO', 'Prix Mat plancher', 'Prix annonce TTC', 'CEE TTC', 'TVA_MO', 'TVA Mat', 'Facturation', 'Type', 'Spec', 'Fiche Technique', 'Note');
         return $entete;
     }
 
