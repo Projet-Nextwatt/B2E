@@ -83,8 +83,8 @@ class Parametre extends MY_Controller {
             $this->form_validation->run();
 
             if ($this->prixenergie->ajouter_prixenergie($_POST)) {
-                // Energie object now has an ID              
-                $this->consulter_energie();
+                    // Energie object now has an ID
+                    $this->consulter_energie();
             } else {
                 /*    //Comment j'envoi le tableau à la vue? -********************************************************
                   foreach ($u->error->all as $error) {

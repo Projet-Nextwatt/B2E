@@ -70,7 +70,7 @@
 
             <!-- second level item -->
             <li>
-                <a href="<?php echo site_url("client/consult_client"); ?>">
+                <a href="<?php echo site_url("CI_client/consult_client"); ?>">
                     <i class="menu-icon fa fa-user"></i>
                     Client
                 </a>
