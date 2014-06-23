@@ -9,10 +9,9 @@
  */
 class Ajaxfonctionspersos extends MY_Controller {
 
-
     public function sessionpourform(){
         
-        $tabsession = array('form' => $_POST['id']);
+        $tabsession = array($_POST['form'] => $_POST['id']);
         $this->session->set_userdata($tabsession);
     }
 }
