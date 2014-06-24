@@ -125,7 +125,7 @@ class Fonctionspersos {
             if ($sup != NULL) {
                 echo "  <script> 
                             function confirme_supprimer(idDossier) {
-                            if (confirm('Voulez-vous vraimment supprimer l\'énergie n=' + idDossier)) {
+                            if (confirm('Voulez-vous vraimment supprimer l\'entrée numéro ' + idDossier)) {
                                 $.post(
                                         '../".$sup."',
                                         {'id': idDossier},

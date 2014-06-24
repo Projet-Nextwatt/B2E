@@ -54,13 +54,14 @@
 
         <div class='row form-group'>
             <label class="col-sm-4 no-padding-right control-label" for='Prix'>Prix du kWh</label>
-            <div class="col-sm-4">
+            <div class="input-group col-sm-4">
                 <input type="text" 
                        name="Prix" 
                        id='Prix' 
                        value="<?php if (empty($_POST) AND isset($energie)) { echo $energie['Prix'];} else { echo set_value('Prix');} ?>" 
                        class='form-control'
                 />
+                <!--<span class="input-group-addon"> €</span>-->
             </div>
             <div class="col-sm-4">
                 <?php echo form_error('Prix'); ?>
