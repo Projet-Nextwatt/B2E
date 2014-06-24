@@ -20,8 +20,7 @@ class User extends DataMapper {
     var $Nom = "";
     var $Prenom = "";
     var $Email = "";
-    var $Tel_1 = "";
-    var $Tel_2 = "";
+    var $Tel = "";
     var $Date_Ajout = "";
     var $Derniere_Connexion = "";
     var $Actif = "";
@@ -32,14 +31,33 @@ class User extends DataMapper {
         parent ::__construct();
     }
     
-    function select_user()
+    function select_user($id  =NULL)
     {
-        //Fonction de selection
+        $users = new User();
+        if ($id != NULL) {
+            $users->where('ID_User', $id);
+            $users->get();
+            $retour=$users->all_to_array();
+            return $retour['0'];
+        } else {
+            $users->get();
+            return $users->all_to_array();
+        }
     }
     
-    function ajouter_user()
+    function ajouter_user($data)
     {
-        // Fonction d'ajout
+        $user = array(
+            'Login' => $data['Identifiant'],
+            'Password' => $data['mdp'],
+            'ID_Categorie' => $data['categorie'],
+            'Prenom' => $data['prenom'],
+            'Nom' => $data['nom'],
+            'Email' => $data['email'],
+            'Tel' => $data['tel'],
+        );
+
+        $this->db->insert('users', $user);
     }
     
     function modifier_user()

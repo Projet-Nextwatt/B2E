@@ -12,7 +12,7 @@
 <div class="row">
     </br></br></br></br>
     <div align="center" class="col-xl-14">
-        <a href="<?php echo site_url("user/add_user"); ?>">
+        <a href="<?php echo site_url("CI_user/add_user"); ?>">
             <button type="button" class="btn btn-success">
                 <i class="ace-icon fa  fa-user"></i>
                 Faire un nouveau utilisateur

@@ -3,7 +3,6 @@
 
 <div class="ace-settings-container" id="ace-settings-container">
     <!-- settings box goes here -->
-    <p>Ace-setting...</p>
 </div>
 
 <div class="page-header">
@@ -24,7 +23,7 @@
             $attributes = array('role' => 'form', 'id' => 'myform', 'class' => 'form-horizontal');
             $hidden = array();
             if (isset($energie)) {
-                $hidden = array('ID_PrixEnergie' => $energie['ID_PrixEnergie'],'Energie'=>$energie['Energie']);
+                $hidden = array('id' => $energie['id'],'Energie'=>$energie['Energie']);
                 echo form_open('parametre/modif_energie', $attributes, $hidden);
             }
             else
@@ -39,7 +38,10 @@
                 <input type="text" 
                        name="Energie" 
                        id='Energie' 
-                       value="<?php if (empty($_POST) AND isset($energie)) { echo $energie['Energie']; } else { echo set_value('Energie'); }  ?>" 
+                       value="<?php if (empty($_POST) AND isset($energie)) { 
+                                        echo $energie['Energie']; 
+                                    } else { 
+                                        echo set_value('Energie'); }  ?>" 
                        class='form-control'
                        <?php if (isset($energie)) { echo 'disabled'; }  ?>
                 />

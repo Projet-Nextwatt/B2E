@@ -8,14 +8,14 @@
 class Prixenergie extends DataMapper {
     /*
      * Variables correspondantes aux colonnes de la table.
-     */
-
-    var $ID_PrixEnergie = "";
-    var $Energie = "";
-    var $Prix = "";
-    var $Inflation = "";
-    var $CO2 = "";
-    var $Abonnement = "";
+     * 
+    id      ancien ID_PrixEnergie
+    Energie 
+    Prix
+    Inflation
+    CO2
+    Abonnement
+    */
 
     function __construct() {
         parent ::__construct();
@@ -23,7 +23,7 @@ class Prixenergie extends DataMapper {
 
     function __toString() {
         return "<p>" .
-                "ID->" . $this->ID_PrixEnergie . "<br/>" .
+                "ID->" . $this->id . "<br/>" .
                 "Energie->" . $this->Energie . "<br/>" .
                 "Prix->" . $this->Prix . "<br/>" .
                 "Inlfation->" . $this->Inflation . "<br/>" .
@@ -35,9 +35,9 @@ class Prixenergie extends DataMapper {
     function select_prixenergie($id = NULL) {
         $energies = new Prixenergie();
         if ($id != NULL) {
-            $energies->where('ID_PrixEnergie', $id);
+            $energies->where('id', $id);
             $energies->get();
-            $retour=$energies->all_to_array();
+            $retour = $energies->all_to_array();
             return $retour['0'];
         } else {
             $energies->get();
@@ -67,20 +67,25 @@ class Prixenergie extends DataMapper {
 
     function modifier_prixenergie($data) {
         //Fonction de modification        
-        $id=$data['ID_PrixEnergie'];
-        unset ($data['ID_PrixEnergie']);
-        
+        $id = $data['id'];
+        unset($data['id']);
+
         $energie = new Prixenergie();
-        //$energie->where('ID_PrixEnergie', $id)->get();
+        $energie->where('id', $id)->get();
         //Appliquer les datas
-        //$energie->save()
-                
-        return $energie->where('ID_PrixEnergie', $id)->update($data);
         
+        foreach ($data as $variable => $valeur) {
+            $energie->$variable = $valeur;
+        }
+        return $energie->save();
+
+        // return $energie->where('ID_PrixEnergie', $id)->update($data);
     }
 
-    function supprimer_prixenergie($data) {
-        //Fonction de suppression
-    }
+    function supprimer_prixenergie($id) {
+        $energie = new Prixenergie();
+        $energie->where('id', $id)->get();
 
+        $energie->delete();
+    }
 }

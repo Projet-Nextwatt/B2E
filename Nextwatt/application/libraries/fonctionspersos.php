@@ -3,15 +3,39 @@
 class Fonctionspersos {
 
 
-    public function creerTableau(array $contenu, array $entetes = NULL, $form = NULL) {
+    public function creerTableau(   array $contenu, 
+                                    array $entetes = NULL,
+                                    $form = NULL,
+                                    $sup = NULL) {
+        /* EXPLIQIATION
+         * Fonction qui affiche un tableau bootStrapé / Acé
+         * |||Attend un Array de données
+         * 
+         * en options
+         * |||Attend OU PAS un array pour les entetes
+         * ----- Pas d'entete --> indexs du tableau de données 
+         *                        (genre pour les bases de données
+         * 
+         * |||Attend l'adresse du controleur de MODIFICATION 
+         *       et crée le bouton d'envoi au formualaire
+         * ----- et stocke l'id de la ligne à modifier dans 
+         *       SESSION["adresse du formalaire"],
+         *       les session sont celle de code ignter
+         * 
+         * ||Attend l'adresse du controleur de suppression
+         *       et creer un bouton de suppression
+         *       avec pop-up de confirmation
+         */
+        
+        
         if ($contenu == NULL OR ( isset($contenu[0]) AND $contenu[0] == '')) {
             echo '<h2>Attention: Aucune donn&eacutees &agrave; afficher dans le tableau</h2>';
         } else {
-            //Requette pour voir si le tableau posède une colonne ID_*
+            //Requette pour voir si le tableau posède une colonne "id" 
             $presenceDunID = false;
             $tableau1 = current($contenu);
             foreach ($tableau1 as $nomDeLaColonne => $contenuDeLaColonne) {
-                if (preg_match('#^ID#', $nomDeLaColonne)) {
+                if (preg_match('#^id#', $nomDeLaColonne)) {
                     $presenceDunID = $nomDeLaColonne; //Je stocke l'index de la colonne ID dans la varaible $presenceDunID
                 }
             }
@@ -25,12 +49,11 @@ class Fonctionspersos {
             }
 
 
-            //Lancement d'un compteur pour identifier les colonnes
-            $id = 0;
+            //Ouvertre du tableau
             echo '<div class="table-responsive">';
             echo '<table class="table table-striped table-bordered table-hover">';
 
-            //En-tete
+        //En-tete
             echo '<thead>' . "\n";
             echo '<tr>' . "\n";
             foreach ($entetes as $entete) {
@@ -38,37 +61,43 @@ class Fonctionspersos {
             }
 
             //Entete du bouton modifier
-            if ($form != NULL) {
+            if ($form != NULL OR $sup != NULL) {
                 echo '<th></th>';
             }
+            
             echo '</tr>' . "\n";
             echo '</thead>' . "\n";
 
-            //Contenu
+        //Contenu
             echo '<tbody>' . "\n";
             foreach ($contenu as $ligne) {
-                echo '<tr id=';
+                echo '<tr ';
                 if (!($presenceDunID == false)) {
-                    echo $ligne[$presenceDunID];
-                } else {
-                    echo $id;
+                    echo 'id='.$ligne[$presenceDunID];
                 }
-                $id++;
 
                 echo '>' . "\n";
                 foreach ($ligne as $cellule) {
                     echo '<td>' . $cellule . '</td>' . "\n";
                 }
 
+                
+                if (($presenceDunID != false) AND ($form != NULL OR $sup != NULL)) {
+                    echo '<td>';
                 //Bouton modifier
-                if ($form != NULL) {
-                    echo '<td><button class = "btn btn-xs btn-info" onclick="modifier(';
-                    if (!($presenceDunID == false)) {
+                    if ($form != NULL) {
+                        echo '<button class = "btn btn-xs btn-info" onclick="modifier(';
                         echo $ligne[$presenceDunID];
-                    } else {
-                        echo $id;
+                        echo ')"><i class = "ace-icon fa fa-pencil bigger-120"></i></button>';
                     }
-                    echo ')"><i class = "ace-icon fa fa-pencil bigger-120"></i></button></td>';
+                
+                //Bouton supprimer
+                    if ($sup != NULL) {
+                        echo '<button class = "btn btn-xs btn-danger" onclick="confirme_supprimer(';
+                        echo $ligne[$presenceDunID];
+                        echo ')"><i class = "ace-icon fa fa-ban bigger-120"></i></button>';
+                    }
+                    echo '</td>';
                 }
 
                 echo '</tr>' . "\n";
@@ -78,16 +107,34 @@ class Fonctionspersos {
             echo '</div>';
 
             //Script qui permet de metre l'identifiant de la ligne à modifier en session codeigniter
+            //La varaible en session aura le nom du 
             if ($form != NULL) {
                 echo "  <script> 
                         function modifier(id){
                             $.post(
                                 '../ajaxfonctionspersos/sessionpourform',
-                                {'id':id},
+                                {'id':id,
+                                 'form':'".$form."'},
                                 function (){
                                     self.location.href='" . site_url($form) . "'                               }
                             );
                         }
+                    </script>";
+            }
+            
+            if ($sup != NULL) {
+                echo "  <script> 
+                            function confirme_supprimer(idDossier) {
+                            if (confirm('Voulez-vous vraimment supprimer l\'énergie n=' + idDossier)) {
+                                $.post(
+                                        '../".$sup."',
+                                        {'id': idDossier},
+                                function() {
+                                      location.reload();
+                                }   
+                            );
+                        }
+                    }
                     </script>";
             }
         }
@@ -113,12 +160,12 @@ class Fonctionspersos {
             {
                 $ligneFichier=	explode('_',								//Pour d�composer la ligne en tableau
                     //convertCarSpe
-                    htmlspecialchars_decode(
+
                         htmlentities(								//Pour convertir les � en &eacute;
                             addslashes( 								//Pour eviteer les probl�me de '
                                 mb_convert_encoding (						//Pour convertir le ANSII vers UTF-8
                                     fgets(
-                                        $fichierCatalogue), 'UTF-8', 'ASCII')))));
+                                        $fichierCatalogue), 'UTF-8', 'ASCII'))));
                 unset($ligneFichier[count($ligneFichier)-1]);				//On vire le dernier caract�re qui est le retour � la ligne
                 if (!(empty($ligneFichier)))			//Si il y a une colone vide, on s'en ocuupe pas
                 {

@@ -43,7 +43,8 @@ class Parametre extends MY_Controller {
         array(
             'field' => 'Energie',
             'label' => 'Energie',
-            'rules' => 'xss_clean|htmlentities|html_entity_decode'
+            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
+                                              //htmlspecialchars_decode($str, ENT_NOQUOTES); Comment je fait pour mettre un flag
         ),
     );
 
@@ -61,7 +62,8 @@ class Parametre extends MY_Controller {
 
         $data['energies'] = $this->prixenergie->select_prixenergie();
         $data['eneteteEnergies'] = array('Id', 'Nom', 'Prix du kWh', 'Inflation', 'Pollution CO<sub>2</sub>', 'Abonnement');
-
+        
+        
         $this->layout->title('Liste des énergies');
         $this->layout->view('B2E/Parametre/Consulter_Energie.php', $data); // Render view and layout
     }
@@ -75,7 +77,7 @@ class Parametre extends MY_Controller {
         if ($this->form_validation->run() == FALSE) {
             //Formualire invalide, retour à celui-ci
             $this->layout->title('Ajouter une energie');
-            $this->layout->view('B2E/Parametre/add_energie.php', $data); // Render view and layout
+            $this->layout->view('B2E/Parametre/Add_Energie.php', $data); // Render view and layout
         } else {
             //Formulaire ok, traitement des données
             //Clean des données
@@ -94,7 +96,7 @@ class Parametre extends MY_Controller {
 
                 //$data['error']=$error;
                 $this->layout->title('Erreur');
-                $this->layout->view('B2E/Parametre/add_energie.php', $data); // Render view and layout
+                $this->layout->view('B2E/Parametre/Add_Energie.php', $data); // Render view and layout
             }
         }
     }
@@ -102,7 +104,7 @@ class Parametre extends MY_Controller {
     public function modif_energie() {
         $this->load->model('Mappage/prixenergie', 'prixenergie'); //Chargement du modele
         $data = array(); //Pour la vue
-        $data['energie']  = $this->prixenergie->select_prixenergie($this->session->userdata('form'));
+        $data['energie']  = $this->prixenergie->select_prixenergie($this->session->userdata('parametre/modif_energie'));
         
 
 
@@ -114,7 +116,7 @@ class Parametre extends MY_Controller {
             
 
             $this->layout->title('Moifier une énergie');
-            $this->layout->view('B2E/Parametre/add_energie.php', $data); // Render view and layout
+            $this->layout->view('B2E/Parametre/Add_Energie.php', $data); // Render view and layout
         } else {
             //Formulaire ok, traitement des données
             //Clean des données
@@ -127,5 +129,10 @@ class Parametre extends MY_Controller {
             }
         }
     }
-
+    
+    
+    public function ajax_supprimer(){
+        $this->load->model('Mappage/prixenergie', 'prixenergie'); //Chargement du modele
+        $this->prixenergie->supprimer_prixenergie($_POST['id']);
+    }
 }

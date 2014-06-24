@@ -15,11 +15,11 @@
 
 
         <?php
-        echo validation_errors();
+        //echo validation_errors();
 
         $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
         $hiden = array();
-        echo form_open('user/verif_form_user', $attributes, $hiden);
+        echo form_open('CI_user/verif_form_user', $attributes, $hiden);
         ?>
         <!--        <form class="form-horizontal" role="form">-->
 
@@ -125,11 +125,18 @@
             </div>
         </div>
 
-        <div algin="center"><input type="submit" value="Submit"/></div>
+        <div class="row form-group">
+            <div class="col-md-offset-4 col-md-4">
+                <button type="submit" class="btn btn-sm btn-info">
+                    <i class="ace-icon fa fa-floppy-o bigger-160"></i>
+                    Enregistrer
+                </button>
+            </div>
+        </div>
 
         <?php echo form_close(); ?>
 
-        <?php var_dump($_POST); ?>
+<!--        --><?php //var_dump($_POST); ?>
 
     </div>
 </div>

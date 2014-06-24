@@ -34,10 +34,11 @@
         <?php
         $this->load->library('fonctionspersos');
         $this->fonctionspersos->creerTableau($ajouts);
+        $this->fonctionspersos->creerTableau($supp);
 
-        var_dump($ajouts);
-        var_dump($bdd);
-        var_dump($fichier);
+//        var_dump($ajouts);
+//        var_dump($bdd);
+//        var_dump($fichier);
 
         ?>
     </div>

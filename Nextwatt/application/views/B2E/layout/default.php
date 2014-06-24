@@ -61,7 +61,7 @@
         <ul class="nav nav-list">
             <!-- first level item -->
             <li>
-                <a href="<?php echo site_url("catalogue"); ?>">
+                <a href="<?php echo site_url("CI_catalogue"); ?>">
                     <i class="menu-icon fa fa-book"></i>
                     Catalogue
                 </a>
@@ -83,7 +83,7 @@
             </li>
             <!-- fourth level item -->
             <li>
-                <a href="<?php echo site_url("user/consult_user"); ?>">
+                <a href="<?php echo site_url("CI_user/consult_user"); ?>">
                     <i class="menu-icon fa fa-users"></i>
                     Utilisateurs
                 </a>

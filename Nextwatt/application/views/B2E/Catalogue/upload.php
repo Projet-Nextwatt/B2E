@@ -12,7 +12,8 @@
 </div>
 
 
-<?= form_open_multipart('test/upload_catalogue_action') ?>
+<?= form_open_multipart('Catalogue/upload_catalogue_action') ?>
+
 <div align="center" class="col-xl-14">
     <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
     Fichier : <input type="file" name="userfile" size="20" />
