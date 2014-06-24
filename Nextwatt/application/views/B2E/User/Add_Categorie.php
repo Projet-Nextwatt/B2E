@@ -155,7 +155,7 @@
                 <span class="lbl"></span>
             </label> 
             <div class="col-sm-4">
-<?php echo form_error('Droit_Edit_Devis'); ?>
+                <?php echo form_error('Droit_Edit_Devis'); ?>
             </div>
         </div>
 
@@ -168,7 +168,7 @@
             </div>
         </div>
 
-<?php echo form_close(); ?>
+        <?php echo form_close(); ?>
     </div>
 </div>
 

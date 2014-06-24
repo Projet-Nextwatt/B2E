@@ -7,7 +7,8 @@ class Fonctionspersos
     public function creerTableau(array $contenu,
                                  array $entetes = NULL,
                                  $form = NULL,
-                                 $sup = NULL)
+                                 $sup = NULL,
+                                 $checkbox = false)
     {
         /* EXPLIQIATION
          * Fonction qui affiche un tableau bootStrapé / Acé
@@ -27,6 +28,10 @@ class Fonctionspersos
          * ||Attend l'adresse du controleur de suppression
          *       et creer un bouton de suppression
          *       avec pop-up de confirmation
+         * 
+         * ||Attend juste un TRUE
+         *       permet de converir les 1 et 0 en chebox validée
+         *       ou en rien du tout
          */
 
 
@@ -49,7 +54,7 @@ class Fonctionspersos
                     $entetes[] = $nomDeLaColonne; //Je stocke l'index de la colonne ID dans la varaible $presenceDunID
                 }
             }
-
+            
 
             //Ouvertre du tableau
             echo '<div class="table-responsive">';
@@ -80,6 +85,19 @@ class Fonctionspersos
 
                 echo '>' . "\n";
                 foreach ($ligne as $cellule) {
+                    
+                    //Modification du texte si c'est l'option checkbox est active
+                    if ($checkbox==true){
+                        if ($cellule == '1'){
+                            //$cellule = '<i class="ace-icon glyphicon glyphicon-ok"></i>';
+                            $cellule = '<i class="fa fa-check-square-o"></i>';
+                        } elseif ($cellule=='0') {
+                            $cellule = '';
+                        }
+                    }
+                    
+                    
+                    
                     echo '<td>' . $cellule . '</td>' . "\n";
                 }
 

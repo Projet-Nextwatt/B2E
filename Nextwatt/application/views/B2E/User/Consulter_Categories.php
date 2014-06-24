@@ -24,9 +24,9 @@
         <br/>
         <div class="row">
             <div class="col-xs-12">
-                <div class="panel panel-info">
+                <div class="panel panel-success">
                     <div class="panel-heading align-left">Liste des catégories</div>
-                    <?php $this->fonctionspersos->creerTableau($categories, array() , 'CI_user/modifcategorie','CI_user/ajax_supprimercategorie '); ?>
+                    <?php $this->fonctionspersos->creerTableau($categories, array() , 'CI_user/modifcategorie','CI_user/ajax_supprimercategorie ',true); ?>
                 </div>
             </div>
         </div>
