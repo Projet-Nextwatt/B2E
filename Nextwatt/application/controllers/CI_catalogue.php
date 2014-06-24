@@ -49,7 +49,7 @@ class CI_Catalogue extends MY_Controller
     public function upload_catalogue_form()
     {
         $this->layout->title('Upload de catalogue');
-        $this->layout->view('B2E/Catalogue/upload'); //render view and layout
+        $this->layout->view('B2E/Catalogue/Charger_Catalogue'); //render view and layout
     }
 
     public function upload_catalogue_action()
@@ -87,9 +87,6 @@ class CI_Catalogue extends MY_Controller
 
     public function create_tab_ajout_bdd()
     {
-        //Remplissage de la variable $data avec l'image pour le layout
-        $data = array();
-        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
 
         $this->load->model('Mappage/catalogue', 'catalogue');
         $refbdd = $this->catalogue->get_ref_bdd();
@@ -97,6 +94,7 @@ class CI_Catalogue extends MY_Controller
         $this->load->library('fonctionspersos');
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
 
+        $ajoutbdd = array();
         $i=0;
 
         foreach ($refbdd as $rfbdd) {
@@ -111,19 +109,20 @@ class CI_Catalogue extends MY_Controller
 
     public function create_tab_supp_bdd()
     {
-        //Remplissage de la variable $data avec l'image pour le layout
-        $data = array();
-        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
 
         $this->load->model('Mappage/catalogue', 'catalogue');
-        $refbdd = $this->catalogue->get_ref_bdd();
+        $refbdd = $this->catalogue->get_full_bdd();
 
         $this->load->library('fonctionspersos');
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
 
+        $suppbdd = array();
+        $i=0;
+
         foreach ($refbdd as $rfbdd) {
             foreach ($fichier as $fich) {
-                $suppbdd = array_diff($rfbdd, $fich);
+                $suppbdd[$i] = array_diff($rfbdd, $fich);
+                $i++;
             }
         }
 
@@ -145,10 +144,19 @@ class CI_Catalogue extends MY_Controller
 
         $data['ajouts'] = $ajoutbdd;
         $data['supp'] = $suppbdd;
+        $data['fichier'] = $fichier;
 
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Catalogue B2E');
-        $this->layout->view('Essais/catalogue_diff', $data);
+        $this->layout->view('B2E/Catalogue/catalogue_diff', $data);
     }
+
+    public function validercatalogue($newcatalogue)
+    {
+        $this->load->model('Mappage/catalogue', 'catalogue');
+        $this->catalogue->updatecatalogue($newcatalogue);
+    }
+
+
 
 }

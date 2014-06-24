@@ -119,4 +119,15 @@ class Catalogue extends DataMapper
 //
 //        return retour_catalogue;
     }
+
+    function updatecatalogue($fichier)
+    {
+        foreach($fichier as $produit)
+        {
+            foreach($produit as $line)
+            {
+                $newfichier =  htmlspecialchars_decode($line,ENT_NOQUOTES);
+            }
+        }
+    }
 }
