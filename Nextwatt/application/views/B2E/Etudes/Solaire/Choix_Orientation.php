@@ -86,13 +86,13 @@
     </div>
 </div>
 <br/>
-<span class="choixorient">
+<h3 class="choixorient" align="center">
     <?php
     if($this->session->userdata('Orientation'))
         echo "Orientation choisie : " . $this->session->userdata('Orientation');
     ?>
 
-</span>
+</h3>
 
 <ul class="pager">
     <li class="previous">

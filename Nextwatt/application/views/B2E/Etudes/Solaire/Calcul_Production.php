@@ -4,9 +4,9 @@
         <small><i class="ace-icon fa fa-angle-double-right"></i> Production par an</small>
     </h1>
 </div>
-<h4 align="center">Veuillez renseigner les champs ci-dessous.</h4>
-
 <div class="row form-horizontal">
+    <h4 align="center">Veuillez renseigner les champs ci-dessous.</h4>
+
     <div class="col-sm-12 ">
         <div class='form-group'>
             <label class="col-sm-6 no-padding-right control-label" for='Systeme'>Système : </label>
@@ -58,7 +58,33 @@
                 ?>
             </div>
         </div>
-        <div align="center"><?php echo form_submit('calculprod', 'valider'); ?></div>
+        <div class='form-group hidden'>
+            <label class="col-sm-6 no-padding-right control-label" for='Bonus'>Bonus : </label>
+
+            <div class="col-sm-6">
+                <?php
+                if ($this->session->userdata['Heppnet']) {
+                    $value = $this->session->userdata['Heppnet'];
+                } else {
+                    $value = '';
+                }
+
+                $heppnet = array(
+
+                    'name' => 'heppnet',
+
+                    'id' => 'heppnet',
+
+                    'placeholder' => 'heppnet',
+
+                    'value' => $value
+
+                );
+                echo form_input($heppnet);
+                ?>
+            </div>
+        </div>
+        <div align="center"><?php echo form_submit('calculprod', 'Valider', 'class="btn btn-success btn-sm"'); ?></div>
     </div>
 </div>
 

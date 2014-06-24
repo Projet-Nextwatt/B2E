@@ -59,7 +59,7 @@ class PV extends MY_Controller
                 'link' => site_url("pv/calculmasque")
             ),
             array(
-                'title' => 'HEPP NETTE',
+                'title' => 'HEPP nette',
                 'actif' => '',
                 'link' => site_url("pv/calculhepp")
             ),
@@ -112,7 +112,7 @@ class PV extends MY_Controller
                 'link' => site_url("pv/calculmasque")
             ),
             array(
-                'title' => 'HEPP NETTE',
+                'title' => 'HEPP nette',
                 'actif' => '',
                 'link' => site_url("pv/calculhepp")
             ),
@@ -169,7 +169,7 @@ class PV extends MY_Controller
                 'link' => site_url("pv/calculmasque")
             ),
             array(
-                'title' => 'HEPP NETTE',
+                'title' => 'HEPP nette',
                 'actif' => '',
                 'link' => site_url("pv/calculhepp")
             ),
@@ -215,7 +215,7 @@ class PV extends MY_Controller
                 'link' => site_url("pv/calculmasque")
             ),
             array(
-                'title' => 'HEPP NETTE',
+                'title' => 'HEPP nette',
                 'actif' => 'active',
                 'link' => site_url("pv/calculhepp")
             ),
@@ -262,7 +262,7 @@ class PV extends MY_Controller
                 'link' => site_url("pv/calculmasque")
             ),
             array(
-                'title' => 'HEPP NETTE',
+                'title' => 'HEPP nette',
                 'actif' => '',
                 'link' => site_url("pv/calculhepp")
             ),
@@ -308,7 +308,7 @@ class PV extends MY_Controller
                 'link' => site_url("pv/calculmasque")
             ),
             array(
-                'title' => 'HEPP NETTE',
+                'title' => 'HEPP nette',
                 'actif' => '',
                 'link' => site_url("pv/calculhepp")
             ),
@@ -354,7 +354,7 @@ class PV extends MY_Controller
                 'link' => site_url("pv/calculmasque")
             ),
             array(
-                'title' => 'HEPP NETTE',
+                'title' => 'HEPP nette',
                 'actif' => '',
                 'link' => site_url("pv/calculhepp")
             ),
@@ -376,10 +376,13 @@ class PV extends MY_Controller
         );
 
         $this->layout->breadcrumbs($breadcrumps);
-        $this->layout->title('Recette.php B2E');
+        $this->layout->title('Récap B2E');
         $this->layout->js(js_url('etudesolaire'));
         $this->layout->function_js('anneeProd()');
         $this->layout->function_js('cumulProd()');
+        $this->layout->function_js('anneetarif()');
+        $this->layout->function_js('anneeflouz()');
+        $this->layout->function_js('cumulflouz()');
         $this->layout->view('B2E/Etudes/Solaire/Recette.php'); // Render view and layout
     }
 
@@ -522,6 +525,16 @@ class PV extends MY_Controller
 
             $tabrecette = array('annuelle' => $recetteannuelle, 'vingtans' => $recettevingtnans); // Création tableau avec recette annuelle et sur 20 ans
             $jsonrecette = json_encode($tabrecette); // Création du JSON avec le tableau
+
+            $tabsession = array(
+                'HEPP' => $this->session->userdata('HEPP'),
+                'Orientation' => $this->session->userdata('Orientation'),
+                'Ratioc' => $this->session->userdata('Ratioc'),
+                'Heppnet' => $this->session->userdata('Heppnet'),
+                'Raccordement' => $this->session->userdata('Raccordement'),
+                'Production' => $_POST['production'],
+                'Tarifedf' => $_POST['tarifedf']);
+            $this->session->set_userdata($tabsession);
             echo $jsonrecette; // Envoi du JSON
         } else {
             $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
@@ -579,15 +592,16 @@ class PV extends MY_Controller
     public
     function ajax_tarif()
     {
-        if (isset($_POST['tarifAnneeZero']) && isset($_POST['raccordement'])) {
-            $tarifAnneeZero = $_POST['tarifAnneeZero'];
-            $raccordement = $_POST['raccordement'];
+        $Tarifedf = $this->session->userdata('Tarifedf');
+        $raccordement = $this->session->userdata('Raccordement');
+        if (isset($Tarifedf) && isset($raccordement)) {
+            $tarifAnneeZero = $Tarifedf;
             $raisonTarif = 1 + ($raccordement / 100); // Raison tarif
 
             for ($i = 0; $i < 20; $i++) {
                 $raisonTarifPuissance = pow($raisonTarif, $i);
                 $tarifAnneeChoisie = $tarifAnneeZero * $raisonTarifPuissance;
-                $ligneTarif[$i] = $tarifAnneeChoisie;
+                $ligneTarif[$i] = round($tarifAnneeChoisie,2);
             }
 
             $jsonTarif = json_encode($ligneTarif);
@@ -601,10 +615,10 @@ class PV extends MY_Controller
     public
     function ajax_anneeflouz()
     {
-        if (isset($_POST['tarifAnneeZero']) && isset($_POST['productionAnneeZero']) && isset($_POST['raccordement'])) {
-            $tarifAnnee = $_POST['tarifAnneeZero'];
-            $productionAnneeZero = $_POST['productionAnneeZero'];
-            $raccordement = $_POST['raccordement'];
+        $tarifAnnee = $this->session->userdata('Tarifedf');
+        $raccordement = $this->session->userdata('Raccordement');
+        $productionAnneeZero = $this->session->userdata('Production');
+        if (isset($tarifAnnee) && isset($raccordement) && isset($productionAnneeZero)) {
             $ligneFlouz = '';
 
             $flouzTotal = $tarifAnnee * $productionAnneeZero;
@@ -630,10 +644,10 @@ class PV extends MY_Controller
     public
     function ajax_cumulflouz()
     {
-        if (isset($_POST['tarifAnneeZero']) && isset($_POST['productionAnneeZero']) && isset($_POST['raccordement'])) {
-            $tarifAnnee = $_POST['tarifAnneeZero'];
-            $productionAnneeZero = $_POST['productionAnneeZero'];
-            $raccordement = $_POST['raccordement'];
+        $tarifAnnee = $this->session->userdata('Tarifedf');
+        $raccordement = $this->session->userdata('Raccordement');
+        $productionAnneeZero = $this->session->userdata('Production');
+        if (isset($tarifAnnee) && isset($raccordement) && isset($productionAnneeZero)) {
             $ligneFlouz = '';
 
             $flouzTotal = $tarifAnnee * $productionAnneeZero;

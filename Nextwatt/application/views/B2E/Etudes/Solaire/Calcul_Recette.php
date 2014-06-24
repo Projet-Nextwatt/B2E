@@ -13,15 +13,20 @@
 
             <div class="col-sm-6">
                 <?php
+                if ($this->session->userdata('Production')) {
+                    $value = $this->session->userdata('Production');
+                } else {
+                    $value = '';
+                }
                 $production = array(
 
-                    'name' => 'production',
+                    'name' => 'Production',
 
-                    'id' => 'production',
+                    'id' => 'Production',
 
                     'placeholder' => 'Production',
 
-                    'value' => set_value('Production')
+                    'value' => $value
 
                 );
                 echo form_input($production);
@@ -33,23 +38,38 @@
 
             <div class="col-sm-6">
                 <?php
+                if ($this->session->userdata('Tarifedf')) {
+                    $value = $this->session->userdata('Tarifedf');
+                } else {
+                    $value = '';
+                }
                 $tarifedf = array(
 
                     'name' => 'tarifedf',
 
                     'id' => 'tarifedf',
 
-                    'placeholder' => 'Tarif EDF'
+                    'placeholder' => 'Tarif EDF',
+                    'value' => $value
                 );
                 echo form_input($tarifedf);
                 ?>
             </div>
         </div>
 
-        <div align="center"><?php echo form_submit('recetteannuelles', 'valider'); ?></div>
+        <div align="center"><?php echo form_submit('recetteannuelles', 'Valider','class="btn btn-success btn-sm"'); ?></div>
     </div>
 </div>
-
-<br/>
 <h3 align="center" id="recetteannuelle"></h3>
 <h3 align="center" id="recettevingtans"></h3>
+<div class="col-xs-12">
+    <ul class="pager">
+        <li class="previous">
+            <a href="<?php echo site_url("pv/calculprod"); ?>">← Calculer Production</a>
+        </li>
+
+        <li class="next">
+            <a href="<?php echo site_url("pv/recette"); ?>">Récapitulatif →</a>
+        </li>
+    </ul>
+</div>

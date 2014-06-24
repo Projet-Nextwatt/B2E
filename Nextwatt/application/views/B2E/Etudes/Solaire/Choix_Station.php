@@ -12,38 +12,40 @@ $region = NULL;
 
 </div>
 
-<span id="position"></span>
-<form name='formhepp' ">
-<select name='station' id='station'>
-    <?php
-    if (isset($station)) {
-    foreach ($station as $ensol) {
-    if ($ensol['Region'] != $region) {
-    ?>
-    <optgroup label="<?php echo $ensol['Region'] ?>">
-        <?php $region = $ensol['Region'];
-        } ?>
-        <option value="<?php echo $ensol['ID_Ensoleillement'] ?>"><?php echo $ensol['Ville'] ?></option>
-        <?php
+<div class="row form-horizontal">
+    <div class="col-sm-12 ">
+        <label class="col-sm-6 no-padding-right control-label" for='station'>Station : </label>
 
-        }
-        }
-        ?>
-</select>
-</form>
+        <div class="col-sm-6">
+            <select name='station' id='station'>
+                <?php
+                if (isset($station)) {
+                foreach ($station as $ensol) {
+                if ($ensol['Region'] != $region) {
+                ?>
+                <optgroup label="<?php echo $ensol['Region'] ?>">
+                    <?php $region = $ensol['Region'];
+                    } ?>
+                    <option value="<?php echo $ensol['ID_Ensoleillement'] ?>"><?php echo $ensol['Ville'] ?></option>
+                    <?php
 
+                    }
+                    }
+                    ?>
+            </select>
+        </div>
+    </div>
+    <br/>
 
-<fieldset style="display: inline">
-    <legend>R&eacute;sultat</legend>
-    <span class="HEPP"></span>
-</fieldset>
+    <h3 align="center" class="HEPP"></h3>
 
-<ul class="pager">
-    <li class="previous">
-        <a href="<?php echo site_url("dossier/consult_dossier"); ?>">← Accueil Dossier</a>
-    </li>
+    <ul class="pager">
+        <li class="previous">
+            <a href="<?php echo site_url("dossier/consult_dossier"); ?>">← Accueil Dossier</a>
+        </li>
 
-    <li class="next">
-        <a href="<?php echo site_url("pv/choixorientation"); ?>">Orientation →</a>
-    </li>
-</ul>
+        <li class="next">
+            <a href="<?php echo site_url("pv/choixorientation"); ?>">Orientation →</a>
+        </li>
+    </ul>
+</div>

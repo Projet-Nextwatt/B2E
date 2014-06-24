@@ -4,43 +4,53 @@
         <small><i class="ace-icon fa fa-angle-double-right"></i> Calculer le masque</small>
     </h1>
 </div>
+<div class="row form-horizontal">
+    <h4 align="center">Pertes dues au masques.</h4>
 
-<fieldset style="display: inline-block">
-    <legend>Pertes dues au masques</legend>
-    <span> Ratio C (100% - perte): </span>
-    <?php
-    $value = '100';
+    <div class="col-sm-12 ">
+        <div class='form-group'>
+            <label class="col-sm-6 no-padding-right control-label" for='ratioc'>Ratio C (100% - perte): </label>
 
-    if(isset($this->session->userdata['Ratioc'])){
-        $value = $this->session->userdata['Ratioc'];
-    }
+            <div class="col-sm-6">
+                <?php
+                $value = '100';
+
+                if (isset($this->session->userdata['Ratioc'])) {
+                    $value = $this->session->userdata['Ratioc'];
+                }
 
 
-    $ratioc = array(
+                $ratioc = array(
 
-        'name' => 'ratioc',
+                    'name' => 'ratioc',
 
-        'id' => 'ratioc',
+                    'id' => 'ratioc',
 
-        'placeholder' => '100%',
+                    'placeholder' => '100%',
 
-        'value' => $value
+                    'value' => $value
 
-    );
-    echo form_input($ratioc);
-    echo form_submit('envoiratioc', 'valider');
-    ?>
-    <br/>
-    <span class="resultratioc">
+                );
+                echo form_input($ratioc); ?>
+            </div>
+        </div>
+
+        <div align="center">
+            <?php
+            echo form_submit('envoiratioc', 'Valider','class="btn btn-success btn-sm"');
+            ?>
+        </div>
+        <br/>
+    <h3 class="resultratioc" align="center">
         <?php
-        if(isset($this->session->userdata['Ratioc']) && $this->session->userdata['Ratioc'] !=''){
+        if (isset($this->session->userdata['Ratioc']) && $this->session->userdata['Ratioc'] != '') {
             echo "Ration C : <span id='resultratioc'>" . $this->session->userdata['Ratioc'] . " %</span>";
         }
         ?>
 
-    </span>
-</fieldset>
-
+    </h3>
+    </div>
+</div>
 
 
 <ul class="pager">
