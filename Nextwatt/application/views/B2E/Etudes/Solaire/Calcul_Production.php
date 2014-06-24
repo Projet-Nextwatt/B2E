@@ -29,26 +29,17 @@
             </div>
         </div>
         <div class='form-group'>
-            <label class="col-sm-6 no-padding-right control-label" for='HeppNet'>HEPP NET : </label>
+            <label class="col-sm-6 no-padding-right control-label" for='HeppNet'>Raccordement : </label>
 
             <div class="col-sm-6">
                 <?php
-                if (isset($this->session->userdata['Heppnet']) && $this->session->userdata['Heppnet'] != ''){
-                    $value = $this->session->userdata['Heppnet'];
-                }else{
-                    $value = '';
-                }
-                $heppnet = array(
-
-                    'name' => 'heppnet',
-
-                    'id' => 'heppnet',
-
-                    'placeholder' => ' HEPP net',
-                    'value' => $value
-
+                $id = 'id="raccordement"';
+                $option = array(
+                    '2' => ' Raccordé (2 %)',
+                    '10' => ' Isolé (10 %)'
                 );
-                echo form_input($heppnet);
+
+                echo form_dropdown('raccordement', $option, '', $id);
                 ?>
             </div>
         </div>
@@ -63,7 +54,7 @@
                     '10' => ' Bonus de 10%'
                 );
 
-                echo form_dropdown('Raccordementflouz', $option, '', $id);
+                echo form_dropdown('bonus', $option, '', $id);
                 ?>
             </div>
         </div>
@@ -80,6 +71,6 @@
     </li>
 
     <li class="next">
-        <a href="<?php echo site_url("pv/recette"); ?>">Recette →</a>
+        <a href="<?php echo site_url("pv/calculrecette"); ?>">Recette →</a>
     </li>
 </ul>

@@ -1,6 +1,9 @@
 /**
  * Created by Kévin Nérino on 13/06/14.
  */
+function isInt(n) {
+    return n % 1 == 0;
+}
 function geolocalisestation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -23,14 +26,13 @@ function geolocalisestation() {
             );
         })
     }
-}
-;
+};
 
 function preselectstation(idEnsol) {
     $.post(
         'ajax_heppstation',
         {
-            idVille: {keyname : idEnsol}
+            idVille: {keyname: idEnsol}
         },
         function (data) {
             if (data) {
@@ -85,9 +87,12 @@ $('input[name="envoiratioc"]').click(function () {
             ratioc: ratioc
         },
         function (data) {
-            if (data) {
+            if (data && isInt(ratioc) && ratioc != '') {
                 $(".resultratioc").html("Ration C : <span id='resultratioc'>" + data + " %</span>");
+            } else {
+                $(".resultratioc").html("<span class='text-danger'>RatioC vide ou non numérique</span> ");
             }
+
         },
         'text'
     );
@@ -109,7 +114,7 @@ function calculhepp() {
                 data = parseInt(data);
                 $("#heppnette").html("Résultat : " + data + " h/an");
                 $("#heppnet").val(data);
-            }else{
+            } else {
                 $("#heppnette").html("<span class='text-danger'>Calcul impossible donnée(s) manquante(s)</span> ");
             }
         },
@@ -118,20 +123,20 @@ function calculhepp() {
 };
 $('input[name="calculprod"]').click(function () {
     var systeme = document.getElementById('systeme').value;
-    var heppnet = document.getElementById('heppnet').value;
+    var raccordement = $('#raccordement').val();
     var bonus = $('#bonus').val();
     $.post(
         'ajax_calculprod',
         {
             systeme: systeme,
-            heppnet: heppnet,
+            raccordement: raccordement,
             bonus: bonus
         },
         function (data) {
             if (data != 0) {
                 $("#resultprod").html("Production : <span id='prodcalc'>" + data + "</span> kWh/an");
                 $('#production').val(data);
-            }else{
+            } else {
                 $("#resultprod").html("<span class='text-danger'>Calcul impossible donnée(s) manquante(s)</span> ");
             }
         },
@@ -150,60 +155,72 @@ $('input[name="recetteannuelles"]').click(function () {
         function (data) {
             if (data) {
                 var recette = JSON.parse(data)
-                $("#recetteannuelle").html("Recette annuelle : <span id='tarifannuel'>" + recette.annuelle + "</span> &euro;/kWh");
-                $("#recettevingtans").html("Recette sur 20 ans : " + recette.vingtans + " &euro;/ sur 20 ans");
+                $("#recetteannuelle").html("Recette.php annuelle : <span id='tarifannuel'>" + recette.annuelle + "</span> &euro;/kWh");
+                $("#recettevingtans").html("Recette.php sur 20 ans : " + recette.vingtans + " &euro;/ sur 20 ans");
             }
         },
         'text'
     );
 });
-$('input[name="BTNanneeprod"]').click(function () {
-    var prodAnneeZero = document.getElementById('prodcalc').innerHTML;
+function anneeProd() {
     $.post(
         'ajax_prodannuelle',
-        {
-            prodanneezero: prodAnneeZero
-        },
+        {},
         function (data) {
             if (data) {
                 var prodAnnuelle = JSON.parse(data);
-                var content = "<table>"
-                $.each(prodAnnuelle, function (annee, prodAnnuelle) {
-                    content += '<tr><td>' + 'Production pour l\'ann&eacute;e ' + (annee + 1) + ' : ' + prodAnnuelle + ' kWh/an </td></tr>';  // Création des lignes du tableau
-                });
-                content += "</table>"
 
-                $('#prodannuelle').empty();
-                $('#prodannuelle').append(content);
+                $('#Prod1').html(prodAnnuelle[0]);
+                $('#Prod2').html(prodAnnuelle[1]);
+                $('#Prod3').html(prodAnnuelle[2]);
+                $('#Prod10').html(prodAnnuelle[9]);
+                $('#Prod15').html(prodAnnuelle[14]);
+                $('#Prod20').html(prodAnnuelle[19]);
+
+
+//                console.log(prodAnnuelle[2]);
+//                var content = "<table>"
+//                $.each(prodAnnuelle, function (annee, prodAnnuelle) {
+//                    content += '<tr><td>' + 'Production pour l\'ann&eacute;e ' + (annee + 1) + ' : ' + prodAnnuelle + ' kWh/an </td></tr>';  // Création des lignes du tableau
+//                });
+//                content += "</table>"
+//
+//                $('#prodannuelle').empty();
+//                $('#prodannuelle').append(content);
             }
         },
         'text'
     );
-});
-$('input[name="BTNcumulprod"]').click(function () {
-    var prodAnneeZero = document.getElementById('prodcalc').innerHTML;
+};
+function cumulProd() {
     $.post(
         'ajax_cumulprod',
-        {
-            prodanneezero: prodAnneeZero
-        },
+        {},
         function (data) {
             if (data) {
                 var prodCumulee = JSON.parse(data);
-                var content = "<table>"
-                $.each(prodCumulee, function (annee, prodCumulAnnee) {
-                    content += '<tr><td>' + 'Production cumul&eacute; jusqu\'&acirc; l\'ann&eacute;e ' + (annee + 1) + ' : ' + prodCumulAnnee + ' kWh </td></tr>';
-                });
-                content += "</table>"
 
-                $('#prodcumulee').empty();
-                $('#prodcumulee').append(content);
+                $('#ProdCumul1').html(prodCumulee[0]);
+                $('#ProdCumul2').html(prodCumulee[1]);
+                $('#ProdCumul3').html(prodCumulee[2]);
+                $('#ProdCumul10').html(prodCumulee[9]);
+                $('#ProdCumul15').html(prodCumulee[14]);
+                $('#ProdCumul20').html(prodCumulee[19]);
+
+//                var content = "<table>"
+//                $.each(prodCumulee, function (annee, prodCumulAnnee) {
+//                    content += '<tr><td>' + 'Production cumul&eacute; jusqu\'&acirc; l\'ann&eacute;e ' + (annee + 1) + ' : ' + prodCumulAnnee + ' kWh </td></tr>';
+//                });
+//                content += "</table>"
+//
+//                $('#prodcumulee').empty();
+//                $('#prodcumulee').append(content);
             }
         },
         'text'
     );
-});
-$('input[name="BTNtarif"]').click(function () {
+};
+function tarif() {
     var tarifAnneeZero = $('#tarifedf').val();
     var raccordement = $('#raccordementflouz').val();
     $.post(
@@ -227,7 +244,7 @@ $('input[name="BTNtarif"]').click(function () {
         },
         'text'
     );
-});
+};
 $('input[name="BTNanneeflouz"]').click(function () {
     var tarifAnneeZero = $('#tarifedf').val(); // Récup le tarif à l'année zéro
     var productionAnneeZero = document.getElementById('prodcalc').innerHTML; // Récup la prod à l'année zéro
@@ -418,5 +435,6 @@ function canvasorient() {
 
 
     }
+
 }
 

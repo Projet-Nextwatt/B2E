@@ -8,24 +8,7 @@ class PV extends MY_Controller
     public function index()
     {
 
-//        $this->load->model('Mappage/ensoleillement', 'ensoleillement');
-//
-//        $data = array();
-//        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
-//
-//        //Image
-//        $data['tablorientation'] = img_url('Tableau-orientation.png');
-//        $data['quinze'] = img_url('15.png');
-//        $data['vingt'] = img_url('20.png');
-//        $data['trente'] = img_url('30.png');
-//        $data['quarantecinq'] = img_url('45.png');
-//        $data['soixante'] = img_url('60.png');
-//
-//
-//        $data['station'] = $this->ensoleillement->select_ensoleillement();
-//        $this->layout->title('Accueil B2E');
-//        $this->layout->js(js_url('etudesolaire'));
-//        $this->layout->view('B2E/Etudes/Solaire/Etude_Solaire', $data); // Render view and layout
+
     }
 
     public function etudecomplete()
@@ -84,6 +67,16 @@ class PV extends MY_Controller
                 'title' => 'Production',
                 'actif' => '',
                 'link' => site_url("pv/calculprod")
+            ),
+            array(
+                'title' => 'Recette',
+                'actif' => '',
+                'link' => site_url("pv/calculrecette")
+            ),
+            array(
+                'title' => 'Récapitulatif',
+                'actif' => '',
+                'link' => site_url("pv/recette")
             )
         );
 
@@ -127,6 +120,16 @@ class PV extends MY_Controller
                 'title' => 'Production',
                 'actif' => '',
                 'link' => site_url("pv/calculprod")
+            ),
+            array(
+                'title' => 'Recette',
+                'actif' => '',
+                'link' => site_url("pv/calculrecette")
+            ),
+            array(
+                'title' => 'Récapitulatif',
+                'actif' => '',
+                'link' => site_url("pv/recette")
             )
         );
 
@@ -174,6 +177,16 @@ class PV extends MY_Controller
                 'title' => 'Production',
                 'actif' => '',
                 'link' => site_url("pv/calculprod")
+            ),
+            array(
+                'title' => 'Recette',
+                'actif' => '',
+                'link' => site_url("pv/calculrecette")
+            ),
+            array(
+                'title' => 'Récapitulatif',
+                'actif' => '',
+                'link' => site_url("pv/recette")
             )
         );
 
@@ -210,6 +223,16 @@ class PV extends MY_Controller
                 'title' => 'Production',
                 'actif' => '',
                 'link' => site_url("pv/calculprod")
+            ),
+            array(
+                'title' => 'Recette',
+                'actif' => '',
+                'link' => site_url("pv/calculrecette")
+            ),
+            array(
+                'title' => 'Récapitulatif',
+                'actif' => '',
+                'link' => site_url("pv/recette")
             )
         );
 
@@ -219,6 +242,7 @@ class PV extends MY_Controller
         $this->layout->function_js('calculhepp()');
         $this->layout->view('B2E/Etudes/Solaire/Calcul_Hepp'); // Render view and layout
     }
+
     public function calculprod()
     {
         $breadcrumps = array(
@@ -246,6 +270,16 @@ class PV extends MY_Controller
                 'title' => 'Production',
                 'actif' => 'active',
                 'link' => site_url("pv/calculprod")
+            ),
+            array(
+                'title' => 'Recette',
+                'actif' => '',
+                'link' => site_url("pv/calculrecette")
+            ),
+            array(
+                'title' => 'Récapitulatif',
+                'actif' => '',
+                'link' => site_url("pv/recette")
             )
         );
 
@@ -254,6 +288,101 @@ class PV extends MY_Controller
         $this->layout->js(js_url('etudesolaire'));
         $this->layout->view('B2E/Etudes/Solaire/Calcul_Production'); // Render view and layout
     }
+
+    public function calculrecette()
+    {
+        $breadcrumps = array(
+            array(
+                'title' => 'Station',
+                'actif' => '',
+                'link' => site_url("pv/choixstation")
+            ),
+            array(
+                'title' => 'Orientation',
+                'actif' => '',
+                'link' => site_url("pv/choixorientation")
+            ),
+            array(
+                'title' => 'Masque',
+                'actif' => '',
+                'link' => site_url("pv/calculmasque")
+            ),
+            array(
+                'title' => 'HEPP NETTE',
+                'actif' => '',
+                'link' => site_url("pv/calculhepp")
+            ),
+            array(
+                'title' => 'Production',
+                'actif' => '',
+                'link' => site_url("pv/calculprod")
+            ),
+            array(
+                'title' => 'Recette',
+                'actif' => 'active',
+                'link' => site_url("pv/calculrecette")
+            ),
+            array(
+                'title' => 'Récapitulatif',
+                'actif' => '',
+                'link' => site_url("pv/recette")
+            )
+        );
+
+        $this->layout->breadcrumbs($breadcrumps);
+        $this->layout->title('Calcul de Recette B2E');
+        $this->layout->js(js_url('etudesolaire'));
+        $this->layout->view('B2E/Etudes/Solaire/Calcul_Recette'); // Render view and layout
+    }
+
+    public function recette()
+    {
+        $breadcrumps = array(
+            array(
+                'title' => 'Station',
+                'actif' => '',
+                'link' => site_url("pv/choixstation")
+            ),
+            array(
+                'title' => 'Orientation',
+                'actif' => '',
+                'link' => site_url("pv/choixorientation")
+            ),
+            array(
+                'title' => 'Masque',
+                'actif' => '',
+                'link' => site_url("pv/calculmasque")
+            ),
+            array(
+                'title' => 'HEPP NETTE',
+                'actif' => '',
+                'link' => site_url("pv/calculhepp")
+            ),
+            array(
+                'title' => 'Production',
+                'actif' => '',
+                'link' => site_url("pv/calculprod")
+            ),
+            array(
+                'title' => 'Recette',
+                'actif' => '',
+                'link' => site_url("pv/calculrecette")
+            ),
+            array(
+                'title' => 'Récapitulatif',
+                'actif' => 'active',
+                'link' => site_url("pv/recette")
+            )
+        );
+
+        $this->layout->breadcrumbs($breadcrumps);
+        $this->layout->title('Recette.php B2E');
+        $this->layout->js(js_url('etudesolaire'));
+        $this->layout->function_js('anneeProd()');
+        $this->layout->function_js('cumulProd()');
+        $this->layout->view('B2E/Etudes/Solaire/Recette.php'); // Render view and layout
+    }
+
     public function ajax_geoposition()
     {
 
@@ -271,7 +400,7 @@ class PV extends MY_Controller
                 }
 
             }
-            $this->session_orientation($station['ID_Ensoleillement'], $station['HEPP']);
+            $this->session_orientation($station['ID_Ensoleillement'], $station['HEPP'], $station['Ville']);
             $jsonstationtrouvee = json_encode($station);
             echo $jsonstationtrouvee;
 
@@ -290,7 +419,7 @@ class PV extends MY_Controller
             foreach ($data['station'] as $station) { // Parcours les données du select pour trouver la station correspondante
                 if ($station['ID_Ensoleillement'] == $_POST['idVille']['keyname']) {
                     $tabstation = array('ID_Ensoleillement' => $station['ID_Ensoleillement'], 'Ville' => $station['Ville'], 'HEPP' => $station['HEPP']); // Création tableau pour la conversion en json avec la ville et le HEPP correspondant
-                    $this->session_orientation($station['ID_Ensoleillement'], $station['HEPP']);
+                    $this->session_orientation($station['ID_Ensoleillement'], $station['HEPP'], $station['Ville']);
                     $jsonstation = json_encode($tabstation); // Création du JSON avec le tableau
                     echo $jsonstation; // Envoi du JSON
                 }
@@ -302,9 +431,9 @@ class PV extends MY_Controller
 
     }
 
-    public function session_orientation($idEnsol, $hepp)
+    public function session_orientation($idEnsol, $hepp, $ville)
     {
-        $tabsession = array('ID_Ensoleillement' => $idEnsol, 'HEPP' => $hepp);
+        $tabsession = array('ID_Ensoleillement' => $idEnsol, 'HEPP' => $hepp, 'Ville' => $ville);
         $this->session->set_userdata($tabsession);
     }
 
@@ -328,12 +457,15 @@ class PV extends MY_Controller
     {
 
         if (isset($_POST['ratioc'])) {
-            $tabsession = array(
-                'HEPP' => $this->session->userdata('HEPP'),
-                'Orientation' => $this->session->userdata('Orientation'),
-                'Ratioc' => $_POST['ratioc']);
-            $this->session->set_userdata($tabsession);
-            echo $_POST['ratioc'];
+            if (is_numeric($_POST['ratioc']) && $_POST['ratioc'] != '') {
+                $tabsession = array(
+                    'HEPP' => $this->session->userdata('HEPP'),
+                    'Orientation' => $this->session->userdata('Orientation'),
+                    'Ratioc' => $_POST['ratioc']);
+                $this->session->set_userdata($tabsession);
+                echo $_POST['ratioc'];
+            }
+
         } else {
             $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
             show_error($message_403, 403, '403 - Acc&egrave;s interdit');
@@ -362,15 +494,16 @@ class PV extends MY_Controller
     public
     function ajax_calculprod()
     {
-        if (isset($_POST['heppnet']) && isset($_POST['systeme']) && isset($_POST['bonus'])) {
-            $prod = $_POST['systeme'] * $_POST['heppnet'];
+        if (isset($_POST['raccordement']) && isset($_POST['systeme']) && isset($_POST['bonus'])) {
+            $prod = $_POST['systeme'] * $this->session->userdata('Heppnet');
             $prodtotal = ($prod + $prod * ($_POST['bonus'] / 100)) / 1000; // Calcul de la prod totale = prod + la prod avec le bonus (0 ou 10 % ) et divisé par mille
             $tabsession = array(
                 'HEPP' => $this->session->userdata('HEPP'),
                 'Orientation' => $this->session->userdata('Orientation'),
                 'Ratioc' => $this->session->userdata('Ratioc'),
-                'Ratioc' => $this->session->userdata('Heppnet'),
-                'Heppnet' => $prodtotal);
+                'Heppnet' => $this->session->userdata('Heppnet'),
+                'Raccordement' => $_POST['raccordement'],
+                'Production' => $prodtotal);
             $this->session->set_userdata($tabsession);
             echo $prodtotal;
         } else {
@@ -399,8 +532,9 @@ class PV extends MY_Controller
     public
     function ajax_prodannuelle()
     {
-        if (isset($_POST['prodanneezero'])) {
-            $prodAnneeZero = $_POST['prodanneezero'];
+        $Production = $this->session->userdata('Production');
+        if (isset($Production)) {
+            $prodAnneeZero = $Production;
             $raisonProd = 1 - (0.5 / 100); // Raison production
             $ligneProdAnnuelle = '';
 
@@ -421,8 +555,9 @@ class PV extends MY_Controller
     public
     function ajax_cumulprod()
     {
-        if (isset($_POST['prodanneezero'])) {
-            $prodAnneeZero = $_POST['prodanneezero'];
+        $Production = $this->session->userdata('Production');
+        if (isset($Production)) {
+            $prodAnneeZero = $Production;
             $raisonProd = 1 - (0.5 / 100); // Raison production
             $ligneProdPuissance = '';
 
