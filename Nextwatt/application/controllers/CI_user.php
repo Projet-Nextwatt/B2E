@@ -26,7 +26,7 @@ class CI_User extends MY_Controller
         $data['eneteteUsers'] = array('Nom', 'Prix du kWh', 'Inflation', 'Pollution CO<sub>2</sub>', 'Abonnement');
 
         $this->layout->title('Liste des Users');
-        $this->layout->view('B2E/User/Consulter_user.php', $data); // Render view and layout
+        $this->layout->view('B2E/User/Accueil_user.php', $data); // Render view and layout
     }
 
 
@@ -114,5 +114,10 @@ class CI_User extends MY_Controller
                 $this->layout->view('B2E/Success_Error/formsuccess'); //render view and layout
             }
         }
+    }
+
+    public function gestioncategorie()
+    {
+        echo('Salut Yann');
     }
 }
