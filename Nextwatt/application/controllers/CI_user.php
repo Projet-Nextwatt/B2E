@@ -25,7 +25,7 @@ class CI_User extends MY_Controller {
         array(
             'field' => 'Droit_SUDO',
             'label' => 'Droit_SUDO',
-            'rules' => ''
+            'rules' => 'required'
         ),
         array(
             'field' => 'Droit_Admin',

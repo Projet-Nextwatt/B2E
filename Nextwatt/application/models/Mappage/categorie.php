@@ -10,7 +10,7 @@ class Categorie extends DataMapper {
      * Variables de relation (entre tables)
      */
 
-    var $has_many = array('User');
+    //var $has_many = array('User');
 
     /*
      * Variables correspondantes aux colonnes de la table.

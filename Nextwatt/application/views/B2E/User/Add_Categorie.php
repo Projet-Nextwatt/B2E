@@ -73,6 +73,7 @@
 
         <div class='row form-group'>
             <label class="col-sm-4 no-padding-right control-label" for='Droit_SUDO'>Autorisation SUDO</label>
+            <input type='hidden' name="Droit_SUDO" value="off"/>
             <label class="col-sm-4">
                 <input type="checkbox"
                        name="Droit_SUDO" 
@@ -94,6 +95,7 @@
 
         <div class='row form-group'>
             <label class="col-sm-4 no-padding-right control-label" for='Droit_Admin'>Autorisation Admin</label>
+            <input type='hidden' name="Droit_Admin" value="off"/>
             <label class="col-sm-4">
                 <input type="checkbox"
                        name="Droit_Admin" 
@@ -115,6 +117,7 @@
 
         <div class='row form-group'>
             <label class="col-sm-4 no-padding-right control-label" for='Droit_Catalogue'>Autorisation catalogue</label>
+            <input type='hidden' name="Droit_Catalogue" value="off"/>
             <label class="col-sm-4">
                 <input type="checkbox"
                        name="Droit_Catalogue" 
@@ -136,6 +139,7 @@
 
         <div class='row form-group'>
             <label class="col-sm-4 no-padding-right control-label" for='Droit_Edit_Devis'>Autorisation edition devis</label>
+            <input type='hidden' name="Droit_Edit_Devis" value="off"/>
             <label class="col-sm-4">
                 <input type="checkbox"
                        name="Droit_Edit_Devis" 
