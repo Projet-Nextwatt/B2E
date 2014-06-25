@@ -107,7 +107,7 @@ class CI_Client extends MY_Controller
 
         //On applique les règles
         $this->form_validation->set_rules($config);
-
+        $data = array();
 
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
         //Et on agit en conséquence
@@ -119,6 +119,7 @@ class CI_Client extends MY_Controller
         }
         else
         {
+            var_dump($_POST);
             if ($this->mapclient->ajouter_client($_POST))
             {
                 // Energie object now has an ID
@@ -138,8 +139,8 @@ class CI_Client extends MY_Controller
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du model
         $data = array();
 
-        $data['client'] = $this->mapclient->select_client();
-        $data['eneteteEnergies'] = array('Id', 'Nom', 'Prix du kWh', 'Inflation', 'Pollution CO<sub>2</sub>', 'Abonnement');
+        $data['clients'] = $this->mapclient->select_client_tableau();
+        $data['enteteclients'] = array('Id', 'Nom', 'Prenom', 'Email', 'Telephone fixe', 'Telephone Portable', 'Responsable');
 
         $this->layout->title('Liste des clients');
         $this->layout->view('B2E/Client/Consulter_Client.php', $data); // Render view and layout
