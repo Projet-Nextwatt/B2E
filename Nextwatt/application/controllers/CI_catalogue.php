@@ -95,7 +95,7 @@ class CI_Catalogue extends MY_Controller
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
 
         $ajoutbdd = array();
-        $i=0;
+        $i = 0;
 
         foreach ($refbdd as $rfbdd) {
             foreach ($fichier as $fich) {
@@ -117,7 +117,7 @@ class CI_Catalogue extends MY_Controller
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
 
         $suppbdd = array();
-        $i=0;
+        $i = 0;
 
         foreach ($refbdd as $rfbdd) {
             foreach ($fichier as $fich) {
@@ -131,7 +131,7 @@ class CI_Catalogue extends MY_Controller
 
     public function aff_recap_upload()
     {
-        $data=array();
+        $data = array();
 
         $this->load->model('Mappage/catalogue', 'catalogue');
         $refbdd = $this->catalogue->get_ref_bdd();
@@ -142,6 +142,8 @@ class CI_Catalogue extends MY_Controller
         $ajoutbdd = $this->create_tab_ajout_bdd();
         $suppbdd = $this->create_tab_supp_bdd();
 
+        $this->decodefichier($fichier);
+
         $data['ajouts'] = $ajoutbdd;
         $data['supp'] = $suppbdd;
         $data['fichier'] = $fichier;
@@ -151,12 +153,39 @@ class CI_Catalogue extends MY_Controller
         $this->layout->view('B2E/Catalogue/catalogue_diff', $data);
     }
 
-    public function validercatalogue($newcatalogue)
+    public function validercatalogue()
     {
+        // On décode le fichier avec htmlspecialchars_decode dans la fonction ci-dessous
+        $fichier = $this->fonctionspersos->lire_fichier_catalogue();
+
+        // On envoie le fichier décodé au model pour l'uploader
         $this->load->model('Mappage/catalogue', 'catalogue');
-        $this->catalogue->updatecatalogue($newcatalogue);
+        $this->catalogue->updatecatalogue($fichier);
+
+
     }
 
+    public function decodefichier($fichier)
+    {
+//        function funcdecode($line)
+//        {
+//            htmlspecialchars_decode($line);
+//        }
+//
+//        foreach ($fichier as $produit)
+//        {
+//            $newfichier = array_map("funcdecode",$produit );
+//        }
+
+
+
+        return htmlspecialchars_decode($fichier['P9-2940SP51'][4], ENT_NOQUOTES);
+    }
+//
+//    public function funcdecode($line)
+//    {
+//        return htmlspecialchars_decode($line, ENT_NOQUOTES);
+//    }
 
 
 }

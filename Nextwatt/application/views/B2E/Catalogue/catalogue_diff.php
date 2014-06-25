@@ -13,8 +13,8 @@
 <div class="row col-xs-12">
     <div class="row col-xs-12">
         <div class="col-md-offset-5 col-md-4">
-            <a href="<?php echo site_url("CI_catalogue/load_catalogue"); ?>">
-            <button type="button" class="btn btn-sm btn-info">
+            <a href="<?php echo site_url("CI_catalogue/validercatalogue"); ?>">
+            <button type="submit" class="btn btn-sm btn-info">
                 <i class="ace-icon fa fa-floppy-o bigger-160"></i>
                 Enregistrer
             </button></a>
@@ -32,8 +32,7 @@
         <?php
         $this->load->library('fonctionspersos');
         $entete = $this->fonctionspersos->set_entete();
-//        $fichmodif = $this->fonctionspersos->prepfichier($fichier);
-//        var_dump($fichmodif);
+        var_dump($fichier);
         ?>
         <h2>
             Ajouts :

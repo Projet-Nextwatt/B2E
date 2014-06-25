@@ -20,11 +20,10 @@ class CI_Client extends MY_Controller
     public function consult_client()
     {
         //Remplissage de la variable $data avec l'image pour le layout
-        $data = array();
-        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
+
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Consultation client');
-        $this->layout->view('B2E/Client/Accueil_Client', $data); // Render view and layout
+        $this->layout->view('B2E/Client/Accueil_Client'); // Render view and layout
 
     }
 
@@ -90,7 +89,7 @@ class CI_Client extends MY_Controller
             array(
                 'field' => 'email',
                 'label' => 'Email',
-                'rules' => 'required'
+                'rules' => 'required|valid_email'
             ),
             array(
                 'field' => 'tel1',
