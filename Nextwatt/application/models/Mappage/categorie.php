@@ -85,4 +85,18 @@ class Categorie extends DataMapper {
         $cat->where('id', $id)->get();
         $cat->delete();
     }
+    
+    function chargergroupe() {
+        $cat = new Categorie();
+        $cat->distinct();
+        $cat->select('Categorie_Groupe');
+        $cat->get();
+        $cat=$cat->all_to_array();
+        
+        $groupes = array();
+        foreach ($cat as $unecat){
+            $groupes[]=$unecat['Categorie_Groupe'];
+        }
+        return $groupes;
+    }
 }

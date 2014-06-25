@@ -90,7 +90,7 @@ class Fonctionspersos
                     if ($checkbox==true){
                         if ($cellule == '1'){
                             //$cellule = '<i class="ace-icon glyphicon glyphicon-ok"></i>';
-                            $cellule = '<i class="fa fa-check-square-o"></i>';
+                            $cellule = '<div class="align-center"><i class="fa fa-check"></i></div>';
                         } elseif ($cellule=='0') {
                             $cellule = '';
                         }
@@ -158,6 +158,30 @@ class Fonctionspersos
                     </script>";
             }
         }
+    }
+    
+    public function creerDropdown(array $donnees, $nom, $class=NULL){
+        /* Fonction qui génere une dropdown
+         * Les données doivent etre structurées de la sorte
+         * Pas besoin de les trier par label 
+         * Pas besoin de nommer les index
+         * $donnne =array( array( label => "",
+         *                        value => "",
+         *                        texte => "" ),
+         *                  array( label => "",
+         *                        value => "",
+         *                        texte => "" ),
+         *                   ...   =>   ...)
+         */
+        
+        echo ' 
+        <select name="station" id="station">
+                                <optgroup label="Alsace">
+                                        <option value="1">Colmar</option>
+                                        <option value="2">Mulhouse</option>
+                                        <option value="3">Strasbourg</option>
+                                </optgroup></select>
+        ';
     }
 
     public function lire_fichier_catalogue()

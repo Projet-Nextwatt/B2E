@@ -76,9 +76,11 @@ class CI_User extends MY_Controller {
         ),
     );
 
+    /*
     public function index() {
-        echo 'Hello World!';
+        echo 'a!';
     }
+*/
 
     public function consult_user() {
         $this->load->model('Mappage/user', 'mapuser'); //Chargement du model
@@ -183,8 +185,8 @@ class CI_User extends MY_Controller {
     public function addcategorie() {
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele
         $data = array(); //Pour la vue
-
-        var_dump($_POST);
+        
+        $this->layout->js(js_url('jsuser'));
         $this->form_validation->set_rules($this->configValidationAddCategorie);
 
         if ($this->form_validation->run() == FALSE) {
@@ -218,7 +220,8 @@ class CI_User extends MY_Controller {
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele
         $data = array(); //Pour la vue
         $data['categorie'] = $this->categorie->select_categorie($this->session->userdata('CI_user/modifcategorie'));
-
+        
+        $this->layout->js(js_url('jsuser'));
 
 
         $this->form_validation->set_rules($this->configValidationAddCategorie);
@@ -246,8 +249,15 @@ class CI_User extends MY_Controller {
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele
         $this->categorie->supprimer_categorie($_POST['id']);
     }
+    
+    public function ajax_categoriegroupe() {
+        $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele
+        $groupes=$this->categorie->chargergroupe();
+        echo json_encode($groupes);
+    }
 
     public function checkbox(&$str) {
+        //Fonction de traitement du formulaire appelée en callback
         if ($str == 'on') {
             $str=1;
             return TRUE;
@@ -255,5 +265,4 @@ class CI_User extends MY_Controller {
             $str=0;
         }
     }
-
 }

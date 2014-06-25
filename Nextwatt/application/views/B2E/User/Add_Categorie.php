@@ -15,7 +15,7 @@
     ?>
 </div>
 
-<div class="row">
+<div class="row">   
     <div class="col-xs-12">
         <?php //echo validation_errors(); ?>
 
@@ -44,6 +44,7 @@
                                     }
                                     ?>" 
                        class='form-control'
+                       autocomplete="off"
                        />
             </div>
             <div class="col-sm-4">   
