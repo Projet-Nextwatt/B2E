@@ -160,12 +160,12 @@ class Fonctionspersos
         }
     }
     
-    public function creerDropdown(array $donnees, $nom, $class=NULL){
+    public function creerDropdown(array $donnees, $selected, $nom, $class=NULL){
         /* Fonction qui génere une dropdown
          * Les données doivent etre structurées de la sorte
          * Pas besoin de les trier par label 
          * Pas besoin de nommer les index
-         * $donnne =array( array( label => "",
+         * $donnees =array( array( label => "",
          *                        value => "",
          *                        texte => "" ),
          *                  array( label => "",
@@ -174,14 +174,59 @@ class Fonctionspersos
          *                   ...   =>   ...)
          */
         
-        echo ' 
-        <select name="station" id="station">
+        
+        //Triage du tableau
+        $donneestriees = array();
+        $ligneavecindex = array();
+        $label = NULL;
+        foreach ($donnees as $ligne) {
+            $i = 0;
+            $ligneavecindex = array();
+            foreach ($ligne as $cellule) {
+                switch ($i) {
+                    case 0:
+                        $label = $cellule;
+                        break;
+                    case 1:
+                        $ligneavecindex['value'] = $cellule;
+                        break;
+                    case 2:
+                        $ligneavecindex['texte'] = $cellule;
+                        break;
+                }
+                $i++;
+            }
+
+            if ($ligneavecindex['value'] == $selected OR $ligneavecindex['texte'] == $selected) {
+                $ligneavecindex['selected'] = 'selected';
+            } else {
+                $ligneavecindex['selected'] = '';
+            }
+            $donneestriees[$label][] = $ligneavecindex;
+        }
+        
+        
+        echo '<select name="'.$nom.'" id="'.$nom.'" class="'.$class.'">';
+        foreach ($donneestriees as $label => $groupe){
+            echo '<optgroup label="'.$label.'">';
+            foreach ($groupe as $categorie){
+                echo '<option value="'.$categorie['value']
+                     .'" '.$categorie['selected']
+                     .'>'.$categorie['texte'].'</option>';
+            }
+            echo '</optgroup>';
+        }
+        echo '</select>';
+        /*
                                 <optgroup label="Alsace">
-                                        <option value="1">Colmar</option>
+                                        <option value="1" selected >Colmar</option>
                                         <option value="2">Mulhouse</option>
                                         <option value="3">Strasbourg</option>
                                 </optgroup></select>
         ';
+         */
+        
+        return $donneestriees;
     }
 
     public function lire_fichier_catalogue()

@@ -97,7 +97,13 @@ class CI_User extends MY_Controller {
         //Remplissage de la variable $data avec l'image pour le layout
         $data = array();
         $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
-
+        
+        $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele
+        $cat=$this->categorie->chargercategories();
+        var_dump($cat);
+        $cat=$this->fonctionspersos->creerDropdown($cat,1,"Groupe","maclass");
+        
+        var_dump($cat);
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Ajout utilisateur B2E');
         $this->layout->view('B2E/User/Add_User', $data);

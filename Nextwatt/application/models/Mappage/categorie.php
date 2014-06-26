@@ -99,4 +99,17 @@ class Categorie extends DataMapper {
         }
         return $groupes;
     }
+    
+        function chargercategories() {
+        $cat = new Categorie();
+        $cat->select('id,Categorie_Groupe,Nom_Categorie');
+        $cat->get();
+        $cat=$cat->all_to_array();
+        
+        $retour = array();
+        foreach ($cat as $unecat){
+            $retour[]=array($unecat['Categorie_Groupe'],$unecat['id'],$unecat['Nom_Categorie']);
+        }
+        return $retour;
+    }
 }
