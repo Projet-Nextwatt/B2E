@@ -53,24 +53,32 @@ class Client extends DataMapper
         }
     }
 
+    function select_client_tableau($id = NULL)
+    {
+        $clients = new Client();
+        $clients->select('id', 'Nom', 'Prenom', 'Email', 'TelFixe', 'TelPortable', 'Responsable');
+        $clients->get();
+        return $clients->all_to_array();
+    }
+
     function ajouter_client($data)
     {
         $client = array(
-        'civilite' => $data['civilite'],
-        'nom1' => $data['nom1'],
-        'prenom1' => $data['prenom1'],
-        'nom2' => $data['nom2'],
-        'prenom2' => $data['prenom2'],
-        'adresse' => $data['adresse'],
-        'codepostal' => $data['codepostal'],
-        'ville' => $data['ville'],
-        'tel1' => $data['tel1'],
-        'tel2' => $data['tel2'],
-        'email' => $data['email'],
-        'responsable' => $data['responsable']
+            'civilite' => $data['civilite'],
+            'nom1' => $data['nom1'],
+            'prenom1' => $data['prenom1'],
+            'nom2' => $data['nom2'],
+            'prenom2' => $data['prenom2'],
+            'adresse' => $data['adresse'],
+            'codepostal' => $data['codepostal'],
+            'ville' => $data['ville'],
+            'tel1' => $data['tel1'],
+            'tel2' => $data['tel2'],
+            'email' => $data['email'],
+            'responsable' => $data['responsable']
         );
 
-          //////////////////////// TEST UTILISATION OBJET + METHODE SAVE ////////////
+        //////////////////////// TEST UTILISATION OBJET + METHODE SAVE ////////////
 //        $client = new Client();
 //
 //        $client->civilite = $data['civilite'];

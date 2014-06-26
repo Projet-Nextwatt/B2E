@@ -111,9 +111,7 @@ class Parametre extends MY_Controller {
         $this->form_validation->set_rules($this->configValidationAddEnergie);
 
         if ($this->form_validation->run() == FALSE) {
-            //Formualire invalide, retour à celui-ci
-            $data['modif'] = $this->session->userdata['form'];
-            
+            //Formualire invalide, retour à celui-ci            
 
             $this->layout->title('Moifier une énergie');
             $this->layout->view('B2E/Parametre/Add_Energie.php', $data); // Render view and layout
@@ -131,7 +129,7 @@ class Parametre extends MY_Controller {
     }
     
     
-    public function ajax_supprimer(){
+    public function ajax_supprimerenergie(){
         $this->load->model('Mappage/prixenergie', 'prixenergie'); //Chargement du modele
         $this->prixenergie->supprimer_prixenergie($_POST['id']);
     }

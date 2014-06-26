@@ -8,13 +8,13 @@
 //echo $error;
 ?>
 
-<?= form_open_multipart('upload/uploadfile') ?>
+<?= form_open_multipart('CI_catalogue/upload_catalogue_action') ?>
     <fieldset align="center">
         <legend>Upload d'un nouveau catalogue</legend>
         <br/>
         <br/>
         <div align="center">
-            <input align="center" type="file" name="choosefile" />
+            <input align="center" type="file" name="userfile" />
         </div>
         <br/>
         <br/>

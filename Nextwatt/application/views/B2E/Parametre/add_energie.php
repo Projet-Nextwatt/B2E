@@ -54,7 +54,7 @@
 
         <div class='row form-group'>
             <label class="col-sm-4 no-padding-right control-label" for='Prix'>Prix du kWh</label>
-            <div class="input-group col-sm-4">
+            <div class="col-sm-4">
                 <input type="text" 
                        name="Prix" 
                        id='Prix' 

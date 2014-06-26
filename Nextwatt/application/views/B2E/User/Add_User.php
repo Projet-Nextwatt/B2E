@@ -136,8 +136,6 @@
 
         <?php echo form_close(); ?>
 
-<!--        --><?php //var_dump($_POST); ?>
 
     </div>
-</div>
 </div>

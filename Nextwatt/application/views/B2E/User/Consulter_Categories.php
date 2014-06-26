@@ -7,7 +7,7 @@
 </div>
 
 <div class="page-header">
-    <h1>Liste des énergies</h1>
+    <h1>Liste des catégories</h1>
 </div>
 
 <div class="row">
@@ -15,8 +15,8 @@
 
         <div class="row">
             <div class="col-xs-12 text-center">
-                <a class="btn btn-primary btn-sm" href="<?php echo site_url("parametre/add_energie"); ?>">
-                    <i class="ace-icon fa fa-plus align-top bigger-125"/></i>Ajouter une &eacute;nergie
+                <a class="btn btn-primary btn-sm" href="<?php echo site_url("CI_user/addcategorie"); ?>">
+                    <i class="ace-icon fa fa-plus align-top bigger-125"/></i>Ajouter une cat&eacute;gorie
                 </a>
                 <br/>
             </div>
@@ -24,10 +24,9 @@
         <br/>
         <div class="row">
             <div class="col-xs-12">
-                <div class="panel panel-default">
-                    <!-- Default panel contents -->
-                    <div class="panel-heading align-left">Liste des énergies</div>
-                    <?php $this->fonctionspersos->creerTableau($energies, $eneteteEnergies, 'parametre/modif_energie','parametre/ajax_supprimerenergie '); ?>
+                <div class="panel panel-success">
+                    <div class="panel-heading align-left">Liste des catégories</div>
+                    <?php $this->fonctionspersos->creerTableau($categories, array() , 'CI_user/modifcategorie','CI_user/ajax_supprimercategorie ',true); ?>
                 </div>
             </div>
         </div>

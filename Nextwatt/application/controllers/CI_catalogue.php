@@ -49,7 +49,7 @@ class CI_Catalogue extends MY_Controller
     public function upload_catalogue_form()
     {
         $this->layout->title('Upload de catalogue');
-        $this->layout->view('B2E/Catalogue/upload'); //render view and layout
+        $this->layout->view('B2E/Catalogue/Charger_Catalogue'); //render view and layout
     }
 
     public function upload_catalogue_action()
@@ -87,17 +87,17 @@ class CI_Catalogue extends MY_Controller
 
     public function create_tab_ajout_bdd()
     {
-        //Remplissage de la variable $data avec l'image pour le layout
-        $data = array();
-        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
 
         $this->load->model('Mappage/catalogue', 'catalogue');
         $refbdd = $this->catalogue->get_ref_bdd();
 
         $this->load->library('fonctionspersos');
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
+        echo('vard dump du fichier dans create tab add');
+        var_dump($fichier);
 
-        $i=0;
+        $ajoutbdd = array();
+        $i = 0;
 
         foreach ($refbdd as $rfbdd) {
             foreach ($fichier as $fich) {
@@ -111,19 +111,22 @@ class CI_Catalogue extends MY_Controller
 
     public function create_tab_supp_bdd()
     {
-        //Remplissage de la variable $data avec l'image pour le layout
-        $data = array();
-        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
 
         $this->load->model('Mappage/catalogue', 'catalogue');
-        $refbdd = $this->catalogue->get_ref_bdd();
+        $refbdd = $this->catalogue->get_full_bdd();
 
         $this->load->library('fonctionspersos');
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
+        echo('vard dump du fichier dans create tab supp');
+        var_dump($fichier);
+
+        $suppbdd = array();
+        $i = 0;
 
         foreach ($refbdd as $rfbdd) {
             foreach ($fichier as $fich) {
-                $suppbdd = array_diff($rfbdd, $fich);
+                $suppbdd[$i] = array_diff($rfbdd, $fich);
+                $i++;
             }
         }
 
@@ -132,7 +135,7 @@ class CI_Catalogue extends MY_Controller
 
     public function aff_recap_upload()
     {
-        $data=array();
+        $data = array();
 
         $this->load->model('Mappage/catalogue', 'catalogue');
         $refbdd = $this->catalogue->get_ref_bdd();
@@ -143,12 +146,57 @@ class CI_Catalogue extends MY_Controller
         $ajoutbdd = $this->create_tab_ajout_bdd();
         $suppbdd = $this->create_tab_supp_bdd();
 
+        $this->decodefichier($fichier);
+
         $data['ajouts'] = $ajoutbdd;
         $data['supp'] = $suppbdd;
+        $data['fichier'] = $fichier;
 
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Catalogue B2E');
-        $this->layout->view('Essais/catalogue_diff', $data);
+        $this->layout->view('B2E/Catalogue/catalogue_diff', $data);
     }
+
+    public function validercatalogue()
+    {
+        // On décode le fichier avec htmlspecialchars_decode dans la fonction ci-dessous
+        $fichier = $this->fonctionspersos->lire_fichier_catalogue();
+
+        // On envoie le fichier décodé au model pour l'uploader
+        $this->load->model('Mappage/catalogue', 'catalogue');
+        if($this->catalogue->updatecatalogue($fichier)== TRUE)
+        {
+            echo ('Plein yen a assez fratéééé !!!! NRV ce soir à la JOIA Plein !');
+        }
+        else{
+            echo('Pebron que tu es, va te jeter aux goudes');
+        }
+
+
+
+    }
+
+    public function decodefichier($fichier)
+    {
+//        function funcdecode($line)
+//        {
+//            htmlspecialchars_decode($line);
+//        }
+//
+//        foreach ($fichier as $produit)
+//        {
+//            $newfichier = array_map("funcdecode",$produit );
+//        }
+
+
+
+        return htmlspecialchars_decode($fichier['P9-2940SP51'][4], ENT_NOQUOTES);
+    }
+//
+//    public function funcdecode($line)
+//    {
+//        return htmlspecialchars_decode($line, ENT_NOQUOTES);
+//    }
+
 
 }
