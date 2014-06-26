@@ -32,19 +32,18 @@
         <?php
         $this->load->library('fonctionspersos');
         $entete = $this->fonctionspersos->set_entete();
-        var_dump($fichier);
         ?>
         <h2>
             Ajouts :
         </h2>
         <?php
-        //$this->fonctionspersos->creerTableau($ajouts, $entete);
+        $this->fonctionspersos->creerTableau($ajouts, $entete);
         ?>
         <h2>
             Suppressions :
         </h2>
         <?php
-        //$this->fonctionspersos->creerTableau($supp, $entete);
+        $this->fonctionspersos->creerTableau($supp, $entete);
         ?>
     </div>
 </div>

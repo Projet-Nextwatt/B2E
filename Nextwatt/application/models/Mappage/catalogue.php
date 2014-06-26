@@ -97,7 +97,8 @@ class Catalogue extends DataMapper
         $bdd->get();
 
         $bdd = $bdd->all_to_array();
-
+        echo('vard dump dde la bdd');
+        var_dump($bdd);
         return $bdd;
     }
 
@@ -119,67 +120,39 @@ class Catalogue extends DataMapper
     function updatecatalogue($fichier)
     {
 
-        $this->get_ref_bdd();
-
         foreach ($fichier as $produit)
         {
             $newcatalogue = new Catalogue();
 
 
-            if($newcatalogue->where('Reference', $produit[0])->get() != null)
-            {
-                $newcatalogue->where('Reference', $produit[0])->get();
-                $newcatalogue->update($newcatalogue->Reference = "$produit[0]",
-                $newcatalogue->Nom = "$produit[1]",
-                $newcatalogue->Marque = "$produit[2]",
-                $newcatalogue->Puissance = "$produit[3]",
-                $newcatalogue->Libelle_Mat = "$produit[4]",
-                $newcatalogue->Libelle_Mat_SansMarque = "$produit[5]",
-                $newcatalogue->Libelle_MO = "$produit[6]",
-                $newcatalogue->Libelle_Garantie = "$produit[7]",
-                $newcatalogue->Prix_MO = "$produit[8]",
-                $newcatalogue->Prix_Mat_Plancher = "$produit[9]",
-                $newcatalogue->Prix_Annonce_TTC = "$produit[10]",
-                $newcatalogue->CEE_TTC = "$produit[11]",
-                $newcatalogue->TVA_MO = "$produit[12]",
-                $newcatalogue->TVA_Mat = "$produit[13]",
-                $newcatalogue->Facturation = "$produit[14]",
-                $newcatalogue->Type_Produit = "$produit[15]",
-                $newcatalogue->Spec = "$produit[16]",
-                $newcatalogue->Actif = 1,
-                $newcatalogue->Fiche_Tech = "$produit[17]",
-                $newcatalogue->Note = "$produit[18]");
+            $newcatalogue->where('Reference', $produit[0])->get();
+            $newcatalogue->Reference = "$produit[0]";
+            $newcatalogue->Nom = "$produit[1]";
+            $newcatalogue->Marque = "$produit[2]";
+            $newcatalogue->Puissance = "$produit[3]";
+            $newcatalogue->Libelle_Mat = "$produit[4]";
+            $newcatalogue->Libelle_Mat_SansMarque = "$produit[5]";
+            $newcatalogue->Libelle_MO = "$produit[6]";
+            $newcatalogue->Libelle_Garantie = "$produit[7]";
+            $newcatalogue->Prix_MO = "$produit[8]";
+            $newcatalogue->Prix_Mat_Plancher = "$produit[9]";
+            $newcatalogue->Prix_Annonce_TTC = "$produit[10]";
+            $newcatalogue->CEE_TTC = "$produit[11]";
+            $newcatalogue->TVA_MO = "$produit[12]";
+            $newcatalogue->TVA_Mat = "$produit[13]";
+            $newcatalogue->Facturation = "$produit[14]";
+            $newcatalogue->Type_Produit = "$produit[15]";
+            $newcatalogue->Spec = "$produit[16]";
+            $newcatalogue->Actif = 1;
+            $newcatalogue->Fiche_Tech = "$produit[17]";
+            $newcatalogue->Note = "$produit[18]";
 
-            }
-            else
-            {
-                $newcatalogue->Reference = "$produit[0]";
-                $newcatalogue->Nom = "$produit[1]";
-                $newcatalogue->Marque = "$produit[2]";
-                $newcatalogue->Puissance = "$produit[3]";
-                $newcatalogue->Libelle_Mat = "$produit[4]";
-                $newcatalogue->Libelle_Mat_SansMarque = "$produit[5]";
-                $newcatalogue->Libelle_MO = "$produit[6]";
-                $newcatalogue->Libelle_Garantie = "$produit[7]";
-                $newcatalogue->Prix_MO = "$produit[8]";
-                $newcatalogue->Prix_Mat_Plancher = "$produit[9]";
-                $newcatalogue->Prix_Annonce_TTC = "$produit[10]";
-                $newcatalogue->CEE_TTC = "$produit[11]";
-                $newcatalogue->TVA_MO = "$produit[12]";
-                $newcatalogue->TVA_Mat = "$produit[13]";
-                $newcatalogue->Facturation = "$produit[14]";
-                $newcatalogue->Type_Produit = "$produit[15]";
-                $newcatalogue->Spec = "$produit[16]";
-                $newcatalogue->Actif = 1;
-                $newcatalogue->Fiche_Tech = "$produit[17]";
-                $newcatalogue->Note = "$produit[18]";
+            $newcatalogue->save();
 
-                $newcatalogue->save();
-            }
 
         }
 
-
+//        return TRUE;
     }
 
 }

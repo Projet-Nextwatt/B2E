@@ -93,6 +93,8 @@ class CI_Catalogue extends MY_Controller
 
         $this->load->library('fonctionspersos');
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
+        echo('vard dump du fichier dans create tab add');
+        var_dump($fichier);
 
         $ajoutbdd = array();
         $i = 0;
@@ -115,6 +117,8 @@ class CI_Catalogue extends MY_Controller
 
         $this->load->library('fonctionspersos');
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
+        echo('vard dump du fichier dans create tab supp');
+        var_dump($fichier);
 
         $suppbdd = array();
         $i = 0;
@@ -160,7 +164,14 @@ class CI_Catalogue extends MY_Controller
 
         // On envoie le fichier décodé au model pour l'uploader
         $this->load->model('Mappage/catalogue', 'catalogue');
-        $this->catalogue->updatecatalogue($fichier);
+        if($this->catalogue->updatecatalogue($fichier)== TRUE)
+        {
+            echo ('Plein yen a assez fratéééé !!!! NRV ce soir à la JOIA Plein !');
+        }
+        else{
+            echo('Pebron que tu es, va te jeter aux goudes');
+        }
+
 
 
     }
