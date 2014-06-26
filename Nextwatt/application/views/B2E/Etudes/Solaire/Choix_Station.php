@@ -26,7 +26,7 @@ $region = NULL;
                 <optgroup label="<?php echo $ensol['Region'] ?>">
                     <?php $region = $ensol['Region'];
                     } ?>
-                    <option value="<?php echo $ensol['ID_Ensoleillement'] ?>"><?php echo $ensol['Ville'] ?></option>
+                    <option value="<?php echo $ensol['id'] ?>"><?php echo $ensol['Ville'] ?></option>
                     <?php
 
                     }
@@ -43,7 +43,31 @@ $region = NULL;
         <li class="previous">
             <a href="<?php echo site_url("dossier/consult_dossier"); ?>">← Accueil Dossier</a>
         </li>
+        <li class="center">
+            <div class="control-group">
 
+                <div class="radio inline">
+                    <label>
+                        <input name="panneau" type="radio" value="1" checked class="ace">
+                        <span class="lbl"> Panneau 1</span>
+                    </label>
+                </div>
+
+                <div class="radio inline">
+                    <label>
+                        <input name="panneau" type="radio" value="2" class="ace" display="">
+                        <span class="lbl"> Panneau 2</span>
+                    </label>
+                </div>
+
+                <div class="radio inline">
+                    <label>
+                        <input name="panneau" type="radio" value="3" class="ace">
+                        <span class="lbl"> Panneau 3</span>
+                    </label>
+                </div>
+            </div>
+        </li>
         <li class="next">
             <a href="<?php echo site_url("pv/choixorientation"); ?>">Orientation →</a>
         </li>

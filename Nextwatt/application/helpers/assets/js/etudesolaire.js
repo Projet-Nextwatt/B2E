@@ -4,12 +4,16 @@
 function isInt(n) {
     return n % 1 == 0;
 }
+
+
+
 function geolocalisestation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             $.post(
                 'ajax_geoposition',
                 {
+                    'panneau' :$('input[name=panneau]:checked').val(),
                     'latitude': position.coords.latitude,
                     'longitude': position.coords.longitude
                 },
@@ -32,6 +36,7 @@ function preselectstation(idEnsol) {
     $.post(
         'ajax_heppstation',
         {
+            'panneau' : $('input[name=panneau]:checked').val(),
             idVille: {keyname: idEnsol}
         },
         function (data) {
@@ -50,11 +55,13 @@ $("#station").change(function () {
     $.post(
         'ajax_heppstation',
         {
+            'panneau' : $('input[name=panneau]:checked').val(),
             idVille: {keyname: $('#station option:selected').val()}
         },
         function (data) {
             if (data) {
                 var station = JSON.parse(data)
+                console.log();
                 $('.HEPP').html("Ville : <b>" + station.Ville + "</b> - HEPP : <span id='valeurhepp'>" + station.HEPP + "</span>");
             } else {
                 $('.HEPP').html("<i class='ace-icon fa fa-exclamation-triangle icon-animated-bell bigger-125'></i> Problème choix de station");

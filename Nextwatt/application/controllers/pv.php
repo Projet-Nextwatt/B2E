@@ -393,7 +393,7 @@ class PV extends MY_Controller
         $data = array();
         $data['station'] = $this->ensoleillement->select_ensoleillement(); // Recup des données station avec le model "ensoleillement"
         $distanceMin = 100;
-        if (isset($_POST['latitude']) && isset($_POST['longitude'])) {
+        if (isset($_POST['panneau']) && isset($_POST['latitude']) && isset($_POST['longitude'])) {
             foreach ($data['station'] as $stationtemp) {
                 $distance = sqrt(abs($_POST['latitude'] - $stationtemp['Latitude'])) + sqrt(abs($_POST['longitude'] - $stationtemp['Longitude']));
                 if ($distanceMin > $distance) {
@@ -403,7 +403,9 @@ class PV extends MY_Controller
                 }
 
             }
-            $this->session_orientation($station['ID_Ensoleillement'], $station['HEPP'], $station['Ville']);
+//            $this->session_orientation($station['ID_Ensoleillement'], $station['HEPP'], $station['Ville']);
+            $tabPanneau =array('Panneau' => $_POST['panneau'],'ID_Ensoleillement' =>$station['id'], 'HEPP' => $station['HEPP'], 'Ville' => $station['Ville'] );
+            $this->GestionPanneau($tabPanneau);
             $jsonstationtrouvee = json_encode($station);
             echo $jsonstationtrouvee;
 
@@ -418,11 +420,12 @@ class PV extends MY_Controller
         $data = array();
         $data['station'] = $this->ensoleillement->select_ensoleillement(); // Recup des données station avec le model "ensoleillement"
 
-        if (isset($_POST['idVille'])) {
+        if (isset($_POST['panneau']) && isset($_POST['idVille'])) {
             foreach ($data['station'] as $station) { // Parcours les données du select pour trouver la station correspondante
-                if ($station['ID_Ensoleillement'] == $_POST['idVille']['keyname']) {
-                    $tabstation = array('ID_Ensoleillement' => $station['ID_Ensoleillement'], 'Ville' => $station['Ville'], 'HEPP' => $station['HEPP']); // Création tableau pour la conversion en json avec la ville et le HEPP correspondant
-                    $this->session_orientation($station['ID_Ensoleillement'], $station['HEPP'], $station['Ville']);
+                if ($station['id'] == $_POST['idVille']['keyname']) {
+                    $tabstation = array('Panneau' => $_POST['panneau'],'ID_Ensoleillement' => $station['id'], 'Ville' => $station['Ville'], 'HEPP' => $station['HEPP']); // Création tableau pour la conversion en json avec la ville et le HEPP correspondant
+                    $this->GestionPanneau($tabstation);
+//                    $this->session_orientation($_POST['panneau'],$station['ID_Ensoleillement'], $station['HEPP'], $station['Ville']);
                     $jsonstation = json_encode($tabstation); // Création du JSON avec le tableau
                     echo $jsonstation; // Envoi du JSON
                 }
@@ -434,10 +437,13 @@ class PV extends MY_Controller
 
     }
 
-    public function session_orientation($idEnsol, $hepp, $ville)
+    public function session_orientation($panneau,$idEnsol, $hepp, $ville)
     {
-        $tabsession = array('ID_Ensoleillement' => $idEnsol, 'HEPP' => $hepp, 'Ville' => $ville);
+        $tabsession = array('Panneau' => $panneau ,'ID_Ensoleillement' => $idEnsol, 'HEPP' => $hepp, 'Ville' => $ville);
+        $tabsession = array('Panneau' => $tabsession);
         $this->session->set_userdata($tabsession);
+//        $this->GestionPanneau($tabsession);
+//        $this->session->set_userdata($tabsession);
     }
 
     public
@@ -453,7 +459,6 @@ class PV extends MY_Controller
             show_error($message_403, 403, '403 - Acc&egrave;s interdit');
         }
     }
-
 
     public
     function ajax_envoiratioc()
@@ -474,7 +479,6 @@ class PV extends MY_Controller
             show_error($message_403, 403, '403 - Acc&egrave;s interdit');
         }
     }
-
 
     public
     function ajax_calculhepp()
@@ -601,7 +605,7 @@ class PV extends MY_Controller
             for ($i = 0; $i < 20; $i++) {
                 $raisonTarifPuissance = pow($raisonTarif, $i);
                 $tarifAnneeChoisie = $tarifAnneeZero * $raisonTarifPuissance;
-                $ligneTarif[$i] = round($tarifAnneeChoisie,2);
+                $ligneTarif[$i] = round($tarifAnneeChoisie, 2);
             }
 
             $jsonTarif = json_encode($ligneTarif);
@@ -667,6 +671,24 @@ class PV extends MY_Controller
         } else {
             $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
             show_error($message_403, 403, '403 - Acc&egrave;s interdit');
+        }
+    }
+
+    public function GestionPanneau($tabPanneau){
+        switch($tabPanneau['Panneau']){
+            case 1 :
+                $tabPanneau = array('Panneau' => $tabPanneau);
+                $this->session->set_userdata($tabPanneau);
+                break;
+        }
+        $this->session->set_userdata['Panneau']= $tabPanneau;
+    }
+
+    public function AffPanneau($tabPanneau)
+    {
+        switch ($tabPanneau['Panneau']) {
+            case 1 :
+//                $this->session->userdata[0]['']
         }
     }
 }

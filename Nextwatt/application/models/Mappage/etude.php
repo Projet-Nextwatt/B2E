@@ -48,6 +48,10 @@ class Etude extends DataMapper {
     {
         //Fonction de suppression
     }
+
+    function save_panneau($panneau){
+
+    }
     
     
     }
