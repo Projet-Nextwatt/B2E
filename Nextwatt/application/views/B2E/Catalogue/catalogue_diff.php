@@ -37,13 +37,15 @@
             Ajouts :
         </h2>
         <?php
-        $this->fonctionspersos->creerTableau($ajouts, $entete);
+        //$this->fonctionspersos->creerTableau($ajouts, $entete);
+        var_dump($ajouts);
         ?>
         <h2>
             Suppressions :
         </h2>
         <?php
-        $this->fonctionspersos->creerTableau($supp, $entete);
+        //$this->fonctionspersos->creerTableau($supp, $entete);
+        var_dump($supp);
         ?>
     </div>
 </div>
