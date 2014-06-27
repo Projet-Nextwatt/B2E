@@ -167,11 +167,9 @@ function validercatalogue()
 
     // On envoie le fichier décodé au model pour l'uploader
     $this->load->model('Mappage/catalogue', 'catalogue');
-    if ($this->catalogue->updatecatalogue($fichier) == TRUE) {
-        echo('Plein yen a assez fratéééé !!!! NRV ce soir à la JOIA Plein !');
-    } else {
-        echo('Pebron que tu es, va te jeter aux goudes');
-    }
+
+        echo('Upload dans la BDD réussi !');
+
 
 
 }
