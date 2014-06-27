@@ -168,8 +168,8 @@ function validercatalogue()
     // On envoie le fichier décodé au model pour l'uploader
     $this->load->model('Mappage/catalogue', 'catalogue');
 
-        echo('Upload dans la BDD réussi !');
-
+    $this->catalogue->updatecatalogue($fichier);
+    echo'OK !';
 
 
 }
