@@ -13,8 +13,6 @@
 <div class="row">
     <div class="col-xs-12">
 
-        <?php var_dump($_POST);?>
-
         <?php
         //echo validation_errors();
 
@@ -112,7 +110,7 @@
                        name="email" 
                        id="email" 
                        placeholder="exemple@nextwatt.fr"
-                       value="<?php echo set_value($email);?>">
+                       value="<?php echo set_value('email');?>">
             </div>
             <div class="col-sm-4">
                 <?php echo form_error('email'); ?>
@@ -148,8 +146,7 @@
         </div>
 
         <?php echo form_close(); ?>
-
-        <?php var_dump($categories);?>
+        
 
     </div>
 </div>
