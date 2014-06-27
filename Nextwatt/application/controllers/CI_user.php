@@ -31,9 +31,10 @@ class CI_User extends MY_Controller {
 
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele
         $this->load->model('Mappage/user', 'mapuser'); //Chargement du modele
-        $data["categories"] = $this->categorie->chargercategories();
-        //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         
+                $categories = $this->categorie->chargercategories();
+                $data["categories"] =$categories;
+        //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->form_validation->set_rules($this->configValidationUser);
         
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
