@@ -19,6 +19,14 @@
             <button type="button" class="btn btn-white btn-sm btn-primary">Gérer les droits des catégories</button></a>
     </div>
 
+            <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-success">
+                    <div class="panel-heading align-left">Liste des utilisateurs</div>
+                    <?php $this->fonctionspersos->creerTableau($users, array()); ?>
+                </div>
+            </div>
+        </div>
 </div>
 
 <!--<div class="row">-->

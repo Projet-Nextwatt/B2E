@@ -7,8 +7,12 @@
 //           pour vérifier le formulaire (verif_form_client)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class CI_User extends MY_Controller {
-
+class CI_User extends MY_Controller {  
+    
+    public $layout_view = 'B2E/layout/default';
+    
+    
+    //User
     public function consult_user() {
         $this->load->model('Mappage/user', 'mapuser'); //Chargement du model
         $data = array();
@@ -26,19 +30,36 @@ class CI_User extends MY_Controller {
         $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
 
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele
+        $this->load->model('Mappage/user', 'mapuser'); //Chargement du modele
         $data["categories"] = $this->categorie->chargercategories();
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
-        $this->layout->title('Ajout utilisateur B2E');
-        $this->layout->view('B2E/User/Add_User', $data);
+        
+        $this->form_validation->set_rules($this->configValidationUser);
+        
+        //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
+        //Et on agit en conséquence
+        if ($this->form_validation->run() == FALSE) {
+            // On charge la page
+            $this->layout->title('Erreur d\'ajout user');
+            $this->layout->view('B2E/User/Add_User', $data); // Render view and layout
+        } else {
+            if ($this->mapuser->ajouter_user($_POST)) {
+                // Energie object now has an ID
+                $this->consulter_user();
+            } else {
+                $this->layout->title('Ajout user');
+                $this->layout->view('B2E/Success_Error/formsuccess'); //render view and layout
+            }
+        }
     }
 
     public function verif_form_user() {
         $this->load->model('Mappage/user', 'mapuser'); //Chargement du modele
-
         $data = array();
+        
         //Configuration des règles par champs
         //On applique les règles
-        $this->form_validation->set_rules($this->configVerificationUser);
+        $this->form_validation->set_rules($this->configValidationUser);
 
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
         //Et on agit en conséquence
@@ -57,6 +78,7 @@ class CI_User extends MY_Controller {
         }
     }
 
+    //Catégorie
     public function gestioncategorie() {
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du model
         $data = array();
@@ -129,6 +151,7 @@ class CI_User extends MY_Controller {
         }
     }
 
+    //Ajax Catégorie
     public function ajax_supprimercategorie() {
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele
         $this->categorie->supprimer_categorie($_POST['id']);
@@ -140,18 +163,8 @@ class CI_User extends MY_Controller {
         echo json_encode($groupes);
     }
 
-    public function checkbox(&$str) {
-        //Fonction de traitement du formulaire appelée en callback
-        if ($str == 'on') {
-            $str = 1;
-            return TRUE;
-        } else {
-            $str = 0;
-        }
-    }
 
-    // layout used in this controller
-    public $layout_view = 'B2E/layout/default';
+    // Validation et traitement des formualaires
     public $configValidationAddCategorie = array(
         array(
             'field' => 'Categorie_Groupe',
@@ -216,31 +229,33 @@ class CI_User extends MY_Controller {
             'rules' => 'callback_checkbox'
         ),
     );
-    public $configValidationUser = array(
+    
+    
+    public  $configValidationUser = array(
         array(
             'field' => 'Identifiant',
             'label' => 'Identifiant',
-            'rules' => 'required'
+            'rules' => 'required|is_unique[users.Identifiant]|trim|max_length[255]'
         ),
         array(
             'field' => 'mdp',
             'label' => 'Mot de Passe',
-            'rules' => 'required|matches[confmdp]'
+            'rules' => 'sha1|required|matches[confmdp]|trim'
         ),
         array(
             'field' => 'confmdp',
             'label' => 'Confirmation mot de passe',
-            'rules' => 'required'
+            'rules' => 'trim'
         ),
         array(
             'field' => 'prenom',
             'label' => 'Prenom',
-            'rules' => 'required'
+            'rules' => 'required|trim|max_length[255]'
         ),
         array(
             'field' => 'nom',
             'label' => 'Nom',
-            'rules' => 'required'
+            'rules' => 'required|trim|max_length[255]|mb_strtoupper'
         ),
         array(
             'field' => 'email',
@@ -250,7 +265,7 @@ class CI_User extends MY_Controller {
         array(
             'field' => 'tel',
             'label' => 'Telephone',
-            'rules' => 'required'
+            'rules' => 'required|callback_tel'
         ),
         array(
             'field' => 'categorie',
@@ -259,4 +274,63 @@ class CI_User extends MY_Controller {
         ),
     );
     
+    public $configTraitementUser = array(
+        array(
+            'field' => 'Identifiant',
+            'label' => 'Identifiant',
+            'rules' => 'xss_clean|htmlentities'
+        ),
+        array(
+            'field' => 'mdp',
+            'label' => 'Mot de Passe',
+            'rules' => ''
+        ),
+        array(
+            'field' => 'confmdp',
+            'label' => 'Confirmation mot de passe',
+            'rules' => ''
+        ),
+        array(
+            'field' => 'prenom',
+            'label' => 'Prenom',
+            'rules' => ''
+        ),
+        array(
+            'field' => 'nom',
+            'label' => 'Nom',
+            'rules' => ''
+        ),
+        array(
+            'field' => 'email',
+            'label' => 'E-mail',
+            'rules' => ''
+        ),
+        array(
+            'field' => 'tel',
+            'label' => 'Telephone',
+            'rules' => ''
+        ),
+        array(
+            'field' => 'categorie',
+            'label' => 'Categorie',
+            'rules' => ''
+        ),
+    );
+    
+        //Callback
+    public function checkbox(&$str) {
+        //Fonction de traitement du formulaire appelée en callback
+        if ($str == 'on') {
+            $str = 1;
+            return TRUE;
+        } else {
+            $str = 0;
+        }
+    }
+
+    public function tel(&$numero) {
+        $numero = preg_replace("#[^0-9]#", '', $numero);
+        return TRUE;
+    }
+
 }
