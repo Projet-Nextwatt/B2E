@@ -169,7 +169,7 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
     </table>
 </div>
 
-<?php var_dump($this->session->all_userdata()); ?>
+
 
 <div class="col - xs - 12">
     <ul class="pager">

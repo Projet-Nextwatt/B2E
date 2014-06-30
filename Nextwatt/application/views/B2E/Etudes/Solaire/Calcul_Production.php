@@ -44,7 +44,7 @@
             </div>
         </div>
         <div class='form-group'>
-            <label class="col-sm-6 no-padding-right control-label" for='Bonus'>Bonus : </label>
+            <label class="col-sm-6 no-padding-right control-label" for='Bonus'>Bonus de production : </label>
 
             <div class="col-sm-6">
                 <?php

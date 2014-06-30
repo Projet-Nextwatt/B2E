@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class='form-group'>
-            <label class="col-sm-6 no-padding-right control-label" for='Tarifedf'>Tarif EDF : </label>
+            <label class="col-sm-6 no-padding-right control-label" for='Tarifedf'>Tarif de rachat: </label>
 
             <div class="col-sm-6">
                 <?php
@@ -49,7 +49,7 @@
 
                     'id' => 'tarifedf',
 
-                    'placeholder' => 'Tarif EDF',
+                    'placeholder' => 'Tarif de rachat',
                     'value' => $value
                 );
                 echo form_input($tarifedf);

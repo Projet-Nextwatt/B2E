@@ -44,18 +44,22 @@ $region = NULL;
             <a href="<?php echo site_url("dossier/consult_dossier"); ?>">← Accueil Dossier</a>
         </li>
         <li class="center">
-            <div class="control-group">
+            <div class="control-group hidden">
 
                 <div class="radio inline">
                     <label>
-                        <input name="panneau" type="radio" value="1" checked class="ace">
+<!--                        <div>-->
+<!--                            style="visibility:hidden;display:none"-->
+
+                            <input name="panneau" type="radio" value="1" checked class="ace">
+<!--                        </div>-->
                         <span class="lbl"> Panneau 1</span>
                     </label>
                 </div>
 
                 <div class="radio inline">
                     <label>
-                        <input name="panneau" type="radio" value="2" class="ace" display="">
+                        <input name="panneau" type="radio" value="2" class="ace">
                         <span class="lbl"> Panneau 2</span>
                     </label>
                 </div>

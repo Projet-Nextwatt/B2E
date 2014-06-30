@@ -1,4 +1,4 @@
-<?php var_dump($this->session->all_userdata()); ?>
+
 
 
 <div class="page-header">
