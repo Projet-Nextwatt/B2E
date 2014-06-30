@@ -25,12 +25,11 @@ class CI_Catalogue extends MY_Controller
     public function consult_catalogue()
     {
         //Remplissage de la variable $data avec l'image pour le layout
-        $data = array();
-        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
+
 
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Catalogue B2E');
-        $this->layout->view('B2E/Catalogue/Consulter_Catalogue', $data);
+        $this->layout->view('B2E/Catalogue/Consulter_Catalogue');
     }
 
     public function load_catalogue()
@@ -162,6 +161,9 @@ function aff_recap_upload()
 public
 function validercatalogue()
 {
+    $data = array();
+    $data['successmsg'] = 'Upload Terminé';
+
     // On décode le fichier avec htmlspecialchars_decode dans la fonction ci-dessous
     $fichier = $this->fonctionspersos->lire_fichier_catalogue();
 
@@ -169,7 +171,9 @@ function validercatalogue()
     $this->load->model('Mappage/catalogue', 'catalogue');
 
     $this->catalogue->updatecatalogue($fichier);
-    echo'OK !';
+
+    $this->layout->title('Catalogue B2E');
+    $this->layout->view('B2E/Catalogue/successupload', $data);
 
 
 }

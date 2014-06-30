@@ -48,6 +48,9 @@ class User extends DataMapper {
     
     function ajouter_user($data)
     {
+        $today = date("Y-m-d");
+
+
         $user = array(
             'Login' => $data['Identifiant'],
             'Password' => $data['mdp'],
@@ -56,6 +59,7 @@ class User extends DataMapper {
             'Nom' => $data['nom'],
             'Email' => $data['email'],
             'Tel' => $data['tel'],
+            'dateajout' => $today
         );
 
         $this->db->insert('users', $user);

@@ -19,11 +19,15 @@ class CI_Client extends MY_Controller
 
     public function consult_client()
     {
-        //Remplissage de la variable $data avec l'image pour le layout
+        $this->load->model('Mappage/client', 'mapclient');
+        $data = array();
+
+        $data['clients'] = $this->mapclient->select_client();
+        $data['eneteteClients'] = array('Id', 'Nom', 'Prenom', 'Ville', 'Telephone ', 'Email' );
 
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Consultation client');
-        $this->layout->view('B2E/Client/Accueil_Client'); // Render view and layout
+        $this->layout->view('B2E/Client/Accueil_Client', $data); // Render view and layout
 
     }
 
@@ -118,7 +122,7 @@ class CI_Client extends MY_Controller
         }
         else
         {
-            var_dump($_POST);
+
             if ($this->mapclient->ajouter_client($_POST))
             {
                 // Energie object now has an ID
@@ -127,7 +131,7 @@ class CI_Client extends MY_Controller
             else
             {
             $this->layout->title('Ajout client');
-            $this->layout->view('B2E/Success_Error/formsuccess'); //render view and layout
+            $this->layout->view('B2E/Success_Error/Accueil_Client'); //render view and layout
             }
         }
 
@@ -136,12 +140,17 @@ class CI_Client extends MY_Controller
 
     public function consulter_client() {
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du model
+        $this->load->library('fonctionspersos');
+
         $data = array();
-
-        $data['clients'] = $this->mapclient->select_client_tableau();
+        $data['clients'] = $this->mapclient->select_client();
         $data['enteteclients'] = array('Id', 'Nom', 'Prenom', 'Email', 'Telephone fixe', 'Telephone Portable', 'Responsable');
-
         $this->layout->title('Liste des clients');
         $this->layout->view('B2E/Client/Consulter_Client.php', $data); // Render view and layout
+    }
+
+    public function ajax_supprimerclient(){
+        $this->load->model('Mappage/clients', 'mapclients'); //Chargement du modele
+        $this->mapclients->supprimer_client($_POST['id']);
     }
 }
