@@ -48,7 +48,7 @@ class CI_Image_lib {
 	var $wm_x_transp		= 4;
 	var $wm_y_transp		= 4;
 	var $wm_overlay_path	= '';			// Watermark image path
-	var $wm_font_path		= '';			// TT font
+	var $wm_font_path		= '';			// TT fonts
 	var $wm_font_size		= 17;			// Font size (different versions of GD will either use points or pixels)
 	var $wm_vrt_alignment	= 'B';			// Vertical alignment:   T M B
 	var $wm_hor_alignment	= 'C';			// Horizontal alignment: L R C
@@ -1025,9 +1025,9 @@ class CI_Image_lib {
 		if ($this->wm_hor_alignment == 'R')
 			$this->wm_hor_offset = $this->wm_hor_offset * -1;
 
-		// Set font width and height
+		// Set fonts width and height
 		// These are calculated differently depending on
-		// whether we are using the true type font or not
+		// whether we are using the true type fonts or not
 		if ($this->wm_use_truetype == TRUE)
 		{
 			if ($this->wm_font_size == '')

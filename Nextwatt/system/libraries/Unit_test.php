@@ -316,7 +316,7 @@ class CI_Unit_test {
 	 */
 	function _default_template()
 	{
-		$this->_template = "\n".'<table style="width:100%; font-size:small; margin:10px 0; border-collapse:collapse; border:1px solid #CCC;">';
+		$this->_template = "\n".'<table style="width:100%; fonts-size:small; margin:10px 0; border-collapse:collapse; border:1px solid #CCC;">';
 		$this->_template .= '{rows}';
 		$this->_template .= "\n".'</table>';
 
