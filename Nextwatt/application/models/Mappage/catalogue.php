@@ -119,11 +119,9 @@ class Catalogue extends DataMapper
 
     function updatecatalogue($fichier)
     {
-
         foreach ($fichier as $produit)
         {
             $newcatalogue = new Catalogue();
-
 
             $newcatalogue->where('Reference', $produit[0])->get();
             $newcatalogue->Reference = "$produit[0]";
@@ -149,10 +147,7 @@ class Catalogue extends DataMapper
 
             $newcatalogue->save();
 
-
         }
-
-//        return TRUE;
     }
 
 }
