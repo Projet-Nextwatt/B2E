@@ -11,7 +11,7 @@
 <div class="btn-group">
         <a href="<?php echo site_url("CI_catalogue/load_catalogue"); ?>">
         <button  type="button" class="btn btn-white btn-sm btn-primary">Lier type au produit</button></a>
-        <button type="button" class="btn btn-white btn-sm btn-primary">Gérer la liste des types</button>
+        <button type="button" class="btn btn-white btn-sm btn-primary">Gérer liste types</button>
         <button type="button" class="btn btn-white btn-sm btn-primary">Lier options</button>
         <a href="<?php echo site_url("CI_catalogue/upload_catalogue_form"); ?>">
         <button type="button" class="btn btn-white btn-sm btn-primary">Charger Catalogue</button></a>
@@ -31,11 +31,17 @@
 <div class="row">
     <div class="col-xs-12">
         <?php
+
             $fichier = $this->fonctionspersos->lire_fichier_catalogue();
             $entete = $this->fonctionspersos->set_entete();
-
+//            if($data['successmsg'] != NULL)
+//            {
+//                echo($data['successmsg']);
+//            }
+//            else{
+//                var_dump($data);
+//            }
             $this->fonctionspersos->creerTableau($fichier, $entete);
-            var_dump($fichier);
         ?>
     </div>
 </div>

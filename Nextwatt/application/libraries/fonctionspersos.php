@@ -273,6 +273,12 @@ class Fonctionspersos
         return $entete;
     }
 
+    public function set_entete_clients()
+    {
+        $entete = array('Id', 'Nom', 'Prenom', 'Email', 'Telephone fixe', 'Telephone Portable', 'Responsable');
+        return $entete;
+    }
+
 //    public function prepfichier($fichier)
 //    {
 //        foreach($fichier as $produit)

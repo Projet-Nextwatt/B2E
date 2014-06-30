@@ -48,6 +48,9 @@ class User extends DataMapper {
     
     function ajouter_user($data)
     {
+        $today = date("Y-m-d");
+
+
         $user = array(
             'Identifiant' => $data['Identifiant'],
             'mdp' => $data['mdp'],
