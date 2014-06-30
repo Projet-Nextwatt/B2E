@@ -10,6 +10,29 @@ class Fonctionspersos
                                  $sup = NULL,
                                  $checkbox = false)
     {
+        /* EXPLIQIATION
+         * Fonction qui affiche un tableau bootStrapé / Acé
+         * |||Attend un Array de données
+         * 
+         * en options
+         * |||Attend OU PAS un array pour les entetes
+         * ----- Pas d'entete --> indexs du tableau de données 
+         *                        (genre pour les bases de données
+         * 
+         * |||Attend l'adresse du controleur de MODIFICATION 
+         *       et crée le bouton d'envoi au formualaire
+         * ----- et stocke l'id de la ligne à modifier dans 
+         *       SESSION["adresse du formalaire"],
+         *       les session sont celle de code ignter
+         * 
+         * ||Attend l'adresse du controleur de suppression
+         *       et creer un bouton de suppression
+         *       avec pop-up de confirmation
+         * 
+         * ||Attend juste un TRUE
+         *       permet de converir les 1 et 0 en chebox validée
+         *       ou en rien du tout
+         */
 
         if ($contenu == NULL OR (isset($contenu[0]) AND $contenu[0] == '')) {
             echo '<h2>Attention: Aucune donn&eacutees &agrave; afficher dans le tableau</h2>';

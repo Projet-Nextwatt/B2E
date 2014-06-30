@@ -12,7 +12,7 @@ class CI_User extends MY_Controller {
     public $layout_view = 'B2E/layout/default';
     
     
-    //User
+    // User ////////////////////////////////////////////////////////////////////////////////
     public function consult_user() {
         $this->load->model('Mappage/user', 'mapuser'); //Chargement du model
         $data = array();
@@ -25,61 +25,36 @@ class CI_User extends MY_Controller {
     }
 
     public function add_user() {
-        //Remplissage de la variable $data avec l'image pour le layout
-        $data = array();
-        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
-
-        $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele
-        $this->load->model('Mappage/user', 'mapuser'); //Chargement du modele
+        $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele user
+        $this->load->model('Mappage/user', 'mapuser'); //Chargement du modele categorie
         
-                $categories = $this->categorie->chargercategories();
-                $data["categories"] =$categories;
-        //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
-        $this->form_validation->set_rules($this->configValidationUser);
+        $data = array();
+            //chargement des catégories pour la liste déroulante
+        $categories = $this->categorie->chargercategories();
+        $data["categories"] =$categories;
         
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
-        //Et on agit en conséquence
+        $this->form_validation->set_rules($this->configValidationUser);
         if ($this->form_validation->run() == FALSE) {
             // On charge la page
-            $this->layout->title('Erreur d\'ajout user');
+            $this->layout->title('Ajout d\'un utilisateur');
             $this->layout->view('B2E/User/Add_User', $data); // Render view and layout
         } else {
+            
+            $this->form_validation->set_rules($this->configTraitementUser);
             if ($this->mapuser->ajouter_user($_POST)) {
                 // Energie object now has an ID
-                $this->consulter_user();
+                $this->consult_user();
             } else {
-                $this->layout->title('Ajout user');
-                $this->layout->view('B2E/Success_Error/formsuccess'); //render view and layout
+                // Show all error messages
+                $this->layout->title('Erreur');
+                $this->layout->view('B2E/User/Add_User',$data); //render view and layout
             }
         }
     }
 
-    public function verif_form_user() {
-        $this->load->model('Mappage/user', 'mapuser'); //Chargement du modele
-        $data = array();
-        
-        //Configuration des règles par champs
-        //On applique les règles
-        $this->form_validation->set_rules($this->configValidationUser);
-
-        //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
-        //Et on agit en conséquence
-        if ($this->form_validation->run() == FALSE) {
-            // On charge la page
-            $this->layout->title('Erreur d\'ajout user');
-            $this->layout->view('B2E/User/Add_User', $data); // Render view and layout
-        } else {
-            if ($this->mapuser->ajouter_user($_POST)) {
-                // Energie object now has an ID
-                $this->consulter_user();
-            } else {
-                $this->layout->title('Ajout user');
-                $this->layout->view('B2E/Success_Error/formsuccess'); //render view and layout
-            }
-        }
-    }
-
-    //Catégorie
+   
+    //Catégorie ////////////////////////////////////////////////////////////////////////////////////
     public function gestioncategorie() {
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du model
         $data = array();
@@ -241,7 +216,7 @@ class CI_User extends MY_Controller {
         array(
             'field' => 'mdp',
             'label' => 'Mot de Passe',
-            'rules' => 'sha1|required|matches[confmdp]|trim'
+            'rules' => 'matches[confmdp]|sha1|required|trim'
         ),
         array(
             'field' => 'confmdp',
@@ -266,12 +241,12 @@ class CI_User extends MY_Controller {
         array(
             'field' => 'tel',
             'label' => 'Telephone',
-            'rules' => 'required|callback_tel'
+            'rules' => 'callback_tel'
         ),
         array(
             'field' => 'categorie',
             'label' => 'Categorie',
-            'rules' => 'required'
+            'rules' => ''
         ),
     );
     
@@ -294,12 +269,12 @@ class CI_User extends MY_Controller {
         array(
             'field' => 'prenom',
             'label' => 'Prenom',
-            'rules' => ''
+            'rules' => 'xss_clean|htmlentities'
         ),
         array(
             'field' => 'nom',
             'label' => 'Nom',
-            'rules' => ''
+            'rules' => 'xss_clean|htmlentities'
         ),
         array(
             'field' => 'email',
@@ -331,7 +306,15 @@ class CI_User extends MY_Controller {
 
     public function tel(&$numero) {
         $numero = preg_replace("#[^0-9]#", '', $numero);
-        return TRUE;
+        if ((strlen($numero)==10) OR (strlen($numero)==0))
+        {
+            return TRUE;
+        }
+        else
+        {
+            $this->form_validation->set_message('tel', 'Le champs %s doit contenir 10 chiffres');
+            return FALSE;
+        }
     }
 
 }

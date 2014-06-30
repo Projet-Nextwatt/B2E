@@ -18,7 +18,7 @@
 
         $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
         $hiden = array();
-        echo form_open('CI_user/verif_form_user', $attributes, $hiden);
+        echo form_open('CI_user/add_user', $attributes, $hiden);
         ?>
         <!--        <form class="form-horizontal" role="form">-->
 
@@ -76,7 +76,7 @@
                 <input type="text" 
                        class="form-control" 
                        name="prenom" id="prenom" 
-                       value="<?php echo set_value('identifiant'); ?>" 
+                       value="<?php echo set_value('prenom'); ?>" 
                        placeholder="Votre Prénom">
             </div>
             <div class="col-sm-4">
@@ -121,7 +121,12 @@
             <label class="col-sm-4 no-padding-right control-label" for="tel">Téléphone</label>
 
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="tel" id="tel" placeholder="Votre numéro de téléphone">
+                <input type="tel" 
+                       name="tel" 
+                       id="tel" 
+                       value="<?php echo set_value('tel');?>"
+                       placeholder="Votre numéro de téléphone"
+                       class="form-control" >
             </div>
             <div class="col-sm-4">
                 <?php echo form_error('tel'); ?>
@@ -132,12 +137,12 @@
             <label class="col-sm-4 no-padding-right control-label" for="categorie">Catégorie</label>
 
             <div class="col-sm-4">
-                <?php $this->fonctionspersos->creerDropdown($categories,345,"Categories"); ?>
+                <?php $this->fonctionspersos->creerDropdown($categories,1,"Categories"); ?>
             </div>
         </div>
 
         <div class="row form-group">
-            <div class="col-md-offset-4 col-md-4">
+            <div class="col-sm-offset-4 col-sm-4 col-xs-offset-3">
                 <button type="submit" class="btn btn-sm btn-info">
                     <i class="ace-icon fa fa-floppy-o bigger-160"></i>
                     Enregistrer

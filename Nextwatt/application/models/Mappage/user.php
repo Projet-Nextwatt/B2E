@@ -36,7 +36,7 @@ class User extends DataMapper {
     {
         $users = new User();
         if ($id != NULL) {
-            $users->where('ID_User', $id);
+            $users->where('id', $id);
             $users->get();
             $retour=$users->all_to_array();
             return $retour['0'];
@@ -49,16 +49,26 @@ class User extends DataMapper {
     function ajouter_user($data)
     {
         $user = array(
-            'Login' => $data['Identifiant'],
-            'Password' => $data['mdp'],
-            'ID_Categorie' => $data['categorie'],
-            'Prenom' => $data['prenom'],
-            'Nom' => $data['nom'],
-            'Email' => $data['email'],
-            'Tel' => $data['tel'],
+            'Identifiant' => $data['Identifiant'],
+            'mdp' => $data['mdp'],
+            'FK_Categorie' => $data['Categories'],
+            'nom' => $data['nom'],
+            'prenom' => $data['prenom'],
+            'email' => $data['email'],
+            'tel' => $data['tel'],
+            'Date_Ajout' => date("Y-m-j H:i:s"),
+            'Actif' => 1,
         );
 
-        $this->db->insert('users', $user);
+        if ($this->db->insert('users', $user)){
+            return TRUE;
+        }
+        else
+        {
+            echo '<p>' . $user->error->string . '</p>';
+            return FALSE;
+        }
+        
     }
     
     function modifier_user()
