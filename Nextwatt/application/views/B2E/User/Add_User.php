@@ -13,7 +13,6 @@
 <div class="row">
     <div class="col-xs-12">
 
-
         <?php
         //echo validation_errors();
 
@@ -48,31 +47,38 @@
         <div class="row form-group">
             <label class="col-sm-4 no-padding-right control-label" for='mdp'>Mot de passe</label>
 
-            <div class="col-sm-4">
-                <input type="password" name='mdp' id="mdp" placeholder="Mot de passe" class="form-control">
+            <div class="col-sm-2">
+                <input type="password" 
+                       name='mdp' 
+                       id="mdp" 
+                       placeholder="Mot de passe" 
+                       class="form-control">
+            </div>
+            <div class="col-sm-2">
+                <input type="password" 
+                       name='confmdp' 
+                       id="confmdp" 
+                       placeholder="Confirmation mdp" 
+                       class="form-control">
             </div>
             <div class="col-sm-4">
                 <?php echo form_error('mdp'); ?>
-            </div>
-        </div>
-
-        <div class="row form-group">
-            <label class="col-sm-4 no-padding-right control-label" for="mdp">Confirmation mdp</label>
-            <div class="col-sm-4">
-                <input type="password" name='confmdp' id="confmdp" placeholder="Confirmation mdp" class="form-control">
-            </div>
-            <div class="col-sm-4">
                 <?php echo form_error('confmdp'); ?>
             </div>
         </div>
+
+        
 
         <div class="row form-group">
             <label class="col-sm-4 no-padding-right control-label" for="prenom">Prénom</label>
 
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="prenom" id="prenom" value="<?php echo set_value('identifiant'); ?>" placeholder="Votre Prénom">
+                <input type="text" 
+                       class="form-control" 
+                       name="prenom" id="prenom" 
+                       value="<?php echo set_value('identifiant'); ?>" 
+                       placeholder="Votre Prénom">
             </div>
-
             <div class="col-sm-4">
                 <?php echo form_error('prenom'); ?>
             </div>
@@ -83,7 +89,11 @@
             <label class="col-sm-4 no-padding-right control-label" for="nom">Nom</label>
 
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="nom" id="nom" placeholder="Votre Nom"
+                <input type="text" 
+                       class="form-control" 
+                       name="nom" 
+                       id="nom" 
+                       placeholder="Votre Nom"
                        value="<?php echo set_value('nom'); ?>">
             </div>
             <div class="col-sm-4">
@@ -95,7 +105,12 @@
             <label class="col-sm-4 no-padding-right control-label" for="mdp">Email</label>
 
             <div class="col-sm-4">
-                <input type="email" class="form-control" name="email" id="email" placeholder="exemple@nextwatt.fr">
+                <input type="email" 
+                       class="form-control" 
+                       name="email" 
+                       id="email" 
+                       placeholder="exemple@nextwatt.fr"
+                       value="<?php echo set_value('email');?>">
             </div>
             <div class="col-sm-4">
                 <?php echo form_error('email'); ?>
@@ -103,25 +118,21 @@
         </div>
 
         <div class="row form-group">
-            <label class="col-sm-4 no-padding-right control-label" for="tel">Telephone</label>
+            <label class="col-sm-4 no-padding-right control-label" for="tel">Téléphone</label>
 
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="tel" id="tel" placeholder="Votre numéro de telephone">
+                <input type="text" class="form-control" name="tel" id="tel" placeholder="Votre numéro de téléphone">
             </div>
             <div class="col-sm-4">
                 <?php echo form_error('tel'); ?>
             </div>
         </div>
+        
         <div class="row form-group">
             <label class="col-sm-4 no-padding-right control-label" for="categorie">Catégorie</label>
 
             <div class="col-sm-4">
-                <?php echo form_error('categorie'); ?>
-                <select name="categorie" class="dropdown" id="categorie">
-                    <option value="1">Commercial</option>
-                    <option value="2">Directeur Co</option>
-                    <option value="2">Grand Chef</option>
-                </select>
+                <?php $this->fonctionspersos->creerDropdown($categories,345,"Categories"); ?>
             </div>
         </div>
 
@@ -135,7 +146,7 @@
         </div>
 
         <?php echo form_close(); ?>
-
+        
 
     </div>
 </div>

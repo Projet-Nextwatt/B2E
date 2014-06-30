@@ -13,9 +13,10 @@ class User extends DataMapper {
     /*
      * Variables correspondantes aux colonnes de la table.
      */
-    var $ID_User = "";
-    var $Login = "";
-    var $Password = "";
+    
+    /*
+    var $Identifiant = "";
+    var $mdp = "";
     var $ID_Categorie = "";
     var $Nom = "";
     var $Prenom = "";
@@ -24,7 +25,7 @@ class User extends DataMapper {
     var $Date_Ajout = "";
     var $Derniere_Connexion = "";
     var $Actif = "";
-    
+    */
     
     function __construct() 
     {

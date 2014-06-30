@@ -35,6 +35,7 @@
             $entete = $this->fonctionspersos->set_entete();
 
             $this->fonctionspersos->creerTableau($fichier, $entete);
+            var_dump($fichier);
         ?>
     </div>
 </div>

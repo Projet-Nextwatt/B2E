@@ -97,8 +97,8 @@ class Catalogue extends DataMapper
         $bdd->get();
 
         $bdd = $bdd->all_to_array();
-        echo('vard dump dde la bdd');
-        var_dump($bdd);
+//        echo('vard dump dde la bdd');
+//        var_dump($bdd);
         return $bdd;
     }
 

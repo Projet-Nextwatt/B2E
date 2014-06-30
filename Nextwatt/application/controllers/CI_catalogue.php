@@ -93,91 +93,90 @@ class CI_Catalogue extends MY_Controller
 
         $this->load->library('fonctionspersos');
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
-        echo('vard dump du fichier dans create tab add');
-        var_dump($fichier);
+//        echo('vard dump du fichier dans create tab add');
+//        var_dump($fichier);
 
         $ajoutbdd = array();
         $i = 0;
 
         foreach ($refbdd as $rfbdd) {
-            foreach ($fichier as $fich) {
-                $ajoutbdd[$i] = array_diff($fich, $rfbdd);
-                $i++;
-            }
+        foreach ($fichier as $fich) {
+            $ajoutbdd[$i] = array_diff($fich, $rfbdd);
+            $i++;
         }
-
-        return $ajoutbdd;
     }
 
-    public function create_tab_supp_bdd()
-    {
+return $ajoutbdd;
+}
 
-        $this->load->model('Mappage/catalogue', 'catalogue');
-        $refbdd = $this->catalogue->get_full_bdd();
+public
+function create_tab_supp_bdd()
+{
 
-        $this->load->library('fonctionspersos');
-        $fichier = $this->fonctionspersos->lire_fichier_catalogue();
-        echo('vard dump du fichier dans create tab supp');
-        var_dump($fichier);
+    $this->load->model('Mappage/catalogue', 'catalogue');
+    $refbdd = $this->catalogue->get_full_bdd();
 
-        $suppbdd = array();
-        $i = 0;
+    $this->load->library('fonctionspersos');
+    $fichier = $this->fonctionspersos->lire_fichier_catalogue();
+//        echo('vard dump du fichier dans create tab supp');
+//        var_dump($fichier);
 
-        foreach ($refbdd as $rfbdd) {
-            foreach ($fichier as $fich) {
-                $suppbdd[$i] = array_diff($rfbdd, $fich);
-                $i++;
-            }
+    $suppbdd = array();
+    $i = 0;
+
+    foreach ($refbdd as $rfbdd) {
+        foreach ($fichier as $fich) {
+            $suppbdd[$i] = array_diff($rfbdd, $fich);
+            $i++;
         }
-
-        return $suppbdd;
     }
 
-    public function aff_recap_upload()
-    {
-        $data = array();
+    return $suppbdd;
+}
 
-        $this->load->model('Mappage/catalogue', 'catalogue');
-        $refbdd = $this->catalogue->get_ref_bdd();
+public
+function aff_recap_upload()
+{
+    $data = array();
 
-        $this->load->library('fonctionspersos');
-        $fichier = $this->fonctionspersos->lire_fichier_catalogue();
+    $this->load->model('Mappage/catalogue', 'catalogue');
+    $refbdd = $this->catalogue->get_ref_bdd();
 
-        $ajoutbdd = $this->create_tab_ajout_bdd();
-        $suppbdd = $this->create_tab_supp_bdd();
+    $this->load->library('fonctionspersos');
+    $fichier = $this->fonctionspersos->lire_fichier_catalogue();
 
-        $this->decodefichier($fichier);
+    $ajoutbdd = $this->create_tab_ajout_bdd();
+    $suppbdd = $this->create_tab_supp_bdd();
 
-        $data['ajouts'] = $ajoutbdd;
-        $data['supp'] = $suppbdd;
-        $data['fichier'] = $fichier;
+    $this->decodefichier($fichier);
 
-        //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
-        $this->layout->title('Catalogue B2E');
-        $this->layout->view('B2E/Catalogue/catalogue_diff', $data);
-    }
+    $data['ajouts'] = $ajoutbdd;
+    $data['supp'] = $suppbdd;
+    $data['fichier'] = $fichier;
 
-    public function validercatalogue()
-    {
-        // On décode le fichier avec htmlspecialchars_decode dans la fonction ci-dessous
-        $fichier = $this->fonctionspersos->lire_fichier_catalogue();
+    //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
+    $this->layout->title('Catalogue B2E');
+    $this->layout->view('B2E/Catalogue/catalogue_diff', $data);
+}
 
-        // On envoie le fichier décodé au model pour l'uploader
-        $this->load->model('Mappage/catalogue', 'catalogue');
-        if($this->catalogue->updatecatalogue($fichier)== TRUE)
-        {
-            echo ('Plein yen a assez fratéééé !!!! NRV ce soir à la JOIA Plein !');
-        }
-        else{
-            echo('Pebron que tu es, va te jeter aux goudes');
-        }
+public
+function validercatalogue()
+{
+    // On décode le fichier avec htmlspecialchars_decode dans la fonction ci-dessous
+    $fichier = $this->fonctionspersos->lire_fichier_catalogue();
 
+    // On envoie le fichier décodé au model pour l'uploader
+    $this->load->model('Mappage/catalogue', 'catalogue');
+
+    $this->catalogue->updatecatalogue($fichier);
+    echo'OK !';
 
 
-    }
+}
 
-    public function decodefichier($fichier)
-    {
+public
+function decodefichier($fichier)
+{
 //        function funcdecode($line)
 //        {
 //            htmlspecialchars_decode($line);
@@ -189,9 +188,9 @@ class CI_Catalogue extends MY_Controller
 //        }
 
 
+    return htmlspecialchars_decode($fichier['P9-2940SP51'][4], ENT_NOQUOTES);
+}
 
-        return htmlspecialchars_decode($fichier['P9-2940SP51'][4], ENT_NOQUOTES);
-    }
 //
 //    public function funcdecode($line)
 //    {
