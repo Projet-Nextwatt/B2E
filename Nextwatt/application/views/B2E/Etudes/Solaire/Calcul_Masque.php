@@ -35,16 +35,16 @@
             </div>
         </div>
 
-        <div align="center">
-            <?php
-            echo form_submit('envoiratioc', 'Valider','class="btn btn-success btn-sm"');
-            ?>
-        </div>
+<!--        <div align="center">-->
+<!--            --><?php
+//            echo form_submit('envoiratioc', 'Valider','class="btn btn-success btn-sm"');
+//            ?>
+<!--        </div>-->
         <br/>
     <h3 class="resultratioc" align="center">
         <?php
         if (isset($this->session->userdata['Ratioc']) && $this->session->userdata['Ratioc'] != '') {
-            echo "Ration C : <span id='resultratioc'>" . $this->session->userdata['Ratioc'] . " %</span>";
+            echo "Ratio C : <span id='resultratioc'>" . $this->session->userdata['Ratioc'] . " %</span>";
         }
         ?>
 
@@ -55,10 +55,10 @@
 
 <ul class="pager">
     <li class="previous">
-        <a href="<?php echo site_url("pv/choixorientation"); ?>">← Orientation</a>
+        <a href="<?php echo site_url("pv/choixorientation"); ?>"><h4>← Orientation</h4></a>
     </li>
 
     <li class="next">
-        <a href="<?php echo site_url("pv/calculhepp"); ?>"#">Calculer HEPP →</a>
+        <a href="<?php echo site_url("pv/calculhepp"); ?>"><h4>Calculer HEPP →</h4></a>
     </li>
 </ul>

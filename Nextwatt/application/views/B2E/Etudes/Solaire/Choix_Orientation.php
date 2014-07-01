@@ -1,6 +1,5 @@
 
 
-
 <div class="page-header">
     <h1 align="center">
         CHOIX DE L'ORIENTATION</br>
@@ -99,10 +98,10 @@
 
 <ul class="pager">
     <li class="previous">
-        <a href="<?php echo site_url("pv/choixstation"); ?>">← Choix Station</a>
+        <a href="<?php echo site_url("pv/choixstation"); ?>"><h4>← Choix Station</h4></a>
     </li>
 
     <li class="next">
-        <a href="<?php echo site_url("pv/calculmasque"); ?>">Masque →</a>
+        <a href="<?php echo site_url("pv/calculmasque"); ?>"><h4>Masque →</h4></a>
     </li>
 </ul>

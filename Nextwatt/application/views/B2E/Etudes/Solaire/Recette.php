@@ -174,11 +174,11 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
 <div class="col - xs - 12">
     <ul class="pager">
         <li class="previous">
-            <a href=" <?php echo site_url("pv/calculrecette"); ?>">← Calculer Recette</a>
+            <a href=" <?php echo site_url("pv/calculrecette"); ?>"><h4>← Calculer Recette</h4></a>
         </li>
 
         <li class="next">
-            <a href="<?php echo site_url("pv/recette"); ?>">Chuuuuuut cliques pas ! →</a>
+            <a href="<?php echo site_url("pv/recette"); ?>"><h4>Chuuuuuut cliques pas ! →</h4></a>
         </li>
     </ul>
 </div>
