@@ -329,10 +329,16 @@ class PV extends MY_Controller
             )
         );
 
+        $this->load->model('Mappage/prixenergie', 'energie');
+        $data = array();
+        $data['energie'] = $this->energie->select_prixrachat();
+        $data['energie']= $data['energie'][0]['Prix'];
+
         $this->layout->breadcrumbs($breadcrumps);
         $this->layout->title('Calcul de Recette B2E');
         $this->layout->js(js_url('etudesolaire'));
-        $this->layout->view('B2E/Etudes/Solaire/Calcul_Recette'); // Render view and layout
+        $this->layout->function_js('calculrecette()');
+        $this->layout->view('B2E/Etudes/Solaire/Calcul_Recette',$data); // Render view and layout
     }
 
     public function recette()
@@ -388,6 +394,10 @@ class PV extends MY_Controller
 
     public function ajax_geoposition()
     {
+// --------------------------------------
+        $_POST['panneau'] = 1;
+//---------------------------------------
+
 
         $this->load->model('Mappage/ensoleillement', 'ensoleillement'); // Chargement model "Ensoleillement"
         $data = array();
@@ -403,9 +413,7 @@ class PV extends MY_Controller
                 }
 
             }
-            $this->session_orientation($_POST['panneau'],$station['id'], $station['HEPP'], $station['Ville']);
-            $tabPanneau = array('Panneau' => $_POST['panneau'], 'ID_Ensoleillement' => $station['id'], 'HEPP' => $station['HEPP'], 'Ville' => $station['Ville']);
-//            $this->GestionPanneau($tabPanneau);
+            $this->session_orientation($_POST['panneau'], $station['id'], $station['HEPP'], $station['Ville']);
             $jsonstationtrouvee = json_encode($station);
             echo $jsonstationtrouvee;
 
@@ -416,6 +424,11 @@ class PV extends MY_Controller
     public
     function ajax_heppstation()
     {
+        // --------------------------------------
+        $_POST['panneau'] = 1;
+        //---------------------------------------
+
+
         $this->load->model('Mappage/ensoleillement', 'ensoleillement'); // Chargement model "Ensoleillement"
         $data = array();
         $data['station'] = $this->ensoleillement->select_ensoleillement(); // Recup des données station avec le model "ensoleillement"
@@ -424,8 +437,7 @@ class PV extends MY_Controller
             foreach ($data['station'] as $station) { // Parcours les données du select pour trouver la station correspondante
                 if ($station['id'] == $_POST['idVille']['keyname']) {
                     $tabstation = array('Panneau' => $_POST['panneau'], 'ID_Ensoleillement' => $station['id'], 'Ville' => $station['Ville'], 'HEPP' => $station['HEPP']); // Création tableau pour la conversion en json avec la ville et le HEPP correspondant
-//                    $this->GestionPanneau($tabstation);
-                    $this->session_orientation($_POST['panneau'],$station['id'], $station['HEPP'], $station['Ville']);
+                    $this->session_orientation($_POST['panneau'], $station['id'], $station['HEPP'], $station['Ville']);
                     $jsonstation = json_encode($tabstation); // Création du JSON avec le tableau
                     echo $jsonstation; // Envoi du JSON
                 }
@@ -440,7 +452,7 @@ class PV extends MY_Controller
     public function session_orientation($panneau, $idEnsol, $hepp, $ville)
     {
         $tabsession = array('Panneau' => $panneau, 'ID_Ensoleillement' => $idEnsol, 'HEPP' => $hepp, 'Ville' => $ville);
-  //      $tabsession = array('Panneau' => $tabsession);
+        //      $tabsession = array('Panneau' => $tabsession);
         $this->session->set_userdata($tabsession);
 //        $this->GestionPanneau($tabsession);
 //        $this->session->set_userdata($tabsession);
@@ -674,43 +686,5 @@ class PV extends MY_Controller
         }
     }
 
-//    public function GestionPanneau($tabPanneau)
-//    {
-//        switch ($tabPanneau['Panneau']) {
-//            case 1 :
-//                $tabPanneau = array('Panneau' => $tabPanneau);
-//                $this->session->set_userdata($tabPanneau);
-//                break;
-//        }
-//        $this->session->set_userdata['Panneau'] = $tabPanneau;
-//    }
-//
-//    public function AffPanneau($tabPanneau)
-//    {
-//        if (isset($tabPanneau['ID_Ensoleillement'])) {
-//            $IDEnsoleillement = $tabPanneau['ID_Ensoleillement'];
-//        }if (isset($tabPanneau['HEPP'])) {
-//            $HEPP = $tabPanneau['HEPP'];
-//        }if (isset($tabPanneau['Ville'])) {
-//            $Ville = $tabPanneau['Ville'];
-//        }if (isset($tabPanneau['Orientation'])) {
-//            $Orientation = $tabPanneau[''];
-//        }if (isset($tabPanneau['ID_Ensoleillement'])) {
-//            $IDEnsoleillement = $tabPanneau['ID_Ensoleillement'];
-//        }if (isset($tabPanneau['ID_Ensoleillement'])) {
-//            $IDEnsoleillement = $tabPanneau['ID_Ensoleillement'];
-//        }if (isset($tabPanneau['ID_Ensoleillement'])) {
-//            $IDEnsoleillement = $tabPanneau['ID_Ensoleillement'];
-//        }if (isset($tabPanneau['ID_Ensoleillement'])) {
-//            $IDEnsoleillement = $tabPanneau['ID_Ensoleillement'];
-//        }if (isset($tabPanneau['ID_Ensoleillement'])) {
-//            $IDEnsoleillement = $tabPanneau['ID_Ensoleillement'];
-//        }
-//
-//        switch ($tabPanneau['Panneau']) {
-//            case 1 :
-//                $this->session->set_userdata();
-//        }
-//    }
 }
 

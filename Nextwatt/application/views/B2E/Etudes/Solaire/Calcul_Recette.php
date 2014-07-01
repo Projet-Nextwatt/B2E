@@ -38,8 +38,8 @@
 
             <div class="col-sm-6">
                 <?php
-                if ($this->session->userdata('Tarifedf')) {
-                    $value = $this->session->userdata('Tarifedf');
+                if ($energie) {
+                    $value = $energie;
                 } else {
                     $value = '';
                 }
@@ -48,6 +48,7 @@
                     'name' => 'tarifedf',
 
                     'id' => 'tarifedf',
+                    'disabled' => 'disabled',
 
                     'placeholder' => 'Tarif de rachat',
                     'value' => $value
@@ -56,20 +57,19 @@
                 ?>
             </div>
         </div>
-
-        <div align="center"><?php echo form_submit('recetteannuelles', 'Valider','class="btn btn-success btn-sm"'); ?></div>
     </div>
-</div>
-<h3 align="center" id="recetteannuelle"></h3>
-<h3 align="center" id="recettevingtans"></h3>
-<div class="col-xs-12">
+
+    <h3 align="center" id="recetteannuelle"></h3>
+
+    <h3 align="center" id="recettevingtans"></h3>
+
     <ul class="pager">
         <li class="previous">
-            <a href="<?php echo site_url("pv/calculprod"); ?>">← Calculer Production</a>
+            <a href="<?php echo site_url("pv/calculprod"); ?>"><h4>← Calculer Production</h4></a>
         </li>
 
         <li class="next">
-            <a href="<?php echo site_url("pv/recette"); ?>">Récapitulatif →</a>
+            <a href="<?php echo site_url("pv/recette"); ?>"><h4>Récapitulatif →</h4></a>
         </li>
     </ul>
 </div>

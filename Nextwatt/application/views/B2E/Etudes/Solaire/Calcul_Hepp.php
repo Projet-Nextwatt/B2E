@@ -81,11 +81,11 @@
         </div>
     <ul class="pager">
         <li class="previous">
-            <a href="<?php echo site_url("pv/calculmasque"); ?>">← Calculer HEPP</a>
+            <a href="<?php echo site_url("pv/calculmasque"); ?>"><h4>← Calculer HEPP</h4></a>
         </li>
 
         <li class="next">
-            <a href="<?php echo site_url("pv/calculprod"); ?>">Calculer Production →</a>
+            <a href="<?php echo site_url("pv/calculprod"); ?>"><h4>Calculer Production →</h4></a>
         </li>
     </ul>
 </div>

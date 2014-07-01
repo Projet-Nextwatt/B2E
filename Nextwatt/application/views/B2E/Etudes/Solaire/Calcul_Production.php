@@ -84,7 +84,7 @@
                 ?>
             </div>
         </div>
-        <div align="center"><?php echo form_submit('calculprod', 'Valider', 'class="btn btn-success btn-sm"'); ?></div>
+<!--        <div align="center">--><?php //echo form_submit('calculprod', 'Valider', 'class="btn btn-success btn-sm"'); ?><!--</div>-->
     </div>
 </div>
 
@@ -93,10 +93,10 @@
 
 <ul class="pager">
     <li class="previous">
-        <a href="<?php echo site_url("pv/calculhepp"); ?>">← Calculer HEPP</a>
+        <a href="<?php echo site_url("pv/calculhepp"); ?>"><h4>← Calculer HEPP</h4></a>
     </li>
 
     <li class="next">
-        <a href="<?php echo site_url("pv/calculrecette"); ?>">Recette →</a>
+        <a href="<?php echo site_url("pv/calculrecette"); ?>"><h4>Recette →</h4></a>
     </li>
 </ul>
