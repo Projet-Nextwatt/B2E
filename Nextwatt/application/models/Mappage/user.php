@@ -7,8 +7,12 @@ class User extends DataMapper {
     /*
      * Variables de relation (entre tables)
      */
-    var $has_one = array('Categorie');
-    var $has_many = array('Hierarchie','Client');
+    //var $has_one = array('categorie');
+    
+    var $has_one = array(
+        'categorie');
+
+    //var $has_many = array('Hierarchie','Client');
     
     /*
      * Variables correspondantes aux colonnes de la table.
@@ -27,10 +31,10 @@ class User extends DataMapper {
     var $Actif = "";
     */
     
-    function __construct() 
+    function __construct($id=NULL) 
     {
-        parent ::__construct();
-    }
+        parent ::__construct($id);
+    }   
     
     function select_user($id  =NULL)
     {
@@ -38,11 +42,19 @@ class User extends DataMapper {
         if ($id != NULL) {
             $users->where('id', $id);
             $users->get();
+            $users->categorie->get();
             $retour=$users->all_to_array();
             return $retour['0'];
         } else {
             $users->get();
-            return $users->all_to_array();
+            foreach ($users as $index => $user){
+                $retour[$index]=$user->to_array();
+                $user->categorie->get();
+                unset ($retour[$index]['mdp']);
+                $retour[$index]['categorie_id']=$user->categorie->Nom_Categorie;
+            }
+            return $retour;
+            
         }
     }
     

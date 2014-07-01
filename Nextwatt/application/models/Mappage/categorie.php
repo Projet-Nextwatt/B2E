@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 /*
  * Classe Modèle pour la table Categorie, définir ici toutes les fonctionnalitées utilisant la table Categorie
@@ -10,7 +10,7 @@ class Categorie extends DataMapper {
      * Variables de relation (entre tables)
      */
 
-    //var $has_many = array('User');
+    var $has_many = array('user');
 
     /*
      * Variables correspondantes aux colonnes de la table.
@@ -25,8 +25,8 @@ class Categorie extends DataMapper {
       var $Droit_Catalogue = "";
      */
 
-    function __construct() {
-        parent ::__construct();
+    function __construct($id=NULL) {
+        parent ::__construct($id);
     }
 
     function select_categorie($id = NULL) {
