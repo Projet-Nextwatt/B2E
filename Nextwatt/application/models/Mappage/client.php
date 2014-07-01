@@ -31,7 +31,7 @@ class Client extends DataMapper
     var $tel2 = "";
     var $email = "";
     var $responsable = "";
-    var $Date_Ajout = "";
+    var $dateajout = "";
 
 
     function __construct()
@@ -43,8 +43,8 @@ class Client extends DataMapper
     {
         $clients = new Client();
         if ($id != NULL) {
-            $clients->where('ID_Client', $id);
-            $clients->select();
+            $clients->where('id', $id);
+            $clients->get();
             $retour = $clients->all_to_array();
             return $retour['0'];
         } else {
@@ -53,16 +53,10 @@ class Client extends DataMapper
         }
     }
 
-    function select_client_tableau($id = NULL)
-    {
-        $clients = new Client();
-        $clients->select('id', 'Nom', 'Prenom', 'Email', 'TelFixe', 'TelPortable', 'Responsable');
-        $clients->get();
-        return $clients->all_to_array();
-    }
-
     function ajouter_client($data)
     {
+        $today = date("Y-m-d");
+
         $client = array(
             'civilite' => $data['civilite'],
             'nom1' => $data['nom1'],
@@ -75,24 +69,9 @@ class Client extends DataMapper
             'tel1' => $data['tel1'],
             'tel2' => $data['tel2'],
             'email' => $data['email'],
-            'responsable' => $data['responsable']
+            'responsable' => $data['responsable'],
+            'dateajout' => $today
         );
-
-        //////////////////////// TEST UTILISATION OBJET + METHODE SAVE ////////////
-//        $client = new Client();
-//
-//        $client->civilite = $data['civilite'];
-//        $client->nom1 = $data['nom1'];
-//        $client->prenom1 = $data['prenom1'];
-//        $client->nom2 = $data['nom2'];
-//        $client->prenom2 = $data['prenom2'];
-//        $client->adresse = $data['adresse'];
-//        $client->codepostal = $data['codepostal'];
-//        $client->ville = $data['ville'];
-//        $client->tel1 = $data['tel1'];
-//        $client->tel2 = $data['tel2'];
-//        $client->email = $data['email'];
-//        $client->responsable = $data['responsable'];
 
         //if (isset($Energie->$variable)) { // Ce test ne fonctionne pas, mais ne faudrait il pas passer par des set?? ***************************
 
@@ -110,10 +89,12 @@ class Client extends DataMapper
         //Fonction de modification
     }
 
-    function supprimer_client()
+    function supprimer_client($id)
     {
-        $this->db->where('Nom', 'Nom');
-        $this->db->delete('Client');
+        $client = new Client();
+        $client->where('id', $id)->get();
+
+        $client->delete();
     }
 
 }

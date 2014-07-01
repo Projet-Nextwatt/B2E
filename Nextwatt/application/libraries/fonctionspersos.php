@@ -34,7 +34,6 @@ class Fonctionspersos
          *       ou en rien du tout
          */
 
-
         if ($contenu == NULL OR (isset($contenu[0]) AND $contenu[0] == '')) {
             echo '<h2>Attention: Aucune donn&eacutees &agrave; afficher dans le tableau</h2>';
         } else {
@@ -271,6 +270,12 @@ class Fonctionspersos
     public function set_entete()
     {
         $entete = array('Référence', 'Nom', 'Marque', 'Puissance', 'Libellé Mat', 'Libellé Mat sans marque', 'Libellé MO', 'Libellé Garantie', 'Prix MO', 'Prix Mat plancher', 'Prix annonce TTC', 'CEE TTC', 'TVA_MO', 'TVA Mat', 'Facturation', 'Type', 'Spec', 'Fiche Technique', 'Note');
+        return $entete;
+    }
+
+    public function set_entete_clients()
+    {
+        $entete = array('Id', 'Nom', 'Prenom', 'Email', 'Telephone fixe', 'Telephone Portable', 'Responsable');
         return $entete;
     }
 
