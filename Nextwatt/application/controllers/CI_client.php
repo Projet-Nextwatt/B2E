@@ -1,10 +1,10 @@
 <?php
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        // Controleur client
-                        // fonctions pour afficher la page d'accueil des clients (consult_client)
-                        //           pour afficher le formulaire d'ajout (add_client)
-                        //           pour vérifier le formulaire (verif_form_client
+// Controleur client
+// fonctions pour afficher la page d'accueil des clients (consult_client)
+//           pour afficher le formulaire d'ajout (add_client)
+//           pour vérifier le formulaire (verif_form_client
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class CI_Client extends MY_Controller
@@ -19,15 +19,14 @@ class CI_Client extends MY_Controller
 
     public function consult_client()
     {
-        $this->load->model('Mappage/client', 'mapclient');
+        $this->load->model('Mappage/client', 'mapclient'); //Chargement du model
+        $this->load->library('fonctionspersos');
+
         $data = array();
-
         $data['clients'] = $this->mapclient->select_client();
-        $data['eneteteClients'] = array('Id', 'Nom', 'Prenom', 'Ville', 'Telephone ', 'Email' );
-
-        //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
-        $this->layout->title('Consultation client');
-        $this->layout->view('B2E/Client/Accueil_Client', $data); // Render view and layout
+        $data['enteteclients'] = array('Id', 'Nom', 'Prenom', 'Email', 'Telephone fixe', 'Telephone Portable', 'Responsable');
+        $this->layout->title('Liste des clients');
+        $this->layout->view('B2E/Client/Consulter_Client.php', $data); // Render view and layout
 
     }
 
@@ -114,42 +113,19 @@ class CI_Client extends MY_Controller
 
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
         //Et on agit en conséquence
-        if ($this->form_validation->run() == FALSE)
-        {
+        if ($this->form_validation->run() == FALSE) {
             // On charge la page
             $this->layout->title('Erreur d\'ajout client');
             $this->layout->view('B2E/Client/Add_Client', $data); // Render view and layout
-        }
-        else
-        {
-
-            if ($this->mapclient->ajouter_client($_POST))
-            {
-                // Energie object now has an ID
-                $this->consulter_client();
-            }
-            else
-            {
-            $this->layout->title('Ajout client');
-            $this->layout->view('B2E/Success_Error/Accueil_Client'); //render view and layout
-            }
+        } else {
+            $this->consult_client();
         }
 
 
     }
 
-    public function consulter_client() {
-        $this->load->model('Mappage/client', 'mapclient'); //Chargement du model
-        $this->load->library('fonctionspersos');
-
-        $data = array();
-        $data['clients'] = $this->mapclient->select_client();
-        $data['enteteclients'] = array('Id', 'Nom', 'Prenom', 'Email', 'Telephone fixe', 'Telephone Portable', 'Responsable');
-        $this->layout->title('Liste des clients');
-        $this->layout->view('B2E/Client/Consulter_Client.php', $data); // Render view and layout
-    }
-
-    public function ajax_supprimerclient(){
+    public function ajax_supprimerclient()
+    {
         $this->load->model('Mappage/clients', 'mapclients'); //Chargement du modele
         $this->mapclients->supprimer_client($_POST['id']);
     }

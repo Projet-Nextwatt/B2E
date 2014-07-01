@@ -23,10 +23,6 @@
         <br/>
         <div class="row">
             <div class="col-xs-12">
-                <?php
-                                echo('vardump entete');
-                var_dump($entete);
-                ?>
                 <div class="panel panel-default">
                     <!-- Default panel contents -->
                     <div class="panel-heading align-left">Liste des clients</div>

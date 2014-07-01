@@ -42,16 +42,27 @@ class Client extends DataMapper
     function select_client($id = NULL)
     {
         $clients = new Client();
+
+
         if ($id != NULL) {
             $clients->where('id', $id);
             $clients->get();
             $retour = $clients->all_to_array();
+
             return $retour['0'];
         } else {
             $clients->get();
-            return $clients->all_to_array();
+//            echo('var dump du clients objet');
+//            var_dump($clients);
+
+            $champs = array('id', 'nom1', 'prenom1', 'email', 'tel1', 'tel2', 'responsable');
+            $retour = $clients->all_to_array($champs);
+
+
+            return $retour;
         }
     }
+
 
     function ajouter_client($data)
     {
@@ -72,6 +83,8 @@ class Client extends DataMapper
             'responsable' => $data['responsable'],
             'dateajout' => $today
         );
+
+
 
         //if (isset($Energie->$variable)) { // Ce test ne fonctionne pas, mais ne faudrait il pas passer par des set?? ***************************
 

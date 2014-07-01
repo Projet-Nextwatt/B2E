@@ -7,7 +7,7 @@
 </div>
 
 <div class="page-header">
-    <h1>Liste des énergies</h1>
+    <h1>Liste des Clients</h1>
 </div>
 
 <div class="row">
@@ -26,7 +26,7 @@
             <div class="col-xs-12">
                 <div class="panel panel-default">
                     <!-- Default panel contents -->
-                    <div class="panel-heading align-left">Liste des énergies</div>
+                    <div class="panel-heading align-left">Liste des clients</div>
                     <?php
                     $this->fonctionspersos->creerTableau($clients, $enteteclients, 'client/modif_client');
                     ?>
