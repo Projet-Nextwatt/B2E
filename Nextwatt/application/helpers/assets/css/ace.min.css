@@ -8740,7 +8740,7 @@ input[type=checkbox].ace + .lbl::before, input[type=radio].ace + .lbl::before {
     font-family: fontAwesome;
     font-weight: normal;
     font-size: 12px;
-    color: #32a3ce;
+    color: #A4CE3B;
     content: "\a0";
     background-color: #FAFAFA;
     border: 1px solid #c8c8c8;
@@ -12725,7 +12725,14 @@ th .lbl:only-child, td .lbl:only-child {
 }
 
 .login-layout {
-    background-color: #1D2024
+    background: #c9de96; /* Old browsers */
+    background: -moz-linear-gradient(top, #c9de96 0%, #8ab66b 44%, #398235 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c9de96), color-stop(44%,#8ab66b), color-stop(100%,#398235)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #c9de96 0%,#8ab66b 44%,#398235 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #c9de96 0%,#8ab66b 44%,#398235 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #c9de96 0%,#8ab66b 44%,#398235 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #c9de96 0%,#8ab66b 44%,#398235 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9de96', endColorstr='#398235',GradientType=0 ); /* IE6-9 */
 }
 
 .login-layout .main-container:before {
@@ -12750,7 +12757,7 @@ th .lbl:only-child, td .lbl:only-child {
     border-bottom: none;
     box-shadow: none;
     padding: 6px;
-    background-color: #394557;
+    background-color: #A4CE3B;
     -moz-transform: scale(0, 1) translate(-150px);
     -webkit-transform: scale(0, 1) translate(-150px);
     -o-transform: scale(0, 1) translate(-150px);
@@ -12775,7 +12782,7 @@ th .lbl:only-child, td .lbl:only-child {
 
 .login-layout .widget-box .widget-main {
     padding: 16px 36px 36px;
-    background: #F7F7F7
+    background: #DAF298
 }
 
 .login-layout .widget-box .widget-main form {
@@ -12943,7 +12950,7 @@ th .lbl:only-child, td .lbl:only-child {
 }
 
 .blur-login {
-    background: #394557 url('images/meteorshower2.jpg') repeat
+    background: #394557 url('images/blurNextwatt.jpg') repeat
 }
 
 .invoice-info {

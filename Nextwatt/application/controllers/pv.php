@@ -193,6 +193,7 @@ class PV extends MY_Controller
         $this->layout->breadcrumbs($breadcrumps);
         $this->layout->title('Calcul du masque B2E');
         $this->layout->js(js_url('etudesolaire'));
+        $this->layout->function_js('mapresize()');
         $this->layout->view('B2E/Etudes/Solaire/Calcul_Masque'); // Render view and layout
     }
 

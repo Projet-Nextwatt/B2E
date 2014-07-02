@@ -20,5 +20,6 @@ class Accueil extends MY_Controller
         $this->layout->title('Accueil B2E');
         $this->layout->view('B2E/Accueil', $data); // Render view and layout
     }
+
 }
 

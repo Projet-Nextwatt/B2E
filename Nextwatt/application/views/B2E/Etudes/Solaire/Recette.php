@@ -170,7 +170,6 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
 </div>
 
 
-
 <div class="col - xs - 12">
     <ul class="pager">
         <li class="previous">
@@ -182,3 +181,4 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
         </li>
     </ul>
 </div>
+
