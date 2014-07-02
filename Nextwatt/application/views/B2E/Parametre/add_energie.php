@@ -6,11 +6,11 @@
 </div>
 
 <div class="page-header">
-    <?php if (isset($energie)) { 
-    echo '<h1>Modifier une énergie</h1>';
+    <?php if (isset($energie)) {
+        echo '<h1>Modifier une énergie</h1>';
     }
     else{
-        echo '<h1>Ajouter une énergie</h1>'; 
+        echo '<h1>Ajouter une énergie</h1>';
     }
     ?>
 </div>

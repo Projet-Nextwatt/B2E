@@ -23,7 +23,7 @@ class CI_Client extends MY_Controller
         $this->load->library('fonctionspersos');
 
         $data = array();
-        $data['clients'] = $this->mapclient->select_client();
+        $data['clients'] = $this->mapclient->select_client_tableau();
         $data['enteteclients'] = array('Id', 'Nom', 'Prenom', 'Email', 'Telephone fixe', 'Telephone Portable', 'Responsable');
         $this->layout->title('Liste des clients');
         $this->layout->view('B2E/Client/Consulter_Client.php', $data); // Render view and layout
@@ -48,7 +48,69 @@ class CI_Client extends MY_Controller
 
 
         //Configuration des règles par champs
-        $config = array(
+
+
+        //On applique les règles
+        $this->form_validation->set_rules($this->configclient);
+        $data = array();
+
+        //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
+        //Et on agit en conséquence
+        if ($this->form_validation->run() == FALSE) {
+            // On charge la page
+            $this->layout->title('Erreur d\'ajout client');
+            $this->layout->view('B2E/Client/Add_Client', $data); // Render view and layout
+        } else
+        {
+            if ($this->mapclient->ajouter_client($_POST))
+            {
+                // Energie object now has an ID
+                $this->consult_client();
+            }
+            else
+            {
+                echo('Erreur enregistrement');
+                $this->layout->title('Ajout client');
+                $this->layout->view('B2E/Success_Error/formsuccess'); //render view and layout
+            }
+        }
+    }
+
+    public function modif_client()
+    {
+        $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
+        $data = array(); //Pour la vue
+        $data['client']  = $this->mapclient->select_client($this->session->userdata('CI_client/modif_client'));
+
+
+
+        $this->form_validation->set_rules($this->configclient);
+
+        if ($this->form_validation->run() == FALSE) {
+            //Formualire invalide, retour à celui-ci
+
+            $this->layout->title('Modifier un client');
+            $this->layout->view('B2E/Client/Add_Client.php', $data); // Render view and layout
+        } else {
+            //Formulaire ok, traitement des données
+            //Clean des données
+            $this->form_validation->set_rules($this->configtraitementclient);
+            $this->form_validation->run();
+            if ($this->prixenergie->modifier_prixenergie($_POST)) {
+                $this->consult_client();
+            } else {
+                echo 'error';
+            }
+        }
+    }
+
+    public function ajax_supprimerclient()
+    {
+        $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
+        $this->mapclients->supprimer_client($_POST['id']);
+    }
+
+    public $configclient = array(
             array(
                 'field' => 'civilite',
                 'label' => 'Civilité',
@@ -104,29 +166,41 @@ class CI_Client extends MY_Controller
                 'label' => 'Téléphone portable',
                 'rules' => 'required'
             ),
-
         );
 
-        //On applique les règles
-        $this->form_validation->set_rules($config);
-        $data = array();
-
-        //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
-        //Et on agit en conséquence
-        if ($this->form_validation->run() == FALSE) {
-            // On charge la page
-            $this->layout->title('Erreur d\'ajout client');
-            $this->layout->view('B2E/Client/Add_Client', $data); // Render view and layout
-        } else {
-            $this->consult_client();
-        }
-
-
-    }
-
-    public function ajax_supprimerclient()
-    {
-        $this->load->model('Mappage/clients', 'mapclients'); //Chargement du modele
-        $this->mapclients->supprimer_client($_POST['id']);
-    }
+    public $configtraitementclient = array(
+        array(
+            'field' => 'nom1',
+            'label' => 'Nom',
+            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
+            //htmlspecialchars_decode($str, ENT_NOQUOTES); Comment je fait pour mettre un flag
+        ),
+        array(
+            'field' => 'prenom1',
+            'label' => 'Prenom',
+            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
+            //htmlspecialchars_decode($str, ENT_NOQUOTES); Comment je fait pour mettre un flag
+        ),
+        array(
+            'field' => 'nom2',
+            'label' => 'Nom (Conjoint)',
+            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
+            //htmlspecialchars_decode($str, ENT_NOQUOTES); Comment je fait pour mettre un flag
+        ),array(
+            'field' => 'prenom2',
+            'label' => 'Prenom (Conjoint)',
+            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
+            //htmlspecialchars_decode($str, ENT_NOQUOTES); Comment je fait pour mettre un flag
+        ),array(
+            'field' => 'adresse',
+            'label' => 'Adresse',
+            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
+            //htmlspecialchars_decode($str, ENT_NOQUOTES); Comment je fait pour mettre un flag
+        ),array(
+            'field' => 'ville',
+            'label' => 'Ville',
+            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
+            //htmlspecialchars_decode($str, ENT_NOQUOTES); Comment je fait pour mettre un flag
+        ),
+    );
 }

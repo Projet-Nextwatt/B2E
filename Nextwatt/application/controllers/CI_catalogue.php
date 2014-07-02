@@ -16,7 +16,7 @@ class CI_Catalogue extends MY_Controller
     {
         //Remplissage de la variable $data avec l'image pour le layout
         $data = array();
-        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
+        $data['tableau'] = $this->create_tableau_catalogue();
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Catalogue B2E');
         $this->layout->view('B2E/Catalogue/Consulter_Catalogue', $data);
@@ -24,12 +24,11 @@ class CI_Catalogue extends MY_Controller
 
     public function consult_catalogue()
     {
-        //Remplissage de la variable $data avec l'image pour le layout
-
-
+        $data = array();
+        $data['tableau'] = $this->create_tableau_catalogue();
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Catalogue B2E');
-        $this->layout->view('B2E/Catalogue/Consulter_Catalogue');
+        $this->layout->view('B2E/Catalogue/Consulter_Catalogue', $data);
     }
 
     public function load_catalogue()
@@ -86,101 +85,155 @@ class CI_Catalogue extends MY_Controller
 
     public function create_tab_ajout_bdd()
     {
+        $this->load->model('Mappage/catalogue', 'catalogue');
+        $refbdd = $this->catalogue->get_ref_bdd();
+
+        $this->load->library('fonctionspersos');
+        $fichier = $this->fonctionspersos->lire_fichier_catalogue();
+
+        $nbProduitLu = 0;
+        $nbComplementLu = 0;
+        $nbOptionsOblLu = 0;
+        $nbAutre = 0;
+
+        if (isset($fichier)) {
+            foreach ($fichier as $ref => $ligneFichier) {
+                if (($ligneFichier   [count($ligneFichier) - 1] == 1)) //***********Catalogue
+                    $nbProduitLu++;
+                elseif (($ligneFichier[count($ligneFichier) - 1] == 2)) //********Complements
+                    $nbComplementLu++;
+                elseif (($ligneFichier[count($ligneFichier) - 1] == 3)) //********Options obligatoires
+                    $nbOptionsOblLu++;
+                else
+                    $nbAutre++;
+
+
+                //V�rification de l'exsitence dans la base de donn�es
+                if (!(array_key_exists($ref, $refbdd))) //si il existe pas, on ajoute
+                {
+                    $ajout[] = $ligneFichier;
+                } else //Si il existe, on met � jour
+                {
+                    $d = -1;
+                    unset($ligneModif); //Pour etre sur de pas utiliser le produit pr�cedement annalys�
+                    unset($ligneModifOld);
+                    foreach ($refbdd[$ref] as $dataBDD) {
+                        $dataBDD = addslashes($dataBDD); //Pour etre conforme � ce qu'on lit
+                        if ($d != -1 AND $dataBDD != $ligneFichier[$d]) //car la premi�re colonne dans la base de donn�es est l'id bdd
+                        {
+                            $ligneModif[$d] = $ligneFichier[$d];
+                            $ligneModifOld[$d] = $dataBDD;
+                        }
+                        $d++;
+                    }
+                    if (isset($ligneModif)) {
+                        $modif[$ref] = $ligneModif;
+                        $modifOld[$ref] = $ligneModifOld;
+                    }
+                }
+            }
+        }
+        if (isset($ajout)) {
+            return $ajout;
+        }
+
+
+    }
+
+    public
+    function create_tab_supp_bdd()
+    {
+
+        $this->load->model('Mappage/catalogue', 'catalogue');
+        $refbdd = $this->catalogue->get_full_bdd();
+//        echo('données récupérées de la BDD');
+//        var_dump($refbdd);
+
+        $this->load->library('fonctionspersos');
+        $fichier = $this->fonctionspersos->lire_fichier_catalogue();
+//        echo('données récupérées du fichier');
+//        var_dump($fichier);
+
+
+        $tabbdd = array();
+        $tabfichier = array();
+        $i = 0;
+        $j = 0;
+
+        foreach ($refbdd as $r) {
+            $tabbdd[$i] = $r['Reference'];
+            $i++;
+        }
+        foreach ($fichier as $f) {
+            $tabfichier[$j] = $f[0];
+            $j++;
+        }
+        $result = array_diff($tabbdd,$tabfichier);
+
+
+
+//        var_dump($suppression);
+
+        return $result;
+    }
+
+    public
+    function aff_recap_upload()
+    {
+        $data = array();
 
         $this->load->model('Mappage/catalogue', 'catalogue');
         $refbdd = $this->catalogue->get_ref_bdd();
 
         $this->load->library('fonctionspersos');
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
-//        echo('vard dump du fichier dans create tab add');
-//        var_dump($fichier);
 
-        $ajoutbdd = array();
-        $i = 0;
+        $ajoutbdd = $this->create_tab_ajout_bdd();
+        $suppbdd = $this->create_tab_supp_bdd();
 
-        foreach ($refbdd as $rfbdd) {
-        foreach ($fichier as $fich) {
-            $ajoutbdd[$i] = array_diff($fich, $rfbdd);
-            $i++;
-        }
+//        $this->decodefichier($fichier);
+
+        $data['ajouts'] = $ajoutbdd;
+        $data['supp'] = $suppbdd;
+        $data['fichier'] = $fichier;
+
+
+        //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
+        $this->layout->title('Catalogue B2E');
+        $this->layout->view('B2E/Catalogue/catalogue_diff', $data);
     }
 
-return $ajoutbdd;
-}
+    public
+    function validercatalogue()
+    {
+        $data = array();
+        $data['successmsg'] = 'Upload Terminé';
 
-public
-function create_tab_supp_bdd()
-{
+        // On décode le fichier avec htmlspecialchars_decode dans la fonction ci-dessous
+        $fichier = $this->fonctionspersos->lire_fichier_catalogue();
+        // On envoie le fichier décodé au model pour l'uploader
+        $this->load->model('Mappage/catalogue', 'catalogue');
+        //On récupère les lignes à supprimer via la fonction précisé plus haut
+        $suppr = $this->create_tab_supp_bdd();
 
-    $this->load->model('Mappage/catalogue', 'catalogue');
-    $refbdd = $this->catalogue->get_full_bdd();
+        //On fait les modifications ou les ajouts
+        $this->catalogue->updatecatalogue($fichier);
 
-    $this->load->library('fonctionspersos');
-    $fichier = $this->fonctionspersos->lire_fichier_catalogue();
-//        echo('vard dump du fichier dans create tab supp');
-//        var_dump($fichier);
-
-    $suppbdd = array();
-    $i = 0;
-
-    foreach ($refbdd as $rfbdd) {
-        foreach ($fichier as $fich) {
-            $suppbdd[$i] = array_diff($rfbdd, $fich);
-            $i++;
+        //On fait les suppressions grâce au tableau récupéré via "create_tab_supp_bdd"
+        foreach($suppr as $obj)
+        {
+            $this->catalogue->supprimer($obj);
         }
+
+        $this->layout->title('Catalogue B2E');
+        $this->layout->view('B2E/Catalogue/successupload', $data);
+
+
     }
 
-    return $suppbdd;
-}
-
-public
-function aff_recap_upload()
-{
-    $data = array();
-
-    $this->load->model('Mappage/catalogue', 'catalogue');
-    $refbdd = $this->catalogue->get_ref_bdd();
-
-    $this->load->library('fonctionspersos');
-    $fichier = $this->fonctionspersos->lire_fichier_catalogue();
-
-    $ajoutbdd = $this->create_tab_ajout_bdd();
-    $suppbdd = $this->create_tab_supp_bdd();
-
-    $this->decodefichier($fichier);
-
-    $data['ajouts'] = $ajoutbdd;
-    $data['supp'] = $suppbdd;
-    $data['fichier'] = $fichier;
-
-    //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
-    $this->layout->title('Catalogue B2E');
-    $this->layout->view('B2E/Catalogue/catalogue_diff', $data);
-}
-
-public
-function validercatalogue()
-{
-    $data = array();
-    $data['successmsg'] = 'Upload Terminé';
-
-    // On décode le fichier avec htmlspecialchars_decode dans la fonction ci-dessous
-    $fichier = $this->fonctionspersos->lire_fichier_catalogue();
-
-    // On envoie le fichier décodé au model pour l'uploader
-    $this->load->model('Mappage/catalogue', 'catalogue');
-
-    $this->catalogue->updatecatalogue($fichier);
-
-    $this->layout->title('Catalogue B2E');
-    $this->layout->view('B2E/Catalogue/successupload', $data);
-
-
-}
-
-public
-function decodefichier($fichier)
-{
+    public
+    function decodefichier($fichier)
+    {
 //        function funcdecode($line)
 //        {
 //            htmlspecialchars_decode($line);
@@ -192,10 +245,26 @@ function decodefichier($fichier)
 //        }
 
 
-    return htmlspecialchars_decode($fichier['P9-2940SP51'][4], ENT_NOQUOTES);
-}
+        return htmlspecialchars_decode($fichier['P9-2940SP51'][4], ENT_NOQUOTES);
+    }
 
-//
+    public function create_tableau_catalogue()
+    {
+        $this->load->model('Mappage/catalogue', 'cata');
+        $BDD = $this->cata->get_full_bdd();
+        $i=0;
+
+        foreach($BDD as $ligne)
+        {
+            array_shift($ligne);
+            array_shift($ligne);
+            $newtab[$i] = $ligne;
+            $i++;
+        }
+
+        return $newtab;
+    }
+
 //    public function funcdecode($line)
 //    {
 //        return htmlspecialchars_decode($line, ENT_NOQUOTES);

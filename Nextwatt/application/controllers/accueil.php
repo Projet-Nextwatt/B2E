@@ -14,11 +14,10 @@ class Accueil extends MY_Controller
 
     public function index()
     {
-        $data = array();
-        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
+
 
         $this->layout->title('Accueil B2E');
-        $this->layout->view('B2E/Accueil', $data); // Render view and layout
+        $this->layout->view('B2E/Accueil'); // Render view and layout
     }
 }
 

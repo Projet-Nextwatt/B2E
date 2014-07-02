@@ -28,7 +28,7 @@
                     <!-- Default panel contents -->
                     <div class="panel-heading align-left">Liste des clients</div>
                     <?php
-                    $this->fonctionspersos->creerTableau($clients, $enteteclients, 'client/modif_client');
+                    $this->fonctionspersos->creerTableau($clients, $enteteclients, 'CI_client/modif_client','CI_client/ajax_supprimerclient ');
                     ?>
                 </div>
             </div>

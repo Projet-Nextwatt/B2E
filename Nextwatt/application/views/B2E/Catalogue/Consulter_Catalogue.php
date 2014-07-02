@@ -8,14 +8,16 @@
         <small><i class="ace-icon fa fa-angle-double-right"></i> Page d'accueil Catalogue</small>
     </h1>
 
-<div class="btn-group">
+    <div class="btn-group">
         <a href="<?php echo site_url("CI_catalogue/load_catalogue"); ?>">
-        <button  type="button" class="btn btn-white btn-sm btn-primary">Lier type au produit</button></a>
+            <button type="button" class="btn btn-white btn-sm btn-primary">Lier type au produit</button>
+        </a>
         <button type="button" class="btn btn-white btn-sm btn-primary">Gérer liste types</button>
         <button type="button" class="btn btn-white btn-sm btn-primary">Lier options</button>
         <a href="<?php echo site_url("CI_catalogue/upload_catalogue_form"); ?>">
-        <button type="button" class="btn btn-white btn-sm btn-primary">Charger Catalogue</button></a>
-</div>
+            <button type="button" class="btn btn-white btn-sm btn-primary">Charger Catalogue</button>
+        </a>
+    </div>
 
     <div id="nav-search" class="nav-search">
         <form class="form-search">
@@ -31,17 +33,10 @@
 <div class="row">
     <div class="col-xs-12">
         <?php
+        $this->load->library('fonctionspersos');
+        $entete = $this->fonctionspersos->set_entete();
 
-            $fichier = $this->fonctionspersos->lire_fichier_catalogue();
-            $entete = $this->fonctionspersos->set_entete();
-//            if($data['successmsg'] != NULL)
-//            {
-//                echo($data['successmsg']);
-//            }
-//            else{
-//                var_dump($data);
-//            }
-            $this->fonctionspersos->creerTableau($fichier, $entete);
+        $this->fonctionspersos->creerTableau($tableau, $entete);
         ?>
     </div>
 </div>

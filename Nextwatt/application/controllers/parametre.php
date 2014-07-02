@@ -39,6 +39,7 @@ class Parametre extends MY_Controller {
             'rules' => 'required|trim|numeric'
         ),
     );
+
     public $configTraitementAddEnergie = array(
         array(
             'field' => 'Energie',
