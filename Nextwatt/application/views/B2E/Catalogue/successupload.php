@@ -19,8 +19,14 @@
             <a href="<?php echo site_url("CI_catalogue/consult_catalogue"); ?>">
             <button type="button" class="btn btn-success">
                 <i class="ace-icon fa fa-book "></i>
-                Retour à l'accueil catalogue
-            </button>
+                Retour au catalogue
+            </button></a>
+            <a href="<?php echo site_url("accueil"); ?>">
+                <button type="button" class="btn btn-success">
+                    <i class="ace-icon fa fa-space-shuttle icon-animated-bell "></i>
+                    Retour à l'accueil
+            </button></a>
         </div>
     </div>
 </div>
+<!--fa-desktop-->

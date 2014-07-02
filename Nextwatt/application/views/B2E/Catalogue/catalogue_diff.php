@@ -37,15 +37,33 @@
             Ajouts :
         </h2>
         <?php
-        //$this->fonctionspersos->creerTableau($ajouts, $entete);
-        var_dump($ajouts);
+        if(isset($ajouts))
+        {
+            $this->fonctionspersos->creerTableau($ajouts, $entete);
+        }
+        else
+        {
+            echo('<h3>  Aucun ajout dans la base de données</h3><br/>');
+        }
         ?>
         <h2>
             Suppressions :
         </h2>
         <?php
-        //$this->fonctionspersos->creerTableau($supp, $entete);
-        var_dump($supp);
+        if(isset($supp))
+        {
+           foreach($supp as $ref)
+           {
+               echo('<h4>');
+               echo($ref);
+               echo('</h4>');
+//               echo('<br/>');
+           }
+        }
+        else
+        {
+            echo('<h3>  Aucun ajout dans la base de données</h3><br/>');
+        }
         ?>
     </div>
 </div>

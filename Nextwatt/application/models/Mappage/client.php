@@ -49,9 +49,26 @@ class Client extends DataMapper
             return $retour['0'];
         } else {
             $clients->get();
-            return $clients->all_to_array();
+            return $clients->all_to_array();;
         }
     }
+
+    function select_client_tableau($id = NULL)
+    {
+        $clients = new Client();
+        if ($id != NULL) {
+            $clients->where('id', $id);
+            $clients->get();
+            $retour = $clients->all_to_array();
+            return $retour['0'];
+        } else {
+            $clients->get();
+            $champs = array('id', 'nom1', 'prenom1', 'email', 'tel1', 'tel2', 'user_id');
+            $retour = $clients->all_to_array($champs);
+            return $retour;
+        }
+    }
+
 
     function ajouter_client($data)
     {
@@ -69,8 +86,8 @@ class Client extends DataMapper
             'tel1' => $data['tel1'],
             'tel2' => $data['tel2'],
             'email' => $data['email'],
-            'responsable' => $data['responsable'],
-            'dateajout' => $today
+            'user_id' => $data['responsable'],
+            'dateajout' => $today,
         );
 
         //if (isset($Energie->$variable)) { // Ce test ne fonctionne pas, mais ne faudrait il pas passer par des set?? ***************************
@@ -84,9 +101,20 @@ class Client extends DataMapper
 //        return $client->save();
     }
 
-    function modifier_client()
+    function modifier_client($data)
     {
-        //Fonction de modification
+        $id = $data['id'];
+        unset($data['id']);
+
+        $client = new Client();
+        $client->where('id', $id)->get();
+        //Appliquer les datas
+
+        foreach ($data as $variable => $valeur) {
+            $client->$variable = $valeur;
+        }
+        return $client->save();
+
     }
 
     function supprimer_client($id)

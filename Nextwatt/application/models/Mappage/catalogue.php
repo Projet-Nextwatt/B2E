@@ -92,11 +92,13 @@ class Catalogue extends DataMapper
     {
         $bdd = new Catalogue();
 
-        $bdd->select('Reference, Nom, Marque, Puissance, Libelle_Mat, Libelle_Mat_SansMarque, Libelle_MO, Libelle_Garantie,
-        Prix_MO, Prix_Mat_Plancher, Prix_Annonce_TTC, CEE_TTC, TVA_MO, TVA_Mat, Facturation, Type_Produit, Spec, Fiche_Tech, Note');
+//        $bdd->select('Reference, Nom, Marque, Puissance, Libelle_Mat, Libelle_Mat_SansMarque, Libelle_MO, Libelle_Garantie,
+//        Prix_MO, Prix_Mat_Plancher, Prix_Annonce_TTC, CEE_TTC, TVA_MO, TVA_Mat, Facturation, Type_Produit, Spec, Fiche_Tech, Note');
         $bdd->get();
 
         $bdd = $bdd->all_to_array();
+//        unset($bdd[0]);
+//        unset($bdd[1]);
 //        echo('vard dump dde la bdd');
 //        var_dump($bdd);
         return $bdd;
@@ -146,8 +148,18 @@ class Catalogue extends DataMapper
             $newcatalogue->Note = "$produit[18]";
 
             $newcatalogue->save();
-
         }
+    }
+
+    function supprimer($id)
+    {
+        $obj = new Catalogue();
+
+        $obj->where('Reference', $id);
+        $obj->get();
+
+        $obj->delete();
+
     }
 
 }
