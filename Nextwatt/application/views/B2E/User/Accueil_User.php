@@ -23,7 +23,7 @@
             <div class="col-xs-12">
                 <div class="panel panel-success">
                     <div class="panel-heading align-left">Liste des utilisateurs</div>
-                    <?php $this->fonctionspersos->creerTableau($users, array()); ?>
+                    <?php $this->fonctionspersos->creerTableau($users, array(),'CI_User/modif_user') ?>
                 </div>
             </div>
         </div>

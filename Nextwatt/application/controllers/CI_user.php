@@ -52,6 +52,66 @@ class CI_User extends MY_Controller {
             }
         }
     }
+    
+    public function modif_user() {
+        $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele user
+        $this->load->model('Mappage/user', 'mapuser'); //Chargement du modele categorie
+        
+        $data = array();
+            //chargement des catégories pour la liste déroulante
+        $categories = $this->categorie->chargercategories();
+        $data["categories"] =$categories;
+        $data['user'] = $this->mapuser->select_user($this->session->userdata('CI_User/modif_user'));
+        
+        //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
+        $this->form_validation->set_rules($this->configValidationModifUser);
+        if ($this->form_validation->run() == FALSE) {
+            // On charge la page
+            $this->layout->title('Modification d\'un utilisateur');
+            $this->layout->view('B2E/User/Modif_User', $data);
+        } else {
+            
+            $this->form_validation->set_rules($this->configTraitementModifUser);
+            if ($this->mapuser->modif_user($_POST)) {
+                // Energie object now has an ID
+                $this->consult_user();
+            } else {
+                // Show all error messages
+                $this->layout->title('Erreur');
+                $this->layout->view('B2E/User/Modif_User',$data); //render view and layout
+            }
+        }
+    }
+    
+    public function modif_mdpuser() {
+        $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele user
+        $this->load->model('Mappage/user', 'mapuser'); //Chargement du modele categorie
+        
+        $data = array();
+            //chargement des catégories pour la liste déroulante
+        $categories = $this->categorie->chargercategories();
+        $data["categories"] =$categories;
+        $data['user'] = $this->mapuser->select_user($this->session->userdata('CI_user/modif_user'));
+        
+        //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
+        $this->form_validation->set_rules($this->configValidationMDP);
+        if ($this->form_validation->run() == FALSE) {
+            // On charge la page
+            $this->layout->title('Modification d\'un utilisateur');
+            $this->layout->view('B2E/User/Modif_User', $data);
+        } else {
+            
+            $this->form_validation->set_rules($this->configTraitementMDP);
+            if ($this->mapuser->modif_MDP($_POST)) {
+                // Energie object now has an ID
+                $this->consult_user();
+            } else {
+                // Show all error messages
+                $this->layout->title('Erreur');
+                $this->layout->view('B2E/User/Modif_User',$data); //render view and layout
+            }
+        }
+    }
 
    
     //Catégorie ////////////////////////////////////////////////////////////////////////////////////
@@ -206,7 +266,6 @@ class CI_User extends MY_Controller {
         ),
     );
     
-    
     public  $configValidationUser = array(
         array(
             'field' => 'Identifiant',
@@ -293,6 +352,104 @@ class CI_User extends MY_Controller {
         ),
     );
     
+    
+    public  $configValidationModifUser = array(
+        array(
+            'field' => 'Identifiant',
+            'label' => 'Identifiant',
+            'rules' => 'required|trim|max_length[255]'
+        ),
+        array(
+            'field' => 'prenom',
+            'label' => 'Prenom',
+            'rules' => 'required|trim|max_length[255]'
+        ),
+        array(
+            'field' => 'nom',
+            'label' => 'Nom',
+            'rules' => 'required|trim|max_length[255]|mb_strtoupper'
+        ),
+        array(
+            'field' => 'email',
+            'label' => 'E-mail',
+            'rules' => 'required|valid_email'
+        ),
+        array(
+            'field' => 'tel',
+            'label' => 'Telephone',
+            'rules' => 'callback_tel'
+        ),
+        array(
+            'field' => 'categorie',
+            'label' => 'Categorie',
+            'rules' => ''
+        ),
+    );
+    
+    public $configTraitementModifUser = array(
+        array(
+            'field' => 'Identifiant',
+            'label' => 'Identifiant',
+            'rules' => 'xss_clean|htmlentities'
+        ),
+        array(
+            'field' => 'confmdp',
+            'label' => 'Confirmation mot de passe',
+            'rules' => ''
+        ),
+        array(
+            'field' => 'prenom',
+            'label' => 'Prenom',
+            'rules' => 'xss_clean|htmlentities'
+        ),
+        array(
+            'field' => 'nom',
+            'label' => 'Nom',
+            'rules' => 'xss_clean|htmlentities'
+        ),
+        array(
+            'field' => 'email',
+            'label' => 'E-mail',
+            'rules' => ''
+        ),
+        array(
+            'field' => 'tel',
+            'label' => 'Telephone',
+            'rules' => ''
+        ),
+        array(
+            'field' => 'categorie',
+            'label' => 'Categorie',
+            'rules' => ''
+        ),
+    );
+    
+    public  $configValidationMDP = array(
+        array(
+            'field' => 'mdp',
+            'label' => 'Mot de Passe',
+            'rules' => 'matches[confmdp]|sha1|required|trim'
+        ),
+        array(
+            'field' => 'confmdp',
+            'label' => 'Confirmation mot de passe',
+            'rules' => 'trim'
+        ),
+    );
+    
+    public $configTraitementMDP = array(
+        array(
+            'field' => 'mdp',
+            'label' => 'Mot de Passe',
+            'rules' => ''
+        ),
+        array(
+            'field' => 'confmdp',
+            'label' => 'Confirmation mot de passe',
+            'rules' => ''
+        ),
+    );
+    
         //Callback
     public function checkbox(&$str) {
         //Fonction de traitement du formulaire appelée en callback
@@ -304,17 +461,28 @@ class CI_User extends MY_Controller {
         }
     }
 
-    public function tel(&$numero) {
-        $numero = preg_replace("#[^0-9]#", '', $numero);
-        if ((strlen($numero)==10) OR (strlen($numero)==0))
-        {
-            return TRUE;
-        }
-        else
-        {
+    public function tel(&$nbr) {
+        $nbr = preg_replace("#[^0-9]#", '', $nbr);
+        
+        if(strlen($nbr) == 10)
+	{
+		for($i=0;$i<5;$i++)
+                {
+                    $nbr_array[] = substr($nbr, $i*2, 2);
+                }
+		$nbr = implode('.', $nbr_array);
+		return TRUE;
+	}
+	elseif (strlen($nbr) == 0 )
+	{
+		return TRUE;
+	}
+	else
+	{
+            
             $this->form_validation->set_message('tel', 'Le champs %s doit contenir 10 chiffres');
-            return FALSE;
-        }
+		return FALSE;
+	}
     }
 
 }

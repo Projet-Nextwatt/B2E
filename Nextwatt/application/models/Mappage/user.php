@@ -38,14 +38,17 @@ class User extends DataMapper {
     
     function select_user($id  =NULL)
     {
-        $users = new User();
+        
         if ($id != NULL) {
-            $users->where('id', $id);
-            $users->get();
-            $users->categorie->get();
-            $retour=$users->all_to_array();
-            return $retour['0'];
+            $user = new User();
+            $user->where('id', $id);
+            $user->get();
+            $user->categorie->get();
+            $tabuser=$user->to_array();
+            $tabcat=$user->categorie->to_array();
+            return array_merge($tabuser, $tabcat);
         } else {
+            $users = new User();
             $users->get();
             foreach ($users as $index => $user){
                 $retour[$index]=$user->to_array();
@@ -60,16 +63,10 @@ class User extends DataMapper {
     
     function ajouter_user($data)
     {
-<<<<<<< HEAD
-=======
-        $today = date("Y-m-d");
-
-
->>>>>>> origin/Developpement
         $user = array(
             'Identifiant' => $data['Identifiant'],
             'mdp' => $data['mdp'],
-            'FK_Categorie' => $data['Categories'],
+            'categorie_id' => $data['Categories'],
             'nom' => $data['nom'],
             'prenom' => $data['prenom'],
             'email' => $data['email'],
