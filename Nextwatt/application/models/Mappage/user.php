@@ -64,7 +64,7 @@ class User extends DataMapper {
         $user = array(
             'Identifiant' => $data['Identifiant'],
             'mdp' => $data['mdp'],
-            'FK_Categorie' => $data['Categories'],
+            'categorie_id' => $data['Categories'],
             'nom' => $data['nom'],
             'prenom' => $data['prenom'],
             'email' => $data['email'],
