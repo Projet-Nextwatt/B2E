@@ -269,7 +269,7 @@ class Fonctionspersos
 
     public function set_entete()
     {
-        $entete = array('Référence', 'Nom', 'Marque', 'Puissance', 'Libellé Mat', 'Libellé Mat sans marque', 'Libellé MO', 'Libellé Garantie', 'Prix MO', 'Prix Mat plancher', 'Prix annonce TTC', 'CEE TTC', 'TVA_MO', 'TVA Mat', 'Facturation', 'Type', 'Spec', 'Fiche Technique', 'Note');
+        $entete = array('Référence', 'Nom', 'Marque', 'Puissance', 'Prix annonce TTC');
         return $entete;
     }
 

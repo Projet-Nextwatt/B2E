@@ -26,6 +26,7 @@ class CI_Catalogue extends MY_Controller
     {
         $data = array();
         $data['tableau'] = $this->create_tableau_catalogue();
+
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Catalogue B2E');
         $this->layout->view('B2E/Catalogue/Consulter_Catalogue', $data);
@@ -90,6 +91,7 @@ class CI_Catalogue extends MY_Controller
 
         $this->load->library('fonctionspersos');
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
+
 
         $nbProduitLu = 0;
         $nbComplementLu = 0;
@@ -168,8 +170,7 @@ class CI_Catalogue extends MY_Controller
             $tabfichier[$j] = $f[0];
             $j++;
         }
-        $result = array_diff($tabbdd,$tabfichier);
-
+        $result = array_diff($tabbdd, $tabfichier);
 
 
 //        var_dump($suppression);
@@ -192,6 +193,8 @@ class CI_Catalogue extends MY_Controller
         $suppbdd = $this->create_tab_supp_bdd();
 
 //        $this->decodefichier($fichier);
+//        echo('vardmp d ajoutbdd');
+//        var_dump($ajoutbdd);
 
         $data['ajouts'] = $ajoutbdd;
         $data['supp'] = $suppbdd;
@@ -213,16 +216,35 @@ class CI_Catalogue extends MY_Controller
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
         // On envoie le fichier décodé au model pour l'uploader
         $this->load->model('Mappage/catalogue', 'catalogue');
-        //On récupère les lignes à supprimer via la fonction précisé plus haut
+        //On récupère les lignes à supprimer et à ajouter via la fonction précisé plus haut
         $suppr = $this->create_tab_supp_bdd();
+        $add = $this->create_tab_ajout_bdd();
+//        var_dump($add);
+
+        //On créer un compteur pour pouvoir afficher le nombre de suppressions/ajouts faits à la prochaine vue
+        $data['lignesuppr'] = 0;
+        $data['ligneajouté'] = 0;
 
         //On fait les modifications ou les ajouts
-        $this->catalogue->updatecatalogue($fichier);
-
-        //On fait les suppressions grâce au tableau récupéré via "create_tab_supp_bdd"
-        foreach($suppr as $obj)
+        if(isset($add))
         {
-            $this->catalogue->supprimer($obj);
+            $data['ligneajouté'] = $this->catalogue->updatecatalogue($add);
+        }
+
+
+        //On fait les suppressions grâce au tableau récupéré via "create_tab_supp_bdd" et on indente le compteur à chaque suppression
+
+        if (!empty($_POST['check_list']))
+        {
+            foreach ($_POST['check_list'] as $check)
+            {
+                if ($this->catalogue->supprimer($check) == TRUE) {
+                $data['lignesuppr']++;
+            }
+            }
+        }
+        else
+        {
         }
 
         $this->layout->title('Catalogue B2E');
@@ -252,13 +274,14 @@ class CI_Catalogue extends MY_Controller
     {
         $this->load->model('Mappage/catalogue', 'cata');
         $BDD = $this->cata->get_full_bdd();
-        $i=0;
-
-        foreach($BDD as $ligne)
-        {
-            array_shift($ligne);
-            array_shift($ligne);
-            $newtab[$i] = $ligne;
+        $i = 0;
+        $newtab=array();
+        foreach ($BDD as $ligne) {
+            $newtab[$i]['Reference'] = $ligne['Reference'];
+            $newtab[$i]['Nom'] = $ligne['Nom'];
+            $newtab[$i]['Marque'] = $ligne['Marque'];
+            $newtab[$i]['Puissance'] = $ligne['Puissance'];
+            $newtab[$i]['Prix_Annonce_TTC'] = $ligne['Prix_Annonce_TTC'];
             $i++;
         }
 
