@@ -46,9 +46,6 @@
                         <div class="widget-box">
                             
                             <div class="widget-header">
-                                <a href="#" data-action="collapse">
-                                        <i class="ace-icon fa fa-chevron-up"></i>
-                                    </a>
                                 <h4 class="widget-title">Modifier l'utilisateur</h4>
                                 <span class="widget-toolbar">
                                     <a href="#" data-action="collapse">
@@ -74,7 +71,7 @@
                                             <input type="text" 
                                                    class="form-control" 
                                                    name="Identifiant" id="Identifiant" 
-                                                   value="<?php echo set_value('Identifiant'); ?>" 
+                                                   value="<?php if (empty($_POST) AND isset($user)) { echo $user['Identifiant'];} else { echo set_value('Identifiant');} ?>" 
                                                    placeholder="Identifiant">
                                         </div>
                                         <div class="col-sm-4">
@@ -89,7 +86,7 @@
                                             <input type="text" 
                                                    class="form-control" 
                                                    name="prenom" id="prenom" 
-                                                   value="<?php echo set_value('prenom'); ?>" 
+                                                   value="<?php if (empty($_POST) AND isset($user)) { echo $user['prenom'];} else { echo set_value('prenom');} ?>" 
                                                    placeholder="Votre Prénom">
                                         </div>
                                         <div class="col-sm-4">
@@ -107,7 +104,8 @@
                                                    name="nom" 
                                                    id="nom" 
                                                    placeholder="Votre Nom"
-                                                   value="<?php echo set_value('nom'); ?>">
+                                                   value="<?php if (empty($_POST) AND isset($user)) { echo $user['nom'];} else { echo set_value('nom');} ?>" 
+                                                   >
                                         </div>
                                         <div class="col-sm-4">
                                             <?php echo form_error('nom'); ?>
@@ -123,7 +121,8 @@
                                                    name="email" 
                                                    id="email" 
                                                    placeholder="exemple@nextwatt.fr"
-                                                   value="<?php echo set_value('email'); ?>">
+                                                   value="<?php if (empty($_POST) AND isset($user)) { echo $user['email'];} else { echo set_value('email');} ?>" 
+                                                   >
                                         </div>
                                         <div class="col-sm-4">
                                             <?php echo form_error('email'); ?>
@@ -137,7 +136,7 @@
                                             <input type="tel" 
                                                    name="tel" 
                                                    id="tel" 
-                                                   value="<?php echo set_value('tel'); ?>"
+                                                   value="<?php if (empty($_POST) AND isset($user)) { echo $user['tel'];} else { echo set_value('tel');} ?>" 
                                                    placeholder="Votre numéro de téléphone"
                                                    class="form-control" >
                                         </div>
@@ -152,7 +151,15 @@
                                         <label class="col-sm-3 no-padding-right control-label" for="categorie">Catégorie</label>
 
                                         <div class="col-sm-5">
-                                            <?php $this->fonctionspersos->creerDropdown($categories, 1, "Categories"); ?>
+                                            <?php
+                                            $cat = 1;
+                                            if (empty($_POST) AND isset($user)) {
+                                                $cat = $user['categorie_id'];
+                                            } else {
+                                                $cat = set_value('Categories');
+                                            }
+                                            $this->fonctionspersos->creerDropdown($categories, $cat, "Categories");
+                                            ?>
                                         </div>
                                     </div>
 

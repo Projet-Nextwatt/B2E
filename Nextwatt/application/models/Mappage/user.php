@@ -46,6 +46,9 @@ class User extends DataMapper {
             $tabuser=$user->to_array();
             $tabcat=$user->categorie->to_array();
             return array_merge($tabuser, $tabcat);
+            
+            
+            
         } else {
             $users = new User();
             $users->get();
