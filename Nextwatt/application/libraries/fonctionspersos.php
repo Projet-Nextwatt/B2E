@@ -267,9 +267,15 @@ class Fonctionspersos
         }
     }
 
-    public function set_entete()
+    public function set_entete_catalogue_mini()
     {
-        $entete = array('Référence', 'Nom', 'Marque', 'Puissance', 'Libellé Mat', 'Libellé Mat sans marque', 'Libellé MO', 'Libellé Garantie', 'Prix MO', 'Prix Mat plancher', 'Prix annonce TTC', 'CEE TTC', 'TVA_MO', 'TVA Mat', 'Facturation', 'Type', 'Spec', 'Fiche Technique', 'Note');
+        $entete = array('Référence', 'Nom', 'Marque', 'Puissance', 'Prix annonce TTC');
+        return $entete;
+    }
+
+    public function set_entete_catalogue_complet()
+    {
+        $entete = array('Référence', 'Nom', 'Marque', 'Puissance','Libelle_Mat', 'Libelle_Mat_SansMarque','', 'Prix annonce TTC');
         return $entete;
     }
 
@@ -279,15 +285,5 @@ class Fonctionspersos
         return $entete;
     }
 
-//    public function prepfichier($fichier)
-//    {
-//        foreach($fichier as $produit)
-//        {
-//            foreach($produit as $line)
-//            {
-//                $newfichier =  htmlspecialchars_decode($line,ENT_NOQUOTES);
-//            }
-//        }
-//        var_dump($newfichier);
-//    }
+//
 }

@@ -102,11 +102,16 @@
             <label for="adresse" class="col-sm-4 no-padding-right control-label">Adresse</label>
 
             <div class="col-sm-4">
-                <textarea class="col-sm-9" value="<?php if (empty($_POST) AND isset($client)) { echo $client['adresse'];} else { echo set_value('adresse');} ?>" name="adresse" rows="3"
-                          id="adresse" placeholder="Votre adresse"></textarea>
+                <textarea class="col-sm-9" name="adresse" rows="3"
+                          id="adresse" placeholder="Votre adresse"><?php if (empty($_POST) AND isset($client)) {
+                                  echo $client['adresse'];
+                              } else {
+                                  echo set_value('adresse');
+                              } ?>
+                </textarea>
             </div>
             <div class="col-sm-4">
-                <?php echo form_error('adresse'); ?>
+<?php echo form_error('adresse'); ?>
             </div>
         </div>
 
@@ -123,10 +128,10 @@
             </div>
         </div>
         <div class="row form-group">
-            <label for="ville" class="col-sm-4 no-padding-right control-label">Vile </label>
+            <label for="ville" class="col-sm-4 no-padding-right control-label">Ville </label>
 
             <div class="col-sm-4">
-                <input type="text" value=<?php if (empty($_POST) AND isset($client)) { echo $client['ville'];} else { echo set_value('ville');} ?>" name="ville" id="ville"
+                <input type="text" value="<?php if (empty($_POST) AND isset($client)) { echo $client['ville'];} else { echo set_value('ville');} ?>" name="ville" id="ville"
                        class="form-control" placeholder="Ville">
             </div>
             <div class="col-sm-4">

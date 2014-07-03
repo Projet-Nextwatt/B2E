@@ -12,8 +12,14 @@
 <div class="row">
     <div class="col-xs-12">
         <h2 align="center">
-            Upload réussi avec succès !
+            Mise à jour du catalogue effectué avec succès !
         </h2>
+        <div align="center">
+            <?php
+            echo('Vous avez ajouté : '.$ligneajouté.' lignes <br/> <br/>');
+            echo('Vous avez supprimé : '.$lignesuppr.' lignes <br/> <br/>');
+            ?>
+        </div>
         <br/>
         <div align="center">
             <a href="<?php echo site_url("CI_catalogue/consult_catalogue"); ?>">

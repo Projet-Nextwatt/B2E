@@ -96,7 +96,7 @@ class CI_Client extends MY_Controller
             //Clean des données
             $this->form_validation->set_rules($this->configtraitementclient);
             $this->form_validation->run();
-            if ($this->prixenergie->modifier_prixenergie($_POST)) {
+            if ($this->mapclient->modifier_client($_POST)) {
                 $this->consult_client();
             } else {
                 echo 'error';
