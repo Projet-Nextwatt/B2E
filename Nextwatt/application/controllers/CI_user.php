@@ -72,7 +72,8 @@ class CI_User extends MY_Controller {
         } else {
             
             $this->form_validation->set_rules($this->configTraitementModifUser);
-            if ($this->mapuser->modif_user($_POST)) {
+            $this->form_validation->run() ;
+            if ($this->mapuser->modifier_user($_POST)) {
                 // Energie object now has an ID
                 $this->consult_user();
             } else {
@@ -422,6 +423,11 @@ class CI_User extends MY_Controller {
             'label' => 'Categorie',
             'rules' => ''
         ),
+        array(
+            'field' => 'Actif',
+            'label' => 'Actif',
+            'rules' => 'callback_checkbox'
+        ),
     );
     
     public  $configValidationMDP = array(
@@ -458,6 +464,7 @@ class CI_User extends MY_Controller {
             return TRUE;
         } else {
             $str = 0;
+            return TRUE;
         }
     }
 

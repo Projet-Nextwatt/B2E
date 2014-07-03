@@ -59,8 +59,9 @@
                                     //echo validation_errors();
 
                                     $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
-                                    $hiden = array();
-                                    echo form_open('CI_user/modif_user', $attributes, $hiden);
+                                                                       
+                                    $hidden = array('id' => $user['id']);
+                                    echo form_open('CI_user/modif_user', $attributes, $hidden);
                                     ?>
                                     <!--        <form class="form-horizontal" role="form">-->
 
@@ -148,7 +149,7 @@
                                    
 
                                     <div class="row form-group">
-                                        <label class="col-sm-3 no-padding-right control-label" for="categorie">Catégorie</label>
+                                        <label class="col-sm-3 no-padding-right control-label" for="categorie_id">Catégorie</label>
 
                                         <div class="col-sm-5">
                                             <?php
@@ -156,9 +157,9 @@
                                             if (empty($_POST) AND isset($user)) {
                                                 $cat = $user['categorie_id'];
                                             } else {
-                                                $cat = set_value('Categories');
+                                                $cat = set_value('categorie_id');
                                             }
-                                            $this->fonctionspersos->creerDropdown($categories, $cat, "Categories");
+                                            $this->fonctionspersos->creerDropdown($categories, $cat, "categorie_id");
                                             ?>
                                         </div>
                                     </div>

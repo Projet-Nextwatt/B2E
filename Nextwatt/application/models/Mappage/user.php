@@ -89,9 +89,26 @@ class User extends DataMapper {
         
     }
     
-    function modifier_user()
-    {
-        //Fonction de modification
+    function modifier_user($data) {
+        //Fonction de modification        
+        $id = $data['id'];
+        unset($data['id']);
+
+        $user = new User();
+        $user->where('id', $id)->get();
+        //Appliquer les datas
+
+        foreach ($data as $variable => $valeur) {
+            $user->$variable = $valeur;
+        }
+        if ($user->save()) {
+            return TRUE;
+        } else {
+            foreach ($user->error->all as $error) {
+                echo $error;
+            }
+            return FALSE;
+        }
     }
     
     function supprimer_user()
