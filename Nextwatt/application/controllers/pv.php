@@ -190,11 +190,16 @@ class PV extends MY_Controller
             )
         );
 
+        $data = array();
+        $data['masquesolaire'] = img_url('Diagramme-solaire.png');
+
         $this->layout->breadcrumbs($breadcrumps);
         $this->layout->title('Calcul du masque B2E');
+        $this->layout->js(js_url('imagemapster'));
         $this->layout->js(js_url('etudesolaire'));
-        $this->layout->function_js('mapresize()');
-        $this->layout->view('B2E/Etudes/Solaire/Calcul_Masque'); // Render view and layout
+        $this->layout->function_js('resize()');
+        $this->layout->function_js('onWindowResize()');
+        $this->layout->view('B2E/Etudes/Solaire/Calcul_Masque', $data); // Render view and layout
     }
 
     public function calculhepp()
@@ -333,13 +338,13 @@ class PV extends MY_Controller
         $this->load->model('Mappage/prixenergie', 'energie');
         $data = array();
         $data['energie'] = $this->energie->select_prixrachat();
-        $data['energie']= $data['energie'][0]['Prix'];
+        $data['energie'] = $data['energie'][0]['Prix'];
 
         $this->layout->breadcrumbs($breadcrumps);
         $this->layout->title('Calcul de Recette B2E');
         $this->layout->js(js_url('etudesolaire'));
         $this->layout->function_js('calculrecette()');
-        $this->layout->view('B2E/Etudes/Solaire/Calcul_Recette',$data); // Render view and layout
+        $this->layout->view('B2E/Etudes/Solaire/Calcul_Recette', $data); // Render view and layout
     }
 
     public function recette()
@@ -476,21 +481,40 @@ class PV extends MY_Controller
     public
     function ajax_envoiratioc()
     {
+            if(isset($_POST['masque'])){
+                $masque =  $_POST['masque'];
+                var_dump($masque);
+                $masqueexploque = explode(',',$masque);
+                $perte = 0;
 
-        if (isset($_POST['ratioc'])) {
-            if (is_numeric($_POST['ratioc']) && $_POST['ratioc'] != '') {
-                $tabsession = array(
-                    'HEPP' => $this->session->userdata('HEPP'),
-                    'Orientation' => $this->session->userdata('Orientation'),
-                    'Ratioc' => $_POST['ratioc']);
-                $this->session->set_userdata($tabsession);
-                echo $_POST['ratioc'];
+                if(!empty( $_POST['masque'])){
+                foreach($masqueexploque as $m){
+                    if($m == '8 9 mid sup'){
+                        $perte += 1;
+                        echo $perte;
+                    }else{
+                        echo 'Nul';
+                    }
+                }}else{
+                    echo 'test';
+                }
             }
 
-        } else {
-            $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
-            show_error($message_403, 403, '403 - Acc&egrave;s interdit');
-        }
+
+//        if (isset($_POST['ratioc'])) {
+//            if (is_numeric($_POST['ratioc']) && $_POST['ratioc'] != '') {
+//                $tabsession = array(
+//                    'HEPP' => $this->session->userdata('HEPP'),
+//                    'Orientation' => $this->session->userdata('Orientation'),
+//                    'Ratioc' => $_POST['ratioc']);
+//                $this->session->set_userdata($tabsession);
+//                echo $_POST['ratioc'];
+//            }
+//
+//        } else {
+//            $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
+//            show_error($message_403, 403, '403 - Acc&egrave;s interdit');
+//        }
     }
 
     public
