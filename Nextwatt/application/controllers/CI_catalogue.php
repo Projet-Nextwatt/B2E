@@ -213,7 +213,7 @@ class CI_Catalogue extends MY_Controller
         $data['successmsg'] = 'Upload Terminé';
 
         // On décode le fichier avec htmlspecialchars_decode dans la fonction ci-dessous
-        $fichier = $this->fonctionspersos->lire_fichier_catalogue();
+//        $fichier = $this->fonctionspersos->lire_fichier_catalogue();
         // On envoie le fichier décodé au model pour l'uploader
         $this->load->model('Mappage/catalogue', 'catalogue');
         //On récupère les lignes à supprimer et à ajouter via la fonction précisé plus haut

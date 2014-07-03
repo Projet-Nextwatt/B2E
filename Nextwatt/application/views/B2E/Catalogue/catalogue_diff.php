@@ -33,7 +33,7 @@
     <div class="col-xs-12">
         <?php
         $this->load->library('fonctionspersos');
-        $entete = $this->fonctionspersos->set_entete();
+        $entete = $this->fonctionspersos->set_entete_catalogue_complet();
         ?>
         <h2>
             Ajouts :
