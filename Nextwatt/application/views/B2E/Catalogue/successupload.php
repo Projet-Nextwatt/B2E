@@ -18,6 +18,7 @@
             <?php
             echo('Vous avez ajouté : '.$ligneajouté.' lignes <br/> <br/>');
             echo('Vous avez supprimé : '.$lignesuppr.' lignes <br/> <br/>');
+            echo('Vous avez modifié : '.$lignemodifiée.' lignes <br/> <br/>');
             ?>
         </div>
         <br/>

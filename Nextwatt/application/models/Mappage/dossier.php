@@ -10,7 +10,7 @@ class Dossier extends DataMapper {
     var $has_one = array ('Client');
     var $has_many = array ('Article');
     
-    var $table ="dossier";
+    var $table ="dossiers";
     /*
      * Variables correspondantes aux colonnes de la table.
      */

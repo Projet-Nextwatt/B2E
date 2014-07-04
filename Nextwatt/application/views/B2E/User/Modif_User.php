@@ -60,7 +60,7 @@
 
                                     $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
                                                                        
-                                    $hidden = array('id' => $user['id']);
+                                    $hidden = array('id' => $user['id'],'type'=>'infos');
                                     echo form_open('CI_user/modif_user', $attributes, $hidden);
                                     ?>
                                     <!--        <form class="form-horizontal" role="form">-->
@@ -221,39 +221,26 @@
                                     <?php
                                     //echo validation_errors();
 
-                                    $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
-                                    $hiden = array();
-                                    echo form_open('CI_user/modif_mdpuser', $attributes, $hiden);
+                                    $attributes = array('class' => 'form-inline', 'id' => 'form_user', 'role' => 'form');
+                                    $hiden = array('type'=>'mdp');
+                                    echo form_open('CI_user/modif_user', $attributes, $hiden);
                                     ?>
-                                    <!--        <form class="form-horizontal" role="form">-->
-                                    <div class="row form-group">
-                                        <label class="col-sm-4 no-padding-right control-label" for='mdp'>Mot de passe</label>
-
-                                        <div class="col-sm-2">
                                             <input type="password" 
                                                    name='mdp' 
                                                    id="mdp" 
-                                                   placeholder="Mot de passe" 
-                                                   class="form-control">
-                                        </div>
-                                        <div class="col-sm-2">
+                                                   placeholder="Nouveau mot de passe">
+                                            
                                             <input type="password" 
                                                    name='confmdp' 
                                                    id="confmdp" 
-                                                   placeholder="Confirmation mdp" 
-                                                   class="form-control">
-                                        </div>
-                                        <div class="col-sm-4">
+                                                   placeholder="Confirmation">
+                                            
                                             <?php echo form_error('mdp'); ?>
                                             <?php echo form_error('confmdp'); ?>
-                                        </div>
-                                    </div>
                                     
-                                    <div class="row form-group">
-                                        <div class="col-sm-4 col-sm-offset-3">
                                             <button type="submit" class="btn btn-sm btn-info">
                                                 <i class="ace-icon fa fa-floppy-o bigger-160"></i>
-                                                Enregistrer
+                                                Valider
                                             </button>
                                         </div>
                                     </div>

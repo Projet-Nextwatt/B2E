@@ -195,7 +195,7 @@ class PV extends MY_Controller
 
         $this->layout->breadcrumbs($breadcrumps);
         $this->layout->title('Calcul du masque B2E');
-        $this->layout->js(js_url('imagemapster'));
+        $this->layout->js(js_url('imagemapster.min'));
         $this->layout->js(js_url('etudesolaire'));
         $this->layout->function_js('resize()');
         $this->layout->function_js('onWindowResize()');
@@ -288,11 +288,14 @@ class PV extends MY_Controller
                 'link' => site_url("pv/recette")
             )
         );
+        $this->load->model('Mappage/catalogue', 'panneau');
+        $data = array();
+        $data['panneau'] = $this->panneau->select_panneau();
 
         $this->layout->breadcrumbs($breadcrumps);
         $this->layout->title('Calcul de Production B2E');
         $this->layout->js(js_url('etudesolaire'));
-        $this->layout->view('B2E/Etudes/Solaire/Calcul_Production'); // Render view and layout
+        $this->layout->view('B2E/Etudes/Solaire/Calcul_Production', $data); // Render view and layout
     }
 
     public function calculrecette()

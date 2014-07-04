@@ -9,7 +9,7 @@
 ?>
 
 <?= form_open_multipart('CI_catalogue/upload_catalogue_action') ?>
-    <fieldset align="center">
+    <fieldset class='align-center'>
         <legend>Upload d'un nouveau catalogue</legend>
         <br/>
         <br/>

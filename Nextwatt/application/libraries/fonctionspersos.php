@@ -53,7 +53,7 @@ class Fonctionspersos
                     $entetes[] = $nomDeLaColonne; //Je stocke l'index de la colonne ID dans la varaible $presenceDunID
                 }
             }
-            
+
 
             //Ouvertre du tableau
             echo '<div class="table-responsive">';
@@ -84,19 +84,18 @@ class Fonctionspersos
 
                 echo '>' . "\n";
                 foreach ($ligne as $cellule) {
-                    
+
                     //Modification du texte si c'est l'option checkbox est active
-                    if ($checkbox==true){
-                        if ($cellule == '1'){
+                    if ($checkbox == true) {
+                        if ($cellule == '1') {
                             //$cellule = '<i class="ace-icon glyphicon glyphicon-ok"></i>';
                             $cellule = '<div class="align-center"><i class="fa fa-check"></i></div>';
-                        } elseif ($cellule=='0') {
+                        } elseif ($cellule == '0') {
                             $cellule = '';
                         }
                     }
-                    
-                    
-                    
+
+
                     echo '<td>' . $cellule . '</td>' . "\n";
                 }
 
@@ -158,8 +157,9 @@ class Fonctionspersos
             }
         }
     }
-    
-    public function creerDropdown(array $donnees, $selected, $nom, $class=NULL){
+
+    public function creerDropdown(array $donnees, $selected, $nom, $class = NULL)
+    {
         /* Fonction qui génere une dropdown
          * Les données doivent etre structurées de la sorte
          * Pas besoin de les trier par label 
@@ -172,8 +172,8 @@ class Fonctionspersos
          *                        texte => "" ),
          *                   ...   =>   ...)
          */
-        
-        
+
+
         //Triage du tableau
         $donneestriees = array();
         $ligneavecindex = array();
@@ -203,15 +203,15 @@ class Fonctionspersos
             }
             $donneestriees[$label][] = $ligneavecindex;
         }
-        
-        
-        echo '<select name="'.$nom.'" id="'.$nom.'" class="'.$class.'">';
-        foreach ($donneestriees as $label => $groupe){
-            echo '<optgroup label="'.$label.'">';
-            foreach ($groupe as $categorie){
-                echo '<option value="'.$categorie['value']
-                     .'" '.$categorie['selected']
-                     .'>'.$categorie['texte'].'</option>';
+
+
+        echo '<select name="' . $nom . '" id="' . $nom . '" class="' . $class . '">';
+        foreach ($donneestriees as $label => $groupe) {
+            echo '<optgroup label="' . $label . '">';
+            foreach ($groupe as $categorie) {
+                echo '<option value="' . $categorie['value']
+                    . '" ' . $categorie['selected']
+                    . '>' . $categorie['texte'] . '</option>';
             }
             echo '</optgroup>';
         }
@@ -224,7 +224,7 @@ class Fonctionspersos
                                 </optgroup></select>
         ';
          */
-        
+
         return $donneestriees;
     }
 
@@ -241,14 +241,14 @@ class Fonctionspersos
             echo "Echec de l'ouverture du fichier, le fichier catalogue.txt � l'adresse ressources/catalogue.txt";
         } else {
             while (!feof($fichierCatalogue)) {
-                $ligneFichier = explode('_', //Pour d�composer la ligne en tableau
+                $ligneFichier = explode('|', //Pour d�composer la ligne en tableau
                     //convertCarSpe
 
                     htmlentities( //Pour convertir les � en &eacute;
-                        addslashes( //Pour eviteer les probl�me de '
+//                        addslashes( //Pour eviteer les probl�me de '
                             mb_convert_encoding( //Pour convertir le ANSII vers UTF-8
                                 fgets(
-                                    $fichierCatalogue), 'UTF-8', 'ASCII'))));
+                                    $fichierCatalogue), 'UTF-8', 'ASCII')));
                 unset($ligneFichier[count($ligneFichier) - 1]); //On vire le dernier caract�re qui est le retour � la ligne
                 if (!(empty($ligneFichier))) //Si il y a une colone vide, on s'en ocuupe pas
                 {
@@ -275,7 +275,27 @@ class Fonctionspersos
 
     public function set_entete_catalogue_complet()
     {
-        $entete = array('Référence', 'Nom', 'Marque', 'Puissance','Libelle_Mat', 'Libelle_Mat_SansMarque','', 'Prix annonce TTC');
+        $entete = array(
+            'Référence',
+            'Nom',
+            'Marque',
+            'Puissance',
+            'Libelle_Mat',
+            'Libelle_Mat_SansMarque',
+            'Libelle_MO',
+            'Libelle_Garantie',
+            'Prix_MO',
+            'Prix_Mat_Plancher',
+            'Prix_Annonce_TTC',
+            'CEE_TTC',
+            'TVA_MO',
+            'TVA_Mat',
+            'Facturation',
+            'Type_Produit',
+            'Spec',
+            'Actif',
+            'Fiche_Tech',
+            'Note');
         return $entete;
     }
 

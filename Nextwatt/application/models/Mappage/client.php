@@ -11,7 +11,7 @@ class Client extends DataMapper
      * Variables de relation (entre tables)
      */
     var $has_one = array('User');
-    var $has_many = array('Dossier');
+    var $has_many = array('Dossiers');
 
     /*
      * Variables correspondantes aux colonnes de la table.
@@ -112,6 +112,7 @@ class Client extends DataMapper
 
     function supprimer_client($id)
     {
+
         $client = new Client();
         $client->where('id', $id)->get();
 

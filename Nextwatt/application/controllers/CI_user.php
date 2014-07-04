@@ -57,6 +57,7 @@ class CI_User extends MY_Controller {
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele user
         $this->load->model('Mappage/user', 'mapuser'); //Chargement du modele categorie
         
+        
         $data = array();
             //chargement des catégories pour la liste déroulante
         $categories = $this->categorie->chargercategories();
@@ -65,14 +66,26 @@ class CI_User extends MY_Controller {
         
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
         $this->form_validation->set_rules($this->configValidationModifUser);
+        if (isset($_POST['type'])) {
+            if ($_POST['type'] == 'mdp') {
+                $this->form_validation->set_rules($this->configValidationMDP);
+            }
+        }
+
         if ($this->form_validation->run() == FALSE) {
             // On charge la page
             $this->layout->title('Modification d\'un utilisateur');
             $this->layout->view('B2E/User/Modif_User', $data);
         } else {
-            
+
             $this->form_validation->set_rules($this->configTraitementModifUser);
-            $this->form_validation->run() ;
+            if (isset($_POST['type'])) {
+                if ($_POST['type'] == 'mdp') {
+                    $this->form_validation->set_rules($this->configValidationMDP);
+                }
+                unset($_POST['type']);
+            }
+            $this->form_validation->run();
             if ($this->mapuser->modifier_user($_POST)) {
                 // Energie object now has an ID
                  
@@ -85,36 +98,7 @@ class CI_User extends MY_Controller {
             }
         }
     }
-    
-    public function modif_mdpuser() {
-        $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele user
-        $this->load->model('Mappage/user', 'mapuser'); //Chargement du modele categorie
-        
-        $data = array();
-            //chargement des catégories pour la liste déroulante
-        $categories = $this->categorie->chargercategories();
-        $data["categories"] =$categories;
-        $data['user'] = $this->mapuser->select_user($this->session->userdata('CI_user/modif_user'));
-        
-        //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
-        $this->form_validation->set_rules($this->configValidationMDP);
-        if ($this->form_validation->run() == FALSE) {
-            // On charge la page
-            $this->layout->title('Modification d\'un utilisateur');
-            $this->layout->view('B2E/User/Modif_User', $data);
-        } else {
-            
-            $this->form_validation->set_rules($this->configTraitementMDP);
-            if ($this->mapuser->modif_MDP($_POST)) {
-                // Energie object now has an ID
-                $this->consult_user();
-            } else {
-                // Show all error messages
-                $this->layout->title('Erreur');
-                $this->layout->view('B2E/User/Modif_User',$data); //render view and layout
-            }
-        }
-    }
+   
 
    
     //Catégorie ////////////////////////////////////////////////////////////////////////////////////
