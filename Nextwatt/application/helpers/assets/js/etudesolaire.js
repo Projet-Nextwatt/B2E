@@ -482,10 +482,10 @@ function canvasorient() {
 }
 $('#img_ID').mapster({
     fillOpacity: 0.5,
-    fillColor: "A4CE3B",
+    fillColor: "DAF298",
     stroke: true,
     strokeColor: "DAF298",
-    strokeOpacity: 0.8,
+    strokeOpacity: 0.5,
     strokeWidth: 4,
     mapKey: 'masque'
 });
@@ -499,7 +499,8 @@ $('.areamasque').click(function () {
         },
         function (data) {
             if (data) {
-                $(".resultratioc").html(data);
+                $('#ratioc').val(data);
+                $(".resultratioc").html("Ratio C : <span id='resultratioc'>" + data + " %</span>");
             }
         },
         'text'

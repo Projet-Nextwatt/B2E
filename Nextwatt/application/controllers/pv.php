@@ -481,40 +481,49 @@ class PV extends MY_Controller
     public
     function ajax_envoiratioc()
     {
-            if(isset($_POST['masque'])){
-                $masque =  $_POST['masque'];
-                var_dump($masque);
-                $masqueexploque = explode(',',$masque);
-                $perte = 0;
-
-                if(!empty( $_POST['masque'])){
-                foreach($masqueexploque as $m){
-                    if($m == '8 9 mid sup'){
-                        $perte += 1;
-                        echo $perte;
+        if (isset($_POST['masque'])) {
+            $masque = $_POST['masque'];
+            $masqueexploque = explode(',', $masque);
+            $perte = 0;
+            if (!empty($_POST['masque'])) {
+                foreach ($masqueexploque as $m) {
+                    if (preg_match('#faible+#', $m)) {
+                        $perte += 1.5;
+                    } else if (preg_match('#moyen+#', $m)) {
+                        $perte += 2.3;
+                    } else if (preg_match('#fort+#', $m)) {
+                        $perte += 2.8;
                     }else{
-                        echo 'Nul';
+                        $perte = 0;
                     }
-                }}else{
-                    echo 'test';
+
                 }
+                $ratioc = 100 - $perte;
+                $tabsession = array(
+                    'HEPP' => $this->session->userdata('HEPP'),
+                    'Orientation' => $this->session->userdata('Orientation'),
+                    'Ratioc' => $ratioc);
+                $this->session->set_userdata($tabsession);
+                echo $ratioc;
+            }else{
+                echo '100';
             }
 
+        }else if (isset($_POST['ratioc'])) {
+            if (is_numeric($_POST['ratioc']) && $_POST['ratioc'] != '') {
+                $tabsession = array(
+                    'HEPP' => $this->session->userdata('HEPP'),
+                    'Orientation' => $this->session->userdata('Orientation'),
+                    'Ratioc' => $_POST['ratioc']);
+                $this->session->set_userdata($tabsession);
+                echo $_POST['ratioc'];
+            }
 
-//        if (isset($_POST['ratioc'])) {
-//            if (is_numeric($_POST['ratioc']) && $_POST['ratioc'] != '') {
-//                $tabsession = array(
-//                    'HEPP' => $this->session->userdata('HEPP'),
-//                    'Orientation' => $this->session->userdata('Orientation'),
-//                    'Ratioc' => $_POST['ratioc']);
-//                $this->session->set_userdata($tabsession);
-//                echo $_POST['ratioc'];
-//            }
-//
-//        } else {
-//            $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
-//            show_error($message_403, 403, '403 - Acc&egrave;s interdit');
-//        }
+        } else {
+            $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
+            show_error($message_403, 403, '403 - Acc&egrave;s interdit');
+        }
+
     }
 
     public
