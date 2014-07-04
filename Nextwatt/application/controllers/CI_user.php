@@ -75,7 +75,9 @@ class CI_User extends MY_Controller {
             $this->form_validation->run() ;
             if ($this->mapuser->modifier_user($_POST)) {
                 // Energie object now has an ID
-                $this->consult_user();
+                 
+                header('Location:'.site_url("CI_user/consult_user"));
+                //$this->consult_user();
             } else {
                 // Show all error messages
                 $this->layout->title('Erreur');

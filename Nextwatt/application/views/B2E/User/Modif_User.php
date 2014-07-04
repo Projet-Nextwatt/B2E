@@ -248,6 +248,16 @@
                                             <?php echo form_error('confmdp'); ?>
                                         </div>
                                     </div>
+                                    
+                                    <div class="row form-group">
+                                        <div class="col-sm-4 col-sm-offset-3">
+                                            <button type="submit" class="btn btn-sm btn-info">
+                                                <i class="ace-icon fa fa-floppy-o bigger-160"></i>
+                                                Enregistrer
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
