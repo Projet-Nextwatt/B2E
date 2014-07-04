@@ -223,24 +223,19 @@ class CI_Catalogue extends MY_Controller
         $data['ligneajouté'] = 0;
 
         //On fait les modifications ou les ajouts
-        if(isset($add))
-        {
+        if (isset($add)) {
             $data['ligneajouté'] = $this->catalogue->updatecatalogue($add);
         }
 
         //On fait les suppressions grâce au tableau récupéré via "create_tab_supp_bdd" et on indente le compteur à chaque suppression
 
-        if (!empty($_POST['check_list']))
-        {
-            foreach ($_POST['check_list'] as $check)
-            {
+        if (!empty($_POST['check_list'])) {
+            foreach ($_POST['check_list'] as $check) {
                 if ($this->catalogue->supprimer($check) == TRUE) {
-                $data['lignesuppr']++;
+                    $data['lignesuppr']++;
+                }
             }
-            }
-        }
-        else
-        {
+        } else {
         }
         $this->layout->title('Catalogue B2E');
         $this->layout->view('B2E/Catalogue/successupload', $data);
@@ -256,7 +251,7 @@ class CI_Catalogue extends MY_Controller
         $this->load->model('Mappage/catalogue', 'cata');
         $BDD = $this->cata->get_full_bdd();
         $i = 0;
-        $newtab=array();
+        $newtab = array();
         foreach ($BDD as $ligne) {
             $newtab[$i]['Reference'] = $ligne['Reference'];
             $newtab[$i]['Nom'] = $ligne['Nom'];
@@ -269,15 +264,147 @@ class CI_Catalogue extends MY_Controller
         return $newtab;
     }
 
-    public function gererlistetype($line)
+    public function gererlistetype_form()
     {
         $data = array();
-        $data['tableau'] = $this->create_tableau_catalogue();
-
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Catalogue B2E');
-        $this->layout->view('B2E/Catalogue/Consulter_Catalogue', $data);
+        $this->layout->view('B2E/Catalogue/Gerer_Soustype', $data);
     }
+
+    public function gererlistetype_action()
+    {
+        $this->load->model('Mappage/soustypes', 'mapsoustype'); //Chargement du model
+
+        $data = array();
+
+        $configsoustype =
+            array(
+                array(
+                    'field' => 'nomcourt',
+                    'label' => 'Nom court',
+                    'rules' => 'required'
+                ),
+                array(
+                    'field' => 'nomdevis',
+                    'label' => 'Nom devis',
+                    'rules' => 'required'
+                ),
+                array(
+                    'field' => 'bouquetCI',
+                    'label' => 'Catégorie bouquet CI',
+                    'rules' => 'required'
+                ),
+                array(
+                    'field' => 'bouquetEPTZ',
+                    'label' => 'Catégorie bouquet EPTZ',
+                    'rules' => 'required'
+                ),
+                array(
+                    'field' => 'CIunitaire',
+                    'label' => 'Crédit impot unitaire ',
+                    'rules' => 'required'
+                ),
+            );
+
+        $this->form_validation->set_rules($configsoustype);
+
+        //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
+        //Et on agit en conséquence
+        if ($this->form_validation->run() == FALSE) {
+            // On charge la page
+            $this->layout->title('Erreur d\'ajout soustype');
+            $this->layout->view('B2E/Catalogue/Gerer_Soustype', $data); // Render view and layout
+        } else {
+            if ($this->mapsoustype->ajouter_soustype($_POST)) {
+                echo('cool story bro');
+                $this->consult_soustypes();
+            } else {
+                $this->layout->title('Ajout Sous-type');
+                $this->layout->view('B2E/Success_Error/formsuccess'); //render view and layout
+            }
+        }
+    }
+
+    public function consult_soustype()
+    {
+        $this->load->model('Mappage/soustypes', 'mapsoustype'); //Chargement du model
+        $this->load->library('fonctionspersos');
+
+        $data = array();
+        $data['soustypes'] = $this->mapsoustype->select_soustype_tableau();
+        $data['entetesoustype'] = array('nomcourt', 'nomdevis', 'bouquetCI', 'bouquetEPTZ', 'CIunitaire');
+        $this->layout->title('Liste des clients');
+        $this->layout->view('B2E/Catalogue/Consulter_Soustype.php', $data); // Render view and layout
+    }
+
+    public function modif_soustype()
+    {
+        $this->load->model('Mappage/soustypes', 'mapsoustype'); //Chargement du modele
+        $data = array(); //Pour la vue
+        $data['soustype'] = $this->mapsoustype->select_client($this->session->userdata('CI_catalogue/modif_soustype'));
+
+        $this->form_validation->set_rules($this->$configsoustype);
+
+        if ($this->form_validation->run() == FALSE) {
+            //Formualire invalide, retour à celui-ci
+
+            $this->layout->title('Modifier un soustype');
+            $this->layout->view('B2E/Client/Add_Soustype.php', $data); // Render view and layout
+        } else {
+            //Formulaire ok, traitement des données
+            //Clean des données
+            $this->form_validation->set_rules($this->$configtraitementsoustype);
+            $this->form_validation->run();
+            if ($this->mapsoustype->modifier_soustype($_POST)) {
+                $this->consult_soustype();
+            } else {
+                echo 'error';
+            }
+        }
+    }
+
+    public $configsoustype =
+        array(
+            array(
+                'field' => 'nomcourt',
+                'label' => 'Nom court',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'nomdevis',
+                'label' => 'Nom devis',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'bouquetCI',
+                'label' => 'Catégorie bouquet CI',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'bouquetEPTZ',
+                'label' => 'Catégorie bouquet EPTZ',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'CIunitaire',
+                'label' => 'Crédit impot unitaire ',
+                'rules' => 'required'
+            ),
+        );
+
+    public $configtraitementsoustype = array(
+        array(
+            'field' => 'nomcourt',
+            'label' => 'Nom court',
+            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
+        ),
+        array(
+            'field' => 'nomdevis',
+            'label' => 'Nom devis',
+            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
+        ),
+    );
 
 
 }
