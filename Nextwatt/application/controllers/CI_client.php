@@ -45,14 +45,14 @@ class CI_Client extends MY_Controller
     public function verif_form_client()
     {
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
-
+        $data = array();
 
         //Configuration des règles par champs
 
 
         //On applique les règles
         $this->form_validation->set_rules($this->configclient);
-        $data = array();
+
 
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
         //Et on agit en conséquence
