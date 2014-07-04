@@ -312,7 +312,7 @@ class CI_Catalogue extends MY_Controller
         $data = array();
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Catalogue B2E');
-        $this->layout->view('B2E/Catalogue/Gerer_Soustype', $data);
+        $this->layout->view('B2E/Catalogue/Add_Soustype', $data);
     }
 
     public function gererlistetype_action()
@@ -357,7 +357,7 @@ class CI_Catalogue extends MY_Controller
         if ($this->form_validation->run() == FALSE) {
             // On charge la page
             $this->layout->title('Erreur d\'ajout soustype');
-            $this->layout->view('B2E/Catalogue/Gerer_Soustype', $data); // Render view and layout
+            $this->layout->view('B2E/Catalogue/Add_Soustype', $data); // Render view and layout
         } else {
             if ($this->mapsoustype->ajouter_soustype($_POST)) {
                 echo('cool story bro');
@@ -385,7 +385,7 @@ class CI_Catalogue extends MY_Controller
     {
         $this->load->model('Mappage/soustypes', 'mapsoustype'); //Chargement du modele
         $data = array(); //Pour la vue
-        $data['soustype'] = $this->mapsoustype->select_client($this->session->userdata('CI_catalogue/modif_soustype'));
+        $data['soustype'] = $this->mapsoustype->select_soustype($this->session->userdata('CI_catalogue/modif_soustype'));
 
         $this->form_validation->set_rules($this->$configsoustype);
 
