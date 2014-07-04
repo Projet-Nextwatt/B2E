@@ -173,6 +173,7 @@ class CI_Catalogue extends MY_Controller
                 unset($catalogueBDD[$ref]);
             }
         }
+        
 
         //On recupere le fichier et on enleve ce qui n'est pas dans la bdd
         $this->load->library('fonctionspersos');
