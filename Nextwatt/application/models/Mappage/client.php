@@ -10,8 +10,8 @@ class Client extends DataMapper
     /*
      * Variables de relation (entre tables)
      */
-//    var $has_one = array('User');
-//    var $has_many = array('Dossier');
+    var $has_one = array('User');
+    var $has_many = array('Dossier');
 
     /*
      * Variables correspondantes aux colonnes de la table.
@@ -34,9 +34,9 @@ class Client extends DataMapper
     var $dateajout = "";
 
 
-    function __construct()
+    function __construct($id = NULL)
     {
-        parent ::__construct();
+        parent ::__construct($id);
     }
 
     function select_client($id = NULL)

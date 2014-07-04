@@ -65,7 +65,8 @@
             <label for="nom1" class="col-sm-4 no-padding-right control-label">Prénom</label>
 
             <div class="col-sm-4">
-                <input type="text" value="<?php if (empty($_POST) AND isset($client)) { echo $client['prenom1'];} else { echo set_value('prenom1');} ?>" name="prenom1"
+                <input type="text" value="<?php if (empty($_POST) AND isset($client)) { echo $client['prenom1'];}
+                       else { echo set_value('prenom1');} ?>" name="prenom1"
                        class="no-padding-left form-control" id="prenom1" placeholder="Votre prénom">
             </div>
             <div class="col-sm-4">

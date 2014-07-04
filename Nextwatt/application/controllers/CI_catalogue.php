@@ -212,14 +212,11 @@ class CI_Catalogue extends MY_Controller
         $data = array();
         $data['successmsg'] = 'Upload Terminé';
 
-        // On décode le fichier avec htmlspecialchars_decode dans la fonction ci-dessous
-//        $fichier = $this->fonctionspersos->lire_fichier_catalogue();
         // On envoie le fichier décodé au model pour l'uploader
         $this->load->model('Mappage/catalogue', 'catalogue');
         //On récupère les lignes à supprimer et à ajouter via la fonction précisé plus haut
-        $suppr = $this->create_tab_supp_bdd();
         $add = $this->create_tab_ajout_bdd();
-//        var_dump($add);
+
 
         //On créer un compteur pour pouvoir afficher le nombre de suppressions/ajouts faits à la prochaine vue
         $data['lignesuppr'] = 0;
@@ -230,7 +227,6 @@ class CI_Catalogue extends MY_Controller
         {
             $data['ligneajouté'] = $this->catalogue->updatecatalogue($add);
         }
-
 
         //On fait les suppressions grâce au tableau récupéré via "create_tab_supp_bdd" et on indente le compteur à chaque suppression
 
@@ -246,27 +242,12 @@ class CI_Catalogue extends MY_Controller
         else
         {
         }
-
         $this->layout->title('Catalogue B2E');
         $this->layout->view('B2E/Catalogue/successupload', $data);
-
-
     }
 
-    public
-    function decodefichier($fichier)
+    public function decodefichier($fichier)
     {
-//        function funcdecode($line)
-//        {
-//            htmlspecialchars_decode($line);
-//        }
-//
-//        foreach ($fichier as $produit)
-//        {
-//            $newfichier = array_map("funcdecode",$produit );
-//        }
-
-
         return htmlspecialchars_decode($fichier['P9-2940SP51'][4], ENT_NOQUOTES);
     }
 
@@ -288,10 +269,15 @@ class CI_Catalogue extends MY_Controller
         return $newtab;
     }
 
-//    public function funcdecode($line)
-//    {
-//        return htmlspecialchars_decode($line, ENT_NOQUOTES);
-//    }
+    public function gererlistetype($line)
+    {
+        $data = array();
+        $data['tableau'] = $this->create_tableau_catalogue();
+
+        //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
+        $this->layout->title('Catalogue B2E');
+        $this->layout->view('B2E/Catalogue/Consulter_Catalogue', $data);
+    }
 
 
 }
