@@ -42,12 +42,11 @@ class User extends DataMapper {
             $user = new User();
             $user->where('id', $id);
             $user->get();
-            $user->categorie->get_iterated();
+            $user->categorie->get();
             $tabuser=$user->to_array();
             $tabcat=$user->categorie->to_array();
+            unset($tabcat['id']);
             return array_merge($tabuser, $tabcat);
-            
-            
             
         } else {
             $users = new User();
