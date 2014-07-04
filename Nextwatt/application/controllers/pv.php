@@ -290,7 +290,7 @@ class PV extends MY_Controller
         );
         $this->load->model('Mappage/catalogue', 'panneau');
         $data = array();
-        $data['panneau'] = $this->panneau->select_panneau();
+        $data['panneau'] = $this->panneau->select_panneau(null);
 
         $this->layout->breadcrumbs($breadcrumps);
         $this->layout->title('Calcul de Production B2E');
@@ -544,6 +544,16 @@ class PV extends MY_Controller
         } else {
             $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
             show_error($message_403, 403, '403 - Acc&egrave;s interdit');
+        }
+    }
+
+    public function ajax_panneau(){
+        if(isset($_POST['id'])){
+            $this->load->model('Mappage/catalogue', 'catalogue');
+            $data = array();
+            $data = $this->catalogue->select_panneau($_POST['id']); // Recup des données station avec le model "ensoleillement"
+            $spec = html_entity_decode($data[0]['Spec']);
+            echo $spec;
         }
     }
 

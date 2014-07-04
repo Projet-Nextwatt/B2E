@@ -179,7 +179,54 @@ function calculprod() {
         'text'
     );
 }
+$("#produit").change(function () {
+    $.post(
+        'ajax_panneau',
+        {
+            id: $('#produit option:selected').val()
+        },
+        function (data) {
+            if (data) {
+                var d = JSON.parse(data);
+                $('#production').val(d.puissance);
+                if (d.raccorde == 'TRUE') {
+                    document.getElementById("raccordement").checked = true;
+                } else {
+                    document.getElementById("raccordement").checked = false;
+                }
+                if (typeof(d.bonusProd) != "undefined" && d.bonusProd != null) {
+//                    document.getElementById('divbonus').classList.remove("hidden");
+                    $('#bonus').val(d.bonusProd / 100);
+                } else {
+                    $('#bonus').val(null);
+//                    document.getElementById('divbonus').classList.add("hidden");
+                }
+                if (typeof(d.chauffage) != "undefined" && d.chauffage != null) {
+//                    document.getElementById('divchauffage').classList.remove("hidden");
+                    $('#chauffage').val(d.chauffage);
+                } else {
+                    $('#chauffage').val(null);
+//                    document.getElementById('divchauffage').classList.add("hidden");
+                }
 
+                if (typeof(d.ECS) != "undefined" && d.ECS != null) {
+//                    document.getElementById('divecs').classList.remove("hidden");
+                    $('#ecs').val(d.ECS);
+                } else {
+                    $('#ecs').val(null);
+//                    document.getElementById('divecs').classList.add("hidden");
+                }
+
+//                $('.HEPP').html("Ville : <b>" + station.Ville + "</b> - HEPP : <span id='valeurhepp'>" + station.HEPP + "</span>");
+            }
+//            else {
+//                $('.HEPP').html("<i class='ace-icon fa fa-exclamation-triangle icon-animated-bell bigger-125'></i> Problème choix de station");
+//            }
+        },
+
+        'text'
+    );
+});
 $('input[name="Production"]').keyup(function () {
     calculrecette()
 });

@@ -117,10 +117,8 @@ class Catalogue extends DataMapper
 
     function updatecatalogue($fichier)
     {
-        $compteur=0;
-        foreach ($fichier as $produit)
-
-        {
+        $compteur = 0;
+        foreach ($fichier as $produit) {
             $newcatalogue = new Catalogue();
 
             $newcatalogue->where('Reference', $produit[0])->get();
@@ -166,9 +164,15 @@ class Catalogue extends DataMapper
         return TRUE;
     }
 
-    function select_panneau(){
-        $obj = new Catalogue();
-        return $obj->where('Reference','P9-2940SP51')->get()->all_to_array();
+    function select_panneau($id)
+    {
+        if (empty($id)) {
+            $obj = new Catalogue();
+            return $obj->get()->all_to_array();
+        }else{
+            $obj = new Catalogue();
+            return $obj->where('id',$id)->get()->all_to_array();
+        }
     }
 
 }
