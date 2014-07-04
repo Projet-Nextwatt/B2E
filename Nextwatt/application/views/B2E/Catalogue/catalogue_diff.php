@@ -50,13 +50,13 @@
         </h2>
 
         <?php
-        if (isset($supp)) {
+        if (!(empty($supp))) {
 
             foreach ($supp as $ref) {
                 ?>
                 <div class='row form-group'>
                     <label class="col-sm-4 no-padding-right control-label"
-                           for='<?php echo($ref) ?>'> <?php echo($ref) ?> </label>
+                           for="<?php echo($ref) ?>"> <?php echo($ref) ?> </label>
                     <!--            <input type='hidden' name="Droit_Edit_Devis" value="off"/>-->
                     <label class="col-sm-4">
                         <input type="checkbox"
@@ -77,7 +77,24 @@
             }
             echo form_close();
         } else {
-            echo('<h3> Aucun ajout dans la base de données</h3><br/>');
+            echo('<h3> Aucune suppression de la base de données</h3><br/>');
+        }
+        ?>
+        
+        
+        
+        
+        
+        <h2>
+            Modif :
+        </h2>
+        <?php
+        if (isset($modif)) {
+            echo '<pre>';
+            print_r($modif);
+            echo '</pre>';
+        } else {
+            echo('<h3>  Aucune modification par rapport à la base de données</h3><br/>');
         }
         ?>
     </div>

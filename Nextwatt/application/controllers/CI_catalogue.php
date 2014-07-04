@@ -113,26 +113,8 @@ class CI_Catalogue extends MY_Controller
                 //V�rification de l'exsitence dans la base de donn�es
                 if (!(array_key_exists($ref, $refbdd))) //si il existe pas, on ajoute
                 {
-                    $ajout[] = $ligneFichier;
-                } else //Si il existe, on met � jour
-                {
-                    $d = -1;
-                    unset($ligneModif); //Pour etre sur de pas utiliser le produit pr�cedement annalys�
-                    unset($ligneModifOld);
-                    foreach ($refbdd[$ref] as $dataBDD) {
-                        $dataBDD = addslashes($dataBDD); //Pour etre conforme � ce qu'on lit
-                        if ($d != -1 AND $dataBDD != $ligneFichier[$d]) //car la premi�re colonne dans la base de donn�es est l'id bdd
-                        {
-                            $ligneModif[$d] = $ligneFichier[$d];
-                            $ligneModifOld[$d] = $dataBDD;
-                        }
-                        $d++;
-                    }
-                    if (isset($ligneModif)) {
-                        $modif[$ref] = $ligneModif;
-                        $modifOld[$ref] = $ligneModifOld;
-                    }
-                }
+                    $ajout[$ligneFichier[0]] = $ligneFichier;
+                } 
             }
         }
         if (isset($ajout)) {
@@ -177,6 +159,50 @@ class CI_Catalogue extends MY_Controller
 
         return $result;
     }
+    
+    
+    public
+    function create_tab_modif_bdd()
+    {
+        //On recupere la base de données et on enleve ce qui n'est pas dans le fichier
+        $this->load->model('Mappage/catalogue', 'catalogue');
+        $catalogueBDD = $this->catalogue->get_catalogue_pour_modif();
+        $suppbdd = $this->create_tab_supp_bdd();
+        if (isset($suppbdd)) {
+            foreach ($suppbdd as $ref) {
+                unset($catalogueBDD[$ref]);
+            }
+        }
+
+        //On recupere le fichier et on enleve ce qui n'est pas dans la bdd
+        $this->load->library('fonctionspersos');
+        $fichier = $this->fonctionspersos->lire_fichier_catalogue();
+        $ajoutbdd = $this->create_tab_ajout_bdd();
+        if (isset($ajoutbdd)) {
+            foreach ($ajoutbdd as $ref => $onsenfout) {
+                unset($fichier[$ref]);
+            }
+        }
+
+        foreach ($fichier as $ref => $produit) {
+            //$ligneModif=array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18);
+            $modif=FALSE;
+            foreach ($produit as $i => $element) {
+                if ($element != $catalogueBDD[$ref][$i]) {  //car la premi�re colonne dans la base de donn�es est l'id bdd
+                    $ligneModif[$i] = $element;
+                    $modif=TRUE;
+                }
+            }
+            if ($modif==TRUE){
+                $ligneModif[0]=$ref;
+                $tabmodif[$ref]=$ligneModif;
+            }
+        }
+        
+        if (isset($tabmodif)) {
+            return $tabmodif;
+        }
+    }
 
     public
     function aff_recap_upload()
@@ -191,13 +217,14 @@ class CI_Catalogue extends MY_Controller
 
         $ajoutbdd = $this->create_tab_ajout_bdd();
         $suppbdd = $this->create_tab_supp_bdd();
-
+        $modif = $this->create_tab_modif_bdd();
 //        $this->decodefichier($fichier);
 //        echo('vardmp d ajoutbdd');
 //        var_dump($ajoutbdd);
 
         $data['ajouts'] = $ajoutbdd;
         $data['supp'] = $suppbdd;
+        $data['modif'] = $modif;
         $data['fichier'] = $fichier;
 
 
@@ -205,7 +232,9 @@ class CI_Catalogue extends MY_Controller
         $this->layout->title('Catalogue B2E');
         $this->layout->view('B2E/Catalogue/catalogue_diff', $data);
     }
-
+    
+    
+    
     public
     function validercatalogue()
     {
@@ -216,16 +245,24 @@ class CI_Catalogue extends MY_Controller
         $this->load->model('Mappage/catalogue', 'catalogue');
         //On récupère les lignes à supprimer et à ajouter via la fonction précisé plus haut
         $add = $this->create_tab_ajout_bdd();
+        $modif = $this->create_tab_modif_bdd();
 
 
         //On créer un compteur pour pouvoir afficher le nombre de suppressions/ajouts faits à la prochaine vue
         $data['lignesuppr'] = 0;
         $data['ligneajouté'] = 0;
+        $data['lignemodfié'] = 0;
 
-        //On fait les modifications ou les ajouts
+        //On fait les ajouts
         if(isset($add))
         {
             $data['ligneajouté'] = $this->catalogue->updatecatalogue($add);
+        }
+        
+                //On fait les modifications
+        if(isset($modif))
+        {
+            $data['lignemodifiée'] = $this->catalogue->updatecatalogue($modif);
         }
 
         //On fait les suppressions grâce au tableau récupéré via "create_tab_supp_bdd" et on indente le compteur à chaque suppression
