@@ -1,4 +1,5 @@
-<?php $ref = NULL; ?>
+<?php $ref = NULL;
+?>
 <div class="page-header ">
     <h1 align="center">
         Calcul de production </br >
@@ -32,22 +33,22 @@
             </div>
         </div>
         <div class='form-group'>
-            <label class="col-sm-6 no-padding-right control-label" for='Production'>Production : </label>
+            <label class="col-sm-6 no-padding-right control-label" for='Puissance'>Puissance : </label>
 
             <div class="col-sm-6">
                 <?php
-                $production = array(
+                $puissance = array(
 
-                    'name' => 'production',
+                    'name' => 'puissance',
 
-                    'id' => 'production',
+                    'id' => 'puissance',
 
-                    'placeholder' => 'Production',
+                    'placeholder' => 'puissance',
 
-                    'value' => set_value('production')
+                    'value' => set_value('puissance')
 
                 );
-                echo form_input($production);
+                echo form_input($puissance);
                 ?>
             </div>
         </div>
@@ -66,7 +67,7 @@
         <div class='form-group ' id="divbonus">
             <label class="col-sm-6 no-padding-right control-label" for='Bonus'>Bonus de production : </label>
 
-            <div class="col-sm-6">
+            <div class="col-sm-6 ">
                 <?php
                 $bonus = array(
 

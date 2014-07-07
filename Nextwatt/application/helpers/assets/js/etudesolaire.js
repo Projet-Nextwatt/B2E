@@ -188,7 +188,8 @@ $("#produit").change(function () {
         function (data) {
             if (data) {
                 var d = JSON.parse(data);
-                $('#production').val(d.puissance);
+                if(d[1] != '0'){
+                $('#puissance').val(d.puissance);
                 if (d.raccorde == 'TRUE') {
                     document.getElementById("raccordement").checked = true;
                 } else {
@@ -216,12 +217,13 @@ $("#produit").change(function () {
                     $('#ecs').val(null);
 //                    document.getElementById('divecs').classList.add("hidden");
                 }
-
-//                $('.HEPP').html("Ville : <b>" + station.Ville + "</b> - HEPP : <span id='valeurhepp'>" + station.HEPP + "</span>");
+                $("#resultprod").html("Production : <span id='prodcalc'>" + d[0] + "</span> kWh/an");
+                }else {
+                    $("#resultprod").html("<span class='text-danger'><i class='ace-icon fa fa-exclamation-triangle icon-animated-bell bigger-125'></i> HEPP nette manquant</span> ");
+                }
+            }else {
+                $("#resultprod").html("<span class='text-danger'>Calcul impossible donnée(s) manquante(s)</span> ");
             }
-//            else {
-//                $('.HEPP').html("<i class='ace-icon fa fa-exclamation-triangle icon-animated-bell bigger-125'></i> Problème choix de station");
-//            }
         },
 
         'text'
@@ -527,18 +529,16 @@ function canvasorient() {
     }
 
 }
-$('#img_ID').mapster({
-    fillOpacity: 0.5,
-    fillColor: "DAF298",
-    stroke: true,
-    strokeColor: "DAF298",
-    strokeOpacity: 0.5,
-    strokeWidth: 4,
-    mapKey: 'masque'
-});
+    $('#img_ID').mapster({
+        fillOpacity: 0.5,
+        fillColor: "DAF298",
+        stroke: true,
+        strokeColor: "DAF298",
+        strokeOpacity: 0.5,
+        strokeWidth: 4,
+        mapKey: 'masque'
+    });
 $('.areamasque').click(function () {
-
-    console.log($('#img_ID').mapster('get'));
     $.post(
         'ajax_envoiratioc',
         {

@@ -8,7 +8,7 @@
 
     <title> <?php echo $title_for_layout ?></title>
     <meta name="description" content="page description"/>
-    <?= $css_for_layout ?>
+    <?php echo $css_for_layout ?>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="SHORTCUT ICON" href="<?php echo img_url('favicon.ico'); ?>">
 </head>
