@@ -27,7 +27,6 @@ class CI_Client extends MY_Controller
         $data['enteteclients'] = array('Id', 'Nom', 'Prenom', 'Email', 'Telephone fixe', 'Telephone Portable', 'Responsable');
         $this->layout->title('Liste des clients');
         $this->layout->view('B2E/Client/Consulter_Client.php', $data); // Render view and layout
-
     }
 
     public function add_client()
@@ -36,23 +35,38 @@ class CI_Client extends MY_Controller
         $data = array();
         $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
+        $this->load->model('Mappage/user', 'user'); //Chargement du modele
+        $users  = $this->user->list_user(TRUE);
+        foreach ($users as $user){
+            $data['users'][]=array(  'label'=>$user['categorie_id'],
+                                    'value'=>$user['id'],
+                                    'texte'=>$user['prenom'].' '.$user['nom']);
+        }
+
+        
         $this->layout->title('Ajout client');
         $this->layout->view('B2E/Client/Add_Client', $data); // Render view and layout
-
-
     }
 
     public function verif_form_client()
     {
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
-
+        $data = array();
+        
+        $this->load->model('Mappage/user', 'user'); //Chargement du modele
+        $users = $this->user->list_user(TRUE);
+        foreach ($users as $user) {
+            $data['users'][] = array('label' => $user['categorie_id'],
+                                'value' => $user['id'],
+                                'texte' => $user['prenom'] . ' ' . $user['nom']);
+        }
 
         //Configuration des règles par champs
 
 
         //On applique les règles
         $this->form_validation->set_rules($this->configclient);
-        $data = array();
+
 
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
         //Et on agit en conséquence
@@ -64,27 +78,32 @@ class CI_Client extends MY_Controller
         {
             if ($this->mapclient->ajouter_client($_POST))
             {
-                // Energie object now has an ID
-                $this->consult_client();
+                // Client object now has an ID
             }
             else
             {
-                echo('Erreur enregistrement');
-                $this->layout->title('Ajout client');
-                $this->layout->view('B2E/Success_Error/formsuccess'); //render view and layout
+                $this->consult_client();
             }
         }
     }
 
     public function modif_client()
     {
-        $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
         $data = array(); //Pour la vue
+        $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
         $data['client']  = $this->mapclient->select_client($this->session->userdata('CI_client/modif_client'));
+        $this->load->model('Mappage/user', 'user'); //Chargement du modele
+        $users  = $this->user->list_user(TRUE);
+        foreach ($users as $user){
+            $data['users'][]=array(  'label'=>$user['id_categorie'],
+                                    'value'=>$user['id'],
+                                    'texte'=>$user['prenom'].' '.$user['nom']);
+        }
 
 
 
         $this->form_validation->set_rules($this->configclient);
+
 
         if ($this->form_validation->run() == FALSE) {
             //Formualire invalide, retour à celui-ci
@@ -119,52 +138,52 @@ class CI_Client extends MY_Controller
             array(
                 'field' => 'nom1',
                 'label' => 'Nom',
-                'rules' => 'required'
+                'rules' => 'required|max_length[255]|trim|mb_strtoupper'
             ),
             array(
                 'field' => 'prenom1',
                 'label' => 'Prenom',
-                'rules' => 'required'
+                'rules' => 'required|trim|max_length[255]'
             ),
             array(
                 'field' => 'nom2',
                 'label' => 'Nom du conjoint',
-                'rules' => 'required'
+                'rules' => 'required|trim|max_length[255]|mb_strtoupper'
             ),
             array(
                 'field' => 'prenom2',
                 'label' => 'Prenom du conjoint',
-                'rules' => 'required'
+                'rules' => 'required|trim|max_length[255]'
             ),
             array(
                 'field' => 'adresse',
                 'label' => 'Adresse',
-                'rules' => 'required'
+                'rules' => 'required|trim|max_length[255]'
             ),
             array(
                 'field' => 'codepostal',
                 'label' => 'Code Postal',
-                'rules' => 'required'
+                'rules' => 'required|trim|max_length[10]'
             ),
             array(
                 'field' => 'ville',
                 'label' => 'Ville',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'email',
-                'label' => 'Email',
-                'rules' => 'required|valid_email'
+                'rules' => 'required|trim|max_length[255]'
             ),
             array(
                 'field' => 'tel1',
                 'label' => 'Téléphone fixe',
-                'rules' => 'required'
+                'rules' => 'required|trim|callback_tel'
             ),
             array(
                 'field' => 'tel2',
                 'label' => 'Téléphone portable',
-                'rules' => 'required'
+                'rules' => 'required|trim|callback_tel'
+            ),
+            array(
+                'field' => 'email',
+                'label' => 'Email',
+                'rules' => 'required|valid_email|trim'
             ),
         );
 
@@ -173,13 +192,11 @@ class CI_Client extends MY_Controller
             'field' => 'nom1',
             'label' => 'Nom',
             'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
-            //htmlspecialchars_decode($str, ENT_NOQUOTES); Comment je fait pour mettre un flag
         ),
         array(
             'field' => 'prenom1',
             'label' => 'Prenom',
             'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
-            //htmlspecialchars_decode($str, ENT_NOQUOTES); Comment je fait pour mettre un flag
         ),
         array(
             'field' => 'nom2',

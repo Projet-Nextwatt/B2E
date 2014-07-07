@@ -17,8 +17,8 @@ class CI_User extends MY_Controller {
         $this->load->model('Mappage/user', 'mapuser'); //Chargement du model
         $data = array();
 
-        $data['users'] = $this->mapuser->select_user();
-        $data['eneteteUsers'] = array('Nom', 'Prix du kWh', 'Inflation', 'Pollution CO<sub>2</sub>', 'Abonnement');
+        $data['users'] = $this->mapuser->list_user(TRUE);
+        $data['usersinactifs'] = $this->mapuser->list_user(FALSE);  
 
         $this->layout->title('Liste des Users');
         $this->layout->view('B2E/User/Accueil_user.php', $data); // Render view and layout

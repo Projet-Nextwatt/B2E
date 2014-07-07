@@ -30,7 +30,8 @@
         } else {
             echo form_open('CI_client/verif_form_client', $attributes, $hiden);
         }
-
+        var_dump($hidden);
+        var_dump($client);
         ?>
 
 
@@ -181,11 +182,7 @@
             <label for="responsable" class="col-sm-4 no-padding-right control-label">Responsable</label>
 
             <div class="col-sm-3">
-                <select name="responsable" class="dropdown">
-                    <option value="1">Stephane</option>
-                    <option value="2">Xavier</option>
-                    <option value="2">Marc</option>
-                </select>
+                <?php $this->fonctionspersos->creerDropdown($users,NULL,'responsable');?>
             </div>
         </div>
         <div class="col-sm-4">

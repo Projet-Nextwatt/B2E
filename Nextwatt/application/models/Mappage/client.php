@@ -90,15 +90,8 @@ class Client extends DataMapper
             'dateajout' => $today,
         );
 
-        //if (isset($Energie->$variable)) { // Ce test ne fonctionne pas, mais ne faudrait il pas passer par des set?? ***************************
-
-//        var_dump($valeur);
-        //}
-//        var_dump($client);
-//        $client->all_to_array();
 
         $this->db->insert('clients', $client);
-//        return $client->save();
     }
 
     function modifier_client($data)

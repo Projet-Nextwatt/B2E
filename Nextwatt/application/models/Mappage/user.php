@@ -1,70 +1,93 @@
 <?php
+
 /*
  * Classe Modèle pour la table User, définir ici toutes les fonctionnalitées utilisant la table USER
  * CRUD de base mis en place.
  */
+
 class User extends DataMapper {
     /*
      * Variables de relation (entre tables)
      */
+
     //var $has_one = array('categorie');
-    
+
     var $has_one = array(
         'categorie');
 
     //var $has_many = array('Hierarchie','Client');
-    
+    //const ACTIF=TRUE;
+    //const INACTIF=FALSE;
+
     /*
      * Variables correspondantes aux colonnes de la table.
      */
-    
+
     /*
-    var $Identifiant = "";
-    var $mdp = "";
-    var $ID_Categorie = "";
-    var $Nom = "";
-    var $Prenom = "";
-    var $Email = "";
-    var $Tel = "";
-    var $Date_Ajout = "";
-    var $Derniere_Connexion = "";
-    var $Actif = "";
-    */
-    
-    function __construct($id=NULL) 
-    {
+      var $Identifiant = "";
+      var $mdp = "";
+      var $ID_Categorie = "";
+      var $Nom = "";
+      var $Prenom = "";
+      var $Email = "";
+      var $Tel = "";
+      var $Date_Ajout = "";
+      var $Derniere_Connexion = "";
+      var $Actif = "";
+     */
+
+    function __construct($id = NULL) {
         parent ::__construct($id);
-    }   
-    
-    function select_user($id  =NULL)
-    {
+    }
+
+    function select_user($id = NULL) {
         if ($id != NULL) {
-            $user = new User();
-            $user->where('id', $id);
-            $user->get();
+            $user = new User($id);
+            //$user->where('id', $id);
+            //$user->get();
             $user->categorie->get();
-            $tabuser=$user->to_array();
-            $tabcat=$user->categorie->to_array();
+            $tabuser = $user->to_array();
+            $tabcat = $user->categorie->to_array();
             unset($tabcat['id']);
             return array_merge($tabuser, $tabcat);
-            
         } else {
             $users = new User();
+
+            $users->order_by('Actif','DESC');
+
+            $users->order_by('Actif', 'DESC');
+
             $users->get();
-            foreach ($users as $index => $user){
-                $retour[$index]=$user->to_array();
+            foreach ($users as $index => $user) {
+                $retour[$index] = $user->to_array();
                 $user->categorie->get();
-                unset ($retour[$index]['mdp']);
-                $retour[$index]['categorie_id']=$user->categorie->Nom_Categorie;
+                unset($retour[$index]['mdp']);
+                $retour[$index]['categorie_id'] = $user->categorie->Nom_Categorie;
             }
             return $retour;
-            
         }
     }
-    
-    function ajouter_user($data)
-    {
 
+    function list_user($actif) {
+        $users = new User();
+        if ($actif == TRUE) {
+            $users->where('Actif', 1);
+        } else {
+            $users->where('Actif', 0);
+        }
+        $users->get();
+        $retour = array();
+        foreach ($users as $index => $user) {
+            $retour[$index] = $user->to_array();
+            $user->categorie->get();
+            unset($retour[$index]['mdp']);
+            unset($retour[$index]['Actif']);
+            $retour[$index]['categorie_id'] = $user->categorie->Nom_Categorie;
+        }
+        return $retour;
+    }
+
+    function ajouter_user($data) {
         $user = array(
             'Identifiant' => $data['Identifiant'],
             'mdp' => $data['mdp'],
@@ -77,17 +100,14 @@ class User extends DataMapper {
             'Actif' => 1,
         );
 
-        if ($this->db->insert('users', $user)){
+        if ($this->db->insert('users', $user)) {
             return TRUE;
-        }
-        else
-        {
+        } else {
             echo '<p>' . $user->error->string . '</p>';
             return FALSE;
         }
-        
     }
-    
+
     function modifier_user($data) {
         //Fonction de modification        
         $id = $data['id'];
@@ -109,12 +129,10 @@ class User extends DataMapper {
             return FALSE;
         }
     }
-    
-    function supprimer_user()
-    {
+
+    function supprimer_user() {
         $this->db->where('Login', '');
         $this->db->delete('Article');
     }
-    
-    
-    }
+
+}

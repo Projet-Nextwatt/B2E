@@ -7,7 +7,7 @@
 </div>
 
 <div class="page-header">
-    <h1>Liste des énergies</h1>
+    <h1>Liste des Sous-types</h1>
 </div>
 
 <div class="row">
@@ -15,8 +15,8 @@
 
         <div class="row">
             <div class="col-xs-12 text-center">
-                <a class="btn btn-primary btn-sm" href="<?php echo site_url("parametre/add_energie"); ?>">
-                    <i class="ace-icon fa fa-plus align-top bigger-125"/></i>Ajouter une &eacute;nergie
+                <a class="btn btn-primary btn-sm" href="<?php echo site_url("CI_catalogue/gererlistetype_form"); ?>">
+                    <i class="ace-icon fa fa-plus align-top bigger-125"/></i>Ajouter un sous-type
                 </a>
                 <br/>
             </div>
@@ -26,8 +26,10 @@
             <div class="col-xs-12">
                 <div class="panel panel-default">
                     <!-- Default panel contents -->
-                    <div class="panel-heading align-left">Liste des énergies</div>
-                    <?php $this->fonctionspersos->creerTableau($energies, $eneteteEnergies, 'parametre/modif_energie'/*,'parametre/ajax_supprimerenergie '*/); ?>
+                    <div class="panel-heading align-left">Liste des Sous-types</div>
+                    <?php
+                    $this->fonctionspersos->creerTableau($soustypes, $entetesoustype, 'CI_catalogue/modif_soustype');
+                    ?>
                 </div>
             </div>
         </div>
