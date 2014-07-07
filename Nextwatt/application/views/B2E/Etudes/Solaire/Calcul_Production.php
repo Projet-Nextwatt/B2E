@@ -1,4 +1,5 @@
-<?php $ref = NULL; ?>
+<?php $ref = NULL;
+?>
 <div class="page-header ">
     <h1 align="center">
         Calcul de production </br >
@@ -31,30 +32,23 @@
                 </select>
             </div>
         </div>
-        <?php echo $panneau[0]['Spec']; ?>
-        <?php $test = array('test' => 545, 'ert' => 'erer');
-        $t = json_encode($test);
-        var_dump($t);
-        $spec = html_entity_decode($panneau[0]['Spec']);
-        var_dump(json_decode($spec,true));
-        ?>
         <div class='form-group'>
-            <label class="col-sm-6 no-padding-right control-label" for='Systeme'>Système : </label>
+            <label class="col-sm-6 no-padding-right control-label" for='Puissance'>Puissance : </label>
 
             <div class="col-sm-6">
                 <?php
-                $systeme = array(
+                $puissance = array(
 
-                    'name' => 'systeme',
+                    'name' => 'puissance',
 
-                    'id' => 'systeme',
+                    'id' => 'puissance',
 
-                    'placeholder' => 'Systeme',
+                    'placeholder' => 'puissance',
 
-                    'value' => set_value('systeme')
+                    'value' => set_value('puissance')
 
                 );
-                echo form_input($systeme);
+                echo form_input($puissance);
                 ?>
             </div>
         </div>
@@ -62,55 +56,71 @@
             <label class="col-sm-6 no-padding-right control-label" for='HeppNet'>Raccordement : </label>
 
             <div class="col-sm-6">
-                <?php
-                $id = 'id="raccordement"';
-                $option = array(
-                    '2' => ' Raccordé (2 %)',
-                    '10' => ' Isolé (10 %)'
-                );
-
-                echo form_dropdown('raccordement', $option, '', $id);
-                ?>
+                <label>
+                    <input name="switch-field-1" class="ace ace-switch" type="checkbox" id="raccordement">
+                    <span class="lbl" data-lbl="Oui&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Non"></span>
+                </label>
             </div>
         </div>
-        <div class='form-group'>
+
+
+        <div class='form-group ' id="divbonus">
             <label class="col-sm-6 no-padding-right control-label" for='Bonus'>Bonus de production : </label>
 
-            <div class="col-sm-6">
+            <div class="col-sm-6 ">
                 <?php
-                $id = 'id="bonus"';
-                $option = array(
-                    '0' => ' Pas de bonus',
-                    '10' => ' Bonus de 10%'
-                );
+                $bonus = array(
 
-                echo form_dropdown('bonus', $option, '', $id);
+                    'name' => 'bonus',
+
+                    'id' => 'bonus',
+
+                    'placeholder' => 'Bonus',
+
+                    'value' => set_value('bonus')
+
+                );
+                echo form_input($bonus);
                 ?>
             </div>
         </div>
-        <div class='form-group hidden'>
-            <label class="col-sm-6 no-padding-right control-label" for='Bonus'>Bonus : </label>
+        <div class='form-group ' id="divchauffage">
+            <label class="col-sm-6 no-padding-right control-label" for='Chauffage'>Chauffage : </label>
 
             <div class="col-sm-6">
                 <?php
-                if ($this->session->userdata['Heppnet']) {
-                    $value = $this->session->userdata['Heppnet'];
-                } else {
-                    $value = '';
-                }
+                $chauffage = array(
 
-                $heppnet = array(
+                    'name' => 'chauffage',
 
-                    'name' => 'heppnet',
+                    'id' => 'chauffage',
 
-                    'id' => 'heppnet',
+                    'placeholder' => 'Chauffage',
 
-                    'placeholder' => 'heppnet',
-
-                    'value' => $value
+                    'value' => set_value('chauffage')
 
                 );
-                echo form_input($heppnet);
+                echo form_input($chauffage);
+                ?>
+            </div>
+        </div>
+        <div class='form-group ' id="divecs">
+            <label class="col-sm-6 no-padding-right control-label" for='ECS'>ECS : </label>
+
+            <div class="col-sm-6">
+                <?php
+                $ecs = array(
+
+                    'name' => 'ecs',
+
+                    'id' => 'ecs',
+
+                    'placeholder' => 'ECS',
+
+                    'value' => set_value('ecs')
+
+                );
+                echo form_input($ecs);
                 ?>
             </div>
         </div>
@@ -118,12 +128,10 @@
         <?php //echo form_submit('calculprod', 'Valider', 'class="btn btn-success btn-sm"'); ?><!--</div>-->
     </div>
 </div>
-
 <br/>
 
 <h3 align="center" id="resultprod"></h3>
 
-<?php var_dump($panneau) ?>
 <ul class="pager">
     <li class="previous">
         <a href="<?php echo site_url("pv/calculhepp"); ?>"><h4>← Calculer HEPP</h4></a>

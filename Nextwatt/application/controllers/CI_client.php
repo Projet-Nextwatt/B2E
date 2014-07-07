@@ -102,6 +102,7 @@ class CI_Client extends MY_Controller
 
         $this->form_validation->set_rules($this->configclient);
 
+
         if ($this->form_validation->run() == FALSE) {
             //Formualire invalide, retour à celui-ci
 

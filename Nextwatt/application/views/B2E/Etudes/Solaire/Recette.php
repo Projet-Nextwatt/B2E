@@ -46,17 +46,17 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
         <tr>
             <td style="border:none">
             <span id="resultratioc"><?php
-                if (isset($this->session->userdata['Production']) && $this->session->userdata['Production'] != '') {
-                    echo "La production est de : <strong>" . $this->session->userdata['Production'] . " kWh/an</strong>";
+                if (isset($this->session->userdata['Panneau']) && $this->session->userdata['Panneau'] != '') {
+                    echo "Le kit choisi est : <strong>" . $this->session->userdata['Panneau'];
                 } else {
                     ?>
-                    <span>Aucune production de calculer : </span>
-                    <a href="<?php echo site_url("pv/calculprod") ?>">Calculer la production</a>
+                    <span>Aucun kit choisi : </span>
+                    <a href="<?php echo site_url("pv/calculprod") ?>">Choisir un kit</a>
                 <?php } ?></span>
             </td>
-            <?php if (isset($this->session->userdata['Production']) && $this->session->userdata['Production'] != '') { ?>
+            <?php if (isset($this->session->userdata['Panneau']) && $this->session->userdata['Panneau'] != '') { ?>
                 <td style="border:none">
-                    <a href="<?php echo site_url("pv/calculprod") ?>">Recalculer la production</a>
+                    <a href="<?php echo site_url("pv/calculprod") ?>">Changer le kit</a>
                 </td>
             <?php } ?>
         </tr>
@@ -65,19 +65,19 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
 
 <div class="col-xs-12">
     <?php
-    $production = $this->session->userdata('Production');
+    $panneau = $this->session->userdata('Panneau');
     $tarifdedf = $this->session->userdata('Tarifedf');
     $raccordement = $this->session->userdata('Raccordement');
-    if (!isset($production) || $production == 0 ||
+    if (!isset($panneau) || $panneau == '' ||
         !isset($tarifdedf) || $tarifdedf == 0 ||
-        !isset($raccordement) || $raccordement == 0
+        !isset($raccordement) || $raccordement == ''
     ) {
         ?>
         <div class="table-header" style="background-color: #fff"> "<span class='text-danger'>
     <i class='ace-icon fa fa-exclamation-triangle icon-animated-bell bigger-125'></i> Calcul impossible donnée(s) manquante(s) :
-                <?php if (!isset($production) || $production == 0) { ?>
+                <?php if (!isset($panneau) || $panneau == 0) { ?>
                     <a href="<?php echo site_url("pv/calculprod") ?>">
-                        <button type="button" class="btn btn-danger btn-xs">Production</button>
+                        <button type="button" class="btn btn-danger btn-xs">Panneau</button>
                     </a>
                 <?php } ?>
                 <?php if (!isset($tarifdedf) || $tarifdedf == 0) { ?>

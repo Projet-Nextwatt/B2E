@@ -364,8 +364,7 @@ class CI_Catalogue extends MY_Controller
                 echo('cool story bro');
                 $this->consult_soustypes();
             } else {
-                $this->layout->title('Ajout Sous-type');
-                $this->layout->view('B2E/Success_Error/formsuccess'); //render view and layout
+                $this->consult_soustype();
             }
         }
     }
@@ -389,7 +388,10 @@ class CI_Catalogue extends MY_Controller
         $data['soustype'] = $this->mapsoustype->select_soustype($this->session->userdata('CI_catalogue/modif_soustype'));
 
         $configST = $this->configsoustype();
+        $configtraitement = $this->configtraitementsoustype();
         $this->form_validation->set_rules($configST);
+
+
 
         if ($this->form_validation->run() == FALSE) {
             //Formualire invalide, retour à celui-ci
@@ -399,7 +401,7 @@ class CI_Catalogue extends MY_Controller
         } else {
             //Formulaire ok, traitement des données
             //Clean des données
-            $this->form_validation->set_rules($this->$configtraitementsoustype);
+            $this->form_validation->set_rules($configtraitement);
             $this->form_validation->run();
             if ($this->mapsoustype->modifier_soustype($_POST)) {
                 $this->consult_soustype();
@@ -442,18 +444,23 @@ class CI_Catalogue extends MY_Controller
         return $configsoustype;
     }
 
-    public $configtraitementsoustype = array(
-        array(
-            'field' => 'nomcourt',
-            'label' => 'Nom court',
-            'rules' => 'xss_clean|htmlentities'
-        ),
-        array(
-            'field' => 'nomdevis',
-            'label' => 'Nom devis',
-            'rules' => 'xss_clean|htmlentities'
-        ),
-    );
+    public function configtraitementsoustype()
+    {
+        $configtraitementsoustype = array(
+            array(
+                'field' => 'nomcourt',
+                'label' => 'Nom court',
+                'rules' => 'xss_clean|htmlentities'
+            ),
+            array(
+                'field' => 'nomdevis',
+                'label' => 'Nom devis',
+                'rules' => 'xss_clean|htmlentities'
+            ),
+        );
+        return $configtraitementsoustype;
+    }
+
 
 
 }

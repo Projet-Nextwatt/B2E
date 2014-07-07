@@ -179,7 +179,56 @@ function calculprod() {
         'text'
     );
 }
+$("#produit").change(function () {
+    $.post(
+        'ajax_panneau',
+        {
+            id: $('#produit option:selected').val()
+        },
+        function (data) {
+            if (data) {
+                var d = JSON.parse(data);
+                if(d[1] != '0'){
+                $('#puissance').val(d.puissance);
+                if (d.raccorde == 'TRUE') {
+                    document.getElementById("raccordement").checked = true;
+                } else {
+                    document.getElementById("raccordement").checked = false;
+                }
+                if (typeof(d.bonusProd) != "undefined" && d.bonusProd != null) {
+//                    document.getElementById('divbonus').classList.remove("hidden");
+                    $('#bonus').val(d.bonusProd / 100);
+                } else {
+                    $('#bonus').val(null);
+//                    document.getElementById('divbonus').classList.add("hidden");
+                }
+                if (typeof(d.chauffage) != "undefined" && d.chauffage != null) {
+//                    document.getElementById('divchauffage').classList.remove("hidden");
+                    $('#chauffage').val(d.chauffage);
+                } else {
+                    $('#chauffage').val(null);
+//                    document.getElementById('divchauffage').classList.add("hidden");
+                }
 
+                if (typeof(d.ECS) != "undefined" && d.ECS != null) {
+//                    document.getElementById('divecs').classList.remove("hidden");
+                    $('#ecs').val(d.ECS);
+                } else {
+                    $('#ecs').val(null);
+//                    document.getElementById('divecs').classList.add("hidden");
+                }
+                $("#resultprod").html("Production : <span id='prodcalc'>" + d[0] + "</span> kWh/an");
+                }else {
+                    $("#resultprod").html("<span class='text-danger'><i class='ace-icon fa fa-exclamation-triangle icon-animated-bell bigger-125'></i> HEPP nette manquant</span> ");
+                }
+            }else {
+                $("#resultprod").html("<span class='text-danger'>Calcul impossible donnée(s) manquante(s)</span> ");
+            }
+        },
+
+        'text'
+    );
+});
 $('input[name="Production"]').keyup(function () {
     calculrecette()
 });
@@ -480,18 +529,16 @@ function canvasorient() {
     }
 
 }
-$('#img_ID').mapster({
-    fillOpacity: 0.5,
-    fillColor: "DAF298",
-    stroke: true,
-    strokeColor: "DAF298",
-    strokeOpacity: 0.5,
-    strokeWidth: 4,
-    mapKey: 'masque'
-});
+    $('#img_ID').mapster({
+        fillOpacity: 0.5,
+        fillColor: "DAF298",
+        stroke: true,
+        strokeColor: "DAF298",
+        strokeOpacity: 0.5,
+        strokeWidth: 4,
+        mapKey: 'masque'
+    });
 $('.areamasque').click(function () {
-
-    console.log($('#img_ID').mapster('get'));
     $.post(
         'ajax_envoiratioc',
         {

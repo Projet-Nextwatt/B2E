@@ -41,6 +41,7 @@ class PV extends MY_Controller
         $data['station'] = $this->ensoleillement->select_ensoleillement();
         $this->layout->title('Station B2E');
         $this->layout->js(js_url('etudesolaire'));
+        $this->layout->js(js_url('help'));
 
         $breadcrumps = array(
             array(
@@ -199,6 +200,7 @@ class PV extends MY_Controller
         $this->layout->js(js_url('etudesolaire'));
         $this->layout->function_js('resize()');
         $this->layout->function_js('onWindowResize()');
+//        $this->layout->function_js('mapstermasque()');
         $this->layout->view('B2E/Etudes/Solaire/Calcul_Masque', $data); // Render view and layout
     }
 
@@ -290,7 +292,7 @@ class PV extends MY_Controller
         );
         $this->load->model('Mappage/catalogue', 'panneau');
         $data = array();
-        $data['panneau'] = $this->panneau->select_panneau();
+        $data['panneau'] = $this->panneau->select_panneau(null);
 
         $this->layout->breadcrumbs($breadcrumps);
         $this->layout->title('Calcul de Production B2E');
@@ -496,7 +498,7 @@ class PV extends MY_Controller
                         $perte += 2.3;
                     } else if (preg_match('#fort+#', $m)) {
                         $perte += 2.8;
-                    }else{
+                    } else {
                         $perte = 0;
                     }
 
@@ -508,11 +510,11 @@ class PV extends MY_Controller
                     'Ratioc' => $ratioc);
                 $this->session->set_userdata($tabsession);
                 echo $ratioc;
-            }else{
-                echo '100';
+            } else {
+                echo 100;
             }
 
-        }else if (isset($_POST['ratioc'])) {
+        } else if (isset($_POST['ratioc'])) {
             if (is_numeric($_POST['ratioc']) && $_POST['ratioc'] != '') {
                 $tabsession = array(
                     'HEPP' => $this->session->userdata('HEPP'),
@@ -547,6 +549,39 @@ class PV extends MY_Controller
         }
     }
 
+    public function ajax_panneau()
+    {
+        if (isset($_POST['id'])) {
+            $this->load->model('Mappage/catalogue', 'catalogue');
+            $data = $this->catalogue->select_panneau($_POST['id']); // Recup des données station avec le model "ensoleillement"
+            $spec = html_entity_decode($data[0]['Spec']);
+            $temparray = json_decode($spec, true);
+            $production = $temparray['puissance'] * $this->session->userdata('Heppnet');
+            if (isset($temparray['bonusProd'])) {
+                $bonusprod = $temparray['bonusProd'];
+            } else {
+                $bonusprod = 0;
+            }
+            $prodtotale = ($production + $production * $bonusprod / 10000) / 1000;
+
+            array_push($temparray, $prodtotale);
+            array_push($temparray, $this->session->userdata('Heppnet'));
+
+            $spec = json_encode($temparray);
+            $tabsession = array(
+                'HEPP' => $this->session->userdata('HEPP'),
+                'Orientation' => $this->session->userdata('Orientation'),
+                'Ratioc' => $this->session->userdata('Ratioc'),
+                'Heppnet' => $this->session->userdata('Heppnet'),
+                'Raccordement' => $temparray['raccorde'],
+                'Production' => $prodtotale,
+                'Panneau' => $data['0']['Nom']);
+            $this->session->set_userdata($tabsession);
+
+            echo $spec;
+        }
+    }
+
     public
     function ajax_calculprod()
     {
@@ -559,7 +594,7 @@ class PV extends MY_Controller
                 'Ratioc' => $this->session->userdata('Ratioc'),
                 'Heppnet' => $this->session->userdata('Heppnet'),
                 'Raccordement' => $_POST['raccordement'],
-                'Production' => $prodtotal);
+                'Production' => $prodtotal,);
             $this->session->set_userdata($tabsession);
             echo $prodtotal;
         } else {
