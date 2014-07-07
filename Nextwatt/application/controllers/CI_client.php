@@ -36,16 +36,32 @@ class CI_Client extends MY_Controller
         $data = array();
         $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
+
+        $this->load->model('Mappage/user', 'user'); //Chargement du modele
+        $users  = $this->user->list_user(TRUE);
+        foreach ($users as $user){
+            $data['users'][]=array(  'label'=>$user['categorie_id'],
+                                    'value'=>$user['id'],
+                                    'texte'=>$user['prenom'].' '.$user['nom']);
+        }
+
+        
         $this->layout->title('Ajout client');
         $this->layout->view('B2E/Client/Add_Client', $data); // Render view and layout
-
-
     }
 
     public function verif_form_client()
     {
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
         $data = array();
+        
+        $this->load->model('Mappage/user', 'user'); //Chargement du modele
+        $users = $this->user->list_user(TRUE);
+        foreach ($users as $user) {
+            $data['users'][] = array('label' => $user['categorie_id'],
+                                'value' => $user['id'],
+                                'texte' => $user['prenom'] . ' ' . $user['nom']);
+        }
 
         //Configuration des règles par champs
 
@@ -78,10 +94,16 @@ class CI_Client extends MY_Controller
 
     public function modif_client()
     {
-        $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
         $data = array(); //Pour la vue
+        $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
         $data['client']  = $this->mapclient->select_client($this->session->userdata('CI_client/modif_client'));
-
+        $this->load->model('Mappage/user', 'user'); //Chargement du modele
+        $users  = $this->user->list_user(TRUE);
+        foreach ($users as $user){
+            $data['users'][]=array(  'label'=>$user['id_categorie'],
+                                    'value'=>$user['id'],
+                                    'texte'=>$user['prenom'].' '.$user['nom']);
+        }
 
 
         $this->form_validation->set_rules($this->configclient);

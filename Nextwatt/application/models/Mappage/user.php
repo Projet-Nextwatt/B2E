@@ -14,6 +14,9 @@ class User extends DataMapper {
 
     //var $has_many = array('Hierarchie','Client');
     
+    //const ACTIF=TRUE;
+    //const INACTIF=FALSE;
+    
     /*
      * Variables correspondantes aux colonnes de la table.
      */
@@ -39,9 +42,9 @@ class User extends DataMapper {
     function select_user($id  =NULL)
     {
         if ($id != NULL) {
-            $user = new User();
-            $user->where('id', $id);
-            $user->get();
+            $user = new User($id);
+            //$user->where('id', $id);
+            //$user->get();
             $user->categorie->get();
             $tabuser=$user->to_array();
             $tabcat=$user->categorie->to_array();
@@ -50,6 +53,7 @@ class User extends DataMapper {
             
         } else {
             $users = new User();
+            $user->order_by('Actif','DESC');
             $users->get();
             foreach ($users as $index => $user){
                 $retour[$index]=$user->to_array();
@@ -62,9 +66,27 @@ class User extends DataMapper {
         }
     }
     
+    function list_user($actif){
+            $users = new User();
+            if ($actif==TRUE){
+                $users->where('Actif',1);
+            }
+            else{
+                $users->where('Actif',0);
+            }
+            $users->get();
+            foreach ($users as $index => $user){
+                $retour[$index]=$user->to_array();
+                $user->categorie->get();
+                unset ($retour[$index]['mdp']);
+                unset ($retour[$index]['Actif']);
+                $retour[$index]['categorie_id']=$user->categorie->Nom_Categorie;
+            }
+            return $retour;
+    }
+    
     function ajouter_user($data)
     {
-
         $user = array(
             'Identifiant' => $data['Identifiant'],
             'mdp' => $data['mdp'],

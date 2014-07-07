@@ -19,24 +19,21 @@
             <button type="button" class="btn btn-white btn-sm btn-primary">Gérer les droits des catégories</button></a>
     </div>
 
-            <div class="row">
-            <div class="col-xs-12">
-                <div class="panel panel-success">
-                    <div class="panel-heading align-left">Liste des utilisateurs</div>
-                    <?php $this->fonctionspersos->creerTableau($users, array(),'CI_User/modif_user') ?>
-                </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-success">
+                <div class="panel-heading align-left">Liste des utilisateurs</div>
+                <?php $this->fonctionspersos->creerTableau($users, array(), 'CI_User/modif_user') ?>
             </div>
         </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-success">
+                <div class="panel-heading align-left">Liste des utilisateurs désactivés</div>
+                <?php $this->fonctionspersos->creerTableau($usersinactifs, array(), 'CI_User/modif_user') ?>
+            </div>
+        </div>
+    </div>
 </div>
-
-<!--<div class="row">-->
-<!--    </br></br></br></br>-->
-<!--    <div align="center" class="col-xl-14">-->
-<!--        <a href="--><?php //echo site_url("CI_user/add_user"); ?><!--">-->
-<!--            <button type="button" class="btn btn-primary">-->
-<!--                <i class="ace-icon fa fa-user icon-animated-vertical"></i>-->
-<!--                Faire un nouveau utilisateur-->
-<!--            </button>-->
-<!--    </div>-->
-<!--</div>-->
-
