@@ -75,6 +75,7 @@ class User extends DataMapper {
                 $users->where('Actif',0);
             }
             $users->get();
+            $retour=array();
             foreach ($users as $index => $user){
                 $retour[$index]=$user->to_array();
                 $user->categorie->get();
