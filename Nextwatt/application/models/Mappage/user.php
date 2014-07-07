@@ -52,11 +52,7 @@ class User extends DataMapper {
             return array_merge($tabuser, $tabcat);
         } else {
             $users = new User();
-<<<<<<< HEAD
             $users->order_by('Actif','DESC');
-=======
-            $user->order_by('Actif', 'DESC');
->>>>>>> fae363925d246f1816bd919db4c1a411e5b1d42e
             $users->get();
             foreach ($users as $index => $user) {
                 $retour[$index] = $user->to_array();
