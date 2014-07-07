@@ -23,15 +23,13 @@
         $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
         $hiden = array();
 
-        if (isset($client)) {
-            $hidden = array('id' => $client['id'], 'Client' => $client['nom1']);
-            echo form_open('CI_catalogue/gererlistetype_action', $attributes, $hidden);
+        if (isset($soustype)) {
+            $hidden = array('id' => $soustype['id']);
+            echo form_open('CI_catalogue/modif_soustype', $attributes, $hidden);
         } else {
             echo form_open('CI_catalogue/gererlistetype_action', $attributes, $hiden);
         }
-
         ?>
-
 
         <div class="form-group">
             <label for="civilite" class="col-sm-4 no-padding-right control-label">Type parent </label>

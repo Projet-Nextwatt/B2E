@@ -30,7 +30,8 @@
         } else {
             echo form_open('CI_client/verif_form_client', $attributes, $hiden);
         }
-
+        var_dump($hidden);
+        var_dump($client);
         ?>
 
 
