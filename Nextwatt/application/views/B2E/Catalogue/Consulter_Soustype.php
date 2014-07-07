@@ -28,7 +28,7 @@
                     <!-- Default panel contents -->
                     <div class="panel-heading align-left">Liste des Sous-types</div>
                     <?php
-                    $this->fonctionspersos->creerTableau($soustypes, $entetesoustype, 'CI_catalogue/modif_soustype','CI_catalogue/ajax_supprimersoustype ');
+                    $this->fonctionspersos->creerTableau($soustypes,$entetesoustype,'CI_catalogue/modif_soustype','CI_catalogue/ajax_supprimersoustype ');
                     ?>
                 </div>
             </div>
