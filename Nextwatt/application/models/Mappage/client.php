@@ -86,7 +86,7 @@ class Client extends DataMapper
             'tel1' => $data['tel1'],
             'tel2' => $data['tel2'],
             'email' => $data['email'],
-            'user_id' => $data['responsable'],
+            'user_id' => $data['user_id'],
             'dateajout' => $today,
         );
 

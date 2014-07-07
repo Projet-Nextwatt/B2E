@@ -27,7 +27,7 @@
                 <div class="panel panel-default">
                     <!-- Default panel contents -->
                     <div class="panel-heading align-left">Liste des énergies</div>
-                    <?php $this->fonctionspersos->creerTableau($energies, $eneteteEnergies, 'parametre/modif_energie'/*,'parametre/ajax_supprimerenergie '*/); ?>
+                    <?php $this->fonctionspersos->creerTableau($energies, $eneteteEnergies, 'parametre/modif_energie'/* ,'parametre/ajax_supprimerenergie ' */); ?>
                 </div>
             </div>
         </div>

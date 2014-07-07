@@ -178,14 +178,14 @@
         </div>
 
         <div class="row form-group">
-            <label for="responsable" class="col-sm-4 no-padding-right control-label">Responsable</label>
+            <label for="user_id" class="col-sm-4 no-padding-right control-label">Responsable</label>
 
             <div class="col-sm-3">
-                <?php $this->fonctionspersos->creerDropdown($users,NULL,'responsable');?>
+                <?php $this->fonctionspersos->creerDropdown($users,$client['user_id'],'user_id');?>
             </div>
         </div>
         <div class="col-sm-4">
-            <?php echo form_error('responsable'); ?>
+            <?php echo form_error('user_id'); ?>
         </div>
 
         <div class="row form-group">
