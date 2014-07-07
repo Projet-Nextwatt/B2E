@@ -140,35 +140,31 @@ class Catalogue extends DataMapper
 
     function updatecatalogue($fichier)
     {
-        $compteur=0;
-        foreach ($fichier as $produit)
-
-        {
+        $compteur = 0;
+        foreach ($fichier as $produit) {
             $newcatalogue = new Catalogue();
-
             $newcatalogue->where('Reference', $produit[0])->get();
-            (isset($produit[0] )?$newcatalogue->Reference = $produit[0]:'');
-            (isset($produit[1] )?$newcatalogue->Nom = $produit[1]:'');
-            (isset($produit[2] )?$newcatalogue->Marque = $produit[2]:'');
-            (isset($produit[3] )?$newcatalogue->Puissance = $produit[3]:'');
-            (isset($produit[4] )?$newcatalogue->Libelle_Mat = $produit[4]:'');
-            (isset($produit[5] )?$newcatalogue->Libelle_Mat_SansMarque = $produit[5]:'');
-            (isset($produit[6] )?$newcatalogue->Libelle_MO = $produit[6]:'');
-            (isset($produit[7] )?$newcatalogue->Libelle_Garantie = $produit[7]:'');
-            (isset($produit[8] )?$newcatalogue->Prix_MO = $produit[8]:'');
-            (isset($produit[9] )?$newcatalogue->Prix_Mat_Plancher = $produit[9]:'');
-            (isset($produit[10])?$newcatalogue->Prix_Annonce_TTC = $produit[10]:'');
-            (isset($produit[11])?$newcatalogue->CEE_TTC = $produit[11]:'');
-            (isset($produit[12])?$newcatalogue->TVA_MO = $produit[12]:'');
-            (isset($produit[13])?$newcatalogue->TVA_Mat = $produit[13]:'');
-            (isset($produit[14])?$newcatalogue->Facturation = $produit[14]:'');
-            (isset($produit[15])?$newcatalogue->Type_Produit = $produit[15]:'');
-            (isset($produit[16])?$newcatalogue->Spec = $produit[16]:'');
+            (isset($produit[0]) ? $newcatalogue->Reference = $produit[0] : '');
+            (isset($produit[1]) ? $newcatalogue->Nom = $produit[1] : '');
+            (isset($produit[2]) ? $newcatalogue->Marque = $produit[2] : '');
+            (isset($produit[3]) ? $newcatalogue->Puissance = $produit[3] : '');
+            (isset($produit[4]) ? $newcatalogue->Libelle_Mat = $produit[4] : '');
+            (isset($produit[5]) ? $newcatalogue->Libelle_Mat_SansMarque = $produit[5] : '');
+            (isset($produit[6]) ? $newcatalogue->Libelle_MO = $produit[6] : '');
+            (isset($produit[7]) ? $newcatalogue->Libelle_Garantie = $produit[7] : '');
+            (isset($produit[8]) ? $newcatalogue->Prix_MO = $produit[8] : '');
+            (isset($produit[9]) ? $newcatalogue->Prix_Mat_Plancher = $produit[9] : '');
+            (isset($produit[10]) ? $newcatalogue->Prix_Annonce_TTC = $produit[10] : '');
+            (isset($produit[11]) ? $newcatalogue->CEE_TTC = $produit[11] : '');
+            (isset($produit[12]) ? $newcatalogue->TVA_MO = $produit[12] : '');
+            (isset($produit[13]) ? $newcatalogue->TVA_Mat = $produit[13] : '');
+            (isset($produit[14]) ? $newcatalogue->Facturation = $produit[14] : '');
+            (isset($produit[15]) ? $newcatalogue->Type_Produit = $produit[15] : '');
+            (isset($produit[16]) ? $newcatalogue->Spec = $produit[16] : '');
             $newcatalogue->Actif = 1;
-            (isset($produit[17])?$newcatalogue->Fiche_Tech = $produit[17]:'');
-            (isset($produit[18])?$newcatalogue->Note = $produit[18]:'');
-
-            if ($newcatalogue->save()){
+            (isset($produit[17]) ? $newcatalogue->Fiche_Tech = $produit[17] : '');
+            (isset($produit[18]) ? $newcatalogue->Note = $produit[18] : '');
+            if ($newcatalogue->save()) {
                 $compteur++;
             }
         }

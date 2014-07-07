@@ -7,7 +7,7 @@
 </div>
 
 <div class="page-header">
-    <h1>Liste des Clients</h1>
+    <h1>Liste des Sous-types</h1>
 </div>
 
 <div class="row">
@@ -28,7 +28,7 @@
                     <!-- Default panel contents -->
                     <div class="panel-heading align-left">Liste des Sous-types</div>
                     <?php
-                    $this->fonctionspersos->creerTableau($soustypes, $entetesoustype, 'CI_catalogue/modif_soustype');
+                    $this->fonctionspersos->creerTableau($soustypes, $entetesoustype, 'CI_catalogue/modif_soustype','CI_catalogue/ajax_supprimersoustype ');
                     ?>
                 </div>
             </div>

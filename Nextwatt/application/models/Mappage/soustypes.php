@@ -86,9 +86,12 @@ class Soustypes extends DataMapper {
         return $st->save();
     }
     
-    function supprimer_soustype()
+    function supprimer_soustype($id)
     {
-        //Fonction de suppression
+        $st = new Soutypes();
+        $st->where('id', $id)->get();
+
+        $st->delete();
     }
     
     

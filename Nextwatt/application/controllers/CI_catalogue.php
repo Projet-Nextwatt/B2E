@@ -351,6 +351,7 @@ class CI_Catalogue extends MY_Controller
             );
 
         $this->form_validation->set_rules($configsoustype);
+        $this->form_validation->set_rules($this->configtraitementsoustype);
 
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
         //Et on agit en conséquence
@@ -376,8 +377,8 @@ class CI_Catalogue extends MY_Controller
 
         $data = array();
         $data['soustypes'] = $this->mapsoustype->select_soustype_tableau();
-        $data['entetesoustype'] = array('nomcourt', 'nomdevis', 'bouquetCI', 'bouquetEPTZ', 'CIunitaire');
-        $this->layout->title('Liste des clients');
+        $data['entetesoustype'] = array('Nom court', 'Nom devis', 'Catégorie bouquet CI', 'Catégorie bouquet EcoPTZ', 'CI unitaire');
+        $this->layout->title('Liste des soustypes');
         $this->layout->view('B2E/Catalogue/Consulter_Soustype.php', $data); // Render view and layout
     }
 
@@ -393,7 +394,7 @@ class CI_Catalogue extends MY_Controller
             //Formualire invalide, retour à celui-ci
 
             $this->layout->title('Modifier un soustype');
-            $this->layout->view('B2E/Client/Add_Soustype.php', $data); // Render view and layout
+            $this->layout->view('B2E/Catalogue/Add_Soustype.php', $data); // Render view and layout
         } else {
             //Formulaire ok, traitement des données
             //Clean des données
@@ -405,6 +406,12 @@ class CI_Catalogue extends MY_Controller
                 echo 'error';
             }
         }
+    }
+
+    public function ajax_supprimersoustype()
+    {
+        $this->load->model('Mappage/soustypes', 'mapsoustype'); //Chargement du modele
+        $this->mapsoustype->supprimer_client($_POST['id']);
     }
 
     public $configsoustype =
@@ -440,12 +447,12 @@ class CI_Catalogue extends MY_Controller
         array(
             'field' => 'nomcourt',
             'label' => 'Nom court',
-            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
+            'rules' => 'xss_clean|htmlentities'
         ),
         array(
             'field' => 'nomdevis',
             'label' => 'Nom devis',
-            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
+            'rules' => 'xss_clean|htmlentities'
         ),
     );
 
