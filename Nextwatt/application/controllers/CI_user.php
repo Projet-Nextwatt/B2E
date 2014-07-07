@@ -65,12 +65,15 @@ class CI_User extends MY_Controller {
         $data['user'] = $this->mapuser->select_user($this->session->userdata('CI_User/modif_user'));
         
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
-        $this->form_validation->set_rules($this->configValidationModifUser);
-        if (isset($_POST['type'])) {
-            if ($_POST['type'] == 'mdp') {
+        
+        if (isset($_POST['type']) AND ($_POST['type'] == 'mdp')) {
                 $this->form_validation->set_rules($this->configValidationMDP);
-            }
         }
+        else
+        {
+            $this->form_validation->set_rules($this->configValidationModifUser);
+        }
+       
 
         if ($this->form_validation->run() == FALSE) {
             // On charge la page
