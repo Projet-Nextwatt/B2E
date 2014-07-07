@@ -95,7 +95,6 @@ class User extends DataMapper {
             'Date_Ajout' => date("Y-m-j H:i:s"),
             'Actif' => 1,
         );
-
         if ($this->db->insert('users', $user)) {
             return TRUE;
         } else {

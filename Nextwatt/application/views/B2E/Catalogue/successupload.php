@@ -16,9 +16,25 @@
         </h2>
         <div align="center">
             <?php
-            echo('Vous avez ajouté : '.$ligneajouté.' lignes <br/> <br/>');
-            echo('Vous avez supprimé : '.$lignesuppr.' lignes <br/> <br/>');
-            echo('Vous avez modifié : '.$lignemodifiée.' lignes <br/> <br/>');
+
+                echo('Vous avez ajouté : '.$ligneajouté.' lignes <br/> <br/>');
+
+            if($lignesuppr!=0)
+            {
+                echo('Vous avez supprimé : '.$lignesuppr.' lignes <br/> <br/>');
+            }
+            else
+            {
+                echo('Aucune suppression <br/> <br/>');
+            }
+            if($lignemodifiée!=0)
+            {
+               echo('Vous avez modifié : '.$lignemodifiée.' lignes <br/> <br/>');
+            }
+            else
+            {
+                echo('Aucune modification <br/> <br/>');
+            }
             ?>
         </div>
         <br/>
@@ -30,7 +46,7 @@
             </button></a>
             <a href="<?php echo site_url("accueil"); ?>">
                 <button type="button" class="btn btn-success">
-                    <i class="ace-icon fa fa-space-shuttle icon-animated-bell "></i>
+                    <i class="ace-icon fa fa-bank"></i>
                     Retour à l'accueil
             </button></a>
         </div>
