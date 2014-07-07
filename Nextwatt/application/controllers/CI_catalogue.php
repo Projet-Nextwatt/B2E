@@ -77,7 +77,7 @@ class CI_Catalogue extends MY_Controller
             {
                 $this->layout->title('TEST UPLOAD SHANY');
                 $this->layout->view('B2E/Catalogue/upload'); //render view and layout
-                echo 'FUUUUUCK OFF ||| FUUUUUUUCCCCKKKK OOOOOOOOOFFFFF';
+
             }
         } else {
             echo $erreur;
@@ -253,21 +253,15 @@ class CI_Catalogue extends MY_Controller
         $data['lignesuppr'] = 0;
         $data['ligneajouté'] = 0;
         $data['lignemodfié'] = 0;
-
+//On fait les suppressions grâce au tableau récupéré via "create_tab_supp_bdd" et on indente le compteur à chaque suppression
+        //On fait les modifications
         //On fait les ajouts
-        if(isset($add))
-        {
+        if(isset($add)){
             $data['ligneajouté'] = $this->catalogue->updatecatalogue($add);
         }
-        
-                //On fait les modifications
-        if(isset($modif))
-        {
+        if(isset($modif)){
             $data['lignemodifiée'] = $this->catalogue->updatecatalogue($modif);
         }
-
-        //On fait les suppressions grâce au tableau récupéré via "create_tab_supp_bdd" et on indente le compteur à chaque suppression
-
         if (!empty($_POST['check_list']))
         {
             foreach ($_POST['check_list'] as $check)
@@ -276,9 +270,6 @@ class CI_Catalogue extends MY_Controller
                 $data['lignesuppr']++;
             }
             }
-        }
-        else
-        {
         }
         $this->layout->title('Catalogue B2E');
         $this->layout->view('B2E/Catalogue/successupload', $data);
@@ -306,6 +297,10 @@ class CI_Catalogue extends MY_Controller
 
         return $newtab;
     }
+
+
+    ////////////////////////////////  GESTION DES SOUS-TYPES ////////////////////////////////////
+
 
     public function gererlistetype_form()
     {
