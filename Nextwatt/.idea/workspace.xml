@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a260d5e-75f8-4f03-8baa-61a468c11107" name="Default" comment="Mini commit">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/B2E/Catalogue/Add_Soustype.php" afterPath="$PROJECT_DIR$/application/views/B2E/Catalogue/Add_Soustype.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/CI_catalogue.php" afterPath="$PROJECT_DIR$/application/controllers/CI_catalogue.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/CI_client.php" afterPath="$PROJECT_DIR$/application/controllers/CI_client.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/B2E/Catalogue/Consulter_Soustype.php" afterPath="$PROJECT_DIR$/application/views/B2E/Catalogue/Consulter_Soustype.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Mappage/catalogue.php" afterPath="$PROJECT_DIR$/application/models/Mappage/catalogue.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Mappage/soustypes.php" afterPath="$PROJECT_DIR$/application/models/Mappage/soustypes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Mappage/user.php" afterPath="$PROJECT_DIR$/application/models/Mappage/user.php" />
     </list>
     <list id="7b96de8a-67ec-49a7-af8c-87846cbb2ecd" name="Rejected commit: Default" comment="Mini commit" />
     <ignored path="Nextwatt.iws" />
@@ -33,52 +32,62 @@
     <favorites_list name="Nextwatt" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="CI_client.php" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/application/controllers/CI_client.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="45" column="0" selection-start="1864" selection-end="1864" vertical-scroll-proportion="0.620438" vertical-offset="170" max-vertical-offset="3383">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="user.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/application/models/Mappage/user.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="32" column="4" selection-start="720" selection-end="720" vertical-scroll-proportion="-20.576923" vertical-offset="9" max-vertical-offset="2125">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="client.php" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/application/models/Mappage/client.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="97" column="5" selection-start="2444" selection-end="2444" vertical-scroll-proportion="-35.307693" vertical-offset="680" max-vertical-offset="2142">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="CI_user.php" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/application/controllers/CI_user.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="275" column="10" selection-start="10633" selection-end="10633" vertical-scroll-proportion="0.51946473" vertical-offset="4163" max-vertical-offset="8194">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="CI_client.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/CI_client.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="69" column="0" selection-start="2782" selection-end="2782" vertical-scroll-proportion="-19.615385" vertical-offset="578" max-vertical-offset="3774">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CI_catalogue.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/CI_catalogue.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="411" column="0" selection-start="14411" selection-end="14411" vertical-scroll-proportion="-16.153847" vertical-offset="6499" max-vertical-offset="7837">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Consulter_Soustype.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/Consulter_Soustype.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="115" selection-start="1076" selection-end="1076" vertical-scroll-proportion="-19.615385" vertical-offset="0" max-vertical-offset="714">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Add_Soustype.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/Add_Soustype.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="113" column="53" selection-start="4800" selection-end="4800" vertical-scroll-proportion="0.42754492" vertical-offset="1564" max-vertical-offset="2448">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/Mappage/user.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="55" column="18" selection-start="1333" selection-end="1333" vertical-scroll-proportion="-20.576923" vertical-offset="400" max-vertical-offset="2499">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="soustypes.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/Mappage/soustypes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="55" selection-start="1517" selection-end="1517" vertical-scroll-proportion="-18.115385" vertical-offset="447" max-vertical-offset="1751">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -97,7 +106,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/system/core/Loader.php" />
         <option value="$PROJECT_DIR$/system/core/Router.php" />
         <option value="$PROJECT_DIR$/system/libraries/Driver.php" />
         <option value="$PROJECT_DIR$/system/libraries/Log.php" />
@@ -138,16 +146,17 @@
         <option value="$PROJECT_DIR$/application/views/B2E/Catalogue/catalogue_diff.php" />
         <option value="$PROJECT_DIR$/application/libraries/fonctionspersos.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Client/Add_Client.php" />
-        <option value="$PROJECT_DIR$/application/models/Mappage/user.php" />
         <option value="$PROJECT_DIR$/application/models/Mappage/client.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Catalogue/Gerer_Soustype.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Catalogue/Consulter_Catalogue.php" />
         <option value="$PROJECT_DIR$/application/models/Mappage/catalogue.php" />
-        <option value="$PROJECT_DIR$/application/models/Mappage/soustypes.php" />
-        <option value="$PROJECT_DIR$/application/controllers/CI_catalogue.php" />
-        <option value="$PROJECT_DIR$/application/views/B2E/Catalogue/Consulter_Soustype.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Client/Consulter_Client.php" />
         <option value="$PROJECT_DIR$/application/controllers/CI_client.php" />
+        <option value="$PROJECT_DIR$/application/models/Mappage/user.php" />
+        <option value="$PROJECT_DIR$/application/models/Mappage/soustypes.php" />
+        <option value="$PROJECT_DIR$/application/views/B2E/Catalogue/Add_Soustype.php" />
+        <option value="$PROJECT_DIR$/application/controllers/CI_catalogue.php" />
+        <option value="$PROJECT_DIR$/application/views/B2E/Catalogue/Consulter_Soustype.php" />
       </list>
     </option>
   </component>
@@ -257,7 +266,55 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="B2E" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Catalogue" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -658,11 +715,6 @@
         <state line="289" column="0" selection-start="11224" selection-end="11224" vertical-scroll-proportion="-29.76923" vertical-offset="4139" max-vertical-offset="5015" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/Add_Soustype.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="22" selection-start="453" selection-end="453" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="2448" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/Consulter_Catalogue.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="12" selection-start="720" selection-end="720" vertical-scroll-proportion="0.31591174" vertical-offset="0" max-vertical-offset="884" />
@@ -705,27 +757,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/Consulter_Soustype.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="129" selection-start="1090" selection-end="1090" vertical-scroll-proportion="-19.615385" vertical-offset="0" max-vertical-offset="714">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/CI_catalogue.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="386" column="51" selection-start="13426" selection-end="13426" vertical-scroll-proportion="0.6143552" vertical-offset="5989" max-vertical-offset="7854">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Mappage/soustypes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="27" selection-start="1540" selection-end="1540" vertical-scroll-proportion="0.59367394" vertical-offset="447" max-vertical-offset="1751">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/B2E/Client/Consulter_Client.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="22" selection-start="1106" selection-end="1106" vertical-scroll-proportion="0.6311377" vertical-offset="0" max-vertical-offset="835">
@@ -733,30 +764,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/CI_user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="275" column="10" selection-start="10588" selection-end="10588" vertical-scroll-proportion="0.51946473" vertical-offset="4163" max-vertical-offset="8194">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/Mappage/client.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="5" selection-start="2444" selection-end="2444" vertical-scroll-proportion="-35.307693" vertical-offset="680" max-vertical-offset="2142">
+        <state line="97" column="5" selection-start="2444" selection-end="2444" vertical-scroll-proportion="0.69221556" vertical-offset="1020" max-vertical-offset="2142">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/Mappage/user.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="4" selection-start="720" selection-end="720" vertical-scroll-proportion="-20.576923" vertical-offset="9" max-vertical-offset="2125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/CI_user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="275" column="10" selection-start="10633" selection-end="10633" vertical-scroll-proportion="0.51946473" vertical-offset="4163" max-vertical-offset="8194">
+        <state line="55" column="18" selection-start="1333" selection-end="1333" vertical-scroll-proportion="-20.576923" vertical-offset="400" max-vertical-offset="2499">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/CI_client.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="0" selection-start="1864" selection-end="1864" vertical-scroll-proportion="0.620438" vertical-offset="170" max-vertical-offset="3383">
+        <state line="69" column="0" selection-start="2782" selection-end="2782" vertical-scroll-proportion="-19.615385" vertical-offset="578" max-vertical-offset="3774">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Mappage/soustypes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="55" selection-start="1517" selection-end="1517" vertical-scroll-proportion="-18.115385" vertical-offset="447" max-vertical-offset="1751">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/CI_catalogue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="411" column="0" selection-start="14411" selection-end="14411" vertical-scroll-proportion="-16.153847" vertical-offset="6499" max-vertical-offset="7837">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/Consulter_Soustype.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="115" selection-start="1076" selection-end="1076" vertical-scroll-proportion="-19.615385" vertical-offset="0" max-vertical-offset="714">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/B2E/Catalogue/Add_Soustype.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="113" column="53" selection-start="4800" selection-end="4800" vertical-scroll-proportion="0.42754492" vertical-offset="1564" max-vertical-offset="2448">
           <folding />
         </state>
       </provider>

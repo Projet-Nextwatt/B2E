@@ -51,7 +51,7 @@ class Soustypes extends DataMapper {
             return $retour['0'];
         } else {
             $soustype->get();
-            $champs = array('nomcourt', 'nomdevis', 'bouquetCI', 'bouquetEPTZ', 'CIunitaire');
+            $champs = array('id','nomcourt', 'nomdevis', 'bouquetCI', 'bouquetEPTZ', 'CIunitaire');
             $retour = $soustype->all_to_array($champs);
             return $retour;
         }

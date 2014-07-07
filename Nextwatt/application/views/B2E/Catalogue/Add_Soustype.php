@@ -56,8 +56,8 @@
             <label for="nomcourt" class="col-sm-4 no-padding-right control-label">Nom Court</label>
 
             <div class="col-sm-4">
-                <input type="text" value="<?php if (empty($_POST) AND isset($client)) {
-                    echo $client['nomcourt'];
+                <input type="text" value="<?php if (empty($_POST) AND isset($soustype)) {
+                    echo $soustype['nomcourt'];
                 } else {
                     echo set_value('nomcourt'); }  ?>" name="nomcourt" class="form-control" id="nomcourt"
                        placeholder="Nom court du sous-type">
@@ -70,7 +70,7 @@
             <label for="nomdevis" class="col-sm-4 no-padding-right control-label">Nom pour devis</label>
 
             <div class="col-sm-4">
-                <input type="text" value="<?php if (empty($_POST) AND isset($client)) { echo $client['nomdevis'];}
+                <input type="text" value="<?php if (empty($_POST) AND isset($soustype)) { echo $soustype['nomdevis'];}
                 else { echo set_value('nomdevis');} ?>" name="nomdevis"
                        class="no-padding-left form-control" id="nomdevis" placeholder="Nom pour le devis">
             </div>
@@ -84,7 +84,7 @@
             <label for="bouquetCI" class="col-sm-4 no-padding-right control-label">Catégorie Bouquet CI</label>
 
             <div class="col-sm-4">
-                <input type="text" value="<?php if (empty($_POST) AND isset($client)) { echo $client['bouquetCI'];} else { echo set_value('bouquetCI');} ?>" name="bouquetCI" class="form-control" id="bouquetCI"
+                <input type="text" value="<?php if (empty($_POST) AND isset($soustype)) { echo $soustype['bouquetCI'];} else { echo set_value('bouquetCI');} ?>" name="bouquetCI" class="form-control" id="bouquetCI"
                        placeholder="Bouquet CI">
             </div>
             <div class="col-sm-4">
@@ -95,7 +95,7 @@
             <label for="bouquetEPTZ" class="col-sm-4 no-padding-right control-label">Catégorie Bouquet EPTZ</label>
 
             <div class="col-sm-4">
-                <input type="text" value="<?php if (empty($_POST) AND isset($client)) { echo $client['bouquetEPTZ'];} else { echo set_value('bouquetEPTZ');} ?>" name="bouquetEPTZ" class="form-control"
+                <input type="text" value="<?php if (empty($_POST) AND isset($soustype)) { echo $soustype['bouquetEPTZ'];} else { echo set_value('bouquetEPTZ');} ?>" name="bouquetEPTZ" class="form-control"
                        id="bouquetEPTZ" placeholder="Bouquet EPTZ">
             </div>
             <div class="col-sm-4">
@@ -108,8 +108,8 @@
             <label for="CIunitaire" class="col-sm-4 no-padding-right control-label">CI Unitaire</label>
 
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="CIunitaire" id="CIunitaire" placeholder="Crédit d'impo unitaire" value="<?php if (empty($_POST) AND isset($client)) {
-                        echo $client['CIunitaire'];
+                <input type="text" class="form-control" name="CIunitaire" id="CIunitaire" placeholder="Crédit d'impo unitaire" value="<?php if (empty($_POST) AND isset($soustype)) {
+                        echo $soustype['CIunitaire'];
                     } else {
                         echo set_value('CIunitaire');
                     } ?>"

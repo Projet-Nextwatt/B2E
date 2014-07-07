@@ -53,7 +53,7 @@ class User extends DataMapper {
             
         } else {
             $users = new User();
-            $user->order_by('Actif','DESC');
+            $users->order_by('Actif','DESC');
             $users->get();
             foreach ($users as $index => $user){
                 $retour[$index]=$user->to_array();

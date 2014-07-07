@@ -377,7 +377,7 @@ class CI_Catalogue extends MY_Controller
 
         $data = array();
         $data['soustypes'] = $this->mapsoustype->select_soustype_tableau();
-        $data['entetesoustype'] = array('Nom court', 'Nom devis', 'Catégorie bouquet CI', 'Catégorie bouquet EcoPTZ', 'CI unitaire');
+        $data['entetesoustype'] = array('ID', 'Nom court', 'Nom devis', 'Catégorie bouquet CI', 'Catégorie bouquet EcoPTZ', 'CI unitaire');
         $this->layout->title('Liste des soustypes');
         $this->layout->view('B2E/Catalogue/Consulter_Soustype.php', $data); // Render view and layout
     }
@@ -388,7 +388,8 @@ class CI_Catalogue extends MY_Controller
         $data = array(); //Pour la vue
         $data['soustype'] = $this->mapsoustype->select_soustype($this->session->userdata('CI_catalogue/modif_soustype'));
 
-        $this->form_validation->set_rules($this->$configsoustype);
+        $configST = $this->configsoustype();
+        $this->form_validation->set_rules($configST);
 
         if ($this->form_validation->run() == FALSE) {
             //Formualire invalide, retour à celui-ci
@@ -408,13 +409,9 @@ class CI_Catalogue extends MY_Controller
         }
     }
 
-    public function ajax_supprimersoustype()
+    public function configsoustype()
     {
-        $this->load->model('Mappage/soustypes', 'mapsoustype'); //Chargement du modele
-        $this->mapsoustype->supprimer_client($_POST['id']);
-    }
-
-    public $configsoustype =
+       $configsoustype =
         array(
             array(
                 'field' => 'nomcourt',
@@ -442,6 +439,8 @@ class CI_Catalogue extends MY_Controller
                 'rules' => 'required'
             ),
         );
+        return $configsoustype;
+    }
 
     public $configtraitementsoustype = array(
         array(
