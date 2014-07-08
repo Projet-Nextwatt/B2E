@@ -251,7 +251,7 @@
 
             <div class="col-xs-12">
                 <div class="widget-box">
-                    <div class="widget-header">
+                    <div class="widget-header widget-header-flat">
                         <h4 class='widget-title'>Modification du mot de passe</h4>
                         <span class="widget-toolbar">
                             <a href="#" data-action="collapse">

@@ -26,7 +26,9 @@
         </button>
         <div class="navbar-header pull-left ">
             <!-- brand text here -->
-            <a href="<?php echo site_url("Accueil"); ?>" ><?php  echo $images_layout[0]; ?></a>
+            <a href="<?php echo site_url("Accueil"); ?>" >
+                <img src="<?php echo img_url('LogoNextwatt.png'); ?>" width="190" height="40" alt="Logo Nextwatt"/>
+            </a>
         </div>
         <!-- /.navbar-header -->
 

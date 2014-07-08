@@ -45,8 +45,8 @@ class Parametre extends MY_Controller {
             'field' => 'Energie',
             'label' => 'Energie',
             'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
-                                              //htmlspecialchars_decode($str, ENT_NOQUOTES); Comment je fait pour mettre un flag
-        ),
+            //htmlspecialchars_decode($str, ENT_NOQUOTES); Comment je fait pour mettre un flag
+),
     );
 
     public function index() {
@@ -87,7 +87,7 @@ class Parametre extends MY_Controller {
 
             if ($this->prixenergie->ajouter_prixenergie($_POST)) {
                     // Energie object now has an ID
-                    $this->consulter_energie();
+                header('Location:'.site_url("parametre/consulter_energie"));
             } else {
                 /*    //Comment j'envoi le tableau à la vue? -********************************************************
                   foreach ($u->error->all as $error) {
@@ -122,7 +122,7 @@ class Parametre extends MY_Controller {
             $this->form_validation->set_rules($this->configTraitementAddEnergie);
             $this->form_validation->run();
             if ($this->prixenergie->modifier_prixenergie($_POST)) {
-                $this->consulter_energie();
+                header('Location:'.site_url("parametre/consulter_energie"));
             } else {
                 echo 'error';
             }
