@@ -56,7 +56,7 @@ class CI_Client extends MY_Controller
         $this->load->model('Mappage/user', 'user'); //Chargement du modele
         $users = $this->user->list_user(TRUE);
         foreach ($users as $user) {
-            $data['users'][] = array('label' => $user['categorie_id'],
+            $data['users'][] = array('label' => $user['user_id'],
                                 'value' => $user['id'],
                                 'texte' => $user['prenom'] . ' ' . $user['nom']);
         }
@@ -95,12 +95,10 @@ class CI_Client extends MY_Controller
         $this->load->model('Mappage/user', 'user'); //Chargement du modele
         $users  = $this->user->list_user(TRUE);
         foreach ($users as $user){
-            $data['users'][]=array(  'label'=>$user['id_categorie'],
+            $data['users'][]=array(  'label'=>$user['categorie_id'],
                                     'value'=>$user['id'],
                                     'texte'=>$user['prenom'].' '.$user['nom']);
         }
-
-
 
         $this->form_validation->set_rules($this->configclient);
 
@@ -127,6 +125,7 @@ class CI_Client extends MY_Controller
     {
         $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
         $this->mapclients->supprimer_client($_POST['id']);
+        $this->consult_client();
     }
 
     public $configclient = array(

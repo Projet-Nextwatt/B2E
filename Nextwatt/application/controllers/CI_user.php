@@ -65,12 +65,15 @@ class CI_User extends MY_Controller {
         $data['user'] = $this->mapuser->select_user($this->session->userdata('CI_User/modif_user'));
         
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
-        $this->form_validation->set_rules($this->configValidationModifUser);
-        if (isset($_POST['type'])) {
-            if ($_POST['type'] == 'mdp') {
+        
+        if (isset($_POST['type']) AND ($_POST['type'] == 'mdp')) {
                 $this->form_validation->set_rules($this->configValidationMDP);
-            }
         }
+        else
+        {
+            $this->form_validation->set_rules($this->configValidationModifUser);
+        }
+       
 
         if ($this->form_validation->run() == FALSE) {
             // On charge la page
@@ -87,8 +90,6 @@ class CI_User extends MY_Controller {
             }
             $this->form_validation->run();
             if ($this->mapuser->modifier_user($_POST)) {
-                // Energie object now has an ID
-                 
                 header('Location:'.site_url("CI_user/consult_user"));
                 //$this->consult_user();
             } else {
@@ -132,7 +133,7 @@ class CI_User extends MY_Controller {
 
             if ($this->categorie->ajouter_categorie($_POST)) {
                 // Energie object now has an ID
-                $this->gestioncategorie();
+                header('Location:'.site_url("CI_user/gestioncategorie"));
             } else {
                 /*    //Comment j'envoi le tableau à la vue? -********************************************************
                   foreach ($u->error->all as $error) {
@@ -167,7 +168,7 @@ class CI_User extends MY_Controller {
             $this->form_validation->set_rules($this->configTraitementAddCategorie);
             $this->form_validation->run();
             if ($this->categorie->modifier_categorie($_POST)) {
-                $this->gestioncategorie();
+                header('Location:'.site_url("CI_user/gestioncategorie"));
             } else {
                 echo 'error';
             }

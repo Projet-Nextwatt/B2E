@@ -52,11 +52,7 @@ class User extends DataMapper {
             return array_merge($tabuser, $tabcat);
         } else {
             $users = new User();
-
             $users->order_by('Actif','DESC');
-
-            $users->order_by('Actif', 'DESC');
-
             $users->get();
             foreach ($users as $index => $user) {
                 $retour[$index] = $user->to_array();
@@ -99,7 +95,6 @@ class User extends DataMapper {
             'Date_Ajout' => date("Y-m-j H:i:s"),
             'Actif' => 1,
         );
-
         if ($this->db->insert('users', $user)) {
             return TRUE;
         } else {

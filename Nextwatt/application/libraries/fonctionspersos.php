@@ -8,7 +8,8 @@ class Fonctionspersos
                                  array $entetes = NULL,
                                  $form = NULL,
                                  $sup = NULL,
-                                 $checkbox = false)
+                                 $checkbox = false,
+                                 $parametres=NULL)
     {
         /* EXPLIQIATION
          * Fonction qui affiche un tableau bootStrapé / Acé
@@ -35,7 +36,7 @@ class Fonctionspersos
          */
 
         if ($contenu == NULL OR (isset($contenu[0]) AND $contenu[0] == '')) {
-            echo '<h2>Attention: Aucune donn&eacutees &agrave; afficher dans le tableau</h2>';
+            echo '<p><strong>Attention: Aucune donn&eacutees &agrave; afficher dans le tableau</strong></p>';
         } else {
             //Requette pour voir si le tableau posède une colonne "id" 
             $presenceDunID = false;
@@ -53,8 +54,7 @@ class Fonctionspersos
                     $entetes[] = $nomDeLaColonne; //Je stocke l'index de la colonne ID dans la varaible $presenceDunID
                 }
             }
-
-
+            
             //Ouvertre du tableau
             echo '<div class="table-responsive">';
             echo '<table class="table table-striped table-bordered table-hover">';
@@ -66,11 +66,11 @@ class Fonctionspersos
                 echo '<th>' . $entete . '</th>' . "\n";
             }
 
-            //Entete du bouton modifier
-            if ($form != NULL OR $sup != NULL) {
-                echo '<th></th>';
-            }
-
+                                            //Entete du bouton modifier
+                                            /*if ($form != NULL OR $sup != NULL) {
+                                                echo '<th></th>';
+                                            }*/
+            
             echo '</tr>' . "\n";
             echo '</thead>' . "\n";
 
@@ -78,15 +78,23 @@ class Fonctionspersos
             echo '<tbody>' . "\n";
             foreach ($contenu as $ligne) {
                 echo '<tr ';
+                
+                //On met un id
                 if (!($presenceDunID == false)) {
-                    echo 'id=' . $ligne[$presenceDunID];
+                    echo 'id=' . $ligne[$presenceDunID].' ';
                 }
-
+                
+                
+                if ($form != NULL ) {
+                    echo 'onclick="modifier(';
+                    echo $ligne[$presenceDunID];
+                    echo ')" style="cursor:pointer" ';
+                }
+                
                 echo '>' . "\n";
-                foreach ($ligne as $cellule) {
-
+                foreach ($ligne as $index =>$cellule) {
                     //Modification du texte si c'est l'option checkbox est active
-                    if ($checkbox == true) {
+                    if ($checkbox == true AND $index != 'id') {
                         if ($cellule == '1') {
                             //$cellule = '<i class="ace-icon glyphicon glyphicon-ok"></i>';
                             $cellule = '<div class="align-center"><i class="fa fa-check"></i></div>';
@@ -94,21 +102,13 @@ class Fonctionspersos
                             $cellule = '';
                         }
                     }
-
-
+                    
                     echo '<td>' . $cellule . '</td>' . "\n";
                 }
 
 
-                if (($presenceDunID != false) AND ($form != NULL OR $sup != NULL)) {
+                /*if (($presenceDunID != false) AND ($form != NULL OR $sup != NULL)) {
                     echo '<td>';
-                    //Bouton modifier
-                    if ($form != NULL) {
-                        echo '<button class = "btn btn-xs btn-info" onclick="modifier(';
-                        echo $ligne[$presenceDunID];
-                        echo ')"><i class = "ace-icon fa fa-pencil bigger-120"></i></button>';
-                    }
-
                     //Bouton supprimer
                     if ($sup != NULL) {
                         echo '<button class = "btn btn-xs btn-danger" onclick="confirme_supprimer(';
@@ -116,7 +116,7 @@ class Fonctionspersos
                         echo ')"><i class = "ace-icon fa fa-ban bigger-120"></i></button>';
                     }
                     echo '</td>';
-                }
+                }*/
 
                 echo '</tr>' . "\n";
             }

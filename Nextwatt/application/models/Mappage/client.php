@@ -9,9 +9,9 @@ class Client extends DataMapper
 {
     /*
      * Variables de relation (entre tables)
-     */
-    var $has_one = array('User');
-    var $has_many = array('Dossiers');
+//     */
+//    var $has_one = array('User');
+//    var $has_many = array('Dossier');
 
     /*
      * Variables correspondantes aux colonnes de la table.
@@ -86,7 +86,7 @@ class Client extends DataMapper
             'tel1' => $data['tel1'],
             'tel2' => $data['tel2'],
             'email' => $data['email'],
-            'user_id' => $data['responsable'],
+            'user_id' => $data['user_id'],
             'dateajout' => $today,
         );
 
