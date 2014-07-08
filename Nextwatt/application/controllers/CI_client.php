@@ -125,6 +125,7 @@ class CI_Client extends MY_Controller
     {
         $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
         $this->mapclients->supprimer_client($_POST['id']);
+        $this->consult_client();
     }
 
     public $configclient = array(

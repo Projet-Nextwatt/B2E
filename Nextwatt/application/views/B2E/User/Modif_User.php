@@ -34,16 +34,16 @@
                             <div class="profile-info-value">
                                 <div class='row'>
                                     <div class='col-xs-12'>
-                                        <input type="text" 
-                                               class="form-control input-sm" 
-                                               name="Identifiant" id="Identifiant" 
+                                        <input type="text"
+                                               class="form-control input-sm"
+                                               name="Identifiant" id="Identifiant"
                                                value="<?php
                                                if (empty($_POST) AND isset($user)) {
                                                    echo $user['Identifiant'];
                                                } else {
                                                    echo set_value('Identifiant');
                                                }
-                                               ?>" 
+                                               ?>"
                                                placeholder="Identifiant">
                                     </div>
                                     <div class='col-xs-12'>
@@ -59,29 +59,29 @@
                             <div class="profile-info-value">
                                 <div class='row'>
                                     <div class='col-xs-12'>
-                                        <input type="text" 
-                                               class="form-control input-sm" 
-                                               name="prenom" id="prenom" 
+                                        <input type="text"
+                                               class="form-control input-sm"
+                                               name="prenom" id="prenom"
                                                value="<?php
                                                if (empty($_POST) AND isset($user)) {
                                                    echo $user['prenom'];
                                                } else {
                                                    echo set_value('prenom');
                                                }
-                                               ?>" 
+                                               ?>"
                                                placeholder="Votre Prénom">
                                     </div>
                                     <div class='col-xs-12'>
-                                        <input type="text" 
-                                               class="form-control input-sm" 
-                                               name="nom" id="nom" 
+                                        <input type="text"
+                                               class="form-control input-sm"
+                                               name="nom" id="nom"
                                                value="<?php
                                                if (empty($_POST) AND isset($user)) {
                                                    echo $user['nom'];
                                                } else {
                                                    echo set_value('nom');
                                                }
-                                               ?>" 
+                                               ?>"
                                                placeholder="Votre Nom">
                                     </div>
                                     <div class='col-xs-12'>
@@ -100,9 +100,9 @@
                             <div class="profile-info-value">
                                 <div class='row'>
                                     <div class='col-xs-12'>
-                                        <input type="email" 
-                                               class="form-control input-sm" 
-                                               name="email"   id="email" 
+                                        <input type="email"
+                                               class="form-control input-sm"
+                                               name="email"   id="email"
                                                placeholder="exemple@nextwatt.fr"
                                                value="<?php
                                                if (empty($_POST) AND isset($user)) {
@@ -125,16 +125,16 @@
                             <div class="profile-info-value">
                                 <div class='row'>
                                     <div class='col-xs-12'>
-                                        <input type="tel" 
-                                               name="tel"  id="tel" 
-                                               class="form-control input-sm" 
+                                        <input type="tel"
+                                               name="tel"  id="tel"
+                                               class="form-control input-sm"
                                                value="<?php
                                                if (empty($_POST) AND isset($user)) {
                                                    echo $user['tel'];
                                                } else {
                                                    echo set_value('tel');
                                                }
-                                               ?>" 
+                                               ?>"
                                                placeholder="Votre numéro de téléphone">
                                     </div>
                                     <div class='col-xs-12'>
@@ -185,7 +185,7 @@
                                         <input type='hidden' name="Actif" value="off"/>
                                         <label class="col-xs-12">
                                             <input type="checkbox"
-                                                   name="Actif" id='Actif' 
+                                                   name="Actif" id='Actif'
                                                    <?php
                                                    if (empty($_POST) AND isset($user)) {
                                                        echo (($user['Actif'] == 1) ? 'checked' : '');
@@ -195,7 +195,7 @@
                                                    ?>
                                                    class='ace ace-switch ace-switch-6 btn-empty' />
                                             <span class="lbl"></span>
-                                        </label> 
+                                        </label>
                                     </div>
 
                                     <div class='col-xs-12'>
@@ -237,7 +237,8 @@
                             Enregistrer
                         </button>
                     </div>
-                    
+
+
                     </form>
                 </div>
             </div>
@@ -269,20 +270,20 @@
                             $hiden = array('id' => $user['id'],'type' => 'mdp');
                             echo form_open('CI_user/modif_user', $attributes, $hiden);
                             ?>
-                            <input type="password" 
-                                   name='mdp' 
-                                   id="mdp" 
+                            <input type="password"
+                                   name='mdp'
+                                   id="mdp"
                                    placeholder="Nouveau mot de passe">
 
-                            <input type="password" 
-                                   name='confmdp' 
-                                   id="confmdp" 
+                            <input type="password"
+                                   name='confmdp'
+                                   id="confmdp"
                                    placeholder="Confirmation">
 
                             <?php echo form_error('mdp'); ?>
                             <?php echo form_error('confmdp'); ?>
 
-                            
+
                             <button type="submit" class="btn btn-sm btn-info">
                                 <i class="ace-icon fa fa-floppy-o bigger-160"></i>
                                 Valider

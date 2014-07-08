@@ -225,18 +225,32 @@
                     <i class="ace-icon fa fa-floppy-o bigger-160"></i>
                     Enregistrer
                 </button>
-
-<?php
-            if (isset($client)) {
-              ?>
-                    <button type="button" class="btn btn-sm btn-danger">
-                        <i class="ace-icon fa fa-trash-o bigger-160"></i>
-                        Supprimer
-                 </button><?php
-            }
-            ?>
             </div>
         </div>
+                <?php
+                echo form_close();
+                ?>
+
+                <?php
+                if (isset($client)) {
+                    $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
+                    $hiden = array();
+
+                    $hidden = array('id' => $client['id'], 'Client' => $client['nom1']);
+                    echo form_open('CI_client/ajax_supprimerclient',$attributes, $hidden );
+                    ?>
+                    <div class="row form-group">
+                        <div class="col-md-offset-4 col-md-4">
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                <i class="ace-icon fa fa-trash-o bigger-160"></i>
+                                Supprimer
+                            </button>
+                        </div>
+                    </div>
+
+                <?php
+                }
+                ?>
 
         <?php
         echo form_close();

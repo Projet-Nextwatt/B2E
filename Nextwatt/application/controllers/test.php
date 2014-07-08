@@ -19,7 +19,11 @@ class Test extends MY_Controller
         $this->layout->view('Essais/test'); //render view and layout
     }
 
-
+    public function test_modal()
+    {
+        $this->layout->title('TEST CATALOGUE SHANY');
+        $this->layout->view('B2E/Success_Error/Confirmation'); //render view and layout
+    }
 
 
 }

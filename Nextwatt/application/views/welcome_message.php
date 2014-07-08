@@ -82,7 +82,7 @@
 	</div>
         <a  href="<?php echo site_url("accueil"); ?>">Accès au site</a></br></br></br>
 
-        <a  href="<?php echo site_url("test/aff_recap_upload"); ?>">TEST CATALOGUE SHANY</a>
+        <a  href="<?php echo site_url("test/test_modal"); ?>">TEST modal box</a>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
 </div>
