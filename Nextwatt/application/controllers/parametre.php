@@ -44,9 +44,8 @@ class Parametre extends MY_Controller {
         array(
             'field' => 'Energie',
             'label' => 'Energie',
-            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
-            //htmlspecialchars_decode($str, ENT_NOQUOTES); Comment je fait pour mettre un flag
-),
+            'rules' => 'xss_clean|htmlentities'
+        ),
     );
 
     public function index() {

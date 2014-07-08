@@ -56,7 +56,7 @@ class CI_Client extends MY_Controller
         $this->load->model('Mappage/user', 'user'); //Chargement du modele
         $users = $this->user->list_user(TRUE);
         foreach ($users as $user) {
-            $data['users'][] = array('label' => $user['user_id'],
+            $data['users'][] = array('label' => $user['categorie_id'],
                                 'value' => $user['id'],
                                 'texte' => $user['prenom'] . ' ' . $user['nom']);
         }
@@ -132,7 +132,7 @@ class CI_Client extends MY_Controller
             array(
                 'field' => 'civilite',
                 'label' => 'Civilité',
-                'rules' => 'required'
+                'rules' => ''
             ),
             array(
                 'field' => 'nom1',
@@ -142,17 +142,17 @@ class CI_Client extends MY_Controller
             array(
                 'field' => 'prenom1',
                 'label' => 'Prenom',
-                'rules' => 'required|trim|max_length[255]'
+                'rules' => 'trim|max_length[255]'
             ),
             array(
                 'field' => 'nom2',
                 'label' => 'Nom du conjoint',
-                'rules' => 'required|trim|max_length[255]|mb_strtoupper'
+                'rules' => 'trim|max_length[255]|mb_strtoupper'
             ),
             array(
                 'field' => 'prenom2',
                 'label' => 'Prenom du conjoint',
-                'rules' => 'required|trim|max_length[255]'
+                'rules' => 'trim|max_length[255]'
             ),
             array(
                 'field' => 'adresse',
@@ -162,27 +162,27 @@ class CI_Client extends MY_Controller
             array(
                 'field' => 'codepostal',
                 'label' => 'Code Postal',
-                'rules' => 'required|trim|max_length[10]'
+                'rules' => 'required|trim|max_length[10]|numeric'
             ),
             array(
                 'field' => 'ville',
                 'label' => 'Ville',
-                'rules' => 'required|trim|max_length[255]'
+                'rules' => 'required|trim|max_length[255]|mb_strtoupper'
             ),
             array(
                 'field' => 'tel1',
                 'label' => 'Téléphone fixe',
-                'rules' => 'required|trim|callback_tel'
+                'rules' => 'trim|callback_tel'
             ),
             array(
                 'field' => 'tel2',
                 'label' => 'Téléphone portable',
-                'rules' => 'required|trim|callback_tel'
+                'rules' => 'trim|callback_tel'
             ),
             array(
                 'field' => 'email',
                 'label' => 'Email',
-                'rules' => 'required|valid_email|trim'
+                'rules' => 'valid_email|trim'
             ),
         );
 
@@ -190,33 +190,29 @@ class CI_Client extends MY_Controller
         array(
             'field' => 'nom1',
             'label' => 'Nom',
-            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
+            'rules' => 'xss_clean|htmlentities'
         ),
         array(
             'field' => 'prenom1',
             'label' => 'Prenom',
-            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
+            'rules' => 'xss_clean|htmlentities'
         ),
         array(
             'field' => 'nom2',
             'label' => 'Nom (Conjoint)',
-            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
-            //htmlspecialchars_decode($str, ENT_NOQUOTES); Comment je fait pour mettre un flag
+            'rules' => 'xss_clean|htmlentities'
         ),array(
             'field' => 'prenom2',
             'label' => 'Prenom (Conjoint)',
-            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
-            //htmlspecialchars_decode($str, ENT_NOQUOTES); Comment je fait pour mettre un flag
+            'rules' => 'xss_clean|htmlentities'
         ),array(
             'field' => 'adresse',
             'label' => 'Adresse',
-            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
-            //htmlspecialchars_decode($str, ENT_NOQUOTES); Comment je fait pour mettre un flag
+            'rules' => 'xss_clean|htmlentities'
         ),array(
             'field' => 'ville',
             'label' => 'Ville',
-            'rules' => 'xss_clean|htmlentities|htmlspecialchars_decode'
-            //htmlspecialchars_decode($str, ENT_NOQUOTES); Comment je fait pour mettre un flag
+            'rules' => 'xss_clean|htmlentities'
         ),
     );
 }
