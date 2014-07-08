@@ -90,8 +90,6 @@ class CI_User extends MY_Controller {
             }
             $this->form_validation->run();
             if ($this->mapuser->modifier_user($_POST)) {
-                // Energie object now has an ID
-                 
                 header('Location:'.site_url("CI_user/consult_user"));
                 //$this->consult_user();
             } else {
@@ -135,7 +133,7 @@ class CI_User extends MY_Controller {
 
             if ($this->categorie->ajouter_categorie($_POST)) {
                 // Energie object now has an ID
-                $this->gestioncategorie();
+                header('Location:'.site_url("CI_user/gestioncategorie"));
             } else {
                 /*    //Comment j'envoi le tableau à la vue? -********************************************************
                   foreach ($u->error->all as $error) {
@@ -170,7 +168,7 @@ class CI_User extends MY_Controller {
             $this->form_validation->set_rules($this->configTraitementAddCategorie);
             $this->form_validation->run();
             if ($this->categorie->modifier_categorie($_POST)) {
-                $this->gestioncategorie();
+                header('Location:'.site_url("CI_user/gestioncategorie"));
             } else {
                 echo 'error';
             }
