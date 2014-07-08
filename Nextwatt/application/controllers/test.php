@@ -21,7 +21,7 @@ class Test extends MY_Controller
 
     public function test_modal()
     {
-        $this->layout->title('TEST CATALOGUE SHANY');
+
         $this->layout->view('B2E/Success_Error/Confirmation'); //render view and layout
     }
 
