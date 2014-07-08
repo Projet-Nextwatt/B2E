@@ -1,8 +1,5 @@
 <?php
 
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
-
 class Login extends CI_Controller
 {
 
@@ -18,6 +15,7 @@ class Login extends CI_Controller
         $data['bootstrapmin'] = js_url('bootstrap.min');
         $data['acemin'] = js_url('ace.min');
         $data['aceelementsmin'] = js_url('ace-elements.min');
+        $data['login'] = js_url('login');
 
 
         // Liens vers les fichiers CSS
@@ -33,6 +31,10 @@ class Login extends CI_Controller
 
         // Charge la page
         $this->load->view('B2E/Login', $data);
+    }
+
+    public function ajax_login(){
+        echo 'false';
     }
 
 }
