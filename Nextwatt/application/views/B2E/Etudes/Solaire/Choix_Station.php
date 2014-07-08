@@ -77,4 +77,4 @@ $region = NULL;
     </ul>
 </div>
 
-<!--<div class="ace-settings-container ace-help-container">	<div id="ace-toggle-onpage-help" class="btn btn-app btn-xs btn-info ace-settings-btn ace-toggle-onpage-help">		<i class="ace-toggle-help-text ace-icon fa fa-question bigger-150"></i>	</div></div>-->
+

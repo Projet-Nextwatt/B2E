@@ -179,7 +179,7 @@ function calculprod() {
         'text'
     );
 }
-$("#produit").change(function () {
+$("#produit").click(function () {
     $.post(
         'ajax_panneau',
         {
@@ -188,40 +188,40 @@ $("#produit").change(function () {
         function (data) {
             if (data) {
                 var d = JSON.parse(data);
-                if(d[1] != '0'){
-                $('#puissance').val(d.puissance);
-                if (d.raccorde == 'TRUE') {
-                    document.getElementById("raccordement").checked = true;
-                } else {
-                    document.getElementById("raccordement").checked = false;
-                }
-                if (typeof(d.bonusProd) != "undefined" && d.bonusProd != null) {
+                if (d[1] != '0') {
+                    $('#puissance').val(d.puissance);
+                    if (d.raccorde == 'TRUE') {
+                        document.getElementById("raccordement").checked = true;
+                    } else {
+                        document.getElementById("raccordement").checked = false;
+                    }
+                    if (typeof(d.bonusProd) != "undefined" && d.bonusProd != null) {
 //                    document.getElementById('divbonus').classList.remove("hidden");
-                    $('#bonus').val(d.bonusProd / 100);
-                } else {
-                    $('#bonus').val(null);
+                        $('#bonus').val(d.bonusProd / 100);
+                    } else {
+                        $('#bonus').val(null);
 //                    document.getElementById('divbonus').classList.add("hidden");
-                }
-                if (typeof(d.chauffage) != "undefined" && d.chauffage != null) {
+                    }
+                    if (typeof(d.chauffage) != "undefined" && d.chauffage != null) {
 //                    document.getElementById('divchauffage').classList.remove("hidden");
-                    $('#chauffage').val(d.chauffage);
-                } else {
-                    $('#chauffage').val(null);
+                        $('#chauffage').val(d.chauffage);
+                    } else {
+                        $('#chauffage').val(null);
 //                    document.getElementById('divchauffage').classList.add("hidden");
-                }
+                    }
 
-                if (typeof(d.ECS) != "undefined" && d.ECS != null) {
+                    if (typeof(d.ECS) != "undefined" && d.ECS != null) {
 //                    document.getElementById('divecs').classList.remove("hidden");
-                    $('#ecs').val(d.ECS);
-                } else {
-                    $('#ecs').val(null);
+                        $('#ecs').val(d.ECS);
+                    } else {
+                        $('#ecs').val(null);
 //                    document.getElementById('divecs').classList.add("hidden");
-                }
-                $("#resultprod").html("Production : <span id='prodcalc'>" + d[0] + "</span> kWh/an");
-                }else {
+                    }
+                    $("#resultprod").html("Production : <span id='prodcalc'>" + d[0].toFixed(2) + "</span> kWh/an");
+                } else {
                     $("#resultprod").html("<span class='text-danger'><i class='ace-icon fa fa-exclamation-triangle icon-animated-bell bigger-125'></i> HEPP nette manquant</span> ");
                 }
-            }else {
+            } else {
                 $("#resultprod").html("<span class='text-danger'>Calcul impossible donnée(s) manquante(s)</span> ");
             }
         },
@@ -528,7 +528,9 @@ function canvasorient() {
 
     }
 
-}
+};
+var img = document.getElementById("img_ID")
+if (img) {
     $('#img_ID').mapster({
         fillOpacity: 0.5,
         fillColor: "DAF298",
@@ -538,6 +540,7 @@ function canvasorient() {
         strokeWidth: 4,
         mapKey: 'masque'
     });
+}
 $('.areamasque').click(function () {
     $.post(
         'ajax_envoiratioc',
@@ -598,6 +601,43 @@ function onWindowResize() {
 
 $(window).bind('resize', onWindowResize);
 
+$('#typepanneau').change(function () {
+    selectpanneau();
+});
+$('#raccord').change(function () {
+    selectpanneau();
+});
 
+function selectpanneau() {
+    var racc;
+    if (document.getElementById('raccord').checked == true) {
+        racc = 'true';
+    } else {
+        racc = 'false';
+    }
+    $.post(
+        'ajax_selectpanneaucritere',
+        {
+            type: $('#typepanneau').val(),
+            raccordement: racc
+        },
+        function (data) {
+            if (data) {
+                var ref = null;
+                var info = JSON.parse(data);
+                $('#produit').empty();
+                for (var i in info) {
+                    if (info[i]['Reference'] != ref) {
 
+                        $('#produit').append('<optgroup label="' + info[i]['Reference'] + '">');
+                        ref = info[i]['Reference'];
+                        $('#produit').append('<option value="' + info[i]['id'] + '">' + info[i]['Nom'] + '</option>');
+
+                    }
+                }
+            }
+        },
+        'text'
+    )
+}
 

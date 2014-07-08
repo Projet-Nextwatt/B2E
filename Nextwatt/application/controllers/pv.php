@@ -41,7 +41,6 @@ class PV extends MY_Controller
         $data['station'] = $this->ensoleillement->select_ensoleillement();
         $this->layout->title('Station B2E');
         $this->layout->js(js_url('etudesolaire'));
-        $this->layout->js(js_url('help'));
 
         $breadcrumps = array(
             array(
@@ -755,6 +754,18 @@ class PV extends MY_Controller
         } else {
             $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
             show_error($message_403, 403, '403 - Acc&egrave;s interdit');
+        }
+    }
+
+    public function ajax_selectpanneaucritere()
+    {
+        if (isset($_POST['type']) && isset($_POST['raccordement'])) {
+            $critere = array($_POST['type']);
+            $this->load->model('Mappage/catalogue', 'catalogue');
+            $critere = array($_POST['type'],$_POST['raccordement']);
+            $data = $this->catalogue->select_panneau_critere($critere); // Recup des données station avec le model "ensoleillement"
+            $data = json_encode($data);
+            echo $data;
         }
     }
 

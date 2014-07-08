@@ -99,8 +99,8 @@ class Catalogue extends DataMapper
 
         return $bdd;
     }
-    
-        public function get_catalogue_pour_modif()
+
+    public function get_catalogue_pour_modif()
     {
         $catalogue = new Catalogue();
         $catalogue->get();
@@ -189,10 +189,63 @@ class Catalogue extends DataMapper
         if (empty($id)) {
             $obj = new Catalogue();
             return $obj->get()->all_to_array();
-        }else{
+        } else {
             $obj = new Catalogue();
-            return $obj->where('id',$id)->get()->all_to_array();
+            return $obj->where('id', $id)->get()->all_to_array();
         }
+    }
+
+    function select_panneau_critere($critere)
+    {
+        $obj = new Catalogue();
+//        $type2 = null;
+//        if ($critere[0] == 1) {
+//            $type = '';
+//        } else if ($critere[0] == 2) {
+//            $type = 'ECS';
+//        } else if ($critere[0] == 3) {
+//            $type = 'Chauffage';
+//        } else if ($critere[0] == 4) {
+//            $type = 'ECS';
+//            $type2 = 'Chauffage';
+//        }
+
+//        if ($critere[1] == 'true') {
+//            $racc = 'raccorde&quot;:&quot;TRUE';
+//        } else {
+//            $racc = 'raccorde&quot;:&quot;FALSE';
+//        }
+//        $obj->like('spec', $type);
+//        if ($type2 == null) {
+//            $obj->like('spec', $type2);
+//        }
+//        $obj->like('spec', $racc);
+
+        foreach ($critere as $c) {
+            switch ($c) {
+                case 1 :
+                    break;
+                case 2 :
+                    $obj->like('spec', 'ECS');
+                    break;
+                case 3 :
+                    $obj->like('spec', 'Chauffage');
+                    break;
+                case 4 :
+                    $obj->like('spec', 'ECS');
+                    $obj->like('spec', 'Chauffage');
+                    break;
+            }
+        }
+        if ($critere[1] == 'true') {
+            $racc = 'raccorde&quot;:&quot;TRUE';
+        } else {
+            $racc = 'raccorde&quot;:&quot;FALSE';
+        }
+        $obj->like('spec', $racc);
+
+
+        return $obj->get()->all_to_array();
     }
 
 }

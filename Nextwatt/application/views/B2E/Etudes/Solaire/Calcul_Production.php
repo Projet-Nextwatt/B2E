@@ -7,9 +7,31 @@
     </h1>
 </div>
 <div class="row form-horizontal">
-    <h4 align="center"> Veuillez renseigner les champs ci - dessous .</h4>
+    <h4 align="center"> Veuillez renseigner les champs ci-dessous.</h4>
 
     <div class="col-sm-12 ">
+        <div class="form-group">
+            <label class="col-sm-6 no-padding-right control-label" for='type'> Type : </label>
+
+            <div class="col-sm-6">
+                <select name="typepanneau" id="typepanneau" class="dropdown">
+                    <option value="1">PV</option>
+                    <option value="2">ECS</option>
+                    <option value="3">Chauffage</option>
+                    <option value="4">ECS + Chauffage</option>
+                </select>
+            </div>
+        </div>
+        <div class='form-group'>
+            <label class="col-sm-6 no-padding-right control-label" for='raccord'>Raccordement : </label>
+
+            <div class="col-sm-6">
+                <label>
+                    <input name="switch-field-1" class="ace ace-switch" type="checkbox" id="raccord">
+                    <span class="lbl" data-lbl="Oui&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Non"></span>
+                </label>
+            </div>
+        </div>
         <div class="form-group">
             <label class="col-sm-6 no-padding-right control-label" for='produit'> Produit : </label>
 
