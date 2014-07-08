@@ -130,4 +130,30 @@ class User extends DataMapper {
         $this->db->delete('Article');
     }
 
+    function verif_login($data)
+    {
+        $login = $data['login'];
+        $mdp = $data['mdp'];
+        $user = new User();
+
+        if($user->get_where('Identifiant', $login))
+        {
+            if($user['Identifiant']==$login && $user['mdp']==$mdp)
+            {
+                $logincorrect = 1;
+                return $logincorrect;
+            }
+            else
+            {
+                $error = 'Mauvaise combinaison login/mdp';
+                return $error;
+            }
+        }
+        else
+        {
+            $error='Login innexistant';
+            return $error;
+        }
+    }
+
 }

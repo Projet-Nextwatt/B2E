@@ -53,17 +53,19 @@
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right ">
 															<input type="text" class="form-control input-lg"
-                                                                   placeholder="Nom de compte"/>
+                                                                   placeholder="Nom de compte" id="login"/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
+                                                <div id="errlogin"></div>
                                             </label>
 
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<input type="password" class="form-control input-lg"
-                                                                   placeholder="Mot de passe"/>
+                                                                   placeholder="Mot de passe" id="motdepasse"/>
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
+                                                <div id="errpsw"></div>
                                             </label>
 
                                             <div class="space"></div>
@@ -75,12 +77,16 @@
                                                 </label>
 
                                                 <button type="button"
-                                                        class="width-60 pull-right btn  btn-success btn-lg">
+                                                        class="width-60 pull-right btn  btn-success btn-lg" id="connexion">
                                                     <i class="ace-icon fa fa-key"></i>
                                                     <span class="bigger-110">Connexion</span>
                                                 </button>
                                             </div>
+                                            <div class="space-4"></div>
+                                            <div id="alertconnec">
 
+
+                                            </div>
                                             <div class="space-4"></div>
                                         </fieldset>
                                     </form>
@@ -115,6 +121,7 @@
 <script type="text/javascript" src="<?php echo $bootstrapmin ?>"></script>
 <script type="text/javascript" src="<?php echo $acemin ?>"></script>
 <script type="text/javascript" src="<?php echo $aceelementsmin ?>"></script>
+<script type="text/javascript" src="<?php echo $login ?>"></script>
 
 
 <!-- inline scripts related to this page -->
