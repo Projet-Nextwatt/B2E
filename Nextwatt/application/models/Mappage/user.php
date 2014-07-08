@@ -134,11 +134,20 @@ class User extends DataMapper {
     {
         $login = $data['login'];
         $mdp = $data['mdp'];
+
         $user = new User();
 
-        if($user->get_where('Identifiant', $login))
+        $user->where('Identifiant', $login);
+        $user->get();
+
+        $tab_user = $user->all_to_array();
+
+        $rslt = count($tab_user);
+
+
+        if($rslt != 0)
         {
-            if($user['Identifiant']==$login && $user['mdp']==$mdp)
+            if($tab_user[0]['Identifiant']==$login && $tab_user[0]['mdp']==$mdp)
             {
                 $logincorrect = 1;
                 return $logincorrect;

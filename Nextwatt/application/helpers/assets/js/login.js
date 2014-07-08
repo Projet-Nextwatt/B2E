@@ -15,13 +15,11 @@ $('#connexion').click(function () {
             },
 
             function (data) {
-                if (data) {
-                    if (data == 'false') {
+                if (data !=1) {
                         $('#alertconnec').html('' +
                             '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button>'+
                             '<strong><i class="ace-icon fa fa-times"></i>Oh snap!</strong>'+
-                            'Change a few things up and try submitting again.</div>');
-                    }
+                            data+'</div>');
 
                 }
             },
