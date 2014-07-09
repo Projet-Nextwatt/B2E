@@ -37,8 +37,8 @@ class Login extends CI_Controller
         if(isset($_POST['login']) && isset($_POST['password']) && isset($_POST['rememberme']))
         {
 
-            $data['login'] = $_POST['login'];
-            $data['mdp'] = sha1($_POST['password']);
+            $data['login'] = htmlspecialchars(trim($_POST['login']));
+            $data['mdp'] = sha1(htmlspecialchars(trim($_POST['password'])));
             $this->load->model('Mappage/user', 'mapuser');
             $retourmodel = $this->mapuser->verif_login($data);
             if($retourmodel =='1'){

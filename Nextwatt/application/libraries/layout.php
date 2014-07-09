@@ -24,10 +24,12 @@ class Layout
 
     function Layout()
     {
+
         $this->obj =& get_instance();
         $this->layout_view = "layout/default.php";
         // Grab layout from called controller
         if (isset($this->obj->layout_view)) $this->layout_view = $this->obj->layout_view;
+
     }
 
     function view($view, $data = null, $return = false)
@@ -64,7 +66,7 @@ class Layout
             foreach ($this->bread as $v) {
                 $data['breadcrumbs_for_layout'] .=
                     '<li data-target="#step' . $step . '" class=' . $v['actif'] . '>
-                    <a href="'.$v['link'].'">
+                    <a href="' . $v['link'] . '">
                     <span class="step">' . $step . '</span>
                     <span class="title">' . $v['title'] . '</span>
                     </a></li>';
@@ -78,6 +80,7 @@ class Layout
         $output = $this->obj->load->view($this->layout_view, $data, $return);
 
         return $output;
+
     }
 
     /**

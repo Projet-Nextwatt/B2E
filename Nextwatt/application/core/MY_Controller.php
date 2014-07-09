@@ -9,6 +9,13 @@ class MY_Controller extends CI_Controller
     {
         parent::__construct();
 
+
+        if (!$this->session->userdata('userconnect')) {
+
+            $data = array('info' => 'Vous devez être connecter pour accéder au site');
+            redirect('login', $data);
+        }
+
 // Site global resources
         $this->load->library('layout');
         //Charge le CSS, JS et Images du layout.
@@ -34,5 +41,7 @@ class MY_Controller extends CI_Controller
         $this->layout->image(img_url('minilogonextwatt.png'));
         $this->layout->image(img_url('feuillenextwatt.png'));
     }
+
+
 }
 

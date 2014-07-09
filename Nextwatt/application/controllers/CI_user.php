@@ -7,32 +7,35 @@
 //           pour vérifier le formulaire (verif_form_client)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class CI_User extends MY_Controller {  
-    
+class CI_User extends MY_Controller
+{
+
     public $layout_view = 'B2E/layout/default';
-    
-    
+
+
     // User ////////////////////////////////////////////////////////////////////////////////
-    public function consult_user() {
+    public function consult_user()
+    {
         $this->load->model('Mappage/user', 'mapuser'); //Chargement du model
         $data = array();
 
         $data['users'] = $this->mapuser->list_user(TRUE);
-        $data['usersinactifs'] = $this->mapuser->list_user(FALSE);  
+        $data['usersinactifs'] = $this->mapuser->list_user(FALSE);
 
         $this->layout->title('Liste des Users');
         $this->layout->view('B2E/User/Accueil_user.php', $data); // Render view and layout
     }
 
-    public function add_user() {
+    public function add_user()
+    {
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele user
         $this->load->model('Mappage/user', 'mapuser'); //Chargement du modele categorie
-        
+
         $data = array();
-            //chargement des catégories pour la liste déroulante
+        //chargement des catégories pour la liste déroulante
         $categories = $this->categorie->chargercategories();
-        $data["categories"] =$categories;
-        
+        $data["categories"] = $categories;
+
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
         $this->form_validation->set_rules($this->configValidationUser);
         if ($this->form_validation->run() == FALSE) {
@@ -40,7 +43,7 @@ class CI_User extends MY_Controller {
             $this->layout->title('Ajout d\'un utilisateur');
             $this->layout->view('B2E/User/Add_User', $data); // Render view and layout
         } else {
-            
+
             $this->form_validation->set_rules($this->configTraitementUser);
             if ($this->mapuser->ajouter_user($_POST)) {
                 // Energie object now has an ID
@@ -48,32 +51,31 @@ class CI_User extends MY_Controller {
             } else {
                 // Show all error messages
                 $this->layout->title('Erreur');
-                $this->layout->view('B2E/User/Add_User',$data); //render view and layout
+                $this->layout->view('B2E/User/Add_User', $data); //render view and layout
             }
         }
     }
-    
-    public function modif_user() {
+
+    public function modif_user()
+    {
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele user
         $this->load->model('Mappage/user', 'mapuser'); //Chargement du modele categorie
-        
-        
+
+
         $data = array();
-            //chargement des catégories pour la liste déroulante
+        //chargement des catégories pour la liste déroulante
         $categories = $this->categorie->chargercategories();
-        $data["categories"] =$categories;
+        $data["categories"] = $categories;
         $data['user'] = $this->mapuser->select_user($this->session->userdata('CI_User/modif_user'));
-        
+
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
-        
+
         if (isset($_POST['type']) AND ($_POST['type'] == 'mdp')) {
-                $this->form_validation->set_rules($this->configValidationMDP);
-        }
-        else
-        {
+            $this->form_validation->set_rules($this->configValidationMDP);
+        } else {
             $this->form_validation->set_rules($this->configValidationModifUser);
         }
-       
+
 
         if ($this->form_validation->run() == FALSE) {
             // On charge la page
@@ -90,20 +92,20 @@ class CI_User extends MY_Controller {
             }
             $this->form_validation->run();
             if ($this->mapuser->modifier_user($_POST)) {
-                header('Location:'.site_url("CI_user/consult_user"));
+                header('Location:' . site_url("CI_user/consult_user"));
                 //$this->consult_user();
             } else {
                 // Show all error messages
                 $this->layout->title('Erreur');
-                $this->layout->view('B2E/User/Modif_User',$data); //render view and layout
+                $this->layout->view('B2E/User/Modif_User', $data); //render view and layout
             }
         }
     }
-   
 
-   
+
     //Catégorie ////////////////////////////////////////////////////////////////////////////////////
-    public function gestioncategorie() {
+    public function gestioncategorie()
+    {
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du model
         $data = array();
 
@@ -114,7 +116,8 @@ class CI_User extends MY_Controller {
         $this->layout->view('B2E/User/Consulter_Categories', $data);
     }
 
-    public function addcategorie() {
+    public function addcategorie()
+    {
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele
         $data = array(); //Pour la vue
 
@@ -133,7 +136,7 @@ class CI_User extends MY_Controller {
 
             if ($this->categorie->ajouter_categorie($_POST)) {
                 // Energie object now has an ID
-                header('Location:'.site_url("CI_user/gestioncategorie"));
+                header('Location:' . site_url("CI_user/gestioncategorie"));
             } else {
                 /*    //Comment j'envoi le tableau à la vue? -********************************************************
                   foreach ($u->error->all as $error) {
@@ -148,7 +151,8 @@ class CI_User extends MY_Controller {
         }
     }
 
-    public function modifcategorie() {
+    public function modifcategorie()
+    {
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele
         $data = array(); //Pour la vue
         $data['categorie'] = $this->categorie->select_categorie($this->session->userdata('CI_user/modifcategorie'));
@@ -168,7 +172,7 @@ class CI_User extends MY_Controller {
             $this->form_validation->set_rules($this->configTraitementAddCategorie);
             $this->form_validation->run();
             if ($this->categorie->modifier_categorie($_POST)) {
-                header('Location:'.site_url("CI_user/gestioncategorie"));
+                header('Location:' . site_url("CI_user/gestioncategorie"));
             } else {
                 echo 'error';
             }
@@ -176,12 +180,14 @@ class CI_User extends MY_Controller {
     }
 
     //Ajax Catégorie
-    public function ajax_supprimercategorie() {
+    public function ajax_supprimercategorie()
+    {
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele
         $this->categorie->supprimer_categorie($_POST['id']);
     }
 
-    public function ajax_categoriegroupe() {
+    public function ajax_categoriegroupe()
+    {
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele
         $groupes = $this->categorie->chargergroupe();
         echo json_encode($groupes);
@@ -253,8 +259,8 @@ class CI_User extends MY_Controller {
             'rules' => 'callback_checkbox'
         ),
     );
-    
-    public  $configValidationUser = array(
+
+    public $configValidationUser = array(
         array(
             'field' => 'Identifiant',
             'label' => 'Identifiant',
@@ -296,7 +302,7 @@ class CI_User extends MY_Controller {
             'rules' => ''
         ),
     );
-    
+
     public $configTraitementUser = array(
         array(
             'field' => 'Identifiant',
@@ -339,9 +345,9 @@ class CI_User extends MY_Controller {
             'rules' => ''
         ),
     );
-    
-    
-    public  $configValidationModifUser = array(
+
+
+    public $configValidationModifUser = array(
         array(
             'field' => 'Identifiant',
             'label' => 'Identifiant',
@@ -373,7 +379,7 @@ class CI_User extends MY_Controller {
             'rules' => ''
         ),
     );
-    
+
     public $configTraitementModifUser = array(
         array(
             'field' => 'Identifiant',
@@ -416,8 +422,8 @@ class CI_User extends MY_Controller {
             'rules' => 'callback_checkbox'
         ),
     );
-    
-    public  $configValidationMDP = array(
+
+    public $configValidationMDP = array(
         array(
             'field' => 'mdp',
             'label' => 'Mot de Passe',
@@ -429,7 +435,7 @@ class CI_User extends MY_Controller {
             'rules' => 'trim'
         ),
     );
-    
+
     public $configTraitementMDP = array(
         array(
             'field' => 'mdp',
@@ -442,9 +448,10 @@ class CI_User extends MY_Controller {
             'rules' => ''
         ),
     );
-    
-        //Callback
-    public function checkbox(&$str) {
+
+    //Callback
+    public function checkbox(&$str)
+    {
         //Fonction de traitement du formulaire appelée en callback
         if ($str == 'on') {
             $str = 1;
@@ -455,28 +462,24 @@ class CI_User extends MY_Controller {
         }
     }
 
-    public function tel(&$nbr) {
+    public function tel(&$nbr)
+    {
         $nbr = preg_replace("#[^0-9]#", '', $nbr);
-        
-        if(strlen($nbr) == 10)
-	{
-		for($i=0;$i<5;$i++)
-                {
-                    $nbr_array[] = substr($nbr, $i*2, 2);
-                }
-		$nbr = implode('.', $nbr_array);
-		return TRUE;
-	}
-	elseif (strlen($nbr) == 0 )
-	{
-		return TRUE;
-	}
-	else
-	{
-            
+
+        if (strlen($nbr) == 10) {
+            for ($i = 0; $i < 5; $i++) {
+                $nbr_array[] = substr($nbr, $i * 2, 2);
+            }
+            $nbr = implode('.', $nbr_array);
+            return TRUE;
+        } elseif (strlen($nbr) == 0) {
+            return TRUE;
+        } else {
+
             $this->form_validation->set_message('tel', 'Le champs %s doit contenir 10 chiffres');
-		return FALSE;
-	}
+            return FALSE;
+        }
     }
+
 
 }
