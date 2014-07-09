@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +59,8 @@
         <!-- sidebar goes here -->
 
         <div class="sidebar-shortcuts" id="sidebar-shortcuts">
-
+            
+            <a href="<?php echo site_url("login/deconnexion"); ?>">se deconnecter</a>
         </div>
 
         <ul class="nav nav-list">

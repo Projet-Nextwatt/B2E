@@ -57,9 +57,14 @@ class Login extends CI_Controller
                 );
                 $this->session->set_userdata('userconnect', $sess_array);
             }
-
             echo($retourmodel);
         }
+    }
+
+    public function deconnexion()
+    {
+        $this->session->sess_destroy();
+        redirect('login', 'refresh');
     }
 
 }
