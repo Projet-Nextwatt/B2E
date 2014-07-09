@@ -50,7 +50,6 @@
 
                                     <form>
                                         <fieldset>
-                                            <?php if(isset($info)){echo $info;} ?>
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right ">
 															<input type="text" class="form-control input-lg"

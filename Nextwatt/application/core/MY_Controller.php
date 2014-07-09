@@ -12,8 +12,7 @@ class MY_Controller extends CI_Controller
 
         if (!$this->session->userdata('userconnect')) {
 
-            $data = array('info' => 'Vous devez être connecter pour accéder au site');
-            redirect('login', $data);
+            redirect('login');
         }
 
 // Site global resources

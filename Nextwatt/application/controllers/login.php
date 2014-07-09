@@ -50,12 +50,7 @@ class Login extends CI_Controller
             $this->mapuser->derniereconnexion($data['login']);
 
             if ($retourmodel == 1) {
-                $user = $this->mapuser->select_user();
-                $sess_array = array(
-                        'nom' => $user['nom'],
-                        'prenom' => $user['prenom']
-                );
-                $this->session->set_userdata('userconnect', $sess_array);
+                $this->session->set_userdata('userconnect', $data['login']);
             }
 
             echo($retourmodel);
