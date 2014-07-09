@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,6 +58,8 @@
     <div class="sidebar responsive" id="sidebar">
 
         <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+            
+            <a href="<?php echo site_url("login/deconnexion"); ?>">se deconnecter</a>
 <?php echo 'Bonjour : <strong>' . $this->session->userdata('userconnect')['prenom'].'</strong>'; ?>
            <br/>
             <button><i class="ace-icon fa fa-power-off"></i> Se déconnecter</button>
