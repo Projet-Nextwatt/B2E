@@ -21,6 +21,7 @@ class Login extends CI_Controller
         $data['acemincss'] = css_url('ace.min');
         $data['acertl'] = css_url('ace-rtl.min');
         $data['aceskins'] = css_url('ace-skins.min');
+    }
 
 
         // Liens vers les fichiers images
@@ -35,8 +36,10 @@ class Login extends CI_Controller
     {
         if(isset($_POST['login']) && isset($_POST['password']))
         {
+            $data['login'] = $_POST['login'];
+            $data['mdp'] = $_POST['password'];
             $this->load->model('Mappage/user', 'mapuser');
-            $retourmodel = $this->mapuser->verif_login();
+            $retourmodel = $this->mapuser->verif_login($data);
 
             echo($retourmodel);
         }
