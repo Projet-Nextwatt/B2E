@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 class Login extends CI_Controller
 {
 
@@ -44,13 +46,18 @@ class Login extends CI_Controller
             if($retourmodel =='1'){
                 if($_POST['rememberme'] == 'true'){
                     $this->config->set_item('sess_expire_on_close', '0'); // do change session config
-
                 }
             }
 
             $this->mapuser->derniereconnexion($data['login']);
 
+            if($retourmodel==1)
+            {
+                $this->session->userdata('userconnect');
+            }
+
             echo($retourmodel);
         }
     }
+
 }
