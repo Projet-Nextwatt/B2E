@@ -53,18 +53,24 @@
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right ">
 															<input type="text" class="form-control input-lg"
-                                                                   placeholder="Nom de compte" id="login"/>
+                                                                   placeholder="Nom de compte" id="login"
+                                                                   onKeyPress="if (event.keyCode == 13) connec()"
+                                                                />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
+
                                                 <div id="errlogin"></div>
                                             </label>
 
                                             <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<input type="password" class="form-control input-lg"
-                                                                   placeholder="Mot de passe" id="motdepasse"/>
+                                                                   placeholder="Mot de passe" id="motdepasse"
+                                                                   onKeyPress="if (event.keyCode == 13) connec()"
+                                                                />
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
+
                                                 <div id="errpsw"></div>
                                             </label>
 
@@ -77,7 +83,8 @@
                                                 </label>
 
                                                 <button type="button"
-                                                        class="width-60 pull-right btn  btn-success btn-lg" id="connexion">
+                                                        class="width-60 pull-right btn  btn-success btn-lg"
+                                                        id="connexion">
                                                     <i class="ace-icon fa fa-key"></i>
                                                     <span class="bigger-110">Connexion</span>
                                                 </button>

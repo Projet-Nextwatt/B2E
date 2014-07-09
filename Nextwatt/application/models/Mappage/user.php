@@ -147,7 +147,9 @@ class User extends DataMapper {
             if($tab_user[0]['Identifiant']==$login && $tab_user[0]['mdp']==$mdp)
             {
                 $logincorrect = 1;
-                return $logincorrect;
+                $prenom = $tab_user[0]['prenom'];
+                $tablogin= array($logincorrect,$prenom);
+                return $tablogin;
             }
             else
             {

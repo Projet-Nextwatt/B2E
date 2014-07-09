@@ -59,10 +59,9 @@
 
         <div class="sidebar-shortcuts" id="sidebar-shortcuts">
             
-            <a href="<?php echo site_url("login/deconnexion"); ?>">se deconnecter</a>
-<?php echo 'Bonjour : <strong>' . $this->session->userdata('userconnect')['prenom'].'</strong>'; ?>
+            <?php echo 'Bonjour : <strong>' . $this->session->userdata('userconnect')['prenom'].'</strong>'; ?>
            <br/>
-            <button><i class="ace-icon fa fa-power-off"></i> Se déconnecter</button>
+            <button class="btn btn-xs btn-white btn-success" onclick="window.location='<?php echo site_url("login/deconnexion"); ?>'"><i class="ace-icon fa fa-power-off"></i> Se déconnecter</button>
         </div>
 
         <ul class="nav nav-list">
