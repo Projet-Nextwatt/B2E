@@ -21,9 +21,15 @@ class Login extends CI_Controller
         $data['acemincss'] = css_url('ace.min');
         $data['acertl'] = css_url('ace-rtl.min');
         $data['aceskins'] = css_url('ace-skins.min');
+
+
+        // Liens vers les fichiers images
+        $data['minilogonextwatt'] = img_url('MiniLogoNextwatt.png');
+        $data['blur'] = img_url('blurNextwatt.png');
+
+        // Charge la page
+        $this->load->view('B2E/Login', $data);
     }
-
-
 
     public function ajax_login()
     {
