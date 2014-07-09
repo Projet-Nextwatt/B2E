@@ -5,7 +5,8 @@
  * CRUD de base mis en place.
  */
 
-class User extends DataMapper {
+class User extends DataMapper
+{
     /*
      * Variables de relation (entre tables)
      */
@@ -36,11 +37,13 @@ class User extends DataMapper {
       var $Actif = "";
      */
 
-    function __construct($id = NULL) {
+    function __construct($id = NULL)
+    {
         parent ::__construct($id);
     }
 
-    function select_user($id = NULL) {
+    function select_user($id = NULL)
+    {
         if ($id != NULL) {
             $user = new User($id);
             //$user->where('id', $id);
@@ -52,7 +55,7 @@ class User extends DataMapper {
             return array_merge($tabuser, $tabcat);
         } else {
             $users = new User();
-            $users->order_by('Actif','DESC');
+            $users->order_by('Actif', 'DESC');
             $users->get();
             foreach ($users as $index => $user) {
                 $retour[$index] = $user->to_array();
@@ -64,7 +67,8 @@ class User extends DataMapper {
         }
     }
 
-    function list_user($actif) {
+    function list_user($actif)
+    {
         $users = new User();
         if ($actif == TRUE) {
             $users->where('Actif', 1);
@@ -83,7 +87,8 @@ class User extends DataMapper {
         return $retour;
     }
 
-    function ajouter_user($data) {
+    function ajouter_user($data)
+    {
         $user = array(
             'Identifiant' => $data['Identifiant'],
             'mdp' => $data['mdp'],
@@ -103,7 +108,8 @@ class User extends DataMapper {
         }
     }
 
-    function modifier_user($data) {
+    function modifier_user($data)
+    {
         //Fonction de modification        
         $id = $data['id'];
         unset($data['id']);
@@ -125,7 +131,8 @@ class User extends DataMapper {
         }
     }
 
-    function supprimer_user() {
+    function supprimer_user()
+    {
         $this->db->where('Login', '');
         $this->db->delete('Article');
     }
@@ -142,25 +149,20 @@ class User extends DataMapper {
         $tab_user = $user->all_to_array();
         $rslt = count($tab_user);
 
-        if($rslt != 0)
-        {
-            if($tab_user[0]['Identifiant']==$login && $tab_user[0]['mdp']==$mdp)
-            {
+        if ($rslt != 0) {
+            if ($tab_user[0]['Identifiant'] == $login && $tab_user[0]['mdp'] == $mdp) {
                 $logincorrect = 1;
                 return $logincorrect;
-            }
-            else
-            {
+            } else {
                 $error = 'Mauvaise combinaison login/mdp';
                 return $error;
             }
-        }
-        else
-        {
-            $error='Login innexistant';
+        } else {
+            $error = 'Login innexistant';
             return $error;
         }
     }
+
     public function derniereconnexion($login)
     {
         $user = array(
@@ -169,6 +171,19 @@ class User extends DataMapper {
 
         $this->db->where('Identifiant', $login);
         $this->db->update('users', $user);
+    }
+
+    function select_user_by_login($login)
+    {
+        $user = new User();
+        $user->where('Identifiant', $login);
+        $user->get();
+
+        $retour = $user->all_to_array();
+
+
+        return $retour;
+
     }
 
 }
