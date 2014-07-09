@@ -84,7 +84,9 @@
 
                                                 <button type="button"
                                                         class="width-60 pull-right btn  btn-success btn-lg"
-                                                        id="connexion">
+                                                        id="connexion"
+                                                        onclick="connec()"
+                                                    >
                                                     <i class="ace-icon fa fa-key"></i>
                                                     <span class="bigger-110">Connexion</span>
                                                 </button>

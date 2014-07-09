@@ -1,7 +1,6 @@
 /**
  * Created by Kévin Nérino on 08/07/14.
  */
-$('#connexion').click(connec());
 
 
 
