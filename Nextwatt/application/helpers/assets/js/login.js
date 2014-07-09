@@ -33,7 +33,7 @@ function connec() {
                         '<br/>' + data + '</div>');
 
                 } else {
-                    document.location.href = "http://localhost/B2E/Nextwatt/index.php/accueil";
+                    document.location.href = "accueil";
                 }
             },
             'text'
