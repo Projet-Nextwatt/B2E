@@ -41,7 +41,7 @@ class Login extends CI_Controller
             $data['mdp'] = sha1(htmlspecialchars(trim($_POST['password'])));
             $this->load->model('Mappage/user', 'mapuser');
             $retourmodel = $this->mapuser->verif_login($data);
-            if ($retourmodel[0] == '1') {
+            if ($retourmodel == '1') {
                 if ($_POST['rememberme'] == 'true') {
                     $this->config->set_item('sess_expire_on_close', '0'); // do change session config
                 }
@@ -49,14 +49,15 @@ class Login extends CI_Controller
 
             $this->mapuser->derniereconnexion($data['login']);
 
-            if ($retourmodel[0] == 1) {
-                $user = $this->mapuser->select_user();
+            if ($retourmodel == 1) {
+                $user = $this->mapuser->select_user_by_login($_POST['login']);
                 $sess_array = array(
-                        'prenom' => $retourmodel[1]
+                        'nom' => $user[0]['nom'],
+                        'prenom' => $user[0]['prenom']
                 );
                 $this->session->set_userdata('userconnect', $sess_array);
             }
-            echo $retourmodel[0];
+            echo($retourmodel);
         }
     }
 

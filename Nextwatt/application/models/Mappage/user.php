@@ -147,9 +147,7 @@ class User extends DataMapper {
             if($tab_user[0]['Identifiant']==$login && $tab_user[0]['mdp']==$mdp)
             {
                 $logincorrect = 1;
-                $prenom = $tab_user[0]['prenom'];
-                $tablogin= array($logincorrect,$prenom);
-                return $tablogin;
+                return $logincorrect;
             }
             else
             {
@@ -171,6 +169,19 @@ class User extends DataMapper {
 
         $this->db->where('Identifiant', $login);
         $this->db->update('users', $user);
+    }
+
+    function select_user_by_login($login)
+    {
+        $user = new User();
+        $user->where('Identifiant', $login);
+        $user->get();
+
+        $retour = $user->all_to_array();
+
+
+        return $retour;
+
     }
 
 }
