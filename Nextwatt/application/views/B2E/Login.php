@@ -72,7 +72,7 @@
 
                                             <div class="clearfix">
                                                 <label class="inline">
-                                                    <input type="checkbox" class="ace"/>
+                                                    <input type="checkbox" class="ace" id="rememberme"/>
                                                     <span class="lbl"> Se souvenir</span>
                                                 </label>
 

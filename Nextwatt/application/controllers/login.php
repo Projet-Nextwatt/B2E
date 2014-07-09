@@ -34,12 +34,19 @@ class Login extends CI_Controller
 
     public function ajax_login()
     {
-        if(isset($_POST['login']) && isset($_POST['password']))
+        if(isset($_POST['login']) && isset($_POST['password']) && isset($_POST['rememberme']))
         {
+
             $data['login'] = $_POST['login'];
             $data['mdp'] = sha1($_POST['password']);
             $this->load->model('Mappage/user', 'mapuser');
             $retourmodel = $this->mapuser->verif_login($data);
+            if($retourmodel =='1'){
+                if($_POST['rememberme'] == 'true'){
+                    $this->config->set_item('sess_expire_on_close', '0'); // do change session config
+
+                }
+            }
 
             echo($retourmodel);
         }

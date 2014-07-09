@@ -4,6 +4,12 @@
 $('#connexion').click(function () {
     var lgn = $('#login').val();
     var pw = $('#motdepasse').val();
+    var rmberme;
+    if (document.getElementById('rememberme').checked == true) {
+        rmberme = 'true';
+    } else {
+        rmberme = 'false';
+    }
     if (lgn.length > 0 && pw.length > 0) {
         $("#errlogin").html('');
         $("#errpsw").html('');
@@ -11,7 +17,8 @@ $('#connexion').click(function () {
             'login/ajax_login',
             {
                 login: lgn,
-                password: pw
+                password: pw,
+                rememberme : rmberme
             },
 
             function (data) {
