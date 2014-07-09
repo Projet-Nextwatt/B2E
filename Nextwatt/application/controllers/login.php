@@ -48,6 +48,8 @@ class Login extends CI_Controller
                 }
             }
 
+            $this->mapuser->derniereconnexion($data['login']);
+
             echo($retourmodel);
         }
     }

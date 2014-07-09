@@ -139,11 +139,8 @@ class User extends DataMapper {
 
         $user->where('Identifiant', $login);
         $user->get();
-
         $tab_user = $user->all_to_array();
-
         $rslt = count($tab_user);
-
 
         if($rslt != 0)
         {
@@ -163,6 +160,16 @@ class User extends DataMapper {
             $error='Login innexistant';
             return $error;
         }
+    }
+    public function derniereconnexion($login)
+    {
+        $user = array(
+            'Derniere_Connexion' => date("Y-m-j H:i:s"),
+        );
+
+        $this->db->where('Identifiant', $login);
+        $this->db->update('users', $user);
+
     }
 
 }
