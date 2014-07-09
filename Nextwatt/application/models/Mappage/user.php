@@ -169,7 +169,6 @@ class User extends DataMapper {
 
         $this->db->where('Identifiant', $login);
         $this->db->update('users', $user);
-
     }
 
 }
