@@ -55,10 +55,11 @@
 
 <div class="main-container" id="main-container">
     <div class="sidebar responsive" id="sidebar">
-        <!-- sidebar goes here -->
 
         <div class="sidebar-shortcuts" id="sidebar-shortcuts">
-
+<?php echo 'Bonjour : <strong>' . $this->session->userdata('userconnect')['prenom'].'</strong>'; ?>
+           <br/>
+            <button><i class="ace-icon fa fa-power-off"></i> Se déconnecter</button>
         </div>
 
         <ul class="nav nav-list">
