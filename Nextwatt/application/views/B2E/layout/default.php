@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,18 +26,18 @@
         </button>
         <div class="navbar-header pull-left ">
             <!-- brand text here -->
-            <a href="<?php echo site_url("Accueil"); ?>" >
+            <a href="<?php echo site_url("Accueil"); ?>">
                 <img src="<?php echo img_url('LogoNextwatt.png'); ?>" width="190" height="40" alt="Logo Nextwatt"/>
             </a>
         </div>
         <!-- /.navbar-header -->
 
-<!--        <div class="navbar-buttons navbar-header pull-right">-->
-<!--            <ul class="nav ace-nav">-->
-<!---->
-<!--                <!-- user buttons such as messages, notifications and user menu -->
-<!--            </ul>-->
-<!--        </div>-->
+        <!--        <div class="navbar-buttons navbar-header pull-right">-->
+        <!--            <ul class="nav ace-nav">-->
+        <!---->
+        <!--                <!-- user buttons such as messages, notifications and user menu -->
+        <!--            </ul>-->
+        <!--        </div>-->
         <!-- /.navbar-buttons -->
 
 
@@ -58,10 +57,11 @@
     <div class="sidebar responsive" id="sidebar">
 
         <div class="sidebar-shortcuts" id="sidebar-shortcuts">
-            
-            <?php echo 'Bonjour : <strong>' . $this->session->userdata('userconnect')['prenom'].'</strong>'; ?>
-           <br/>
-            <button class="btn btn-xs btn-white btn-success" onclick="window.location='<?php echo site_url("login/deconnexion"); ?>'"><i class="ace-icon fa fa-power-off"></i> Se déconnecter</button>
+            <?php echo 'Bonjour <strong>' . $this->session->userdata('userconnect')['prenom'] . '</strong> '; ?>
+
+            <button class="btn btn-sm btn-white btn-success"
+                    onclick="window.location='<?php echo site_url("login/deconnexion"); ?>'"><i
+                    class="ace-icon fa fa-power-off"></i></button>
         </div>
 
         <ul class="nav nav-list">
@@ -111,7 +111,7 @@
         </ul>
 
         <div class="sidebar-toggle sidebar-collapse">
-            <i class="fa-arrows-h"></i>
+ <br/>
         </div>
 
     </div>

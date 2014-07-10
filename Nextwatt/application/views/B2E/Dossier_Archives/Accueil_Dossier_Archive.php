@@ -9,15 +9,6 @@
     </h1>
 </div>
 
-<div class="row">
-    </br></br></br></br>
-    <div align="center" class="col-xl-14">
-        <button type="button" onclick="self.location.href='<?php echo site_url("pv/etudecomplete"); ?>'" class="btn btn-warning btn-lg">
-            <i class="ace-icon fa fa-sun-o"></i>
-            Faire une étude solaire !
-        </button>
-    </div>
-</div>
 
 <!-- DEBUT ZONE DE TEST -->
 <div class="row">
