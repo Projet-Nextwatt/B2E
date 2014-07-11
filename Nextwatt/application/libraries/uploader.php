@@ -23,7 +23,7 @@ class Uploader
     {
 
         $this->remove_dir($this->config["upload_path"], false);
-        var_dump($this->config);
+
         $this->ci->load->library('Upload', $this->config);
         if ($this->ci->upload->do_upload()) {
             $this->ci->data['status']->message = "File Uploaded Successfully";

@@ -59,8 +59,9 @@ class Soustypes extends DataMapper {
     
     function ajouter_soustype($data)
     {
+
         $soustype = array(
-            'ID_Type' => $data['type'],
+            'ID_Type' => $data['Produit'],
             'nomcourt' => $data['nomcourt'],
             'nomdevis' => $data['nomdevis'],
             'bouquetCI' => $data['bouquetCI'],

@@ -30,7 +30,9 @@ if (isset($client)) {
     echo form_open('CI_client/verif_form_client', $attributes, $hiden);
 }
 ?>
-
+<div align="center">
+    <a href="mailto:<?php echo($client['email']) ?>">Envoyer un e-mail au client</a>
+</div>
 
 <h4 class='green header'>Informations</h4>
 
@@ -339,7 +341,7 @@ if (isset($client) && $client['actif']==0) {
     ?>
     <div class="row form-group">
         <div class="col-xs-offset-3 col-md-6">
-            <button type="button" data-toggle="modal" data-target="#Confactiver" class="btn btn-sm btn-warning">
+            <button type="button" data-toggle="modal" data-target="#Confactiver" class="btn btn-sm btn-success">
                 <i class="ace-icon fa fa-check bigger-160"></i>
                 Désarchiver
             </button>

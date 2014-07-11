@@ -114,7 +114,7 @@ class CI_Catalogue extends MY_Controller
                 if (!(array_key_exists($ref, $refbdd))) //si il existe pas, on ajoute
                 {
                     $ajout[$ligneFichier[0]] = $ligneFichier;
-                } 
+                }
             }
         }
         if (isset($ajout)) {
@@ -130,13 +130,11 @@ class CI_Catalogue extends MY_Controller
 
         $this->load->model('Mappage/catalogue', 'catalogue');
         $refbdd = $this->catalogue->get_full_bdd();
-//        echo('données récupérées de la BDD');
-//        var_dump($refbdd);
+
 
         $this->load->library('fonctionspersos');
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
-//        echo('données récupérées du fichier');
-//        var_dump($fichier);
+
 
 
         $tabbdd = array();
@@ -154,13 +152,10 @@ class CI_Catalogue extends MY_Controller
         }
         $result = array_diff($tabbdd, $tabfichier);
 
-
-//        var_dump($suppression);
-
         return $result;
     }
-    
-    
+
+
     public
     function create_tab_modif_bdd()
     {
@@ -173,7 +168,7 @@ class CI_Catalogue extends MY_Controller
                 unset($catalogueBDD[$ref]);
             }
         }
-        
+
 
         //On recupere le fichier et on enleve ce qui n'est pas dans la bdd
         $this->load->library('fonctionspersos');
@@ -187,19 +182,19 @@ class CI_Catalogue extends MY_Controller
 
         foreach ($fichier as $ref => $produit) {
             //$ligneModif=array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18);
-            $modif=FALSE;
+            $modif = FALSE;
             foreach ($produit as $i => $element) {
-                if ($element != $catalogueBDD[$ref][$i]) {  //car la premi�re colonne dans la base de donn�es est l'id bdd
+                if ($element != $catalogueBDD[$ref][$i]) { //car la premi�re colonne dans la base de donn�es est l'id bdd
                     $ligneModif[$i] = $element;
-                    $modif=TRUE;
+                    $modif = TRUE;
                 }
             }
-            if ($modif==TRUE){
-                $ligneModif[0]=$ref;
-                $tabmodif[$ref]=$ligneModif;
+            if ($modif == TRUE) {
+                $ligneModif[0] = $ref;
+                $tabmodif[$ref] = $ligneModif;
             }
         }
-        
+
         if (isset($tabmodif)) {
             return $tabmodif;
         }
@@ -219,9 +214,7 @@ class CI_Catalogue extends MY_Controller
         $ajoutbdd = $this->create_tab_ajout_bdd();
         $suppbdd = $this->create_tab_supp_bdd();
         $modif = $this->create_tab_modif_bdd();
-//        $this->decodefichier($fichier);
-//        echo('vardmp d ajoutbdd');
-//        var_dump($ajoutbdd);
+
 
         $data['ajouts'] = $ajoutbdd;
         $data['supp'] = $suppbdd;
@@ -233,9 +226,8 @@ class CI_Catalogue extends MY_Controller
         $this->layout->title('Catalogue B2E');
         $this->layout->view('B2E/Catalogue/catalogue_diff', $data);
     }
-    
-    
-    
+
+
     public
     function validercatalogue()
     {
@@ -256,19 +248,17 @@ class CI_Catalogue extends MY_Controller
 //On fait les suppressions grâce au tableau récupéré via "create_tab_supp_bdd" et on indente le compteur à chaque suppression
         //On fait les modifications
         //On fait les ajouts
-        if(isset($add)){
+        if (isset($add)) {
             $data['ligneajouté'] = $this->catalogue->updatecatalogue($add);
         }
-        if(isset($modif)){
+        if (isset($modif)) {
             $data['lignemodifiée'] = $this->catalogue->updatecatalogue($modif);
         }
-        if (!empty($_POST['check_list']))
-        {
-            foreach ($_POST['check_list'] as $check)
-            {
+        if (!empty($_POST['check_list'])) {
+            foreach ($_POST['check_list'] as $check) {
                 if ($this->catalogue->supprimer($check) == TRUE) {
-                $data['lignesuppr']++;
-            }
+                    $data['lignesuppr']++;
+                }
             }
         }
         $this->layout->title('Catalogue B2E');
@@ -285,7 +275,7 @@ class CI_Catalogue extends MY_Controller
         $this->load->model('Mappage/catalogue', 'cata');
         $BDD = $this->cata->get_full_bdd();
         $i = 0;
-        $newtab=array();
+        $newtab = array();
         foreach ($BDD as $ligne) {
             $newtab[$i]['Reference'] = $ligne['Reference'];
             $newtab[$i]['Nom'] = $ligne['Nom'];
@@ -298,13 +288,29 @@ class CI_Catalogue extends MY_Controller
         return $newtab;
     }
 
+    public function lier_type_produit()
+    {
+        $this->load->model('Mappage/catalogue', 'catalogue');
+        $this->load->model('Mappage/soustypes', 'soustype');
+
+        $data = array();
+        $data['produit'] = $this->catalogue->get_ref_bdd();
+        $data['soustypes'] = $this->soustype->select_soustype();
+
+        var_dump($data['soustypes']);
+
+        $this->layout->title('Lier type au produit');
+        $this->layout->view('B2E/Catalogue/Lier_Type_Produit', $data); //render view and layout
+    }
 
     ////////////////////////////////  GESTION DES SOUS-TYPES ////////////////////////////////////
 
 
     public function gererlistetype_form()
     {
+        $this->load->model('Mappage/Type', 'Type');
         $data = array();
+        $data['Types'] = $this->Type->select_types(null);
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Catalogue B2E');
         $this->layout->view('B2E/Catalogue/Add_Soustype', $data);
@@ -313,9 +319,10 @@ class CI_Catalogue extends MY_Controller
     public function gererlistetype_action()
     {
         $this->load->model('Mappage/soustypes', 'mapsoustype'); //Chargement du model
-
+        $this->load->model('Mappage/Type', 'Type');
         $data = array();
 
+        $data['Types'] = $this->Type->select_types(null);
         $configsoustype =
             array(
                 array(
@@ -345,8 +352,22 @@ class CI_Catalogue extends MY_Controller
                 ),
             );
 
+        $configtraitementsoustype =
+            array(
+                array(
+                    'field' => 'nomcourt',
+                    'label' => 'Nom court',
+                    'rules' => 'xss_clean|htmlentities'
+                ),
+                array(
+                    'field' => 'nomdevis',
+                    'label' => 'Nom devis',
+                    'rules' => 'xss_clean|htmlentities'
+                ),
+            );
+
         $this->form_validation->set_rules($configsoustype);
-        $this->form_validation->set_rules($this->configtraitementsoustype);
+        $this->form_validation->set_rules($configtraitementsoustype);
 
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
         //Et on agit en conséquence
@@ -387,7 +408,6 @@ class CI_Catalogue extends MY_Controller
         $this->form_validation->set_rules($configST);
 
 
-
         if ($this->form_validation->run() == FALSE) {
             //Formualire invalide, retour à celui-ci
 
@@ -408,34 +428,34 @@ class CI_Catalogue extends MY_Controller
 
     public function configsoustype()
     {
-       $configsoustype =
-        array(
+        $configsoustype =
             array(
-                'field' => 'nomcourt',
-                'label' => 'Nom court',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'nomdevis',
-                'label' => 'Nom devis',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'bouquetCI',
-                'label' => 'Catégorie bouquet CI',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'bouquetEPTZ',
-                'label' => 'Catégorie bouquet EPTZ',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'CIunitaire',
-                'label' => 'Crédit impot unitaire ',
-                'rules' => 'required'
-            ),
-        );
+                array(
+                    'field' => 'nomcourt',
+                    'label' => 'Nom court',
+                    'rules' => 'required'
+                ),
+                array(
+                    'field' => 'nomdevis',
+                    'label' => 'Nom devis',
+                    'rules' => 'required'
+                ),
+                array(
+                    'field' => 'bouquetCI',
+                    'label' => 'Catégorie bouquet CI',
+                    'rules' => 'required'
+                ),
+                array(
+                    'field' => 'bouquetEPTZ',
+                    'label' => 'Catégorie bouquet EPTZ',
+                    'rules' => 'required'
+                ),
+                array(
+                    'field' => 'CIunitaire',
+                    'label' => 'Crédit impot unitaire ',
+                    'rules' => 'required'
+                ),
+            );
         return $configsoustype;
     }
 
@@ -455,7 +475,6 @@ class CI_Catalogue extends MY_Controller
         );
         return $configtraitementsoustype;
     }
-
 
 
 }

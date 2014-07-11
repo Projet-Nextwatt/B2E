@@ -69,6 +69,31 @@ class Client extends DataMapper
         }
     }
 
+    function list_client($actif) {
+        $clients = new User();
+        if ($actif == TRUE) {
+            $clients->where('Actif', 1);
+            $clients->get();
+        }
+        if ($actif == FALSE)
+        {
+            $clients->where('Actif', 0);
+            $clients->get();
+        }
+        else
+        {
+            $clients->get();
+        }
+        $retour = array();
+        foreach ($clients as $index => $client) {
+            $retour[$index] = $client->to_array();
+            $client->categorie->get();
+            unset($retour[$index]['mdp']);
+            unset($retour[$index]['Actif']);
+            $retour[$index]['categorie_id'] = $client->categorie->Nom_Categorie;
+        }
+        return $retour;
+    }
 
     function ajouter_client($data)
     {
@@ -97,12 +122,8 @@ class Client extends DataMapper
     {
 
         $id = $data;
-        var_dump($id);
         $client = new Client();
-        $client->where('id', $id);
-        $client->get();
-        var_dump($client);
-        $client->update('actif', 0);
+        $client->where('id', $id)->update('actif', 0);;
     }
 
     public function activerclient($data)
@@ -110,9 +131,7 @@ class Client extends DataMapper
 
         $id = $data;
         $client = new Client();
-        $client->where('id', $id);
-        $client->get();
-        $client->update('actif', 1);
+        $client->where('id', $id)->update('actif', 1);;
     }
 
 

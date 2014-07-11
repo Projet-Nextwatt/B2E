@@ -1,17 +1,29 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
+<div class="page-header">
+    <h1 align="center">
+        CATALOGUE</br>
+        <small><i class="ace-icon fa fa-angle-double-right"></i> Page d'accueil Catalogue</small>
+    </h1>
+</div>
+
+
+<?php
+//var_dump($produit);
+foreach ($produit as $prod) {
+?>
+<div class='row form-group'>
+    <label class="col-sm-4 no-padding-right control-label"
+           for="<?php echo($prod[1]) ?>"> <?php echo($prod[1]) ?> </label>
+
         <?php
-        // put your code here
+            $this->fonctionspersos->creerDropdown($soustypes, $respo, 'respo');
         ?>
-    </body>
-</html>
+
+
+    <div class="col-sm-4">
+        <?php echo form_error('$ref'); ?>
+    </div>
+</div>
+
+<?php
+}
+?>
