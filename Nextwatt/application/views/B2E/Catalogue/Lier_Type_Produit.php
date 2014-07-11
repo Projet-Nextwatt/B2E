@@ -9,21 +9,33 @@
 <?php
 //var_dump($produit);
 foreach ($produit as $prod) {
-?>
-<div class='row form-group'>
-    <label class="col-sm-4 no-padding-right control-label"
-           for="<?php echo($prod[1]) ?>"> <?php echo($prod[1]) ?> </label>
+    echo $types->soustypes;
+    ?>
+    <div class='row form-horizontal'>
 
-        <?php
-            $this->fonctionspersos->creerDropdown($soustypes, $respo, 'respo');
-        ?>
+        <label class="col-sm-4 no-padding-right control-label"
+       for="<?php echo($prod[1]) ?>"> <?php echo($prod[1]) ?> </label>
+
+        <div class="col-sm-6">
+        <select name='Produit' id='produit'>
+            <?php
+            if (isset($types)) {
+            foreach ($types as $t) {
+            ?>
+            <optgroup label="<?php echo $t['Nom_Type'] ?>">
+                <?php
+                } ?>
+                <option value="<?php echo $t->soustypes->id?>"><?php echo $t->soustypes->nomdevis ?></option>
+                <?php
+
+                }
+                }
+                ?>
+        </select>
+            </div>
 
 
-    <div class="col-sm-4">
-        <?php echo form_error('$ref'); ?>
+        <div class="col-sm-4">
+            <?php echo form_error('$ref'); ?>
+        </div>
     </div>
-</div>
-
-<?php
-}
-?>

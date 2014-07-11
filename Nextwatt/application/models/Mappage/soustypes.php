@@ -7,7 +7,7 @@ class Soustypes extends DataMapper {
     /*
      * Variables de relation (entre tables)
      */
-    var $has_one = array ('Type');
+    var $has_one = array ('type');
     var $has_many = array ('Catalogue', 'Article');
     
     /*

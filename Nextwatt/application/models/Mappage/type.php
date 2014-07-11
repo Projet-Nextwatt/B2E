@@ -1,23 +1,26 @@
 <?php
+
 /*
  * Classe Modèle pour la table Type, définir ici toutes les fonctionnalitées utilisant la table Type
  * CRUD de base mis en place.
  */
-class Type extends DataMapper {
+
+class Type extends DataMapper
+{
     /*
      * Variables de relation (entre tables)
      */
-    var $has_many = array ('Soustype');
-    
+    var $has_many = array('soustypes');
+
     /*
      * Variables correspondantes aux colonnes de la table.
      */
     var $ID_Type = "";
     var $Nom_Type = "";
     var $Code_Type = "";
-    
-    
-    function __construct() 
+
+
+    function __construct()
     {
         parent ::__construct();
     }
@@ -32,12 +35,22 @@ class Type extends DataMapper {
             return $obj->where('id', $id)->get()->all_to_array();
         }
     }
-    
+
+    public function afftypesoustype()
+    {
+        $type = new Type();
+
+        $type->where('Nom_Type', 'Isolation')->get();
+        $type->soustypes->get_iterated();
+
+
+    }
+
     function ajouter_type()
     {
         // Fonction d'ajout
     }
-    
+
     function modifier_type()
     {
         //Fonction de modification
@@ -51,8 +64,8 @@ class Type extends DataMapper {
         $type = $type->all_to_array();
 
         $retour = array();
-        foreach ($type as $untype){
-            $retour[]=array($untype['Categorie_Groupe'],$untype['id'],$untype['Nom_Categorie']);
+        foreach ($type as $untype) {
+            $retour[] = array($untype['Categorie_Groupe'], $untype['id'], $untype['Nom_Categorie']);
         }
         return $retour;
     }

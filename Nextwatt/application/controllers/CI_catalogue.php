@@ -292,12 +292,13 @@ class CI_Catalogue extends MY_Controller
     {
         $this->load->model('Mappage/catalogue', 'catalogue');
         $this->load->model('Mappage/soustypes', 'soustype');
+        $this->load->model('Mappage/type', 'type');
 
         $data = array();
         $data['produit'] = $this->catalogue->get_ref_bdd();
         $data['soustypes'] = $this->soustype->select_soustype();
+        $data['types'] = $this->type->afftypesoustype();
 
-        var_dump($data['soustypes']);
 
         $this->layout->title('Lier type au produit');
         $this->layout->view('B2E/Catalogue/Lier_Type_Produit', $data); //render view and layout
