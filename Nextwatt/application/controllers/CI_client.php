@@ -42,8 +42,6 @@ class CI_Client extends MY_Controller
                                     'value'=>$user['id'],
                                     'texte'=>$user['prenom'].' '.$user['nom']);
         }
-
-        
         $this->layout->title('Ajout client');
         $this->layout->view('B2E/Client/Add_Client', $data); // Render view and layout
     }
@@ -125,6 +123,20 @@ class CI_Client extends MY_Controller
     {
         $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
         $this->mapclients->supprimer_client($_POST['id']);
+        $this->consult_client();
+    }
+
+    public function ajax_archiverclient()
+    {
+        $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
+        $this->mapclients->archiverclient($_POST['id']);
+        $this->consult_client();
+    }
+
+    public function ajax_activerclient()
+    {
+        $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
+        $this->mapclients->activerclient($_POST['id']);
         $this->consult_client();
     }
 

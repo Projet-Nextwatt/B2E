@@ -88,26 +88,44 @@ class Client extends DataMapper
             'email' => $data['email'],
             'user_id' => $data['respo'],
             'dateajout' => $today,
+            'actif' => 1,
         );
-
-
         $this->db->insert('clients', $client);
     }
+
+    public function archiverclient($data)
+    {
+
+        $id = $data;
+        var_dump($id);
+        $client = new Client();
+        $client->where('id', $id);
+        $client->get();
+        var_dump($client);
+        $client->update('actif', 0);
+    }
+
+    public function activerclient($data)
+    {
+
+        $id = $data;
+        $client = new Client();
+        $client->where('id', $id);
+        $client->get();
+        $client->update('actif', 1);
+    }
+
 
     function modifier_client($data)
     {
         $id = $data['id'];
         unset($data['id']);
-
         $client = new Client();
         $client->where('id', $id)->get();
-        //Appliquer les datas
-
-        foreach ($data as $variable => $valeur) {
+        foreach ($data as $variable => $valeur){
             $client->$variable = $valeur;
         }
         return $client->save();
-
     }
 
     function supprimer_client($id)
