@@ -89,9 +89,9 @@ class Prixenergie extends DataMapper {
         $energie->delete();
     }
 
-    function select_prixrachat(){
+    function select_prixrachat($id){
         $energie = new Prixenergie();
-        $energie->where('id',2)->get();
-        return $energie->all_to_array('Prix');
+        $energie->where('id',$id)->get();
+        return $energie->all_to_array();
     }
 }

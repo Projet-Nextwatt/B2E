@@ -104,67 +104,58 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
                 Production à l'année ( en kWh )
             </th>
             <th>
-                Production cumulée jusqu'à l'année ( en kWh )
-            </th>
-            <th>
                 Tarif à l'année ( en € )
             </th>
             <th>
-                Flouz à l'année ( en € )
+                Recette à l'année ( en € )
             </th>
             <th>
-                Flouz cumulé à l'année ( en € )
+                Recette cumulé à l'année ( en € )
             </th>
         </tr>
         </thead>
         <tr>
-            <td id=""> Année 1</td>
-            <td id="Prod1"></td>
-            <td id="ProdCumul1"></td>
-            <td id="tarif1"></td>
-            <td id="flouz1"></td>
-            <td id="cumulflouz1"></td>
+            <td> Année 1</td>
+            <td><?php echo $Prodannuelle[0]?></td>
+            <td><?php echo $tarifannuel[0] ?></td>
+            <td><?php echo $flouzannuel[0] ?></td>
+            <td><?php echo $flouzcumul[0] ?></td>
 
         </tr>
         <tr>
-            <td id=""> Année 2</td>
-            <td id="Prod2"></td>
-            <td id="ProdCumul2"></td>
-            <td id="tarif2"></td>
-            <td id="flouz2"></td>
-            <td id="cumulflouz2"></td>
+            <td> Année 2</td>
+            <td><?php echo $Prodannuelle[1]?></td>
+            <td><?php echo $tarifannuel[1] ?></td>
+            <td><?php echo $flouzannuel[1] ?></td>
+            <td><?php echo $flouzcumul[1] ?></td>
         </tr>
         <tr>
-            <td id=""> Année 3</td>
-            <td id="Prod3"></td>
-            <td id="ProdCumul3"></td>
-            <td id="tarif3"></td>
-            <td id="flouz3"></td>
-            <td id="cumulflouz3"></td>
+            <td> Année 3</td>
+            <td><?php echo $Prodannuelle[2]?></td>
+            <td><?php echo $tarifannuel[2] ?></td>
+            <td><?php echo $flouzannuel[2] ?></td>
+            <td><?php echo $flouzcumul[2] ?></td>
         </tr>
         <tr>
-            <td id=""> Année 10</td>
-            <td id="Prod10"></td>
-            <td id="ProdCumul10"></td>
-            <td id="tarif10"></td>
-            <td id="flouz10"></td>
-            <td id="cumulflouz10"></td>
+            <td> Année 10</td>
+            <td><?php echo $Prodannuelle[9]?></td>
+            <td><?php echo $tarifannuel[9] ?></td>
+            <td><?php echo $flouzannuel[9] ?></td>
+            <td><?php echo $flouzcumul[9] ?></td>
         </tr>
         <tr>
-            <td id=""> Année 15</td>
-            <td id="Prod15"></td>
-            <td id="ProdCumul15"></td>
-            <td id="tarif15"></td>
-            <td id="flouz15"></td>
-            <td id="cumulflouz15"></td>
+            <td> Année 15</td>
+            <td><?php echo $Prodannuelle[14]?></td>
+            <td><?php echo $tarifannuel[14] ?></td>
+            <td><?php echo $flouzannuel[14] ?></td>
+            <td><?php echo $flouzcumul[14] ?></td>
         </tr>
         <tr>
-            <td id=""> Année 20</td>
-            <td id="Prod20"></td>
-            <td id="ProdCumul20"></td>
-            <td id="tarif20"></td>
-            <td id="flouz20"></td>
-            <td id="cumulflouz20"></td>
+            <td> Année 20</td>
+            <td><?php echo $Prodannuelle[19]?></td>
+            <td><?php echo $tarifannuel[19] ?></td>
+            <td><?php echo $flouzannuel[19] ?></td>
+            <td><?php echo $flouzcumul[19] ?></td>
         </tr>
     </table>
 </div>
@@ -182,3 +173,4 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
     </ul>
 </div>
 
+<?php var_dump($test); ?>

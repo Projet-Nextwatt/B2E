@@ -60,7 +60,6 @@ $("#station").change(function () {
         function (data) {
             if (data) {
                 var station = JSON.parse(data)
-                console.log();
                 $('.HEPP').html("Ville : <b>" + station.Ville + "</b> - HEPP : <span id='valeurhepp'>" + station.HEPP + "</span>");
             } else {
                 $('.HEPP').html("<i class='ace-icon fa fa-exclamation-triangle icon-animated-bell bigger-125'></i> Problème choix de station");
@@ -256,141 +255,154 @@ function calculrecette() {
     );
 }
 
-function anneeProd() {
-    $.post(
-        'ajax_prodannuelle',
-        {},
-        function (data) {
-            if (data) {
-                var prodAnnuelle = JSON.parse(data);
-                $('#Prod1').html(prodAnnuelle[0]);
-                $('#Prod2').html(prodAnnuelle[1]);
-                $('#Prod3').html(prodAnnuelle[2]);
-                $('#Prod10').html(prodAnnuelle[9]);
-                $('#Prod15').html(prodAnnuelle[14]);
-                $('#Prod20').html(prodAnnuelle[19]);
+//function anneeProd() {
+//    $.post(
+//        'ajax_prodannuelle',
+//        {},
+//        function (data) {
+//            if (data) {
+//                var prodAnnuelle = JSON.parse(data);
+//                $('#Prod1').html(prodAnnuelle[0]);
+//                $('#Prod2').html(prodAnnuelle[1]);
+//                $('#Prod3').html(prodAnnuelle[2]);
+//                $('#Prod10').html(prodAnnuelle[9]);
+//                $('#Prod15').html(prodAnnuelle[14]);
+//                $('#Prod20').html(prodAnnuelle[19]);
+//
+//
+////                var content = "<table>"
+////                $.each(prodAnnuelle, function (annee, prodAnnuelle) {
+////                    content += '<tr><td>' + 'Production pour l\'ann&eacute;e ' + (annee + 1) + ' : ' + prodAnnuelle + ' kWh/an </td></tr>';  // Création des lignes du tableau
+////                });
+////                content += "</table>"
+////
+////                $('#prodannuelle').empty();
+////                $('#prodannuelle').append(content);
+//            }
+//        },
+//        'text'
+//    );
+//};
+//function cumulProd() {
+//    $.post(
+//        'ajax_cumulprod',
+//        {},
+//        function (data) {
+//            if (data) {
+//                var prodCumulee = JSON.parse(data);
+//                $('#ProdCumul1').html(prodCumulee[0]);
+//                $('#ProdCumul2').html(prodCumulee[1]);
+//                $('#ProdCumul3').html(prodCumulee[2]);
+//                $('#ProdCumul10').html(prodCumulee[9]);
+//                $('#ProdCumul15').html(prodCumulee[14]);
+//                $('#ProdCumul20').html(prodCumulee[19]);
+//
+////                var content = "<table>"
+////                $.each(prodCumulee, function (annee, prodCumulAnnee) {
+////                    content += '<tr><td>' + 'Production cumul&eacute; jusqu\'&acirc; l\'ann&eacute;e ' + (annee + 1) + ' : ' + prodCumulAnnee + ' kWh </td></tr>';
+////                });
+////                content += "</table>"
+////
+////                $('#prodcumulee').empty();
+////                $('#prodcumulee').append(content);
+//            }
+//        },
+//        'text'
+//    );
+//};
+//function anneetarif() {
+//    $.post(
+//        'ajax_tarif',
+//        {},
+//        function (data) {
+//            if (data) {
+//                var tarif = JSON.parse(data);
+//                $('#tarif1').html(tarif[0]);
+//                $('#tarif2').html(tarif[1]);
+//                $('#tarif3').html(tarif[2]);
+//                $('#tarif10').html(tarif[9]);
+//                $('#tarif15').html(tarif[14]);
+//                $('#tarif20').html(tarif[19]);
+////                var content = "<table>"
+////                $.each(tarif, function (annee, tarifannee) {
+////                    content += '<tr><td>' + 'Tarif pour l\'ann&eacute;e ' + (annee + 1) + ' : ' + tarifannee.toFixed(4) + ' &euro;/kWh </td></tr>';
+////                });
+////                content += "</table>"
+////
+////                $('#tarifannee').empty();
+////                $('#tarifannee').append(content);
+//            }
+//        },
+//        'text'
+//    );
+//};
+//function anneeflouz() {
+//    $.post(
+//        'ajax_anneeflouz',
+//        {},
+//        function (data) {
+//            if (data) {
+//                var flouz = JSON.parse(data);
+//                $('#flouz1').html(flouz[0]);
+//                $('#flouz2').html(flouz[1]);
+//                $('#flouz3').html(flouz[2]);
+//                $('#flouz10').html(flouz[9]);
+//                $('#flouz15').html(flouz[14]);
+//                $('#flouz20').html(flouz[19]);
+//
+////                var content = "<table>"
+////                $.each(flouz, function (annee, flouzannee) {
+////                    content += '<tr><td>' + 'Flouz pour l\'ann&eacute;e ' + (annee + 1) + ' : ' + flouzannee + ' &euro;/an </td></tr>';
+////                });
+////                content += "</table>"
+////
+////                $('#flouzannuel').empty();
+////                $('#flouzannuel').append(content);
+//            }
+//        },
+//        'text'
+//    );
+//};
+//function cumulflouz() {
+//    $.post(
+//        'ajax_cumulflouz',
+//        {},
+//        function (data) {
+//            if (data) {
+//                var cumulflouz = JSON.parse(data);
+//                $('#cumulflouz1').html(cumulflouz[0]);
+//                $('#cumulflouz2').html(cumulflouz[1]);
+//                $('#cumulflouz3').html(cumulflouz[2]);
+//                $('#cumulflouz10').html(cumulflouz[9]);
+//                $('#cumulflouz15').html(cumulflouz[14]);
+//                $('#cumulflouz20').html(cumulflouz[19]);
+////                var content = "<table>"
+////                $.each(flouz, function (annee, flouzcumul) {
+////                    content += '<tr><td>' + 'Flouz cumul&eacute; jusqu\'&acirc; l\'ann&eacute;e ' + (annee + 1) + ' : ' + flouzcumul + ' &euro;/an </td></tr>';
+////                });
+////                content += "</table>"
+////
+////                $('#flouzcumulee').empty();
+////                $('#flouzcumulee').append(content);
+//            }
+//        },
+//        'text'
+//    );
+//
+//};
 
+$('#test').click(function () {
+    var tabrecette = document.getElementById('table-recette').innerHTML;
+    $.post(
+        'ajax_tabrecette',
+        {
+            tabrecette : tabrecette
+        },
+        function(data){
 
-//                console.log(prodAnnuelle[2]);
-//                var content = "<table>"
-//                $.each(prodAnnuelle, function (annee, prodAnnuelle) {
-//                    content += '<tr><td>' + 'Production pour l\'ann&eacute;e ' + (annee + 1) + ' : ' + prodAnnuelle + ' kWh/an </td></tr>';  // Création des lignes du tableau
-//                });
-//                content += "</table>"
-//
-//                $('#prodannuelle').empty();
-//                $('#prodannuelle').append(content);
-            }
-        },
-        'text'
-    );
-};
-function cumulProd() {
-    $.post(
-        'ajax_cumulprod',
-        {},
-        function (data) {
-            if (data) {
-                var prodCumulee = JSON.parse(data);
-                $('#ProdCumul1').html(prodCumulee[0]);
-                $('#ProdCumul2').html(prodCumulee[1]);
-                $('#ProdCumul3').html(prodCumulee[2]);
-                $('#ProdCumul10').html(prodCumulee[9]);
-                $('#ProdCumul15').html(prodCumulee[14]);
-                $('#ProdCumul20').html(prodCumulee[19]);
-
-//                var content = "<table>"
-//                $.each(prodCumulee, function (annee, prodCumulAnnee) {
-//                    content += '<tr><td>' + 'Production cumul&eacute; jusqu\'&acirc; l\'ann&eacute;e ' + (annee + 1) + ' : ' + prodCumulAnnee + ' kWh </td></tr>';
-//                });
-//                content += "</table>"
-//
-//                $('#prodcumulee').empty();
-//                $('#prodcumulee').append(content);
-            }
-        },
-        'text'
-    );
-};
-function anneetarif() {
-    $.post(
-        'ajax_tarif',
-        {},
-        function (data) {
-            if (data) {
-                var tarif = JSON.parse(data);
-                $('#tarif1').html(tarif[0]);
-                $('#tarif2').html(tarif[1]);
-                $('#tarif3').html(tarif[2]);
-                $('#tarif10').html(tarif[9]);
-                $('#tarif15').html(tarif[14]);
-                $('#tarif20').html(tarif[19]);
-//                var content = "<table>"
-//                $.each(tarif, function (annee, tarifannee) {
-//                    content += '<tr><td>' + 'Tarif pour l\'ann&eacute;e ' + (annee + 1) + ' : ' + tarifannee.toFixed(4) + ' &euro;/kWh </td></tr>';
-//                });
-//                content += "</table>"
-//
-//                $('#tarifannee').empty();
-//                $('#tarifannee').append(content);
-            }
-        },
-        'text'
-    );
-};
-function anneeflouz() {
-    $.post(
-        'ajax_anneeflouz',
-        {},
-        function (data) {
-            if (data) {
-                var flouz = JSON.parse(data);
-                $('#flouz1').html(flouz[0]);
-                $('#flouz2').html(flouz[1]);
-                $('#flouz3').html(flouz[2]);
-                $('#flouz10').html(flouz[9]);
-                $('#flouz15').html(flouz[14]);
-                $('#flouz20').html(flouz[19]);
-
-//                var content = "<table>"
-//                $.each(flouz, function (annee, flouzannee) {
-//                    content += '<tr><td>' + 'Flouz pour l\'ann&eacute;e ' + (annee + 1) + ' : ' + flouzannee + ' &euro;/an </td></tr>';
-//                });
-//                content += "</table>"
-//
-//                $('#flouzannuel').empty();
-//                $('#flouzannuel').append(content);
-            }
-        },
-        'text'
-    );
-};
-function cumulflouz() {
-    $.post(
-        'ajax_cumulflouz',
-        {},
-        function (data) {
-            if (data) {
-                var cumulflouz = JSON.parse(data);
-                $('#cumulflouz1').html(cumulflouz[0]);
-                $('#cumulflouz2').html(cumulflouz[1]);
-                $('#cumulflouz3').html(cumulflouz[2]);
-                $('#cumulflouz10').html(cumulflouz[9]);
-                $('#cumulflouz15').html(cumulflouz[14]);
-                $('#cumulflouz20').html(cumulflouz[19]);
-//                var content = "<table>"
-//                $.each(flouz, function (annee, flouzcumul) {
-//                    content += '<tr><td>' + 'Flouz cumul&eacute; jusqu\'&acirc; l\'ann&eacute;e ' + (annee + 1) + ' : ' + flouzcumul + ' &euro;/an </td></tr>';
-//                });
-//                content += "</table>"
-//
-//                $('#flouzcumulee').empty();
-//                $('#flouzcumulee').append(content);
-            }
-        },
-        'text'
-    );
-};
+        }
+    )
+})
 function canvasorient() {
 
 

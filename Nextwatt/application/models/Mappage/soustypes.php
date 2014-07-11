@@ -93,6 +93,5 @@ class Soustypes extends DataMapper {
 
         $st->delete();
     }
-    
-    
+
     }
