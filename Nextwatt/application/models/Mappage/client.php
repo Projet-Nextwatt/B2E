@@ -69,6 +69,31 @@ class Client extends DataMapper
         }
     }
 
+    function list_client($actif) {
+        $clients = new User();
+        if ($actif == TRUE) {
+            $clients->where('Actif', 1);
+            $clients->get();
+        }
+        if ($actif == FALSE)
+        {
+            $clients->where('Actif', 0);
+            $clients->get();
+        }
+        else
+        {
+            $clients->get();
+        }
+        $retour = array();
+        foreach ($clients as $index => $client) {
+            $retour[$index] = $client->to_array();
+            $client->categorie->get();
+            unset($retour[$index]['mdp']);
+            unset($retour[$index]['Actif']);
+            $retour[$index]['categorie_id'] = $client->categorie->Nom_Categorie;
+        }
+        return $retour;
+    }
 
     function ajouter_client($data)
     {
@@ -88,26 +113,38 @@ class Client extends DataMapper
             'email' => $data['email'],
             'user_id' => $data['respo'],
             'dateajout' => $today,
+            'actif' => 1,
         );
-
-
         $this->db->insert('clients', $client);
     }
+
+    public function archiverclient($data)
+    {
+
+        $id = $data;
+        $client = new Client();
+        $client->where('id', $id)->update('actif', 0);;
+    }
+
+    public function activerclient($data)
+    {
+
+        $id = $data;
+        $client = new Client();
+        $client->where('id', $id)->update('actif', 1);;
+    }
+
 
     function modifier_client($data)
     {
         $id = $data['id'];
         unset($data['id']);
-
         $client = new Client();
         $client->where('id', $id)->get();
-        //Appliquer les datas
-
-        foreach ($data as $variable => $valeur) {
+        foreach ($data as $variable => $valeur){
             $client->$variable = $valeur;
         }
         return $client->save();
-
     }
 
     function supprimer_client($id)

@@ -21,10 +21,16 @@ class Type extends DataMapper {
     {
         parent ::__construct();
     }
-    
-    function select_type()
+
+    function select_types($id)
     {
-        //Fonction de selection
+        if (empty($id)) {
+            $obj = new Type();
+            return $obj->get()->all_to_array();
+        } else {
+            $obj = new Catalogue();
+            return $obj->where('id', $id)->get()->all_to_array();
+        }
     }
     
     function ajouter_type()
@@ -36,11 +42,19 @@ class Type extends DataMapper {
     {
         //Fonction de modification
     }
-    
-    function supprimer_type()
+
+    function chargertypes()
     {
-        //Fonction de suppression
+        $type = new Type();
+        $type->select('id,Categorie_Groupe,Nom_Categorie');
+        $type->get();
+        $type = $type->all_to_array();
+
+        $retour = array();
+        foreach ($type as $untype){
+            $retour[]=array($untype['Categorie_Groupe'],$untype['id'],$untype['Nom_Categorie']);
+        }
+        return $retour;
     }
-    
-    
-    }
+
+}

@@ -9,9 +9,9 @@
     </h1>
 
     <div class="btn-group">
-<!--        <a href="--><?php //echo site_url("CI_catalogue/load_catalogue"); ?><!--">-->
+        <a href="<?php echo site_url("CI_catalogue/lier_type_produit"); ?>">
             <button type="button" class="btn btn-white btn-sm btn-primary">Lier type au produit</button>
-<!--        </a>-->
+        </a>
         <a href="<?php echo site_url("CI_catalogue/consult_soustype"); ?>">
         <button type="button" class="btn btn-white btn-sm btn-primary">Gérer liste types</button>
         </a>
