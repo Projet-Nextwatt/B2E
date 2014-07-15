@@ -117,12 +117,8 @@ if (isset($client)) {
 
     <div class="col-sm-6">
         <textarea class="col-xs-12" name="adresse" rows="3"
-                  id="adresse" placeholder="Votre adresse"><?php if (empty($_POST) AND isset($client)) {
-                echo $client['adresse'];
-            } else {
-                echo set_value('adresse');
-            } ?>
-        </textarea>
+                  id="adresse" placeholder="Votre adresse"
+                  ><?php if (empty($_POST) AND isset($client)) { echo $client['adresse']; } else { echo set_value('adresse'); } ?></textarea>
     </div>
     <div class="col-sm-3">
         <?php echo form_error('adresse'); ?>
