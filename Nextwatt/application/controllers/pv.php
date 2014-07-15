@@ -404,10 +404,7 @@ class PV extends MY_Controller
         $data['flouzannuel'] = $this->anneeflouz();
         $data['flouzcumul'] = $this->cumulflouz();
 
-        //TEEEEEEEEST
-        $this->load->model('Mappage/soustypes', 'soustype'); // Chargement model "Ensoleillement"
-        $data = array();
-        $data['test'] = $this->soustype->select_sous_type();
+
 
         $this->layout->breadcrumbs($breadcrumps);
         $this->layout->title('Récap B2E');
@@ -860,6 +857,7 @@ class PV extends MY_Controller
         $data['Prodannuelle'] = $this->prodannuelle();
         $data['tarifannuel'] = $this->tarif();
         $data['flouzannuel'] = $this->anneeflouz();
+
         $data['flouzcumul'] = $this->cumulflouz();
 
         // Load all views as normal
@@ -875,7 +873,6 @@ class PV extends MY_Controller
         $this->dompdf->render();
         //Preview
         $this->dompdf->stream("welcome.pdf", array('Attachment' => 0));
-
         //DL direct sans preview
 //        $this->dompdf->stream("welcome.pdf");
 

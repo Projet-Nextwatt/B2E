@@ -60,6 +60,17 @@
     </style>
 </head>
 <body>
+<script type="text/php">
+   $watermark = $pdf->open_object();
+   $w = $pdf->get_width();
+   $h = $pdf->get_height();
+   $pdf->text(0, 400, "TEST", Font_Metrics::get_font("verdana", "bold"),110, array(0.85, 0.85, 0.85), 100, 10);
+   $pdf->close_object();
+   $pdf->add_object($watermark, 'all');
+</script>
+<!--text( "position x", "position y","texte a aaficher",font_metrics::get_font(" Type de police"," type d'écriture"),
+"Taille de caratère", array( ? , ? , ?), ? , "Ecart en les lettres") -->
+
 <span>Vous avez choisi la station météo de : <strong><?php echo $this->session->userdata['Ville'] ?></strong></span>
 <br/>
 <br/>
@@ -134,5 +145,6 @@
         <td><?php echo $flouzcumul[19] ?></td>
     </tr>
 </table>
+
 </body>
 </html>
