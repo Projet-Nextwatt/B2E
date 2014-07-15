@@ -34,7 +34,9 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="panel panel-success">
-                    <div class="panel-heading align-left">Liste des utilisateurs</div>
+                    <div class="panel-heading align-left">Liste des utilisateurs  
+                        <span class="badge badge-success"><?php echo count($users);?></span>
+                    </div>
                     <?php $this->fonctionspersos->creerTableau($users, array(), 'CI_User/modif_user') ?>
                 </div>
             </div>
@@ -43,7 +45,9 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="panel panel-success">
-                    <div class="panel-heading align-left">Liste des utilisateurs désactivés</div>
+                    <div class="panel-heading align-left">Liste des utilisateurs désactivés
+                        <span class="badge badge-success"><?php echo count($usersinactifs);?></span>
+                    </div>
                     <?php $this->fonctionspersos->creerTableau($usersinactifs, array(), 'CI_User/modif_user') ?>
                 </div>
             </div>
