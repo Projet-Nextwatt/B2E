@@ -7,7 +7,7 @@
 </div>
 
 <div class="page-header">
-    <h1>Liste des Clients</h1>
+    <h1 class='center'>Clients</h1>
 </div>
 
 <div class="row">
@@ -21,17 +21,40 @@
                 <br/>
             </div>
         </div>
-        <br/>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="panel panel-default">
-                    <!-- Default panel contents -->
-                    <div class="panel-heading align-left">Liste des clients</div>
-                    <?php
-                    $this->fonctionspersos->creerTableau($clients, $enteteclients, 'CI_client/modif_client','CI_client/ajax_supprimerclient ');
-                    ?>
+
+        <div class="tabbable">
+
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active">
+                    <a href="#actif" data-toggle="tab">Clients</a>
+                </li>
+                <li>
+                    <a href="#archives" data-toggle="tab">Archives</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane in active" id="actif">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <?php
+                            $this->fonctionspersos->creerTableau($clients, $enteteclients=NULL, 'CI_client/modif_client', 'CI_client/ajax_supprimerclient ');
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="archives">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <?php
+                            $this->fonctionspersos->creerTableau($clientsarchive, $enteteclients, 'CI_client/modif_client', 'CI_client/ajax_supprimerclient ');
+                            ?>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
+

@@ -23,7 +23,8 @@ class CI_Client extends MY_Controller
         $this->load->library('fonctionspersos');
 
         $data = array();
-        $data['clients'] = $this->mapclient->select_client_tableau();
+        $data['clients'] = $this->mapclient->list_client(TRUE);
+        $data['clientsarchive'] = $this->mapclient->list_client(FALSE);
         $data['enteteclients'] = array('Id', 'Nom', 'Prenom', 'Email', 'Telephone fixe', 'Telephone Portable', 'Responsable');
         $this->layout->title('Liste des clients');
         $this->layout->view('B2E/Client/Consulter_Client.php', $data); // Render view and layout
@@ -98,6 +99,9 @@ class CI_Client extends MY_Controller
                                     'texte'=>$user['prenom'].' '.$user['nom']);
         }
 
+        $respo =  new User($data['client']['user_id']);
+        
+        $data['responsable']=$respo->prenom.' '.$respo->nom;
         $this->form_validation->set_rules($this->configclient);
 
 
@@ -105,14 +109,14 @@ class CI_Client extends MY_Controller
             //Formualire invalide, retour à celui-ci
 
             $this->layout->title('Modifier un client');
-            $this->layout->view('B2E/Client/Add_Client.php', $data); // Render view and layout
+            $this->layout->view('B2E/Client/Fiche_Client.php', $data); // Render view and layout
         } else {
             //Formulaire ok, traitement des données
             //Clean des données
             $this->form_validation->set_rules($this->configtraitementclient);
             $this->form_validation->run();
             if ($this->mapclient->modifier_client($_POST)) {
-                $this->consult_client();
+                header('Location:'. site_url("CI_client/consult_client"));
             } else {
                 echo 'error';
             }
@@ -227,4 +231,24 @@ class CI_Client extends MY_Controller
             'rules' => 'xss_clean|htmlentities'
         ),
     );
+    
+       public function tel(&$nbr)
+    {
+        $nbr = preg_replace("#[^0-9]#", '', $nbr);
+
+        if (strlen($nbr) == 10) {
+            for ($i = 0; $i < 5; $i++) {
+                $nbr_array[] = substr($nbr, $i * 2, 2);
+            }
+            $nbr = implode('.', $nbr_array);
+            return TRUE;
+        } elseif (strlen($nbr) == 0) {
+            return TRUE;
+        } else {
+
+            $this->form_validation->set_message('tel', 'Le champs %s doit contenir 10 chiffres');
+            return FALSE;
+        }
+    }
+
 }
