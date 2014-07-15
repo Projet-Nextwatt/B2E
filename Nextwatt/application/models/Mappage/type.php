@@ -39,10 +39,16 @@ class Type extends DataMapper
     public function afftypesoustype()
     {
         $type = new Type();
+        $unevariable = array();
+        $unevariable = $type->get();
+       //$type->soustypes->get();
+         echo($unevariable);
 
-        $type->where('Nom_Type', 'Isolation')->get();
-        $type->soustypes->get_iterated();
 
+
+
+
+        return $type;
 
     }
 
