@@ -53,7 +53,7 @@ class Client extends DataMapper
         }
     }
 
-    function select_client_tableau($id = NULL)
+    /*function select_client_tableau($id = NULL)
     {
         $clients = new Client();
         if ($id != NULL) {
@@ -67,38 +67,25 @@ class Client extends DataMapper
             $retour = $clients->all_to_array($champs);
             return $retour;
         }
-    }
+    }*/
 
-    function list_client($actif) {
-        $clients = new User();
+    function list_client($actif=NUL) {
+        $clients = new Client();
         if ($actif == TRUE) {
             $clients->where('Actif', 1);
-            $clients->get();
         }
-        if ($actif == FALSE)
+        else if ($actif == FALSE)
         {
             $clients->where('Actif', 0);
-            $clients->get();
         }
-        else
-        {
-            $clients->get();
-        }
-        $retour = array();
-        foreach ($clients as $index => $client) {
-            $retour[$index] = $client->to_array();
-            $client->categorie->get();
-            unset($retour[$index]['mdp']);
-            unset($retour[$index]['Actif']);
-            $retour[$index]['categorie_id'] = $client->categorie->Nom_Categorie;
-        }
-        return $retour;
+        $clients->order_by('user_id');
+        $clients->get();
+        
+        return $clients->all_to_array();
     }
 
     function ajouter_client($data)
     {
-        $today = date("Y-m-d");
-
         $client = array(
             'civilite' => $data['civilite'],
             'nom1' => $data['nom1'],
@@ -112,7 +99,7 @@ class Client extends DataMapper
             'tel2' => $data['tel2'],
             'email' => $data['email'],
             'user_id' => $data['respo'],
-            'dateajout' => $today,
+            'dateajout' => date("Y-m-d"),
             'actif' => 1,
         );
         $this->db->insert('clients', $client);

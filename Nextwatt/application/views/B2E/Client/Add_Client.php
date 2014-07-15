@@ -30,9 +30,11 @@ if (isset($client)) {
     echo form_open('CI_client/verif_form_client', $attributes, $hiden);
 }
 ?>
+    <?php if (isset($client) AND isset($client['email'])) {?>
 <div align="center">
     <a href="mailto:<?php echo($client['email']) ?>">Envoyer un e-mail au client</a>
 </div>
+    <?php } ?>
 
 <h4 class='green header'>Informations</h4>
 
