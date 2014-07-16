@@ -288,6 +288,10 @@ class CI_Catalogue extends MY_Controller
         return $newtab;
     }
 
+
+    ////////////////////////////////  GESTION DES SOUS-TYPES ////////////////////////////////////
+
+
     public function lier_type_produit()
     {
         $this->load->model('Mappage/catalogue', 'catalogue');
@@ -296,16 +300,43 @@ class CI_Catalogue extends MY_Controller
 
         $data = array();
         $data['produit'] = $this->catalogue->get_ref_bdd();
-        $data['soustypes'] = $this->soustype->select_soustype();
-        $data['types'] = $this->type->afftypesoustype();
+        $data['soustypes'] = $this->soustype->select_soustype_bytype();
+        $data['types'] = $this->type->select_types(null);
+
 
 
         $this->layout->title('Lier type au produit');
         $this->layout->view('B2E/Catalogue/Lier_Type_Produit', $data); //render view and layout
     }
 
-    ////////////////////////////////  GESTION DES SOUS-TYPES ////////////////////////////////////
+    public function lier_type_produit_action()
+    {
+        $this->load->model('Mappage/catalogue', 'catalogue');
+        if($this->catalogue->update_soustype_produit($_POST) == TRUE)
+        {
+            $data['rsltupdate'] = 'Update correctement réalisé.';
+            $this->layout->title('Lier type au produit');
+            $this->layout->view('B2E/Catalogue/Consulter_Catalogue ', $data); //render view and layout
+        }
+        else
+        {
 
+            $this->load->model('Mappage/catalogue', 'catalogue');
+            $this->load->model('Mappage/soustypes', 'soustype');
+            $this->load->model('Mappage/type', 'type');
+
+            $data = array();
+            $data['produit'] = $this->catalogue->get_ref_bdd();
+            $data['soustypes'] = $this->soustype->select_soustype_bytype();
+            $data['types'] = $this->type->select_types(null);
+            $data['rsltupdate'] = 'ATTENTION : un ou plusieurs produits ne sont pas lies a un sous type';
+
+            $this->layout->title('Lier type au produit');
+            $this->layout->view('B2E/Catalogue/Lier_Type_Produit', $data); //render view and layout
+            $this->layout->title('Lier type au produit');
+            $this->layout->view('B2E/Catalogue/Lier_Type_Produit', $data); //render view and layout
+        }
+    }
 
     public function gererlistetype_form()
     {

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="<?php echo $acertl ?>"/>
     <link rel="stylesheet" href="<?php echo $aceskins ?>"/>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="SHORTCUT ICON" href="<?php echo img_url('favicon.ico'); ?>">
 </head>
 
 <body class="login-layout">

@@ -18,7 +18,7 @@ class Catalogue extends DataMapper
      */
     var $Reference;
     var $Nom;
-    var $FK_SousType;
+    var $ID_SousType;
     var $Marque;
     var $Puissance;
     var $Libelle_Mat;
@@ -47,18 +47,17 @@ class Catalogue extends DataMapper
     {
         $refbddtest = new Catalogue();
 
-        $refbddtest->select('Reference');
+        $refbddtest->select('id, Nom');
         $refbddtest->get();
 
         $refbddtest = $refbddtest->all_to_array();
 
         /************************************************  GROS TEST DE LA MORT QUI TUE !!!  ***************************************/
-
+        $i = 0;
         $rslt = array();
         foreach ($refbddtest as $element) {
-            unset ($element['ID_Catalogue']);
             unset ($element['ID_SousType']);
-            unset ($element['Nom']);
+            unset ($element['Reference']);
             unset ($element['Marque']);
             unset ($element['Puissance']);
             unset ($element['Libelle_Mat']);
@@ -78,12 +77,10 @@ class Catalogue extends DataMapper
             unset ($element['Fiche_Tech']);
             unset ($element['Note']);
 
-            $i = 0;
-            foreach ($element as $sub_element) {
-                $rslt[$element['Reference']][$i] = $sub_element;
-                $i++;
-            }
 
+            $rslt[$i]['id'] = $element['id'];
+            $rslt[$i]['Nom'] = $element['Nom'];
+            $i++;
         }
         return $rslt;
     }
@@ -243,11 +240,35 @@ class Catalogue extends DataMapper
             $racc = 'raccorde&quot;:&quot;FALSE';
         }
         $obj->like('spec', $racc);
-
-
         return $obj->get()->all_to_array();
     }
 
+    function update_soustype_produit($data)
+    {
+        $prod = new Catalogue();
 
+        $i=0;
+        foreach ($data as $key => $value)
+        {
+            if($value != 1)
+            {
+                $prod->where('id', $key)->update('ID_SousType',$value);
+            }
+            else
+            {
+                $prodnosoustype[$i] = $key;
+                $i++;
+            }
+        }
+
+        if(isset($prodnosoustype))
+        {
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
+    }
 
 }

@@ -341,7 +341,13 @@ class PV extends MY_Controller
 
         $this->load->model('Mappage/prixenergie', 'energie');
         $data = array();
-        $data['energie'] = $this->energie->select_prixrachat();
+        if ($this->session->userdata('Raccordement') == 'TRUE') {
+            $idraccord = '2';
+        } else {
+            $idraccord = '1';
+        }
+        $data['energie'] = $this->energie->select_prixrachat($idraccord);
+        $this->session->set_userdata(array('Inflation' => $data['energie'][0]['Inflation']));
         $data['energie'] = $data['energie'][0]['Prix'];
 
         $this->layout->breadcrumbs($breadcrumps);
@@ -391,15 +397,26 @@ class PV extends MY_Controller
             )
         );
 
+
+        $data = array();
+        $data['Prodannuelle'] = $this->prodannuelle();
+        $data['tarifannuel'] = $this->tarif();
+        $data['flouzannuel'] = $this->anneeflouz();
+        $data['flouzcumul'] = $this->cumulflouz();
+
+
+
         $this->layout->breadcrumbs($breadcrumps);
         $this->layout->title('Récap B2E');
         $this->layout->js(js_url('etudesolaire'));
-        $this->layout->function_js('anneeProd()');
-        $this->layout->function_js('cumulProd()');
-        $this->layout->function_js('anneetarif()');
-        $this->layout->function_js('anneeflouz()');
-        $this->layout->function_js('cumulflouz()');
-        $this->layout->view('B2E/Etudes/Solaire/Recette.php'); // Render view and layout
+//        $this->layout->function_js('anneeProd()');
+//        $this->layout->function_js('cumulProd()');
+//        $this->layout->function_js('anneetarif()');
+//        $this->layout->function_js('anneeflouz()');
+//        $this->layout->function_js('cumulflouz()');
+        $this->layout->view('B2E/Etudes/Solaire/Recette.php',$data); // Render view and layout
+
+
     }
 
     public function ajax_geoposition()
@@ -431,8 +448,7 @@ class PV extends MY_Controller
     }
 
 
-    public
-    function ajax_heppstation()
+    public function ajax_heppstation()
     {
         // --------------------------------------
         $_POST['panneau'] = 1;
@@ -574,7 +590,10 @@ class PV extends MY_Controller
                 'Heppnet' => $this->session->userdata('Heppnet'),
                 'Raccordement' => $temparray['raccorde'],
                 'Production' => $prodtotale,
-                'Panneau' => $data['0']['Nom']);
+                'Panneau' => $data['0']['Nom'],
+                'MarquePanneau' => $data['0']['Marque'],
+                'PrixPanneau' => $data['0']['Prix_Annonce_TTC']
+            );
             $this->session->set_userdata($tabsession);
 
             echo $spec;
@@ -629,58 +648,65 @@ class PV extends MY_Controller
         }
     }
 
-    public
-    function ajax_prodannuelle()
-    {
+//    public
+//    function ajax_prodannuelle()
+//    {
+//        $Production = $this->session->userdata('Production');
+//        if (isset($Production)) {
+//            $jsonProdAnnuelle = json_encode($this->prodannuelle());
+//            echo $jsonProdAnnuelle;
+//        } else {
+//            $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
+//            show_error($message_403, 403, '403 - Acc&egrave;s interdit');
+//        }
+//    }
+
+    public function prodannuelle(){
         $Production = $this->session->userdata('Production');
-        if (isset($Production)) {
-            $prodAnneeZero = $Production;
-            $raisonProd = 1 - (0.5 / 100); // Raison production
-            $ligneProdAnnuelle = '';
+        $prodAnneeZero = $Production;
+        $raisonProd = 1 - (0.5 / 100); // Raison production
+        $ligneProdAnnuelle = '';
 
-            for ($i = 0; $i < 20; $i++) {
-                $raisonProdPuissance = pow($raisonProd, $i); // Raison production puissance $i pour correspondre avec l'année
-                $prodAnneChoisie = round(($prodAnneeZero * $raisonProdPuissance), 2); // Prod à l'année zero * raison prod puissance arrondie à 2 chiffres après la virgule
-                $ligneProdAnnuelle[$i] = $prodAnneChoisie;
+        for ($i = 0; $i < 20; $i++) {
+            $raisonProdPuissance = pow($raisonProd, $i); // Raison production puissance $i pour correspondre avec l'année
+            $prodAnneChoisie = round(($prodAnneeZero * $raisonProdPuissance), 2); // Prod à l'année zero * raison prod puissance arrondie à 2 chiffres après la virgule
+            $ligneProdAnnuelle[$i] = $prodAnneChoisie;
 
-            }
-            $jsonProdAnnuelle = json_encode($ligneProdAnnuelle);
-            echo $jsonProdAnnuelle;
-        } else {
-            $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
-            show_error($message_403, 403, '403 - Acc&egrave;s interdit');
         }
+        return $ligneProdAnnuelle;
     }
 
-    public
-    function ajax_cumulprod()
-    {
-        $Production = $this->session->userdata('Production');
-        if (isset($Production)) {
-            $prodAnneeZero = $Production;
-            $raisonProd = 1 - (0.5 / 100); // Raison production
-            $ligneProdPuissance = '';
+//    public
+//    function ajax_cumulprod()
+//    {
+//        $Production = $this->session->userdata('Production');
+//        if (isset($Production)) {
+//            $prodAnneeZero = $Production;
+//            $raisonProd = 1 - (0.5 / 100); // Raison production
+//            $ligneProdPuissance = '';
+//
+//            for ($i = 0; $i < 20; $i++) {
+//                $raisonProdPuissance = pow($raisonProd, $i + 1); // Raison production puissance $i pour correspondre avec l'année en cours
+//                $prodCumulee = round($prodAnneeZero * ((1 - $raisonProdPuissance) / (1 - $raisonProd)), 2); // Calcul de la prod cumulée
+//                $ligneProdPuissance[$i] = $prodCumulee;
+//
+//            }
+//
+//            $jsonProdAnnuelle = json_encode($ligneProdPuissance);
+//            echo $jsonProdAnnuelle;
+//        } else {
+//            $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
+//            show_error($message_403, 403, '403 - Acc&egrave;s interdit');
+//        }
+//    }
 
-            for ($i = 0; $i < 20; $i++) {
-                $raisonProdPuissance = pow($raisonProd, $i + 1); // Raison production puissance $i pour correspondre avec l'année en cours
-                $prodCumulee = round($prodAnneeZero * ((1 - $raisonProdPuissance) / (1 - $raisonProd)), 2); // Calcul de la prod cumulée
-                $ligneProdPuissance[$i] = $prodCumulee;
-
-            }
-
-            $jsonProdAnnuelle = json_encode($ligneProdPuissance);
-            echo $jsonProdAnnuelle;
-        } else {
-            $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
-            show_error($message_403, 403, '403 - Acc&egrave;s interdit');
-        }
-    }
 
     public
     function ajax_tarif()
     {
         $Tarifedf = $this->session->userdata('Tarifedf');
-        $raccordement = $this->session->userdata('Raccordement');
+        $raccordement = $this->session->userdata('Inflation');
+
         if (isset($Tarifedf) && isset($raccordement)) {
             $tarifAnneeZero = $Tarifedf;
             $raisonTarif = 1 + ($raccordement / 100); // Raison tarif
@@ -699,11 +725,24 @@ class PV extends MY_Controller
         }
     }
 
+    public function tarif(){
+        $Tarifedf = $this->session->userdata('Tarifedf');
+        $raccordement = $this->session->userdata('Inflation');
+        $tarifAnneeZero = $Tarifedf;
+        $raisonTarif = 1 + ($raccordement / 100); // Raison tarif
+
+        for ($i = 0; $i < 20; $i++) {
+            $raisonTarifPuissance = pow($raisonTarif, $i);
+            $tarifAnneeChoisie = $tarifAnneeZero * $raisonTarifPuissance;
+            $ligneTarif[$i] = round($tarifAnneeChoisie, 2);
+        }
+        return $ligneTarif;
+    }
     public
     function ajax_anneeflouz()
     {
         $tarifAnnee = $this->session->userdata('Tarifedf');
-        $raccordement = $this->session->userdata('Raccordement');
+        $raccordement = $this->session->userdata('Inflation');
         $productionAnneeZero = $this->session->userdata('Production');
         if (isset($tarifAnnee) && isset($raccordement) && isset($productionAnneeZero)) {
             $ligneFlouz = '';
@@ -728,11 +767,31 @@ class PV extends MY_Controller
         }
     }
 
+    public function anneeflouz(){
+        $tarifAnnee = $this->session->userdata('Tarifedf');
+        $raccordement = $this->session->userdata('Inflation');
+        $productionAnneeZero = $this->session->userdata('Production');
+        $ligneFlouz = '';
+
+        $flouzTotal = $tarifAnnee * $productionAnneeZero;
+        $raisonTarif = 1 + ($raccordement / 100);
+        $raisonProd = 1 - (0.5 / 100);
+        $raisonTotale = $raisonTarif * $raisonProd;
+
+        for ($i = 0; $i < 20; $i++) {
+            $raisonFlouz = pow($raisonTotale, $i);
+            $flouzAnneeChoisie = round(($flouzTotal * $raisonFlouz), 0);
+            $ligneFlouz[$i] = $flouzAnneeChoisie;
+        }
+
+        return $ligneFlouz;
+    }
+
     public
     function ajax_cumulflouz()
     {
         $tarifAnnee = $this->session->userdata('Tarifedf');
-        $raccordement = $this->session->userdata('Raccordement');
+        $raccordement = $this->session->userdata('Inflation');
         $productionAnneeZero = $this->session->userdata('Production');
         if (isset($tarifAnnee) && isset($raccordement) && isset($productionAnneeZero)) {
             $ligneFlouz = '';
@@ -755,6 +814,26 @@ class PV extends MY_Controller
             $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
             show_error($message_403, 403, '403 - Acc&egrave;s interdit');
         }
+
+    }
+
+    public function cumulflouz(){
+        $tarifAnnee = $this->session->userdata('Tarifedf');
+        $raccordement = $this->session->userdata('Inflation');
+        $productionAnneeZero = $this->session->userdata('Production');
+            $ligneFlouz = '';
+
+            $flouzTotal = $tarifAnnee * $productionAnneeZero;
+            $raisonTarif = 1 + ($raccordement / 100);
+            $raisonProd = 1 - (0.5 / 100);
+            $raisonTotale = $raisonTarif * $raisonProd;
+
+            for ($i = 0; $i < 20; $i++) {
+                $raisonFlouz = pow($raisonTotale, $i + 1);
+                $flouzCumule = round($flouzTotal * ((1 - $raisonFlouz) / (1 - $raisonTotale)), 0);
+                $ligneFlouz[$i] = $flouzCumule;
+            }
+        return $ligneFlouz;
     }
 
     public function ajax_selectpanneaucritere()
@@ -762,11 +841,44 @@ class PV extends MY_Controller
         if (isset($_POST['type']) && isset($_POST['raccordement'])) {
             $critere = array($_POST['type']);
             $this->load->model('Mappage/catalogue', 'catalogue');
-            $critere = array($_POST['type'],$_POST['raccordement']);
+            $critere = array($_POST['type'], $_POST['raccordement']);
             $data = $this->catalogue->select_panneau_critere($critere); // Recup des données station avec le model "ensoleillement"
             $data = json_encode($data);
             echo $data;
         }
+    }
+
+    public function pdf()
+    {
+        //CSS
+
+        //Image
+//        $this->load->img_url('minilogonextwatt.png');
+//        $this->load->img_url('feuillenextwatt.png');
+
+        $data = array();
+        $data['Prodannuelle'] = $this->prodannuelle();
+        $data['tarifannuel'] = $this->tarif();
+        $data['flouzannuel'] = $this->anneeflouz();
+
+        $data['flouzcumul'] = $this->cumulflouz();
+
+        // Load all views as normal
+        $this->load->view('B2E/Etudes/Solaire/PDF_Recette.php' , $data);
+        // Get output html
+        $html = $this->output->get_output();
+
+        // Load library
+        $this->load->library('dompdf_gen');
+
+        // Convert to PDF
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        //Preview
+        $this->dompdf->stream("welcome.pdf", array('Attachment' => 0));
+        //DL direct sans preview
+//        $this->dompdf->stream("welcome.pdf");
+
     }
 
 }

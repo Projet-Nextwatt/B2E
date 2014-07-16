@@ -41,6 +41,24 @@ class Soustypes extends DataMapper {
         }
     }
 
+    function select_soustype_bytype()
+    {
+        $this->db->select('Nom_Type, soustypes.id, nomdevis')
+            ->from('types')
+//            ->where('Nom_Type', $type)
+            ->join('soustypes', 'types.id = soustypes.type_id');
+        $query = $this->db->get();
+
+        if($query->num_rows()>0)
+        {
+            foreach($query->result() as $row)
+            {
+                $data[] = $row;
+            }
+            return $data;
+        }
+    }
+
     function select_soustype_tableau($id = NULL)
     {
         $soustype = new Soustypes();
@@ -71,7 +89,9 @@ class Soustypes extends DataMapper {
 
         $this->db->insert('soustypes', $soustype);
     }
-    
+
+
+
     function modifier_soustype($data)
     {
         $id = $data['id'];
@@ -94,6 +114,5 @@ class Soustypes extends DataMapper {
 
         $st->delete();
     }
-    
-    
+
     }
