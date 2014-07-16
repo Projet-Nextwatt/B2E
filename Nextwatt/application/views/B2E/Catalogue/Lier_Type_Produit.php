@@ -7,6 +7,10 @@
 
 
 <?php
+if(isset($rsltupdate))
+{?><p align="center"><i class="ace-icon fa fa-exclamation-triangle icon-animated-bell bigger-125"></i><?php
+    echo($rsltupdate);?></p> <br/><?php
+}
 echo form_open('CI_catalogue/lier_type_produit_action');
 //var_dump($soustypes);
 foreach ($produit as $prod) {

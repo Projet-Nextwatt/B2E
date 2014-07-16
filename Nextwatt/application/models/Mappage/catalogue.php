@@ -253,15 +253,21 @@ class Catalogue extends DataMapper
             if($value != 1)
             {
                 $prod->where('id', $key)->update('ID_SousType',$value);
-                return TRUE;
-
             }
             else
             {
                 $prodnosoustype[$i] = $key;
                 $i++;
-                return $prodnosoustype;
             }
+        }
+
+        if(isset($prodnosoustype))
+        {
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
         }
     }
 
