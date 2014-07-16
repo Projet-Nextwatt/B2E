@@ -52,6 +52,7 @@ class Login extends CI_Controller
             if ($retourmodel == 1) {
                 $user = $this->mapuser->select_user_by_login($_POST['login']);
                 $sess_array = array(
+                        'id_login' => $user[0]['id'],
                         'nom' => $user[0]['nom'],
                         'prenom' => $user[0]['prenom']
                 );

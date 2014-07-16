@@ -20,11 +20,33 @@ class CI_Client extends MY_Controller
     public function consult_client()
     {
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du model
+        $this->load->model('Mappage/user', 'user'); //Chargement du modele
         $this->load->library('fonctionspersos');
 
         $data = array();
-        $data['clients'] = $this->mapclient->list_client(TRUE);
-        $data['clientsarchive'] = $this->mapclient->list_client(FALSE);
+        $clients = $this->mapclient->list_client(TRUE);
+        $data['mesclients']=array();
+        foreach ($clients as $client){
+            if ($client['user_id']==$this->session->userdata('userconnect')['id_login']){
+                $data['mesclients'][]=$client;
+            } else {
+                $data['clients'][$client['user_id']][]=$client;
+            }
+        }
+        
+        $clientsarchives= $this->mapclient->list_client(FALSE);
+        foreach ($clientsarchives as $client){    
+            if ($client['user_id']==$this->session->userdata('userconnect')['id_login']){
+                $data['mesclientsarchive']=$client;
+            }
+            $data['clientsarchive'][$client['user_id']][]=$client;
+        }
+        
+        $users  = $this->user->list_user(TRUE);
+        foreach ($users as $user){
+            $data['users'][$user['id']]=$user;
+        }
+        
         $data['enteteclients'] = array('Id', 'Nom', 'Prenom', 'Email', 'Telephone fixe', 'Telephone Portable', 'Responsable');
         $this->layout->title('Liste des clients');
         $this->layout->view('B2E/Client/Consulter_Client.php', $data); // Render view and layout
@@ -81,7 +103,7 @@ class CI_Client extends MY_Controller
             }
             else
             {
-                $this->consult_client();
+                header('Location:'. site_url("CI_client/consult_client"));
             }
         }
     }
@@ -103,7 +125,6 @@ class CI_Client extends MY_Controller
         
         $data['responsable']=$respo->prenom.' '.$respo->nom;
         $this->form_validation->set_rules($this->configclient);
-
 
         if ($this->form_validation->run() == FALSE) {
             //Formualire invalide, retour à celui-ci
@@ -127,21 +148,21 @@ class CI_Client extends MY_Controller
     {
         $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
         $this->mapclients->supprimer_client($_POST['id']);
-        $this->consult_client();
+        header('Location:'. site_url("CI_client/consult_client"));
     }
 
     public function ajax_archiverclient()
     {
         $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
         $this->mapclients->archiverclient($_POST['id']);
-        $this->consult_client();
+        header('Location:'. site_url("CI_client/consult_client"));
     }
 
     public function ajax_activerclient()
     {
         $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
         $this->mapclients->activerclient($_POST['id']);
-        $this->consult_client();
+        header('Location:'. site_url("CI_client/consult_client"));
     }
 
     public $configclient = array(

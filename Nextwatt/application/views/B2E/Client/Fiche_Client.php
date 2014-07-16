@@ -2,7 +2,7 @@
 <div class="col-xs-12">
 
 <div class='row'>
-    <div class='col-sm-6'>
+    <div class='col-md-6'>
         <div class="widget-box">
             <div class="widget-header widget-header-flat">
                 <h4 class='widget-title'>Fiche client</h4>
@@ -63,7 +63,7 @@
 
 
 
-    <div class='col-sm-6'>
+    <div class='col-md-6'>
         <div class='row'>
             <div class='col-xs-12'>
                 <div class="widget-box collapsed">
@@ -282,14 +282,14 @@
                                     if (empty($_POST) AND isset($client)) {
                                         $respo = $client['user_id'];
                                     } else {
-                                        $respo = set_value('respo');
+                                        $respo = set_value('user_id');
                                     }
-                                    $this->fonctionspersos->creerDropdown($users, $respo, 'respo');
+                                    $this->fonctionspersos->creerDropdown($users, $respo, 'user_id');
                                     ?>
                                 </div>
                             </div>
                             <div class="col-sm-8 col-sm-offset-4">
-    <?php echo form_error('respo'); ?>
+    <?php echo form_error('user_id'); ?>
                             </div>
 
                             <div class="row form-group">
