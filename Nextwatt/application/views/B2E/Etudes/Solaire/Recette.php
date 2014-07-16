@@ -168,7 +168,7 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
         </li>
 
         <li class="next">
-            <a href="<?php echo site_url("pv/recette"); ?>"><h4>Chuuuuuut cliques pas ! →</h4></a>
+            <a href="<?php echo site_url("pv/pdf"); ?>"><h4>Portable Document Format →</h4></a>
         </li>
     </ul>
 </div>

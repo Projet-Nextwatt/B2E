@@ -590,7 +590,10 @@ class PV extends MY_Controller
                 'Heppnet' => $this->session->userdata('Heppnet'),
                 'Raccordement' => $temparray['raccorde'],
                 'Production' => $prodtotale,
-                'Panneau' => $data['0']['Nom']);
+                'Panneau' => $data['0']['Nom'],
+                'MarquePanneau' => $data['0']['Marque'],
+                'PrixPanneau' => $data['0']['Prix_Annonce_TTC']
+            );
             $this->session->set_userdata($tabsession);
 
             echo $spec;

@@ -244,8 +244,8 @@ function calculrecette() {
         function (data) {
             if (data && production != '' && tarifedf != '') {
                 var recette = JSON.parse(data)
-                $("#recetteannuelle").html("Recette annuelle : <span id='tarifannuel'>" + recette.annuelle + "</span> &euro;/kWh");
-                $("#recettevingtans").html("Recette sur 20 ans : " + recette.vingtans + " &euro;/ sur 20 ans");
+                $("#recetteannuelle").html("Recette annuelle : <span id='tarifannuel'>" + recette.annuelle + "</span> &euro;");
+                $("#recettevingtans").html("Recette sur 20 ans : " + recette.vingtans + " &euro; sur 20 ans");
             } else {
                 $("#recetteannuelle").html("<span class='text-danger'><i class='ace-icon fa fa-exclamation-triangle icon-animated-bell bigger-125'></i> Calcul impossible donnée(s) manquante(s)</span> ");
                 $("#recettevingtans").html("");
