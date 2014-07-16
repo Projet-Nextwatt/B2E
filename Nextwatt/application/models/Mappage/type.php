@@ -38,12 +38,20 @@ class Type extends DataMapper
 
     public function afftypesoustype()
     {
-        $type = new Type();
+        $this->db->select('nomcourt, nomdevis')
+        ->from('types')
+        ->where('Nom_Type', 'Isolation')
+        ->join('soustypes', 'types.id = soustypes.type_id');
+        $query = $this->db->get();
 
-        $type->where('Nom_Type', 'Isolation')->get();
-        $type->soustypes->get_iterated();
-
-
+        if($query->num_rows()>0)
+        {
+            foreach($query->result() as $row)
+            {
+                $data[] = $row;
+            }
+            return $data;
+        }
     }
 
     function ajouter_type()

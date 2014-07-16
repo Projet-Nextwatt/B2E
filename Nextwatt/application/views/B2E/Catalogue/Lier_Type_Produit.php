@@ -1,41 +1,39 @@
 <div class="page-header">
     <h1 align="center">
         CATALOGUE</br>
-        <small><i class="ace-icon fa fa-angle-double-right"></i> Page d'accueil Catalogue</small>
+        <small><i class="ace-icon fa fa-angle-double-right"></i> Lier un type à un produit</small>
     </h1>
 </div>
 
 
 <?php
-//var_dump($produit);
+echo form_open('CI_catalogue/lier_type_produit_action');
+//var_dump($soustypes);
 foreach ($produit as $prod) {
-    echo $types->soustypes;
     ?>
-    <div class='row form-horizontal'>
+    <div class='row form-horizontal col-xs-12'>
 
-        <label class="col-sm-4 no-padding-right control-label"
-       for="<?php echo($prod[1]) ?>"> <?php echo($prod[1]) ?> </label>
+        <label class="col-sm-6 no-padding-right control-label"
+               for="<?php echo($prod['Nom']) ?>"> <?php echo($prod['Nom']) ?> </label>
 
-        <div class="col-sm-6">
-        <select name='Produit' id='produit'>
+        <div class="col-sm-offset-7">
             <?php
-            if (isset($types)) {
-            foreach ($types as $t) {
-            ?>
-            <optgroup label="<?php echo $t['Nom_Type'] ?>">
-                <?php
-                } ?>
-                <option value="<?php echo $t->soustypes->id?>"><?php echo $t->soustypes->nomdevis ?></option>
-                <?php
 
-                }
-                }
-                ?>
-        </select>
-            </div>
-
-
+            $this->fonctionspersos->creerDropdown($soustypes, null, $prod['id']); ?>
+        </div>
         <div class="col-sm-4">
             <?php echo form_error('$ref'); ?>
         </div>
     </div>
+<?php } ?>
+    <div class="row form-group">
+        <div class="col-xs-offset-3 col-md-6">
+            <button type="submit" class="btn btn-sm btn-info">
+                <i class="ace-icon fa fa-floppy-o bigger-160"></i>
+                Enregistrer
+            </button>
+        </div>
+    </div>
+<?php
+echo form_close();
+?>

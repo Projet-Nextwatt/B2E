@@ -26,10 +26,15 @@
 
             <ul id="myTab" class="nav nav-tabs">
                 <li class="active">
-                    <a href="#actif" data-toggle="tab">Clients</a>
+                    <a href="#actif" data-toggle="tab">Clients 
+                        <span class="badge badge-info"><?php echo count($clients);?></span>
+                    </a>
+                    
                 </li>
                 <li>
-                    <a href="#archives" data-toggle="tab">Archives</a>
+                    <a href="#archives" data-toggle="tab">Archives 
+                        <span class="badge badge-info"><?php echo count($clientsarchive);?></span>
+                    </a>
                 </li>
             </ul>
 
