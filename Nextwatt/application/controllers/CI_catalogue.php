@@ -296,12 +296,25 @@ class CI_Catalogue extends MY_Controller
 
         $data = array();
         $data['produit'] = $this->catalogue->get_ref_bdd();
-        $data['soustypes'] = $this->soustype->select_soustype();
-        $data['types'] = $this->type->afftypesoustype();
+        $data['soustypes'] = $this->soustype->select_soustype_bytype();
+        $data['types'] = $this->type->select_types(null);
 
 
         $this->layout->title('Lier type au produit');
         $this->layout->view('B2E/Catalogue/Lier_Type_Produit', $data); //render view and layout
+    }
+
+    public function lier_type_produit_action()
+    {
+        $this->load->model('Mappage/catalogue', 'catalogue');
+        if($this->catalogue->update_soustype_produit($_POST) == TRUE)
+        {
+            echo('Wallah t frais t nickel');
+        }
+        else
+        {
+            echo('Tention frateee, ta pas tout rempli');
+        }
     }
 
     ////////////////////////////////  GESTION DES SOUS-TYPES ////////////////////////////////////
