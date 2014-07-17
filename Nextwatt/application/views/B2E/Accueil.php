@@ -12,10 +12,11 @@
 <div class="row">
     </br></br></br></br>
     <div align="center" >
+        <a href="<?php echo site_url("dossier/consult_client"); ?>">
         <button  type="button" class="btn btn-success">
             <i class="ace-icon fa fa-folder-open-o"></i>
             Faire un nouveau dossier
-        </button>
+        </button></a>
     </div>
 </div>
 
