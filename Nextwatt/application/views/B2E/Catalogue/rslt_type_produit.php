@@ -6,5 +6,4 @@
 </div>
 
 <?php
-    echo('Vous avez update : '.$compteurupdate.' produits <br/> <br/>');
-    echo('Attention, '.$prodnosoustype.' produits ne sont pas modifies<br/> <br/>');
+    echo('Vous avez update : '.$rsltupdate.' produits <br/> <br/>');

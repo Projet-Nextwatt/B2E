@@ -246,7 +246,6 @@ class Catalogue extends DataMapper
     function update_soustype_produit($data)
     {
         $prod = new Catalogue();
-        var_dump($data);
         $data['prodnosoustype']=0;
         $compteurupdate=0;
 
@@ -255,17 +254,10 @@ class Catalogue extends DataMapper
             if($value != 1)
             {
                 $prod->where('id', $key)->update('ID_SousType',$value);
-                $compteurupdate++;
-                echo('je suis passé par ici je repassera par la <br/> ');
-                var_dump($compteurupdate);
-            }
-            else
-            {
-                $data['prodnosoustype']++;
+                $rsltupdate = $compteurupdate++;
             }
         }
-
-        return $data;
+        return $rsltupdate;
     }
 
 }
