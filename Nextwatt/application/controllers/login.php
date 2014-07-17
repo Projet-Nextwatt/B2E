@@ -40,6 +40,7 @@ class Login extends CI_Controller
             $data['login'] = htmlspecialchars(trim($_POST['login']));
             $data['mdp'] = sha1(htmlspecialchars(trim($_POST['password'])));
             $this->load->model('Mappage/user', 'mapuser');
+            $this->load->model('Mappage/categorie', 'categorie');
             $retourmodel = $this->mapuser->verif_login($data);
             if ($retourmodel == '1') {
                 if ($_POST['rememberme'] == 'true') {
@@ -51,10 +52,15 @@ class Login extends CI_Controller
 
             if ($retourmodel == 1) {
                 $user = $this->mapuser->select_user_by_login($_POST['login']);
+                $sacategorie = $this->categorie->select_categorie($user['categorie_id']);
                 $sess_array = array(
-                        'id_login' => $user[0]['id'],
-                        'nom' => $user[0]['nom'],
-                        'prenom' => $user[0]['prenom']
+                        'id_login' => $user['id'],
+                        'nom' => $user['nom'],
+                        'prenom' => $user['prenom'],
+                        'Droit_SUDO' => $sacategorie['Droit_SUDO'],
+                        'Droit_Admin' => $sacategorie['Droit_Admin'],
+                        'Droit_Catalogue' => $sacategorie['Droit_Catalogue'],
+                        'Droit_Edit_Devis' => $sacategorie['Droit_Edit_Devis'],
                 );
                 $this->session->set_userdata('userconnect', $sess_array);
             }

@@ -27,7 +27,7 @@
             {
                 echo('Aucune suppression <br/> <br/>');
             }
-            if($lignemodifiée!=0)
+            if(isset($lignemodifiée) AND $lignemodifiée!=0)
             {
                echo('Vous avez modifié : '.$lignemodifiée.' lignes <br/> <br/>');
             }

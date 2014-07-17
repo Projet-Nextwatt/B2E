@@ -177,7 +177,7 @@ class User extends DataMapper {
         $user->where('Identifiant', $login);
         $user->get();
 
-        $retour = $user->all_to_array();
+        $retour = $user->to_array();
 
 
         return $retour;
