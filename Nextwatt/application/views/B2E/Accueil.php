@@ -12,7 +12,7 @@
 <div class="row">
     </br></br></br></br>
     <div align="center" >
-        <a href="<?php echo site_url("dossier/consult_client"); ?>">
+        <a href="<?php echo site_url("dossier"); ?>">
         <button  type="button" class="btn btn-success">
             <i class="ace-icon fa fa-folder-open-o"></i>
             Faire un nouveau dossier

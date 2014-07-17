@@ -357,7 +357,7 @@ class PV extends MY_Controller
         $this->layout->view('B2E/Etudes/Solaire/Calcul_Recette', $data); // Render view and layout
     }
 
-    public function recette()
+    public function recette($msgsucces = null)
     {
         $breadcrumps = array(
             array(
@@ -403,7 +403,10 @@ class PV extends MY_Controller
         $data['tarifannuel'] = $this->tarif();
         $data['flouzannuel'] = $this->anneeflouz();
         $data['flouzcumul'] = $this->cumulflouz();
-
+        if(isset($msgsucces))
+        {
+            $data['msgsucces'] = $msgsucces;
+        }
 
 
         $this->layout->breadcrumbs($breadcrumps);
@@ -415,9 +418,40 @@ class PV extends MY_Controller
 //        $this->layout->function_js('anneeflouz()');
 //        $this->layout->function_js('cumulflouz()');
         $this->layout->view('B2E/Etudes/Solaire/Recette.php',$data); // Render view and layout
-
-
     }
+
+    public function enregistrer_etude()
+    {
+        $this->load->model('Mappage/catalogue', 'catalogue');
+        $this->load->model('Mappage/etude', 'etude');
+        $panneau = $this->catalogue->select_panneau_by_nom($this->session->userdata['Panneau']);
+        $spec = html_entity_decode($panneau[0]['Spec']);
+        $prodjson = json_decode($spec, true);
+
+        $data['HEPP'] = (float)$this->session->userdata['HEPP'];
+        $data['Masque'] = $this->session->userdata['Ratioc'];
+        $data['Orientation'] = (float)$this->session->userdata['Orientation'];
+        $data['Puisysteme'] = (float)$panneau[0]['Puissance'];
+        $data['Bonus'] = (int)$prodjson['bonusProd'];
+//        $data['id_dossier'] = $this->session->userdata['id_dossier'];
+
+        if($this->etude->ajouter_etude($data) == TRUE)
+        {
+            $msgsucces = 'Enregistrement correctement effectué';
+            $this->recette($msgsucces);
+        }
+        else
+        {
+            $msgsucces = 'Problème lors de la sauvegarde';
+            $this->recette($msgsucces);
+        }
+    }
+
+
+
+    /********************* PARTIE AJAX  ************************************/
+
+
 
     public function ajax_geoposition()
     {
