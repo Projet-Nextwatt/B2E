@@ -12,12 +12,8 @@
 <div class="row">
     </br></br></br></br>
     <div align="center" >
-<<<<<<< HEAD
-        <a href="<?php echo site_url("dossier"); ?>">
+        <a href="<?php echo site_url("CI_dossier"); ?>">
         <button  type="button" class="btn btn-success">
-=======
-        <button  type="button" class="btn btn-success" onclick="self.location.href='CI_Dossier/add_Dossier'">
->>>>>>> origin/Developpement
             <i class="ace-icon fa fa-folder-open-o"></i>
             Faire un nouveau dossier
         </button>

@@ -172,7 +172,8 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
             <p><?php if(isset($msgsucces)){echo($msgsucces);} ?></p>
         </li>
         <li class="next">
-            <a href="<?php echo site_url("pv/pdf"); ?>"><h4>Portable Document Format →</h4></a>
+            <a href="<?php echo site_url("pv/pdf"); ?>"><i class="ace-icon fa fa-print fa-bigger-400"></i><h4>Portable Document Format →</h4></a>
+
         </li>
     </ul>
 </div>
