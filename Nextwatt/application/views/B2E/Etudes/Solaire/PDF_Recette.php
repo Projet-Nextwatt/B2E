@@ -141,7 +141,7 @@
             <fieldset class="alignleft doublefieldset">
                 <label><h4><strong style="text-decoration:underline;font-size: 120%">Données environnementales :</strong></h4></label>
                 Station météo la plus proche : <strong><?php echo $this->session->userdata['Ville'] ?></strong> <br/>
-                L'orientation sera de : <strong><?php echo $this->session->userdata['Orientation'] ?></strong><br/>
+                Orientation du toit : <strong><?php echo $this->session->userdata['Orientation'] ?></strong><br/>
                 Pertes du aux masques : <strong><?php echo $this->session->userdata['Ratioc'] ?> %</strong>
             </fieldset>
         </td>

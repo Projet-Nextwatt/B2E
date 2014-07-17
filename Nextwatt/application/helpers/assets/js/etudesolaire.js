@@ -148,10 +148,13 @@ $('#raccordement').change(function () {
 $('#bonus').change(function () {
     calculprod()
 });
+$('#puissance').keyup(function () {
+    calculprod()
+});
 
 
 function calculprod() {
-    var systeme = document.getElementById('systeme').value;
+    var systeme = document.getElementById('puissance').value;
     var heppnet = document.getElementById('heppnet').value;
     var raccordement = $('#raccordement').val();
     var bonus = $('#bonus').val();

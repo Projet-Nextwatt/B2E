@@ -605,7 +605,7 @@ class PV extends MY_Controller
     {
         if (isset($_POST['raccordement']) && isset($_POST['systeme']) && isset($_POST['bonus'])) {
             $prod = $_POST['systeme'] * $this->session->userdata('Heppnet');
-            $prodtotal = ($prod + $prod * ($_POST['bonus'] / 100)) / 1000; // Calcul de la prod totale = prod + la prod avec le bonus (0 ou 10 % ) et divisé par mille
+            $prodtotal = ($prod + $prod * ($_POST['bonus'] / 10000)) / 1000; // Calcul de la prod totale = prod + la prod avec le bonus (0 ou 10 % ) et divisé par mille
             $tabsession = array(
                 'HEPP' => $this->session->userdata('HEPP'),
                 'Orientation' => $this->session->userdata('Orientation'),
