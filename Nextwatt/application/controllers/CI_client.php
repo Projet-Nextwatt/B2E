@@ -25,28 +25,28 @@ class CI_Client extends MY_Controller
 
         $data = array();
         $clients = $this->mapclient->list_client(TRUE);
-        $data['mesclients']=array();
-        foreach ($clients as $client){
-            if ($client['user_id']==$this->session->userdata('userconnect')['id_login']){
-                $data['mesclients'][]=$client;
+        $data['mesclients'] = array();
+        foreach ($clients as $client) {
+            if ($client['user_id'] == $this->session->userdata('userconnect')['id_login']) {
+                $data['mesclients'][] = $client;
             } else {
-                $data['clients'][$client['user_id']][]=$client;
+                $data['clients'][$client['user_id']][] = $client;
             }
         }
-        
-        $clientsarchives= $this->mapclient->list_client(FALSE);
-        foreach ($clientsarchives as $client){    
-            if ($client['user_id']==$this->session->userdata('userconnect')['id_login']){
-                $data['mesclientsarchive']=$client;
+
+        $clientsarchives = $this->mapclient->list_client(FALSE);
+        foreach ($clientsarchives as $client) {
+            if ($client['user_id'] == $this->session->userdata('userconnect')['id_login']) {
+                $data['mesclientsarchive'] = $client;
             }
-            $data['clientsarchive'][$client['user_id']][]=$client;
+            $data['clientsarchive'][$client['user_id']][] = $client;
         }
-        
-        $users  = $this->user->list_user(TRUE);
-        foreach ($users as $user){
-            $data['users'][$user['id']]=$user;
+
+        $users = $this->user->list_user(TRUE);
+        foreach ($users as $user) {
+            $data['users'][$user['id']] = $user;
         }
-        
+
         $data['enteteclients'] = array('Id', 'Nom', 'Prenom', 'Email', 'Telephone fixe', 'Telephone Portable', 'Responsable');
         $this->layout->title('Liste des clients');
         $this->layout->view('B2E/Client/Consulter_Client.php', $data); // Render view and layout
@@ -59,27 +59,31 @@ class CI_Client extends MY_Controller
         $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->load->model('Mappage/user', 'user'); //Chargement du modele
-        $users  = $this->user->list_user(TRUE);
-        foreach ($users as $user){
-            $data['users'][]=array(  'label'=>$user['categorie_id'],
-                                    'value'=>$user['id'],
-                                    'texte'=>$user['prenom'].' '.$user['nom']);
+        $users = $this->user->list_user(TRUE);
+        foreach ($users as $user) {
+            $data['users'][] = array('label' => $user['categorie_id'],
+                'value' => $user['id'],
+                'texte' => $user['prenom'] . ' ' . $user['nom']);
         }
         $this->layout->title('Ajout client');
         $this->layout->view('B2E/Client/Add_Client', $data); // Render view and layout
+    }
+
+    public function add_clientDossier()
+    {
     }
 
     public function verif_form_client()
     {
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
         $data = array();
-        
+
         $this->load->model('Mappage/user', 'user'); //Chargement du modele
         $users = $this->user->list_user(TRUE);
         foreach ($users as $user) {
             $data['users'][] = array('label' => $user['categorie_id'],
-                                'value' => $user['id'],
-                                'texte' => $user['prenom'] . ' ' . $user['nom']);
+                'value' => $user['id'],
+                'texte' => $user['prenom'] . ' ' . $user['nom']);
         }
 
         //Configuration des règles par champs
@@ -95,15 +99,11 @@ class CI_Client extends MY_Controller
             // On charge la page
             $this->layout->title('Erreur d\'ajout client');
             $this->layout->view('B2E/Client/Add_Client', $data); // Render view and layout
-        } else
-        {
-            if ($this->mapclient->ajouter_client($_POST))
-            {
+        } else {
+            if ($this->mapclient->ajouter_client($_POST)) {
                 // Client object now has an ID
-            }
-            else
-            {
-                header('Location:'. site_url("CI_client/consult_client"));
+            } else {
+                header('Location:' . site_url("CI_client/consult_client"));
             }
         }
     }
@@ -112,18 +112,18 @@ class CI_Client extends MY_Controller
     {
         $data = array(); //Pour la vue
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
-        $data['client']  = $this->mapclient->select_client($this->session->userdata('CI_client/modif_client'));
+        $data['client'] = $this->mapclient->select_client($this->session->userdata('CI_client/modif_client'));
         $this->load->model('Mappage/user', 'user'); //Chargement du modele
-        $users  = $this->user->list_user(TRUE);
-        foreach ($users as $user){
-            $data['users'][]=array(  'label'=>$user['categorie_id'],
-                                    'value'=>$user['id'],
-                                    'texte'=>$user['prenom'].' '.$user['nom']);
+        $users = $this->user->list_user(TRUE);
+        foreach ($users as $user) {
+            $data['users'][] = array('label' => $user['categorie_id'],
+                'value' => $user['id'],
+                'texte' => $user['prenom'] . ' ' . $user['nom']);
         }
 
-        $respo =  new User($data['client']['user_id']);
-        
-        $data['responsable']=$respo->prenom.' '.$respo->nom;
+        $respo = new User($data['client']['user_id']);
+
+        $data['responsable'] = $respo->prenom . ' ' . $respo->nom;
         $this->form_validation->set_rules($this->configclient);
 
         if ($this->form_validation->run() == FALSE) {
@@ -137,7 +137,7 @@ class CI_Client extends MY_Controller
             $this->form_validation->set_rules($this->configtraitementclient);
             $this->form_validation->run();
             if ($this->mapclient->modifier_client($_POST)) {
-                header('Location:'. site_url("CI_client/consult_client"));
+                header('Location:' . site_url("CI_client/consult_client"));
             } else {
                 echo 'error';
             }
@@ -148,80 +148,80 @@ class CI_Client extends MY_Controller
     {
         $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
         $this->mapclients->supprimer_client($_POST['id']);
-        header('Location:'. site_url("CI_client/consult_client"));
+        header('Location:' . site_url("CI_client/consult_client"));
     }
 
     public function ajax_archiverclient()
     {
         $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
         $this->mapclients->archiverclient($_POST['id']);
-        header('Location:'. site_url("CI_client/consult_client"));
+        header('Location:' . site_url("CI_client/consult_client"));
     }
 
     public function ajax_activerclient()
     {
         $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
         $this->mapclients->activerclient($_POST['id']);
-        header('Location:'. site_url("CI_client/consult_client"));
+        header('Location:' . site_url("CI_client/consult_client"));
     }
 
     public $configclient = array(
-            array(
-                'field' => 'civilite',
-                'label' => 'Civilité',
-                'rules' => ''
-            ),
-            array(
-                'field' => 'nom1',
-                'label' => 'Nom',
-                'rules' => 'required|max_length[255]|trim|mb_strtoupper'
-            ),
-            array(
-                'field' => 'prenom1',
-                'label' => 'Prenom',
-                'rules' => 'trim|max_length[255]'
-            ),
-            array(
-                'field' => 'nom2',
-                'label' => 'Nom du conjoint',
-                'rules' => 'trim|max_length[255]|mb_strtoupper'
-            ),
-            array(
-                'field' => 'prenom2',
-                'label' => 'Prenom du conjoint',
-                'rules' => 'trim|max_length[255]'
-            ),
-            array(
-                'field' => 'adresse',
-                'label' => 'Adresse',
-                'rules' => 'required|trim|max_length[255]'
-            ),
-            array(
-                'field' => 'codepostal',
-                'label' => 'Code Postal',
-                'rules' => 'required|trim|max_length[10]|numeric'
-            ),
-            array(
-                'field' => 'ville',
-                'label' => 'Ville',
-                'rules' => 'required|trim|max_length[255]|mb_strtoupper'
-            ),
-            array(
-                'field' => 'tel1',
-                'label' => 'Téléphone fixe',
-                'rules' => 'trim|callback_tel'
-            ),
-            array(
-                'field' => 'tel2',
-                'label' => 'Téléphone portable',
-                'rules' => 'trim|callback_tel'
-            ),
-            array(
-                'field' => 'email',
-                'label' => 'Email',
-                'rules' => 'valid_email|trim'
-            ),
-        );
+        array(
+            'field' => 'civilite',
+            'label' => 'Civilité',
+            'rules' => ''
+        ),
+        array(
+            'field' => 'nom1',
+            'label' => 'Nom',
+            'rules' => 'required|max_length[255]|trim|mb_strtoupper'
+        ),
+        array(
+            'field' => 'prenom1',
+            'label' => 'Prenom',
+            'rules' => 'trim|max_length[255]'
+        ),
+        array(
+            'field' => 'nom2',
+            'label' => 'Nom du conjoint',
+            'rules' => 'trim|max_length[255]|mb_strtoupper'
+        ),
+        array(
+            'field' => 'prenom2',
+            'label' => 'Prenom du conjoint',
+            'rules' => 'trim|max_length[255]'
+        ),
+        array(
+            'field' => 'adresse',
+            'label' => 'Adresse',
+            'rules' => 'required|trim|max_length[255]'
+        ),
+        array(
+            'field' => 'codepostal',
+            'label' => 'Code Postal',
+            'rules' => 'required|trim|max_length[10]|numeric'
+        ),
+        array(
+            'field' => 'ville',
+            'label' => 'Ville',
+            'rules' => 'required|trim|max_length[255]|mb_strtoupper'
+        ),
+        array(
+            'field' => 'tel1',
+            'label' => 'Téléphone fixe',
+            'rules' => 'trim|callback_tel'
+        ),
+        array(
+            'field' => 'tel2',
+            'label' => 'Téléphone portable',
+            'rules' => 'trim|callback_tel'
+        ),
+        array(
+            'field' => 'email',
+            'label' => 'Email',
+            'rules' => 'valid_email|trim'
+        ),
+    );
 
     public $configtraitementclient = array(
         array(
@@ -238,22 +238,22 @@ class CI_Client extends MY_Controller
             'field' => 'nom2',
             'label' => 'Nom (Conjoint)',
             'rules' => 'xss_clean|htmlentities'
-        ),array(
+        ), array(
             'field' => 'prenom2',
             'label' => 'Prenom (Conjoint)',
             'rules' => 'xss_clean|htmlentities'
-        ),array(
+        ), array(
             'field' => 'adresse',
             'label' => 'Adresse',
             'rules' => 'xss_clean|htmlentities'
-        ),array(
+        ), array(
             'field' => 'ville',
             'label' => 'Ville',
             'rules' => 'xss_clean|htmlentities'
         ),
     );
-    
-       public function tel(&$nbr)
+
+    public function tel(&$nbr)
     {
         $nbr = preg_replace("#[^0-9]#", '', $nbr);
 
