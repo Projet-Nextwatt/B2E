@@ -145,7 +145,7 @@ $('input[name="systeme"]').keyup(function () {
 $('#raccordement').change(function () {
     calculprod()
 });
-$('#bonus').change(function () {
+$('#bonus').keyup(function () {
     calculprod()
 });
 $('#puissance').keyup(function () {
@@ -158,30 +158,29 @@ function calculprod() {
     var heppnet = document.getElementById('heppnet').value;
     var raccordement = $('#raccordement').val();
     var bonus = $('#bonus').val();
-    $.post(
-        'ajax_calculprod',
-        {
-            systeme: systeme,
-            raccordement: raccordement,
-            bonus: bonus
-        },
-        function (data) {
-            if (heppnet != '') {
+    if (heppnet != '') {
+        $.post(
+            'ajax_calculprod',
+            {
+                systeme: systeme,
+                raccordement: raccordement,
+                bonus: bonus
+            },
+            function (data) {
                 if (data != 0) {
                     $("#resultprod").html("Production : <span id='prodcalc'>" + data + "</span> kWh/an");
                     $('#production').val(data);
                 } else {
                     $("#resultprod").html("<span class='text-danger'>Calcul impossible donnée(s) manquante(s)</span> ");
                 }
-            } else {
-                $("#resultprod").html("<span class='text-danger'><i class='ace-icon fa fa-exclamation-triangle icon-animated-bell bigger-125'></i> HEPP nette manquant</span> ");
-            }
-
-        },
-        'text'
-    );
+            },
+            'text'
+        );
+    } else {
+        $("#resultprod").html("<span class='text-danger'><i class='ace-icon fa fa-exclamation-triangle icon-animated-bell bigger-125'></i> HEPP nette manquant</span> ");
+    }
 }
-$("#produit").click(function () {
+$("#produit").change(function () {
     $.post(
         'ajax_panneau',
         {
@@ -399,9 +398,9 @@ $('#test').click(function () {
     $.post(
         'ajax_tabrecette',
         {
-            tabrecette : tabrecette
+            tabrecette: tabrecette
         },
-        function(data){
+        function (data) {
 
         }
     )
@@ -564,6 +563,7 @@ $('.areamasque').click(function () {
         },
         function (data) {
             if (data) {
+                console.log(data);
                 $('#ratioc').val(data);
                 $(".resultratioc").html("Ratio C : <span id='resultratioc'>" + data + " %</span>");
             }
