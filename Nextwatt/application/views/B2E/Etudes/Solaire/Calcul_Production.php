@@ -151,7 +151,7 @@
     </div>
 </div>
 <br/>
-
+<span class="hidden" id="heppnet"><?php echo $this->session->userdata['Heppnet']?></span>
 <h3 align="center" id="resultprod"></h3>
 
 <ul class="pager">
