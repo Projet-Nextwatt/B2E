@@ -14,8 +14,6 @@ class Accueil extends MY_Controller
 
     public function index()
     {
-
-
         $this->layout->title('Accueil B2E');
         $this->layout->view('B2E/Accueil'); // Render view and layout
     }

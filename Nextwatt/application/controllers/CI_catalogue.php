@@ -312,15 +312,15 @@ class CI_Catalogue extends MY_Controller
     public function lier_type_produit_action()
     {
         $this->load->model('Mappage/catalogue', 'catalogue');
-        if($this->catalogue->update_soustype_produit($_POST) == TRUE)
+        $data['rsltupdate'] = $this->catalogue->update_soustype_produit($_POST);
+
+        if(isset($data['rsltupdate']))
         {
-            $data['rsltupdate'] = 'Update correctement réalisé.';
             $this->layout->title('Lier type au produit');
-            $this->layout->view('B2E/Catalogue/Consulter_Catalogue ', $data); //render view and layout
+            $this->layout->view('B2E/Catalogue/rslt_type_produit', $data); //render view and layout
         }
         else
         {
-
             $this->load->model('Mappage/catalogue', 'catalogue');
             $this->load->model('Mappage/soustypes', 'soustype');
             $this->load->model('Mappage/type', 'type');
