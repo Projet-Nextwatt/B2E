@@ -21,17 +21,17 @@ class Fonctionspersos
          *                        (genre pour les bases de données
          * 
          * |||Attend l'adresse du controleur de MODIFICATION 
-         *       et crée le bouton d'envoi au formualaire
+         *       et crée le bouton d'envoi au formulaire
          * ----- et stocke l'id de la ligne à modifier dans 
-         *       SESSION["adresse du formalaire"],
-         *       les session sont celle de code ignter
+         *       SESSION["adresse du formulaire"],
+         *       les session sont celle de code igniter
          * 
          * ||Attend l'adresse du controleur de suppression
          *       et creer un bouton de suppression
          *       avec pop-up de confirmation
          * 
          * ||Attend juste un TRUE
-         *       permet de converir les 1 et 0 en chebox validée
+         *       permet de converir les 1 et 0 en checkbox validée
          *       ou en rien du tout
          */
 

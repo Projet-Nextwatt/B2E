@@ -112,4 +112,5 @@ class Categorie extends DataMapper {
         }
         return $retour;
     }
+    
 }

@@ -49,7 +49,7 @@ class Client extends DataMapper
             return $retour['0'];
         } else {
             $clients->get();
-            return $clients->all_to_array();;
+            return $clients->all_to_array();
         }
     }
 
@@ -69,7 +69,8 @@ class Client extends DataMapper
         }
     }*/
 
-    function list_client($actif=NUL) {
+    function list_client($actif=NULL,$selectcolonne = NULL) {
+        // $selectcolonnne = array('col 1','col2',...);
         $clients = new Client();
         if ($actif == TRUE) {
             $clients->where('Actif', 1);
@@ -81,7 +82,7 @@ class Client extends DataMapper
         $clients->order_by('user_id');
         $clients->get();
         
-        return $clients->all_to_array();
+        return $clients->all_to_array($selectcolonne);
     }
 
     function ajouter_client($data)
@@ -141,6 +142,12 @@ class Client extends DataMapper
         $client->where('id', $id)->get();
 
         $client->delete();
+    }
+
+    function link_ClientUser($idUser,$idClient){
+        $c = new Client();
+        return $c->where('id',$idClient)->update('user_id',$idUser);
+
     }
 
 }

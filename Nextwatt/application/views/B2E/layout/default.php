@@ -82,7 +82,7 @@
             </li>
             <!-- third level item -->
             <li>
-                <a href="<?php echo site_url("dossier/consult_dossier"); ?>">
+                <a href="<?php echo site_url("CI_dossier/consult_dossier"); ?>">
                     <i class="menu-icon fa fa-folder"></i>
                     Dossier
                 </a>

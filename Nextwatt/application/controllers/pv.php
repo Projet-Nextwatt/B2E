@@ -535,7 +535,8 @@ class PV extends MY_Controller
     public
     function ajax_envoiratioc()
     {
-        if (isset($_POST['masque'])) {
+
+        if (isset($_POST['masque']) || $_POST['masque'] == '') {
             $masque = $_POST['masque'];
             $masqueexploque = explode(',', $masque);
             $perte = 0;
@@ -560,6 +561,11 @@ class PV extends MY_Controller
                 $this->session->set_userdata($tabsession);
                 echo $ratioc;
             } else {
+                $tabsession = array(
+                    'HEPP' => $this->session->userdata('HEPP'),
+                    'Orientation' => $this->session->userdata('Orientation'),
+                    'Ratioc' => 100);
+                $this->session->set_userdata($tabsession);
                 echo 100;
             }
 

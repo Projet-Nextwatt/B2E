@@ -13,6 +13,7 @@
 <div class="row">
     <div class="col-xs-12">
 
+        <?php var_dump($this->session->all_userdata()   )?>
         <div class="row">
             <div class="col-xs-12 text-center">
                 <a class="btn btn-primary btn-sm" href="<?php echo site_url("CI_client/add_client"); ?>">
@@ -29,34 +30,28 @@
 
                     <ul id="myTab" class="nav nav-tabs">
                         <li class="active">
-                            <a href="#actif" data-toggle="tab">Clients 
-                                <span class="badge badge-info"><?php echo count($clients); ?></span>
-                            </a>
+                            <a href="#actif" data-toggle="tab">Clients</a>
 
                         </li>
                         <li>
-                            <a href="#archives" data-toggle="tab">Archives 
-                                <span class="badge badge-info"><?php echo count($clientsarchive); ?></span>
-                            </a>
+                            <a href="#archives" data-toggle="tab">Archives</a>
                         </li>
                     </ul>
 
+                    
                     <div class="tab-content">
-
                         <div class="tab-pane in active" id="actif">
 
-                            <div class="panel panel-default">
+                            <div class="panel panel-success">
                                 <!-- Default panel contents -->
-                                <div class="panel-heading panel-success align-left">Mes clients</div>
+                                <div class="panel-heading align-left">Mes clients</div>
                                 <?php $this->fonctionspersos->creerTableau($mesclients, $enteteclients = NULL, 'CI_client/modif_client', 'CI_client/ajax_supprimerclient '); ?>
                             </div>
 
-
                             
-                            
-                            
-                            
+                            <?php if ($this->session->userdata("userconnect")["Droit_Admin"]==1) {?> 
                             <div id="accordion" class="accordion-style1 panel-group accordion-style2">
+                                <!-- 1er accordeon toujours ouvert -->
                                 <!--
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
@@ -101,21 +96,12 @@
                             <?php } ?>
 
 
-                            </div>
-
-
-
-
-
-
-
-
-
-
-
-
+                            </div> <!-- fin de l'accordeon -->
+                            <?php } //fin du if admin?>
+                            
                         </div>
 
+                        
                         <div class="tab-pane" id="archives">
                             <?php
                             foreach ($clientsarchive as $iduser => $clientsarchiveduuser) {
