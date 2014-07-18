@@ -109,7 +109,7 @@
     <tr>
         <td rowspan="2">
             <fieldset class="alignleft">
-                Dupont Serge et Jeanne <br/>
+                <?php echo($this->session->userdata['nomClient'].' '.$this->session->userdata['prenomClient']) ?> <br/>
                 67 impasse du vieux renard <br/>
                 13100 AIX EN PROVENCE <br/>
                 <a href="Sg.dupond@email.fr">Sg.dupond@email.fr</a><br/>

@@ -11,12 +11,11 @@
 
 <div class="row">
     </br></br></br></br>
-    <div align="center" >
-        <a href="<?php echo site_url("CI_dossier"); ?>">
-        <button  type="button" class="btn btn-success">
-            <i class="ace-icon fa fa-folder-open-o"></i>
-            Faire un nouveau dossier
-        </button>
+    <div align="center">
+            <button type="button" class="btn btn-success" onclick="self.location.href='CI_Dossier/add_Dossier'">
+                <i class="ace-icon fa fa-folder-open-o"></i>
+                Faire un nouveau dossier
+            </button>
     </div>
 </div>
 

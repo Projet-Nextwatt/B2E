@@ -37,14 +37,21 @@ class Etude extends DataMapper {
     function ajouter_etude($data)
     {
         $etude = array(
-//            'dossier_id' => $data['id_dossier'],
+            'dossier_id' => $data['id_dossier'],
             'HEPP' => $data['HEPP'],
             'PV_Ratio_Orientation' => $data['Orientation'],
             'PV_Ratio_Masque' => $data['Masque'],
             'PV_Puissance_Systeme' => $data['Puisysteme'],
             'PV_Bonus' => $data['Bonus'],
         );
-        if ($this->db->insert('etudes', $etude)) {
+
+
+        if ($this->db->insert('etudes', $etude))
+        {
+            $dossier = array(
+                'etude_id' => mysql_insert_id(),
+            );
+            $this->db->insert('dossiers', $dossier);
             return TRUE;
         } else {
             echo '<p>' . $etude->error->string . '</p>';

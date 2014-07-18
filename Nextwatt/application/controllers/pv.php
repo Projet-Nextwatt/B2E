@@ -433,7 +433,7 @@ class PV extends MY_Controller
         $data['Orientation'] = (float)$this->session->userdata['Orientation'];
         $data['Puisysteme'] = (float)$panneau[0]['Puissance'];
         $data['Bonus'] = (int)$prodjson['bonusProd'];
-//        $data['id_dossier'] = $this->session->userdata['id_dossier'];
+        $data['id_dossier'] = $this->session->userdata['idDossier'];
 
         if($this->etude->ajouter_etude($data) == TRUE)
         {
