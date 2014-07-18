@@ -12,7 +12,7 @@ class CI_Dossier extends MY_Controller
 
     public function choix_action()
     {
-        $this->layout->title('Accueil B2E');
+        $this->layout->title('Dossier');
         $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier');
     }
 
@@ -62,6 +62,26 @@ class CI_Dossier extends MY_Controller
             $this->dossier->add_Dossier($_POST['idClient']);
 
             $this->choix_action();
+    }
+
+    public function devis_form()
+    {
+        $this->load->model('Mappage/client', 'client');
+        $this->load->model('Mappage/user', 'user');
+
+        $client = $this->client->select_client($this->session->userdata['idClient']);
+        $user = $this->user->select_user($client['user_id']);
+
+        $data['nomclient1'] = $client['nom1'];
+        $data['prenomclient1'] = $client['prenom1'];
+        $data['prenomclient2'] = $client['prenom2'];
+        $data['adresse'] = $client['adresse'];
+        $data['ville'] = $client['ville'];
+        $data['usernom'] = $user['nom'];
+        $data['userprenom'] = $user['prenom'];
+
+        $this->layout->title('Devis');
+        $this->layout->view('B2E/Dossier_Archives/Dossier/devis', $data);
     }
 }
 

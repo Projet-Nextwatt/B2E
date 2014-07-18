@@ -18,7 +18,7 @@
                 <i class="ace-icon fa fa-folder-open-o"></i>
                 Bilan énergétique
             </button></a>
-        <a href="<?php echo site_url("CI_dossier/devis"); ?>">
+        <a href="<?php echo site_url("CI_dossier/devis_form"); ?>">
             <button  type="button" class="btn btn-success">
                 <i class="ace-icon fa fa-list"></i>
                 Création de devis

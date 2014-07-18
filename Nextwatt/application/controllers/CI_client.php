@@ -246,7 +246,12 @@ class CI_Client extends MY_Controller
         }
     }
 
-    public
+    /****************************************** PARTIE AJAX ******************************************/
+
+    public function ajax_choixClientDossier(){
+        $this->choix_clientDossier($_POST['id']);
+    }
+
     function ajax_supprimerclient()
     {
         $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
