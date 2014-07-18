@@ -27,7 +27,8 @@ class CI_Client extends MY_Controller
         if (isset($_GET['dossier']) AND $_GET['dossier'] == 'TRUE') {
             //Selection d'un client pour l'associer à un doosier
             $dossier = TRUE;
-            $data['modedossier'] = 'CI_Dossier/choix_action';
+            $data['modedossier'] = 'CI_client/choix_clientDossier';
+
         }
 
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du model
@@ -117,24 +118,45 @@ class CI_Client extends MY_Controller
         }
     }
 
-    public function choix_clientDossier($id_client){
+    public
+    function choix_clientDossier($id_client = null)
+    {
+
+        $sessionIdClientDosser = $this->session->userdata('CI_client/choix_clientDossier');
+        if (isset($sessionIdClientDosser) && !empty($sessionIdClientDosser)) {
+            $this->load->model('Mappage/Client', 'client');
+            $infoClient = $this->client->select_client($sessionIdClientDosser);
+            $id_client = $sessionIdClientDosser;
+            $this->session->unset_userdata('CI_client/choix_clientDossier');
+        }
+
+
+        if (isset($_POST['nom1']) && isset($_POST['prenom1'])) {
+            $nom = $_POST['nom1'];
+            $prenom = $_POST['prenom1'];
+        } else {
+            $nom = $infoClient['nom1'];
+            $prenom = $infoClient['prenom1'];
+        }
+
         $this->load->model('Mappage/Dossier', 'dossier');
         $resultSelectIdDossier = $this->dossier->select_idDossier();
         $iddossier = $resultSelectIdDossier[0]['id'] + 1;
         $tabsession = array(
             'idDossier' => $iddossier,
-            'idClient' => $id_client,
-            'nomClient' => $_POST['nom1'],
-            'prenomClient' => $_POST['prenom1']
+            'idClient' => (int)$id_client,
+            'nomClient' => $nom,
+            'prenomClient' => $prenom
         );
         $this->session->set_userdata($tabsession);
         $this->load->model('Mappage/Client', 'client');
         $this->client->link_ClientUser($this->session->userdata['userconnect']['id_login'], $id_client);
         $this->dossier->add_Dossier($id_client);
-        header('Location:' . site_url("CI_Dossier/choix_action"));
+          header('Location:' . site_url("CI_Dossier/choix_action"));
     }
 
-    public function add_client()
+    public
+    function add_client()
     {
         //Remplissage de la variable $data avec l'image pour le layout
         $data = array();
@@ -153,7 +175,8 @@ class CI_Client extends MY_Controller
         $this->layout->view('B2E/Client/Add_Client', $data); // Render view and layout
     }
 
-    public function verif_form_client()
+    public
+    function verif_form_client()
     {
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
         $data = array();
@@ -186,7 +209,8 @@ class CI_Client extends MY_Controller
         }
     }
 
-    public function modif_client()
+    public
+    function modif_client()
     {
         $data = array(); //Pour la vue
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
@@ -222,33 +246,41 @@ class CI_Client extends MY_Controller
         }
     }
 
+<<<<<<< HEAD
     /****************************************** PARTIE AJAX ******************************************/
 
     public function ajax_choixClientDossier(){
         $this->choix_clientDossier($_POST['id']);
     }
     public function ajax_supprimerclient()
+=======
+    public
+    function ajax_supprimerclient()
+>>>>>>> 7b87dfad4bd255c02caa548e449f86190e468eda
     {
         $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
         $this->mapclients->supprimer_client($_POST['id']);
         header('Location:' . site_url("CI_client/consult_client"));
     }
 
-    public function ajax_archiverclient()
+    public
+    function ajax_archiverclient()
     {
         $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
         $this->mapclients->archiverclient($_POST['id']);
         header('Location:' . site_url("CI_client/consult_client"));
     }
 
-    public function ajax_activerclient()
+    public
+    function ajax_activerclient()
     {
         $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
         $this->mapclients->activerclient($_POST['id']);
         header('Location:' . site_url("CI_client/consult_client"));
     }
 
-    public $configclient = array(
+    public
+        $configclient = array(
         array(
             'field' => 'civilite',
             'label' => 'Civilité',
@@ -306,7 +338,8 @@ class CI_Client extends MY_Controller
         ),
     );
 
-    public $configtraitementclient = array(
+    public
+        $configtraitementclient = array(
         array(
             'field' => 'nom1',
             'label' => 'Nom',
@@ -336,7 +369,8 @@ class CI_Client extends MY_Controller
         ),
     );
 
-    public function tel(&$nbr)
+    public
+    function tel(&$nbr)
     {
         $nbr = preg_replace("#[^0-9]#", '', $nbr);
 
