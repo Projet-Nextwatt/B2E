@@ -49,7 +49,7 @@
                             <div class="panel panel-success">
                                 <!-- Default panel contents -->
                                 <div class="panel-heading align-left">Mes clients</div>
-                                <?php $this->fonctionspersos->creerTableau($mesclients, $enteteclients = NULL, $modedossier, 'CI_client/ajax_supprimerclient '); ?>
+                                <?php $this->fonctionspersos->creerTableau($mesclients, $enteteclients = NULL, $modedossier, 'CI_client/ajax_choixClientDossier '); ?>
                             </div>
 
                             
@@ -91,7 +91,7 @@
 
                                     <div class="panel-collapse collapse" id="collapse<?php echo $user_id; ?>" style="height: 0px;">
                                         <div class="panel-body">    
-                                            <?php $this->fonctionspersos->creerTableau($clientsduuser, $enteteclients = NULL, 'CI_client/modif_client', 'CI_client/ajax_supprimerclient '); ?>
+                                            <?php $this->fonctionspersos->creerTableau($clientsduuser, $enteteclients = NULL, $modedossier, 'CI_client/ajax_supprimerclient '); ?>
                                          </div>
                                     </div>
                                 </div>
@@ -116,7 +116,7 @@
                             <div class="panel panel-success">
                                 <!-- Default panel contents -->
                                 <div class="panel-heading align-left">Mes clients archivés</div>
-                                <?php $this->fonctionspersos->creerTableau($mesclientsarchive, $enteteclients = NULL, 'CI_client/modif_client', 'CI_client/ajax_supprimerclient '); ?>
+                                <?php $this->fonctionspersos->creerTableau($mesclientsarchive, $enteteclients = NULL, $modedossier, 'CI_client/ajax_supprimerclient '); ?>
                             </div>
 
                             <?php if ($this->session->userdata("userconnect")["Droit_Admin"]==1 AND isset($clients)) {?> 
@@ -157,7 +157,7 @@
 
                                     <div class="panel-collapse collapse" id="collapsearchive<?php echo $user_id; ?>" style="height: 0px;">
                                         <div class="panel-body">    
-                                            <?php $this->fonctionspersos->creerTableau($clientsarchiveduuser, $enteteclients = NULL, 'CI_client/modif_client', 'CI_client/ajax_supprimerclient '); ?>
+                                            <?php $this->fonctionspersos->creerTableau($clientsarchiveduuser, $enteteclients = NULL, $modedossier, 'CI_client/ajax_supprimerclient '); ?>
                                          </div>
                                     </div>
                                 </div>
