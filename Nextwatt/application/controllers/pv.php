@@ -422,25 +422,27 @@ class PV extends MY_Controller
 
     public function enregistrer_etude()
     {
-        $this->load->model('Mappage/catalogue', 'catalogue');
+        $this->load->model('Mappage/catalogue', 'catalogue');               //On load les deux modèles que nous voulons utiliser
         $this->load->model('Mappage/etude', 'etude');
-        $panneau = $this->catalogue->select_panneau_by_nom($this->session->userdata['Panneau']);
-        $spec = html_entity_decode($panneau[0]['Spec']);
+
+        $panneau = $this->catalogue->select_panneau_by_nom($this->session->userdata['Panneau']);    //Récupération du produit que l'on souhaite via la fonction "select_panneau_by_non"
+        $spec = html_entity_decode($panneau[0]['Spec']);                    //On récupère les spec et les décodes pour pouvoir les utiliser après (HTML entities decode puis Json decode
         $prodjson = json_decode($spec, true);
 
         $data['HEPP'] = (float)$this->session->userdata['HEPP'];
         $data['Masque'] = $this->session->userdata['Ratioc'];
         $data['Orientation'] = (float)$this->session->userdata['Orientation'];
-        $data['Puisysteme'] = (float)$panneau[0]['Puissance'];
+        $data['Puisysteme'] = (float)$panneau[0]['Puissance'];                  // On récupère les variables qui étaient en session pour les passer au modèle pour l'ajout en BDD
         if(isset($prodjson['bonusProd'])){
             $data['Bonus'] = (int)$prodjson['bonusProd'];
         }
         $data['id_dossier'] = $this->session->userdata['idDossier'];
 
-        if($this->etude->ajouter_etude($data) == TRUE)
+
+        if($this->etude->ajouter_etude($data) == TRUE)      //On vérifie que la requête s'est bien exécutée
         {
-            $msgsucces = 'Enregistrement correctement effectué';
-            $this->recette($msgsucces);
+            $msgsucces = 'Enregistrement correctement effectué';    //On définit un message à afficher
+            $this->recette($msgsucces);                 // On appel la méthode "recette" de notre controlleur en lui passant le message à afficher en paramètre
         }
         else
         {
