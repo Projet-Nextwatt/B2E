@@ -81,8 +81,7 @@ class CI_User extends MY_Controller
             $this->layout->title('Modification d\'un utilisateur');
             $this->layout->view('B2E/User/Modif_User', $data);
         } else {
-
-            $this->form_validation->set_rules($this->configTraitementModifUser);
+            $this->form_validation->set_rules($this->configTraitementModifUser);                    //On applique le traitement sur les champs du User
             if (isset($_POST['type'])) {
                 if ($_POST['type'] == 'mdp') {
                     $this->form_validation->set_rules($this->configValidationMDP);
@@ -102,7 +101,7 @@ class CI_User extends MY_Controller
     }
 
 
-    //Catégorie ////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////Catégorie ////////////////////////////////////////////////////////////////////////////////////
     public function gestioncategorie()
     {
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du model

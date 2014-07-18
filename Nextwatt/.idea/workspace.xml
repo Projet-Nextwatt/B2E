@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a260d5e-75f8-4f03-8baa-61a468c11107" name="Default" comment="Mini commit">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/CI_catalogue.php" afterPath="$PROJECT_DIR$/application/controllers/CI_catalogue.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/B2E/Client/Add_Client.php" afterPath="$PROJECT_DIR$/application/views/B2E/Client/Add_Client.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Add_Dossier.php" afterPath="$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Add_Dossier.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/CI_client.php" afterPath="$PROJECT_DIR$/application/controllers/CI_client.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/CI_dossier.php" afterPath="$PROJECT_DIR$/application/controllers/CI_dossier.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/CI_user.php" afterPath="$PROJECT_DIR$/application/controllers/CI_user.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Mappage/etude.php" afterPath="$PROJECT_DIR$/application/models/Mappage/etude.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/B2E/Client/Consulter_Client.php" afterPath="$PROJECT_DIR$/application/views/B2E/Client/Consulter_Client.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/third_party/dompdf/lib/fonts/log.htm" afterPath="$PROJECT_DIR$/application/third_party/dompdf/lib/fonts/log.htm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/pv.php" afterPath="$PROJECT_DIR$/application/controllers/pv.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Mappage/soustypes.php" afterPath="$PROJECT_DIR$/application/models/Mappage/soustypes.php" />
     </list>
     <list id="7b96de8a-67ec-49a7-af8c-87846cbb2ecd" name="Rejected commit: Default" comment="Mini commit" />
     <ignored path="Nextwatt.iws" />
@@ -38,7 +38,7 @@
       <file leaf-file-name="CI_user.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/controllers/CI_user.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="42" selection-start="1742" selection-end="1742" vertical-scroll-proportion="0.48738533" vertical-offset="85" max-vertical-offset="8245">
+            <state line="103" column="45" selection-start="4629" selection-end="4629" vertical-scroll-proportion="0.64187646" vertical-offset="1105" max-vertical-offset="8228">
               <folding />
             </state>
           </provider>
@@ -177,6 +177,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -339,7 +340,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -489,11 +489,11 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0010775862" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0021598272" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0021551724" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286638" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17838125" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16027689" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16187434" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16271552" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -526,9 +526,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17838125" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17092651" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12958963" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.05926724" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -763,23 +763,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/B2E/Etudes/Solaire/PDF_Recette.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="48" selection-start="2897" selection-end="2897" vertical-scroll-proportion="0.6224256" vertical-offset="1360" max-vertical-offset="4420">
-          <folding />
-        </state>
+        <state line="112" column="48" selection-start="2897" selection-end="2897" vertical-scroll-proportion="0.6224256" vertical-offset="1360" max-vertical-offset="4420" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/Mappage/etude.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="4" selection-start="2141" selection-end="2141" vertical-scroll-proportion="-43.807693" vertical-offset="0" max-vertical-offset="1513">
-          <folding />
-        </state>
+        <state line="67" column="4" selection-start="2141" selection-end="2141" vertical-scroll-proportion="-43.807693" vertical-offset="0" max-vertical-offset="1513" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/pv.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="449" column="39" selection-start="15357" selection-end="15357" vertical-scroll-proportion="-205.3077" vertical-offset="2295" max-vertical-offset="15963">
-          <folding />
-        </state>
+        <state line="449" column="39" selection-start="15357" selection-end="15357" vertical-scroll-proportion="-205.3077" vertical-offset="2295" max-vertical-offset="15963" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/B2E/Accueil.php">
@@ -791,9 +785,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/accueil.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="874">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="874" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/CI_catalogue.php">
@@ -826,7 +818,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/CI_user.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="42" selection-start="1742" selection-end="1742" vertical-scroll-proportion="0.48738533" vertical-offset="85" max-vertical-offset="8245">
+        <state line="103" column="45" selection-start="4629" selection-end="4629" vertical-scroll-proportion="0.64187646" vertical-offset="1105" max-vertical-offset="8228">
           <folding />
         </state>
       </provider>

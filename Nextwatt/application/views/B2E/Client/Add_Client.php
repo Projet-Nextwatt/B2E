@@ -5,12 +5,16 @@
 
 $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
 $hiden = array();
+$dossier = null;
+if (isset($_GET['dossier']) AND $_GET['dossier'] == 'TRUE') {
+    $dossier = '?dossier=TRUE';
 
+}
 if (isset($client)) {
     $hidden = array('id' => $client['id'], 'Client' => $client['nom1']);
     echo form_open('CI_client/modif_client', $attributes, $hidden);
 } else {
-    echo form_open('CI_client/consult_client', $attributes, $hiden);
+    echo form_open('CI_client/consult_client'.$dossier, $attributes, $hiden);
 }
 ?>
     <?php if (isset($client) AND isset($client['email'])) {?>
@@ -205,4 +209,6 @@ if (isset($client)) {
 </div>
 <?php
 echo form_close();
+
+var_dump($this->session->all_userdata());
 ?>
