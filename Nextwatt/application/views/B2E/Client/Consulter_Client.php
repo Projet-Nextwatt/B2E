@@ -49,7 +49,7 @@
                             <div class="panel panel-success">
                                 <!-- Default panel contents -->
                                 <div class="panel-heading align-left">Mes clients</div>
-                                <?php $this->fonctionspersos->creerTableau($mesclients, $enteteclients = NULL, $modedossier, 'CI_client/ajax_choixClientDossier '); ?>
+                                <?php $this->fonctionspersos->creerTableau($mesclients, $enteteclients = NULL, $modedossier, 'CI_client/ajax_supprimerclient '); ?>
                             </div>
 
                             
@@ -203,4 +203,3 @@
 
     </div>  
 </div>
-

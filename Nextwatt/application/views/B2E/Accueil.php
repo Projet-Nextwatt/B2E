@@ -12,7 +12,7 @@
 <div class="row">
     </br></br></br></br>
     <div align="center">
-        <button type="button" class="btn btn-success" onclick="self.location.href='CI_Dossier/add_Dossier'">
+        <button type="button" class="btn btn-success" onclick="self.location.href='CI_client/Consult_Client?dossier=TRUE'">
             <i class="ace-icon fa fa-folder-open-o"></i>
             Faire un nouveau dossier
         </button>

@@ -210,5 +210,4 @@ if (isset($client)) {
 <?php
 echo form_close();
 
-var_dump($this->session->all_userdata());
 ?>
