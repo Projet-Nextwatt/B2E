@@ -96,8 +96,6 @@ class CI_Client extends MY_Controller {
                 } 
                 else
                 {
-                    $tabsession = array("CI_client/modif_client" => $id_client);
-                    $this->session->set_userdata($tabsession);
                     header('Location:' . site_url("CI_client/modif_client"));
                 }
                 
