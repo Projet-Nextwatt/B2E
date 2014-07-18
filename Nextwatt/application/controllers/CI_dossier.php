@@ -5,8 +5,15 @@ class CI_Dossier extends MY_Controller {
 
 	public function index()
 	{
-		echo 'Hello World!';
+
 	}
+
+    public function choix_action(){
+        $this->load->model('Mappage/dossier', 'dossier');
+
+        $this->layout->title('Accueil B2E');
+        $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier');
+    }
         
         public function consult_dossier()
         {

@@ -536,7 +536,7 @@ class PV extends MY_Controller
     function ajax_envoiratioc()
     {
 
-        if (isset($_POST['masque']) || $_POST['masque'] == '') {
+        if (isset($_POST['masque']) || !empty($_POST['masque'])) {
             $masque = $_POST['masque'];
             $masqueexploque = explode(',', $masque);
             $perte = 0;

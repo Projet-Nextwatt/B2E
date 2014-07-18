@@ -31,27 +31,28 @@ class Dossier extends DataMapper
         parent ::__construct();
     }
 
-    /*
+
     function select_dossier()
     {
         //Fonction de selection
     }
-    
+
     function ajouter_dossier()
     {
-        // Fonction d'ajout
+        $d = new Dossier();
+        $d->save();
     }
-    
+
     function modifier_dossier()
     {
         //Fonction de modification
     }
-    
+
     function supprimer_dossier()
     {
         $this->db->where('ID_Dossier', 'ID_Dossier');
         $this->db->delete('Dossier');
-    }*/
+    }
 
     public function select_idDossier()
     {
