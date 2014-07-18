@@ -25,7 +25,7 @@ class CI_Catalogue extends MY_Controller
     public function consult_catalogue()
     {
         $data = array();
-        $data['tableau'] = $this->create_tableau_catalogue();
+        $data['tableau'] = $this->create_tableau_catalogue();   // On appel la fonction de création du cataloge en mode tableau pour pouvoir l'afficher avec la variable $data['tableau']
 
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Catalogue B2E');
@@ -36,7 +36,6 @@ class CI_Catalogue extends MY_Controller
     {
         //Remplissage de la variable $data avec différentes infos pour le layout
         $data = array();
-        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
         $data['msg'] = "Charger un nouveau catalogue";
         $data['upload_data'] = '';
 
@@ -48,7 +47,7 @@ class CI_Catalogue extends MY_Controller
     public function upload_catalogue_form()
     {
         $this->layout->title('Upload de catalogue');
-        $this->layout->view('B2E/Catalogue/Charger_Catalogue'); //render view and layout
+        $this->layout->view('B2E/Catalogue/Charger_Catalogue');
     }
 
     public function upload_catalogue_action()
@@ -57,16 +56,16 @@ class CI_Catalogue extends MY_Controller
         $fichier = basename($_FILES['userfile']['name']);
         $extensions = array('.txt');
         $extension = strrchr($_FILES['userfile']['name'], '.');
-        //Début des vérifications de sécurité...
-        if (!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
+                                                                        //Début des vérifications de sécurité...
+        if (!in_array($extension, $extensions))                         //Si l'extension ne correspond pas à ce que nous attendons
         {
             $erreur = 'Vous devez uploader un fichier de type txt ';
         }
-        if (!isset($erreur)) //S'il n'y a pas d'erreur, on upload
+    if (!isset($erreur))                                                //S'il n'y a pas d'erreur, on upload
         {
             //On formate le nom du fichier ici...
             $fichier = strtr($fichier,
-                'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
+                'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', // On remplace tous les caractères spéciaux
                 'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
             $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
             if (move_uploaded_file($_FILES['userfile']['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
@@ -84,12 +83,12 @@ class CI_Catalogue extends MY_Controller
         }
     }
 
-    public function create_tab_ajout_bdd()
+    public function create_tab_ajout_bdd()      //Fonction de création du tableau de différence entre la BDD actuelle et celle qui va être mise en place (AJOUTS)
     {
         $this->load->model('Mappage/catalogue', 'catalogue');
-        $refbdd = $this->catalogue->get_ref_bdd();
+        $this->load->library('fonctionspersos');                // On charge les modèles et les librairies qu'on a besoin
 
-        $this->load->library('fonctionspersos');
+        $refbdd = $this->catalogue->get_ref_bdd();
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
 
 
@@ -124,17 +123,13 @@ class CI_Catalogue extends MY_Controller
 
     }
 
-    public
-    function create_tab_supp_bdd()
+    public function create_tab_supp_bdd()//Fonction de création du tableau de différence entre la BDD actuelle et celle qui va être mise en place (Suppressions)
     {
-
         $this->load->model('Mappage/catalogue', 'catalogue');
-        $refbdd = $this->catalogue->get_full_bdd();
+        $this->load->library('fonctionspersos');            // On charge les modèles et les librairies qu'on a besoin
 
-
-        $this->load->library('fonctionspersos');
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
-
+        $refbdd = $this->catalogue->get_full_bdd();
 
 
         $tabbdd = array();
@@ -204,21 +199,14 @@ class CI_Catalogue extends MY_Controller
     function aff_recap_upload()
     {
         $data = array();
-
         $this->load->model('Mappage/catalogue', 'catalogue');
-        $refbdd = $this->catalogue->get_ref_bdd();
-
         $this->load->library('fonctionspersos');
+
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
 
-        $ajoutbdd = $this->create_tab_ajout_bdd();
-        $suppbdd = $this->create_tab_supp_bdd();
-        $modif = $this->create_tab_modif_bdd();
-
-
-        $data['ajouts'] = $ajoutbdd;
-        $data['supp'] = $suppbdd;
-        $data['modif'] = $modif;
+        $data['ajouts'] = $this->create_tab_ajout_bdd();    // On charge les tableaux récapitulatifs dans le tableau $data
+        $data['supp'] = $this->create_tab_supp_bdd();
+        $data['modif'] = $this->create_tab_modif_bdd();
         $data['fichier'] = $fichier;
 
 
@@ -245,15 +233,15 @@ class CI_Catalogue extends MY_Controller
         $data['lignesuppr'] = 0;
         $data['ligneajouté'] = 0;
         $data['lignemodfié'] = 0;
-//On fait les suppressions grâce au tableau récupéré via "create_tab_supp_bdd" et on indente le compteur à chaque suppression
-        //On fait les modifications
         //On fait les ajouts
         if (isset($add)) {
             $data['ligneajouté'] = $this->catalogue->updatecatalogue($add);
         }
+        //On fait les modifications
         if (isset($modif)) {
             $data['lignemodifiée'] = $this->catalogue->updatecatalogue($modif);
         }
+        //On fait les suppressions grâce au tableau récupéré via "create_tab_supp_bdd" et on indente le compteur à chaque suppression
         if (!empty($_POST['check_list'])) {
             foreach ($_POST['check_list'] as $check) {
                 if ($this->catalogue->supprimer($check) == TRUE) {
@@ -292,24 +280,24 @@ class CI_Catalogue extends MY_Controller
     ////////////////////////////////  GESTION DES SOUS-TYPES ////////////////////////////////////
 
 
-    public function lier_type_produit()
+    public function lier_type_produit() //Fonction d'affichage du formulaire de gestion des liaisons soustype/produit
     {
-        $this->load->model('Mappage/catalogue', 'catalogue');
+        $this->load->model('Mappage/catalogue', 'catalogue');//On load les différents modèles nécessaires
         $this->load->model('Mappage/soustypes', 'soustype');
         $this->load->model('Mappage/type', 'type');
 
-        $data = array();
+        $data = array();    // On remplit les variables avec les infos qu'on a besoin en appelant les méthodes des modèles loadés précédemment
         $data['produit'] = $this->catalogue->get_ref_bdd();
         $data['soustypes'] = $this->soustype->select_soustype_bytype();
         $data['types'] = $this->type->select_types(null);
 
 
 
-        $this->layout->title('Lier type au produit');
+        $this->layout->title('Lier type au produit');   //Et on charge la vue en lui passant $data pour afficher et utiliser les infos que c'est qu'on à récupéré
         $this->layout->view('B2E/Catalogue/Lier_Type_Produit', $data); //render view and layout
     }
 
-    public function lier_type_produit_action()
+    public function lier_type_produit_action()//Fonction de traitement du formulaire de gestion des liaisons soustypes/produits
     {
         $this->load->model('Mappage/catalogue', 'catalogue');
         $data['rsltupdate'] = $this->catalogue->update_soustype_produit($_POST);
@@ -319,87 +307,32 @@ class CI_Catalogue extends MY_Controller
             $this->layout->title('Lier type au produit');
             $this->layout->view('B2E/Catalogue/rslt_type_produit', $data); //render view and layout
         }
-        else
-        {
-            $this->load->model('Mappage/catalogue', 'catalogue');
-            $this->load->model('Mappage/soustypes', 'soustype');
-            $this->load->model('Mappage/type', 'type');
-
-            $data = array();
-            $data['produit'] = $this->catalogue->get_ref_bdd();
-            $data['soustypes'] = $this->soustype->select_soustype_bytype();
-            $data['types'] = $this->type->select_types(null);
-            $data['rsltupdate'] = 'ATTENTION : un ou plusieurs produits ne sont pas lies a un sous type';
-
-            $this->layout->title('Lier type au produit');
-            $this->layout->view('B2E/Catalogue/Lier_Type_Produit', $data); //render view and layout
-            $this->layout->title('Lier type au produit');
-            $this->layout->view('B2E/Catalogue/Lier_Type_Produit', $data); //render view and layout
-        }
     }
 
-    public function gererlistetype_form()
+    public function gererlistetype_form()   //Fonction d'affichage du formulaire d'ajout des soustypes
     {
         $this->load->model('Mappage/Type', 'Type');
         $data = array();
-        $data['Types'] = $this->Type->select_types(null);
+        $data['Types'] = $this->Type->select_types(null); // On récupère tous les soustypes existants dans la BDD via la méthode "select_types" du modèle
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Catalogue B2E');
         $this->layout->view('B2E/Catalogue/Add_Soustype', $data);
     }
 
-    public function gererlistetype_action()
+    public function gererlistetype_action() //Fonction de traitement du formulaire d'ajout des soustypes
     {
-        $this->load->model('Mappage/soustypes', 'mapsoustype'); //Chargement du model
+        $this->load->model('Mappage/soustypes', 'mapsoustype'); //Chargement du model soustypes
         $this->load->model('Mappage/Type', 'Type');
         $data = array();
 
-        $data['Types'] = $this->Type->select_types(null);
-        $configsoustype =
-            array(
-                array(
-                    'field' => 'nomcourt',
-                    'label' => 'Nom court',
-                    'rules' => 'required'
-                ),
-                array(
-                    'field' => 'nomdevis',
-                    'label' => 'Nom devis',
-                    'rules' => 'required'
-                ),
-                array(
-                    'field' => 'bouquetCI',
-                    'label' => 'Catégorie bouquet CI',
-                    'rules' => 'required'
-                ),
-                array(
-                    'field' => 'bouquetEPTZ',
-                    'label' => 'Catégorie bouquet EPTZ',
-                    'rules' => 'required'
-                ),
-                array(
-                    'field' => 'CIunitaire',
-                    'label' => 'Crédit impot unitaire ',
-                    'rules' => 'required'
-                ),
-            );
+        $data['Types'] = $this->Type->select_types(null);       //On récupère tous les types de la BDD
 
-        $configtraitementsoustype =
-            array(
-                array(
-                    'field' => 'nomcourt',
-                    'label' => 'Nom court',
-                    'rules' => 'xss_clean|htmlentities'
-                ),
-                array(
-                    'field' => 'nomdevis',
-                    'label' => 'Nom devis',
-                    'rules' => 'xss_clean|htmlentities'
-                ),
-            );
 
-        $this->form_validation->set_rules($configsoustype);
-        $this->form_validation->set_rules($configtraitementsoustype);
+        $configST = $this->configsoustype();                    //On définit les configurations requises pour ajouter un soustype dans un tableau (en passant par la fonction définit plus bas)
+        $configtraitement = $this->configtraitementsoustype();  //On définit les différents traitement pour l'ajout d'un soustype dans un tableau (en passant par la fonction définit plus bas)
+
+        $this->form_validation->set_rules($configST);       //On applique les configurations définits précédemments (en passant les tableaux en paramètre de "set_rules")
+        $this->form_validation->set_rules($configtraitement);
 
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
         //Et on agit en conséquence
@@ -409,31 +342,29 @@ class CI_Catalogue extends MY_Controller
             $this->layout->view('B2E/Catalogue/Add_Soustype', $data); // Render view and layout
         } else {
             if ($this->mapsoustype->ajouter_soustype($_POST)) {
-                echo('cool story bro');
                 $this->consult_soustypes();
-            } else {
-                $this->consult_soustype();
             }
         }
     }
 
-    public function consult_soustype()
+    public function consult_soustype()      //Fonction d'affichage de tous les soustypes de la BDD
     {
         $this->load->model('Mappage/soustypes', 'mapsoustype'); //Chargement du model
         $this->load->library('fonctionspersos');
 
         $data = array();
-        $data['soustypes'] = $this->mapsoustype->select_soustype_tableau();
-        $data['entetesoustype'] = array('ID', 'Nom court', 'Nom devis', 'Catégorie bouquet CI', 'Catégorie bouquet EcoPTZ', 'CI unitaire');
+        $data['soustypes'] = $this->mapsoustype->select_soustype_tableau(); //On récupère tous les soustypes
+        $data['entetesoustype'] = array('ID', 'Nom court', 'Nom devis', 'Catégorie bouquet CI', 'Catégorie bouquet EcoPTZ', 'CI unitaire'); //On définit les entêtes
+
         $this->layout->title('Liste des soustypes');
         $this->layout->view('B2E/Catalogue/Consulter_Soustype.php', $data); // Render view and layout
     }
 
-    public function modif_soustype()
+    public function modif_soustype()    //Fonction de traitement pour la modification d'un soustype
     {
         $this->load->model('Mappage/soustypes', 'mapsoustype'); //Chargement du modele
         $data = array(); //Pour la vue
-        $data['soustype'] = $this->mapsoustype->select_soustype($this->session->userdata('CI_catalogue/modif_soustype'));
+        $data['soustype'] = $this->mapsoustype->select_soustype($this->session->userdata('CI_catalogue/modif_soustype'));   //On choppe le soustype que le mec a cliqué dessus
 
         $configST = $this->configsoustype();
         $configtraitement = $this->configtraitementsoustype();

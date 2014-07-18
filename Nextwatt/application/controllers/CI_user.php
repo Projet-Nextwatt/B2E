@@ -13,20 +13,19 @@ class CI_User extends MY_Controller
     public $layout_view = 'B2E/layout/default';
 
 
-    // User ////////////////////////////////////////////////////////////////////////////////
-    public function consult_user()
+    public function consult_user() // Fonction d'affichage de tous les Users en BDD
     {
         $this->load->model('Mappage/user', 'mapuser'); //Chargement du model
+
         $data = array();
+        $data['users'] = $this->mapuser->list_user(TRUE);   //On récupère tous les users actifs en passant par la fonction lis_user (TRUE pour dire de prendre les actifs)
+        $data['usersinactifs'] = $this->mapuser->list_user(FALSE);  //On récupère tous les users inactifs en passant par la fonction lis_user (FALSE pour dire de prendre les inactifs)
 
-        $data['users'] = $this->mapuser->list_user(TRUE);
-        $data['usersinactifs'] = $this->mapuser->list_user(FALSE);
-
-        $this->layout->title('Liste des Users');
-        $this->layout->view('B2E/User/Accueil_user.php', $data); // Render view and layout
+        $this->layout->title('Liste des Users');    //On charge la page
+        $this->layout->view('B2E/User/Accueil_user.php', $data);
     }
 
-    public function add_user()
+    public function add_user()  // Fonction d'ajout d'un utilisateur
     {
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du modele user
         $this->load->model('Mappage/user', 'mapuser'); //Chargement du modele categorie
@@ -82,8 +81,7 @@ class CI_User extends MY_Controller
             $this->layout->title('Modification d\'un utilisateur');
             $this->layout->view('B2E/User/Modif_User', $data);
         } else {
-
-            $this->form_validation->set_rules($this->configTraitementModifUser);
+            $this->form_validation->set_rules($this->configTraitementModifUser);                    //On applique le traitement sur les champs du User
             if (isset($_POST['type'])) {
                 if ($_POST['type'] == 'mdp') {
                     $this->form_validation->set_rules($this->configValidationMDP);
@@ -103,7 +101,7 @@ class CI_User extends MY_Controller
     }
 
 
-    //Catégorie ////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////Catégorie ////////////////////////////////////////////////////////////////////////////////////
     public function gestioncategorie()
     {
         $this->load->model('Mappage/categorie', 'categorie'); //Chargement du model
