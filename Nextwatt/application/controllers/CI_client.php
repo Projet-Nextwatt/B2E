@@ -222,6 +222,8 @@ class CI_Client extends MY_Controller
         }
     }
 
+    /****************************************** PARTIE AJAX ******************************************/
+
     public function ajax_choixClientDossier(){
         $this->choix_clientDossier($_POST['id']);
     }

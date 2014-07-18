@@ -12,7 +12,7 @@ class CI_Dossier extends MY_Controller
 
     public function choix_action()
     {
-        $this->layout->title('Accueil B2E');
+        $this->layout->title('Dossier');
         $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier');
     }
 
@@ -62,6 +62,12 @@ class CI_Dossier extends MY_Controller
             $this->dossier->add_Dossier($_POST['idClient']);
 
             $this->choix_action();
+    }
+
+    public function devis_form()
+    {
+        $this->layout->title('Devis');
+        $this->layout->view('B2E/Dossier_Archives/Dossier/devis');
     }
 }
 
