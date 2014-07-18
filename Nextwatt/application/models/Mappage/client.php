@@ -103,6 +103,7 @@ class Client extends DataMapper
             'actif' => 1,
         );
         $this->db->insert('clients', $client);
+        return mysql_insert_id();
     }
 
     public function archiverclient($data)

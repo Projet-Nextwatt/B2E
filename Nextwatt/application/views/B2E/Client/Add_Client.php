@@ -1,20 +1,3 @@
-<div class="ace-settings-container" id="ace-settings-container">
-    <!-- settings box goes here -->
-</div>
-
-<div class="page-header">
-    <h1 align="center">
-        PAGE CLIENT
-        <small><br/><i class="ace-icon fa fa-angle-double-right"></i><?php if (isset($client)) {
-                echo 'Modifier un client';
-            } else {
-                echo 'Ajouter un client';
-            }
-            ?></small>
-    </h1>
-</div>
-
-
 <div class="row form-group">
 <div class="col-xs-12">
 
@@ -27,7 +10,7 @@ if (isset($client)) {
     $hidden = array('id' => $client['id'], 'Client' => $client['nom1']);
     echo form_open('CI_client/modif_client', $attributes, $hidden);
 } else {
-    echo form_open('CI_client/verif_form_client', $attributes, $hiden);
+    echo form_open('CI_client/consult_client', $attributes, $hiden);
 }
 ?>
     <?php if (isset($client) AND isset($client['email'])) {?>
@@ -205,7 +188,7 @@ if (isset($client)) {
         } else {
             $respo = set_value('respo');
         }
-        $this->fonctionspersos->creerDropdown($users, $respo, 'respo'); ?>
+        $this->fonctionspersos->creerDropdown($usersdropdown, $respo, 'respo'); ?>
     </div>
 </div>
 <div class="col-sm-3">
@@ -220,162 +203,6 @@ if (isset($client)) {
         </button>
     </div>
 </div>
-<?php
-echo form_close();
-?>
-
-
-
-<?php
-if (isset($client)&& $client['actif']==0) {
-    $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
-    $hiden = array();
-
-    $hidden = array('id' => $client['id'], 'Client' => $client['nom1']);
-    echo form_open('CI_client/ajax_supprimerclient', $attributes, $hidden);
-    ?>
-    <div class="row form-group">
-        <div class="col-xs-offset-3 col-md-6">
-            <button type="button" data-toggle="modal" data-target="#Confsuppr" class="btn btn-sm btn-danger">
-                <i class="ace-icon fa fa-trash-o bigger-160"></i>
-                Supprimer
-            </button>
-        </div>
-    </div>
-<?php
-}
-?>
-<div id="Confsuppr" class="modal fade">
-    <div class="modal-dialog" style="display: block; height: auto; width: 300px; top: 194px;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
-                <h4 class="modal-title"><i class="ace-icon fa fa-exclamation-triangle red"></i> Supprimer l'élément ?
-                </h4>
-            </div>
-            <div class="modal-body alert alert-info bigger-110">
-                <p>Vous êtes sur le point de supprimer le client.</p>
-            </div>
-            <p class="bigger-110 bolder center grey">
-                <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
-                Êtes vous sur ?
-            </p>
-
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-sm btn-danger">Suppression</button>
-                <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Annuler</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<?php
-echo form_close();
-?>
-
-<?php
-if (isset($client) && $client['actif']==1) {
-    $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
-    $hiden = array();
-
-    $hidden = array('id' => $client['id'], 'Client' => $client['nom1']);
-    echo form_open('CI_client/ajax_archiverclient', $attributes, $hidden);
-    ?>
-    <div class="row form-group">
-        <div class="col-xs-offset-3 col-md-6">
-            <button type="button" data-toggle="modal" data-target="#Confarchiver" class="btn btn-sm btn-warning">
-                <i class="ace-icon fa fa-trash-o bigger-160"></i>
-                Archiver
-            </button>
-        </div>
-    </div>
-<?php
-}
-?>
-
-</div>
-</div>
-
-<div id="Confarchiver" class="modal fade">
-<div class="modal-dialog" style="display: block; height: auto; width: 300px; top: 194px;">
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                    class="sr-only">Close</span></button>
-            <h4 class="modal-title"><i class="ace-icon fa fa-exclamation-triangle red"></i> Archiver le client ?
-            </h4>
-        </div>
-        <div class="modal-body alert alert-info bigger-110">
-            <p>Vous êtes sur le point d'archiver ce client.</p>
-        </div>
-        <p class="bigger-110 bolder center grey">
-            <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
-            Êtes vous sur ?
-        </p>
-
-        <div class="modal-footer">
-            <button type="submit" class="btn btn-sm btn-danger">Archiver</button>
-            <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Annuler</button>
-        </div>
-    </div>
-    <!-- /.modal-content -->
-</div>
-<!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-<?php
-echo form_close();
-?>
-
-<?php
-if (isset($client) && $client['actif']==0) {
-    $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
-    $hiden = array();
-
-    $hidden = array('id' => $client['id'], 'Client' => $client['nom1']);
-    echo form_open('CI_client/ajax_activerclient', $attributes, $hidden);
-    ?>
-    <div class="row form-group">
-        <div class="col-xs-offset-3 col-md-6">
-            <button type="button" data-toggle="modal" data-target="#Confactiver" class="btn btn-sm btn-success">
-                <i class="ace-icon fa fa-check bigger-160"></i>
-                Désarchiver
-            </button>
-        </div>
-    </div>
-<?php
-}
-?>
-
-<div id="Confactiver" class="modal fade">
-    <div class="modal-dialog" style="display: block; height: auto; width: 300px; top: 194px;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
-                <h4 class="modal-title"><i class="ace-icon fa fa-exclamation-triangle red"></i> Désarchiver le client ?
-                </h4>
-            </div>
-            <div class="modal-body alert alert-info bigger-110">
-                <p>Vous êtes sur le point de désarchiver ce client.</p>
-            </div>
-            <p class="bigger-110 bolder center grey">
-                <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
-                Êtes vous sur ?
-            </p>
-
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-sm btn-danger">Confirmer</button>
-                <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Annuler</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
 <?php
 echo form_close();
 ?>

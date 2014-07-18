@@ -7,23 +7,28 @@
 //           pour vérifier le formulaire (verif_form_client
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-class CI_Client extends MY_Controller
-{
+class CI_Client extends MY_Controller {
+
     // layout used in this controller
     public $layout_view = 'B2E/layout/default';
 
-    public function index()
-    {
+    public function index() {
         echo 'Hello World!';
     }
 
-    public function consult_client()
-    {
+    public function consult_client() {
+        $data['dossier'] = FALSE;
+        if (isset($_GET['dossier']) AND $_GET['dossier'] == TRUE) {
+            //Selection d'un client pour l'associer à un doosier
+            $data['dossier'] = TRUE;
+        }
+
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du model
         $this->load->model('Mappage/user', 'user'); //Chargement du modele
         $this->load->library('fonctionspersos');
 
         $data = array();
+        //Liste des clients
         $clients = $this->mapclient->list_client(TRUE);
         $data['mesclients'] = array();
         foreach ($clients as $client) {
@@ -34,6 +39,30 @@ class CI_Client extends MY_Controller
             }
         }
 
+        //Liste des clients archivés
+        $clientsarchives = $this->mapclient->list_client(FALSE);
+        $data['mesclientsarchive'] = array();
+        foreach ($clientsarchives as $client) {
+            if ($client['user_id'] == $this->session->userdata('userconnect')['id_login']) {
+                $data['mesclientsarchive'][] = $client;
+            }
+            $data['clientsarchive'][$client['user_id']][] = $client;
+        }
+
+        //Liste des users
+        $users = $this->user->list_user(TRUE);
+        foreach ($users as $user) {
+            $data['users'][$user['id']] = $user;
+        }
+
+        //tableau des users pour le dropdown de nouveau client
+        foreach ($users as $user) {
+            $data['usersdropdown'][] = array('label' => $user['categorie_id'],
+                'value' => $user['id'],
+                'texte' => $user['prenom'] . ' ' . $user['nom']);
+        }
+
+        //Entete du tableau
         $clientsarchives = $this->mapclient->list_client(FALSE);
         foreach ($clientsarchives as $client) {
             if ($client['user_id'] == $this->session->userdata('userconnect')['id_login']) {
@@ -48,12 +77,43 @@ class CI_Client extends MY_Controller
         }
 
         $data['enteteclients'] = array('Id', 'Nom', 'Prenom', 'Email', 'Telephone fixe', 'Telephone Portable', 'Responsable');
-        $this->layout->title('Liste des clients');
-        $this->layout->view('B2E/Client/Consulter_Client.php', $data); // Render view and layout
+
+
+
+
+
+
+        //C'est l'heure de l'affichage
+        //Si le fomulaire d'ajout n'a pas été rempli, on redirige normailement
+        if (empty($_POST)) {
+            $this->layout->title('Liste des clients');
+            $this->layout->view('B2E/Client/Consulter_Client.php', $data); // Render view and layout
+        } else {
+            //sinon on verifie de formulaire
+            $this->form_validation->set_rules($this->configclient);
+            if ($this->form_validation->run() == FALSE) {
+                // Problème de saisi: On charge la page
+                $this->layout->title('Erreur d\'ajout client');
+                $this->layout->view('B2E/Client/Consulter_Client.php', $data); // Render view and layout
+            } else {
+                //Pas de problème, on traite et on enregiste
+                $this->form_validation->set_rules($this->configtraitementclient);
+                $this->form_validation->run();
+
+                $id_client = $this->mapclient->ajouter_client($_POST);
+
+                if ($data['dossier'] == TRUE) {
+                    header('Location:' . site_url("CI_client/consult_client"));
+                } else {
+                    $tabsession = array("CI_client/modif_client" => $id_client);
+                    $this->session->set_userdata($tabsession);
+                    header('Location:' . site_url("CI_client/modif_client"));
+                }
+            }
+        }
     }
 
-    public function add_client()
-    {
+    public function add_client() {
         //Remplissage de la variable $data avec l'image pour le layout
         $data = array();
         $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
@@ -65,6 +125,8 @@ class CI_Client extends MY_Controller
                 'value' => $user['id'],
                 'texte' => $user['prenom'] . ' ' . $user['nom']);
         }
+
+
         $this->layout->title('Ajout client');
         $this->layout->view('B2E/Client/Add_Client', $data); // Render view and layout
     }
@@ -83,8 +145,6 @@ class CI_Client extends MY_Controller
         }
 
         //Configuration des règles par champs
-
-
         //On applique les règles
         $this->form_validation->set_rules($this->configclient);
 
@@ -104,8 +164,7 @@ class CI_Client extends MY_Controller
         }
     }
 
-    public function modif_client()
-    {
+    public function modif_client() {
         $data = array(); //Pour la vue
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
         $data['client'] = $this->mapclient->select_client($this->session->userdata('CI_client/modif_client'));
@@ -140,22 +199,19 @@ class CI_Client extends MY_Controller
         }
     }
 
-    public function ajax_supprimerclient()
-    {
+    public function ajax_supprimerclient() {
         $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
         $this->mapclients->supprimer_client($_POST['id']);
         header('Location:' . site_url("CI_client/consult_client"));
     }
 
-    public function ajax_archiverclient()
-    {
+    public function ajax_archiverclient() {
         $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
         $this->mapclients->archiverclient($_POST['id']);
         header('Location:' . site_url("CI_client/consult_client"));
     }
 
-    public function ajax_activerclient()
-    {
+    public function ajax_activerclient() {
         $this->load->model('Mappage/client', 'mapclients'); //Chargement du modele
         $this->mapclients->activerclient($_POST['id']);
         header('Location:' . site_url("CI_client/consult_client"));
@@ -218,7 +274,7 @@ class CI_Client extends MY_Controller
             'rules' => 'valid_email|trim'
         ),
     );
-
+    
     public $configtraitementclient = array(
         array(
             'field' => 'nom1',
@@ -249,8 +305,7 @@ class CI_Client extends MY_Controller
         ),
     );
 
-    public function tel(&$nbr)
-    {
+    public function tel(&$nbr) {
         $nbr = preg_replace("#[^0-9]#", '', $nbr);
 
         if (strlen($nbr) == 10) {
