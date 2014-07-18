@@ -103,7 +103,21 @@ class CI_Client extends MY_Controller {
                 $id_client = $this->mapclient->ajouter_client($_POST);
 
                 if ($data['dossier'] == TRUE) {
-                    header('Location:' . site_url("CI_client/consult_client"));
+
+                    $this->load->model('Mappage/Dossier', 'dossier');
+                    $resultSelectIdDossier = $this->dossier->select_idDossier();
+                    $iddossier = $resultSelectIdDossier[0]['id'] + 1;
+                    $tabsession = array(
+                        'idDossier' => $iddossier,
+                        'idClient' => $id_client,
+                        'nomClient' => $_POST['nom'],
+                        'prenomClient' => $_POST['prenom']
+                    );
+                    $this->session->set_userdata($tabsession);
+                    $this->load->model('Mappage/Client', 'client');
+                    $this->client->link_ClientUser($this->session->userdata['userconnect']['id_login'], $_POST['idClient']);
+                    $this->dossier->add_Dossier($_POST['idClient']);
+                    header('Location:' . site_url("CI_client/choix_action"));
                 } else {
                     $tabsession = array("CI_client/modif_client" => $id_client);
                     $this->session->set_userdata($tabsession);
