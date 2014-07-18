@@ -53,8 +53,9 @@ class CI_Client extends MY_Controller
         foreach ($clientsarchives as $client) {
             if ($client['user_id'] == $this->session->userdata('userconnect')['id_login']) {
                 $data['mesclientsarchive'][] = $client;
+            } else {
+                $data['clientsarchive'][$client['user_id']][] = $client;
             }
-            $data['clientsarchive'][$client['user_id']][] = $client;
         }
 
         //Liste des users
@@ -71,19 +72,6 @@ class CI_Client extends MY_Controller
         }
 
         //Entete du tableau
-        $clientsarchives = $this->mapclient->list_client(FALSE);
-        foreach ($clientsarchives as $client) {
-            if ($client['user_id'] == $this->session->userdata('userconnect')['id_login']) {
-                $data['mesclientsarchive'] = $client;
-            }
-            $data['clientsarchive'][$client['user_id']][] = $client;
-        }
-
-        $users = $this->user->list_user(TRUE);
-        foreach ($users as $user) {
-            $data['users'][$user['id']] = $user;
-        }
-
         $data['enteteclients'] = array('Id', 'Nom', 'Prenom', 'Email', 'Telephone fixe', 'Telephone Portable', 'Responsable');
 
         //C'est l'heure de l'affichage

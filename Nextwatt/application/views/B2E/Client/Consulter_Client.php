@@ -7,7 +7,16 @@
 </div>
 
 <div class="page-header">
-    <h1 class='center'>Clients</h1>
+    <?php
+        if (isset($_GET['dossier']) AND $_GET['dossier'] == 'TRUE') 
+        {?>
+            <h1 class='center'>Choisir ou créer un client</h1>
+        <?php }
+        else
+        {?>
+            <h1 class='center'>Clients</h1>
+        <?php }
+        ?>
 </div>
 
 <div class="row">
@@ -28,23 +37,23 @@
                 <div class="tabbable">
 
                     <ul id="myTab" class="nav nav-tabs">
-                        <li >
+                        <li <?php echo (empty($_POST)?'':'class="active"'); ?>>
                             <a href="#ajout" data-toggle="tab" class="btn btn-primary btn-sm">
                                 <i class="ace-icon fa fa-plus align-top bigger-125"/></i>Ajouter un Client
                             </a>
                         </li>
-                        <li class="active">
+                        <li <?php echo (empty($_POST)?'class="active"':''); ?>>
                             <a href="#actif" data-toggle="tab">Clients</a>
 
                         </li>
-                        <li>
+                        <li >
                             <a href="#archives" data-toggle="tab">Archives</a>
                         </li>   
                     </ul>
 
 
                     <div class="tab-content">
-                        <div class="tab-pane in active" id="actif">
+                        <div class="tab-pane in <?php echo (empty($_POST)?'active':''); ?>" id="actif">
 
                             <div class="panel panel-success">
                                 <!-- Default panel contents -->
@@ -180,7 +189,7 @@
                         
                         
                         
-                        <div class="tab-pane" id="ajout">
+                        <div class="tab-pane <?php echo (empty($_POST)?'':'active'); ?>" id="ajout">
                             <?php $this->load->view('B2E/Client/Add_Client') ?>
                         </div>
                         

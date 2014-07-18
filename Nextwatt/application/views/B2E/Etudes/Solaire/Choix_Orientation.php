@@ -17,23 +17,23 @@
             <tr>
                 <th></th>
                 <th class="text-center">
-                    <canvas id="angle15" class="hidden-480" height="100" width="150"></canvas>
+                    <canvas id="angle15" class="hidden-xs hidden-sm" height="100" width="150"></canvas>
                     <h2 class="bolder">15°</h2>
                 </th>
                 <th class="text-center">
-                    <canvas id="angle20" class="hidden-480" height="100" width="150"></canvas>
+                    <canvas id="angle20" class="hidden-xs hidden-sm" height="100" width="150"></canvas>
                     <h2 class="bolder">20°</h2>
                 </th>
                 <th class="text-center">
-                    <canvas id="angle30" class="hidden-480" height="100" width="150"></canvas>
+                    <canvas id="angle30" class="hidden-xs hidden-sm" height="100" width="150"></canvas>
                     <h2 class="bolder">30°</h2>
                 </th>
                 <th class="text-center">
-                    <canvas id="angle45" class="hidden-480" height="100" width="100"></canvas>
+                    <canvas id="angle45" class="hidden-xs hidden-sm" height="100" width="100"></canvas>
                     <h2 class="bolder">45°</h2>
                 </th>
                 <th class="text-center">
-                    <canvas id="angle60" class="hidden-480" height="100" width="57"></canvas>
+                    <canvas id="angle60" class="hidden-xs hidden-sm" height="100" width="57"></canvas>
                     <h2 class="bolder">60°</h2>
                 </th>
             </tr>
