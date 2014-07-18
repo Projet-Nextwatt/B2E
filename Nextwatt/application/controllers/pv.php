@@ -903,6 +903,10 @@ class PV extends MY_Controller
 
         $data['flouzcumul'] = $this->cumulflouz();
 
+        $this->load->model('mappage/Client','Client');
+        $data['resultClient'] = $this->Client->get_InfoUser($this->session->userdata['nomClient'],$this->session->userdata['prenomClient']);
+
+
         // Load all views as normal
         $this->load->view('B2E/Etudes/Solaire/PDF_Recette.php' , $data);
         // Get output html

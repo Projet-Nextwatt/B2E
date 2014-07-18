@@ -69,19 +69,18 @@ class Client extends DataMapper
         }
     }*/
 
-    function list_client($actif=NULL,$selectcolonne = NULL) {
+    function list_client($actif = NULL, $selectcolonne = NULL)
+    {
         // $selectcolonnne = array('col 1','col2',...);
         $clients = new Client();
         if ($actif == TRUE) {
             $clients->where('Actif', 1);
-        }
-        else if ($actif == FALSE)
-        {
+        } else if ($actif == FALSE) {
             $clients->where('Actif', 0);
         }
         $clients->order_by('user_id');
         $clients->get();
-        
+
         return $clients->all_to_array($selectcolonne);
     }
 
@@ -129,7 +128,7 @@ class Client extends DataMapper
         unset($data['id']);
         $client = new Client();
         $client->where('id', $id)->get();
-        foreach ($data as $variable => $valeur){
+        foreach ($data as $variable => $valeur) {
             $client->$variable = $valeur;
         }
         return $client->save();
@@ -144,11 +143,17 @@ class Client extends DataMapper
         $client->delete();
     }
 
-    function link_ClientUser($idUser,$idClient){
+    function link_ClientUser($idUser, $idClient)
+    {
         $c = new Client();
-        return $c->where('id',$idClient)->update('user_id',$idUser);
+        return $c->where('id', $idClient)->update('user_id', $idUser);
 
     }
 
+    function get_InfoUser($nomUser, $prenomUser)
+    {
+        $c = new Client();
+        return $c->where('nom1',$nomUser)->where('prenom1',$prenomUser)->get()->all_to_array();
+    }
 }
 
