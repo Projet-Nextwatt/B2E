@@ -358,6 +358,21 @@ echo form_close();
 </div>
 <!-- fin de la première row -->
 
+<div class='row'>
+<div class='col-md-12'>
+    <div class="widget-box">
+        <div class="widget-header widget-header-flat">
+            <h4 class='widget-title'>Dossiers</h4>
+        </div>
+        <div class="widget-body">
+            <div class="widget-main">
+                le 1<br/>le 2
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
 </div>
 <!-- Fin d conteneur pricipal --></div>
 
