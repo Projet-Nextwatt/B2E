@@ -37,12 +37,6 @@ class Dossier extends DataMapper
         //Fonction de selection
     }
 
-    function ajouter_dossier()
-    {
-        $d = new Dossier();
-        $d->save();
-    }
-
     function modifier_dossier()
     {
         //Fonction de modification

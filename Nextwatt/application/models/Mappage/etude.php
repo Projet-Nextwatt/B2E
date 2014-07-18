@@ -42,16 +42,22 @@ class Etude extends DataMapper {
             'PV_Ratio_Orientation' => $data['Orientation'],
             'PV_Ratio_Masque' => $data['Masque'],
             'PV_Puissance_Systeme' => $data['Puisysteme'],
-            'PV_Bonus' => $data['Bonus'],
         );
+
+        if(isset($data['Bonus']))
+        {
+            $etude['PV_Bonus'] = $data['Bonus'];
+        }
 
 
         if ($this->db->insert('etudes', $etude))
         {
-            $dossier = array(
+            $idetude = array(
                 'etude_id' => mysql_insert_id(),
             );
-            $this->db->insert('dossiers', $dossier);
+
+            $this->db->where('id', $data['id_dossier']);
+            $this->db->update('dossiers', $idetude);
             return TRUE;
         } else {
             echo '<p>' . $etude->error->string . '</p>';

@@ -432,7 +432,9 @@ class PV extends MY_Controller
         $data['Masque'] = $this->session->userdata['Ratioc'];
         $data['Orientation'] = (float)$this->session->userdata['Orientation'];
         $data['Puisysteme'] = (float)$panneau[0]['Puissance'];
-        $data['Bonus'] = (int)$prodjson['bonusProd'];
+        if(isset($prodjson['bonusProd'])){
+            $data['Bonus'] = (int)$prodjson['bonusProd'];
+        }
         $data['id_dossier'] = $this->session->userdata['idDossier'];
 
         if($this->etude->ajouter_etude($data) == TRUE)
@@ -536,7 +538,7 @@ class PV extends MY_Controller
     function ajax_envoiratioc()
     {
 
-        if (isset($_POST['masque']) || $_POST['masque'] == '') {
+        if (isset($_POST['masque']) || !empty($_POST['masque'])) {
             $masque = $_POST['masque'];
             $masqueexploque = explode(',', $masque);
             $perte = 0;
