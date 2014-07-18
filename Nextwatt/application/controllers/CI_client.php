@@ -69,10 +69,6 @@ class CI_Client extends MY_Controller
         $this->layout->view('B2E/Client/Add_Client', $data); // Render view and layout
     }
 
-    public function add_clientDossier()
-    {
-    }
-
     public function verif_form_client()
     {
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
