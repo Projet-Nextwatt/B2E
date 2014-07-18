@@ -67,11 +67,10 @@ class CI_Client extends MY_Controller {
 
 
 
-        
-        
-        
-        //C'est l'heure de l'affichage
 
+
+
+        //C'est l'heure de l'affichage
         //Si le fomulaire d'ajout n'a pas été rempli, on redirige normailement
         if (empty($_POST)) {
             $this->layout->title('Liste des clients');
@@ -79,26 +78,24 @@ class CI_Client extends MY_Controller {
         } else {
             //sinon on verifie de formulaire
             $this->form_validation->set_rules($this->configclient);
-            if ($this->form_validation->run() == FALSE) { 
+            if ($this->form_validation->run() == FALSE) {
                 // Problème de saisi: On charge la page
                 $this->layout->title('Erreur d\'ajout client');
                 $this->layout->view('B2E/Client/Consulter_Client.php', $data); // Render view and layout
-                
             } else {
                 //Pas de problème, on traite et on enregiste
                 $this->form_validation->set_rules($this->configtraitementclient);
                 $this->form_validation->run();
-                
-                $id_client=$this->mapclient->ajouter_client($_POST);
-                
-                if ($data['dossier']==TRUE){
+
+                $id_client = $this->mapclient->ajouter_client($_POST);
+
+                if ($data['dossier'] == TRUE) {
                     header('Location:' . site_url("CI_client/consult_client"));
-                } 
-                else
-                {
+                } else {
+                    $tabsession = array("CI_client/modif_client" => $id_client);
+                    $this->session->set_userdata($tabsession);
                     header('Location:' . site_url("CI_client/modif_client"));
                 }
-                
             }
         }
     }
