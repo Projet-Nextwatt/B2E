@@ -84,7 +84,8 @@ class CI_Client extends MY_Controller
         }
 
         $data['enteteclients'] = array('Id', 'Nom', 'Prenom', 'Email', 'Telephone fixe', 'Telephone Portable', 'Responsable');
-
+        
+        
         //C'est l'heure de l'affichage
         //Si le fomulaire d'ajout n'a pas été rempli, on redirige normailement
         if (empty($_POST)) {
