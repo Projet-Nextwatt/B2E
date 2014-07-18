@@ -7,8 +7,8 @@ class Etude extends DataMapper {
      /*
      * Variables correspondantes aux colonnes de la table.
      */
-    var $ID_Etude = "";
-    var $ID_Dossier = "";
+    var $id = "";
+    var $dossier_id = "";
     var $HEPP = "";
     var $PV_Ratio_Orientation = "";
     var $PV_Ratio_Masque = "";
@@ -34,9 +34,36 @@ class Etude extends DataMapper {
         //Fonction de selection
     }
     
-    function ajouter_etude()
+    function ajouter_etude($data)
     {
-        // Fonction d'ajout
+        $etude = array(
+            'dossier_id' => $data['id_dossier'],
+            'HEPP' => $data['HEPP'],
+            'PV_Ratio_Orientation' => $data['Orientation'],
+            'PV_Ratio_Masque' => $data['Masque'],
+            'PV_Puissance_Systeme' => $data['Puisysteme'],
+        );
+
+        if(isset($data['Bonus']))
+        {
+            $etude['PV_Bonus'] = $data['Bonus'];
+        }
+
+
+        if ($this->db->insert('etudes', $etude))
+        {
+            $idetude = array(
+                'etude_id' => mysql_insert_id(),
+            );
+
+            $this->db->where('id', $data['id_dossier']);
+            $this->db->update('dossiers', $idetude);
+            return TRUE;
+        } else {
+            echo '<p>' . $etude->error->string . '</p>';
+            return FALSE;
+        }
+
     }
     
     function modifier_etude()

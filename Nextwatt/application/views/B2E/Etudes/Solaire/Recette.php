@@ -166,9 +166,14 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
         <li class="previous">
             <a href=" <?php echo site_url("pv/calculrecette"); ?>"><h4>← Calculer Recette</h4></a>
         </li>
-
+        <li class="center">
+            <a href=" <?php echo site_url("pv/enregistrer_etude"); ?>"><h4>Enregistrer l'étude</h4></a>
+            <br/><br/>
+            <p><?php if(isset($msgsucces)){echo($msgsucces);} ?></p>
+        </li>
         <li class="next">
-            <a href="<?php echo site_url("pv/pdf"); ?>"><h4>Portable Document Format →</h4></a>
+            <a href="<?php echo site_url("pv/pdf"); ?>"><i class="ace-icon fa fa-print fa-bigger-400"></i><h4>Portable Document Format →</h4></a>
+
         </li>
     </ul>
 </div>

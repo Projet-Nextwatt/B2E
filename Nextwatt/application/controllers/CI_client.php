@@ -39,6 +39,7 @@ class CI_Client extends MY_Controller {
             }
         }
 
+<<<<<<< HEAD
         //Liste des clients archivés
         $clientsarchives = $this->mapclient->list_client(FALSE);
         $data['mesclientsarchive'] = array();
@@ -63,6 +64,21 @@ class CI_Client extends MY_Controller {
         }
 
         //Entete du tableau
+=======
+        $clientsarchives = $this->mapclient->list_client(FALSE);
+        foreach ($clientsarchives as $client) {
+            if ($client['user_id'] == $this->session->userdata('userconnect')['id_login']) {
+                $data['mesclientsarchive'] = $client;
+            }
+            $data['clientsarchive'][$client['user_id']][] = $client;
+        }
+
+        $users = $this->user->list_user(TRUE);
+        foreach ($users as $user) {
+            $data['users'][$user['id']] = $user;
+        }
+
+>>>>>>> origin/Developpement
         $data['enteteclients'] = array('Id', 'Nom', 'Prenom', 'Email', 'Telephone fixe', 'Telephone Portable', 'Responsable');
 
 
@@ -118,7 +134,16 @@ class CI_Client extends MY_Controller {
         $this->layout->view('B2E/Client/Add_Client', $data); // Render view and layout
     }
 
+<<<<<<< HEAD
     public function verif_form_client() {
+=======
+    public function add_clientDossier()
+    {
+    }
+
+    public function verif_form_client()
+    {
+>>>>>>> origin/Developpement
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
         $data = array();
 
@@ -260,6 +285,10 @@ class CI_Client extends MY_Controller {
             'rules' => 'valid_email|trim'
         ),
     );
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/Developpement
     public $configtraitementclient = array(
         array(
             'field' => 'nom1',
@@ -290,7 +319,12 @@ class CI_Client extends MY_Controller {
         ),
     );
 
+<<<<<<< HEAD
     public function tel(&$nbr) {
+=======
+    public function tel(&$nbr)
+    {
+>>>>>>> origin/Developpement
         $nbr = preg_replace("#[^0-9]#", '', $nbr);
 
         if (strlen($nbr) == 10) {

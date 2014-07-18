@@ -260,4 +260,12 @@ class Catalogue extends DataMapper
         return $rsltupdate;
     }
 
+    function select_panneau_by_nom($nom)
+    {
+        $prod = new Catalogue();
+        $prodspec = $prod->where('Nom', $nom)->get();
+        $tabprodspec = $prodspec->all_to_array();
+        return $tabprodspec;
+    }
+
 }

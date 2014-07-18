@@ -109,11 +109,11 @@
     <tr>
         <td rowspan="2">
             <fieldset class="alignleft">
-                Dupont Serge et Jeanne <br/>
-                67 impasse du vieux renard <br/>
-                13100 AIX EN PROVENCE <br/>
-                <a href="Sg.dupond@email.fr">Sg.dupond@email.fr</a><br/>
-                06.06.06.06.06 / 04.04.04.04.04
+                <?php echo $this->session->userdata['nomClient'].' '.$this->session->userdata['prenomClient']?> <br/>
+                <?php echo $resultClient[0]['adresse'] ?> <br/>
+                <?php echo $resultClient[0]['codepostal'] .' '.$resultClient[0]['ville'] ?> <br/>
+                <a href="<?php echo $resultClient[0]['email'] ?>"><?php echo $resultClient[0]['email'] ?></a><br/>
+                <?php echo $resultClient[0]['tel1'] ?> / <?php echo $resultClient[0]['tel2'] ?>
             </fieldset>
         </td>
         <td class="alignright"><img src="<?php echo img_url('MiniLogoNextwatt.png'); ?>"/></td>
@@ -128,7 +128,15 @@
         <td colspan="2"><h1>Estimation de production Photovoltaïque</h1></td>
     </tr>
     <tr>
-        <td colspan="2" class="alignleft">Monsieur Dupond, dans le cadre de nos échanges, vous avez souhaité une
+        <td colspan="2" class="alignleft"><?php
+            if($resultClient[0]['civilite'] == '1'){
+                echo 'Madame ';
+            }elseif($resultClient[0]['civilite'] =='2'){
+                echo 'Mademoiselle ';
+            }else{
+                echo 'Monsieur ';
+            }
+            echo $this->session->userdata['nomClient']?>, dans le cadre de nos échanges, vous avez souhaité une
             estimation des revenus de
             production de votre future installation.
         </td>
