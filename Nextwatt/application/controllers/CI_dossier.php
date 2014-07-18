@@ -45,9 +45,8 @@ class CI_Dossier extends MY_Controller
         echo "ID dossier :" . $dossier->id . "<br/>Titre :" . $dossier->Titre . "<br/> montant :" . $dossier->Montant . "<br/><br/>";
     }
 
-    public function ajax_addDossier()
+    public function addDossier()
     {
-        if (isset($_POST['idClient']) && isset($_POST['nomClient']) && isset($_POST['prenomClient'])) {
             $this->load->model('Mappage/Dossier', 'dossier');
             $resultSelectIdDossier = $this->dossier->select_idDossier();
             $iddossier = $resultSelectIdDossier[0]['id'] + 1;
@@ -62,12 +61,7 @@ class CI_Dossier extends MY_Controller
             $this->client->link_ClientUser($this->session->userdata['userconnect']['id_login'], $_POST['idClient']);
             $this->dossier->add_Dossier($_POST['idClient']);
 
-            echo true;
-
-        } else {
-            $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
-            show_error($message_403, 403, '403 - Acc&egrave;s interdit');
-        }
+            $this->choix_action();
     }
 }
 
