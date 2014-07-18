@@ -31,7 +31,9 @@
                             Client
                         </div>
                         <div class="widget-body">
-                            <!--                --><?php //var_dump($this->session->userdata) ?>
+                            <?php
+
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -45,6 +47,7 @@
                 </div>
             </div>
             <br/>
+
             <div class="row">
                 <div class="col-xs-9 col-xs-offset-2">
                     <div class="widget-box">
