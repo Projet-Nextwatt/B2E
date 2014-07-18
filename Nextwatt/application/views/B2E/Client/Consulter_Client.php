@@ -42,7 +42,7 @@
                         </li>   
                     </ul>
 
-                    -
+
                     <div class="tab-content">
                         <div class="tab-pane in active" id="actif">
 
