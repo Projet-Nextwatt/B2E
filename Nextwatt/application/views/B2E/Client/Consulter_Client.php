@@ -13,7 +13,6 @@
 <div class="row">
     <div class="col-xs-12">
 
-        <?php var_dump($this->session->all_userdata()   )?>
         <div class="row">
             <div class="col-xs-12 text-center">
                 <a class="btn btn-primary btn-sm" href="<?php echo site_url("CI_client/add_client"); ?>">
@@ -29,13 +28,18 @@
                 <div class="tabbable">
 
                     <ul id="myTab" class="nav nav-tabs">
+                        <li >
+                            <a href="#ajout" data-toggle="tab" class="btn btn-primary btn-sm">
+                                <i class="ace-icon fa fa-plus align-top bigger-125"/></i>Ajouter un Client
+                            </a>
+                        </li>
                         <li class="active">
                             <a href="#actif" data-toggle="tab">Clients</a>
 
                         </li>
                         <li>
                             <a href="#archives" data-toggle="tab">Archives</a>
-                        </li>
+                        </li>   
                     </ul>
 
                     
@@ -49,7 +53,7 @@
                             </div>
 
                             
-                            <?php if ($this->session->userdata("userconnect")["Droit_Admin"]==1) {?> 
+                            <?php if ($this->session->userdata("userconnect")["Droit_Admin"]==1 AND isset($clients)) {?> 
                             <div id="accordion" class="accordion-style1 panel-group accordion-style2">
                                 <!-- 1er accordeon toujours ouvert -->
                                 <!--
@@ -102,13 +106,77 @@
                         </div>
 
                         
+                        
+                        
+                        
+                        
+                        
+                        
                         <div class="tab-pane" id="archives">
-                            <?php
-                            foreach ($clientsarchive as $iduser => $clientsarchiveduuser) {
-                                $this->fonctionspersos->creerTableau($clientsarchiveduuser, $enteteclients, 'CI_client/modif_client', 'CI_client/ajax_supprimerclient ');
-                            }
-                            ?>
+                            <?php var_dump($mesclientsarchive)?>
+                            <div class="panel panel-success">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading align-left">Mes clients archivés</div>
+                                <?php $this->fonctionspersos->creerTableau($mesclientsarchive, $enteteclients = NULL, 'CI_client/modif_client', 'CI_client/ajax_supprimerclient '); ?>
+                            </div>
+
+                            
+                            <?php if ($this->session->userdata("userconnect")["Droit_Admin"]==1 AND isset($clientsarchive)) {?> 
+                            <div id="accordion" class="accordion-style1 panel-group accordion-style2">
+                                
+                            <?php foreach ($clientsarchive as $user_id => $clientsduuser){ ?>
+                                
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $user_id; ?>">
+                                                <i class="bigger-110 ace-icon fa fa-angle-right" data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i>
+                                                
+                                                <span class="badge"><?php echo count($clientsduuser); ?></span>
+                                                <?php echo $users[$user_id]['nom'];?> 
+                                            </a>
+                                        </h4>
+                                    </div>
+
+                                    <div class="panel-collapse collapse" id="collapse<?php echo $user_id; ?>" style="height: 0px;">
+                                        <div class="panel-body">    
+                                            <?php $this->fonctionspersos->creerTableau($clientsduuser, $enteteclients = NULL, 'CI_client/modif_client', 'CI_client/ajax_supprimerclient '); ?>
+                                         </div>
+                                    </div>
+                                </div>
+                                
+                                
+                            <?php } ?>
+
+
+                            </div> <!-- fin de l'accordeon -->
+                            <?php } //fin du if admin?>
                         </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <div class="tab-pane" id="ajout">
+                            <?php $this->load->view('B2E/Client/Add_Client') ?>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
 
                     </div>
                 </div>
