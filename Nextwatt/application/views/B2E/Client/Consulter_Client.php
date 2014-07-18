@@ -112,14 +112,13 @@
 
 
                         <div class="tab-pane" id="archives">
-                            <?php var_dump($mesclientsarchive)?>
+                            
                             <div class="panel panel-success">
                                 <!-- Default panel contents -->
                                 <div class="panel-heading align-left">Mes clients archivés</div>
                                 <?php $this->fonctionspersos->creerTableau($mesclientsarchive, $enteteclients = NULL, 'CI_client/modif_client', 'CI_client/ajax_supprimerclient '); ?>
                             </div>
 
-                            
                             <?php if ($this->session->userdata("userconnect")["Droit_Admin"]==1 AND isset($clientsarchive)) {?> 
                             <div id="accordion" class="accordion-style1 panel-group accordion-style2">
                                 
