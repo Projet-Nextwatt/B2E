@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Classe Modèle pour la table Article, définir ici toutes les fonctionnalitées utilisant la table Article
  */
@@ -43,22 +42,22 @@ class Article extends DataMapper
     {
         parent ::__construct();
     }
-
+    
     function select_article()
     {
         //Fonction de selection
     }
-
+    
     function ajouter_article()
     {
         // Fonction d'ajout
     }
-
+    
     function modifier_article()
     {
         //Fonction de modification
     }
-
+    
     function supprimer_article()
     {
         $this->db->where('Nom', 'Nom');
@@ -68,5 +67,4 @@ class Article extends DataMapper
     function  select_ArticleById(){
        return $this->db->get('articles');
     }
-
 }

@@ -14,9 +14,16 @@
         echo form_open('CI_client/consult_client' . $dossier, $attributes, $hiden);
         ?>
         
-        <h4 class='green header'>Informations</h4>
-
-        <div class="form-group">
+        <!--<h4 class='green header'>Informations</h4>-->
+        
+        <div class='row form-group'>
+        <div class="col-xs-12 label label-lg label-success arrowed-right">
+            <b>Informations</b>
+        </div>
+        </div>
+        
+        
+        <div class="row form-group">
             <label for="civilite" class="col-sm-3 no-padding-right control-label">Civilité</label>
 
             <div class="col-sm-4">
@@ -76,8 +83,12 @@
             </div>
         </div>
 
-
-        <h4 class='green header'>Adresse</h4>
+        <div class='row form-group'>
+        <div class="col-xs-12 label label-lg label-success  arrowed-right">
+            <b>Adresse</b>
+        </div>
+        </div>
+        
 
         <div class="row form-group">
             <label for="adresse" class="col-sm-3 no-padding-right control-label">Adresse</label>
@@ -116,8 +127,11 @@
             </div>
         </div>
 
-
-        <h4 class='green header'>Coordonées</h4>
+        <div class='row form-group'>
+        <div class="col-xs-12 label label-lg label-success arrowed-right">
+            <b>Coordonées</b>
+        </div>
+        </div>
 
         <div class="row form-group">
             <label for="email" class="col-sm-3 no-padding-right control-label">Email</label>

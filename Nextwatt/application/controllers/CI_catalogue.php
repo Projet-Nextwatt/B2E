@@ -447,4 +447,37 @@ class CI_Catalogue extends MY_Controller
         $this->layout->title('Catalogue B2E');
         $this->layout->view('B2E/Dossier_Archives/Devis/Catalogue_Devis', $data);
     }
+
+    public function select_produit_devis()
+    {
+        $idprod = ($this->session->userdata('CI_Catalogue/select_produit_devis'));
+        $this->devis_form($idprod);
+    }
+
+    public function devis_form($idprod = NULL)
+    {
+        $this->load->model('Mappage/client', 'client');
+        $this->load->model('Mappage/user', 'user');
+        $this->load->model('Mappage/catalogue', 'catalogue');
+
+        $client = $this->client->select_client($this->session->userdata['idClient']);
+        $user = $this->user->select_user($client['user_id']);
+        $produit = $this->catalogue->select_panneau($idprod);
+        $produit['ID_Dossier'] = $this->sessi;
+
+
+        $data['nomclient1'] = $client['nom1'];
+        $data['prenomclient1'] = $client['prenom1'];
+        $data['prenomclient2'] = $client['prenom2'];
+        $data['adresse'] = $client['adresse'];
+        $data['ville'] = $client['ville'];
+        $data['usernom'] = $user['nom'];
+        $data['userprenom'] = $user['prenom'];
+
+        $this->layout->title('Devis');
+        $this->layout->view('B2E/Dossier_Archives/Devis/devis', $data);
+    }
+
+
+
 }

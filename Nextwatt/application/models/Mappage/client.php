@@ -78,7 +78,7 @@ class Client extends DataMapper
         } else if ($actif == FALSE) {
             $clients->where('Actif', 0);
         }
-        $clients->order_by('user_id');
+        $clients->order_by('dateajout','DESC');
         $clients->get();
 
         return $clients->all_to_array($selectcolonne);
