@@ -332,7 +332,7 @@ class CI_Catalogue extends MY_Controller
         $configtraitement = $this->configtraitementsoustype();  //On définit les différents traitement pour l'ajout d'un soustype dans un tableau (en passant par la fonction définit plus bas)
 
         $this->form_validation->set_rules($configST);       //On applique les configurations définits précédemments (en passant les tableaux en paramètre de "set_rules")
-        $this->form_validation->set_rules($configtraitement);
+
 
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
         //Et on agit en conséquence
@@ -341,6 +341,8 @@ class CI_Catalogue extends MY_Controller
             $this->layout->title('Erreur d\'ajout soustype');
             $this->layout->view('B2E/Catalogue/Add_Soustype', $data); // Render view and layout
         } else {
+            $this->form_validation->set_rules($configtraitement);
+            $this->form_validation->run();
             $this->mapsoustype->ajouter_soustype($_POST);
             $this->consult_soustype();
         }
@@ -461,12 +463,14 @@ class CI_Catalogue extends MY_Controller
         $this->load->model('Mappage/client', 'client');
         $this->load->model('Mappage/user', 'user');
         $this->load->model('Mappage/catalogue', 'catalogue');
+        $this->load->model('Mappage/article', 'article');
 
         $client = $this->client->select_client($this->session->userdata['idClient']);
         $user = $this->user->select_user($client['user_id']);
         $produit = $this->catalogue->select_panneau($idprod);
-        $produit['ID_Dossier'] = $this->sessi;
+        $produit['ID_Dossier'] = $this->session->userdata('idDossier');
 
+        $this->article->ajouter_article($produit);
 
         $data['nomclient1'] = $client['nom1'];
         $data['prenomclient1'] = $client['prenom1'];

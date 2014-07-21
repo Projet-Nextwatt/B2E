@@ -10,8 +10,6 @@ class Article extends DataMapper
      * Variables de relation (entre tables)
      */
     var $has_one = array("article", "dossier", "soustype");
-    var $has_many = array("article");
-
 
     function __construct()
     {
@@ -25,29 +23,29 @@ class Article extends DataMapper
 
     function ajouter_article($produit)
     {
-        $newcatalogue = new Catalogue();
-        $newcatalogue->id = $produit['id'];
-        $newcatalogue->ID_SousType = $produit['ID_SousType'];
-        $newcatalogue->ID_Dossier = $produit['ID_Dossier'];
-        $newcatalogue->Reference = $produit['Reference'];
-        $newcatalogue->Nom = $produit['Nom'];
-        $newcatalogue->Marque = $produit['Marque'];
-        $newcatalogue->Puissance = $produit['Puissance'];
-        $newcatalogue->Libelle_Mat = $produit['Libelle_Mat'];
-        $newcatalogue->Libelle_MO = $produit['Libelle_MO'];
-        $newcatalogue->Libelle_Garantie = $produit['Libelle_Garantie'];
-        $newcatalogue->Prix_MO = $produit['Prix_MO'];
-        $newcatalogue->Prix_Mat_Plancher = $produit['Prix_Mat_Plancher'];
-        $newcatalogue->Prix_Annonce_TTC = $produit['Prix_Annonce_TTC'];
-        $newcatalogue->CEE_TTC = $produit['CEE_TTC'];
-        $newcatalogue->TVA_MO = $produit['TVA_MO'];
-        $newcatalogue->TVA_Mat = $produit['TVA_Mat'];
-        $newcatalogue->Facturation = $produit['Facturation'];
-        $newcatalogue->Type_Produit = $produit['Type_Produit'];
-        $newcatalogue->Spec = $produit['Spec'];
-        $newcatalogue->Actif = $produit['Actif'];
-
-
+        $newproduit = array(
+            'id' => $produit[0]['id'],
+            'ID_SousType' => $produit[0]['ID_SousType'],
+            'ID_Dossier' => $produit['ID_Dossier'],
+            'Reference' => $produit[0]['Reference'],
+            'Nom' => $produit[0]['Nom'],
+            'Marque' => $produit[0]['Marque'],
+            'Puissance' => $produit[0]['Puissance'],
+            'Libelle_Mat' => $produit[0]['Libelle_Mat'],
+            'Libelle_MO' => $produit[0]['Libelle_MO'],
+            'Libelle_Garantie' => $produit[0]['Libelle_Garantie'],
+            'Prix_MO' => $produit[0]['Prix_MO'],
+            'Prix_Mat_Plancher' => $produit[0]['Prix_Mat_Plancher'],
+            'CEE_TTC' => $produit[0]['CEE_TTC'],
+            'Prix_Annonce_TTC' => $produit[0]['Prix_Annonce_TTC'],
+            'TVA_MO' => $produit[0]['TVA_MO'],
+            'TVA_Mat' => $produit[0]['TVA_Mat'],
+            'Facturation' => $produit[0]['Facturation'],
+            'Type_Produit' => $produit[0]['Type_Produit'],
+            'Spec' => $produit[0]['Spec'],
+            'actif' => $produit[0]['Actif'],
+        );
+        $this->db->insert('articles', $newproduit);
     }
 
     function modifier_article()
