@@ -37,6 +37,7 @@
 
             <div class="col-sm-6">
                 <select name='Produit' id='produit'>
+                    <option></option>
                     <?php
                     if (isset($panneau)) {
                     foreach ($panneau as $p) {
