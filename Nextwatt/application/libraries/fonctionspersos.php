@@ -303,5 +303,109 @@ class Fonctionspersos
         return $entete;
     }
 
+     public function creerListClient(array $contenu,
+                                 $form = NULL,
+                                $sup=NULL)
+    {
+        if ($contenu == NULL OR (isset($contenu[0]) AND $contenu[0] == '')) {
+            echo '<p><strong>Attention: Aucune client</strong></p>';
+        } else {
+            //Requette pour voir si le tableau posède une colonne "id" 
+            $presenceDunID = false;
+            $tableau1 = current($contenu);
+            foreach ($tableau1 as $nomDeLaColonne => $contenuDeLaColonne) {
+                if (preg_match('#^id#', $nomDeLaColonne)) {
+                    $presenceDunID = $nomDeLaColonne; //Je stocke l'index de la colonne ID dans la varaible $presenceDunID
+                }
+            }
+            
+            //Ouvertre du du conteneur
+            echo '<div class="infobox-container">';
+
+
+            //Contenu
+            foreach ($contenu as $ligne) {
+                echo '<div class="infobox infobox-green" ';
+                
+                //On met un id
+                if (!($presenceDunID == false)) {
+                    echo 'id=' . $ligne[$presenceDunID].' ';
+                }
+                
+                
+                if ($form != NULL ) {
+                    echo 'onclick="modifier(';
+                    echo $ligne[$presenceDunID];
+                    echo ')" style="cursor:pointer" ';
+                }
+                
+                echo '>' . "\n";
+                    $nom='';
+                        if (empty($ligne['prenom1'])) {
+                            $civ = $ligne['civilite'];
+                            $nom.=($civ == 1 ? 'Mme ' : '');
+                            $nom.=($civ == 2 ? 'Mlle ' : '');
+                            $nom.=($civ == 3 ? 'Mr ' : '');
+                        }
+                        $nom.= $ligne['nom1'] . ' ' . $ligne['prenom1'];
+                        if (!(empty($ligne['prenom2']))) {
+                            $nom.= ' et ' . $ligne['nom2'] . ' ' . $ligne['prenom2'];
+                        }    
+                        
+                        $len=  strlen($nom);
+                
+                    if ($len< 20){
+                        echo "<div class='infobox-icon'>";
+                        echo "<i class='ace-icon fa fa-user'></i>";
+                        echo "</div>";
+                    }
+                
+                    echo "<div class='infobox-data'>";
+                        echo substr ($nom , 0, 24 ).($len>24?"...":"");
+                        
+                    
+                        echo "<div class = 'infobox-content'>";
+                        echo $ligne ['ville'];
+                        echo "</div>";
+                    echo "</div>";
+                    
+
+                echo '</div>' . "\n";
+            }
+            echo '</div>';
+
+            //Script qui permet de metre l'identifiant de la ligne à modifier en session codeigniter
+            //La varaible en session aura le nom du 
+            if ($form != NULL) {
+                echo "  <script> 
+                        function modifier(id){
+                            $.post(
+                                '../ajaxfonctionspersos/sessionpourform',
+                                {'id':id,
+                                 'form':'" . $form . "'},
+                                function (){
+                                    self.location.href='" . site_url($form) . "'                               }
+                            );
+                        }
+                    </script>";
+            }
+
+            if ($sup != NULL) {
+                echo "  <script> 
+                            function confirme_supprimer(idDossier) {
+                            if (confirm('Voulez-vous vraimment supprimer l\'entrée numéro ' + idDossier)) {
+                                $.post(
+                                        '../" . $sup . "',
+                                        {'id': idDossier},
+                                function() {
+                                      location.reload();
+                                }   
+                            );
+                        }
+                    }
+                    </script>";
+            }
+        }
+    }
 //
 }
