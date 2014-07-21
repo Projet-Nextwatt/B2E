@@ -76,12 +76,7 @@
                             </div>
                         </div>
                         <div class="widget-body">
-                            <?php var_dump($_POST) ?>
-                            blabla<br/>
-                            hjhkj<br/>
-                            zdgzeg<br/>
-                            qrgqfdgq<br/>
-                            zfggvsd<br/>
+                            
                         </div>
                     </div>
                 </div>

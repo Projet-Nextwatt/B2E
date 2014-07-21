@@ -24,7 +24,6 @@ class Article extends DataMapper
     function ajouter_article($produit)
     {
         $newproduit = array(
-            'id' => $produit[0]['id'],
             'ID_SousType' => $produit[0]['ID_SousType'],
             'ID_Dossier' => $produit['ID_Dossier'],
             'Reference' => $produit[0]['Reference'],
