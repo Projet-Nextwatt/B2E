@@ -439,5 +439,15 @@ class CI_Catalogue extends MY_Controller
         return $configtraitementsoustype;
     }
 
+    ////////////////////////////////  GESTION DU DEVIS (TABLE ARTICLE) ////////////////////////////////////
 
+    public function consult_catalogue_devis()
+    {
+        $data = array();
+        $data['tableau'] = $this->create_tableau_catalogue();   // On appel la fonction de création du cataloge en mode tableau pour pouvoir l'afficher avec la variable $data['tableau']
+
+        //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
+        $this->layout->title('Catalogue B2E');
+        $this->layout->view('B2E/Dossier_Archives/Devis/Catalogue_Devis', $data);
+    }
 }
