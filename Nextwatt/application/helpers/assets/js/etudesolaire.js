@@ -12,7 +12,6 @@ function geolocalisestation() {
             $.post(
                 'ajax_geoposition',
                 {
-                    'panneau': $('input[name=panneau]:checked').val(),
                     'latitude': position.coords.latitude,
                     'longitude': position.coords.longitude
                 },
@@ -35,7 +34,6 @@ function preselectstation(idEnsol) {
     $.post(
         'ajax_heppstation',
         {
-            'panneau': $('input[name=panneau]:checked').val(),
             idVille: {keyname: idEnsol}
         },
         function (data) {
@@ -641,9 +639,9 @@ function selectpanneau() {
                 var ref = null;
                 var info = JSON.parse(data);
                 $('#produit').empty();
+                $('#produit').append('<option></option>');
                 for (var i in info) {
                     if (info[i]['Reference'] != ref) {
-
                         $('#produit').append('<optgroup label="' + info[i]['Reference'] + '">');
                         ref = info[i]['Reference'];
                         $('#produit').append('<option value="' + info[i]['id'] + '">' + info[i]['Nom'] + '</option>');

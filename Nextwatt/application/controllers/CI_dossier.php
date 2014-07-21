@@ -82,7 +82,7 @@ class CI_Dossier extends MY_Controller
         $data['userprenom'] = $user['prenom'];
 
         $this->layout->title('Devis');
-        $this->layout->view('B2E/Dossier_Archives/Dossier/devis', $data);
+        $this->layout->view('B2E/Dossier_Archives/Devis/devis', $data);
     }
 }
 

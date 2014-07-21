@@ -5,7 +5,7 @@
         <br/>
 
         <div class="btn-group">
-            <a href="<?php echo site_url("CI_catalogue/lier_type_produit"); ?>">
+            <a href="<?php echo site_url("CI_Dossier/choix_action"); ?>">
                 <button type="button" class="btn btn-sm btn-primary">Retour</button>
             </a>
             <a href="<?php echo site_url("CI_catalogue/consult_soustype"); ?>">
@@ -27,20 +27,34 @@
             <div class="row">
                 <div class="col-md-3 col-xs-offset-2">
                     <div class="widget-box">
-                        <div class="widget-header">
-                            Client
+                        <div class="widget-header widget-header-small">
+                            <h4 class="widget-title">
+                                Client
+                            </h4>
                         </div>
                         <div class="widget-body">
                             <?php
-
+                            echo($nomclient1 . ' ' . $prenomclient1);
+                            if ($prenomclient2 != null) {
+                                echo(' et ');
+                                echo($prenomclient2);
+                                echo('<br/>');
+                            } else {
+                                echo('<br/>');
+                            }
+                            echo($adresse . '<br/>');
+                            echo(' ' . $ville . '<br/>');
+                            echo('Votre contact : <strong>' . $userprenom . ' ' . $usernom . '</strong>');
                             ?>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 col-xs-offset-2">
                     <div class="widget-box">
-                        <div class="widget-header">
-                            Tarif
+                        <div class="widget-header widget-header-small">
+                            <h4 class="widget-title">
+                                Tarif
+                            </h4>
                         </div>
                         <div class="widget-body"></div>
                     </div>
@@ -49,13 +63,24 @@
             <br/>
 
             <div class="row">
-                <div class="col-xs-9 col-xs-offset-2">
+                <div class="col-xs-8 col-xs-offset-2">
                     <div class="widget-box">
                         <div class="widget-header">
-                            Client
+                            Votre devis
+                            <div class="widget-toolbar no-border">
+                                <a href="<?php echo site_url("CI_catalogue/consult_catalogue_devis"); ?>">
+                                <button class="btn btn-minier btn-primary">
+                                    <i class="ace-icon fa fa-plus-square-o bigger-250"></i>
+                                </button>
+                                </a>
+                            </div>
                         </div>
                         <div class="widget-body">
-                            blabla
+                            blabla<br/>
+                            hjhkj<br/>
+                            zdgzeg<br/>
+                            qrgqfdgq<br/>
+                            zfggvsd<br/>
                         </div>
                     </div>
                 </div>
