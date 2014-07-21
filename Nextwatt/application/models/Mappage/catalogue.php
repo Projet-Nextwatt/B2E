@@ -89,7 +89,6 @@ class Catalogue extends DataMapper
     {
         $bdd = new Catalogue();
 
-        $bdd->select('Reference, Nom, Marque, Puissance, Prix_Annonce_TTC');
         $bdd->get();
 
         $bdd = $bdd->all_to_array();
