@@ -41,36 +41,8 @@ $region = NULL;
 
     <ul class="pager">
         <li class="previous">
-            <a href="<?php echo site_url("dossier/consult_dossier"); ?>"><h4>← Accueil Dossier</h4></a>
+            <a href="<?php echo site_url("CI_Dossier/choix_action"); ?>"><h4>← Accueil Dossier</h4></a>
         </li>
-        <!--        <li class="center">-->
-        <!--            <div class="control-group">-->
-        <!---->
-        <!--                <div class="radio inline">-->
-        <!--                    <label>-->
-        <!--                        <div>-->
-        <!---->
-        <!--                            <input name="panneau" type="radio" value="1" checked class="ace">-->
-        <!--                        </div>-->
-        <!--                        <span class="lbl"> Panneau 1</span>-->
-        <!--                    </label>-->
-        <!--                </div>-->
-        <!---->
-        <!--                <div class="radio inline">-->
-        <!--                    <label>-->
-        <!--                        <input name="panneau" type="radio" value="2" class="ace">-->
-        <!--                        <span class="lbl"> Panneau 2</span>-->
-        <!--                    </label>-->
-        <!--                </div>-->
-        <!---->
-        <!--                <div class="radio inline">-->
-        <!--                    <label>-->
-        <!--                        <input name="panneau" type="radio" value="3" class="ace">-->
-        <!--                        <span class="lbl"> Panneau 3</span>-->
-        <!--                    </label>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </li>-->
         <li class="next ">
             <a href="<?php echo site_url("pv/choixorientation"); ?>"><h4>Orientation →</h4></a>
         </li>

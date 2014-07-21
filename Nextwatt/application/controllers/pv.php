@@ -193,6 +193,12 @@ class PV extends MY_Controller
         $data = array();
         $data['masquesolaire'] = img_url('Diagramme-solaire.png');
 
+        $ratioc = $this->session->userdata('Ratioc');
+        if (empty($ratioc)) {
+            $this->session->set_userdata(array('Ratioc' => 100));
+            $data['RatioC'] = 100;
+        }
+
         $this->layout->breadcrumbs($breadcrumps);
         $this->layout->title('Calcul du masque B2E');
         $this->layout->js(js_url('imagemapster.min'));
@@ -403,8 +409,7 @@ class PV extends MY_Controller
         $data['tarifannuel'] = $this->tarif();
         $data['flouzannuel'] = $this->anneeflouz();
         $data['flouzcumul'] = $this->cumulflouz();
-        if(isset($msgsucces))
-        {
+        if (isset($msgsucces)) {
             $data['msgsucces'] = $msgsucces;
         }
 
@@ -417,44 +422,40 @@ class PV extends MY_Controller
 //        $this->layout->function_js('anneetarif()');
 //        $this->layout->function_js('anneeflouz()');
 //        $this->layout->function_js('cumulflouz()');
-        $this->layout->view('B2E/Etudes/Solaire/Recette.php',$data); // Render view and layout
+        $this->layout->view('B2E/Etudes/Solaire/Recette.php', $data); // Render view and layout
     }
 
     public function enregistrer_etude()
     {
-        $this->load->model('Mappage/catalogue', 'catalogue');               //On load les deux modèles que nous voulons utiliser
+        $this->load->model('Mappage/catalogue', 'catalogue'); //On load les deux modèles que nous voulons utiliser
         $this->load->model('Mappage/etude', 'etude');
 
-        $panneau = $this->catalogue->select_panneau_by_nom($this->session->userdata['Panneau']);    //Récupération du produit que l'on souhaite via la fonction "select_panneau_by_non"
-        $spec = html_entity_decode($panneau[0]['Spec']);                    //On récupère les spec et les décodes pour pouvoir les utiliser après (HTML entities decode puis Json decode
+        $panneau = $this->catalogue->select_panneau_by_nom($this->session->userdata['Panneau']); //Récupération du produit que l'on souhaite via la fonction "select_panneau_by_non"
+        $spec = html_entity_decode($panneau[0]['Spec']); //On récupère les spec et les décodes pour pouvoir les utiliser après (HTML entities decode puis Json decode
         $prodjson = json_decode($spec, true);
 
         $data['HEPP'] = (float)$this->session->userdata['HEPP'];
         $data['Masque'] = $this->session->userdata['Ratioc'];
         $data['Orientation'] = (float)$this->session->userdata['Orientation'];
-        $data['Puisysteme'] = (float)$panneau[0]['Puissance'];                  // On récupère les variables qui étaient en session pour les passer au modèle pour l'ajout en BDD
-        if(isset($prodjson['bonusProd'])){
+        $data['Puisysteme'] = (float)$panneau[0]['Puissance']; // On récupère les variables qui étaient en session pour les passer au modèle pour l'ajout en BDD
+        if (isset($prodjson['bonusProd'])) {
             $data['Bonus'] = (int)$prodjson['bonusProd'];
         }
         $data['id_dossier'] = $this->session->userdata['idDossier'];
 
 
-        if($this->etude->ajouter_etude($data) == TRUE)      //On vérifie que la requête s'est bien exécutée
+        if ($this->etude->ajouter_etude($data) == TRUE) //On vérifie que la requête s'est bien exécutée
         {
-            $msgsucces = 'Enregistrement correctement effectué';    //On définit un message à afficher
-            $this->recette($msgsucces);                 // On appel la méthode "recette" de notre controlleur en lui passant le message à afficher en paramètre
-        }
-        else
-        {
+            $msgsucces = 'Enregistrement correctement effectué'; //On définit un message à afficher
+            $this->recette($msgsucces); // On appel la méthode "recette" de notre controlleur en lui passant le message à afficher en paramètre
+        } else {
             $msgsucces = 'Problème lors de la sauvegarde';
             $this->recette($msgsucces);
         }
     }
 
 
-
     /********************* PARTIE AJAX  ************************************/
-
 
 
     public function ajax_geoposition()
@@ -478,7 +479,7 @@ class PV extends MY_Controller
                 }
 
             }
-            $this->session_orientation($_POST['panneau'], $station['id'], $station['HEPP'], $station['Ville']);
+            $this->session_orientation( $station['id'], $station['HEPP'], $station['Ville']);
             $jsonstationtrouvee = json_encode($station);
             echo $jsonstationtrouvee;
 
@@ -513,9 +514,9 @@ class PV extends MY_Controller
 
     }
 
-    public function session_orientation($panneau, $idEnsol, $hepp, $ville)
+    public function session_orientation( $idEnsol, $hepp, $ville)
     {
-        $tabsession = array('Panneau' => $panneau, 'ID_Ensoleillement' => $idEnsol, 'HEPP' => $hepp, 'Ville' => $ville);
+        $tabsession = array('ID_Ensoleillement' => $idEnsol, 'HEPP' => $hepp, 'Ville' => $ville);
         //      $tabsession = array('Panneau' => $tabsession);
         $this->session->set_userdata($tabsession);
 //        $this->GestionPanneau($tabsession);
@@ -705,7 +706,8 @@ class PV extends MY_Controller
 //        }
 //    }
 
-    public function prodannuelle(){
+    public function prodannuelle()
+    {
         $Production = $this->session->userdata('Production');
         $prodAnneeZero = $Production;
         $raisonProd = 1 - (0.5 / 100); // Raison production
@@ -769,7 +771,8 @@ class PV extends MY_Controller
         }
     }
 
-    public function tarif(){
+    public function tarif()
+    {
         $Tarifedf = $this->session->userdata('Tarifedf');
         $raccordement = $this->session->userdata('Inflation');
         $tarifAnneeZero = $Tarifedf;
@@ -782,6 +785,7 @@ class PV extends MY_Controller
         }
         return $ligneTarif;
     }
+
     public
     function ajax_anneeflouz()
     {
@@ -811,7 +815,8 @@ class PV extends MY_Controller
         }
     }
 
-    public function anneeflouz(){
+    public function anneeflouz()
+    {
         $tarifAnnee = $this->session->userdata('Tarifedf');
         $raccordement = $this->session->userdata('Inflation');
         $productionAnneeZero = $this->session->userdata('Production');
@@ -861,22 +866,23 @@ class PV extends MY_Controller
 
     }
 
-    public function cumulflouz(){
+    public function cumulflouz()
+    {
         $tarifAnnee = $this->session->userdata('Tarifedf');
         $raccordement = $this->session->userdata('Inflation');
         $productionAnneeZero = $this->session->userdata('Production');
-            $ligneFlouz = '';
+        $ligneFlouz = '';
 
-            $flouzTotal = $tarifAnnee * $productionAnneeZero;
-            $raisonTarif = 1 + ($raccordement / 100);
-            $raisonProd = 1 - (0.5 / 100);
-            $raisonTotale = $raisonTarif * $raisonProd;
+        $flouzTotal = $tarifAnnee * $productionAnneeZero;
+        $raisonTarif = 1 + ($raccordement / 100);
+        $raisonProd = 1 - (0.5 / 100);
+        $raisonTotale = $raisonTarif * $raisonProd;
 
-            for ($i = 0; $i < 20; $i++) {
-                $raisonFlouz = pow($raisonTotale, $i + 1);
-                $flouzCumule = round($flouzTotal * ((1 - $raisonFlouz) / (1 - $raisonTotale)), 0);
-                $ligneFlouz[$i] = $flouzCumule;
-            }
+        for ($i = 0; $i < 20; $i++) {
+            $raisonFlouz = pow($raisonTotale, $i + 1);
+            $flouzCumule = round($flouzTotal * ((1 - $raisonFlouz) / (1 - $raisonTotale)), 0);
+            $ligneFlouz[$i] = $flouzCumule;
+        }
         return $ligneFlouz;
     }
 
@@ -907,12 +913,12 @@ class PV extends MY_Controller
 
         $data['flouzcumul'] = $this->cumulflouz();
 
-        $this->load->model('mappage/Client','Client');
-        $data['resultClient'] = $this->Client->get_InfoUser($this->session->userdata['nomClient'],$this->session->userdata['prenomClient']);
+        $this->load->model('mappage/Client', 'Client');
+        $data['resultClient'] = $this->Client->get_InfoUser($this->session->userdata['nomClient'], $this->session->userdata['prenomClient']);
 
 
         // Load all views as normal
-        $this->load->view('B2E/Etudes/Solaire/PDF_Recette.php' , $data);
+        $this->load->view('B2E/Etudes/Solaire/PDF_Recette.php', $data);
         // Get output html
         $html = $this->output->get_output();
 
