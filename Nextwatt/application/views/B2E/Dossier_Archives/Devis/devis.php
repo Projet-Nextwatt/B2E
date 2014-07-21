@@ -87,15 +87,21 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
+                                <?php foreach($article->result() as $a){
+                                    echo '<tr>';
+                                    echo '<td>';
+                                    echo $a->Reference.'<br/>';
+                                    echo $a->Marque;
+                                    echo '</td>';
 
-                                </tr>
+                                    echo '<td>';
+                                    echo $a->Prix_Annonce_TTC;
+                                    echo '</td>';
+                                    echo '</tr>';
+                                } ?>
                                 </tbody>
                             </table>
-                            <?php foreach($article->result() as $a){
-                                echo $a->Reference.'<br/>';
-                                echo $a->Marque;
-                            } ?>
+
                         </div>
                     </div>
                 </div>
