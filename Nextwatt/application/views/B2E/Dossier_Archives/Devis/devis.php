@@ -56,7 +56,10 @@
                                 Tarif
                             </h4>
                         </div>
-                        <div class="widget-body"></div>
+                        <div class="widget-body">
+                            Total TTC : <strong><?php echo $tariftotal; ?> €</strong><br/>
+                            Dont TVA : <strong><?php echo $tva; ?> €</strong>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -76,7 +79,33 @@
                             </div>
                         </div>
                         <div class="widget-body">
+<<<<<<< HEAD
                             
+=======
+                            <table>
+                                <thead>
+                                <tr>
+                                    <td>Libellé</td>
+                                    <td>Prix TTC</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach($article->result() as $a){
+                                    echo '<tr>';
+                                    echo '<td>';
+                                    echo $a->Reference.'<br/>';
+                                    echo $a->Marque;
+                                    echo '</td>';
+
+                                    echo '<td>';
+                                    echo $a->Prix_Annonce_TTC;
+                                    echo '</td>';
+                                    echo '</tr>';
+                                } ?>
+                                </tbody>
+                            </table>
+
+>>>>>>> origin/Developpement
                         </div>
                     </div>
                 </div>
