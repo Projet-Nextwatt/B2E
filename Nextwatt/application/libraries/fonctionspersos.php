@@ -158,7 +158,7 @@ class Fonctionspersos
         }
     }
 
-    public function creerDropdown(array $donnees, $selected, $nom, $class = NULL)
+    public function creerDropdown(array $donnees, $selected, $nom, $class = "dropdown")
     {
         /* Fonction qui génere une dropdown
          * Les données doivent etre structurées de la sorte
@@ -195,7 +195,6 @@ class Fonctionspersos
                 }
                 $i++;
             }
-
             if ($ligneavecindex['value'] == $selected OR $ligneavecindex['texte'] == $selected) {
                 $ligneavecindex['selected'] = 'selected';
             } else {
@@ -203,7 +202,6 @@ class Fonctionspersos
             }
             $donneestriees[$label][] = $ligneavecindex;
         }
-
 
         echo '<select name="' . $nom . '" id="' . $nom . '" class="' . $class . '">';
         foreach ($donneestriees as $label => $groupe) {
