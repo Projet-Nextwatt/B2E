@@ -22,15 +22,6 @@
 <div class="row">
     <div class="col-xs-12">
 
-<!--        <div class="row">-->
-<!--            <div class="col-xs-12 text-center">-->
-<!--                <a class="btn btn-primary btn-sm" href="--><?php //echo site_url("CI_client/add_client"); ?><!--">-->
-<!--                    <i class="ace-icon fa fa-plus align-top bigger-125"/></i>Ajouter un Client-->
-<!--                </a>-->
-<!--                <br/>-->
-<!--            </div>-->
-<!--        </div>-->
-
 
         <div class="row">
             <div class="col-xs-12">
@@ -55,11 +46,8 @@
                     <div class="tab-content">
                         <div class="tab-pane in <?php echo (empty($_POST)?'active':''); ?>" id="actif">
 
-                            <div class="panel panel-success">
-                                <!-- Default panel contents -->
-                                <div class="panel-heading align-left">Mes clients</div>
-                                <?php $this->fonctionspersos->creerTableau($mesclients, $enteteclients = NULL, $modedossier, 'CI_client/ajax_supprimerclient '); ?>
-                            </div>
+                            <?php $this->fonctionspersos->creerListClient($mesclients, $modedossier, 'CI_client/ajax_supprimerclient '); ?>
+                            <br/>
 
                             
                             <?php if ($this->session->userdata("userconnect")["Droit_Admin"]==1 AND isset($clients)) {?> 
@@ -99,8 +87,9 @@
                                     </div>
 
                                     <div class="panel-collapse collapse" id="collapse<?php echo $user_id; ?>" style="height: 0px;">
-                                        <div class="panel-body">    
-                                            <?php $this->fonctionspersos->creerTableau($clientsduuser, $enteteclients = NULL, $modedossier, 'CI_client/ajax_supprimerclient '); ?>
+                                        <div class="panel-body">  
+                                            <?php $this->fonctionspersos->creerListClient($clientsduuser, $modedossier, 'CI_client/ajax_supprimerclient '); ?>
+                            
                                          </div>
                                     </div>
                                 </div>
@@ -122,11 +111,8 @@
 
                         <div class="tab-pane" id="archives">
                             
-                            <div class="panel panel-success">
-                                <!-- Default panel contents -->
-                                <div class="panel-heading align-left">Mes clients archivés</div>
-                                <?php $this->fonctionspersos->creerTableau($mesclientsarchive, $enteteclients = NULL, $modedossier, 'CI_client/ajax_supprimerclient '); ?>
-                            </div>
+                            <?php $this->fonctionspersos->creerListClient($mesclientsarchive, $modedossier, 'CI_client/ajax_supprimerclient '); ?>
+                            <br/>
 
                             <?php if ($this->session->userdata("userconnect")["Droit_Admin"]==1 AND isset($clients)) {?> 
                             <div id="accordion2" class="accordion-style1 panel-group accordion-style2">
@@ -166,8 +152,8 @@
 
                                     <div class="panel-collapse collapse" id="collapsearchive<?php echo $user_id; ?>" style="height: 0px;">
                                         <div class="panel-body">    
-                                            <?php $this->fonctionspersos->creerTableau($clientsarchiveduuser, $enteteclients = NULL, $modedossier, 'CI_client/ajax_supprimerclient '); ?>
-                                         </div>
+                                            <?php $this->fonctionspersos->creerListClient($clientsarchiveduuser, $modedossier, 'CI_client/ajax_supprimerclient '); ?>
+                                        </div>
                                     </div>
                                 </div>
                                 
