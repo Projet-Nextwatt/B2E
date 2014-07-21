@@ -81,8 +81,24 @@ class CI_Dossier extends MY_Controller
         $data['usernom'] = $user['nom'];
         $data['userprenom'] = $user['prenom'];
 
+        //Articles
+        $data['article'] = $this->aff_Article();
+
+        $tariftotal = null;
+        foreach($data['article']->result() as $a){
+            $tariftotal += $a->Prix_Annonce_TTC;
+        }
+        $data['tariftotal'] = $tariftotal;
+        $data['tva'] = $tariftotal/(1+0.2)*0.2;
         $this->layout->title('Devis');
         $this->layout->view('B2E/Dossier_Archives/Devis/devis', $data);
+    }
+
+    public function aff_Article()
+    {
+        $this->load->model('Mappage/article', 'article');
+        $result = $this->article->select_ArticleById();
+        return $result;
     }
 }
 

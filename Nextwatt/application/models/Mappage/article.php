@@ -1,14 +1,17 @@
 <?php
+
 /*
  * Classe Modèle pour la table Article, définir ici toutes les fonctionnalitées utilisant la table Article
  */
-class Article extends DataMapper {
+
+class Article extends DataMapper
+{
     /*
      * Variables de relation (entre tables)
      */
     var $has_one = array("article", "dossier", "soustype");
     var $has_many = array("article");
-    
+
     /*
      * Variables correspondantes aux colonnes de la table.
      */
@@ -34,35 +37,36 @@ class Article extends DataMapper {
     var $Remise = "";
     var $Quantité = "";
     var $Spec = "";
-    
-    
-    function __construct() 
+
+
+    function __construct()
     {
         parent ::__construct();
     }
-    
+
     function select_article()
     {
         //Fonction de selection
     }
-    
+
     function ajouter_article()
     {
         // Fonction d'ajout
     }
-    
+
     function modifier_article()
     {
         //Fonction de modification
     }
-    
+
     function supprimer_article()
     {
         $this->db->where('Nom', 'Nom');
         $this->db->delete('Article');
     }
-    
-    
-    
-    
+
+    function  select_ArticleById(){
+       return $this->db->get('articles');
     }
+
+}

@@ -56,7 +56,10 @@
                                 Tarif
                             </h4>
                         </div>
-                        <div class="widget-body"></div>
+                        <div class="widget-body">
+                            Total TTC : <strong><?php echo $tariftotal; ?> €</strong><br/>
+                            Dont TVA : <strong><?php echo $tva; ?> €</strong>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -76,11 +79,23 @@
                             </div>
                         </div>
                         <div class="widget-body">
-                            blabla<br/>
-                            hjhkj<br/>
-                            zdgzeg<br/>
-                            qrgqfdgq<br/>
-                            zfggvsd<br/>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <td>Libellé</td>
+                                    <td>Prix TTC</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                            <?php foreach($article->result() as $a){
+                                echo $a->Reference.'<br/>';
+                                echo $a->Marque;
+                            } ?>
                         </div>
                     </div>
                 </div>
@@ -88,3 +103,5 @@
         </div>
     </div>
 </div>
+
+<?php var_dump($this->session->all_userdata()); ?>
