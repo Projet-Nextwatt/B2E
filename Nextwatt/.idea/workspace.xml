@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8a260d5e-75f8-4f03-8baa-61a468c11107" name="Default" comment="Mini commit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/CI_catalogue.php" afterPath="$PROJECT_DIR$/application/controllers/CI_catalogue.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Devis/Catalogue_Devis.php" afterPath="$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Devis/Catalogue_Devis.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Mappage/article.php" afterPath="$PROJECT_DIR$/application/models/Mappage/article.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Mappage/catalogue.php" afterPath="$PROJECT_DIR$/application/models/Mappage/catalogue.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Devis/devis.php" afterPath="$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Devis/devis.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/libraries/fonctionspersos.php" afterPath="$PROJECT_DIR$/application/libraries/fonctionspersos.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="7b96de8a-67ec-49a7-af8c-87846cbb2ecd" name="Rejected commit: Default" comment="Mini commit" />
@@ -62,10 +58,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CI_catalogue.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CI_catalogue.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/CI_catalogue.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="401" column="43" selection-start="16479" selection-end="16479" vertical-scroll-proportion="0.7671233" vertical-offset="6077" max-vertical-offset="8279">
+            <state line="459" column="0" selection-start="18472" selection-end="18472" vertical-scroll-proportion="-14.730769" vertical-offset="7352" max-vertical-offset="8347">
               <folding />
             </state>
           </provider>
@@ -74,16 +70,25 @@
       <file leaf-file-name="catalogue.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/models/Mappage/catalogue.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="136" column="38" selection-start="3518" selection-end="3518" vertical-scroll-proportion="41.5" vertical-offset="3340" max-vertical-offset="4641">
+            <state line="162" column="37" selection-start="5309" selection-end="5330" vertical-scroll-proportion="-4.923077" vertical-offset="2575" max-vertical-offset="4641">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="article.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="client.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/Mappage/client.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="88" column="8" selection-start="2216" selection-end="2850" vertical-scroll-proportion="-19.615385" vertical-offset="935" max-vertical-offset="2771">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="article.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/models/Mappage/article.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="71" selection-start="1122" selection-end="1122" vertical-scroll-proportion="-21.923077" vertical-offset="59" max-vertical-offset="1207">
+            <state line="48" column="5" selection-start="1621" selection-end="1621" vertical-scroll-proportion="0.708238" vertical-offset="197" max-vertical-offset="1173">
               <folding>
                 <element signature="e#7#120#0" expanded="true" />
               </folding>
@@ -159,8 +164,8 @@
         <option value="$PROJECT_DIR$/application/models/Mappage/catalogue.php" />
         <option value="$PROJECT_DIR$/application/libraries/fonctionspersos.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Devis/devis.php" />
-        <option value="$PROJECT_DIR$/application/models/Mappage/article.php" />
         <option value="$PROJECT_DIR$/application/controllers/CI_catalogue.php" />
+        <option value="$PROJECT_DIR$/application/models/Mappage/article.php" />
       </list>
     </option>
   </component>
@@ -606,11 +611,6 @@
         <state line="44" column="23" selection-start="1777" selection-end="1777" vertical-scroll-proportion="-22.23077" vertical-offset="170" max-vertical-offset="2890" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Mappage/client.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="28" selection-start="851" selection-end="1209" vertical-scroll-proportion="16.653847" vertical-offset="1164" max-vertical-offset="2550" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/Mappage/user.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="58" column="40" selection-start="1511" selection-end="1511" vertical-scroll-proportion="-1.619863" vertical-offset="2354" max-vertical-offset="3230" />
@@ -811,26 +811,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Mappage/article.php">
+    <entry file="file://$PROJECT_DIR$/application/controllers/CI_catalogue.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="71" selection-start="1122" selection-end="1122" vertical-scroll-proportion="-21.923077" vertical-offset="59" max-vertical-offset="1207">
-          <folding>
-            <element signature="e#7#120#0" expanded="true" />
-          </folding>
+        <state line="459" column="0" selection-start="18472" selection-end="18472" vertical-scroll-proportion="-14.730769" vertical-offset="7352" max-vertical-offset="8347">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/Mappage/catalogue.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="38" selection-start="3518" selection-end="3518" vertical-scroll-proportion="41.5" vertical-offset="3340" max-vertical-offset="4641">
+        <state line="162" column="37" selection-start="5309" selection-end="5330" vertical-scroll-proportion="-4.923077" vertical-offset="2575" max-vertical-offset="4641">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/CI_catalogue.php">
+    <entry file="file://$PROJECT_DIR$/application/models/Mappage/client.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="401" column="43" selection-start="16479" selection-end="16479" vertical-scroll-proportion="0.7671233" vertical-offset="6077" max-vertical-offset="8279">
+        <state line="88" column="8" selection-start="2216" selection-end="2850" vertical-scroll-proportion="-19.615385" vertical-offset="935" max-vertical-offset="2771">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Mappage/article.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="5" selection-start="1621" selection-end="1621" vertical-scroll-proportion="0.708238" vertical-offset="197" max-vertical-offset="1173">
+          <folding>
+            <element signature="e#7#120#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
