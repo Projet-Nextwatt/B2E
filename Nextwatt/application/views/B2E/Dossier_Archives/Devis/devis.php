@@ -72,9 +72,9 @@
                             Votre devis
                             <div class="widget-toolbar no-border">
                                 <a href="<?php echo site_url("CI_catalogue/consult_catalogue_devis"); ?>">
-                                <button class="btn btn-minier btn-primary">
-                                    <i class="ace-icon fa fa-plus-square-o bigger-250"></i>
-                                </button>
+                                    <button class="btn btn-minier btn-primary">
+                                        <i class="ace-icon fa fa-plus-square-o bigger-250"></i>
+                                    </button>
                                 </a>
                             </div>
                         </div>
@@ -88,15 +88,52 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach($article->result() as $a){
+                                <?php foreach ($article->result() as $a) {
                                     echo '<tr>';
                                     echo '<td>';
-                                    echo $a->Reference.'<br/>';
                                     echo $a->Marque;
                                     echo '</td>';
 
                                     echo '<td>';
                                     echo $a->Prix_Annonce_TTC;
+                                    echo '</td>';
+                                    echo '</tr>';
+
+                                    echo '<tr>';
+                                    echo '<td>';
+                                    echo 'Main d\'oeuvre';
+                                    echo '</td>';
+
+                                    echo '<td>';
+                                    echo $a->Prix_MO;
+                                    echo '</td>';
+                                    echo '</tr>';
+
+                                    echo '<tr>';
+                                    echo '<td>';
+                                    echo 'Garantie materiel :'. $a->Libelle_Garantie;
+                                    echo '</td>';
+
+                                    echo '<td>';
+
+                                    echo '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>';
+                                    echo 'Total TTC';
+                                    echo '</td>';
+
+                                    echo '<td>';
+                                    echo $a->Prix_Annonce_TTC + $a->Prix_MO;
+                                    echo '</td>';
+                                    echo '</tr>';
+                                    echo '<tr>';
+                                    echo '<td>';
+                                    echo 'Dont TVA';
+                                    echo '</td>';
+
+                                    echo '<td>';
+                                    echo ($a->Prix_Annonce_TTC + $a->Prix_MO)/(1+0.2)*0.2;
                                     echo '</td>';
                                     echo '</tr>';
                                 } ?>

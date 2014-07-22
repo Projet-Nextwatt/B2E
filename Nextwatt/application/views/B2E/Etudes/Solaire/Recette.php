@@ -184,7 +184,7 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
         } ?>
 
         <li class="next <?php echo $disable ?>">
-            <a href="<?php echo $link; ?>">
+            <a href="<?php echo $link; ?>" target="_blank">
                 <?php if($pdf == false){ ?>
                 <div class="alert alert-danger">
 
