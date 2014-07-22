@@ -79,6 +79,9 @@
                             </div>
                         </div>
                         <div class="widget-body">
+<<<<<<< HEAD
+                            
+=======
                             <table>
                                 <thead>
                                 <tr>
@@ -139,6 +142,7 @@
                                 </tbody>
                             </table>
 
+>>>>>>> origin/Developpement
                         </div>
                     </div>
                 </div>
