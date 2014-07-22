@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8a260d5e-75f8-4f03-8baa-61a468c11107" name="Default" comment="Mini commit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/CI_catalogue.php" afterPath="$PROJECT_DIR$/application/controllers/CI_catalogue.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/CI_dossier.php" afterPath="$PROJECT_DIR$/application/controllers/CI_dossier.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Mappage/article.php" afterPath="$PROJECT_DIR$/application/models/Mappage/article.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Devis/devis.php" afterPath="$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Devis/devis.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/Mappage/dossier.php" afterPath="$PROJECT_DIR$/application/models/Mappage/dossier.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="7b96de8a-67ec-49a7-af8c-87846cbb2ecd" name="Rejected commit: Default" comment="Mini commit" />
     <ignored path="Nextwatt.iws" />
@@ -30,10 +34,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="devis.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="devis.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Devis/devis.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="141" column="0" selection-start="6198" selection-end="6198" vertical-scroll-proportion="-25.192308" vertical-offset="1742" max-vertical-offset="2618">
+            <state line="10" column="61" selection-start="370" selection-end="370" vertical-scroll-proportion="0.19406393" vertical-offset="0" max-vertical-offset="2618">
               <folding />
             </state>
           </provider>
@@ -42,7 +46,7 @@
       <file leaf-file-name="CI_dossier.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/CI_dossier.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="21" selection-start="2838" selection-end="2839" vertical-scroll-proportion="-18.0" vertical-offset="1028" max-vertical-offset="1887">
+            <state line="96" column="4" selection-start="3155" selection-end="3334" vertical-scroll-proportion="-21.26923" vertical-offset="1079" max-vertical-offset="2040">
               <folding />
             </state>
           </provider>
@@ -51,16 +55,25 @@
       <file leaf-file-name="CI_catalogue.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/CI_catalogue.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="469" column="46" selection-start="18907" selection-end="18907" vertical-scroll-proportion="-19.961538" vertical-offset="7386" max-vertical-offset="8262">
+            <state line="492" column="5" selection-start="19681" selection-end="19681" vertical-scroll-proportion="-34.346153" vertical-offset="7403" max-vertical-offset="8449">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="article.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="dossier.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/Mappage/dossier.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="65" column="4" selection-start="1375" selection-end="1528" vertical-scroll-proportion="-25.192308" vertical-offset="399" max-vertical-offset="1275">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="article.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/models/Mappage/article.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="40" selection-start="795" selection-end="795" vertical-scroll-proportion="0.6210046" vertical-offset="34" max-vertical-offset="1241">
+            <state line="50" column="25" selection-start="1668" selection-end="1668" vertical-scroll-proportion="-24.538462" vertical-offset="212" max-vertical-offset="1343">
               <folding>
                 <element signature="e#7#120#0" expanded="true" />
               </folding>
@@ -87,7 +100,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/application/views/B2E/Catalogue/upload.php" />
         <option value="$PROJECT_DIR$/application/controllers/catalogue.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/User/Accueil_User.php" />
         <option value="$PROJECT_DIR$/application/config/catalogueconfig.php" />
@@ -121,7 +133,6 @@
         <option value="$PROJECT_DIR$/application/views/B2E/Catalogue/Lier_Type_Produit.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Catalogue/rslt_type_produit.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Etudes/Solaire/Recette.php" />
-        <option value="$PROJECT_DIR$/application/models/Mappage/dossier.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Accueil.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Etudes/Solaire/PDF_Recette.php" />
         <option value="$PROJECT_DIR$/application/models/Mappage/etude.php" />
@@ -131,13 +142,15 @@
         <option value="$PROJECT_DIR$/application/controllers/CI_client.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Dossier/choix_action_dossier.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Dossier/devis.php" />
-        <option value="$PROJECT_DIR$/application/controllers/CI_dossier.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Devis/Catalogue_Devis.php" />
         <option value="$PROJECT_DIR$/application/models/Mappage/catalogue.php" />
         <option value="$PROJECT_DIR$/application/libraries/fonctionspersos.php" />
         <option value="$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Devis/devis.php" />
-        <option value="$PROJECT_DIR$/application/controllers/CI_catalogue.php" />
+        <option value="$PROJECT_DIR$/application/models/Mappage/dossier.php" />
         <option value="$PROJECT_DIR$/application/models/Mappage/article.php" />
+        <option value="$PROJECT_DIR$/application/libraries/fonctions_devis.php" />
+        <option value="$PROJECT_DIR$/application/controllers/CI_dossier.php" />
+        <option value="$PROJECT_DIR$/application/controllers/CI_catalogue.php" />
       </list>
     </option>
   </component>
@@ -248,29 +261,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nextwatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nextwatt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Mappage" />
+              <option name="myItemId" value="libraries" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -467,21 +458,21 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0010775862" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11555076" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0021551724" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11555076" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16271552" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.511879" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297414" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.06263499" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3286638" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17838125" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17092651" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12958963" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11927582" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12958963" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.05926724" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
@@ -508,15 +499,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/models/Mappage/article.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="0" selection-start="1583" selection-end="1583" vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="1156">
-          <folding>
-            <element signature="e#7#120#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/ajaxfonctionspersos.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="5" selection-start="331" selection-end="331" vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="391" />
@@ -634,11 +616,6 @@
         <state line="64" column="73" selection-start="2468" selection-end="2525" vertical-scroll-proportion="0.67963386" vertical-offset="494" max-vertical-offset="1394" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Mappage/dossier.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="19" selection-start="846" selection-end="846" vertical-scroll-proportion="0.34553775" vertical-offset="361" max-vertical-offset="1258" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/B2E/Etudes/Solaire/PDF_Recette.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="112" column="48" selection-start="2897" selection-end="2897" vertical-scroll-proportion="0.6224256" vertical-offset="1360" max-vertical-offset="4420" />
@@ -729,18 +706,6 @@
         <state line="239" column="49" selection-start="9503" selection-end="9503" vertical-scroll-proportion="-20.26923" vertical-offset="3451" max-vertical-offset="6477" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/libraries/fonctionspersos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="269" column="30" selection-start="10871" selection-end="10871" vertical-scroll-proportion="0.2625571" vertical-offset="4343" max-vertical-offset="7089" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Devis/devis.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="141" column="0" selection-start="6198" selection-end="6198" vertical-scroll-proportion="-25.192308" vertical-offset="1742" max-vertical-offset="2618">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Devis/Catalogue_Devis.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="97" selection-start="447" selection-end="479" vertical-scroll-proportion="0.32990867" vertical-offset="0" max-vertical-offset="876">
@@ -762,26 +727,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/CI_dossier.php">
+    <entry file="file://$PROJECT_DIR$/application/models/Mappage/dossier.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="21" selection-start="2838" selection-end="2839" vertical-scroll-proportion="-18.0" vertical-offset="1028" max-vertical-offset="1887">
+        <state line="65" column="4" selection-start="1375" selection-end="1528" vertical-scroll-proportion="-25.192308" vertical-offset="399" max-vertical-offset="1275">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/CI_catalogue.php">
+    <entry file="file://$PROJECT_DIR$/application/libraries/fonctionspersos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="469" column="46" selection-start="18907" selection-end="18907" vertical-scroll-proportion="-19.961538" vertical-offset="7386" max-vertical-offset="8262">
+        <state line="0" column="0" selection-start="0" selection-end="30" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="6834">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/CI_dossier.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="4" selection-start="3155" selection-end="3334" vertical-scroll-proportion="-21.26923" vertical-offset="1079" max-vertical-offset="2040">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/Mappage/article.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="40" selection-start="795" selection-end="795" vertical-scroll-proportion="0.6210046" vertical-offset="34" max-vertical-offset="1241">
+        <state line="50" column="25" selection-start="1668" selection-end="1668" vertical-scroll-proportion="-24.538462" vertical-offset="212" max-vertical-offset="1343">
           <folding>
             <element signature="e#7#120#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/CI_catalogue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="492" column="5" selection-start="19681" selection-end="19681" vertical-scroll-proportion="-34.346153" vertical-offset="7403" max-vertical-offset="8449">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/B2E/Dossier_Archives/Devis/devis.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="61" selection-start="370" selection-end="370" vertical-scroll-proportion="0.19406393" vertical-offset="0" max-vertical-offset="2618">
+          <folding />
         </state>
       </provider>
     </entry>

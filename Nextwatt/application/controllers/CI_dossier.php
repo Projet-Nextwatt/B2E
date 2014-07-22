@@ -100,6 +100,15 @@ class CI_Dossier extends MY_Controller
         $result = $this->article->select_ArticleById();
         return $result;
     }
+
+    public function archiver()
+    {
+        $this->load->model('Mappage/dossier', 'dossier');
+        $this->load->model('Mappage/article', 'article');
+
+        $this->article->archiver_dossier($this->session->userdata('idDossier'));
+        $this->dossier->archiver_dossier($this->session->userdata('idDossier'));
+    }
 }
 
 

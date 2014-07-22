@@ -36,6 +36,7 @@ class Article extends DataMapper
             'Marque' => $produit[0]['Marque'],
             'Puissance' => $produit[0]['Puissance'],
             'Libelle_Mat' => $produit[0]['Libelle_Mat'],
+            'Libelle_Mat_SansMarque' => $produit[0]['Libelle_Mat_SansMarque'],
             'Libelle_MO' => $produit[0]['Libelle_MO'],
             'Libelle_Garantie' => $produit[0]['Libelle_Garantie'],
             'Prix_MO' => $produit[0]['Prix_MO'],
@@ -47,7 +48,7 @@ class Article extends DataMapper
             'Facturation' => $produit[0]['Facturation'],
             'Type_Produit' => $produit[0]['Type_Produit'],
             'Spec' => $produit[0]['Spec'],
-            'actif' => $produit[0]['Actif'],
+            'actif' => 1,
         );
         $this->db->insert('articles', $newproduit);
     }
@@ -63,5 +64,10 @@ class Article extends DataMapper
         $this->db->delete('Article');
     }
 
+    public function archiver_articles_dossier($idDossier)
+    {
+        $article = new Article();
+        $article->where('ID_Dossier', $idDossier)->update('Actif', 0);
+    }
 
 }
