@@ -348,9 +348,15 @@ class Fonctionspersos
                             $nom.=($civ == 3 ? 'Mr ' : '');
                         }
                         $nom.= $ligne['nom1'] . ' ' . $ligne['prenom1'];
+                        
                         if (!(empty($ligne['prenom2']))) {
-                            $nom.= ' et ' . $ligne['nom2'] . ' ' . $ligne['prenom2'];
-                        }    
+                            $nom.= ' et ';
+                            if ($ligne['nom1'] != $ligne['nom2']) {
+                                $nom.= $ligne['nom2'];
+                            }
+
+                            $nom.= ' ' . $ligne['prenom2'];
+                        }
                         
                         $len=  strlen($nom);
                 

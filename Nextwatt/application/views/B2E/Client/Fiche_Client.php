@@ -19,7 +19,12 @@
                         }
                         echo $client['nom1'] . ' ' . $client['prenom1'];
                         if (!(empty($client['prenom2']))) {
-                            echo ' et ' . $client['nom2'] . ' ' . $client['prenom2'];
+                            echo ' et ';
+                            if ($client['nom1'] != $client['nom2']) {
+                                echo $client['nom2'];
+                            }
+
+                            echo ' ' . $client['prenom2'];
                         }
                         ?>
                     </strong></h4>
