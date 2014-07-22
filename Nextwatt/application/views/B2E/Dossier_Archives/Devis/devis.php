@@ -8,7 +8,7 @@
             <a href="<?php echo site_url("CI_Dossier/choix_action"); ?>">
                 <button type="button" class="btn btn-sm btn-primary">Retour</button>
             </a>
-            <a href="<?php echo site_url("CI_catalogue/consult_soustype"); ?>">
+            <a href="<?php echo site_url("CI_Dossier/archiver"); ?>">
                 <button type="button" class="btn btn-sm btn-grey">Archiver</button>
             </a>
             <a href="<?php echo site_url("CI_catalogue/consult_soustype"); ?>">

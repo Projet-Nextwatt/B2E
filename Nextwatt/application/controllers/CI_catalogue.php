@@ -460,12 +460,9 @@ class CI_Catalogue extends MY_Controller
     {
         $this->load->model('Mappage/client', 'client');
         $this->load->model('Mappage/user', 'user');
-        $this->load->model('Mappage/catalogue', 'catalogue');
 
         $client = $this->client->select_client($this->session->userdata['idClient']);
         $user = $this->user->select_user($client['user_id']);
-        $produit = $this->catalogue->select_panneau($idprod);
-
 
         $data['nomclient1'] = $client['nom1'];
         $data['prenomclient1'] = $client['prenom1'];
@@ -475,10 +472,24 @@ class CI_Catalogue extends MY_Controller
         $data['usernom'] = $user['nom'];
         $data['userprenom'] = $user['prenom'];
 
+        //Articles
+        $data['article'] = $this->aff_Article();
+
+        $tariftotal = null;
+        foreach($data['article']->result() as $a){
+            $tariftotal += $a->Prix_Annonce_TTC + $a->Prix_MO;
+        }
+        $data['tariftotal'] = $tariftotal;
+        $data['tva'] = $tariftotal/(1+0.2)*0.2;
         $this->layout->title('Devis');
         $this->layout->view('B2E/Dossier_Archives/Devis/devis', $data);
     }
 
-
+    public function aff_Article()
+    {
+        $this->load->model('Mappage/article', 'article');
+        $result = $this->article->select_ArticleById();
+        return $result;
+    }
 
 }

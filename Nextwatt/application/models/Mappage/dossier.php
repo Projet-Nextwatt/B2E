@@ -59,7 +59,14 @@ class Dossier extends DataMapper
         $d->ID_Client = $idClient;
         $d->Date_Creation = date("Y-m-d");
         $d->Date_Modification = date("Y-m-d");
+        $d->Actif = 1;
         $d->save();
+    }
+
+    public function archiver_dossier($idDossier)
+    {
+        $dossier = new Dossier();
+        $dossier->where('id', $idDossier)->update('Actif', 0);
     }
 }
 
