@@ -86,7 +86,7 @@ class CI_Dossier extends MY_Controller
 
         $tariftotal = null;
         foreach($data['article']->result() as $a){
-            $tariftotal += $a->Prix_Annonce_TTC;
+            $tariftotal += $a->Prix_Annonce_TTC + $a->Prix_MO;
         }
         $data['tariftotal'] = $tariftotal;
         $data['tva'] = $tariftotal/(1+0.2)*0.2;
