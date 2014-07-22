@@ -18,15 +18,14 @@ class CI_Dossier extends MY_Controller
 
     public function consult_dossier()
     {
-        $data = array();
-        $data['minilogonextwatt'] = img_url('minilogonextwatt.png');
+        $this->load->model('Mappage/dossier','dossier');
 
-        $this->layout->title('Accueil B2E');
+        $data['dossiers'] = $this->dossier->select_all_dossier();
+        $data['dossiers_archive'] = $this->dossier->select_archive_dossier();
 
-        // Charge la page
-        $this->layout->view('B2E/Dossier_Archives/Accueil_Dossier_Archive', $data);
+        $this->layout->title('Dossier');
+        $this->layout->view('B2E/Dossier_Archives/Dossier/Consulter_Dossier', $data);
     }
-
 
     public function add_dossier()
     {
@@ -63,42 +62,6 @@ class CI_Dossier extends MY_Controller
             $this->dossier->add_Dossier($_POST['idClient']);
 
             $this->choix_action();
-    }
-
-    public function devis_form()
-    {
-        $this->load->model('Mappage/client', 'client');
-        $this->load->model('Mappage/user', 'user');
-
-        $client = $this->client->select_client($this->session->userdata['idClient']);
-        $user = $this->user->select_user($client['user_id']);
-
-        $data['nomclient1'] = $client['nom1'];
-        $data['prenomclient1'] = $client['prenom1'];
-        $data['prenomclient2'] = $client['prenom2'];
-        $data['adresse'] = $client['adresse'];
-        $data['ville'] = $client['ville'];
-        $data['usernom'] = $user['nom'];
-        $data['userprenom'] = $user['prenom'];
-
-        //Articles
-        $data['article'] = $this->aff_Article();
-
-        $tariftotal = null;
-        foreach($data['article']->result() as $a){
-            $tariftotal += $a->Prix_Annonce_TTC + $a->Prix_MO;
-        }
-        $data['tariftotal'] = $tariftotal;
-        $data['tva'] = $tariftotal/(1+0.2)*0.2;
-        $this->layout->title('Devis');
-        $this->layout->view('B2E/Dossier_Archives/Devis/devis', $data);
-    }
-
-    public function aff_Article()
-    {
-        $this->load->model('Mappage/article', 'article');
-        $result = $this->article->select_ArticleById();
-        return $result;
     }
 
     public function archiver()

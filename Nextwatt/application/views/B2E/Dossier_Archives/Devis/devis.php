@@ -9,7 +9,7 @@
                 <button type="button" class="btn btn-sm btn-primary">Retour</button>
             </a>
             <a href="<?php echo site_url("CI_Dossier/archiver"); ?>">
-                <button type="button" class="btn btn-sm btn-grey">Archiver</button>
+                <button type="button" class="btn btn-sm btn-grey">Archiver le dossier</button>
             </a>
             <a href="<?php echo site_url("CI_catalogue/consult_soustype"); ?>">
                 <button type="button" class="btn btn-sm btn-grey">Devis PDF</button>
