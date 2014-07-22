@@ -21,10 +21,6 @@ class Article extends DataMapper
         //Fonction de selection
     }
 
-    function  select_ArticleById()
-    {
-        return $this->db->get('articles');
-    }
 
         function ajouter_article($produit)
     {
