@@ -390,21 +390,6 @@ class Fonctionspersos
                     </script>";
             }
 
-            if ($sup != NULL) {
-                echo "  <script> 
-                            function confirme_supprimer(idDossier) {
-                            if (confirm('Voulez-vous vraimment supprimer l\'entrée numéro ' + idDossier)) {
-                                $.post(
-                                        '../" . $sup . "',
-                                        {'id': idDossier},
-                                function() {
-                                      location.reload();
-                                }   
-                            );
-                        }
-                    }
-                    </script>";
-            }
         }
     }
 //
