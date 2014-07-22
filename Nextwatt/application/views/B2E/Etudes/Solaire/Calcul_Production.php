@@ -55,104 +55,111 @@
                 </select>
             </div>
         </div>
-        <div class='form-group'>
-            <label class="col-sm-6 no-padding-right control-label" for='Puissance'>Puissance : </label>
-
-            <div class="col-sm-6">
-                <?php
-                $puissance = array(
-
-                    'name' => 'puissance',
-
-                    'id' => 'puissance',
-
-                    'placeholder' => 'puissance',
-
-                    'value' => set_value('puissance')
-
-                );
-                echo form_input($puissance);
-                ?>
+        <div class="hidden">
+            <div class='row form-group'>
+                <div class="col-xs-12 label label-lg label-success arrowed-right">
+                    <b>Personnalisation</b>
+                </div>
             </div>
-        </div>
-        <div class='form-group'>
-            <label class="col-sm-6 no-padding-right control-label" for='HeppNet'>Raccordement : </label>
+            <div class='form-group'>
+                <label class="col-sm-6 no-padding-right control-label" for='Puissance'>Puissance : </label>
 
-            <div class="col-sm-6">
-                <label>
-                    <input name="switch-field-1" class="ace ace-switch" type="checkbox" id="raccordement">
-                    <span class="lbl" data-lbl="Oui&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Non"></span>
-                </label>
+                <div class="col-sm-6">
+                    <?php
+                    $puissance = array(
+
+                        'name' => 'puissance',
+
+                        'id' => 'puissance',
+
+                        'placeholder' => 'puissance',
+
+                        'value' => set_value('puissance')
+
+                    );
+                    echo form_input($puissance);
+                    ?>
+                </div>
             </div>
-        </div>
+            <div class='form-group'>
+                <label class="col-sm-6 no-padding-right control-label" for='HeppNet'>Raccordement : </label>
 
-
-        <div class='form-group ' id="divbonus">
-            <label class="col-sm-6 no-padding-right control-label" for='Bonus'>Bonus de production : </label>
-
-            <div class="col-sm-6 ">
-                <?php
-                $bonus = array(
-
-                    'name' => 'bonus',
-
-                    'id' => 'bonus',
-
-                    'placeholder' => 'Bonus',
-
-                    'value' => set_value('bonus')
-
-                );
-                echo form_input($bonus);
-                ?>
+                <div class="col-sm-6">
+                    <label>
+                        <input name="switch-field-1" class="ace ace-switch" type="checkbox" id="raccordement">
+                        <span class="lbl" data-lbl="Oui&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Non"></span>
+                    </label>
+                </div>
             </div>
-        </div>
-        <div class='form-group ' id="divchauffage">
-            <label class="col-sm-6 no-padding-right control-label" for='Chauffage'>Chauffage : </label>
 
-            <div class="col-sm-6">
-                <?php
-                $chauffage = array(
 
-                    'name' => 'chauffage',
+            <div class='form-group ' id="divbonus">
+                <label class="col-sm-6 no-padding-right control-label" for='Bonus'>Bonus de production : </label>
 
-                    'id' => 'chauffage',
+                <div class="col-sm-6 ">
+                    <?php
+                    $bonus = array(
 
-                    'placeholder' => 'Chauffage',
+                        'name' => 'bonus',
 
-                    'value' => set_value('chauffage')
+                        'id' => 'bonus',
 
-                );
-                echo form_input($chauffage);
-                ?>
+                        'placeholder' => 'Bonus',
+
+                        'value' => set_value('bonus')
+
+                    );
+                    echo form_input($bonus);
+                    ?>
+                </div>
             </div>
-        </div>
-        <div class='form-group ' id="divecs">
-            <label class="col-sm-6 no-padding-right control-label" for='ECS'>ECS : </label>
+            <div class='form-group ' id="divchauffage">
+                <label class="col-sm-6 no-padding-right control-label" for='Chauffage'>Chauffage : </label>
 
-            <div class="col-sm-6">
-                <?php
-                $ecs = array(
+                <div class="col-sm-6">
+                    <?php
+                    $chauffage = array(
 
-                    'name' => 'ecs',
+                        'name' => 'chauffage',
 
-                    'id' => 'ecs',
+                        'id' => 'chauffage',
 
-                    'placeholder' => 'ECS',
+                        'placeholder' => 'Chauffage',
 
-                    'value' => set_value('ecs')
+                        'value' => set_value('chauffage')
 
-                );
-                echo form_input($ecs);
-                ?>
+                    );
+                    echo form_input($chauffage);
+                    ?>
+                </div>
             </div>
+            <div class='form-group ' id="divecs">
+                <label class="col-sm-6 no-padding-right control-label" for='ECS'>ECS : </label>
+
+                <div class="col-sm-6">
+                    <?php
+                    $ecs = array(
+
+                        'name' => 'ecs',
+
+                        'id' => 'ecs',
+
+                        'placeholder' => 'ECS',
+
+                        'value' => set_value('ecs')
+
+                    );
+                    echo form_input($ecs);
+                    ?>
+                </div>
+            </div>
+            <!--        <div align="center">-->
+            <?php //echo form_submit('calculprod', 'Valider', 'class="btn btn-success btn-sm"'); ?><!--</div>-->
         </div>
-        <!--        <div align="center">-->
-        <?php //echo form_submit('calculprod', 'Valider', 'class="btn btn-success btn-sm"'); ?><!--</div>-->
     </div>
 </div>
 <br/>
-<span class="hidden" id="heppnet"><?php echo $this->session->userdata['Heppnet']?></span>
+<span class="hidden" id="heppnet"><?php echo $this->session->userdata['Heppnet'] ?></span>
 <h3 align="center" id="resultprod"></h3>
 
 <ul class="pager">

@@ -58,5 +58,7 @@ class Article extends DataMapper
         $this->db->delete('Article');
     }
 
-
+    function  select_ArticleById(){
+       return $this->db->get('articles');
+    }
 }

@@ -489,20 +489,17 @@ class PV extends MY_Controller
 
     public function ajax_heppstation()
     {
-        // --------------------------------------
-        $_POST['panneau'] = 1;
-        //---------------------------------------
 
 
         $this->load->model('Mappage/ensoleillement', 'ensoleillement'); // Chargement model "Ensoleillement"
         $data = array();
         $data['station'] = $this->ensoleillement->select_ensoleillement(); // Recup des données station avec le model "ensoleillement"
 
-        if (isset($_POST['panneau']) && isset($_POST['idVille'])) {
+        if (isset($_POST['idVille'])) {
             foreach ($data['station'] as $station) { // Parcours les données du select pour trouver la station correspondante
                 if ($station['id'] == $_POST['idVille']['keyname']) {
-                    $tabstation = array('Panneau' => $_POST['panneau'], 'ID_Ensoleillement' => $station['id'], 'Ville' => $station['Ville'], 'HEPP' => $station['HEPP']); // Création tableau pour la conversion en json avec la ville et le HEPP correspondant
-                    $this->session_orientation($_POST['panneau'], $station['id'], $station['HEPP'], $station['Ville']);
+                    $tabstation = array( 'ID_Ensoleillement' => $station['id'], 'Ville' => $station['Ville'], 'HEPP' => $station['HEPP']); // Création tableau pour la conversion en json avec la ville et le HEPP correspondant
+                    $this->session_orientation($station['id'], $station['HEPP'], $station['Ville']);
                     $jsonstation = json_encode($tabstation); // Création du JSON avec le tableau
                     echo $jsonstation; // Envoi du JSON
                 }

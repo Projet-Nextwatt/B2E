@@ -79,70 +79,67 @@
                             </div>
                         </div>
                         <div class="widget-body">
-<<<<<<< HEAD
-                            
-=======
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>Libellé</td>
-                                    <td>Prix TTC</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php foreach ($article->result() as $a) {
-                                    echo '<tr>';
-                                    echo '<td>';
-                                    echo $a->Marque;
-                                    echo '</td>';
+                            <div>
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <td>Libellé</td>
+                                        <td>Prix TTC</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php foreach ($article->result() as $a) { ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo $a->Marque; ?>
+                                            </td>
 
-                                    echo '<td>';
-                                    echo $a->Prix_Annonce_TTC;
-                                    echo '</td>';
-                                    echo '</tr>';
+                                            <td>
+                                                <?php echo $a->Prix_Annonce_TTC; ?>
+                                            </td>
+                                        </tr>
 
-                                    echo '<tr>';
-                                    echo '<td>';
-                                    echo 'Main d\'oeuvre';
-                                    echo '</td>';
+                                        <tr>
+                                            <td>
+                                                Main d'oeuvre
+                                            </td>
 
-                                    echo '<td>';
-                                    echo $a->Prix_MO;
-                                    echo '</td>';
-                                    echo '</tr>';
+                                            <td>
+                                                <?php echo $a->Prix_MO; ?>
+                                            </td>
+                                        </tr>
 
-                                    echo '<tr>';
-                                    echo '<td>';
-                                    echo 'Garantie materiel :'. $a->Libelle_Garantie;
-                                    echo '</td>';
+                                        <tr>
+                                            <td>
+                                                Garantie materiel : <?php echo $a->Libelle_Garantie; ?>
+                                            </td>
 
-                                    echo '<td>';
+                                            <td>
 
-                                    echo '</td>';
-                                    echo '</tr>';
-                                    echo '<tr>';
-                                    echo '<td>';
-                                    echo 'Total TTC';
-                                    echo '</td>';
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Total TTC
+                                            </td>
 
-                                    echo '<td>';
-                                    echo $a->Prix_Annonce_TTC + $a->Prix_MO;
-                                    echo '</td>';
-                                    echo '</tr>';
-                                    echo '<tr>';
-                                    echo '<td>';
-                                    echo 'Dont TVA';
-                                    echo '</td>';
+                                            <td>
+                                                <?php echo $a->Prix_Annonce_TTC + $a->Prix_MO; ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Dont TVA
+                                            </td>
 
-                                    echo '<td>';
-                                    echo ($a->Prix_Annonce_TTC + $a->Prix_MO)/(1+0.2)*0.2;
-                                    echo '</td>';
-                                    echo '</tr>';
-                                } ?>
-                                </tbody>
-                            </table>
-
->>>>>>> origin/Developpement
+                                            <td>
+                                                <?php echo ($a->Prix_Annonce_TTC + $a->Prix_MO) / (1 + 0.2) * 0.2; ?>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
