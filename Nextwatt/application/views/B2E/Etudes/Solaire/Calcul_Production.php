@@ -55,7 +55,12 @@
                 </select>
             </div>
         </div>
-        <div class="hidden">
+        <?php
+        $formPersonnalisation = 'hidden';
+        if ($this->session->userdata['userconnect']['Droit_SUDO'] == 1) {
+            $formPersonnalisation = '';
+        } ?>
+        <div class="<?php echo $formPersonnalisation ?>">
             <div class='row form-group'>
                 <div class="col-xs-12 label label-lg label-success arrowed-right">
                     <b>Personnalisation</b>
@@ -157,11 +162,12 @@
             <?php //echo form_submit('calculprod', 'Valider', 'class="btn btn-success btn-sm"'); ?><!--</div>-->
         </div>
     </div>
-</div>
-<br/>
-<span class="hidden" id="heppnet"><?php echo $this->session->userdata['Heppnet'] ?></span>
-<h3 align="center" id="resultprod"></h3>
 
+    <br/>
+    <span class="hidden" id="heppnet"><?php echo $this->session->userdata['Heppnet'] ?></span>
+
+    <h3 align="center" id="resultprod"></h3>
+</div>
 <ul class="pager">
     <li class="previous">
         <a href="<?php echo site_url("pv/calculhepp"); ?>"><h4>← Calculer HEPP</h4></a>
