@@ -465,7 +465,6 @@ class CI_Catalogue extends MY_Controller
         $client = $this->client->select_client($this->session->userdata['idClient']);
         $user = $this->user->select_user($client['user_id']);
         $produit = $this->catalogue->select_panneau($idprod);
-        $produit['ID_Dossier'] = $this->sessi;
 
 
         $data['nomclient1'] = $client['nom1'];
