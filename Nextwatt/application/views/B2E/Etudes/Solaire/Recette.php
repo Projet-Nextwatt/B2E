@@ -176,7 +176,7 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
                 echo($msgsucces);
             } ?></p>
         <?php } else{ ?>
-        <liclass="center"">
+        <li class="center"">
             <a href=" <?php echo site_url("pv/enregistrer_etude"); ?>"><h4>Enregistrer l'étude</h4></a>
             <br/><br/>
 
