@@ -56,8 +56,29 @@ class CI_Dossier extends MY_Controller
 
     public function select_dossier()
     {
+        $this->load->model('Mappage/dossier', 'dossier');
+
+        $dossier = $this->dossier->select_dossier($this->session->userdata['CI_Dossier/select_dossier']);
         $DossierID = $this->session->userdata('CI_Dossier/select_dossier');
         $this->session->set_userdata('idDossier', $DossierID);
+        
+        if($dossier[0]['etude_id'] == 0)
+        {
+            $this->session->userdata['HEPP'] = null;
+            $this->session->userdata['Ratioc'] = null;
+            $this->session->userdata['ID_Ensoleillement'] = null;
+            $this->session->userdata['Ville'] = null;
+            $this->session->userdata['Heppnet'] = null;
+            $this->session->userdata['Raccordement'] = null;
+            $this->session->userdata['Production'] = null;
+            $this->session->userdata['Panneau'] = null;
+            $this->session->userdata['MarquePanneau'] = null;
+            $this->session->userdata['PrixPanneau'] = null;
+            $this->session->userdata['Inflation'] = null;
+            $this->session->userdata['Tarifedf'] = null;
+            $this->session->userdata['Orientation'] = null;
+
+        }
 
         $this->choix_action();
     }

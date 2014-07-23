@@ -456,8 +456,25 @@ class PV extends MY_Controller
 
     public function retour_menu_dossier()
     {
+        $this->load->model('Mappage/client', 'client');
+        $this->load->model('Mappage/user', 'user');
+        $this->load->model('Mappage/dossier', 'dossier');
+
+        $dossier = $this->dossier->select_dossier($this->session->userdata['CI_Dossier/select_dossier']);
+        $client = $this->client->select_client($dossier[0]['client_id']);
+        $user = $this->user->select_user($client['user_id']);
+
+        $data['nomclient1'] = $client['nom1'];
+        $data['prenomclient1'] = $client['prenom1'];
+        $data['prenomclient2'] = $client['prenom2'];
+        $data['adresse'] = $client['adresse'];
+        $data['ville'] = $client['ville'];
+        $data['tel'] = $client['tel1'];
+        $data['usernom'] = $user['nom'];
+        $data['userprenom'] = $user['prenom'];
+
         $this->layout->title('Dossier');
-        $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier');
+        $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier', $data);
     }
 
 

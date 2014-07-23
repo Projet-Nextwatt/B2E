@@ -1,6 +1,5 @@
 <div class="page-header">
-<<<<<<< HEAD
-=======
+
     <div  class="position-absolute">
         <a href=""></a>
         <div class="panel panel-success inline" >
@@ -23,7 +22,6 @@
             </div>
         </div>
     </div>
->>>>>>> origin/Developpement
     <h1 align="center">
         DOSSIER</br>
         <small><i class="ace-icon fa fa-angle-double-right"></i> Que voulez-vous ajouter au dossier ?</small>
