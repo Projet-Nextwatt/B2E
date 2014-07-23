@@ -1,8 +1,34 @@
 <div class="page-header">
+<<<<<<< HEAD
+=======
+    <div  class="position-absolute">
+        <a href=""></a>
+        <div class="panel panel-success inline" >
+            <div class="panel-heading">
+                Client
+            </div>
+            <div class="panel-body">
+                <p><?php
+                echo($nomclient1 . '  ' . $prenomclient1);
+                if ($prenomclient2 != null) {
+                    echo(' et ');
+                    echo($prenomclient2);
+                    echo('<br/>');
+                } else {
+                    echo('<br/>');
+                }
+                echo($adresse . '<br/>');
+                echo('Tel :'. $tel . '<br/>');
+                ?></p>
+            </div>
+        </div>
+    </div>
+>>>>>>> origin/Developpement
     <h1 align="center">
         DOSSIER</br>
         <small><i class="ace-icon fa fa-angle-double-right"></i> Que voulez-vous ajouter au dossier ?</small>
     </h1>
+    <br/>
 </div>
 
 <br/><br/><br/>

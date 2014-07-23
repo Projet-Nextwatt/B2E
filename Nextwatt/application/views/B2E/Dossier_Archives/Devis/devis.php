@@ -98,19 +98,25 @@
                                                 <div class="bigger-110">Main d'oeuvre : <p style="float: right">4 000,00 €</p></div>
                                                 <div class="bigger-110">Garantie materiel : 20 ans</div>
                                                 <div class="hr hr-4 hr-double"></div>
-                                                <table  class="bigger-110" style="float:right; width: 200px">
+                                                <table  class="bigger-110" style="float: right; width: auto">
                                                     <tr >
-                                                        <td>Total TTC : </td>
+                                                        <td><span style="float: right;margin-right: 15px">Remise CEE : </span></td>
+                                                        <td><span style="float: right">15 386,75 €</span></td>
+                                                    </tr>  <tr >
+                                                        <td><span style="float: right;margin-right: 15px"> Remise commerciale : </span></td>
+                                                        <td><span style="float: right">15 386,75 €</span></td>
+                                                    </tr>  <tr >
+                                                        <td><span style="float: right;margin-right: 15px">Total TTC : </span></td>
                                                         <td><span style="float: right">15 386,75 €</span></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Dont TVA : </td>
+                                                        <td><span  style="float: right;margin-right: 15px">Dont TVA : </span></td>
                                                         <td><span style="float: right">1 234,00 €</span></td>
                                                     </tr>
                                                 </table>
                                         </div>
                                         </div>
-                                    </div><br/><br/>
+                                    </div><br/><br/><br/><br/>
                                     <div class="widget-box transparent" style="opacity: 1; z-index: 0; margin: 5px">
                                         <div class="widget-header">
                                             <h4 class="widget-title lighter green" >Pompe à chaleur Air / Air Multisplit</h4>
@@ -135,13 +141,13 @@
                                                 </div>
                                                 <div class="bigger-110">Main d'oeuvre : <p style="float: right" class="no-margin">4 000,00 €</p></div>
                                                 <div class="hr hr-4 hr-double"></div>
-                                                <table  class="bigger-110" style="float:right; width: 200px">
+                                                <table  class="bigger-110" style="float: right; width: auto">
                                                     <tr >
-                                                        <td>Total TTC : </td>
-                                                        <td><span style="float: right">15 386,75 €</span></td>
+                                                        <td><span style="float: right;margin-right: 15px">Total TTC : </span></td>
+                                                        <td><span style="float: right">15 321,75 €</span></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Dont TVA : </td>
+                                                        <td><span  style="float: right;margin-right: 15px">Dont TVA : </span></td>
                                                         <td><span style="float: right">1 234,00 €</span></td>
                                                     </tr>
                                                 </table>
