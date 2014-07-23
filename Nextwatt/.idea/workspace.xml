@@ -49,10 +49,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CI_dossier.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CI_dossier.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/CI_dossier.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="8" selection-start="2231" selection-end="2231" vertical-scroll-proportion="0.5446224" vertical-offset="595" max-vertical-offset="2057">
+            <state line="63" column="0" selection-start="2223" selection-end="2223" vertical-scroll-proportion="-18.307692" vertical-offset="595" max-vertical-offset="2057">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/models/Mappage/client.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="48" column="32" selection-start="1101" selection-end="1101" vertical-scroll-proportion="0.33066362" vertical-offset="476" max-vertical-offset="2771">
               <folding />
             </state>
           </provider>
@@ -309,6 +318,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Solaire" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Nextwatt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Mappage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -731,11 +780,6 @@
         <state line="17" column="97" selection-start="447" selection-end="479" vertical-scroll-proportion="0.32990867" vertical-offset="0" max-vertical-offset="876" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/Mappage/client.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="0" selection-start="2940" selection-end="2940" vertical-scroll-proportion="0.36872146" vertical-offset="1496" max-vertical-offset="2771" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/Mappage/catalogue.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="162" column="37" selection-start="5309" selection-end="5330" vertical-scroll-proportion="-0.9315069" vertical-offset="3519" max-vertical-offset="4641" />
@@ -822,7 +866,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/CI_dossier.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="8" selection-start="2231" selection-end="2231" vertical-scroll-proportion="0.5446224" vertical-offset="595" max-vertical-offset="2057">
+        <state line="63" column="0" selection-start="2223" selection-end="2223" vertical-scroll-proportion="-18.307692" vertical-offset="595" max-vertical-offset="2057">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Mappage/client.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="32" selection-start="1101" selection-end="1101" vertical-scroll-proportion="0.33066362" vertical-offset="476" max-vertical-offset="2771">
           <folding />
         </state>
       </provider>

@@ -61,7 +61,7 @@ class CI_Dossier extends MY_Controller
         $dossier = $this->dossier->select_dossier($this->session->userdata['CI_Dossier/select_dossier']);
         $DossierID = $this->session->userdata('CI_Dossier/select_dossier');
         $this->session->set_userdata('idDossier', $DossierID);
-        
+
         if($dossier[0]['etude_id'] == 0)
         {
             $this->session->userdata['HEPP'] = null;
