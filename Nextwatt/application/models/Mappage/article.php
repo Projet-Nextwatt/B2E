@@ -159,16 +159,16 @@ class Article extends DataMapper {
 
             } else {                //Liste des complements
                 foreach ($article as $key => $data) {
-                    $produits[$idParent]['complements'][$id][$key] = $data;
+                    $produits[$article_id]['complements'][$id][$key] = $data;
                 }
 
                 //Ajout au totaux
-                $produits[$idParent]['total_remiseDispo']+=$remiseDispo;
-                $produits[$idParent]['total_CEE']-=$ceeTTC;
-                $produits[$idParent]['total_remise']-=$remiseTTC;
-                $produits[$idParent]['total_HT']+=$totalHTApresRemise;
-                $produits[$idParent]['total_TVA']+=$totalTVAApresRemise;
-                $produits[$idParent]['total_TTC']+=$totalTTCApresRemise;
+                $produits[$article_id]['total_remiseDispo']+=$remiseDispo;
+                $produits[$article_id]['total_CEE']-=$ceeTTC;
+                $produits[$article_id]['total_remise']-=$remiseTTC;
+                $produits[$article_id]['total_HT']+=$totalHTApresRemise;
+                $produits[$article_id]['total_TVA']+=$totalTVAApresRemise;
+                $produits[$article_id]['total_TTC']+=$totalTTCApresRemise;
             }
 
             $TOTAL_CEE-=$ceeTTC;
