@@ -168,23 +168,19 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
             <a href=" <?php echo site_url("pv/calculrecette"); ?>"><h4>← Calculer Recette</h4></a>
         </li>
         <?php if (isset($msgsucces)){ ?>
-        <li id="liRedirigierDossier" class="center">
-            <a href=" <?php echo site_url("pv/enregistrer_etude"); ?>"><h4>Revenir sur dossier</h4></a>
+        <li class="center">
+            <a href=" <?php echo site_url("pv/retour_menu_dossier"); ?>"><h4>Revenir sur dossier</h4></a>
             <br/><br/>
         </li>
         <p><?php if (isset($msgsucces)) {
                 echo($msgsucces);
             } ?></p>
         <?php } else{ ?>
-        <li id="liEnregistrerEtude" class="center" onclick="disparition()">
+        <liclass="center"">
             <a href=" <?php echo site_url("pv/enregistrer_etude"); ?>"><h4>Enregistrer l'étude</h4></a>
             <br/><br/>
 
             <?php } ?>
-        </li>
-        <li id="liRedirigierDossier" class="center hidden">
-            <a href=" <?php echo site_url("pv/enregistrer_etude"); ?>"><h4>Revenir sur dossier</h4></a>
-            <br/><br/>
         </li>
         <?php
         $disable = null;

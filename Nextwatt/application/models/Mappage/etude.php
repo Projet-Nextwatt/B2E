@@ -42,6 +42,7 @@ class Etude extends DataMapper {
             'PV_Ratio_Orientation' => $data['Orientation'],
             'PV_Ratio_Masque' => $data['Masque'],
             'PV_Puissance_Systeme' => $data['Puisysteme'],
+            'actif' => 1,
         );
 
         if(isset($data['Bonus']))                   // vérification de l'existence de $data['Bonus'] pour ne pas faire planter le insert

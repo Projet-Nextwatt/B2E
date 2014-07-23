@@ -17,14 +17,6 @@ class Dossier extends DataMapper
     /*
      * Variables correspondantes aux colonnes de la table.
      */
-    var $ID_Dossier = "";
-    var $ID_Client = "";
-    var $FK_Etude = "";
-    var $Titre = "";
-    var $Montant = "";
-    var $Date_Creation = "";
-    var $Date_Modification = "";
-
 
     function __construct()
     {
@@ -69,7 +61,7 @@ class Dossier extends DataMapper
 
     public function add_Dossier($idClient){
         $d = new Dossier();
-        $d->ID_Client = $idClient;
+        $d->client_id = $idClient;
         $d->Date_Creation = date("Y-m-d");
         $d->Date_Modification = date("Y-m-d");
         $d->actif = 1;
