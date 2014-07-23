@@ -454,6 +454,12 @@ class PV extends MY_Controller
         }
     }
 
+    public function retour_menu_dossier()
+    {
+        $this->layout->title('Dossier');
+        $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier');
+    }
+
 
     /********************* PARTIE AJAX  ************************************/
 

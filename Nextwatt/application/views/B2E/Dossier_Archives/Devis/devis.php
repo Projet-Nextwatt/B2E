@@ -25,12 +25,12 @@
     <div class="row form-group">
         <div class="col-xs-12">
             <div class="row">
-                <div class="col-md-3 col-xs-offset-2">
+                <div class="col-xs-6 col-xs-offset-0 col-md-4 col-md-offset-2">
                     <div class="panel panel-success">
                         <div class="panel-heading">
                                 Client
                         </div>
-                        <div class="widget-body">
+                        <div class="panel-body">
                             <?php
                             echo($nomclient1 . ' ' . $prenomclient1);
                             if ($prenomclient2 != null) {
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-xs-offset-2">
+                <div class="col-xs-6 col-xs-offset-0 col-md-4 col-md-offset-0">
                     <div class="panel panel-success">
                         <div class="panel-heading">
                                 Tarif
@@ -62,7 +62,7 @@
             <br/>
 
             <div class="row">
-                <div class="col-xs-8 col-xs-offset-2">
+                <div class="col-xs-12 col-xs-offset-0 col-md-8 col-md-offset-2">
                     <div class="panel panel-success">
                         <div class="panel-heading">
                             Votre devis
@@ -84,52 +84,70 @@
                                     <div class="widget-box transparent" style="opacity: 1; z-index: 0; margin: 5px">
                                         <div class="widget-header">
                                             <h4 class="widget-title lighter green" >Kit 9K Aerovoltaique</h4>
+                                            <h4 class="widget-title lighter green" style="float: right">Prix TTC</h4>
 
                                         </div>
 
                                         <div class="widget-body">
                                             <div class="widget-main padding-6 no-padding-left no-padding-right" style="margin: 5px;">
-                                                <div>36 panneaux Systovi 250 Wc - Rvolt <p class="bigger-110" style="float: right">11 386,75 €</p><br/>
+                                                <div class="bigger-110">36 panneaux Systovi 250 Wc - Rvolt <p  style="float: right">11 386,75 €</p><br/>
                                                 Onduleur Kostal Piko 8,3 <br/>
                                                 Intégration Systovi<br/>
                                                 Norme EN61215 ou NF EN61646 <br/>
-                                                Module de ventilation pour récupération de chaleur et rafraichissement</div><br/><br/>
-                                                <div class="bigger-110">Main d'oeuvre : <p style="float: right">4 000,00 €</p></div><br/>
-                                                <div class="bigger-110">Garantie materiel : 20 ans</div><br/>
+                                                Module de ventilation pour récupération de chaleur et rafraichissement</div><br/>
+                                                <div class="bigger-110">Main d'oeuvre : <p style="float: right">4 000,00 €</p></div>
+                                                <div class="bigger-110">Garantie materiel : 20 ans</div>
                                                 <div class="hr hr-4 hr-double"></div>
-                                                <div class="bigger-110 ">Total TTC : <p style="float: right;">15 386,75 €</p></div><br/>
-                                                <div class="bigger-110">Dont TVA : <p style="float: right">1 234,00 €</p></div><br/>
-                                            </div>
+                                                <table  class="bigger-110" style="float:right; width: 200px">
+                                                    <tr >
+                                                        <td>Total TTC : </td>
+                                                        <td><span style="float: right">15 386,75 €</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dont TVA : </td>
+                                                        <td><span style="float: right">1 234,00 €</span></td>
+                                                    </tr>
+                                                </table>
                                         </div>
-                                    </div>
+                                        </div>
+                                    </div><br/><br/>
                                     <div class="widget-box transparent" style="opacity: 1; z-index: 0; margin: 5px">
                                         <div class="widget-header">
                                             <h4 class="widget-title lighter green" >Pompe à chaleur Air / Air Multisplit</h4>
+                                            <h4 class="widget-title lighter green" style="float: right">Prix TTC</h4>
 
                                         </div>
 
                                         <div class="widget-body">
                                             <div class="widget-main padding-6 no-padding-left no-padding-right" style="margin: 5px;">
-                                                <div> Daikin MultiSplit
-                                                    2MXS40H  <p class="bigger-110" style="float: right">11 386,75 €</p><br/>
+                                                <div class="bigger-110"> Daikin MultiSplit
+                                                    2MXS40H  <p  style="float: right">11 386,75 €</p><br/>
                                                     Une pompe à Chaleur Air/AIR Réversible de type : Daikin MultiSplit
                                                     2MXS40H<br/>COP 4,16 Certifié Eurovent + pose, accessoires et mise
                                                     en service inclus
-                                                </div><br/><br/>
-                                                <div class="bigger-110">Main d'oeuvre : <p style="float: right">4 000,00 €</p></div><br/>
-                                                <div class="bigger-110">Garantie materiel : 20 ans</div><br/>
+                                                </div><br/>
+                                                <div class="bigger-110">Main d'oeuvre : <p style="float: right">4 000,00 €</p></div>
+                                                <div class="bigger-110">Garantie materiel : 20 ans</div>
+                                                <br/>
+                                                <div class="bigger-110 green">Option :</div>
                                                 <div class="hr hr-2 hr-dotted"></div>
-                                                <div> Unité intérieur Daikin Console 2x voie FVXS50F  <p class="bigger-110" style="float: right">11 386,75 €</p><br/>
-                                                </div><br/><br/>
-                                                <div class="bigger-110">Main d'oeuvre : <p style="float: right">4 000,00 €</p></div><br/>
+                                                <div class="bigger-110"> Unité intérieur Daikin Console 2x voie FVXS50F  <p class="no-margin" style="float: right">11 386,75 €</p><br/>
+                                                </div>
+                                                <div class="bigger-110">Main d'oeuvre : <p style="float: right" class="no-margin">4 000,00 €</p></div>
                                                 <div class="hr hr-4 hr-double"></div>
-                                                <div class="bigger-110 ">Total TTC : <p style="float: right;">15 386,75 €</p></div><br/>
-                                                <div class="bigger-110">Dont TVA : <p style="float: right">1 234,00 €</p></div><br/>
+                                                <table  class="bigger-110" style="float:right; width: 200px">
+                                                    <tr >
+                                                        <td>Total TTC : </td>
+                                                        <td><span style="float: right">15 386,75 €</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dont TVA : </td>
+                                                        <td><span style="float: right">1 234,00 €</span></td>
+                                                    </tr>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>

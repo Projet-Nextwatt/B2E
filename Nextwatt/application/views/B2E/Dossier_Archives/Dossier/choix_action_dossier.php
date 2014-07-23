@@ -1,4 +1,26 @@
 <div class="page-header">
+    <div class="col-xs-3">
+        <a href=""></a>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                Client
+            </div>
+            <div class="panel-body">
+                <?php
+                echo($nomclient1 . ' ' . $prenomclient1);
+                if ($prenomclient2 != null) {
+                    echo(' et ');
+                    echo($prenomclient2);
+                    echo('<br/>');
+                } else {
+                    echo('<br/>');
+                }
+                echo($adresse . '<br/>');
+                echo('Tel :'. $tel . '<br/>');
+                ?>
+            </div>
+        </div>
+    </div>
     <h1 align="center">
         DOSSIER</br>
         <small><i class="ace-icon fa fa-angle-double-right"></i> Que voulez-vous ajouter au dossier ?</small>
@@ -6,7 +28,9 @@
 </div>
 
 <div class="row">
-    </br></br></br></br>
+
+</div>
+<div class="row">
     <div align="center" >
         <a href="<?php echo site_url("pv/choixstation"); ?>">
             <button  type="button" class="btn btn-success">

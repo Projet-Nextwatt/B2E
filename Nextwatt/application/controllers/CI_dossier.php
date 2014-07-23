@@ -12,8 +12,23 @@ class CI_Dossier extends MY_Controller
 
     public function choix_action()
     {
+        $this->load->model('Mappage/client', 'client');
+        $this->load->model('Mappage/user', 'user');
+        $this->load->model('Mappage/article', 'article');
+
+        $client = $this->client->select_client($this->session->userdata['idClient']);
+        $user = $this->user->select_user($client['user_id']);
+        $data['nomclient1'] = $client['nom1'];
+        $data['prenomclient1'] = $client['prenom1'];
+        $data['prenomclient2'] = $client['prenom2'];
+        $data['adresse'] = $client['adresse'];
+        $data['ville'] = $client['ville'];
+        $data['tel'] = $client['tel1'];
+        $data['usernom'] = $user['nom'];
+        $data['userprenom'] = $user['prenom'];
+
         $this->layout->title('Dossier');
-        $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier');
+        $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier', $data);
     }
 
     public function consult_dossier()
@@ -39,10 +54,10 @@ class CI_Dossier extends MY_Controller
 
     public function select_dossier()
     {
-        $dossier = new Dossier_model();
-        $dossier->where('')->get();
+        $DossierID = $this->session->userdata('CI_Dossier/select_dossier');
+        $this->session->set_userdata('idDossier', $DossierID);
 
-        echo "ID dossier :" . $dossier->id . "<br/>Titre :" . $dossier->Titre . "<br/> montant :" . $dossier->Montant . "<br/><br/>";
+        $this->choix_action();
     }
 
     public function addDossier()

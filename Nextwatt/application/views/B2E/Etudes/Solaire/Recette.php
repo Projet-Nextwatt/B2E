@@ -167,32 +167,39 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
         <li class="previous">
             <a href=" <?php echo site_url("pv/calculrecette"); ?>"><h4>← Calculer Recette</h4></a>
         </li>
+        <?php if (isset($msgsucces)){ ?>
         <li class="center">
+            <a href=" <?php echo site_url("pv/retour_menu_dossier"); ?>"><h4>Revenir sur dossier</h4></a>
+            <br/><br/>
+        </li>
+        <p><?php if (isset($msgsucces)) {
+                echo($msgsucces);
+            } ?></p>
+        <?php } else{ ?>
+        <liclass="center"">
             <a href=" <?php echo site_url("pv/enregistrer_etude"); ?>"><h4>Enregistrer l'étude</h4></a>
             <br/><br/>
 
-            <p><?php if (isset($msgsucces)) {
-                    echo($msgsucces);
-                } ?></p>
+            <?php } ?>
         </li>
         <?php
         $disable = null;
         $link = site_url("pv/pdf");
-        if($pdf == false){
+        if ($pdf == false) {
             $disable = 'disabled';
             $link = null;
         } ?>
 
         <li class="next <?php echo $disable ?>">
             <a href="<?php echo $link; ?>" target="_blank">
-                <?php if($pdf == false){ ?>
-                <div class="alert alert-danger">
+                <?php if ($pdf == false) { ?>
+                    <div class="alert alert-danger">
 
-                    <strong>
-                        Manque d'information pour générer le PDF
-                    </strong>
-                    <br>
-                </div>
+                        <strong>
+                            Manque d'information pour générer le PDF
+                        </strong>
+                        <br>
+                    </div>
                 <?php } ?>
                 <h4><i class="ace-icon fa fa-print bigger-120"></i> Générer le PDF →</h4></a>
         </li>

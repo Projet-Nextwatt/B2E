@@ -12,7 +12,6 @@ if(isset($rsltupdate))
     echo($rsltupdate);?></p> <br/><?php
 }
 echo form_open('CI_catalogue/lier_type_produit_action');
-//var_dump($soustypes);
 foreach ($produit as $prod) {
     ?>
     <div class='row form-horizontal col-xs-12'>
