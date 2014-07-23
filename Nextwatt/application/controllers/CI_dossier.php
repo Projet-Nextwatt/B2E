@@ -39,10 +39,10 @@ class CI_Dossier extends MY_Controller
 
     public function select_dossier()
     {
-        $dossier = new Dossier_model();
-        $dossier->where('')->get();
+        $DossierID = $this->session->userdata('CI_Dossier/select_dossier');
+        $this->session->set_userdata('idDossier', $DossierID);
 
-        echo "ID dossier :" . $dossier->id . "<br/>Titre :" . $dossier->Titre . "<br/> montant :" . $dossier->Montant . "<br/><br/>";
+        $this->choix_action();
     }
 
     public function addDossier()

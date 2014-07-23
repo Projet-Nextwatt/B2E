@@ -46,7 +46,7 @@
                     <div class="tab-content">
                         <div class="tab-pane in <?php echo (empty($_POST)?'active':''); ?>" id="actif">
 
-                            <?php $this->fonctionspersos->creerListClient($mesclients, $modedossier, 'CI_client/ajax_supprimerclient '); ?>
+                            <?php $this->fonctionspersos->creerListClient($mesclients, $modedossier, 'CI_client/choix_clientDossier '); ?>
                             <br/>
 
                             
