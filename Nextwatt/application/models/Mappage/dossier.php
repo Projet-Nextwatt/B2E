@@ -33,6 +33,15 @@ class Dossier extends DataMapper
         return $dossiers->all_to_array();
     }
 
+    function select_dossier($id = NULL)
+    {
+        $d = new Dossier();
+
+        $dossiers = $d->where('id', $id)->get();
+
+        return $dossiers->all_to_array();
+    }
+
     public function select_archive_dossier()
     {
         $d = new Dossier();

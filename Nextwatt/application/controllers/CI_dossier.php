@@ -14,10 +14,12 @@ class CI_Dossier extends MY_Controller
     {
         $this->load->model('Mappage/client', 'client');
         $this->load->model('Mappage/user', 'user');
-        $this->load->model('Mappage/article', 'article');
+        $this->load->model('Mappage/dossier', 'dossier');
 
-        $client = $this->client->select_client($this->session->userdata['idClient']);
+        $dossier = $this->dossier->select_dossier($this->session->userdata['CI_Dossier/select_dossier']);
+        $client = $this->client->select_client($dossier[0]['client_id']);
         $user = $this->user->select_user($client['user_id']);
+
         $data['nomclient1'] = $client['nom1'];
         $data['prenomclient1'] = $client['prenom1'];
         $data['prenomclient2'] = $client['prenom2'];
@@ -54,8 +56,29 @@ class CI_Dossier extends MY_Controller
 
     public function select_dossier()
     {
+        $this->load->model('Mappage/dossier', 'dossier');
+
+        $dossier = $this->dossier->select_dossier($this->session->userdata['CI_Dossier/select_dossier']);
         $DossierID = $this->session->userdata('CI_Dossier/select_dossier');
         $this->session->set_userdata('idDossier', $DossierID);
+        
+        if($dossier[0]['etude_id'] == 0)
+        {
+            $this->session->userdata['HEPP'] = null;
+            $this->session->userdata['Ratioc'] = null;
+            $this->session->userdata['ID_Ensoleillement'] = null;
+            $this->session->userdata['Ville'] = null;
+            $this->session->userdata['Heppnet'] = null;
+            $this->session->userdata['Raccordement'] = null;
+            $this->session->userdata['Production'] = null;
+            $this->session->userdata['Panneau'] = null;
+            $this->session->userdata['MarquePanneau'] = null;
+            $this->session->userdata['PrixPanneau'] = null;
+            $this->session->userdata['Inflation'] = null;
+            $this->session->userdata['Tarifedf'] = null;
+            $this->session->userdata['Orientation'] = null;
+
+        }
 
         $this->choix_action();
     }

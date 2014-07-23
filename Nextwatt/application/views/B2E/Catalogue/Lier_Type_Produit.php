@@ -21,8 +21,13 @@ foreach ($produit as $prod) {
 
         <div class="col-sm-offset-7">
             <?php
-
-            $this->fonctionspersos->creerDropdown($soustypes, null, $prod['id']); ?>
+            if($soustypes != NULL){
+            $this->fonctionspersos->creerDropdown($soustypes, null, $prod['id']);
+            }
+            else{
+                echo('<h6><strong>Aucune donnée disponible, veuillez rajoutez des sous types</strong></h6> ');
+            }
+            ?>
         </div>
         <div class="col-sm-4">
             <?php echo form_error('$ref'); ?>

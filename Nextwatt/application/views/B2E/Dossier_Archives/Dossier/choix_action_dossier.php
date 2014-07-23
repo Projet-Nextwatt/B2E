@@ -1,4 +1,5 @@
 <div class="page-header">
+
     <div  class="position-absolute">
         <a href=""></a>
         <div class="panel panel-success inline" >
