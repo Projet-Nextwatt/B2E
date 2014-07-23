@@ -640,7 +640,8 @@ class PV extends MY_Controller
                 'Production' => $prodtotale,
                 'Panneau' => $data['0']['Nom'],
                 'MarquePanneau' => $data['0']['Marque'],
-                'PrixPanneau' => $data['0']['Prix_Annonce_TTC']
+                'PrixPanneau' => $data['0']['Prix_Annonce_TTC'],
+                'bonusProd' => $bonusprod
             );
             $this->session->set_userdata($tabsession);
 
@@ -660,7 +661,8 @@ class PV extends MY_Controller
                 'Ratioc' => $this->session->userdata('Ratioc'),
                 'Heppnet' => $this->session->userdata('Heppnet'),
                 'Raccordement' => $_POST['raccordement'],
-                'Production' => $prodtotal,);
+                'Production' => $prodtotal,
+                'bonusProd' => $_POST['bonus']);
             $this->session->set_userdata($tabsession);
             echo $prodtotal;
         } else {

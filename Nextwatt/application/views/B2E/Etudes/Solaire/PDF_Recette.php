@@ -108,7 +108,7 @@
 <table class="tablepdf">
     <tr>
         <td rowspan="2">
-            <fieldset class="alignleft">
+            <fieldset class="alignleft" style="width: auto">
                 <?php echo $this->session->userdata['nomClient'].' '.$this->session->userdata['prenomClient']?> <br/>
                 <?php echo $resultClient[0]['adresse'] ?> <br/>
                 <?php echo $resultClient[0]['codepostal'] .' '.$resultClient[0]['ville'] ?> <br/>
@@ -159,7 +159,12 @@
                 Matériel : <strong><?php echo $this->session->userdata['Panneau'] ?></strong> <br/>
                 Marque : <strong><?php echo $this->session->userdata['MarquePanneau'] ?></strong><br/>
                 Intégration : <strong>Intégrée au bâtiment.</strong><br/>
-                Puissance crête : <strong><?php echo number_format($this->session->userdata['Production'], 0, ',', ' ') ?> Watts</strong><br/><br/>
+                Puissance crête : <strong><?php echo number_format($this->session->userdata['Production'], 0, ',', ' ') ?> Watts</strong><br/>
+                <?php
+                $bonusProd = $this->session->userdata('bonusProd');
+                if(isset($bonusProd) && $bonusProd != 0){
+                    echo 'Bonus de production : <strong>'.$bonusProd/100 .' %</strong><br/>';
+                }?>
                 Prix du kit : <strong><?php echo number_format($this->session->userdata['PrixPanneau'], 0, ',', ' ') ?> €</strong>
             </fieldset>
         </td>
