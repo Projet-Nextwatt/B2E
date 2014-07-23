@@ -118,8 +118,6 @@ class Article extends DataMapper {
             $remiseDispo = $totalTTCApresRemise - $totalPlancherTTC;
 
 
-
-<<<<<<< HEAD
             //Integration au produits courants
             $article['Prix_MO_TTC'] = $moTTC;
             $article['Prix_Mat_Annonce_TTC'] = $matAnTTC;
@@ -191,11 +189,6 @@ class Article extends DataMapper {
     }
 
     function ajouter_article($produit) {
-//        var_dump($produit);
-=======
-        function ajouter_article($produit)
-    {
->>>>>>> origin/Developpement
         $newproduit = array(
             'soustype_id' => $produit[0]['soustype_id'],
             'dossier_id' => $produit[0]['dossier_id'],
