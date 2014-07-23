@@ -81,8 +81,8 @@ printr($devis);?>
                                 Tarif
                         </div>
                         <div class="panel-body bigger-120">
-                            <p><strong>Total TTC : <?php echo $tariftotal; ?> €</strong></p>
-                            <p>Dont TVA : <?php echo $tva; ?> €</p>
+                            <p><strong>Total TTC : <?php echo number_format($devis['TOTAL_TTC'], 2, ',', ' '); ?> €</strong></p>
+                            <p>Dont TVA : <?php echo number_format($devis['TOTAL_TVA'], 2, ',', ' '); ?> €</p>
                         </div>
                     </div>
                 </div>
@@ -108,81 +108,63 @@ printr($devis);?>
                             </div>
                         </div>
                         <div class="panel-body">
-                            <div>
+                            <?php foreach($devis['produits'] as $d){ ?>
                                     <div class="widget-box transparent" style="opacity: 1; z-index: 0; margin: 5px">
                                         <div class="widget-header">
-                                            <h4 class="widget-title lighter green" >Kit 9K Aerovoltaique</h4>
+                                            <h4 class="widget-title lighter green" ><?php echo $d['Nom']?></h4>
                                             <h4 class="widget-title lighter green" style="float: right">Prix TTC</h4>
 
                                         </div>
 
                                         <div class="widget-body">
                                             <div class="widget-main padding-6 no-padding-left no-padding-right" style="margin: 5px;">
-                                                <div class="bigger-110">36 panneaux Systovi 250 Wc - Rvolt <p  style="float: right">11 386,75 €</p><br/>
-                                                Onduleur Kostal Piko 8,3 <br/>
-                                                Intégration Systovi<br/>
-                                                Norme EN61215 ou NF EN61646 <br/>
-                                                Module de ventilation pour récupération de chaleur et rafraichissement</div><br/>
-                                                <div class="bigger-110">Main d'oeuvre : <p style="float: right">4 000,00 €</p></div>
-                                                <div class="bigger-110">Garantie materiel : 20 ans</div>
+                                                <div class="bigger-110 "><p class="width-80 no-margin inline" ><?php echo html_entity_decode($d['Libelle_Mat']) ?></p> <p style="float: right"><?php echo number_format($d['Prix_Mat_Annonce_TTC'], 2, ',', ' ') ?> €</p><br/>
+                                                </div><br/>
+                                                <div class="bigger-110">Main d'oeuvre : <p style="float: right"><?php echo number_format($d['Prix_MO'], 2, ',', ' ') ?> €</p></div>
+                                                <div class="bigger-110"><?php echo $d['Libelle_Garantie'] ?></div>
+                                                <?php
+                                                if(isset($d['complements'])) { ?>
+                                                <br/>
+                                                <div class="bigger-110 green">Option :</div>
+                                                <?php foreach($d['complements'] as $c){ ?>
+
+                                                <div class="hr hr-2 hr-dotted"></div>
+                                                <div class="bigger-110"><?php echo $c['Nom'] ?><p class="no-margin" style="float: right"><?php echo number_format($c['Prix_Mat_Annonce_TTC'], 2, ',', ' ')?> €</p><br/>
+                                                </div>
+                                                        <?php if($c['Prix_MO_TTC'] !=0){ ?>
+                                                <div class="bigger-110">Main d'oeuvre : <p style="float: right" class="no-margin"><?php echo number_format($c['Prix_MO_TTC'], 2, ',', ' ')?> €</p></div>
+                                                            <div class="bigger-110"><?php echo $c['Libelle_Garantie'] ?></div>
+                                                <?php }}} ?>
+
+                                                <br/>
                                                 <div class="hr hr-4 hr-double"></div>
                                                 <table  class="bigger-110" style="float: right; width: auto">
+                                                    <?php if($d['total_CEE'] !=0){ ?>
                                                     <tr >
+
                                                         <td><span style="float: right;margin-right: 15px">Remise CEE : </span></td>
-                                                        <td><span style="float: right">15 386,75 €</span></td>
-                                                    </tr>  <tr >
+                                                        <td><span style="float: right"><?php echo number_format($d['total_CEE'], 2, ',', ' ')?> €</span></td>
+                                                    </tr>
+                                                    <?php }
+                                                    if($d['total_remise']) { ?>
+                                                    <tr >
                                                         <td><span style="float: right;margin-right: 15px"> Remise commerciale : </span></td>
-                                                        <td><span style="float: right">15 386,75 €</span></td>
-                                                    </tr>  <tr >
+                                                        <td><span style="float: right"><?php echo number_format($d['total_remise'], 2, ',', ' ')?> €</span></td>
+                                                    </tr>
+                                                    <?php } ?>
+                                                    <tr >
                                                         <td><span style="float: right;margin-right: 15px">Total TTC : </span></td>
-                                                        <td><span style="float: right">15 386,75 €</span></td>
+                                                        <td><span style="float: right"><strong><?php echo number_format($d['total_TTC'], 2, ',', ' ')?> €</strong></span></td>
                                                     </tr>
                                                     <tr>
                                                         <td><span  style="float: right;margin-right: 15px">Dont TVA : </span></td>
-                                                        <td><span style="float: right">1 234,00 €</span></td>
+                                                        <td><span style="float: right"><?php echo number_format($d['total_TVA'], 2, ',', ' ')?> €</span></td>
                                                     </tr>
                                                 </table>
                                         </div>
                                         </div>
                                     </div><br/><br/><br/><br/>
-                                    <div class="widget-box transparent" style="opacity: 1; z-index: 0; margin: 5px">
-                                        <div class="widget-header">
-                                            <h4 class="widget-title lighter green" >Pompe à chaleur Air / Air Multisplit</h4>
-                                            <h4 class="widget-title lighter green" style="float: right">Prix TTC</h4>
-
-                                        </div>
-
-                                        <div class="widget-body">
-                                            <div class="widget-main padding-6 no-padding-left no-padding-right" style="margin: 5px;">
-                                                <div class="bigger-110"> Daikin MultiSplit
-                                                    2MXS40H  <p  style="float: right">11 386,75 €</p><br/>
-                                                    Une pompe à Chaleur Air/AIR Réversible de type : Daikin MultiSplit
-                                                    2MXS40H<br/>COP 4,16 Certifié Eurovent + pose, accessoires et mise
-                                                    en service inclus
-                                                </div><br/>
-                                                <div class="bigger-110">Main d'oeuvre : <p style="float: right">4 000,00 €</p></div>
-                                                <div class="bigger-110">Garantie materiel : 20 ans</div>
-                                                <br/>
-                                                <div class="bigger-110 green">Option :</div>
-                                                <div class="hr hr-2 hr-dotted"></div>
-                                                <div class="bigger-110"> Unité intérieur Daikin Console 2x voie FVXS50F  <p class="no-margin" style="float: right">11 386,75 €</p><br/>
-                                                </div>
-                                                <div class="bigger-110">Main d'oeuvre : <p style="float: right" class="no-margin">4 000,00 €</p></div>
-                                                <div class="hr hr-4 hr-double"></div>
-                                                <table  class="bigger-110" style="float: right; width: auto">
-                                                    <tr >
-                                                        <td><span style="float: right;margin-right: 15px">Total TTC : </span></td>
-                                                        <td><span style="float: right">15 321,75 €</span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span  style="float: right;margin-right: 15px">Dont TVA : </span></td>
-                                                        <td><span style="float: right">1 234,00 €</span></td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
