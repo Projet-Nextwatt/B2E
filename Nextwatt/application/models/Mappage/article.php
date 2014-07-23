@@ -28,6 +28,8 @@ class Article extends DataMapper {
 
     function mise_en_forme_article(array $articles) {
         //Initialisation des varaibles générales
+        $liste =array();
+        $produits =array();
         $TOTAL_HT = 0;
         $TOTAL_TVA = 0;
         $TOTAL_CEE = 0;
@@ -35,8 +37,6 @@ class Article extends DataMapper {
         $TOTAL_TTC = 0;
 
         foreach ($articles as $article) {
-            $liste =array();
-            $produits =array();
             //Initialisation des varaibles locales
             /*
             $totalPlancherTTC = 0; //Prix plancher TTC
@@ -157,9 +157,8 @@ class Article extends DataMapper {
                 $produits[$id]['total_TVA'] = $totalTVAApresRemise;
                 $produits[$id]['total_TTC'] = $totalTTCApresRemise;
 
-                $titre = $titre . $produit['produitsSelect_type'] . " - " . $produit['produitsSelect_libelleCourt'] . '<br/>';  //Commpletion du titre
             } else {                //Liste des complements
-                foreach ($produit as $key => $data) {
+                foreach ($article as $key => $data) {
                     $produits[$idParent]['complements'][$id][$key] = $data;
                 }
 
@@ -209,6 +208,7 @@ class Article extends DataMapper {
             'Type_Produit' => $produit[0]['Type_Produit'],
             'Spec' => $produit[0]['Spec'],
             'actif' => $produit[0]['Actif'],
+            'Quantite'=>1,
         );
         $this->db->insert('articles', $newproduit);
     }

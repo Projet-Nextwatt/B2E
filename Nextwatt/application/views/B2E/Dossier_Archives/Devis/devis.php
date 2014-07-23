@@ -21,6 +21,7 @@
     </div>
 </div>
 
+<?php var_dump($devis);?>
 <div class="page-content">
     <div class="row form-group">
         <div class="col-xs-12">

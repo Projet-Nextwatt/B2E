@@ -470,6 +470,7 @@ class CI_Catalogue extends MY_Controller
 
         $client = $this->client->select_client($this->session->userdata['idClient']);
         $user = $this->user->select_user($client['user_id']);
+        $iddossier=$this->session->userdata['idDossier'];
         $data['nomclient1'] = $client['nom1'];
         $data['prenomclient1'] = $client['prenom1'];
         $data['prenomclient2'] = $client['prenom2'];
@@ -480,7 +481,11 @@ class CI_Catalogue extends MY_Controller
 
         //Articles
         $data['article'] = $this->aff_Article();
-
+        
+        //--------------
+        $articles = $this->article->list_article_dossier($iddossier);
+        $data['devis'] = $this->article->mise_en_forme_article($articles);
+        //--------------------
         $tariftotal = null;
         foreach($data['article']->result() as $a){
             $tariftotal += $a->Prix_Annonce_TTC + $a->Prix_MO;
