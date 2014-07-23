@@ -30,7 +30,7 @@
                         <div class="panel-heading">
                                 Client
                         </div>
-                        <div class="widget-body">
+                        <div class="panel-body">
                             <?php
                             echo($nomclient1 . ' ' . $prenomclient1);
                             if ($prenomclient2 != null) {
@@ -84,6 +84,7 @@
                                     <div class="widget-box transparent" style="opacity: 1; z-index: 0; margin: 5px">
                                         <div class="widget-header">
                                             <h4 class="widget-title lighter green" >Kit 9K Aerovoltaique</h4>
+                                            <h4 class="widget-title lighter green" style="float: right">Prix TTC</h4>
 
                                         </div>
 
@@ -105,6 +106,7 @@
                                     <div class="widget-box transparent" style="opacity: 1; z-index: 0; margin: 5px">
                                         <div class="widget-header">
                                             <h4 class="widget-title lighter green" >Pompe à chaleur Air / Air Multisplit</h4>
+                                            <h4 class="widget-title lighter green" style="float: right">Prix TTC</h4>
 
                                         </div>
 
