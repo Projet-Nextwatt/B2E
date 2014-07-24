@@ -466,6 +466,7 @@ class CI_Catalogue extends MY_Controller
 
     public function devis_form($idprod = NULL)
     {
+        $this->load->model('Mappage/dossier', 'dossier');
         $this->load->model('Mappage/client', 'client');
         $this->load->model('Mappage/user', 'user');
         $this->load->model('Mappage/article', 'article');
@@ -475,20 +476,24 @@ class CI_Catalogue extends MY_Controller
         
         //lol
         
-        $iddossier=$this->session->userdata['idDossier'];
+        $dossier = $this->dossier->select_dossier($this->session->userdata['CI_Dossier/select_dossier']);
+        $client = $this->client->select_client($dossier[0]['client_id']);
+        $user = $this->user->select_user($client['user_id']);
+
         $data['nomclient1'] = $client['nom1'];
         $data['prenomclient1'] = $client['prenom1'];
         $data['prenomclient2'] = $client['prenom2'];
         $data['adresse'] = $client['adresse'];
         $data['ville'] = $client['ville'];
+        $data['tel'] = $client['tel1'];
         $data['usernom'] = $user['nom'];
         $data['userprenom'] = $user['prenom'];
-
         //Articles
         $data['article'] = $this->aff_Article();
 
         //--------------
         $articles = $this->article->list_article_dossier($iddossier);
+        $articles = $this->article->list_article_dossier($dossier[0]['id']);
         $data['devis'] = $this->mise_en_forme_article($articles);
         //--------------------
         $this->layout->title('Devis');
