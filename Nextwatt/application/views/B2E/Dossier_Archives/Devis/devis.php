@@ -21,6 +21,9 @@
     </div>
 </div>
 
+<<<<<<< HEAD
+<?php //var_dump($devis);?>
+=======
 <?php
 function printr($array)
 {
@@ -49,6 +52,7 @@ function printr($array)
 }
 
 printr($devis);?>
+>>>>>>> origin/Developpement
 <div class="page-content">
     <div class="row form-group">
         <div class="col-xs-12">

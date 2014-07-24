@@ -223,8 +223,4 @@ class Article extends DataMapper {
         //Et aussi les options
     }
 
-    function select_ArticleById() {
-        return $this->db->get('articles');
-    }
-
 }

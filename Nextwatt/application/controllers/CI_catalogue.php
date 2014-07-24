@@ -481,17 +481,11 @@ class CI_Catalogue extends MY_Controller
 
         //Articles
         $data['article'] = $this->aff_Article();
-        
+
         //--------------
         $articles = $this->article->list_article_dossier($iddossier);
         $data['devis'] = $this->article->mise_en_forme_article($articles);
         //--------------------
-        $tariftotal = null;
-        foreach($data['article']->result() as $a){
-            $tariftotal += $a->Prix_Annonce_TTC + $a->Prix_MO;
-        }
-        $data['tariftotal'] = $tariftotal;
-        $data['tva'] = $tariftotal/(1+0.2)*0.2;
         $this->layout->title('Devis');
         $this->layout->view('B2E/Dossier_Archives/Devis/devis', $data);
     }
@@ -499,7 +493,7 @@ class CI_Catalogue extends MY_Controller
     public function aff_Article()
     {
         $this->load->model('Mappage/article', 'article');
-        $result = $this->article->select_ArticleById();
+        $result = $this->article->list_article_dossier($this->session->userdata('idDossier'));
         return $result;
     }
 
