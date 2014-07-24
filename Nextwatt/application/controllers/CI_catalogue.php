@@ -473,6 +473,8 @@ class CI_Catalogue extends MY_Controller
         $client = $this->client->select_client($this->session->userdata['idClient']);
         $user = $this->user->select_user($client['user_id']);
         
+        //lol
+        
         $iddossier=$this->session->userdata['idDossier'];
         $data['nomclient1'] = $client['nom1'];
         $data['prenomclient1'] = $client['prenom1'];
