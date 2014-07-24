@@ -459,7 +459,7 @@ class CI_Catalogue extends MY_Controller
 
         $idprod = ($this->session->userdata('CI_Catalogue/select_produit_devis'));
         $produit = $this->catalogue->select_panneau($idprod);
-        $produit[0]['dossier_id'] = $this->session->userdata('idDossier');
+        $produit[0]['dossier_id'] = $this->session->userdata['CI_Dossier/select_dossier'];
         $this->article->ajouter_article($produit);
         $this->devis_form($idprod);
     }
