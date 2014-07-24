@@ -21,9 +21,7 @@
     </div>
 </div>
 
-<<<<<<< HEAD
 <?php //var_dump($devis);?>
-=======
 <?php
 function printr($array)
 {
@@ -52,7 +50,6 @@ function printr($array)
 }
 
 printr($devis);?>
->>>>>>> origin/Developpement
 <div class="page-content">
     <div class="row form-group">
         <div class="col-xs-12">
@@ -115,7 +112,7 @@ printr($devis);?>
                             <?php foreach($devis['produits'] as $d){ ?>
                                     <div class="widget-box transparent" style="opacity: 1; z-index: 0; margin: 5px">
                                         <div class="widget-header">
-                                            <h4 class="widget-title lighter green" ><?php echo $d['Nom']?></h4>
+                                            <a href="<?php echo site_url("CI_Dossier/aff_detail_article"); ?>"><h4 class="widget-title lighter green" ><?php echo $d['Nom']?></h4></a>
                                             <h4 class="widget-title lighter green" style="float: right">Prix TTC</h4>
 
                                         </div>
