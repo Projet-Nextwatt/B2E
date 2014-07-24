@@ -56,7 +56,7 @@ class Catalogue extends DataMapper
         $i = 0;
         $rslt = array();
         foreach ($refbddtest as $element) {
-            unset ($element['ID_SousType']);
+            unset ($element['soustype_id']);
             unset ($element['Reference']);
             unset ($element['Marque']);
             unset ($element['Puissance']);
@@ -105,8 +105,7 @@ class Catalogue extends DataMapper
         $rslt = array();
         foreach ($catalogue as $element) {
             unset ($element['id']);
-            unset ($element['ID_Catalogue']);
-            unset ($element['ID_SousType']);
+            unset ($element['soustype_id']);
             unset ($element['Actif']);
 
             $i = 0;
@@ -114,7 +113,6 @@ class Catalogue extends DataMapper
                 $rslt[$element['Reference']][$i] = $sub_element;
                 $i++;
             }
-
         }
         return $rslt;
     }
@@ -252,7 +250,7 @@ class Catalogue extends DataMapper
         {
             if($value != 1)
             {
-                $prod->where('id', $key)->update('ID_SousType',$value);
+                $prod->where('id', $key)->update('soustype_id',$value);
                 $rsltupdate = $compteurupdate++;
             }
         }

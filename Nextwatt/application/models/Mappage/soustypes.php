@@ -33,8 +33,8 @@ class Soustypes extends DataMapper {
         if ($id != NULL) {
             $st->where('id', $id);
             $st->get();
-            $retour = $st->all_to_array();
-            return $retour['0'];
+            $retour = $st->to_array();
+            return $retour;
         } else {
             $st->get();
             return $st->all_to_array();
