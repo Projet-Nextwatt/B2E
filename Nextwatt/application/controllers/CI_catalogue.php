@@ -471,9 +471,6 @@ class CI_Catalogue extends MY_Controller
         $this->load->model('Mappage/user', 'user');
         $this->load->model('Mappage/article', 'article');
         
-        $client = $this->client->select_client($this->session->userdata['idClient']);
-        $user = $this->user->select_user($client['user_id']);
-        
         //lol
         
         $dossier = $this->dossier->select_dossier($this->session->userdata['CI_Dossier/select_dossier']);
@@ -492,7 +489,6 @@ class CI_Catalogue extends MY_Controller
         $data['article'] = $this->aff_Article();
 
         //--------------
-        $articles = $this->article->list_article_dossier($iddossier);
         $articles = $this->article->list_article_dossier($dossier[0]['id']);
         $data['devis'] = $this->mise_en_forme_article($articles);
         //--------------------
@@ -615,7 +611,7 @@ class CI_Catalogue extends MY_Controller
                 
             //Création du titre du sous projet ---- si ce n'est pas une option
             if ($article['article_id']== 0) {
-                $soustype=$this->soustype->select_soustype($article['type_id']);
+                $soustype=$this->soustype->select_soustype($article['soustype_id']);
                 var_dump($soustype);
             }
             
