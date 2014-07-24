@@ -100,10 +100,6 @@ printr($devis);?>
                                         <i class="ace-icon fa fa-plus-square bigger-110"></i>
                                         Ajouter un article
                                     </button>
-<!--                                    <button class="btn btn-info btn-sm">-->
-<!--                                        <i class="ace-icon fa fa-plus-square  bigger-110 icon-only"></i>-->
-<!--                                        <i class="ace-icon fa fa-plus-square-o bigger-200"></i>-->
-<!--                                    </button>-->
                                 </a>
                             </div>
                         </div>
@@ -116,7 +112,7 @@ printr($devis);?>
 
                                         </div>
 
-                                        <div class="widget-body">
+                                        <div class="widget-body background-blue">
                                             <div class="widget-main padding-6 no-padding-left no-padding-right" style="margin: 5px;">
                                                 <div class="bigger-110 "><p class="width-80 no-margin inline" ><?php echo html_entity_decode($d['Libelle_Mat']) ?></p> <p style="float: right"><?php echo number_format($d['Prix_Mat_Annonce_TTC'], 2, ',', ' ') ?> €</p><br/>
                                                 </div><br/>
