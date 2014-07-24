@@ -43,14 +43,11 @@
                     foreach ($panneau as $p) {
                     if ($p['Reference'] != $ref) {
                     ?>
-                    <optgroup label="<?php echo $p['Reference'] ?>">
-                        <?php $ref = $p['Reference'];
-                        } ?>
                         <option value="<?php echo $p['id'] ?>"><?php echo $p['Nom'] ?></option>
                         <?php
 
                         }
-                        }
+                        }}
                         ?>
                 </select>
             </div>

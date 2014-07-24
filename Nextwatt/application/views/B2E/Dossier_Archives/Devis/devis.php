@@ -20,39 +20,6 @@
         </div>
     </div>
 </div>
-
-<<<<<<< HEAD
-<?php //var_dump($devis);?>
-=======
-<?php
-function printr($array)
-{
-    static $indentation = '';
-    static $array_key = '';
-    $cst_indentation = '&nbsp;&nbsp;&nbsp;&nbsp;';
-
-    echo $indentation . $array_key . '<b>array(</b><br />';
-    reset($array);
-    while (list($k, $v) = each($array))
-    {
-        if (is_array($v))
-        {
-            $indentation .= $cst_indentation;
-            $array_key = '\'<i style="color: #334499 ;">' . addslashes(htmlspecialchars($k)) . '</i>\' => ';
-            printr($v);
-            $indentation = substr($indentation, 0, strlen($indentation) - strlen($cst_indentation));
-        }
-        else
-        {
-            echo $indentation . $cst_indentation . '\'<i style="color: #334499 ;">' .
-                addslashes(htmlspecialchars($k)) . '</i>\' => \'' . addslashes(htmlspecialchars($v)) . '\',<br />';
-        }
-    }
-    echo $indentation . '<b>)</b>' . (($indentation === '') ? ';' : ',') . '<br />';
-}
-
-printr($devis);?>
->>>>>>> origin/Developpement
 <div class="page-content">
     <div class="row form-group">
         <div class="col-xs-12">
@@ -86,7 +53,7 @@ printr($devis);?>
                         </div>
                         <div class="panel-body bigger-120">
                             <p><strong>Total TTC : <?php echo number_format($devis['TOTAL_TTC'], 2, ',', ' '); ?> €</strong></p>
-                            <p>Dont TVA : <?php echo number_format($devis['TOTAL_TVA'], 2, ',', ' '); ?> €</p>
+                            <p class="smaller-95">Dont TVA : <?php echo number_format($devis['TOTAL_TVA'], 2, ',', ' '); ?> €</p>
                         </div>
                     </div>
                 </div>
@@ -109,10 +76,10 @@ printr($devis);?>
                         </div>
                         <div class="panel-body">
                             <?php foreach($devis['produits'] as $d){ ?>
-                                    <div class="widget-box transparent" style="opacity: 1; z-index: 0; margin: 5px">
+                                    <div class="widget-box " style="opacity: 1; z-index: 0; margin: 5px">
                                         <div class="widget-header">
                                             <h4 class="widget-title lighter green" ><?php echo $d['Nom']?></h4>
-                                            <h4 class="widget-title lighter green" style="float: right">Prix TTC</h4>
+                                            <h4 class="widget-title lighter green" style="float: right;padding-right: 10px;">Prix TTC</h4>
 
                                         </div>
 
@@ -142,28 +109,29 @@ printr($devis);?>
                                                     <?php if($d['total_CEE'] !=0){ ?>
                                                     <tr >
 
-                                                        <td><span style="float: right;margin-right: 15px">Remise CEE : </span></td>
-                                                        <td><span style="float: right"><?php echo number_format($d['total_CEE'], 2, ',', ' ')?> €</span></td>
+                                                        <td><span style="float: right;margin-right: 15px"><em>Remise CEE : </em></span></td>
+                                                        <td><span style="float: right"><?php echo number_format($d['total_CEE'], 2, ',', ' ')?> €  </span></td>
                                                     </tr>
                                                     <?php }
                                                     if($d['total_remise']) { ?>
                                                     <tr >
-                                                        <td><span style="float: right;margin-right: 15px"> Remise commerciale : </span></td>
-                                                        <td><span style="float: right"><?php echo number_format($d['total_remise'], 2, ',', ' ')?> €</span></td>
+                                                        <td><span style="float: right;margin-right: 15px"><em>Remise exceptionnelle : </em> </span></td>
+                                                        <td><span style="float: right;"><?php echo number_format($d['total_remise'], 2, ',', ' ')?> €</span></td>
                                                     </tr>
                                                     <?php } ?>
                                                     <tr >
-                                                        <td><span style="float: right;margin-right: 15px">Total TTC : </span></td>
-                                                        <td><span style="float: right"><strong><?php echo number_format($d['total_TTC'], 2, ',', ' ')?> €</strong></span></td>
+                                                        <td><span style="float: right;margin-right: 15px"><strong>Sous-total TTC :</strong> </span></td>
+                                                        <td><span style="float: right"><strong class="green"><?php echo number_format($d['total_TTC'], 2, ',', ' ')?> €</strong></span></td>
                                                     </tr>
-                                                    <tr>
+                                                    <tr class="smaller-90">
                                                         <td><span  style="float: right;margin-right: 15px">Dont TVA : </span></td>
                                                         <td><span style="float: right"><?php echo number_format($d['total_TVA'], 2, ',', ' ')?> €</span></td>
                                                     </tr>
                                                 </table>
+                                                <br/><br/><br/><br/><br/>
                                         </div>
                                         </div>
-                                    </div><br/><br/><br/><br/>
+                                    </div>
                             <?php } ?>
                         </div>
                     </div>

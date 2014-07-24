@@ -488,6 +488,8 @@ class CI_Catalogue extends MY_Controller
         //--------------------
         $this->layout->title('Devis');
         $this->layout->view('B2E/Dossier_Archives/Devis/devis', $data);
+
+
     }
 
     public function aff_Article()
@@ -495,6 +497,52 @@ class CI_Catalogue extends MY_Controller
         $this->load->model('Mappage/article', 'article');
         $result = $this->article->list_article_dossier($this->session->userdata('idDossier'));
         return $result;
+    }
+
+    public function pdf(){
+        $this->load->model('Mappage/client', 'client');
+        $this->load->model('Mappage/user', 'user');
+        $this->load->model('Mappage/article', 'article');
+
+        $client = $this->client->select_client($this->session->userdata['idClient']);
+        $user = $this->user->select_user($client['user_id']);
+        $iddossier=$this->session->userdata['idDossier'];
+        $data['nomclient1'] = $client['nom1'];
+        $data['prenomclient1'] = $client['prenom1'];
+        $data['prenomclient2'] = $client['prenom2'];
+        $data['adresse'] = $client['adresse'];
+        $data['ville'] = $client['ville'];
+        $data['CP'] = $client['codepostal'];
+        $data['clienttel1'] = $client['tel1'];
+        $data['clienttel2'] = $client['tel2'];
+        $data['clientmail'] = $client['email'];
+        $data['usernom'] = $user['nom'];
+        $data['userprenom'] = $user['prenom'];
+        $data['usermail'] = $user['email'];
+        $data['usertel'] = $user['tel'];
+
+        //Articles
+        $data['article'] = $this->aff_Article();
+
+        //--------------
+        $articles = $this->article->list_article_dossier($iddossier);
+        $data['devis'] = $this->article->mise_en_forme_article($articles);
+        //--------------------
+
+
+        // Load all views as normal
+        $this->load->view('B2E/Dossier_Archives/Devis/PDF_Devis', $data);
+        // Get output html
+        $html = $this->output->get_output();
+
+        // Load library
+        $this->load->library('dompdf_gen');
+
+        // Convert to PDF
+        $this->dompdf->load_html($html);
+        $this->dompdf->render();
+        //Preview
+        $this->dompdf->stream("Devis.pdf", array('Attachment' => 0));
     }
 
 }

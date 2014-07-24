@@ -642,7 +642,6 @@ function selectpanneau() {
                 $('#produit').append('<option></option>');
                 for (var i in info) {
                     if (info[i]['Reference'] != ref) {
-                        $('#produit').append('<optgroup label="' + info[i]['Reference'] + '">');
                         ref = info[i]['Reference'];
                         $('#produit').append('<option value="' + info[i]['id'] + '">' + info[i]['Nom'] + '</option>');
 
