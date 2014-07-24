@@ -37,7 +37,7 @@ class Soustypes extends DataMapper {
             return $retour['0'];
         } else {
             $st->get();
-            return $st->all_to_array();;
+            return $st->all_to_array();
         }
     }
 
