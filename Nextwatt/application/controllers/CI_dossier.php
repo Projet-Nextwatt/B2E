@@ -16,8 +16,7 @@ class CI_Dossier extends MY_Controller
         $this->load->model('Mappage/user', 'user');
         $this->load->model('Mappage/dossier', 'dossier');
 
-        $dossier = $this->dossier->select_dossier($this->session->userdata['CI_Dossier/select_dossier']);
-        $client = $this->client->select_client($dossier[0]['client_id']);
+        $client = $this->client->select_client($this->session->userdata('idClient'));
         $user = $this->user->select_user($client['user_id']);
 
         $data['nomclient1'] = $client['nom1'];
@@ -57,10 +56,21 @@ class CI_Dossier extends MY_Controller
     public function select_dossier()
     {
         $this->load->model('Mappage/dossier', 'dossier');
+        $this->load->model('Mappage/client', 'client');
+        $this->load->model('Mappage/user', 'user');
 
         $dossier = $this->dossier->select_dossier($this->session->userdata['CI_Dossier/select_dossier']);
-        $DossierID = $this->session->userdata('CI_Dossier/select_dossier');
-        $this->session->set_userdata('idDossier', $DossierID);
+        $client = $this->client->select_client($dossier[0]['client_id']);
+        $user = $this->user->select_user($client['user_id']);
+
+        $data['nomclient1'] = $client['nom1'];
+        $data['prenomclient1'] = $client['prenom1'];
+        $data['prenomclient2'] = $client['prenom2'];
+        $data['adresse'] = $client['adresse'];
+        $data['ville'] = $client['ville'];
+        $data['tel'] = $client['tel1'];
+        $data['usernom'] = $user['nom'];
+        $data['userprenom'] = $user['prenom'];
 
         if($dossier[0]['etude_id'] == 0)
         {
@@ -77,10 +87,10 @@ class CI_Dossier extends MY_Controller
             $this->session->userdata['Inflation'] = null;
             $this->session->userdata['Tarifedf'] = null;
             $this->session->userdata['Orientation'] = null;
-
         }
 
-        $this->choix_action();
+        $this->layout->title('Dossier');
+        $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier', $data);
     }
 
     public function addDossier()

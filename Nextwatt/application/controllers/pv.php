@@ -460,8 +460,7 @@ class PV extends MY_Controller
         $this->load->model('Mappage/user', 'user');
         $this->load->model('Mappage/dossier', 'dossier');
 
-        $dossier = $this->dossier->select_dossier($this->session->userdata['CI_Dossier/select_dossier']);
-        $client = $this->client->select_client($dossier[0]['client_id']);
+        $client = $this->client->select_client($this->session->userdata('idClient'));
         $user = $this->user->select_user($client['user_id']);
 
         $data['nomclient1'] = $client['nom1'];
