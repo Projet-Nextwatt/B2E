@@ -25,7 +25,7 @@ class CI_Catalogue extends MY_Controller
     public function consult_catalogue()
     {
         $data = array();
-        $data['tableau'] = $this->create_tableau_catalogue();   // On appel la fonction de création du cataloge en mode tableau pour pouvoir l'afficher avec la variable $data['tableau']
+        $data['tableau'] = $this->create_tableau_catalogue(); // On appel la fonction de création du cataloge en mode tableau pour pouvoir l'afficher avec la variable $data['tableau']
 
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Catalogue B2E');
@@ -56,12 +56,12 @@ class CI_Catalogue extends MY_Controller
         $fichier = basename($_FILES['userfile']['name']);
         $extensions = array('.txt');
         $extension = strrchr($_FILES['userfile']['name'], '.');
-                                                                        //Début des vérifications de sécurité...
-        if (!in_array($extension, $extensions))                         //Si l'extension ne correspond pas à ce que nous attendons
+        //Début des vérifications de sécurité...
+        if (!in_array($extension, $extensions)) //Si l'extension ne correspond pas à ce que nous attendons
         {
             $erreur = 'Vous devez uploader un fichier de type txt ';
         }
-    if (!isset($erreur))                                                //S'il n'y a pas d'erreur, on upload
+        if (!isset($erreur)) //S'il n'y a pas d'erreur, on upload
         {
             //On formate le nom du fichier ici...
             $fichier = strtr($fichier,
@@ -83,10 +83,10 @@ class CI_Catalogue extends MY_Controller
         }
     }
 
-    public function create_tab_ajout_bdd()      //Fonction de création du tableau de différence entre la BDD actuelle et celle qui va être mise en place (AJOUTS)
+    public function create_tab_ajout_bdd() //Fonction de création du tableau de différence entre la BDD actuelle et celle qui va être mise en place (AJOUTS)
     {
         $this->load->model('Mappage/catalogue', 'catalogue');
-        $this->load->library('fonctionspersos');                // On charge les modèles et les librairies qu'on a besoin
+        $this->load->library('fonctionspersos'); // On charge les modèles et les librairies qu'on a besoin
 
         $refbdd = $this->catalogue->get_ref_bdd();
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
@@ -123,10 +123,10 @@ class CI_Catalogue extends MY_Controller
 
     }
 
-    public function create_tab_supp_bdd()//Fonction de création du tableau de différence entre la BDD actuelle et celle qui va être mise en place (Suppressions)
+    public function create_tab_supp_bdd() //Fonction de création du tableau de différence entre la BDD actuelle et celle qui va être mise en place (Suppressions)
     {
         $this->load->model('Mappage/catalogue', 'catalogue');
-        $this->load->library('fonctionspersos');            // On charge les modèles et les librairies qu'on a besoin
+        $this->load->library('fonctionspersos'); // On charge les modèles et les librairies qu'on a besoin
 
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
         $refbdd = $this->catalogue->get_full_bdd();
@@ -204,7 +204,7 @@ class CI_Catalogue extends MY_Controller
 
         $fichier = $this->fonctionspersos->lire_fichier_catalogue();
 
-        $data['ajouts'] = $this->create_tab_ajout_bdd();    // On charge les tableaux récapitulatifs dans le tableau $data
+        $data['ajouts'] = $this->create_tab_ajout_bdd(); // On charge les tableaux récapitulatifs dans le tableau $data
         $data['supp'] = $this->create_tab_supp_bdd();
         $data['modif'] = $this->create_tab_modif_bdd();
         $data['fichier'] = $fichier;
@@ -283,34 +283,32 @@ class CI_Catalogue extends MY_Controller
 
     public function lier_type_produit() //Fonction d'affichage du formulaire de gestion des liaisons soustype/produit
     {
-        $this->load->model('Mappage/catalogue', 'catalogue');//On load les différents modèles nécessaires
+        $this->load->model('Mappage/catalogue', 'catalogue'); //On load les différents modèles nécessaires
         $this->load->model('Mappage/soustypes', 'soustype');
         $this->load->model('Mappage/type', 'type');
 
-        $data = array();    // On remplit les variables avec les infos qu'on a besoin en appelant les méthodes des modèles loadés précédemment
+        $data = array(); // On remplit les variables avec les infos qu'on a besoin en appelant les méthodes des modèles loadés précédemment
         $data['produit'] = $this->catalogue->get_ref_bdd();
         $data['soustypes'] = $this->soustype->select_soustype_bytype();
         $data['types'] = $this->type->select_types(null);
 
 
-
-        $this->layout->title('Lier type au produit');   //Et on charge la vue en lui passant $data pour afficher et utiliser les infos que c'est qu'on à récupéré
+        $this->layout->title('Lier type au produit'); //Et on charge la vue en lui passant $data pour afficher et utiliser les infos que c'est qu'on à récupéré
         $this->layout->view('B2E/Catalogue/Lier_Type_Produit', $data); //render view and layout
     }
 
-    public function lier_type_produit_action()//Fonction de traitement du formulaire de gestion des liaisons soustypes/produits
+    public function lier_type_produit_action() //Fonction de traitement du formulaire de gestion des liaisons soustypes/produits
     {
         $this->load->model('Mappage/catalogue', 'catalogue');
         $data['rsltupdate'] = $this->catalogue->update_soustype_produit($_POST);
 
-        if(isset($data['rsltupdate']))
-        {
+        if (isset($data['rsltupdate'])) {
             $this->layout->title('Lier type au produit');
             $this->layout->view('B2E/Catalogue/rslt_type_produit', $data); //render view and layout
         }
     }
 
-    public function gererlistetype_form()   //Fonction d'affichage du formulaire d'ajout des soustypes
+    public function gererlistetype_form() //Fonction d'affichage du formulaire d'ajout des soustypes
     {
         $this->load->model('Mappage/Type', 'Type');
         $data = array();
@@ -326,12 +324,12 @@ class CI_Catalogue extends MY_Controller
         $this->load->model('Mappage/Type', 'Type');
         $data = array();
 
-        $data['Types'] = $this->Type->select_types(null);       //On récupère tous les types de la BDD
+        $data['Types'] = $this->Type->select_types(null); //On récupère tous les types de la BDD
 
-        $configST = $this->configsoustype();                    //On définit les configurations requises pour ajouter un soustype dans un tableau (en passant par la fonction définit plus bas)
-        $configtraitement = $this->configtraitementsoustype();  //On définit les différents traitement pour l'ajout d'un soustype dans un tableau (en passant par la fonction définit plus bas)
+        $configST = $this->configsoustype(); //On définit les configurations requises pour ajouter un soustype dans un tableau (en passant par la fonction définit plus bas)
+        $configtraitement = $this->configtraitementsoustype(); //On définit les différents traitement pour l'ajout d'un soustype dans un tableau (en passant par la fonction définit plus bas)
 
-        $this->form_validation->set_rules($configST);       //On applique les configurations définits précédemments (en passant les tableaux en paramètre de "set_rules")
+        $this->form_validation->set_rules($configST); //On applique les configurations définits précédemments (en passant les tableaux en paramètre de "set_rules")
         $this->form_validation->set_rules($configtraitement);
 
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
@@ -346,7 +344,7 @@ class CI_Catalogue extends MY_Controller
         }
     }
 
-    public function consult_soustype()      //Fonction d'affichage de tous les soustypes de la BDD
+    public function consult_soustype() //Fonction d'affichage de tous les soustypes de la BDD
     {
         $this->load->model('Mappage/soustypes', 'mapsoustype'); //Chargement du model
         $this->load->library('fonctionspersos');
@@ -359,11 +357,11 @@ class CI_Catalogue extends MY_Controller
         $this->layout->view('B2E/Catalogue/Consulter_Soustype.php', $data); // Render view and layout
     }
 
-    public function modif_soustype()    //Fonction de traitement pour la modification d'un soustype
+    public function modif_soustype() //Fonction de traitement pour la modification d'un soustype
     {
         $this->load->model('Mappage/soustypes', 'mapsoustype'); //Chargement du modele
         $data = array(); //Pour la vue
-        $data['soustype'] = $this->mapsoustype->select_soustype($this->session->userdata('CI_catalogue/modif_soustype'));   //On choppe le soustype que le mec a cliqué dessus
+        $data['soustype'] = $this->mapsoustype->select_soustype($this->session->userdata('CI_catalogue/modif_soustype')); //On choppe le soustype que le mec a cliqué dessus
 
         $configST = $this->configsoustype();
         $configtraitement = $this->configtraitementsoustype();
@@ -438,14 +436,13 @@ class CI_Catalogue extends MY_Controller
         return $configtraitementsoustype;
     }
 
-    
-    
+
     ////////////////////////////////  GESTION DU DEVIS (TABLE ARTICLE) ////////////////////////////////////
 
     public function consult_catalogue_devis()
     {
         $data = array();
-        $data['tableau'] = $this->create_tableau_catalogue();   // On appel la fonction de création du cataloge en mode tableau pour pouvoir l'afficher avec la variable $data['tableau']
+        $data['tableau'] = $this->create_tableau_catalogue(); // On appel la fonction de création du cataloge en mode tableau pour pouvoir l'afficher avec la variable $data['tableau']
 
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Catalogue B2E');
@@ -470,9 +467,8 @@ class CI_Catalogue extends MY_Controller
         $this->load->model('Mappage/client', 'client');                 //DOSSIER EXISTANT
         $this->load->model('Mappage/user', 'user');
         $this->load->model('Mappage/article', 'article');
-        
-        //lol
-        
+
+
         $dossier = $this->dossier->select_dossier($this->session->userdata['CI_Dossier/select_dossier']);
         $client = $this->client->select_client($dossier[0]['client_id']);
         $user = $this->user->select_user($client['user_id']);
@@ -498,12 +494,13 @@ class CI_Catalogue extends MY_Controller
 
     }
 
-    function mise_en_forme_article(array $articles) {
+    function mise_en_forme_article(array $articles)
+    {
         $this->load->model('Mappage/soustypes', 'soustype');
-        
+
         //Initialisation des varaibles générales
-        $liste =array();
-        $produits =array();
+        $liste = array();
+        $produits = array();
         $TOTAL_HT = 0;
         $TOTAL_TVA = 0;
         $TOTAL_CEE = 0;
@@ -525,7 +522,7 @@ class CI_Catalogue extends MY_Controller
             $TVAMat=0;
              * 
              */
-            
+
             //Calcul prix
             /* Dans la base de données
              * HT   -MO
@@ -534,23 +531,23 @@ class CI_Catalogue extends MY_Controller
              * TTC  -An
              *      -CEE
              */
-            $TVAMo = ((int) $article['TVA_MO']) / 10000;   //TVA mo
-            $TVAMat = ((int) $article['TVA_Mat'] )/ 10000;   //TVA matos
+            $TVAMo = ((int)$article['TVA_MO']) / 10000; //TVA mo
+            $TVAMat = ((int)$article['TVA_Mat']) / 10000; //TVA matos
 
-            $quantite = $article['Quantite'];                           //Quantit�
+            $quantite = $article['Quantite']; //Quantit�
 
-            $ceeTTC = $article['CEE_TTC'] * $quantite;   //Prime CEE TTC
-            $ceeHT = $ceeTTC / (1 + $TVAMat);      //Prime CEE HT
-            $remiseTTC = $article['Remise'];    //Remise comercial TTC
-            $remiseHT = $remiseTTC / (1 + $TVAMat);     //Remise comercial HT
+            $ceeTTC = $article['CEE_TTC'] * $quantite; //Prime CEE TTC
+            $ceeHT = $ceeTTC / (1 + $TVAMat); //Prime CEE HT
+            $remiseTTC = $article['Remise']; //Remise comercial TTC
+            $remiseHT = $remiseTTC / (1 + $TVAMat); //Remise comercial HT
 
-            $moHT = $article['Prix_MO'] * $quantite;   //mo HT
-            $moTTC = $moHT * (1 + $TVAMo);      //mo TTC
+            $moHT = $article['Prix_MO'] * $quantite; //mo HT
+            $moTTC = $moHT * (1 + $TVAMo); //mo TTC
 
-            $matPlHT = $article['Prix_Mat_Plancher'] * $quantite;  //Materiel plancher HT
-            $matPlTTC = $matPlHT * (1 + $TVAMat);      //Materiel plancher TTC
+            $matPlHT = $article['Prix_Mat_Plancher'] * $quantite; //Materiel plancher HT
+            $matPlTTC = $matPlHT * (1 + $TVAMat); //Materiel plancher TTC
 
-            $anTTC = $article['Prix_Annonce_TTC'] * $quantite;  //Annonce TTC
+            $anTTC = $article['Prix_Annonce_TTC'] * $quantite; //Annonce TTC
 
             /*
             if ($article['article_id'] != 0) {
@@ -576,15 +573,15 @@ class CI_Catalogue extends MY_Controller
             }
             */
 
-            $matAnTTC = $anTTC - $moTTC + $ceeTTC;        //Materiel � afficher TTC
+            $matAnTTC = $anTTC - $moTTC + $ceeTTC; //Materiel � afficher TTC
             if (abs($matAnTTC) < 0.00001)
-                $matAnTTC = 0;        //Pour �viter l'erreur de precsion sur la soustracion des floats
-            $matAnHT = $matAnTTC / (1 + $TVAMat);        //Materiel � afficher HT
+                $matAnTTC = 0; //Pour �viter l'erreur de precsion sur la soustracion des floats
+            $matAnHT = $matAnTTC / (1 + $TVAMat); //Materiel � afficher HT
 
-            $totalPlancherTTC = $moTTC + $matPlTTC - $ceeTTC;       //Prix plancher TTC
-            $totalHT = $moHT + $matAnHT;        //total HT
-            $totalTTC = $moTTC + $matAnTTC;        //Total TTC
-            $totalTVA = $totalTTC - $totalHT;        //Montant TVA
+            $totalPlancherTTC = $moTTC + $matPlTTC - $ceeTTC; //Prix plancher TTC
+            $totalHT = $moHT + $matAnHT; //total HT
+            $totalTTC = $moTTC + $matAnTTC; //Total TTC
+            $totalTVA = $totalTTC - $totalHT; //Montant TVA
             $totalHTApresRemise = $totalHT - $ceeHT - $remiseHT;
             $totalTTCApresRemise = $totalTTC - $ceeTTC - $remiseTTC;
             $totalTVAApresRemise = $totalTTCApresRemise - $totalHTApresRemise;
@@ -599,25 +596,21 @@ class CI_Catalogue extends MY_Controller
             $article['CEE'] = $ceeHT;
             $article['Remise_Dispo_TTC'] = $remiseDispo;
 
-            if ($article['Libelle_Garantie'] != ''){  //Afficher la garantie si elle est renseignée
+            if ($article['Libelle_Garantie'] != '') { //Afficher la garantie si elle est renseignée
                 $article['Libelle_Garantie'] = "Garantie materiel: " . $article['Libelle_Garantie'];
             }
 
-            if ($article['Facturation'] != 'forfaitaire') {   //Completer l'intituler du produit par sa quantité si non forfaitaire
+            if ($article['Facturation'] != 'forfaitaire') { //Completer l'intituler du produit par sa quantité si non forfaitaire
                 $article['Libelle_Mat'] = $article['Libelle_Mat'] . "<br/>" . $quantite . " " . $article['Facturation'];
                 $article['Libelle_Mat_SansMarque'] = $article['Libelle_Mat_SansMarque'] . "<br/>" . $quantite . " " . $article['Facturation'];
                 $article['Llibelle_MO'] = $article['Libelle_MO'] . " - " . $quantite . " " . $article['Facturation'];
             }
 
 
-                
             //Création du titre du sous projet ---- si ce n'est pas une option
-            if ($article['article_id']== 0) {
-                $soustype=$this->soustype->select_soustype($article['soustype_id']);
-                var_dump($soustype);
+            if ($article['article_id'] == 0) {
+                $soustype = $this->soustype->select_soustype($article['soustype_id']);
             }
-            
-
 
 
             //Remplissage du tableau de tout les produits
@@ -626,7 +619,7 @@ class CI_Catalogue extends MY_Controller
             $article_id = $article['article_id'];
             unset($article['article_id']);
 
-            if ($article_id == 0) {    //Liste des produits	
+            if ($article_id == 0) { //Liste des produits
                 foreach ($article as $key => $data) {
                     $produits[$id][$key] = $data;
                 }
@@ -638,37 +631,37 @@ class CI_Catalogue extends MY_Controller
                 $produits[$id]['total_TVA'] = $totalTVAApresRemise;
                 $produits[$id]['total_TTC'] = $totalTTCApresRemise;
 
-            } else {                //Liste des complements
+            } else { //Liste des complements
                 foreach ($article as $key => $data) {
                     $produits[$article_id]['complements'][$id][$key] = $data;
                 }
 
                 //Ajout au totaux
-                $produits[$article_id]['total_remiseDispo']+=$remiseDispo;
-                $produits[$article_id]['total_CEE']-=$ceeTTC;
-                $produits[$article_id]['total_remise']-=$remiseTTC;
-                $produits[$article_id]['total_HT']+=$totalHTApresRemise;
-                $produits[$article_id]['total_TVA']+=$totalTVAApresRemise;
-                $produits[$article_id]['total_TTC']+=$totalTTCApresRemise;
+                $produits[$article_id]['total_remiseDispo'] += $remiseDispo;
+                $produits[$article_id]['total_CEE'] -= $ceeTTC;
+                $produits[$article_id]['total_remise'] -= $remiseTTC;
+                $produits[$article_id]['total_HT'] += $totalHTApresRemise;
+                $produits[$article_id]['total_TVA'] += $totalTVAApresRemise;
+                $produits[$article_id]['total_TTC'] += $totalTTCApresRemise;
             }
 
-            $TOTAL_CEE-=$ceeTTC;
-            $TOTAL_Remise-=$remiseTTC;
-            $TOTAL_HT+=$totalHTApresRemise;
-            $TOTAL_TVA+=$totalTVAApresRemise;
-            $TOTAL_TTC+=$totalTTCApresRemise;
-            
+            $TOTAL_CEE -= $ceeTTC;
+            $TOTAL_Remise -= $remiseTTC;
+            $TOTAL_HT += $totalHTApresRemise;
+            $TOTAL_TVA += $totalTVAApresRemise;
+            $TOTAL_TTC += $totalTTCApresRemise;
+
         }
-        $liste= array('produits'=>$produits,
-                        'TOTAL_CEE'=>$TOTAL_CEE,
-                        'TOTAL_Remise'=>$TOTAL_Remise,
-                        'TOTAL_HT'=>$TOTAL_HT,
-                        'TOTAL_TVA'=>$TOTAL_TVA,
-                        'TOTAL_TTC'=>$TOTAL_TTC);
+        $liste = array('produits' => $produits,
+            'TOTAL_CEE' => $TOTAL_CEE,
+            'TOTAL_Remise' => $TOTAL_Remise,
+            'TOTAL_HT' => $TOTAL_HT,
+            'TOTAL_TVA' => $TOTAL_TVA,
+            'TOTAL_TTC' => $TOTAL_TTC);
         return $liste;
     }
-    
-    
+
+
     public function aff_Article()
     {
         $this->load->model('Mappage/article', 'article');
@@ -676,14 +669,15 @@ class CI_Catalogue extends MY_Controller
         return $result;
     }
 
-    public function pdf(){
+    public function pdf()
+    {
         $this->load->model('Mappage/client', 'client');
         $this->load->model('Mappage/user', 'user');
         $this->load->model('Mappage/article', 'article');
 
         $client = $this->client->select_client($this->session->userdata['idClient']);
         $user = $this->user->select_user($client['user_id']);
-        $iddossier=$this->session->userdata['idDossier'];
+        $iddossier = $this->session->userdata['idDossier'];
         $data['nomclient1'] = $client['nom1'];
         $data['prenomclient1'] = $client['prenom1'];
         $data['prenomclient2'] = $client['prenom2'];
@@ -703,23 +697,24 @@ class CI_Catalogue extends MY_Controller
 
         //--------------
         $articles = $this->article->list_article_dossier($iddossier);
-        $data['devis'] = $this->article->mise_en_forme_article($articles);
+        $data['devis'] = $this->mise_en_forme_article($articles);
         //--------------------
 
 
         // Load all views as normal
         $this->load->view('B2E/Dossier_Archives/Devis/PDF_Devis', $data);
         // Get output html
-        $html = $this->output->get_output();
+//        $html = $this->output->get_output();
+//
+//        // Load library
+//        $this->load->library('dompdf_gen');
+//
+//        // Convert to PDF
+//        $this->dompdf->load_html($html);
+//        $this->dompdf->render();
+//        //Preview
+//        $this->dompdf->stream("Devis.pdf", array('Attachment' => 0));
+//    }
 
-        // Load library
-        $this->load->library('dompdf_gen');
-
-        // Convert to PDF
-        $this->dompdf->load_html($html);
-        $this->dompdf->render();
-        //Preview
-        $this->dompdf->stream("Devis.pdf", array('Attachment' => 0));
     }
-
 }

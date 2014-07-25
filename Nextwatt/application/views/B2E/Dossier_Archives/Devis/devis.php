@@ -21,35 +21,6 @@
     </div>
 </div>
 
-<?php //var_dump($devis);?>
-<?php
-function printr($array)
-{
-    static $indentation = '';
-    static $array_key = '';
-    $cst_indentation = '&nbsp;&nbsp;&nbsp;&nbsp;';
-
-    echo $indentation . $array_key . '<b>array(</b><br />';
-    reset($array);
-    while (list($k, $v) = each($array))
-    {
-        if (is_array($v))
-        {
-            $indentation .= $cst_indentation;
-            $array_key = '\'<i style="color: #334499 ;">' . addslashes(htmlspecialchars($k)) . '</i>\' => ';
-            printr($v);
-            $indentation = substr($indentation, 0, strlen($indentation) - strlen($cst_indentation));
-        }
-        else
-        {
-            echo $indentation . $cst_indentation . '\'<i style="color: #334499 ;">' .
-                addslashes(htmlspecialchars($k)) . '</i>\' => \'' . addslashes(htmlspecialchars($v)) . '\',<br />';
-        }
-    }
-    echo $indentation . '<b>)</b>' . (($indentation === '') ? ';' : ',') . '<br />';
-}
-
-printr($devis);?>
 <div class="page-content">
 
     <div class="row form-group">

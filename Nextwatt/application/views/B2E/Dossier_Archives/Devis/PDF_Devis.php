@@ -10,8 +10,6 @@
     <!--    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>-->
     <link rel="SHORTCUT ICON" href="<?php echo img_url('favicon.ico'); ?>"/>
     <style type='text/css'>
-
-
         table {
             border-collapse: collapse;
             font: helvetica;
