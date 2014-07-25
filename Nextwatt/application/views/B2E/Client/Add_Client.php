@@ -29,7 +29,9 @@
             <div class="col-sm-4">
                 <?php
                 $civ = 3;
-                $civ = set_value('civilite');
+                if (set_value('civilite')!=0){
+                    $civ = set_value('civilite');
+                }
                 ?>
                 <select name="civilite" id="civilite" class="dropdown">
                     <option value="1" <?php echo($civ == 1 ? 'selected' : ''); ?>>Madame</option>

@@ -39,6 +39,7 @@ class CI_Client extends MY_Controller
         //Liste des clients
         $clients = $this->mapclient->list_client(TRUE);
         $data['mesclients'] = array();
+        $data['clients'] = array();
         foreach ($clients as $client) {
             if ($client['user_id'] == $this->session->userdata('userconnect')['id_login']) {
                 $data['mesclients'][] = $client;
@@ -50,6 +51,7 @@ class CI_Client extends MY_Controller
         //Liste des clients archivés
         $clientsarchives = $this->mapclient->list_client(FALSE);
         $data['mesclientsarchive'] = array();
+        $data['clientsarchive'] = array();
         foreach ($clientsarchives as $client) {
             if ($client['user_id'] == $this->session->userdata('userconnect')['id_login']) {
                 $data['mesclientsarchive'][] = $client;
@@ -203,6 +205,7 @@ class CI_Client extends MY_Controller
         $data = array(); //Pour la vue
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
         $data['client'] = $this->mapclient->select_client($this->session->userdata('CI_client/modif_client'));
+        
         $this->load->model('Mappage/user', 'user'); //Chargement du modele
         $users = $this->user->list_user(TRUE);
         foreach ($users as $user) {
@@ -214,6 +217,14 @@ class CI_Client extends MY_Controller
         $respo = new User($data['client']['user_id']);
 
         $data['responsable'] = $respo->prenom . ' ' . $respo->nom;
+       
+        $this->load->model('Mappage/dossier', 'dossier'); //Chargement du modele
+        $dossiers=$this->dossier->select_dossier_by_client($this->session->userdata('CI_client/modif_client'));
+        $data['dossiers']=$dossiers;
+        
+        
+        
+        
         $this->form_validation->set_rules($this->configclient);
 
         if ($this->form_validation->run() == FALSE) {
@@ -227,7 +238,7 @@ class CI_Client extends MY_Controller
             $this->form_validation->set_rules($this->configtraitementclient);
             $this->form_validation->run();
             if ($this->mapclient->modifier_client($_POST)) {
-                header('Location:' . site_url("CI_client/consult_client"));
+                header('Location:' . site_url("CI_client/modif_client"));
             } else {
                 echo 'error';
             }
@@ -298,12 +309,12 @@ class CI_Client extends MY_Controller
         array(
             'field' => 'codepostal',
             'label' => 'Code Postal',
-            'rules' => 'required|trim|max_length[10]|numeric'
+            'rules' => 'required|trim|min_length[5]|max_length[5]|numeric'
         ),
         array(
             'field' => 'ville',
             'label' => 'Ville',
-            'rules' => 'required|trim|max_length[255]|mb_strtoupper'
+            'rules' => 'required|trim|max_length[255]|mb_strtoupper|alpha'
         ),
         array(
             'field' => 'tel1',
