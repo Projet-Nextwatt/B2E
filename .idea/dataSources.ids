@@ -8,7 +8,7 @@
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
     <schema name="" catalog="nextwatt"/>
     <table name="articles" schema="" catalog="nextwatt" type="TABLE">
-      <column name="ID_Article" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="ID_Dossier" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="TB_ID_Article" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="ID_SousType" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
@@ -32,7 +32,7 @@
       <column name="Remise" sqlType="DECIMAL" length="20" precision="0" nullable="false" jdbcType="3"/>
       <column name="Quantité" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="Spec" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="ID_Article"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="catalogue_catalogue" schema="" catalog="nextwatt" type="TABLE">
       <column name="ID_Catalogue" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
@@ -40,7 +40,7 @@
       <primary-key name="PRIMARY" columns="ID_Catalogue,TB_ID_Catalogue"/>
     </table>
     <table name="catalogues" schema="" catalog="nextwatt" type="TABLE">
-      <column name="ID_Catalogue" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="ID_SousType" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="Reference" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="Nom" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
@@ -51,10 +51,8 @@
       <column name="Libelle_MO" sqlType="VARCHAR" length="500" precision="0" nullable="false" jdbcType="12"/>
       <column name="Libelle_Garantie" sqlType="VARCHAR" length="500" precision="0" nullable="false" jdbcType="12"/>
       <column name="Prix_MO" sqlType="DECIMAL" length="20" precision="0" nullable="false" jdbcType="3"/>
-      <column name="Prix_Mat_PlancherVAD" sqlType="DECIMAL" length="20" precision="0" nullable="false" jdbcType="3"/>
-      <column name="Prix_Mat_Plancher_AC" sqlType="DECIMAL" length="20" precision="0" nullable="false" jdbcType="3"/>
-      <column name="Prix_Annonce_TTC_VAD" sqlType="DECIMAL" length="20" precision="0" nullable="false" jdbcType="3"/>
-      <column name="Prix_Annonce_TTC_AC" sqlType="DECIMAL" length="20" precision="0" nullable="false" jdbcType="3"/>
+      <column name="Prix_Mat_Plancher" sqlType="DECIMAL" length="20" precision="0" nullable="false" jdbcType="3"/>
+      <column name="Prix_Annonce_TTC" sqlType="DECIMAL" length="20" precision="0" nullable="false" jdbcType="3"/>
       <column name="CEE_TTC" sqlType="DECIMAL" length="20" precision="0" nullable="false" jdbcType="3"/>
       <column name="TVA_MO" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="TVA_Mat" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
@@ -64,25 +62,26 @@
       <column name="Actif" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
       <column name="Fiche_Tech" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="Note" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="ID_Catalogue"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="categories" schema="" catalog="nextwatt" type="TABLE">
-      <column name="ID_Categorie" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="Categorie_Groupe" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="Nom_Categorie" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
-      <column name="Type_Catalogue" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="Droit_SUDO" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
       <column name="Droit_Admin" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
       <column name="Droit_Catalogue" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
       <column name="Droit_Edit_Devis" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
-      <primary-key name="PRIMARY" columns="ID_Categorie"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="clients" schema="" catalog="nextwatt" type="TABLE">
-      <column name="ID_Client" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="ID_User" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="FK_User" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <column name="Nom" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
-      <column name="Prenom" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="Nom1" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="Prenom1" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="Nom2" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="Prenom2" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="Adresse" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="Code_Postale" sqlType="TEXT" length="65535" precision="0" nullable="false" jdbcType="-1"/>
       <column name="Ville" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
@@ -90,20 +89,20 @@
       <column name="Tel_2" sqlType="VARCHAR" length="12" precision="0" nullable="false" jdbcType="12"/>
       <column name="Email" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="Date_Ajout" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
-      <primary-key name="PRIMARY" columns="ID_Client"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="dossiers" schema="" catalog="nextwatt" type="TABLE">
-      <column name="ID_Dossier" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="ID_Client" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="FK_Etude" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="Titre" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="Montant" sqlType="DECIMAL" length="20" precision="0" nullable="false" jdbcType="3"/>
       <column name="Date_Creation" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
       <column name="Date_Modification" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
-      <primary-key name="PRIMARY" columns="ID_Dossier"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="ensoleillements" schema="" catalog="nextwatt" type="TABLE">
-      <column name="ID_Ensoleillement" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="Ville" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="Region" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="Latitude" sqlType="DOUBLE" length="22" precision="0" nullable="false" jdbcType="8"/>
@@ -112,11 +111,11 @@
       <column name="Irradiation_chauffe" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="HEPP" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="departement" sqlType="VARCHAR" length="255" precision="0" nullable="true" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="ID_Ensoleillement"/>
-      <index name="unique_ID_Ensoleillement" unique="true" columns="ID_Ensoleillement"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="unique_id" unique="true" columns="id"/>
     </table>
     <table name="etudes" schema="" catalog="nextwatt" type="TABLE">
-      <column name="ID_Etude" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="ID_Dossier" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="HEPP" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="PV_Ratio_Orientation" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
@@ -131,7 +130,7 @@
       <column name="Env_Coeff_G" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="Env_Temp_Interieur" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="Env_Temp_Exterieur" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="ID_Etude"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="hierarchies" schema="" catalog="nextwatt" type="TABLE">
       <column name="ID_Hierarchie" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -139,29 +138,29 @@
       <primary-key name="PRIMARY" columns="ID_Hierarchie"/>
     </table>
     <table name="prixenergies" schema="" catalog="nextwatt" type="TABLE">
-      <column name="ID_PrixEnergie" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="Energie" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="Prix" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="Inflation" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="CO2" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="Abonnement" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="ID_PrixEnergie"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="soustypes" schema="" catalog="nextwatt" type="TABLE">
-      <column name="ID_SousTypes" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="ID_Type" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="Nom_SousType" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="Nom_Devis" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="Categorie_BouquetCI" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="Categorie_BouquetEcoPTZ" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
       <column name="CI_Unitaire" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <primary-key name="PRIMARY" columns="ID_SousTypes"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="types" schema="" catalog="nextwatt" type="TABLE">
-      <column name="ID_Type" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="Nom_Type" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="Code_Type" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
-      <primary-key name="PRIMARY" columns="ID_Type"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="user_hierarchie" schema="" catalog="nextwatt" type="TABLE">
       <column name="ID_User" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
@@ -169,19 +168,18 @@
       <primary-key name="PRIMARY" columns="ID_User,ID_Hierarchie"/>
     </table>
     <table name="users" schema="" catalog="nextwatt" type="TABLE">
-      <column name="ID_User" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="Login" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
-      <column name="Password" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Identifiant" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="mdp" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
       <column name="ID_Categorie" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
-      <column name="Nom" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
-      <column name="Prenom" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
-      <column name="Email" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
-      <column name="Tel_1" sqlType="VARCHAR" length="12" precision="0" nullable="false" jdbcType="12"/>
-      <column name="Tel_2" sqlType="VARCHAR" length="12" precision="0" nullable="false" jdbcType="12"/>
+      <column name="nom" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="prenom" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" length="255" precision="0" nullable="false" jdbcType="12"/>
+      <column name="tel" sqlType="VARCHAR" length="12" precision="0" nullable="false" jdbcType="12"/>
       <column name="Date_Ajout" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
       <column name="Derniere_Connexion" sqlType="DATE" length="10" precision="0" nullable="false" jdbcType="91"/>
       <column name="Actif" sqlType="TINYINT" length="3" precision="0" nullable="false" jdbcType="-6"/>
-      <primary-key name="PRIMARY" columns="ID_User"/>
+      <primary-key name="PRIMARY" columns="id"/>
     </table>
     <table name="voitures" schema="" catalog="nextwatt" type="TABLE">
       <column name="ID" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
