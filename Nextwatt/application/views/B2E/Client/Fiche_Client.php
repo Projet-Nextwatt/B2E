@@ -371,7 +371,7 @@ echo form_close();
         </div>
         <div class="widget-body">
             <div class="widget-main">
-                le 1<br/>le 2
+                <?php $this->fonctionspersos->creerTableau($dossiers, array(), 'CI_Dossier/select_dossier') ?>          
             </div>
         </div>
     </div>

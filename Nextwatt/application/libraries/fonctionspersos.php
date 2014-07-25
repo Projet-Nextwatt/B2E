@@ -308,7 +308,7 @@ class Fonctionspersos
                                 $sup=NULL)
     {
         if ($contenu == NULL OR (isset($contenu[0]) AND $contenu[0] == '')) {
-            echo '<p><strong>Attention: Aucune client</strong></p>';
+            echo '<p><strong>Attention: Aucun client</strong></p>';
         } else {
             //Requette pour voir si le tableau posède une colonne "id" 
             $presenceDunID = false;
@@ -358,15 +358,16 @@ class Fonctionspersos
                             $nom.= ' ' . $ligne['prenom2'];
                         }
                         
-                        $len=  strlen($nom);
-                
+                        $len=  strlen(html_entity_decode($nom));
+                    
                     if ($len< 20){
                         echo "<div class='infobox-icon'>";
                         echo "<i class='ace-icon fa fa-user'></i>";
                         echo "</div>";
                     }
-                
+                    
                     echo "<div class='infobox-data'>";
+                    
                         echo substr ($nom , 0, 24 ).($len>24?"...":"");
                         
                     
