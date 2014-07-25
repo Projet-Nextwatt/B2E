@@ -78,13 +78,13 @@
                                     <div class="widget-main padding-6 no-padding-left no-padding-right"
                                          style="margin: 5px;">
                                         <div class="bigger-110 "><p
-                                                class="width-80 no-margin inline"><?php echo 'Option TOP OF THE POP' ?></p> <p style="float: right"><?php echo('964') ?> €</p>
+                                                class="width-80 no-margin inline"><?php echo 'Option TOP OF THE POP' ?></p> <p class="no-margin" style="float: right"><?php echo('964') ?> €</p>
                                         </div>
                                         <div class="bigger-110 "><p
-                                                class="width-80 no-margin inline"><?php echo 'Option tro cool num1' ?></p> <p style="float: right"><?php echo('472') ?> €</p>
+                                                class="width-80 no-margin inline"><?php echo 'Option tro cool num1' ?></p> <p class="no-margin" style="float: right"><?php echo('472') ?> €</p>
                                         </div>
                                         <div class="bigger-110 "><p
-                                                class="width-80 no-margin inline"><?php echo 'Option de merde num2' ?></p> <p style="float: right"><?php echo('86') ?> €</p>
+                                                class="width-80 no-margin inline"><?php echo 'Option de merde num2' ?></p> <p class="no-margin" style="float: right"><?php echo('86') ?> €</p>
                                         </div>
                                     </div>
 
