@@ -204,13 +204,22 @@ if (isset($client)) {
         } else {
             $respo = set_value('user_id');
         }
-        $this->fonctionspersos->creerDropdown($users, $respo, 'user_id');
-        ?>
+
+        if ($this->session->userdata('userconnect')['Droit_Admin']) {
+            $this->fonctionspersos->creerDropdown($users, $respo, 'user_id');
+        } else {
+            ?>
+
+            <?php echo $this->session->userdata('userconnect')['prenom'] . ' ' .
+            $this->session->userdata('userconnect')['nom'];
+            ?>
+            <input type="hidden" name="user_id" id="user_id" value="<?php echo $respo; ?>">
+        <?php } ?>
+        </div>
     </div>
-</div>
-<div class="col-sm-8 col-sm-offset-4">
-    <?php echo form_error('user_id'); ?>
-</div>
+    <div class="col-sm-8 col-sm-offset-4">
+        <?php echo form_error('user_id'); ?>
+    </div>
 
 <div class="row form-group">
     <div class="col-xs-offset-3 col-md-6">

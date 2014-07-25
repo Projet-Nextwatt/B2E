@@ -128,7 +128,16 @@
         </div>
     </div>
     <!-- /.main-content -->
-
+    <?php 
+    echo "<h3>Session</h3>";
+    var_dump($this->session->all_userdata()); 
+    echo "<h3>POST</h3>";
+    var_dump($_POST);
+    echo "<h3>GET</h3>";
+    var_dump($_GET);
+    echo "<h3>data</h3>";
+var_dump($GLOBALS['CI']->load->_ci_cached_vars);
+    ?>
     <!-- footer area -->
 </div>
 

@@ -176,7 +176,7 @@
                         
                         
                         <div class="tab-pane <?php echo (empty($_POST)?'':'active'); ?>" id="ajout">
-                            <?php $this->load->view('B2E/Client/Add_Client') ?>
+                            <?php $this->load->view('B2E/Client/Form_Add_Client') ?>
                         </div>
                         
                         

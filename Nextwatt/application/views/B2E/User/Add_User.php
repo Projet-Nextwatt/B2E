@@ -14,7 +14,7 @@
     <div class="col-xs-12">
 
         <?php
-        //echo validation_errors();
+        //echo validation_errors    ();
 
         $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
         $hiden = array();
