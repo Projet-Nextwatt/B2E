@@ -23,6 +23,7 @@
 
 <?php //var_dump($devis);?>
 <?php
+<<<<<<< HEAD
 function printr($array)
 {
     static $indentation = '';
@@ -46,6 +47,35 @@ function printr($array)
 }
 
 printr($devis);?>
+=======
+//function printr($array)
+//{
+//    static $indentation = '';
+//    static $array_key = '';
+//    $cst_indentation = '&nbsp;&nbsp;&nbsp;&nbsp;';
+//
+//    echo $indentation . $array_key . '<b>array(</b><br />';
+//    reset($array);
+//    while (list($k, $v) = each($array))
+//    {
+//        if (is_array($v))
+//        {
+//            $indentation .= $cst_indentation;
+//            $array_key = '\'<i style="color: #334499 ;">' . addslashes(htmlspecialchars($k)) . '</i>\' => ';
+//            printr($v);
+//            $indentation = substr($indentation, 0, strlen($indentation) - strlen($cst_indentation));
+//        }
+//        else
+//        {
+//            echo $indentation . $cst_indentation . '\'<i style="color: #334499 ;">' .
+//                addslashes(htmlspecialchars($k)) . '</i>\' => \'' . addslashes(htmlspecialchars($v)) . '\',<br />';
+//        }
+//    }
+//    echo $indentation . '<b>)</b>' . (($indentation === '') ? ';' : ',') . '<br />';
+//}
+//
+//printr($devis);?>
+>>>>>>> d8488eceb5aa5f3de12ed940edde1f5c28741bfd
 <div class="page-content">
 
     <div class="row form-group">
@@ -109,6 +139,7 @@ printr($devis);?>
                             </div>
                         </div>
                         <div class="panel-body">
+<<<<<<< HEAD
                             <?php foreach ($devis['produits'] as $d){ ?>
                             <div class="widget-box " style="opacity: 1; z-index: 0; margin: 5px"
                                  onclick="location.href='../CI_Dossier/aff_detail_article';"
@@ -125,6 +156,13 @@ printr($devis);?>
                                      style="margin: 5px;">
                                     <div class="bigger-110 "><p
                                             class="width-80 no-margin inline"><?php echo html_entity_decode($d['Libelle_Mat']) ?></p>
+=======
+                            <?php foreach($devis['produits'] as $d){ ?>
+                                    <div class="widget-box transparent" style="opacity: 1; z-index: 0; margin: 5px">
+                                        <div class="widget-header">
+                                            <a href="<?php echo site_url("CI_Dossier/aff_detail_article"); ?>"><h4 class="widget-title lighter green" ><?php echo $d['Nom']?></h4></a>
+                                            <h4 class="widget-title lighter green" style="float: right">Prix TTC</h4>
+>>>>>>> d8488eceb5aa5f3de12ed940edde1f5c28741bfd
 
                                         <p style="float: right"><?php echo number_format($d['Prix_Mat_Annonce_TTC'], 2, ',', ' ') ?>
                                             €</p><br/>
