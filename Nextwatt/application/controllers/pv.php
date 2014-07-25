@@ -501,7 +501,7 @@ class PV extends MY_Controller
                 }
 
             }
-            $this->session_orientation( $station['id'], $station['HEPP'], $station['Ville']);
+            $this->session_orientation($station['id'], $station['HEPP'], $station['Ville']);
             $jsonstationtrouvee = json_encode($station);
             echo $jsonstationtrouvee;
 
@@ -520,7 +520,7 @@ class PV extends MY_Controller
         if (isset($_POST['idVille'])) {
             foreach ($data['station'] as $station) { // Parcours les données du select pour trouver la station correspondante
                 if ($station['id'] == $_POST['idVille']['keyname']) {
-                    $tabstation = array( 'ID_Ensoleillement' => $station['id'], 'Ville' => $station['Ville'], 'HEPP' => $station['HEPP']); // Création tableau pour la conversion en json avec la ville et le HEPP correspondant
+                    $tabstation = array('ID_Ensoleillement' => $station['id'], 'Ville' => $station['Ville'], 'HEPP' => $station['HEPP']); // Création tableau pour la conversion en json avec la ville et le HEPP correspondant
                     $this->session_orientation($station['id'], $station['HEPP'], $station['Ville']);
                     $jsonstation = json_encode($tabstation); // Création du JSON avec le tableau
                     echo $jsonstation; // Envoi du JSON
@@ -533,7 +533,7 @@ class PV extends MY_Controller
 
     }
 
-    public function session_orientation( $idEnsol, $hepp, $ville)
+    public function session_orientation($idEnsol, $hepp, $ville)
     {
         $tabsession = array('ID_Ensoleillement' => $idEnsol, 'HEPP' => $hepp, 'Ville' => $ville);
         //      $tabsession = array('Panneau' => $tabsession);
@@ -714,19 +714,6 @@ class PV extends MY_Controller
         }
     }
 
-//    public
-//    function ajax_prodannuelle()
-//    {
-//        $Production = $this->session->userdata('Production');
-//        if (isset($Production)) {
-//            $jsonProdAnnuelle = json_encode($this->prodannuelle());
-//            echo $jsonProdAnnuelle;
-//        } else {
-//            $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
-//            show_error($message_403, 403, '403 - Acc&egrave;s interdit');
-//        }
-//    }
-
     public function prodannuelle()
     {
         $Production = $this->session->userdata('Production');
@@ -742,31 +729,6 @@ class PV extends MY_Controller
         }
         return $ligneProdAnnuelle;
     }
-
-//    public
-//    function ajax_cumulprod()
-//    {
-//        $Production = $this->session->userdata('Production');
-//        if (isset($Production)) {
-//            $prodAnneeZero = $Production;
-//            $raisonProd = 1 - (0.5 / 100); // Raison production
-//            $ligneProdPuissance = '';
-//
-//            for ($i = 0; $i < 20; $i++) {
-//                $raisonProdPuissance = pow($raisonProd, $i + 1); // Raison production puissance $i pour correspondre avec l'année en cours
-//                $prodCumulee = round($prodAnneeZero * ((1 - $raisonProdPuissance) / (1 - $raisonProd)), 2); // Calcul de la prod cumulée
-//                $ligneProdPuissance[$i] = $prodCumulee;
-//
-//            }
-//
-//            $jsonProdAnnuelle = json_encode($ligneProdPuissance);
-//            echo $jsonProdAnnuelle;
-//        } else {
-//            $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
-//            show_error($message_403, 403, '403 - Acc&egrave;s interdit');
-//        }
-//    }
-
 
     public
     function ajax_tarif()
@@ -956,5 +918,33 @@ class PV extends MY_Controller
 
     }
 
+    function node_Calcul($NomCalcul)
+    {
+        $ID_Ensoleillement = ($this->session->userdata('ID_Ensoleillement')) ? null : $this->session->userdata('ID_Ensoleillement');
+        $HEPP = ($this->session->userdata('HEPP')) ? null : $this->session->userdata('HEPP');
+        $Ville = ($this->session->userdata('Ville')) ? null : $this->session->userdata('Ville');
+        $Orientation = ($this->session->userdata('Orientation')) ? null : $this->session->userdata('Orientation');
+        $Ratioc = ($this->session->userdata('Ratioc')) ? null : $this->session->userdata('Ratioc');
+        $Heppnet = ($this->session->userdata('Heppnet')) ? null : $this->session->userdata('Heppnet');
+        $Raccordement = ($this->session->userdata('Raccordement')) ? null : $this->session->userdata('Raccordement');
+        $Production = ($this->session->userdata('Production')) ? null : $this->session->userdata('Production');
+        $bonusProd = ($this->session->userdata('bonusProd')) ? null : $this->session->userdata('bonusProd');
+        $Panneau = ($this->session->userdata('Panneau')) ? null : $this->session->userdata('Panneau');
+        $MarquePanneau = ($this->session->userdata('MarquePanneau')) ? null : $this->session->userdata('MarquePanneau');
+        $PrixPanneau = ($this->session->userdata('PrixPanneau')) ? null : $this->session->userdata('PrixPanneau');
+        $Inflation = ($this->session->userdata('Inflation')) ? null : $this->session->userdata('Inflation');
+        $Tarifedf = ($this->session->userdata('Tarifedf')) ? null : $this->session->userdata('Tarifedf');
+
+
+        if (!is_null($HEPP) && !is_null($Orientation) && is_null($Ratioc)) {
+            $heppnette = ($HEPP * ($Orientation / 100) * ($Ratioc) / 100);
+            $this->session->set_userdata(array('Heppnet' => $heppnette));
+        }
+
+
+        // Récup les données (en session) de calculs
+        // Fait tous les calculs
+        // Met le résultat en session
+    }
 }
 
