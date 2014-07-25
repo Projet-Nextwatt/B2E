@@ -464,10 +464,10 @@ class CI_Catalogue extends MY_Controller
         $this->devis_form($idprod);
     }
 
-    public function devis_form($idprod = NULL)
+    public function devis_form($idprod = NULL)                          //NOUVEAU DOSSER
     {
         $this->load->model('Mappage/dossier', 'dossier');
-        $this->load->model('Mappage/client', 'client');
+        $this->load->model('Mappage/client', 'client');                 //DOSSIER EXISTANT
         $this->load->model('Mappage/user', 'user');
         $this->load->model('Mappage/article', 'article');
         
