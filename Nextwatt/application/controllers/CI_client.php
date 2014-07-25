@@ -18,7 +18,7 @@ class CI_Client extends MY_Controller
         echo 'Hello World!';
     }
 
-    public function consult_client()
+    public function consult_client()                    //NOUVEAU DOSSER
     {
         $data = array();
         $dossier = FALSE;

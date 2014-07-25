@@ -10,7 +10,7 @@ class CI_Dossier extends MY_Controller
 
     }
 
-    public function choix_action()
+    public function choix_action()                      //NOUVEAU DOSSER
     {
         $this->load->model('Mappage/client', 'client');
         $this->load->model('Mappage/user', 'user');
@@ -56,7 +56,7 @@ class CI_Dossier extends MY_Controller
     public function select_dossier()
     {
         $this->load->model('Mappage/dossier', 'dossier');
-        $this->load->model('Mappage/client', 'client');
+        $this->load->model('Mappage/client', 'client');         //DOSSIER EXISTANT
         $this->load->model('Mappage/user', 'user');
 
         $dossier = $this->dossier->select_dossier($this->session->userdata['CI_Dossier/select_dossier']);
