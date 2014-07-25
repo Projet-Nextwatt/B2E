@@ -88,6 +88,10 @@ class CI_Dossier extends MY_Controller
             $this->session->userdata['Tarifedf'] = null;
             $this->session->userdata['Orientation'] = null;
         }
+        else
+        {
+
+        }
 
         $this->layout->title('Dossier');
         $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier', $data);
@@ -119,6 +123,14 @@ class CI_Dossier extends MY_Controller
 
         $this->article->archiver_dossier($this->session->userdata('idDossier'));
         $this->dossier->archiver_dossier($this->session->userdata('idDossier'));
+    }
+
+    /******************************************* DETAIL ARTICLE  *******************************************/
+
+    public function aff_detail_article()
+    {
+        $this->layout->title('Dossier');
+        $this->layout->view('B2E/Dossier_Archives/Devis/detail_article');
     }
 }
 
