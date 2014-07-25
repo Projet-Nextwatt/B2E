@@ -64,7 +64,7 @@ class PV extends MY_Controller
                 'link' => site_url("pv/calculhepp")
             ),
             array(
-                'title' => 'Production',
+                'title' => 'Système',
                 'actif' => '',
                 'link' => site_url("pv/calculprod")
             ),
@@ -117,7 +117,7 @@ class PV extends MY_Controller
                 'link' => site_url("pv/calculhepp")
             ),
             array(
-                'title' => 'Production',
+                'title' => 'Système',
                 'actif' => '',
                 'link' => site_url("pv/calculprod")
             ),
@@ -174,7 +174,7 @@ class PV extends MY_Controller
                 'link' => site_url("pv/calculhepp")
             ),
             array(
-                'title' => 'Production',
+                'title' => 'Système',
                 'actif' => '',
                 'link' => site_url("pv/calculprod")
             ),
@@ -233,7 +233,7 @@ class PV extends MY_Controller
                 'link' => site_url("pv/calculhepp")
             ),
             array(
-                'title' => 'Production',
+                'title' => 'Système',
                 'actif' => '',
                 'link' => site_url("pv/calculprod")
             ),
@@ -280,7 +280,7 @@ class PV extends MY_Controller
                 'link' => site_url("pv/calculhepp")
             ),
             array(
-                'title' => 'Production',
+                'title' => 'Système',
                 'actif' => 'active',
                 'link' => site_url("pv/calculprod")
             ),
@@ -329,7 +329,7 @@ class PV extends MY_Controller
                 'link' => site_url("pv/calculhepp")
             ),
             array(
-                'title' => 'Production',
+                'title' => 'Système',
                 'actif' => '',
                 'link' => site_url("pv/calculprod")
             ),
@@ -387,7 +387,7 @@ class PV extends MY_Controller
                 'link' => site_url("pv/calculhepp")
             ),
             array(
-                'title' => 'Production',
+                'title' => 'Système',
                 'actif' => '',
                 'link' => site_url("pv/calculprod")
             ),
