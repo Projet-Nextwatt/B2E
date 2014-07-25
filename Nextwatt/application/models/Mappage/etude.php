@@ -58,7 +58,7 @@ class Etude extends DataMapper {
             );
 
             $this->db->where('id', $data['id_dossier']); // On va update dans le dossier nous concernant en donnant l'id de l'étude qui vient d'être ajoutée
-            $this->db->update('dossiers', $idetude);
+            $this->db->update('dossiers ', $idetude);
             return TRUE;
         } else {
             echo '<p>' . $etude->error->string . '</p>';
