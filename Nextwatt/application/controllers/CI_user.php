@@ -191,6 +191,28 @@ class CI_User extends MY_Controller
         echo json_encode($groupes);
     }
 
+        //Ajax user
+    public function ajax_supprimeruser()
+    {
+    }
+
+    public function ajax_archiveruser()
+    {
+        $this->load->model('Mappage/user', 'user'); //Chargement du modele
+        $this->user->archiveruser($_POST['id']);
+        //$this->layout->view('B2E/User/Accueil_user.php', $data=array());
+        header('Location:' . site_url("CI_user/consult_user"));
+    }
+    
+    public function ajax_activeruser()
+    {
+        $this->load->model('Mappage/user', 'user'); //Chargement du modele
+        $this->user->activeruser($_POST['id']);       
+        //$this->layout->view('B2E/User/Accueil_user.php', $data=array());
+
+        header('Location:' . site_url("CI_user/consult_user"));
+    }
+    
 
     // Validation et traitement des formualaires
     public $configValidationAddCategorie = array(

@@ -146,8 +146,15 @@ class User extends DataMapper {
         {
             if($tab_user[0]['Identifiant']==$login && $tab_user[0]['mdp']==$mdp)
             {
-                $logincorrect = 1;
-                return $logincorrect;
+                if ($tab_user[0]['Actif']==1){
+                    $logincorrect = 1;
+                    return $logincorrect;
+                }
+                else
+                {
+                    $error = 'Votre compte a été déactivé';
+                    return $error;
+                }
             }
             else
             {
@@ -182,6 +189,20 @@ class User extends DataMapper {
 
         return $retour;
 
+    }
+    
+    function archiveruser($id)
+    {
+        $user = new User($id);
+        $user->Actif=0;
+        $user->save();
+    }
+    
+    function activeruser($id)
+    {
+        $user = new User($id);
+        $user->Actif=1;
+        $user->save();
     }
 
 }

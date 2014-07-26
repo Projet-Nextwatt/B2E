@@ -239,7 +239,7 @@
                     </div>
 
 
-                    </form>
+                    <?php echo form_close();?>
                 </div>
             </div>
         </div>
@@ -288,7 +288,8 @@
                                 <i class="ace-icon fa fa-floppy-o bigger-160"></i>
                                 Valider
                             </button>
-                            </form>
+                            
+                            <?php echo form_close();?>
                         </div>
                     </div>
 
@@ -296,5 +297,157 @@
             </div>
 
         </div>
+
+        <div class='row'>
+            <div class='col-xs-12'>
+                <div class="widget-box">
+                    <div class="widget-header widget-header-flat">
+                        <h4 class='widget-title'>Actions</h4>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main">
+
+                            <?php if (isset($user) && $user['Actif'] == 0) { ?>
+                            <button disabled type="button" data-toggle="modal" data-target="#Confsuppr"
+                                        class="btn btn-sm btn-danger">
+                                    <i class="ace-icon fa fa-trash-o bigger-160"></i>
+                                    Supprimer
+                                </button>
+                            <?php } ?>
+
+
+                            <?php if (isset($user) && $user['Actif'] == 1) { ?>
+                                <button type="button" data-toggle="modal" data-target="#Confarchiver"
+                                        class="btn btn-sm btn-warning">
+                                    <i class="ace-icon fa fa-trash-o bigger-160"></i>
+                                    Archiver
+                                </button>
+                            <?php } ?>
+
+
+
+
+
+                            <?php if (isset($user) && $user['Actif'] == 0) { ?>
+                                <button type="button" data-toggle="modal" data-target="#Confactiver"
+                                        class="btn btn-sm btn-success">
+                                    <i class="ace-icon fa fa-check bigger-160"></i>
+                                    Désarchiver
+                                </button>
+                            <?php } ?>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div
-</div>
+<!-- Fin d conteneur pricipal --></div>
+
+
+<!-- Modal box supprimer -->
+<div id="Confsuppr" class="modal fade">
+    <div class="modal-dialog" style="display: block; height: auto; width: 300px; top: 194px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title"><i class="ace-icon fa fa-exclamation-triangle red"></i> Supprimer l'élément ?
+                </h4>
+            </div>
+            <div class="modal-body alert alert-info bigger-110">
+                <p>Vous êtes sur le point de supprimer cet utilisateur.</p>
+            </div>
+            <p class="bigger-110 bolder center grey">
+                <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
+                Êtes vous sur ?
+            </p>
+
+            <div class="modal-footer">
+                <?php
+                $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
+                $hidden = array('id' => $user['id']);
+                echo form_open('CI_user/ajax_supprimeruser', $attributes, $hidden);
+                ?>
+                <button type="submit" class="btn btn-sm btn-danger">Suppression</button>
+                <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Annuler</button>
+                <?php
+                echo form_close();
+                ?>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!--Modal box pour archivage -->
+<div id="Confarchiver" class="modal fade">
+    <div class="modal-dialog" style="display: block; height: auto; width: 300px; top: 194px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title"><i class="ace-icon fa fa-exclamation-triangle red"></i> Archiver l'utilisateur ?
+                </h4>
+            </div>
+            <div class="modal-body alert alert-info bigger-110">
+                <p>Vous êtes sur le point d'archiver cet utilisateur.</p>
+            </div>
+            <p class="bigger-110 bolder center grey">
+                <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
+                Êtes vous sur ?
+            </p>
+
+            <div class="modal-footer">
+                <?php
+                $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
+                $hidden = array('id' => $user['id']);
+                echo form_open('CI_user/ajax_archiveruser', $attributes, $hidden);
+                ?>
+                <button type="submit" class="btn btn-sm btn-danger">Archiver</button>
+                <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Annuler</button>
+
+                <?php echo form_close(); ?>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- Modal box pour désarchivage -->
+<div id="Confactiver" class="modal fade">
+    <div class="modal-dialog" style="display: block; height: auto; width: 300px; top: 194px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title"><i class="ace-icon fa fa-exclamation-triangle red"></i> Réactiver l'utilisateur ?
+                </h4>
+            </div>
+            <div class="modal-body alert alert-info bigger-110">
+                <p>Vous êtes sur le point de réactiver cet utilisateur.</p>
+            </div>
+            <p class="bigger-110 bolder center grey">
+                <i class="ace-icon fa fa-hand-o-right blue bigger-120"></i>
+                Êtes vous sur ?
+            </p>
+
+            <div class="modal-footer">
+                <?php
+                $attributes = array('class' => 'form-horizontal', 'id' => 'form_user', 'role' => 'form');
+                $hidden = array('id' => $user['id']);
+                echo form_open('CI_user/ajax_activeruser', $attributes, $hidden);
+                ?>
+                <button type="submit" class="btn btn-sm btn-danger">Confirmer</button>
+                <button type="button" class="btn btn-sm btn-info" data-dismiss="modal">Annuler</button>
+                <?php echo form_close(); ?>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><!-- /.modal -->
