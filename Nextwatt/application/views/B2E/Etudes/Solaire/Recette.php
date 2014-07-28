@@ -165,7 +165,7 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
 <div class="col - xs - 12">
     <ul class="pager">
         <li class="previous">
-            <a href=" <?php echo site_url("pv/calculrecette"); ?>"><h4>← Calculer Recette</h4></a>
+            <a href=" <?php echo site_url("pv/calculprod"); ?>"><h4>← Choix système</h4></a>
         </li>
         <?php if (isset($msgsucces)){ ?>
         <li class="center">

@@ -114,30 +114,7 @@ $('#ratioc').keyup(function () {
     }
 )
 ;
-function calculhepp() {
 
-    var heppbrut = document.getElementById('valeurhepp').innerHTML;
-    var orient = document.getElementById('choixorient').innerHTML.substr(0, (document.getElementById('choixorient').innerHTML).length - 1);
-    var choisiratioc = document.getElementById('resultratioc').innerHTML;
-    $.post(
-        'ajax_calculhepp',
-        {
-            hepp: heppbrut,
-            choixorient: orient,
-            ratioc: choisiratioc
-        },
-        function (data) {
-            if (data != 0 && data) {
-                data = parseInt(data);
-                $("#heppnette").html("Résultat : " + data + " h/an");
-                $("#heppnet").val(data);
-            } else {
-                $("#heppnette").html("<span class='text-danger'><i class='ace-icon fa fa-exclamation-triangle icon-animated-bell bigger-125'></i> Calcul impossible donnée(s) manquante(s)</span> ");
-            }
-        },
-        'text'
-    );
-};
 $('input[name="systeme"]').keyup(function () {
     calculprod()
 });

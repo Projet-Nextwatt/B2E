@@ -167,10 +167,10 @@
 </div>
 <ul class="pager">
     <li class="previous">
-        <a href="<?php echo site_url("pv/calculhepp"); ?>"><h4>← Calculer HEPP</h4></a>
+        <a href="<?php echo site_url("pv/calculmasque"); ?>"><h4>← Calculer Masque</h4></a>
     </li>
 
     <li class="next">
-        <a href="<?php echo site_url("pv/calculrecette"); ?>"><h4>Recette →</h4></a>
+        <a href="<?php echo site_url("pv/recette"); ?>"><h4>Récapitulatif →</h4></a>
     </li>
 </ul>
