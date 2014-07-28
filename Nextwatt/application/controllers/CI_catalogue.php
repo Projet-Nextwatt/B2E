@@ -305,7 +305,6 @@ class CI_Catalogue extends MY_Controller
         $data['soustypes'] = $this->soustype->select_soustype_bytype();
         $data['types'] = $this->type->select_types(null);
 
-
         $this->layout->title('Lier type au produit'); //Et on charge la vue en lui passant $data pour afficher et utiliser les infos que c'est qu'on à récupéré
         $this->layout->view('B2E/Catalogue/Lier_Type_Produit', $data); //render view and layout
     }
@@ -343,7 +342,6 @@ class CI_Catalogue extends MY_Controller
         $configtraitement = $this->configtraitementsoustype(); //On définit les différents traitement pour l'ajout d'un soustype dans un tableau (en passant par la fonction définit plus bas)
 
         $this->form_validation->set_rules($configST); //On applique les configurations définits précédemments (en passant les tableaux en paramètre de "set_rules")
-        $this->form_validation->set_rules($configtraitement);
 
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
         //Et on agit en conséquence
@@ -352,6 +350,7 @@ class CI_Catalogue extends MY_Controller
             $this->layout->title('Erreur d\'ajout soustype');
             $this->layout->view('B2E/Catalogue/Add_Soustype', $data); // Render view and layout
         } else {
+            $this->form_validation->set_rules($configtraitement);
             $this->mapsoustype->ajouter_soustype($_POST);
             $this->consult_soustype();
         }
@@ -373,13 +372,15 @@ class CI_Catalogue extends MY_Controller
     public function modif_soustype() //Fonction de traitement pour la modification d'un soustype
     {
         $this->load->model('Mappage/soustypes', 'mapsoustype'); //Chargement du modele
+        $this->load->model('Mappage/type', 'maptype');
+
         $data = array(); //Pour la vue
         $data['soustype'] = $this->mapsoustype->select_soustype($this->session->userdata('CI_catalogue/modif_soustype')); //On choppe le soustype que le mec a cliqué dessus
+        $data['Types'] = $this->maptype->select_types(null);
 
         $configST = $this->configsoustype();
         $configtraitement = $this->configtraitementsoustype();
         $this->form_validation->set_rules($configST);
-
 
         if ($this->form_validation->run() == FALSE) {
             //Formualire invalide, retour à celui-ci
@@ -416,17 +417,17 @@ class CI_Catalogue extends MY_Controller
                 array(
                     'field' => 'bouquetCI',
                     'label' => 'Catégorie bouquet CI',
-                    'rules' => 'required'
+                    'rules' => 'required|numeric'
                 ),
                 array(
                     'field' => 'bouquetEPTZ',
                     'label' => 'Catégorie bouquet EPTZ',
-                    'rules' => 'required'
+                    'rules' => 'required|numeric'
                 ),
                 array(
                     'field' => 'CIunitaire',
                     'label' => 'Crédit impot unitaire ',
-                    'rules' => 'required'
+                    'rules' => 'required|numeric'
                 ),
             );
         return $configsoustype;
