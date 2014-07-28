@@ -21,7 +21,6 @@ class Article extends DataMapper {
 
     function list_article_dossier($iddossier) {
         $articles = new Article();
-        var_dump($iddossier);
         $articles->where('dossier_id', $iddossier);
         $articles->get();
         return $articles->all_to_array();

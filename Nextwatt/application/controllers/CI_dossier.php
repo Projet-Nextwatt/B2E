@@ -16,7 +16,11 @@ class CI_Dossier extends MY_Controller
         $this->load->model('Mappage/user', 'user');
         $this->load->model('Mappage/dossier', 'dossier');
 
-        $client = $this->client->select_client($this->session->userdata('idClient'));
+        $idDossier = $this->session->userdata['idDossier'];
+        $this->session->set_userdata('CI_dossier/select_dossier', $idDossier);
+
+        $dossier = $this->dossier->select_dossier($idDossier);
+        $client = $this->client->select_client($dossier[0]['client_id']);
         $user = $this->user->select_user($client['user_id']);
 
         $data['nomclient1'] = $client['nom1'];
@@ -59,7 +63,9 @@ class CI_Dossier extends MY_Controller
         $this->load->model('Mappage/client', 'client');         //DOSSIER EXISTANT
         $this->load->model('Mappage/user', 'user');
 
-        $dossier = $this->dossier->select_dossier($this->session->userdata['CI_Dossier/select_dossier']);
+        $idDossier = $this->session->userdata['CI_dossier/select_dossier'];
+        $this->session->set_userdata('idDossier', $idDossier);
+        $dossier = $this->dossier->select_dossier($this->session->userdata['CI_dossier/select_dossier']);
         $client = $this->client->select_client($dossier[0]['client_id']);
         $user = $this->user->select_user($client['user_id']);
 
