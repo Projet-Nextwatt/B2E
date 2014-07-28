@@ -274,9 +274,15 @@ class CI_Catalogue extends MY_Controller
     public function create_tableau_catalogue()
     {
         $this->load->model('Mappage/catalogue', 'cata');
+        $this->load->model('Mappage/soustypes', 'soustype');
+        $this->load->model('Mappage/type', 'type');
+
         $BDD = $this->cata->get_full_bdd();
+        $types = $this->type->select_types(null);
+//        $soustypes;
         $i = 0;
         $newtab = array();
+
         foreach ($BDD as $ligne) {
             $newtab[$i]['id'] = $ligne['id'];
             $newtab[$i]['Reference'] = $ligne['Reference'];
