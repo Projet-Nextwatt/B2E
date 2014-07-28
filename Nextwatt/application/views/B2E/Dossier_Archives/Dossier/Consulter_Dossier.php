@@ -16,7 +16,7 @@
                     <div class="panel-heading align-left">Liste des dossiers en cours
                         <span class="badge badge-success"><?php echo count($dossiers);?></span>
                     </div>
-                    <?php $this->fonctionspersos->creerTableau($dossiers, array(), 'CI_Dossier/select_dossier') ?>
+                    <?php $this->fonctionspersos->creerTableau($dossiers, array(), 'CI_dossier/select_dossier') ?>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
                     <div class="panel-heading align-left">Liste des dossiers archivés
                         <span class="badge badge-success"><?php echo count($dossiers_archive);?></span>
                     </div>
-                    <?php $this->fonctionspersos->creerTableau($dossiers_archive, array(), 'CI_Dossier/select_dossier') ?>
+                    <?php $this->fonctionspersos->creerTableau($dossiers_archive, array(), 'CI_dossier/select_dossier') ?>
                 </div>
             </div>
         </div>

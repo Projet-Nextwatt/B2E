@@ -142,7 +142,7 @@ class CI_Client extends MY_Controller
         $this->load->model('Mappage/Client', 'client');
         $this->client->link_ClientUser($this->session->userdata['userconnect']['id_login'], $id_client);
         $this->dossier->add_Dossier($id_client);
-          header('Location:' . site_url("CI_Dossier/choix_action"));
+          header('Location:' . site_url("CI_dossier/choix_action"));
     }
 
     public

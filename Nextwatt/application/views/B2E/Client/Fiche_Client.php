@@ -147,7 +147,7 @@
         </div>
         <div class="widget-body">
             <div class="widget-main">
-                <?php $this->fonctionspersos->creerTableau($dossiers, array(), 'CI_Dossier/select_dossier') ?>          
+                <?php $this->fonctionspersos->creerTableau($dossiers, array(), 'CI_dossier/select_dossier') ?>
             </div>
         </div>
     </div>

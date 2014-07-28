@@ -468,9 +468,9 @@ class CI_Catalogue extends MY_Controller
         $this->load->model('Mappage/catalogue', 'catalogue');
         $this->load->model('Mappage/article', 'article');
 
-        $idprod = ($this->session->userdata('CI_Catalogue/select_produit_devis'));
+        $idprod = ($this->session->userdata('CI_catalogue/select_produit_devis'));
         $produit = $this->catalogue->select_panneau($idprod);
-        $produit[0]['dossier_id'] = $this->session->userdata['CI_Dossier/select_dossier'];
+        $produit[0]['dossier_id'] = $this->session->userdata['CI_dossier/select_dossier'];
         $this->article->ajouter_article($produit);
         $this->devis_form($idprod);
     }

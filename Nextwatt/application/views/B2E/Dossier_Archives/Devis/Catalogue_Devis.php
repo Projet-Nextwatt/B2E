@@ -15,7 +15,7 @@
         $this->load->library('fonctionspersos');
         $entete = $this->fonctionspersos->set_entete_catalogue_mini();
 
-        $this->fonctionspersos->creerTableau($tableau, $entete, 'CI_Catalogue/select_produit_devis' );
+        $this->fonctionspersos->creerTableau($tableau, $entete, 'CI_catalogue/select_produit_devis' );
         ?>
     </div>
 </div>

@@ -5,10 +5,10 @@
         <br/>
 
         <div class="btn-group">
-            <a href="<?php echo site_url("CI_Dossier/choix_action"); ?>">
+            <a href="<?php echo site_url("CI_dossier/choix_action"); ?>">
                 <button type="button" class="btn btn-sm btn-primary">Retour</button>
             </a>
-            <a href="<?php echo site_url("CI_Dossier/archiver"); ?>">
+            <a href="<?php echo site_url("CI_dossier/archiver"); ?>">
                 <button type="button" class="btn btn-sm btn-grey">Archiver le dossier</button>
             </a>
             <a href="<?php echo site_url("CI_catalogue/consult_soustype"); ?>">

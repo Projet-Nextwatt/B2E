@@ -41,7 +41,7 @@ $region = NULL;
 
     <ul class="pager">
         <li class="previous">
-            <a href="<?php echo site_url("CI_Dossier/choix_action"); ?>"><h4>← Accueil Dossier</h4></a>
+            <a href="<?php echo site_url("CI_dossier/choix_action"); ?>"><h4>← Accueil Dossier</h4></a>
         </li>
         <li class="next ">
             <a href="<?php echo site_url("pv/choixorientation"); ?>"><h4>Orientation →</h4></a>
