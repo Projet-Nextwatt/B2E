@@ -121,8 +121,8 @@ class CI_Dossier extends MY_Controller
         $this->load->model('Mappage/dossier', 'dossier');
         $this->load->model('Mappage/article', 'article');
 
-        $this->article->archiver_dossier($this->session->userdata('idDossier'));
-        $this->dossier->archiver_dossier($this->session->userdata('idDossier'));
+        $this->article->archiver_article($this->session->userdata('CI_Dossier/select_dossier'));
+        $this->dossier->archiver_dossier($this->session->userdata('CI_Dossier/select_dossier'));
     }
 
     /******************************************* DETAIL ARTICLE  *******************************************/

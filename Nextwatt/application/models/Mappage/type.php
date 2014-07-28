@@ -31,8 +31,9 @@ class Type extends DataMapper
             $obj = new Type();
             return $obj->get()->all_to_array();
         } else {
-            $obj = new Catalogue();
-            return $obj->where('id', $id)->get()->all_to_array();
+            $obj = new Type();
+            $obj->where('id', $id)->get();
+            return $obj->all_to_array();
         }
     }
 

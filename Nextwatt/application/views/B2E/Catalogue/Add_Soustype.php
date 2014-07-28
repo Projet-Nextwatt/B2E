@@ -6,11 +6,11 @@
 
 <div class="page-header">
     <h1 align="center">
-        Sous-Types</br>
+        Types</br>
         <small><i class="ace-icon fa fa-angle-double-right"> </i><?php if (isset($client)) {
-                echo ' Gestion de la liste des sous-types';
+                echo ' Gestion de la liste des types';
             } else {
-                echo ' Gestion de la liste des sous-types';
+                echo ' Gestion de la liste des types';
             }
             ?></small>
     </h1>

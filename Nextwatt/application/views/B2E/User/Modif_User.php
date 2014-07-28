@@ -38,7 +38,7 @@
                                                class="form-control input-sm"
                                                name="Identifiant" id="Identifiant"
                                                value="<?php
-                                               if (empty($_POST) AND isset($user)) {
+                                               if ((empty($_POST) OR isset($_POST['mdp'])) AND isset($user)) {
                                                    echo $user['Identifiant'];
                                                } else {
                                                    echo set_value('Identifiant');
@@ -63,7 +63,7 @@
                                                class="form-control input-sm"
                                                name="prenom" id="prenom"
                                                value="<?php
-                                               if (empty($_POST) AND isset($user)) {
+                                               if ((empty($_POST) OR isset($_POST['mdp'])) AND isset($user)) {
                                                    echo $user['prenom'];
                                                } else {
                                                    echo set_value('prenom');
@@ -76,7 +76,7 @@
                                                class="form-control input-sm"
                                                name="nom" id="nom"
                                                value="<?php
-                                               if (empty($_POST) AND isset($user)) {
+                                               if ((empty($_POST) OR isset($_POST['mdp'])) AND isset($user)) {
                                                    echo $user['nom'];
                                                } else {
                                                    echo set_value('nom');
@@ -105,7 +105,7 @@
                                                name="email"   id="email"
                                                placeholder="exemple@nextwatt.fr"
                                                value="<?php
-                                               if (empty($_POST) AND isset($user)) {
+                                               if ((empty($_POST) OR isset($_POST['mdp'])) AND isset($user)) {
                                                    echo $user['email'];
                                                } else {
                                                    echo set_value('email');
@@ -129,7 +129,7 @@
                                                name="tel"  id="tel"
                                                class="form-control input-sm"
                                                value="<?php
-                                               if (empty($_POST) AND isset($user)) {
+                                               if ((empty($_POST) OR isset($_POST['mdp'])) AND isset($user)) {
                                                    echo $user['tel'];
                                                } else {
                                                    echo set_value('tel');
@@ -152,7 +152,7 @@
                                     <div class='col-xs-12'>
                                         <?php
                                         $cat = 1;
-                                        if (empty($_POST) AND isset($user)) {
+                                        if ((empty($_POST) OR isset($_POST['mdp'])) AND isset($user)) {
                                             $cat = $user['categorie_id'];
                                         } else {
                                             $cat = set_value('categorie_id');
@@ -187,7 +187,7 @@
                                             <input type="checkbox"
                                                    name="Actif" id='Actif'
                                                    <?php
-                                                   if (empty($_POST) AND isset($user)) {
+                                                   if ((empty($_POST) OR isset($_POST['mdp'])) AND isset($user)) {
                                                        echo (($user['Actif'] == 1) ? 'checked' : '');
                                                    } else {
                                                        echo ((set_value('Actif') == 'on') ? 'checked' : '');

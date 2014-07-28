@@ -26,7 +26,12 @@ class Article extends DataMapper {
         return $articles->all_to_array();
     }
 
-    
+    public function archiver_article($idDossier)
+    {
+        $article = new Article();
+        $article->where('dossier_id', $idDossier);
+        $article->update('Actif', 0);
+    }
 
     function ajouter_article($produit) {
         $newproduit = array(

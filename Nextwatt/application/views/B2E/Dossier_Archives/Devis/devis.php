@@ -82,7 +82,7 @@
                         </div>
                         <div class="panel-body">
                             <?php foreach($devis['produits'] as $d){ ?>
-                            <div class="widget-box " style="opacity: 1; z-index: 0; margin: 5px" onclick="location.href='CI_Dossier/aff_detail_article';"">
+                            <div class="widget-box " style="opacity: 1; z-index: 0; margin: 5px" onclick="location.href='../CI_dossier/aff_detail_article';"">
                             <div class="widget-header">
                                 <h4 class="widget-title lighter green" ><?php echo $d['Nom']?></h4>
                                 <h4 class="widget-title lighter green" style="float: right;padding-right: 10px;">Prix TTC</h4>
