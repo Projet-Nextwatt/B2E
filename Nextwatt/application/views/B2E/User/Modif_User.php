@@ -3,6 +3,14 @@
 </div>
 
 <div class="page-header">
+    <div  class="position-absolute">
+                    <a href="<?php echo site_url("CI_user/consult_user"); ?>" class="float-left">
+                    <button type="button" class="btn btn-white ntn-bold btn-round">
+                        <i class="ace-icon fa fa-angle-left bigger-140"></i>
+                        Retour
+                    </button>
+                </a>
+    </div>
     <h1 align="center">
         Fiche de l'utilisateur : <?php echo $user['prenom'] . ' ' . $user['nom']; ?>
     </h1>
