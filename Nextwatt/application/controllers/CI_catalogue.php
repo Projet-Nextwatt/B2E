@@ -482,9 +482,7 @@ class CI_Catalogue extends MY_Controller
         $this->load->model('Mappage/user', 'user');
         $this->load->model('Mappage/article', 'article');
 
-
-        $dossier = $this->dossier->select_dossier($this->session->userdata['CI_Dossier/select_dossier']);
-        $client = $this->client->select_client($dossier[0]['client_id']);
+        $client = $this->client->select_client($this->session->userdata['idClient']);
         $user = $this->user->select_user($client['user_id']);
 
         $data['nomclient1'] = $client['nom1'];
@@ -499,7 +497,7 @@ class CI_Catalogue extends MY_Controller
         $data['article'] = $this->aff_Article();
 
         //--------------
-        $articles = $this->article->list_article_dossier($dossier[0]['id']);
+        $articles = $this->article->list_article_dossier($this->session->userdata['idDossier']);
         $data['devis'] = $this->mise_en_forme_article($articles);
         //--------------------
         $this->layout->title('Devis');
