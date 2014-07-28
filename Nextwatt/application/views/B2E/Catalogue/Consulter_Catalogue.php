@@ -38,67 +38,195 @@
         $this->load->library('fonctionspersos');
         $entete = $this->fonctionspersos->set_entete_catalogue_mini();
 
-        //        $this->fonctionspersos->creerTableau($tableau, $entete,'CI_catalogue/aff_fiche_produit');
+             //   $this->fonctionspersos->creerTableau($tableau, $entete,'CI_catalogue/aff_fiche_produit');
         ?>
+        <div id="sidebar" class="sidebar                  responsive">
+        <script type="text/javascript">
+            try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+        </script>
 
-        <div class="sidebar responsive" id="sidebar">
 
-            <div class="sidebar-shortcuts" id="sidebar-shortcuts">
-            </div>
+        <ul class="nav nav-list" style="top: 0px;">
+        <li class="">
+            <a href="index.html">
+                <i class="menu-icon fa fa-tachometer"></i>
+                <span class="menu-text"> Dashboard </span>
+            </a>
 
-            <ul class="nav nav-list">
-                <!-- first level item -->
-                <li class="hover">
-                    <a href="<?php echo site_url("CI_catalogue"); ?>">
-                        <i class="menu-icon fa fa-book"></i>
-                        Catalogue
+            <b class="arrow"></b>
+        </li>
+
+        <li class="active open hsub">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-desktop"></i>
+                <span class="menu-text"> UI &amp; Elements </span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+                <li class="hsub">
+                    <a href="##help" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-caret-right"></i>
+
+                        Layouts
+                        <b class="arrow fa fa-angle-down"></b>
                     </a>
+
+                    <b class="arrow"></b>
+
+                    <ul class="submenu nav-hide" style="display: none;">
+                        <li class="">
+                            <a href="top-menu.html">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Top Menu
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li class="">
+                            <a href="mobile-menu-1.html">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Default Mobile Menu
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li class="">
+                            <a href="mobile-menu-2.html">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Mobile Menu 2
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li class="">
+                            <a href="mobile-menu-3.html">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Mobile Menu 3
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="typography.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Typography
+                    </a>
+
                     <b class="arrow"></b>
                 </li>
 
-                <!-- second level item -->
-                <li>
-                    <a href="<?php echo site_url("CI_client/consult_client"); ?>">
-                        <i class="menu-icon fa fa-user"></i>
-                        Client
+                <li class="">
+                    <a href="elements.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Elements
                     </a>
-                </li>
-                <!-- third level item -->
-                <li>
-                    <a href="<?php echo site_url("CI_dossier/consult_dossier"); ?>">
-                        <i class="menu-icon fa fa-folder"></i>
-                        Dossier
-                    </a>
-                </li>
-                <!-- fourth level item -->
-                <li>
-                    <a href="<?php echo site_url("CI_user/consult_user"); ?>">
-                        <i class="menu-icon fa fa-users"></i>
-                        Utilisateurs
-                    </a>
-                </li>
-                <!-- fifth level item -->
-                <li>
-                    <a href="<?php echo site_url("personnalisation/accueil_perso"); ?>">
-                        <i class="menu-icon fa fa-cog"></i>
-                        Mon compte
-                    </a>
-                </li>
-                <li>
-                    <a href="<?php echo site_url("parametre"); ?>">
-                        <i class="menu-icon fa fa-cog"></i>
-                        Param&egrave;tres
-                    </a>
+
+                    <b class="arrow"></b>
                 </li>
 
+                <li class="">
+                    <a href="buttons.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Buttons &amp; Icons
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="">
+                    <a href="treeview.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Treeview
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="">
+                    <a href="jquery-ui.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        jQuery UI
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="active">
+                    <a href="nestable-list.html">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Nestable Lists
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="hsub open">
+                    <a href="##help" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-caret-right"></i>
+
+                        Three Level Menu
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <b class="arrow"></b>
+
+                    <ul class="submenu nav-show" style="display: block;">
+                        <li class="">
+                            <a href="#">
+                                <i class="menu-icon fa fa-leaf"></i>
+                                Item #1
+                            </a>
+
+                            <b class="arrow"></b>
+                        </li>
+
+                        <li class="hsub">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="menu-icon fa fa-pencil"></i>
+
+                                4th level
+                                <b class="arrow fa fa-angle-down"></b>
+                            </a>
+
+                            <b class="arrow"></b>
+
+                            <ul class="submenu">
+                                <li class="">
+                                    <a href="#">
+                                        <i class="menu-icon fa fa-plus"></i>
+                                        Add Product
+                                    </a>
+
+                                    <b class="arrow"></b>
+                                </li>
+
+                                <li class="">
+                                    <a href="#">
+                                        <i class="menu-icon fa fa-eye"></i>
+                                        View Products
+                                    </a>
+
+                                    <b class="arrow"></b>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
             </ul>
-
-            <div class="sidebar-toggle sidebar-collapse">
-                <br/>
-            </div>
+        </li>
 
 
-<!--        <div class="accordion-style1 panel-group" id="accordion">-->
+        <!--        <div class="accordion-style1 panel-group" id="accordion">-->
 <!--            <div class="panel panel-default">-->
 <!--                <div class="panel-heading">-->
 <!--                    <h4 class="panel-title">-->
