@@ -8,19 +8,6 @@
         <small><i class="ace-icon fa fa-angle-double-right"></i> Page d'accueil Catalogue</small>
     </h1>
 
-    <div class="btn-group">
-        <a href="<?php echo site_url("CI_catalogue/lier_type_produit"); ?>">
-            <button type="button" class="btn btn-white btn-sm btn-primary">Lier type au produit</button>
-        </a>
-        <a href="<?php echo site_url("CI_catalogue/consult_soustype"); ?>">
-        <button type="button" class="btn btn-white btn-sm btn-primary">Gérer liste types</button>
-        </a>
-        <button type="button" class="btn btn-white btn-sm btn-primary">Lier options</button>
-        <a href="<?php echo site_url("CI_catalogue/upload_catalogue_form"); ?>">
-            <button type="button" class="btn btn-white btn-sm btn-primary">Charger Catalogue</button>
-        </a>
-    </div>
-
     <div id="nav-search" class="nav-search">
         <form class="form-search">
           <span class="input-icon">
@@ -34,11 +21,24 @@
 
 <div class="row">
     <div class="col-xs-12">
+        <div class="btn-group">
+            <a href="<?php echo site_url("CI_catalogue/lier_type_produit"); ?>">
+                <button type="button" class="btn btn-white btn-sm btn-primary">Lier type au produit</button>
+            </a>
+            <a href="<?php echo site_url("CI_catalogue/consult_soustype"); ?>">
+                <button type="button" class="btn btn-white btn-sm btn-primary">Gérer liste types</button>
+            </a>
+            <button type="button" class="btn btn-white btn-sm btn-primary">Lier options</button>
+            <a href="<?php echo site_url("CI_catalogue/upload_catalogue_form"); ?>">
+                <button type="button" class="btn btn-white btn-sm btn-primary">Charger Catalogue</button>
+            </a>
+        </div>
+        <br/><br/>
         <?php
         $this->load->library('fonctionspersos');
         $entete = $this->fonctionspersos->set_entete_catalogue_mini();
 
-        $this->fonctionspersos->creerTableau($tableau, $entete);
+        $this->fonctionspersos->creerTableau($tableau, $entete,'CI_catalogue/aff_fiche_produit');
         ?>
     </div>
 </div>

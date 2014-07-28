@@ -22,6 +22,19 @@ class CI_Catalogue extends MY_Controller
         $this->layout->view('B2E/Catalogue/Consulter_Catalogue', $data);
     }
 
+    public function aff_fiche_produit()
+    {
+        $this->load->model('Mappage/catalogue', 'catalogue');
+
+        $idproduit = $this->session->userdata('CI_catalogue/aff_fiche_produit');
+        $produit = $this->catalogue->select_panneau($idproduit);
+
+        $data['produit'] = $produit;
+
+        $this->layout->title('Fiche produit');
+        $this->layout->view('B2E/Catalogue/fiche_produit', $data);
+    }
+
     public function consult_catalogue()
     {
         $data = array();

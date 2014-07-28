@@ -130,7 +130,7 @@ class Fonctionspersos
                 echo "  <script> 
                         function modifier(id){
                             $.post(
-                                '../ajaxfonctionspersos/sessionpourform',
+                                '".site_url('ajaxfonctionspersos/sessionpourform')."',
                                 {'id':id,
                                  'form':'" . $form . "'},
                                 function (){
