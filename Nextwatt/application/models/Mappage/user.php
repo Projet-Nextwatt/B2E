@@ -193,9 +193,11 @@ class User extends DataMapper {
     
     function archiveruser($id)
     {
-        $user = new User($id);
-        $user->Actif=0;
-        $user->save();
+        if ($id!=1){
+            $user = new User($id);
+            $user->Actif=0;
+            $user->save();
+        }
     }
     
     function activeruser($id)

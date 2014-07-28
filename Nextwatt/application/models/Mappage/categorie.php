@@ -61,29 +61,33 @@ class Categorie extends DataMapper {
     function modifier_categorie($data) {
         //Fonction de modification        
         $id = $data['id'];
-        unset($data['id']);
+        if ($id!=1){
+            unset($data['id']);
 
-        $cat = new Categorie();
-        $cat->where('id', $id)->get();
-        //Appliquer les datas
+            $cat = new Categorie();
+            $cat->where('id', $id)->get();
+            //Appliquer les datas
 
-        foreach ($data as $variable => $valeur) {
-            $cat->$variable = $valeur;
-        }
-        if ($cat->save()) {
-            return TRUE;
-        } else {
-            foreach ($cat->error->all as $error) {
-                echo $error;
+            foreach ($data as $variable => $valeur) {
+                $cat->$variable = $valeur;
             }
-            return FALSE;
+            if ($cat->save()) {
+                return TRUE;
+            } else {
+                foreach ($cat->error->all as $error) {
+                    echo $error;
+                }
+                return FALSE;
+            }
         }
     }
 
     function supprimer_categorie($id) {
-        $cat = new Categorie();
-        $cat->where('id', $id)->get();
-        $cat->delete();
+        if ($id!=1){
+            $cat = new Categorie();
+            $cat->where('id', $id)->get();
+            $cat->delete();
+        }
     }
     
     function chargergroupe() {
