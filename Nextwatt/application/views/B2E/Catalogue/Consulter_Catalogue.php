@@ -41,6 +41,7 @@
         //        $this->fonctionspersos->creerTableau($tableau, $entete,'CI_catalogue/aff_fiche_produit');
         ?>
 
+        <div class="sidebar responsive" id="sidebar">
 
         <div class="accordion-style1 panel-group" id="accordion">
             <div class="panel panel-default">
