@@ -32,7 +32,7 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
             <td style="border:none">
             <span id="choixorient"><?php
                 if (isset($this->session->userdata['Orientation']) && $this->session->userdata['Orientation'] != '') {
-                    echo "L'orientation sera de : <strong>" . $this->session->userdata['Orientation'] . "</strong>";
+                    echo "L'orientation sera de : <strong>" . $this->session->userdata['Orientation'] ." %</strong>";
                 } else {
                     $pdf = false;
                     ?>

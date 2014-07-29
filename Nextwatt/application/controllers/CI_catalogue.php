@@ -474,6 +474,9 @@ class CI_Catalogue extends MY_Controller
     {
         $this->load->model('Mappage/catalogue', 'catalogue');
         $this->load->model('Mappage/article', 'article');
+        $this->load->model('Mappage/dossier', 'dossier');
+        $this->load->model('Mappage/client', 'client');
+        $this->load->model('Mappage/user', 'user');
 
         $dossier_id = $this->session->userdata['idDossier'];
         $dossier = $this->dossier->select_dossier($dossier_id);

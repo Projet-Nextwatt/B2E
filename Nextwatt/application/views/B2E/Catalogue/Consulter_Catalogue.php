@@ -28,7 +28,7 @@
             <a href="<?php echo site_url("CI_catalogue/consult_soustype"); ?>">
                 <button type="button" class="btn btn-white btn-sm btn-primary">Gérer liste types</button>
             </a>
-            <button type="button" class="btn btn-white btn-sm btn-primary">Lier options</button>
+            <button type="button" class="btn btn-white btn-sm btn-primary disabled">Lier options (en construction)</button>
             <a href="<?php echo site_url("CI_catalogue/upload_catalogue_form"); ?>">
                 <button type="button" class="btn btn-white btn-sm btn-primary">Charger Catalogue</button>
             </a>

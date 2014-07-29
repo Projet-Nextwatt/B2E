@@ -23,13 +23,13 @@
                             <p style="float: left"> R25AZD689AD535</p>
 
                             <div align="center">
-                                <button type="button" class="btn btn-white">
-                                    Faire une remise
+                                <button type="button" class="btn btn-white disabled">
+                                    Faire une remise (en construction)
                                 </button>
 
 
-                                <button style="float: right" type="button" class="btn btn-white">
-                                    Supprimer
+                                <button style="float: right" type="button" class="btn btn-white disabled">
+                                    Supprimer (en construction)
                                 </button>
                             </div>
                         </div>

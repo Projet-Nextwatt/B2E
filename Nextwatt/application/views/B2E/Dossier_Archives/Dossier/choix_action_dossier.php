@@ -38,9 +38,9 @@
                 Etude simple
             </button></a>
         <a href="<?php echo site_url("dossier/consult_dossier"); ?>">
-            <button  type="button" class="btn btn-success">
+            <button  type="button" class="btn btn-success disabled">
                 <i class="ace-icon fa fa-folder-open-o"></i>
-                Bilan énergétique
+                Bilan énergétique (en construction)
             </button></a>
         <a href="<?php echo site_url("CI_catalogue/devis_form"); ?>">
             <button  type="button" class="btn btn-success">

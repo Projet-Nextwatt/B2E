@@ -9,13 +9,13 @@
                 <button type="button" class="btn btn-sm btn-primary">Retour</button>
             </a>
             <a href="<?php echo site_url("CI_dossier/archiver"); ?>">
-                <button type="button" class="btn btn-sm btn-grey">Archiver le dossier</button>
+                <button type="button" class="btn btn-sm btn-grey disabled">Archiver le dossier (en construction)</button>
             </a>
-            <a href="<?php echo site_url("CI_catalogue/consult_soustype"); ?>">
-                <button type="button" class="btn btn-sm btn-grey">Devis PDF</button>
+            <a href="<?php echo site_url("CI_catalogue/pdf"); ?>">
+                <button type="button" class="btn btn-sm btn-primary"><i class="ace-icon fa fa-print bigger-120"></i>Devis PDF</button>
             </a>
             <a href="<?php echo site_url("CI_catalogue/upload_catalogue_form"); ?>">
-                <button type="button" class="btn btn-sm btn-grey">Bdc PDF</button>
+                <button type="button" class="btn btn-sm btn-grey disabled">Bdc PDF (en construction)</button>
             </a>
         </div>
     </div>
