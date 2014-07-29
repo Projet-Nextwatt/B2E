@@ -23,7 +23,7 @@
             $attributes = array('role' => 'form', 'id' => 'myform', 'class' => 'form-horizontal');
             $hidden = array();
             if (isset($energie)) {
-                $hidden = array('id' => $energie['id'],'Energie'=>$energie['Energie']);
+                $hidden = array('id' => $energie['id'],'Energie'=>  html_entity_decode($energie['Energie']));
                 echo form_open('parametre/modif_energie', $attributes, $hidden);
             }
             else

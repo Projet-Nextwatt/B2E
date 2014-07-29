@@ -47,40 +47,15 @@ class Catalogue extends DataMapper
     {
         $refbddtest = new Catalogue();
 
-        $refbddtest->select('id, Nom');
+        $refbddtest->select('Reference,id, Nom');
         $refbddtest->get();
 
-        $refbddtest = $refbddtest->all_to_array();
-
+        $refbddtest = $refbddtest->all_to_array(array('Reference','id', 'Nom'));
         /************************************************  GROS TEST DE LA MORT QUI TUE !!!  ***************************************/
-        $i = 0;
         $rslt = array();
         foreach ($refbddtest as $element) {
-            unset ($element['soustype_id']);
-            unset ($element['Reference']);
-            unset ($element['Marque']);
-            unset ($element['Puissance']);
-            unset ($element['Libelle_Mat']);
-            unset ($element['Libelle_Mat_SansMarque']);
-            unset ($element['Libelle_MO']);
-            unset ($element['Libelle_Garantie']);
-            unset ($element['Prix_MO']);
-            unset ($element['Prix_Mat_Plancher']);
-            unset ($element['Prix_Annonce_TTC']);
-            unset ($element['CEE_TTC']);
-            unset ($element['TVA_MO']);
-            unset ($element['TVA_Mat']);
-            unset ($element['Facturation']);
-            unset ($element['Type_Produit']);
-            unset ($element['Spec']);
-            unset ($element['Actif']);
-            unset ($element['Fiche_Tech']);
-            unset ($element['Note']);
-
-
-            $rslt[$i]['id'] = $element['id'];
-            $rslt[$i]['Nom'] = $element['Nom'];
-            $i++;
+            $rslt[$element['Reference']]['id'] = $element['id'];
+            $rslt[$element['Reference']]['Nom'] = $element['Nom'];
         }
         return $rslt;
     }
