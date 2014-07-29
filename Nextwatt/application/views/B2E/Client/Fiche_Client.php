@@ -104,7 +104,6 @@
                                         </button>
                                     <?php } ?>
 
-
                                     <?php if (isset($client) && $client['actif'] == 1) { ?>
                                         <button type="button" data-toggle="modal" data-target="#Confarchiver"
                                                 class="btn btn-sm btn-warning">
@@ -113,10 +112,6 @@
                                         </button>
                                     <?php } ?>
 
-
-
-
-
                                     <?php if (isset($client) && $client['actif'] == 0) { ?>
                                         <button type="button" data-toggle="modal" data-target="#Confactiver"
                                                 class="btn btn-sm btn-success">
@@ -124,8 +119,11 @@
                                             Désarchiver
                                         </button>
                                     <?php } ?>
+
                                     <button type="button"
-                                            class="btn btn-sm btn-primary" onClick="parent.location='Consult_Client?dossier=TRUE'" >
+                                            class="btn btn-sm btn-primary" id="addDossier">
+<!--                                            onClick="parent.location='Consult_Client?dossier=TRUE'"-->
+
                                         <i class="ace-icon fa fa-plus bigger-160"></i>
                                         Ajouter un dossier
                                     </button>

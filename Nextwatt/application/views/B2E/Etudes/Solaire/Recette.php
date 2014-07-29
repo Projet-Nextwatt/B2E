@@ -169,7 +169,7 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
         </li>
         <?php if (isset($msgsucces)){ ?>
         <li class="center">
-            <a href=" <?php echo site_url("pv/retour_menu_dossier"); ?>"><h4>Revenir sur dossier</h4></a>
+            <a href=" <?php echo site_url("pv/retour_menu_dossier"); ?>"><h4><i class="ace-icon fa fa-reply icon-only"></i> Revenir sur dossier</h4></a>
             <br/><br/>
         </li>
         <p><?php if (isset($msgsucces)) {

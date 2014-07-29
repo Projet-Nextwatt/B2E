@@ -202,6 +202,7 @@ class CI_Client extends MY_Controller
     public
     function modif_client()
     {
+        $this->layout->js(js_url('client'));
         $data = array(); //Pour la vue
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du modele
         $data['client'] = $this->mapclient->select_client($this->session->userdata('CI_client/modif_client'));

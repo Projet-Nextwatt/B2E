@@ -136,7 +136,7 @@
             }else{
                 echo 'Monsieur ';
             }
-            echo $this->session->userdata['nomClient']?>, dans le cadre de nos échanges, vous avez souhaité une
+            echo  $resultClient[0]['nom1']?>, dans le cadre de nos échanges, vous avez souhaité une
             estimation des revenus de
             production de votre future installation.
         </td>
