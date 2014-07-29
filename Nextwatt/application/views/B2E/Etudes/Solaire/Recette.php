@@ -1,20 +1,12 @@
-<div class="
-<?php
-$pdf = true;
-if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['Orientation']) || isset($this->session->userdata['Orientation'])) {
-    echo "col-xs-4";
-} else {
-    echo "col-xs-3";
-}?>
-">
-
-    <table class="table">
+<?php $pdf = true; ?>
+<div class="inline col-sm-6">
+    <table class="table" style="width: auto;">
         <tr>
-            <td style="border:none">
+            <td style="border:none;">
             <span id="valeurhepp">
             <?php
             if (isset($this->session->userdata['HEPP']) && $this->session->userdata['HEPP'] != '') {
-                echo "Vous avez choisi la station météo de <strong>" . $this->session->userdata['Ville'] . "</strong>";
+                echo "Vous avez choisi la station météo de : <strong>" . $this->session->userdata['Ville'] . "</strong>";
             } else {
                 $pdf = false;
                 ?>
@@ -24,7 +16,10 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
             </td>
             <?php if (isset($this->session->userdata['HEPP']) && $this->session->userdata['HEPP'] != '') { ?>
                 <td style="border:none">
-                    <a href="<?php echo site_url("pv/choixstation") ?>">Changer de station</a>
+                    <a href="<?php echo site_url("pv/choixstation") ?>">
+                        <button class="btn btn-white btn-primary btn-round btn-sm"><i
+                                class="ace-icon fa fa-edit bigger-120"></i></button>
+                    </a>
                 </td>
             <?php } ?>
         </tr>
@@ -32,7 +27,7 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
             <td style="border:none">
             <span id="choixorient"><?php
                 if (isset($this->session->userdata['Orientation']) && $this->session->userdata['Orientation'] != '') {
-                    echo "L'orientation sera de : <strong>" . $this->session->userdata['Orientation'] ." %</strong>";
+                    echo "L'orientation sera de : <strong>" . $this->session->userdata['Orientation'] . " %</strong>";
                 } else {
                     $pdf = false;
                     ?>
@@ -42,7 +37,10 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
             </td>
             <?php if (isset($this->session->userdata['Orientation']) && $this->session->userdata['Orientation'] != '') { ?>
                 <td style="border:none">
-                    <a href="<?php echo site_url("pv/choixorientation") ?>">Changer orientation</a>
+                    <a href="<?php echo site_url("pv/choixorientation") ?>">
+                        <button class="btn btn-white btn-primary btn-round btn-sm"><i
+                                class="ace-icon fa fa-edit bigger-120"></i></button>
+                    </a>
                 </td>
             <?php } ?>
         </tr>
@@ -60,11 +58,32 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
             </td>
             <?php if (isset($this->session->userdata['Panneau']) && $this->session->userdata['Panneau'] != '') { ?>
                 <td style="border:none">
-                    <a href="<?php echo site_url("pv/calculprod") ?>">Changer le kit</a>
+                    <a href="<?php echo site_url("pv/calculprod") ?>">
+                        <button class="btn  btn-white btn-primary btn-round btn-sm"><i
+                                class="ace-icon fa fa-edit bigger-120"></i></button>
+                    </a>
                 </td>
             <?php } ?>
         </tr>
     </table>
+
+</div>
+<div class="inline center col-sm-6" style="padding-top: 3%">
+    <?php if (isset($msgsucces)) { ?>
+        <a href=" <?php echo site_url("pv/retour_menu_dossier"); ?>">
+            <button class="btn btn-primary btn-white btn-round"><h4><i class="ace-icon fa fa-reply bigger-120"></i> Revenir sur dossier</h4></button>
+        </a>
+        <br/><br/>
+        <p><?php if (isset($msgsucces)) {
+                echo($msgsucces);
+            } ?></p>
+    <?php } else { ?>
+        <a href=" <?php echo site_url("pv/enregistrer_etude"); ?>">
+            <button class="btn btn-primary btn-white btn-round"><h4>Enregistrer l'étude</h4></button>
+        </a>
+        <br/><br/>
+
+    <?php } ?>
 </div>
 
 <div class="col-xs-12">
@@ -117,71 +136,87 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
             </thead>
             <tr>
                 <td> Année 1</td>
-                <td><?php echo $Prodannuelle[0] ?></td>
+                <td><?php echo number_format($Prodannuelle[0], 2, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[0] ?></td>
-                <td><?php echo $flouzannuel[0] ?></td>
-                <td><?php echo $flouzcumul[0] ?></td>
+                <td><?php echo number_format($flouzannuel[0], 0, ',', ' ') ?></td>
+                <td><?php echo number_format($flouzcumul[0], 0, ',', ' ') ?></td>
 
             </tr>
             <tr>
                 <td> Année 2</td>
-                <td><?php echo $Prodannuelle[1] ?></td>
+                <td><?php echo number_format($Prodannuelle[1], 2, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[1] ?></td>
-                <td><?php echo $flouzannuel[1] ?></td>
-                <td><?php echo $flouzcumul[1] ?></td>
+                <td><?php echo number_format($flouzannuel[1], 0, ',', ' ') ?></td>
+                <td><?php echo number_format($flouzcumul[1], 0, ',', ' ') ?></td>
             </tr>
             <tr>
                 <td> Année 3</td>
-                <td><?php echo $Prodannuelle[2] ?></td>
+                <td><?php echo number_format($Prodannuelle[2], 2, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[2] ?></td>
-                <td><?php echo $flouzannuel[2] ?></td>
-                <td><?php echo $flouzcumul[2] ?></td>
+                <td><?php echo number_format($flouzannuel[2], 0, ',', ' ') ?></td>
+                <td><?php echo number_format($flouzcumul[2], 0, ',', ' ') ?></td>
             </tr>
             <tr>
                 <td> Année 10</td>
-                <td><?php echo $Prodannuelle[9] ?></td>
+                <td><?php echo number_format($Prodannuelle[9],2, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[9] ?></td>
-                <td><?php echo $flouzannuel[9] ?></td>
-                <td><?php echo $flouzcumul[9] ?></td>
+                <td><?php echo number_format($flouzannuel[9], 0, ',', ' ') ?></td>
+                <td><?php echo number_format($flouzcumul[9], 0, ',', ' ') ?></td>
             </tr>
             <tr>
                 <td> Année 15</td>
-                <td><?php echo $Prodannuelle[14] ?></td>
+                <td><?php echo number_format($Prodannuelle[14], 2, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[14] ?></td>
-                <td><?php echo $flouzannuel[14] ?></td>
-                <td><?php echo $flouzcumul[14] ?></td>
+                <td><?php echo number_format($flouzannuel[14], 0, ',', ' ') ?></td>
+                <td><?php echo number_format($flouzcumul[14], 0, ',', ' ') ?></td>
             </tr>
             <tr>
                 <td> Année 20</td>
-                <td><?php echo $Prodannuelle[19] ?></td>
-                <td><?php echo $tarifannuel[19] ?></td>
-                <td><?php echo $flouzannuel[19] ?></td>
-                <td><?php echo $flouzcumul[19] ?></td>
+                <td><?php echo number_format($Prodannuelle[19], 2, ',', ' ') ?></td>
+                <td><?php echo $tarifannuel[19]?></td>
+                <td><?php echo number_format($flouzannuel[19], 0, ',', ' ') ?></td>
+                <td><?php echo number_format($flouzcumul[19], 0, ',', ' ') ?></td>
+            </tr>
+            <tr>
+                <td style="border-color: #ffffff; background-color: white"></td>
+                <td style="border-color: #ffffff; background-color: white">
+                    +<?php echo $this->session->userdata('Inflation') ?>% par an source : EDF
+                </td>
+                <td style="border-color: #ffffff; background-color: white">-0.5 % par an source : Etude INES</td>
+                <td style="border-color: #ffffff; background-color: white"></td>
+                <td style="border-color: #ffffff; background-color: white"></td>
             </tr>
         </table>
     </div>
+</div>
+<div class="col-xs-12 center">
+    <p><h4><strong>Recette sur 20 ans : <span class="green"><?php echo number_format($flouzcumul[19], 0, ',', ' ') ?> €</span></strong></h4></p>
+    <br/><br/>
 </div>
 
 <div class="col - xs - 12">
     <ul class="pager">
         <li class="previous">
-            <a href=" <?php echo site_url("pv/calculprod"); ?>"><h4>← Choix système</h4></a>
+            <a  href=" <?php echo site_url("pv/calculprod"); ?>"><h4>← Choix système</h4></a>
         </li>
-        <?php if (isset($msgsucces)){ ?>
-        <li class="center">
-            <a href=" <?php echo site_url("pv/retour_menu_dossier"); ?>"><h4><i class="ace-icon fa fa-reply icon-only"></i> Revenir sur dossier</h4></a>
-            <br/><br/>
-        </li>
-        <p><?php if (isset($msgsucces)) {
-                echo($msgsucces);
-            } ?></p>
-        <?php } else{ ?>
-        <li class="center"">
-            <a href=" <?php echo site_url("pv/enregistrer_etude"); ?>"><h4>Enregistrer l'étude</h4></a>
-            <br/><br/>
-
-            <?php } ?>
-        </li>
+        <!--        --><?php //if (isset($msgsucces)){ ?>
+        <!--        <li class="">-->
+        <!--            <a href=" -->
+        <?php //echo site_url("pv/retour_menu_dossier"); ?><!--"><h4>Revenir sur dossier</h4></a>-->
+        <!--            <br/><br/>-->
+        <!--        </li>-->
+        <!--        <p>--><?php //if (isset($msgsucces)) {
+        //                echo($msgsucces);
+        //            }
+        ?><!--</p>-->
+        <!--        --><?php //} else{ ?>
+        <!--        <li class="center"">-->
+        <!--            <a href=" -->
+        <?php //echo site_url("pv/enregistrer_etude"); ?><!--"><h4>Enregistrer l'étude</h4></a>-->
+        <!--            <br/><br/>-->
+        <!---->
+        <!--            --><?php //} ?>
+        <!--        </li>-->
         <?php
         $disable = null;
         $link = site_url("pv/pdf");
@@ -190,7 +225,7 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
             $link = null;
         } ?>
 
-        <li class="next <?php echo $disable ?>">
+        <li class="next green <?php echo $disable ?>">
             <a href="<?php echo $link; ?>" target="_blank">
                 <?php if ($pdf == false) { ?>
                     <div class="alert alert-danger">

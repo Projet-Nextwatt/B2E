@@ -42,6 +42,7 @@ class Article extends DataMapper {
             'Marque' => $produit[0]['Marque'],
             'Puissance' => $produit[0]['Puissance'],
             'Libelle_Mat' => $produit[0]['Libelle_Mat'],
+            'Libelle_Mat_SansMarque' => $produit[0]['Libelle_Mat_SansMarque'],
             'Libelle_MO' => $produit[0]['Libelle_MO'],
             'Libelle_Garantie' => $produit[0]['Libelle_Garantie'],
             'Prix_MO' => $produit[0]['Prix_MO'],
