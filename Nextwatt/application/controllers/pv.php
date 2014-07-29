@@ -467,6 +467,7 @@ class PV extends MY_Controller
         $dossier_id = $this->session->userdata['idDossier'];
         $dossier = $this->dossier->select_dossier($dossier_id);
         $client = $this->client->select_client($dossier[0]['client_id']);
+        $this->session->set_userdata('idClient', $dossier[0]['client_id']);
         $user = $this->user->select_user($client['user_id']);
 
         $data['nomclient1'] = $client['nom1'];

@@ -21,6 +21,7 @@ class CI_Dossier extends MY_Controller
 
         $dossier = $this->dossier->select_dossier($idDossier);
         $client = $this->client->select_client($dossier[0]['client_id']);
+        $this->session->set_userdata('idClient', $dossier[0]['client_id']);
         $user = $this->user->select_user($client['user_id']);
 
         $data['nomclient1'] = $client['nom1'];
@@ -67,6 +68,7 @@ class CI_Dossier extends MY_Controller
         $this->session->set_userdata('idDossier', $idDossier);
         $dossier = $this->dossier->select_dossier($this->session->userdata['CI_dossier/select_dossier']);
         $client = $this->client->select_client($dossier[0]['client_id']);
+        $this->session->set_userdata('idClient', $dossier[0]['client_id']);
         $user = $this->user->select_user($client['user_id']);
 
         $data['nomclient1'] = $client['nom1'];
