@@ -14,15 +14,34 @@ class CI_Catalogue extends MY_Controller
 
     public function index()
     {
+        $i=0;
+        $this->load->model('Mappage/type', 'type');
+        $this->load->model('Mappage/soustypes','soustype');
+        $this->load->model('Mappage/catalogue', 'catalogue');
+
+
         //Remplissage de la variable $data avec l'image pour le layout
         $data = array();
-        $data['Types'] = blabla;
-        $data['Soustypes'] = fonctionbidule;
+        $data['Types'] = $this->type->select_types(null);
+        $data['Soustypes'] = $this->soustype->select_soustype(null);
+        $catalogue = array();
+        foreach($data['Types'] as $type)
+        {
+            $soustypes = $this->soustype->select_soustype_type($type['id']);
+            foreach($soustypes as $st)
+            {
+                $produits = $this->catalogue->produit_by_soustype($st['id']);
+                foreach($produits as $p)
+                {
+                    $catalogue[$type['Nom_Type']][$st['nomcourt']][$p['Reference']] = $p;
+                }
+            }
+        }
+        $data['catalogue'] = $catalogue;
+//        var_dump($catalogue);
 
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Catalogue B2E');
-        $this->layout->js(js_url('jquery.nestable'));
-        $this->layout->js(js_url('dossier'));
         $this->layout->view('B2E/Catalogue/Consulter_Catalogue', $data);
     }
 
@@ -477,6 +496,9 @@ class CI_Catalogue extends MY_Controller
     {
         $this->load->model('Mappage/catalogue', 'catalogue');
         $this->load->model('Mappage/article', 'article');
+        $this->load->model('Mappage/dossier', 'dossier');
+        $this->load->model('Mappage/client', 'client');
+        $this->load->model('Mappage/user', 'user');
 
         $dossier_id = $this->session->userdata['idDossier'];
         $dossier = $this->dossier->select_dossier($dossier_id);
@@ -552,14 +574,14 @@ class CI_Catalogue extends MY_Controller
             $remiseDispo =0;
             $TVAMo=0;
             $TVAMat=0;
-             * 
+             *
              */
 
             //Calcul prix
             /* Dans la base de données
              * HT   -MO
              *      -MatPl
-             * 
+             *
              * TTC  -An
              *      -CEE
              */
@@ -587,7 +609,7 @@ class CI_Catalogue extends MY_Controller
                 $TVAMo2 = (int) $article[$article_id]['TVA_MO'] / 10000;   //TVA du produit parent
                 $TVAMat2 = (int) $article[$article_id]['TVA_Mat'] / 10000;   //TVA du produit parent
 
-                
+
                 if (($TVAMat2 != $TVAMat) OR ( $TVAMo2 != $TVAMo)) {
                     $moTTC2 = $moHT * (1 + $TVAMo2);   //mo TTC nouvelle TVA
                     $matPlTTC2 = $matPlHT * (1 + $TVAMat2);   //mat TTC nouvelle TVA
@@ -600,7 +622,7 @@ class CI_Catalogue extends MY_Controller
                     $moTTC = $moTTC2;
                     $matPlTTC = $matPlTTC2;
                     $anTTC-=$differenceDeTVA;   ///////////////////////AAAAAAAATTENTION
-                 
+
                 }
             }
             */
@@ -749,10 +771,4 @@ class CI_Catalogue extends MY_Controller
 //    }
     }
 
-    /********************************* PARTIE OU ON RECUPERE PLEINS DE TRUCS ET QUON LES TRIES A LA BEN LE ZIN **************************/
-
-    public function get_all_type()
-    {
-
-    }
 }

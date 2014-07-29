@@ -80,9 +80,9 @@ class Fonctionspersos
                 echo '<tr ';
                 
                 //On met un id
-                if (!($presenceDunID == false)) {
-                    echo 'id=' . $ligne[$presenceDunID].' ';
-                }
+//                if (!($presenceDunID == false)) {
+//                    echo 'id=' . $ligne[$presenceDunID].' ';
+//                }
                 
                 
                 if ($form != NULL ) {
@@ -267,7 +267,7 @@ class Fonctionspersos
 
     public function set_entete_catalogue_mini()
     {
-        $entete = array('Id', 'Référence', 'Nom', 'Marque', 'Puissance', 'Prix annonce TTC');
+        $entete = array('ID Sous type','Référence', 'Nom', 'Marque', 'Puissance', 'Prix annonce TTC');
         return $entete;
     }
 

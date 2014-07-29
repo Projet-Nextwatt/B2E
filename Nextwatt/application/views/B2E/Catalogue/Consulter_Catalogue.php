@@ -39,32 +39,50 @@
         $entete = $this->fonctionspersos->set_entete_catalogue_mini();
 
         //        $this->fonctionspersos->creerTableau($tableau, $entete,'CI_catalogue/aff_fiche_produit');
+
+        //        echo('Liste des types');
+        //        var_dump($Types);
+
+        //        echo('Liste des porduits triés chelou');
+        //        var_dump($produits_tries);
         ?>
 
-        <div class="sidebar responsive" id="sidebar">
+        <div class="tabbable">
 
-        <div class="accordion-style1 panel-group" id="accordion">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
-                           href="#collapseOne">
-                            <i data-icon-show="ace-icon fa fa-angle-right" data-icon-hide="ace-icon fa fa-angle-down"
-                               class="bigger-110 ace-icon fa fa-angle-right"></i>
-                            Group Item #1
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse">
-                    <div class="panel-body">
+            <ul id="catalogue" class="nav nav-tabs">
+                <?php
+                foreach ($Types as $t) {
+                    if ($t['id'] == 1) {
+                        ?>
+                        <li class="active">
+                            <a href="#<?php echo($t['Nom_Type']) ?>" data-toggle="tab"><?php echo($t['Nom_Type']) ?></a>
+                        </li> <?php
+                    } elseif ($t['id'] == 10) {
 
-                    </div>
+                    } else {
+                        ?>
+                        <li>
+                            <a href="#<?php echo($t['Nom_Type']) ?>" data-toggle="tab"><?php echo($t['Nom_Type']) ?></a>
+                        </li> <?php
+                    }
+                }
+                ?>
+            </ul>
+<!--            --><?php //var_dump($catalogue); ?>
+            <?php
+            foreach ($catalogue as $index => $cataloguepartype)
+            { ?>
+            <div class="tab-content">
+
+                <div class="tab-pane" id="<?php echo($index) ?>">
+                    <?php
+                    var_dump($cataloguepartype);
+                    }
+                    ?>
                 </div>
             </div>
+
         </div>
-
-
-
 
 
     </div>

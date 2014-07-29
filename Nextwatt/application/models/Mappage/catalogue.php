@@ -265,4 +265,24 @@ class Catalogue extends DataMapper
         return $tabprodspec;
     }
 
+    function produit_by_soustype($id = NULL)
+    {
+        $i=0;
+        $newtab = array();
+        $a = new Catalogue();
+        $a->select('soustype_id, Reference, Nom, Marque,Puissance,Prix_Annonce_TTC');
+        $a->where('soustype_id', $id)->get();
+
+        foreach ($a as $ligne) {
+            $newtab[$i]['soustype_id'] = $ligne->soustype_id;
+            $newtab[$i]['Reference'] = $ligne->Reference;
+            $newtab[$i]['Nom'] = $ligne->Nom;
+            $newtab[$i]['Marque'] = $ligne->Marque;
+            $newtab[$i]['Puissance'] = $ligne->Puissance;
+            $newtab[$i]['Prix_Annonce_TTC'] = $ligne->Prix_Annonce_TTC;
+            $i++;
+        }
+        return $newtab;
+    }
+
 }

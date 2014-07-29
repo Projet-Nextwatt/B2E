@@ -1,15 +1,18 @@
 <?php
+
 /*
  * Classe Modèle pour la table Soustype, définir ici toutes les fonctionnalitées utilisant la table Soustype
  * CRUD de base mis en place.
  */
-class Soustypes extends DataMapper {
+
+class Soustypes extends DataMapper
+{
     /*
      * Variables de relation (entre tables)
      */
-    var $has_one = array ('type');
-    var $has_many = array ('Catalogue', 'Article');
-    
+    var $has_one = array('type');
+    var $has_many = array('Catalogue', 'Article');
+
     /*
      * Variables correspondantes aux colonnes de la table.
      */
@@ -20,13 +23,13 @@ class Soustypes extends DataMapper {
     var $Categorie_BouquetCI = "";
     var $Categorie_BouqetEcoPTZ = "";
     var $CI_Unitaire = "";
-    
-    
-    function __construct() 
+
+
+    function __construct()
     {
         parent ::__construct();
     }
-    
+
     function select_soustype($id = NULL)
     {
         $st = new Soustypes();
@@ -41,6 +44,26 @@ class Soustypes extends DataMapper {
         }
     }
 
+    function select_soustype_type($id = NULL)
+    {
+        $st = new Soustypes();
+
+        $st->where('type_id', $id);
+        $st->get();
+
+        return $st->all_to_array();
+    }
+
+    function select_ID_soustype()
+    {
+        $st = new Soustypes();
+
+        $st->select('id');
+        $st->get();
+
+        return $st->all_to_array();
+    }
+
     function select_soustype_bytype()
     {
         $this->db->select('Nom_Type, soustypes.id, nomdevis')
@@ -49,10 +72,8 @@ class Soustypes extends DataMapper {
             ->join('soustypes', 'types.id = soustypes.type_id');
         $query = $this->db->get();
 
-        if($query->num_rows()>0)
-        {
-            foreach($query->result() as $row)
-            {
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
                 $data[] = $row;
             }
             return $data;
@@ -69,12 +90,12 @@ class Soustypes extends DataMapper {
             return $retour['0'];
         } else {
             $soustype->get();
-            $champs = array('id','nomcourt', 'nomdevis', 'bouquetCI', 'bouquetEPTZ', 'CIunitaire');
+            $champs = array('id', 'nomcourt', 'nomdevis', 'bouquetCI', 'bouquetEPTZ', 'CIunitaire');
             $retour = $soustype->all_to_array($champs);
             return $retour;
         }
     }
-    
+
     function ajouter_soustype($data)
     {
 
@@ -91,7 +112,6 @@ class Soustypes extends DataMapper {
     }
 
 
-
     function modifier_soustype($data)
     {
         $id = $data['id'];
@@ -106,7 +126,7 @@ class Soustypes extends DataMapper {
         }
         return $st->save();
     }
-    
+
     function supprimer_soustype($id)
     {
         $st = new Soutypes();
@@ -115,4 +135,4 @@ class Soustypes extends DataMapper {
         $st->delete();
     }
 
-    }
+}

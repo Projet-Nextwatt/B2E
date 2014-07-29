@@ -37,17 +37,27 @@ class Type extends DataMapper
         }
     }
 
-    public function afftypesoustype()
+    public function afftypesoustype($id = NULL)
     {
-        $this->db->select('nomcourt, nomdevis')
-        ->from('types')
-        ->where('Nom_Type', 'Isolation')
-        ->join('soustypes', 'types.id = soustypes.type_id');
-        $query = $this->db->get();
+        if(isset($id))
+        {
+            $this->db
+                ->from('types')
+                ->where('types.id',$id)
+                ->join('soustypes', 'types.id = soustypes.type_id');
+            $query = $this->db->get();
+        }
+        else
+        {
+            $this->db
+                ->from('types')
+                ->join('soustypes', 'types.id = soustypes.type_id');
+            $query = $this->db->get();
+        }
 
         if($query->num_rows()>0)
         {
-            foreach($query->result() as $row)
+            foreach($query->result_array() as $row)
             {
                 $data[] = $row;
             }
