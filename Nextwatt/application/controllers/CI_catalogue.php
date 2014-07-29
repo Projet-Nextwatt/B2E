@@ -122,7 +122,6 @@ class CI_Catalogue extends MY_Controller
                 else
                     $nbAutre++;
 
-
                 //V�rification de l'exsitence dans la base de donn�es
                 if (!(array_key_exists($ref, $refbdd))) //si il existe pas, on ajoute
                 {
@@ -533,6 +532,7 @@ class CI_Catalogue extends MY_Controller
         //Initialisation des varaibles générales
         $liste = array();
         $produits = array();
+        $titre = null;
         $TOTAL_HT = 0;
         $TOTAL_TVA = 0;
         $TOTAL_CEE = 0;
@@ -642,6 +642,7 @@ class CI_Catalogue extends MY_Controller
             //Création du titre du sous projet ---- si ce n'est pas une option
             if ($article['article_id'] == 0) {
                 $soustype = $this->soustype->select_soustype($article['soustype_id']);
+                $titre.=$soustype['nomdevis'];
             }
 
 
@@ -689,7 +690,8 @@ class CI_Catalogue extends MY_Controller
             'TOTAL_Remise' => $TOTAL_Remise,
             'TOTAL_HT' => $TOTAL_HT,
             'TOTAL_TVA' => $TOTAL_TVA,
-            'TOTAL_TTC' => $TOTAL_TTC);
+            'TOTAL_TTC' => $TOTAL_TTC,
+            'titre'=>$titre);
         return $liste;
     }
 
