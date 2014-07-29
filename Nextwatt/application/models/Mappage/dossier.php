@@ -18,8 +18,8 @@ class Dossier extends DataMapper {
      * Variables correspondantes aux colonnes de la table.
      */
 
-    function __construct() {
-        parent ::__construct();
+    function __construct($id=NULL) {
+        parent ::__construct($id);
     }
 
     //READ -------------------------
@@ -76,6 +76,13 @@ class Dossier extends DataMapper {
         $this->db->delete('Dossier');
     }
 
+    function modifier_titre_dossier($id, $titre, $montant){
+        $dossier = new Dossier($id);
+        $dossier->Titre=$titre;
+        $dossier->Montant=$montant;
+        $dossier->save();
+    }
+    
     function modifier_dossier() {
         //Fonction de modification
     }

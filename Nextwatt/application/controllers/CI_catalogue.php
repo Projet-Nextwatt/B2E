@@ -515,10 +515,12 @@ class CI_Catalogue extends MY_Controller
         //Articles
         $data['article'] = $this->aff_Article();
 
-        //--------------
+        //-----------Calcul de la somme---
         $articles = $this->article->list_article_dossier($this->session->userdata['idDossier']);
         $data['devis'] = $this->mise_en_forme_article($articles);
-        //--------------------
+        //-----------Mise à jour du projet------------------------------------------
+        $this->dossier->modifier_titre_dossier($dossier_id,$data['devis']['titre'],$data['devis']['TOTAL_TTC']);       
+        //-----------Affichage---------
         $this->layout->title('Devis');
         $this->layout->view('B2E/Dossier_Archives/Devis/devis', $data);
 
@@ -532,7 +534,7 @@ class CI_Catalogue extends MY_Controller
         //Initialisation des varaibles générales
         $liste = array();
         $produits = array();
-        $titre = null;
+        $titre = array();
         $TOTAL_HT = 0;
         $TOTAL_TVA = 0;
         $TOTAL_CEE = 0;
@@ -642,7 +644,7 @@ class CI_Catalogue extends MY_Controller
             //Création du titre du sous projet ---- si ce n'est pas une option
             if ($article['article_id'] == 0) {
                 $soustype = $this->soustype->select_soustype($article['soustype_id']);
-                $titre.=$soustype['nomdevis'];
+                $titre[]=$soustype['nomdevis'];
             }
 
 
@@ -685,6 +687,8 @@ class CI_Catalogue extends MY_Controller
             $TOTAL_TTC += $totalTTCApresRemise;
 
         }
+        
+        $titre=  implode($titre, ', ');
         $liste = array('produits' => $produits,
             'TOTAL_CEE' => $TOTAL_CEE,
             'TOTAL_Remise' => $TOTAL_Remise,
