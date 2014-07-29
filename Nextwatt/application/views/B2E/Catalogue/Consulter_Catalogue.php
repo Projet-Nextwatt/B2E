@@ -38,37 +38,7 @@
         $this->load->library('fonctionspersos');
         $entete = $this->fonctionspersos->set_entete_catalogue_mini();
 
-        //        $this->fonctionspersos->creerTableau($tableau, $entete,'CI_catalogue/aff_fiche_produit');
+        $this->fonctionspersos->creerTableau($tableau, $entete,'CI_catalogue/aff_fiche_produit');
         ?>
-
-        <div class="sidebar responsive" id="sidebar">
-
-        <div class="accordion-style1 panel-group" id="accordion">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion"
-                           href="#collapseOne">
-                            <i data-icon-show="ace-icon fa fa-angle-right" data-icon-hide="ace-icon fa fa-angle-down"
-                               class="bigger-110 ace-icon fa fa-angle-right"></i>
-                            Group Item #1
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse">
-                    <div class="panel-body">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
     </div>
 </div>
-
-
-            

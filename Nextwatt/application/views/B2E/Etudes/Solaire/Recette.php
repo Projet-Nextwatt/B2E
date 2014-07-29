@@ -205,5 +205,3 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
         </li>
     </ul>
 </div>
-
-<?php var_dump($this->session->all_userdata());?>

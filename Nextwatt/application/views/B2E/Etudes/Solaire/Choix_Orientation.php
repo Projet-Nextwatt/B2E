@@ -91,7 +91,7 @@
 <h3 class="choixorient" align="center">
     <?php
     if($this->session->userdata('Orientation'))
-        echo "Orientation choisie : " . $this->session->userdata('Orientation');
+        echo "Orientation choisie : " . $this->session->userdata('Orientation'). " %";
     ?>
 
 </h3>

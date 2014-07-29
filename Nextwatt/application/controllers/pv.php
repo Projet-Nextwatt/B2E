@@ -873,7 +873,7 @@ class PV extends MY_Controller
 
         $data['flouzcumul'] = $this->cumulflouz();
 
-        $this->load->model('mappage/client', 'Client');
+        $this->load->model('Mappage/client', 'Client');
         $data['resultClient'] = $this->Client->get_InfoUser($this->session->userdata['idClient']);
 
 

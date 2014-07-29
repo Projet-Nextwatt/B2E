@@ -16,13 +16,10 @@ class CI_Catalogue extends MY_Controller
     {
         //Remplissage de la variable $data avec l'image pour le layout
         $data = array();
-        $data['Types'] = blabla;
-        $data['Soustypes'] = fonctionbidule;
+        $data['tableau'] = $this->create_tableau_catalogue();
 
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Catalogue B2E');
-        $this->layout->js(js_url('jquery.nestable'));
-        $this->layout->js(js_url('dossier'));
         $this->layout->view('B2E/Catalogue/Consulter_Catalogue', $data);
     }
 
