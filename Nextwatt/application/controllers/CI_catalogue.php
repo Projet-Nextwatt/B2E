@@ -16,7 +16,9 @@ class CI_Catalogue extends MY_Controller
     {
         //Remplissage de la variable $data avec l'image pour le layout
         $data = array();
-        $data['tableau'] = $this->create_tableau_catalogue();
+        $data['Types'] = blabla;
+        $data['Soustypes'] = fonctionbidule;
+
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Catalogue B2E');
         $this->layout->view('B2E/Catalogue/Consulter_Catalogue', $data);
@@ -474,11 +476,16 @@ class CI_Catalogue extends MY_Controller
         $this->load->model('Mappage/catalogue', 'catalogue');
         $this->load->model('Mappage/article', 'article');
 
-
+        $dossier_id = $this->session->userdata['idDossier'];
+        $dossier = $this->dossier->select_dossier($dossier_id);
+        $client = $this->client->select_client($dossier[0]['client_id']);
+        $this->session->set_userdata('idClient', $dossier[0]['client_id']);
+        $user = $this->user->select_user($client['user_id']);
 
         $idprod = ($this->session->userdata('CI_catalogue/select_produit_devis'));
         $produit = $this->catalogue->select_panneau($idprod);
         $produit[0]['dossier_id'] = $this->session->userdata['idDossier'];
+
         $this->article->ajouter_article($produit);
         $this->devis_form($idprod);
     }
@@ -493,6 +500,7 @@ class CI_Catalogue extends MY_Controller
         $dossier_id = $this->session->userdata['idDossier'];
         $dossier = $this->dossier->select_dossier($dossier_id);
         $client = $this->client->select_client($dossier[0]['client_id']);
+        $this->session->set_userdata('idClient', $dossier[0]['client_id']);
         $user = $this->user->select_user($client['user_id']);
 
         $data['nomclient1'] = $client['nom1'];
@@ -737,6 +745,12 @@ class CI_Catalogue extends MY_Controller
 //        //Preview
 //        $this->dompdf->stream("Devis.pdf", array('Attachment' => 0));
 //    }
+    }
+
+    /********************************* PARTIE OU ON RECUPERE PLEINS DE TRUCS ET QUON LES TRIES A LA BEN LE ZIN **************************/
+
+    public function get_all_type()
+    {
 
     }
 }
