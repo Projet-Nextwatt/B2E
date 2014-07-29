@@ -14,7 +14,13 @@
     <div class="col-xs-12">
 
         <div class="row">
-            <div class="col-xs-12 text-center">
+            <div class="col-xs-6 text-left"> 
+                <a href="<?php echo site_url("CI_user/consult_user"); ?>" class="btn btn-white ntn-bold btn-round">
+                    <i class="ace-icon fa fa-angle-left bigger-140"></i>
+                    Retour
+                </a>
+            </div>
+            <div class="col-xs-6 text-right">
                 <a class="btn btn-primary btn-sm" href="<?php echo site_url("CI_user/addcategorie"); ?>">
                     <i class="ace-icon fa fa-plus align-top bigger-125"/></i>Ajouter une cat&eacute;gorie
                 </a>
