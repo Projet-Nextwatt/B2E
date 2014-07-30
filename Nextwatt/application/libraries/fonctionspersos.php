@@ -9,7 +9,7 @@ class Fonctionspersos
                                  $form = NULL,
                                  $sup = NULL,
                                  $checkbox = false,
-                                 $parametres=NULL)
+                                 $parametres = NULL)
     {
         /* EXPLIQIATION
          * Fonction qui affiche un tableau bootStrapé / Acé
@@ -51,10 +51,12 @@ class Fonctionspersos
             if ($entetes == NULL) {
                 $tableau1 = current($contenu);
                 foreach ($tableau1 as $nomDeLaColonne => $contenuDeLaColonne) {
-                    $entetes[] = $nomDeLaColonne; //Je stocke l'index de la colonne ID dans la varaible $presenceDunID
+                    if ($nomDeLaColonne != 'id') {
+                    $entetes[] = $nomDeLaColonne; //Je stocke l'index de la colonne ID dans la variable $presenceDunID
+                    }
                 }
             }
-            
+
             //Ouvertre du tableau
             echo '<div class="table-responsive">';
             echo '<table class="table table-striped table-bordered table-hover">';
@@ -63,14 +65,15 @@ class Fonctionspersos
             echo '<thead>' . "\n";
             echo '<tr>' . "\n";
             foreach ($entetes as $entete) {
+
                 echo '<th>' . $entete . '</th>' . "\n";
             }
 
-                                            //Entete du bouton modifier
-                                            /*if ($form != NULL OR $sup != NULL) {
-                                                echo '<th></th>';
-                                            }*/
-            
+            //Entete du bouton modifier
+            /*if ($form != NULL OR $sup != NULL) {
+                echo '<th></th>';
+            }*/
+
             echo '</tr>' . "\n";
             echo '</thead>' . "\n";
 
@@ -78,21 +81,21 @@ class Fonctionspersos
             echo '<tbody>' . "\n";
             foreach ($contenu as $ligne) {
                 echo '<tr ';
-                
+
                 //On met un id
 //                if (!($presenceDunID == false)) {
 //                    echo 'id=' . $ligne[$presenceDunID].' ';
 //                }
-                
-                
-                if ($form != NULL ) {
+
+
+                if ($form != NULL) {
                     echo 'onclick="modifier(';
                     echo $ligne[$presenceDunID];
                     echo ')" style="cursor:pointer" ';
                 }
-                
+
                 echo '>' . "\n";
-                foreach ($ligne as $index =>$cellule) {
+                foreach ($ligne as $index => $cellule) {
                     //Modification du texte si c'est l'option checkbox est active
                     if ($checkbox == true AND $index != 'id') {
                         if ($cellule == '1') {
@@ -102,8 +105,9 @@ class Fonctionspersos
                             $cellule = '';
                         }
                     }
-                    
-                    echo '<td>' . $cellule . '</td>' . "\n";
+                    if ($index != 'id') {
+                        echo '<td>' . $cellule . '</td>' . "\n";
+                    }
                 }
 
 
@@ -130,7 +134,7 @@ class Fonctionspersos
                 echo "  <script> 
                         function modifier(id){
                             $.post(
-                                '".site_url('ajaxfonctionspersos/sessionpourform')."',
+                                '" . site_url('ajaxfonctionspersos/sessionpourform') . "',
                                 {'id':id,
                                  'form':'" . $form . "'},
                                 function (){
@@ -244,9 +248,9 @@ class Fonctionspersos
 
                     htmlentities( //Pour convertir les � en &eacute;
 //                        addslashes( //Pour eviteer les probl�me de '
-                            mb_convert_encoding( //Pour convertir le ANSII vers UTF-8
-                                fgets(
-                                    $fichierCatalogue), 'UTF-8', 'ASCII')));
+                        mb_convert_encoding( //Pour convertir le ANSII vers UTF-8
+                            fgets(
+                                $fichierCatalogue), 'UTF-8', 'ASCII')));
                 unset($ligneFichier[count($ligneFichier) - 1]); //On vire le dernier caract�re qui est le retour � la ligne
                 if (!(empty($ligneFichier))) //Si il y a une colone vide, on s'en ocuupe pas
                 {
@@ -303,9 +307,9 @@ class Fonctionspersos
         return $entete;
     }
 
-     public function creerListClient(array $contenu,
-                                 $form = NULL,
-                                $sup=NULL)
+    public function creerListClient(array $contenu,
+                                    $form = NULL,
+                                    $sup = NULL)
     {
         if ($contenu == NULL OR (isset($contenu[0]) AND $contenu[0] == '')) {
             echo '<p><strong>Attention: Aucun client</strong></p>';
@@ -318,7 +322,7 @@ class Fonctionspersos
                     $presenceDunID = $nomDeLaColonne; //Je stocke l'index de la colonne ID dans la varaible $presenceDunID
                 }
             }
-            
+
             //Ouvertre du du conteneur
             echo '<div class="infobox-container">';
 
@@ -326,56 +330,56 @@ class Fonctionspersos
             //Contenu
             foreach ($contenu as $ligne) {
                 echo '<div class="infobox infobox-green" ';
-                
+
                 //On met un id
                 if (!($presenceDunID == false)) {
-                    echo 'id=' . $ligne[$presenceDunID].' ';
+                    echo 'id=' . $ligne[$presenceDunID] . ' ';
                 }
-                
-                
-                if ($form != NULL ) {
+
+
+                if ($form != NULL) {
                     echo 'onclick="modifier(';
                     echo $ligne[$presenceDunID];
                     echo ')" style="cursor:pointer" ';
                 }
-                
-                echo '>' . "\n";
-                    $nom='';
-                        if (empty($ligne['prenom1'])) {
-                            $civ = $ligne['civilite'];
-                            $nom.=($civ == 1 ? 'Mme ' : '');
-                            $nom.=($civ == 2 ? 'Mlle ' : '');
-                            $nom.=($civ == 3 ? 'Mr ' : '');
-                        }
-                        $nom.= $ligne['nom1'] . ' ' . $ligne['prenom1'];
-                        
-                        if (!(empty($ligne['prenom2']))) {
-                            $nom.= ' et ';
-                            if ($ligne['nom1'] != $ligne['nom2']) {
-                                $nom.= $ligne['nom2'];
-                            }
 
-                            $nom.= ' ' . $ligne['prenom2'];
-                        }
-                        
-                        $len=  strlen(html_entity_decode($nom));
-                    
-                    if ($len< 20){
-                        echo "<div class='infobox-icon'>";
-                        echo "<i class='ace-icon fa fa-user'></i>";
-                        echo "</div>";
+                echo '>' . "\n";
+                $nom = '';
+                if (empty($ligne['prenom1'])) {
+                    $civ = $ligne['civilite'];
+                    $nom .= ($civ == 1 ? 'Mme ' : '');
+                    $nom .= ($civ == 2 ? 'Mlle ' : '');
+                    $nom .= ($civ == 3 ? 'Mr ' : '');
+                }
+                $nom .= $ligne['nom1'] . ' ' . $ligne['prenom1'];
+
+                if (!(empty($ligne['prenom2']))) {
+                    $nom .= ' et ';
+                    if ($ligne['nom1'] != $ligne['nom2']) {
+                        $nom .= $ligne['nom2'];
                     }
-                    
-                    echo "<div class='infobox-data'>";
-                    
-                        echo substr ($nom , 0, 24 ).($len>24?"...":"");
-                        
-                    
-                        echo "<div class = 'infobox-content'>";
-                        echo $ligne ['ville'];
-                        echo "</div>";
+
+                    $nom .= ' ' . $ligne['prenom2'];
+                }
+
+                $len = strlen(html_entity_decode($nom));
+
+                if ($len < 20) {
+                    echo "<div class='infobox-icon'>";
+                    echo "<i class='ace-icon fa fa-user'></i>";
                     echo "</div>";
-                    
+                }
+
+                echo "<div class='infobox-data'>";
+
+                echo substr($nom, 0, 24) . ($len > 24 ? "..." : "");
+
+
+                echo "<div class = 'infobox-content'>";
+                echo $ligne ['ville'];
+                echo "</div>";
+                echo "</div>";
+
 
                 echo '</div>' . "\n";
             }
@@ -399,6 +403,7 @@ class Fonctionspersos
 
         }
     }
+
     function printr($array)
     {
         static $indentation = '';
@@ -407,17 +412,13 @@ class Fonctionspersos
 
         echo $indentation . $array_key . '<b>array(</b><br />';
         reset($array);
-        while (list($k, $v) = each($array))
-        {
-            if (is_array($v))
-            {
+        while (list($k, $v) = each($array)) {
+            if (is_array($v)) {
                 $indentation .= $cst_indentation;
                 $array_key = '\'<i style="color: #334499 ;">' . addslashes(htmlspecialchars($k)) . '</i>\' => ';
                 printr($v);
                 $indentation = substr($indentation, 0, strlen($indentation) - strlen($cst_indentation));
-            }
-            else
-            {
+            } else {
                 echo $indentation . $cst_indentation . '\'<i style="color: #334499 ;">' .
                     addslashes(htmlspecialchars($k)) . '</i>\' => \'' . addslashes(htmlspecialchars($v)) . '\',<br />';
             }

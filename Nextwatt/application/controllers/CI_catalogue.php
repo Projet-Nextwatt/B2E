@@ -26,6 +26,7 @@ class CI_Catalogue extends MY_Controller
         $catalogue = array();
         foreach($data['Types'] as $type)
         {
+            $type['Nom_Type'] = preg_replace("# #", '-', $type['Nom_Type']);
             $soustypes = $this->soustype->select_soustype_type($type['id']);
             foreach($soustypes as $st)
             {
@@ -47,10 +48,21 @@ class CI_Catalogue extends MY_Controller
     public function aff_fiche_produit()
     {
         $this->load->model('Mappage/catalogue', 'catalogue');
+        $this->load->model('Mappage/catalogue_catalogue', 'option');
 
         $idproduit = $this->session->userdata('CI_catalogue/aff_fiche_produit');
         $produit = $this->catalogue->select_panneau($idproduit);
+        $refopt = $this->option->select_option($produit['Reference']);
 
+        foreach($refopt as $opt)
+        {
+            $refoptions = $opt['op_ref'];
+            $options[] = $this->catalogue->select_option_catalogue($refoptions);
+        }
+
+//        $options = $this->catalogue->select_option_catalogue($refopt);
+
+        $data['options'] = $options;
         $data['produit'] = $produit;
 
         $this->layout->title('Fiche produit');
