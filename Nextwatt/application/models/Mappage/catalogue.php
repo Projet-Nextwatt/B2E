@@ -47,15 +47,16 @@ class Catalogue extends DataMapper
     {
         $refbddtest = new Catalogue();
 
-        $refbddtest->select('Reference,id, Nom');
+        $refbddtest->select('Reference,id, Nom, soustype_id');
+        $refbddtest->order_by('soustype_id');
         $refbddtest->get();
 
-        $refbddtest = $refbddtest->all_to_array(array('Reference','id', 'Nom'));
-        /************************************************  GROS TEST DE LA MORT QUI TUE !!!  ***************************************/
+        $refbddtest = $refbddtest->all_to_array(array('Reference','id', 'Nom', 'soustype_id'));
         $rslt = array();
         foreach ($refbddtest as $element) {
             $rslt[$element['Reference']]['id'] = $element['id'];
             $rslt[$element['Reference']]['Nom'] = $element['Nom'];
+            $rslt[$element['Reference']]['soustype_id'] = $element['soustype_id'];
         }
         return $rslt;
     }
