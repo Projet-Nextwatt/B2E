@@ -37,24 +37,19 @@
         <?php
         $this->load->library('fonctionspersos');
         $entete = $this->fonctionspersos->set_entete_catalogue_mini();
-
-        //        $this->fonctionspersos->creerTableau($tableau, $entete,'CI_catalogue/aff_fiche_produit');
-
-        //        echo('Liste des types');
-        //        var_dump($Types);
-
-        //        echo('Liste des porduits triés chelou');
-        //        var_dump($produits_tries);
         ?>
 
-        <div class="tabbable">
 
+        <div class="tabbable">
             <ul id="catalogue" class="nav nav-tabs">
+                <li class="active">
+                    <a href="#Photovoltaïque" data-toggle="tab">Catalogue</a>
+                </li>
                 <?php
                 foreach ($Types as $t) {
                     if ($t['id'] == 1) {
                         ?>
-                        <li class="active">
+                        <li>
                             <a href="#<?php echo($t['Nom_Type']) ?>" data-toggle="tab"><?php echo($t['Nom_Type']) ?></a>
                         </li> <?php
                     } elseif ($t['id'] == 10) {
@@ -68,25 +63,25 @@
                 }
                 ?>
             </ul>
-<!--            --><?php //var_dump($catalogue); ?>
-            <?php
-            foreach ($catalogue as $index => $cataloguepartype)
-            { ?>
+            <?php $this->load->library('fonctionspersos'); ?>
             <div class="tab-content">
-
-                <div class="tab-pane" id="<?php echo($index) ?>">
-                    <?php
-                    var_dump($cataloguepartype);
-                    }
-                    ?>
-                </div>
+                <?php foreach ($catalogue as $index => $soustypes) { ?>
+                    <div class="tab-pane in active" id="<?php echo($index) ?>">
+                        <?php
+                        foreach ($soustypes as $index => $produits) {
+                            echo('<h4>' . $index . '</h4>');
+                            $this->fonctionspersos->creerTableau($produits, $entete);
+                        }
+                        ?>
+                    </div>
+                <?php } ?>
             </div>
-
         </div>
-
-
     </div>
 </div>
 
 
-            
+
+
+
+
