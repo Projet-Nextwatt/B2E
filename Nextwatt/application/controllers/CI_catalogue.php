@@ -48,10 +48,21 @@ class CI_Catalogue extends MY_Controller
     public function aff_fiche_produit()
     {
         $this->load->model('Mappage/catalogue', 'catalogue');
+        $this->load->model('Mappage/catalogue_catalogue', 'option');
 
         $idproduit = $this->session->userdata('CI_catalogue/aff_fiche_produit');
         $produit = $this->catalogue->select_panneau($idproduit);
+        $refopt = $this->option->select_option($produit['Reference']);
 
+        if (isset($refopt))
+        {
+            foreach ($refopt as $opt)
+            {
+                $refoptions = $opt['op_ref'];
+                $options[] = $this->catalogue->select_option_catalogue($refoptions);
+            }
+            $data['options'] = $options;
+        }
         $data['produit'] = $produit;
 
         $this->layout->title('Fiche produit');
