@@ -6,9 +6,9 @@
 
 class Catalogue_catalogue extends DataMapper
 {
-    function __construct()
+    function __construct($id=null)
     {
-        parent ::__construct();
+        parent ::__construct($id);
     }
 
     public function select_option($nom_prod = null)

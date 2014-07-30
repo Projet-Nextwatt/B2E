@@ -45,7 +45,7 @@
         <div class="tabbable">
             <ul id="catalogue" class="nav nav-tabs">
                 <li class="active">
-                    <a href="#" data-toggle="tab">Catalogue</a>
+                    <a href="#catalogue" data-toggle="tab">Catalogue</a>
                 </li>
                 <?php
                 foreach ($catalogue as $index => $t) {
@@ -66,7 +66,7 @@
                 else{
                 foreach ($catalogue as $index => $soustypes) {
                     ?>
-                    <div class="tab-pane in active" id="<?php echo($index) ?>">
+                    <div class="tab-pane" id="<?php echo($index) ?>">
                         <?php
                         foreach ($soustypes as $index => $produits) {
                             echo('<h4>' . $index . '</h4>');
@@ -75,7 +75,22 @@
                         ?>
                     </div>
                 <?php }} ?>
+
+                <div class="tab-pane in active" id="catalogue">
+                    <?php foreach ($soustypes as $index => $produits) {
+                    echo('<h4>' . $index . '</h4>');
+                    $this->fonctionspersos->creerTableau($produits, $entete, 'CI_catalogue/aff_fiche_produit', null);
+                    } ?>
+                </div>
             </div>
+            <div class="tab-content">
+            <div class="tab-pane in active" id="catalogue">
+                <?php foreach ($soustypes as $index => $produits) {
+                    echo('<h4>' . $index . '</h4>');
+                    $this->fonctionspersos->creerTableau($produits, $entete, 'CI_catalogue/aff_fiche_produit', null);
+                } ?>
+            </div>
+                </div>
         </div>
     </div>
 </div>

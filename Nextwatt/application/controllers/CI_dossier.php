@@ -39,7 +39,16 @@ class CI_Dossier extends MY_Controller
 
     public function consult_dossier()
     {
-        $this->index();
+        $this->load->model('Mappage/dossier', 'dossier');
+        $this->load->model('Mappage/client', 'client');
+
+        $data['dossiers_archive'] = $this->dossier->select_archive_dossier();
+
+        $dossiers = $this->dossier->select_all_dossier();
+        $data['dossiers'] = $dossiers;
+
+        $this->layout->title('Dossier');
+        $this->layout->view('B2E/Dossier_Archives/Dossier/Consulter_Dossier', $data);
     }
 
     public function add_dossier()
