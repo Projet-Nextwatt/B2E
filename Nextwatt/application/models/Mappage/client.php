@@ -156,5 +156,6 @@ class Client extends DataMapper
         $c = new Client();
         return $c->where('id',$id)->get()->all_to_array();
     }
+
 }
 

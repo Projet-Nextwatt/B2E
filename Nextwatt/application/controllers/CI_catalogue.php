@@ -18,7 +18,7 @@ class CI_Catalogue extends MY_Controller
         $this->load->model('Mappage/soustypes','soustype');
         $this->load->model('Mappage/catalogue', 'catalogue');
 
-
+        // POUR LE COMMIT
         //Remplissage de la variable $data avec l'image pour le layout
         $data = array();
         $data['Types'] = $this->type->select_types(null);
