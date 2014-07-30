@@ -14,7 +14,6 @@ class CI_Catalogue extends MY_Controller
 
     public function index()
     {
-        $i=0;
         $this->load->model('Mappage/type', 'type');
         $this->load->model('Mappage/soustypes','soustype');
         $this->load->model('Mappage/catalogue', 'catalogue');
@@ -330,7 +329,7 @@ class CI_Catalogue extends MY_Controller
         $this->load->model('Mappage/type', 'type');
 
         $data = array(); // On remplit les variables avec les infos qu'on a besoin en appelant les méthodes des modèles loadés précédemment
-        $data['produit'] = $this->catalogue->get_ref_bdd();
+        $data['produit'] = $this->catalogue->get_catalogue_lite_orderby_soustype();
         $data['soustypes'] = $this->soustype->select_soustype_bytype();
         $data['types'] = $this->type->select_types(null);
 

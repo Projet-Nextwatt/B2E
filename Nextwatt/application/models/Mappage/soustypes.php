@@ -69,7 +69,8 @@ class Soustypes extends DataMapper
         $this->db->select('Nom_Type, soustypes.id, nomdevis')
             ->from('types')
 //            ->where('Nom_Type', $type)
-            ->join('soustypes', 'types.id = soustypes.type_id');
+            ->join('soustypes', 'types.id = soustypes.type_id')
+            ->order_by('type_id');
         $query = $this->db->get();
 
         if ($query->num_rows() > 0) {

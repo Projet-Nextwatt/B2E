@@ -47,16 +47,30 @@ class Catalogue extends DataMapper
     {
         $refbddtest = new Catalogue();
 
-        $refbddtest->select('Reference,id, Nom, soustype_id');
-        $refbddtest->order_by('soustype_id');
+        $refbddtest->select('Reference,id, Nom');
         $refbddtest->get();
 
-        $refbddtest = $refbddtest->all_to_array(array('Reference','id', 'Nom', 'soustype_id'));
+        $refbddtest = $refbddtest->all_to_array(array('Reference','id', 'Nom'));
         $rslt = array();
         foreach ($refbddtest as $element) {
             $rslt[$element['Reference']]['id'] = $element['id'];
             $rslt[$element['Reference']]['Nom'] = $element['Nom'];
-            $rslt[$element['Reference']]['soustype_id'] = $element['soustype_id'];
+        }
+        return $rslt;
+    }
+    
+        public function get_catalogue_lite_orderby_soustype()
+    {
+        $cat = new Catalogue();
+
+        $cat->select('Reference,id, Nom, soustype_id');
+        $cat->order_by('soustype_id');
+        $cat->get();
+
+        $cat = $cat->all_to_array(array('Reference','id', 'Nom', 'soustype_id'));
+        $rslt = array();
+        foreach ($cat as $element) {
+            $rslt[$element['soustype_id']][] = $element;
         }
         return $rslt;
     }
@@ -145,6 +159,7 @@ class Catalogue extends DataMapper
             (isset($produit[15]) ? $newcatalogue->Type_Produit = $produit[15] : '');
             (isset($produit[16]) ? $newcatalogue->Spec = $produit[16] : '');
             $newcatalogue->Actif = 1;
+            $newcatalogue->soustype_id = 1;
             (isset($produit[17]) ? $newcatalogue->Fiche_Tech = $produit[17] : '');
             (isset($produit[18]) ? $newcatalogue->Note = $produit[18] : '');
             if ($newcatalogue->save()) {
