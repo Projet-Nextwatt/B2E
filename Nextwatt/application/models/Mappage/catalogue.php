@@ -92,6 +92,19 @@ class Catalogue extends DataMapper
         }
         return $rslt;
     }
+    
+    public function get_nom(){
+        $catalogue = new Catalogue();
+        $catalogue->select('Nom');
+        $catalogue->get();
+        $catalogue = $catalogue->all_to_array('Nom');
+        
+                $rslt = array();
+        foreach ($catalogue as $produit){
+            $rslt[]=  html_entity_decode($produit['Nom']);
+        }
+        return $rslt;
+    }
 
     function select_article_catalogue()
     {

@@ -80,7 +80,7 @@ class Soustypes extends DataMapper
         }
     }
 
-    function select_soustype_tableau($id = NULL)
+    /*function select_soustype_tableau($id = NULL)
     {
         $soustype = new Soustypes();
         if ($id != NULL) {
@@ -95,12 +95,13 @@ class Soustypes extends DataMapper
             return $retour;
         }
     }
+     */
 
     function ajouter_soustype($data)
     {
 
         $soustype = array(
-            'type_id' => $data['Produit'],
+            'type_id' => $data['type_id'],
             'nomcourt' => $data['nomcourt'],
             'nomdevis' => $data['nomdevis'],
             'bouquetCI' => $data['bouquetCI'],

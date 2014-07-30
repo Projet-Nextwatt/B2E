@@ -40,6 +40,7 @@ class CI_Catalogue extends MY_Controller
 //        var_dump($catalogue);
 
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
+        $this->layout->js(js_url('catalogue'));
         $this->layout->title('Catalogue B2E');
         $this->layout->view('B2E/Catalogue/Consulter_Catalogue', $data);
     }
@@ -380,7 +381,7 @@ class CI_Catalogue extends MY_Controller
         } else {
             $this->form_validation->set_rules($configtraitement);
             $this->mapsoustype->ajouter_soustype($_POST);
-            $this->consult_soustype();
+            header('Location:' . site_url("CI_catalogue/consult_soustype"));
         }
     }
 
@@ -390,8 +391,8 @@ class CI_Catalogue extends MY_Controller
         $this->load->library('fonctionspersos');
 
         $data = array();
-        $data['soustypes'] = $this->mapsoustype->select_soustype_tableau(); //On récupère tous les soustypes
-        $data['entetesoustype'] = array('ID', 'Nom court', 'Nom devis', 'Catégorie bouquet CI', 'Catégorie bouquet EcoPTZ', 'CI unitaire'); //On définit les entêtes
+        $data['soustypes'] = $this->mapsoustype->select_soustype(); //On récupère tous les soustypes
+        $data['entetesoustype'] = null;// array('ID', 'Nom court', 'Nom devis', 'Catégorie bouquet CI', 'Catégorie bouquet EcoPTZ', 'CI unitaire'); //On définit les entêtes
 
         $this->layout->title('Liste des soustypes');
         $this->layout->view('B2E/Catalogue/Consulter_Soustype.php', $data); // Render view and layout
@@ -424,8 +425,15 @@ class CI_Catalogue extends MY_Controller
                 $this->consult_soustype();
             } else {
                 echo 'error';
-            }
+            }   
         }
+    }
+    
+    public function ajax_chargernomcatalogue(){
+        $this->load->model('Mappage/catalogue', 'catalogue');
+        $catalogue=$this->catalogue->get_nom();
+        
+        echo json_encode($catalogue);
     }
 
     public function configsoustype()

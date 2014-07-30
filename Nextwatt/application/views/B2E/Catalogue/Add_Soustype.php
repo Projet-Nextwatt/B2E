@@ -37,20 +37,22 @@
             <label for="civilite" class="col-sm-4 no-padding-right control-label">Type parent </label>
 
             <div class="col-sm-6">
-                <select name='Produit' id='produit'>
+                <select name='type_id' id='type_id'>
                     <?php
-                    if (isset($Types))
-                    {
-                    foreach ($Types as $p)
-                    {
-                    if ($p['Nom_Type'] != $ref)
-                    {
-
-                        ?>
-                        <option value="<?php echo $p['id'] ?>"><?php echo $p['Nom_Type'] ?></option>
-                        <?php $ref = $p['Nom_Type'];
-                        }
+                    $type = 1;
+                    if (empty($_POST) AND isset($soustype)) {
+                        $type = $soustype['type_id'];
+                    } else {
+                        $type = set_value('type_id');
                     }
+                    if (isset($Types)) {
+                        foreach ($Types as $p) {
+                                ?>
+                                <option value="<?php echo $p['id'] ?>" <?php if ($type==$p['id']) {echo 'selected';} ?>>
+                                            <?php echo $p['Nom_Type'] ?>
+                                </option>
+                                
+                       <?php }
                     }
                     ?>
                 </select>
@@ -139,12 +141,18 @@
                 </div>
             </div>
 
-            <div class="row form-group">
-                <div class="col-md-offset-4 col-md-4">
-                    <button type="submit" class="btn btn-sm btn-info">
+            <div class='row form-group'>
+                <div class='col-sm-offset-4 col-sm-2 col-xs-offset-0 col-xs-6'>
+                    <button type="submit" class="btn btn-sm btn-info ">
                         <i class="ace-icon fa fa-floppy-o bigger-160"></i>
                         Enregistrer
                     </button>
+                </div>           
+                <div class='col-sm-2 align-right'>
+                    <a href="<?php echo site_url("CI_catalogue/consult_soustype"); ?>" class="btn btn-sm btn-danger ">
+                        <i class="ace-icon fa fa-frown-o bigger-160"></i>
+                        Annuler
+                    </a>
                 </div>
             </div>
 
