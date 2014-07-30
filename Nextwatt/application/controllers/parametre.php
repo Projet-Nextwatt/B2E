@@ -61,7 +61,7 @@ class Parametre extends MY_Controller {
         $data = array();
 
         $data['energies'] = $this->prixenergie->select_prixenergie();
-        $data['eneteteEnergies'] = array('Id', 'Nom', 'Prix du kWh', 'Inflation', 'Pollution CO<sub>2</sub>', 'Abonnement');
+        $data['eneteteEnergies'] = array( 'Nom', 'Prix du kWh', 'Inflation', 'Pollution CO<sub>2</sub>', 'Abonnement');
         
         
         $this->layout->title('Liste des énergies');
