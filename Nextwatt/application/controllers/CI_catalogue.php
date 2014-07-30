@@ -14,9 +14,9 @@ class CI_Catalogue extends MY_Controller
 
     public function index()
     {
-        $i=0;
+        $i = 0;
         $this->load->model('Mappage/type', 'type');
-        $this->load->model('Mappage/soustypes','soustype');
+        $this->load->model('Mappage/soustypes', 'soustype');
         $this->load->model('Mappage/catalogue', 'catalogue');
 
 
@@ -24,15 +24,12 @@ class CI_Catalogue extends MY_Controller
         $data = array();
         $data['Types'] = $this->type->select_types(null);
         $catalogue = array();
-        foreach($data['Types'] as $type)
-        {
+        foreach ($data['Types'] as $type) {
             $type['Nom_Type'] = preg_replace("# #", '-', $type['Nom_Type']);
             $soustypes = $this->soustype->select_soustype_type($type['id']);
-            foreach($soustypes as $st)
-            {
+            foreach ($soustypes as $st) {
                 $produits = $this->catalogue->produit_by_soustype($st['id']);
-                foreach($produits as $p)
-                {
+                foreach ($produits as $p) {
                     $catalogue[$type['Nom_Type']][$st['nomcourt']][$p['Reference']] = $p;
                 }
             }
@@ -55,15 +52,15 @@ class CI_Catalogue extends MY_Controller
         $produit = $this->catalogue->select_panneau($idproduit);
         $refopt = $this->option->select_option($produit['Reference']);
 
-        foreach($refopt as $opt)
+        if (isset($refopt))
         {
-            $refoptions = $opt['op_ref'];
-            $options[] = $this->catalogue->select_option_catalogue($refoptions);
+            foreach ($refopt as $opt)
+            {
+                $refoptions = $opt['op_ref'];
+                $options[] = $this->catalogue->select_option_catalogue($refoptions);
+            }
+            $data['options'] = $options;
         }
-
-//        $options = $this->catalogue->select_option_catalogue($refopt);
-
-        $data['options'] = $options;
         $data['produit'] = $produit;
 
         $this->layout->title('Fiche produit');
@@ -404,7 +401,7 @@ class CI_Catalogue extends MY_Controller
 
         $data = array();
         $data['soustypes'] = $this->mapsoustype->select_soustype(); //On récupère tous les soustypes
-        $data['entetesoustype'] = null;// array('ID', 'Nom court', 'Nom devis', 'Catégorie bouquet CI', 'Catégorie bouquet EcoPTZ', 'CI unitaire'); //On définit les entêtes
+        $data['entetesoustype'] = null; // array('ID', 'Nom court', 'Nom devis', 'Catégorie bouquet CI', 'Catégorie bouquet EcoPTZ', 'CI unitaire'); //On définit les entêtes
 
         $this->layout->title('Liste des soustypes');
         $this->layout->view('B2E/Catalogue/Consulter_Soustype.php', $data); // Render view and layout
@@ -437,14 +434,15 @@ class CI_Catalogue extends MY_Controller
                 $this->consult_soustype();
             } else {
                 echo 'error';
-            }   
+            }
         }
     }
-    
-    public function ajax_chargernomcatalogue(){
+
+    public function ajax_chargernomcatalogue()
+    {
         $this->load->model('Mappage/catalogue', 'catalogue');
-        $catalogue=$this->catalogue->get_nom();
-        
+        $catalogue = $this->catalogue->get_nom();
+
         echo json_encode($catalogue);
     }
 
@@ -533,10 +531,10 @@ class CI_Catalogue extends MY_Controller
         $this->devis_form($idprod);
     }
 
-    public function devis_form($idprod = NULL)                          //NOUVEAU DOSSER
+    public function devis_form($idprod = NULL) //NOUVEAU DOSSER
     {
         $this->load->model('Mappage/dossier', 'dossier');
-        $this->load->model('Mappage/client', 'client');                 //DOSSIER EXISTANT
+        $this->load->model('Mappage/client', 'client'); //DOSSIER EXISTANT
         $this->load->model('Mappage/user', 'user');
         $this->load->model('Mappage/article', 'article');
 
@@ -561,7 +559,7 @@ class CI_Catalogue extends MY_Controller
         $articles = $this->article->list_article_dossier($this->session->userdata['idDossier']);
         $data['devis'] = $this->mise_en_forme_article($articles);
         //-----------Mise à jour du projet------------------------------------------
-        $this->dossier->modifier_titre_dossier($dossier_id,$data['devis']['titre'],$data['devis']['TOTAL_TTC']);       
+        $this->dossier->modifier_titre_dossier($dossier_id, $data['devis']['titre'], $data['devis']['TOTAL_TTC']);
         //-----------Affichage---------
         $this->layout->title('Devis');
         $this->layout->view('B2E/Dossier_Archives/Devis/devis', $data);
@@ -686,7 +684,7 @@ class CI_Catalogue extends MY_Controller
             //Création du titre du sous projet ---- si ce n'est pas une option
             if ($article['article_id'] == 0) {
                 $soustype = $this->soustype->select_soustype($article['soustype_id']);
-                $titre[]=$soustype['nomdevis'];
+                $titre[] = $soustype['nomdevis'];
             }
 
 
@@ -729,15 +727,15 @@ class CI_Catalogue extends MY_Controller
             $TOTAL_TTC += $totalTTCApresRemise;
 
         }
-        
-        $titre=  implode($titre, ', ');
+
+        $titre = implode($titre, ', ');
         $liste = array('produits' => $produits,
             'TOTAL_CEE' => $TOTAL_CEE,
             'TOTAL_Remise' => $TOTAL_Remise,
             'TOTAL_HT' => $TOTAL_HT,
             'TOTAL_TVA' => $TOTAL_TVA,
             'TOTAL_TTC' => $TOTAL_TTC,
-            'titre'=>$titre);
+            'titre' => $titre);
         return $liste;
     }
 

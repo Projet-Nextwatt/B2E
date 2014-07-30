@@ -9,8 +9,15 @@
         <div class="col-xs-12">
             <?php
             var_dump($produit);
-            $this->fonctionspersos->creerTableau($options, null, 'CI_catalogue/aff_fiche_produit');
-            var_dump($options);
+
+            if(isset($options))
+            {
+                $this->fonctionspersos->creerTableau($options, null, 'CI_catalogue/aff_fiche_produit');
+            }
+            else
+            {
+                echo('<h4> Aucune option à afficher </h4>');
+            }
                 ?>
         </div>
     </div>
