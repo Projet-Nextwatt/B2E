@@ -158,8 +158,8 @@ class Catalogue extends DataMapper
             (isset($produit[14]) ? $newcatalogue->Facturation = $produit[14] : '');
             (isset($produit[15]) ? $newcatalogue->Type_Produit = $produit[15] : '');
             (isset($produit[16]) ? $newcatalogue->Spec = $produit[16] : '');
-            $newcatalogue->Actif = 1;
-            $newcatalogue->soustype_id = 1;
+            ($newcatalogue->id==null ? $newcatalogue->Actif = 1 : '');
+            ($newcatalogue->id==null ? $newcatalogue->soustype_id = 1 : '');
             (isset($produit[17]) ? $newcatalogue->Fiche_Tech = $produit[17] : '');
             (isset($produit[18]) ? $newcatalogue->Note = $produit[18] : '');
             if ($newcatalogue->save()) {
