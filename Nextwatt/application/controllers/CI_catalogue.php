@@ -25,6 +25,7 @@ class CI_Catalogue extends MY_Controller
         $catalogue = array();
         foreach($data['Types'] as $type)
         {
+            $type['Nom_Type'] = preg_replace("# #", '-', $type['Nom_Type']);
             $soustypes = $this->soustype->select_soustype_type($type['id']);
             foreach($soustypes as $st)
             {
