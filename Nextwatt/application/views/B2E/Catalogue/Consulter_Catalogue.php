@@ -28,7 +28,8 @@
             <a href="<?php echo site_url("CI_catalogue/consult_soustype"); ?>">
                 <button type="button" class="btn btn-white btn-sm btn-primary">Gérer liste types</button>
             </a>
-            <button type="button" class="btn btn-white btn-sm btn-primary disabled">Lier options (en construction)</button>
+            <button type="button" class="btn btn-white btn-sm btn-primary disabled">Lier options (en construction)
+            </button>
             <a href="<?php echo site_url("CI_catalogue/upload_catalogue_form"); ?>">
                 <button type="button" class="btn btn-white btn-sm btn-primary">Charger Catalogue</button>
             </a>
@@ -37,7 +38,7 @@
         <?php
         $this->load->library('fonctionspersos');
         $entete = $this->fonctionspersos->set_entete_catalogue_mini();
-//        va<!--r_dump($catalogue);-->
+//                var_dump($catalogue)<!--;-->
         ?>
 
 
@@ -47,26 +48,33 @@
                     <a href="#" data-toggle="tab">Catalogue</a>
                 </li>
                 <?php
-                foreach ($catalogue as $index=>$t) {
-                      ?>
-                        <li>
-                            <a href="#<?php echo($index) ?>" data-toggle="tab"><?php echo($index) ?></a>
-                        </li> <?php
+                foreach ($catalogue as $index => $t) {
+                    ?>
+                    <li>
+                        <a href="#<?php echo($index) ?>" data-toggle="tab"><?php echo($index) ?></a>
+                    </li> <?php
                 }
                 ?>
             </ul>
             <?php $this->load->library('fonctionspersos'); ?>
             <div class="tab-content">
-                <?php foreach ($catalogue as $index => $soustypes) { ?>
+                <?php
+                if (empty($catalogue))
+                {
+                    echo('<h4>Les produits sont sans sous-types</h4>');
+                }
+                else{
+                foreach ($catalogue as $index => $soustypes) {
+                    ?>
                     <div class="tab-pane in active" id="<?php echo($index) ?>">
                         <?php
                         foreach ($soustypes as $index => $produits) {
                             echo('<h4>' . $index . '</h4>');
-                            $this->fonctionspersos->creerTableau($produits, $entete);
+                            $this->fonctionspersos->creerTableau($produits, $entete, 'CI_catalogue/aff_fiche_produit', null);
                         }
                         ?>
                     </div>
-                <?php } ?>
+                <?php }} ?>
             </div>
         </div>
     </div>

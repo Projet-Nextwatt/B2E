@@ -189,10 +189,18 @@ class Catalogue extends DataMapper
             return $obj->get()->all_to_array();
         } else {
             $obj = new Catalogue();
-            return $obj->where('id', $id)->get()->all_to_array();
+            return $obj->where('id', $id)->get()->to_array();
         }
     }
 
+    function select_option_catalogue($ref = null)
+    {
+        $opt = new Catalogue();
+
+        $opt->where('Reference', $ref)->get();
+
+        return $opt->to_array();
+    }
     function select_panneau_critere($critere)
     {
         $obj = new Catalogue();
@@ -274,10 +282,11 @@ class Catalogue extends DataMapper
         $i=0;
         $newtab = array();
         $a = new Catalogue();
-        $a->select( 'Reference, Nom, Marque,Puissance,Prix_Annonce_TTC');
+        $a->select( 'id, Reference, Nom, Marque,Puissance,Prix_Annonce_TTC');
         $a->where('soustype_id', $id)->get();
 
         foreach ($a as $ligne) {
+            $newtab[$i]['id'] = $ligne->id;
             $newtab[$i]['Reference'] = $ligne->Reference;
             $newtab[$i]['Nom'] = $ligne->Nom;
             $newtab[$i]['Marque'] = $ligne->Marque;
