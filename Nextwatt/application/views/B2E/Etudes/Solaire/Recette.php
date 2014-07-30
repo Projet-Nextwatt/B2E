@@ -32,7 +32,7 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
             <td style="border:none">
             <span id="choixorient"><?php
                 if (isset($this->session->userdata['Orientation']) && $this->session->userdata['Orientation'] != '') {
-                    echo "L'orientation sera de : <strong>" . $this->session->userdata['Orientation'] . "</strong>";
+                    echo "L'orientation sera de : <strong>" . $this->session->userdata['Orientation'] ." %</strong>";
                 } else {
                     $pdf = false;
                     ?>
@@ -169,7 +169,7 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
         </li>
         <?php if (isset($msgsucces)){ ?>
         <li class="center">
-            <a href=" <?php echo site_url("pv/retour_menu_dossier"); ?>"><h4>Revenir sur dossier</h4></a>
+            <a href=" <?php echo site_url("pv/retour_menu_dossier"); ?>"><h4><i class="ace-icon fa fa-reply icon-only"></i> Revenir sur dossier</h4></a>
             <br/><br/>
         </li>
         <p><?php if (isset($msgsucces)) {
@@ -205,5 +205,3 @@ if (isset($this->session->userdata['HEPP']) || isset($this->session->userdata['O
         </li>
     </ul>
 </div>
-
-<?php var_dump($this->session->all_userdata());?>

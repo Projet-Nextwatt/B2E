@@ -151,10 +151,10 @@ class Client extends DataMapper
 
     }
 
-    function get_InfoUser($nomUser, $prenomUser)
+    function get_InfoUser($id)
     {
         $c = new Client();
-        return $c->where('nom1',$nomUser)->where('prenom1',$prenomUser)->get()->all_to_array();
+        return $c->where('id',$id)->get()->all_to_array();
     }
 }
 

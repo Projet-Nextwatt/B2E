@@ -464,7 +464,7 @@ $('#raccord').change(function () {
 
 function selectpanneau() {
     var racc;
-    if (document.getElementById('raccord').checked == true) {
+    if (document.getElementById('raccord').checked == false) {
         racc = 'true';
     } else {
         racc = 'false';

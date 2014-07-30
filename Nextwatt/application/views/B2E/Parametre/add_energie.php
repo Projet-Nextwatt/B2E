@@ -23,7 +23,7 @@
             $attributes = array('role' => 'form', 'id' => 'myform', 'class' => 'form-horizontal');
             $hidden = array();
             if (isset($energie)) {
-                $hidden = array('id' => $energie['id'],'Energie'=>$energie['Energie']);
+                $hidden = array('id' => $energie['id'],'Energie'=>  html_entity_decode($energie['Energie']));
                 echo form_open('parametre/modif_energie', $attributes, $hidden);
             }
             else
@@ -111,11 +111,17 @@
         </div>
 
         <div class='row form-group'>
-            <div class='col-md-offset-4 col-md-4'>
+            <div class='col-sm-offset-4 col-sm-2 col-xs-offset-0 col-xs-6'>
                 <button type="submit" class="btn btn-sm btn-info ">
                     <i class="ace-icon fa fa-floppy-o bigger-160"></i>
                     Enregistrer
                 </button>
+            </div>           
+            <div class='col-sm-2 align-right'>
+                <a href="<?php echo site_url("parametre/Consulter_Energie"); ?>" class="btn btn-sm btn-danger ">
+                    <i class="ace-icon fa fa-frown-o bigger-160"></i>
+                    Annuler
+                </a>
             </div>
         </div>
 

@@ -10,7 +10,7 @@ class CI_Dossier extends MY_Controller
 
     }
 
-    public function choix_action()                      //NOUVEAU DOSSER
+    public function choix_action() //NOUVEAU DOSSER
     {
         $this->load->model('Mappage/client', 'client');
         $this->load->model('Mappage/user', 'user');
@@ -39,7 +39,7 @@ class CI_Dossier extends MY_Controller
 
     public function consult_dossier()
     {
-        $this->load->model('Mappage/dossier','dossier');
+        $this->load->model('Mappage/dossier', 'dossier');
 
         $data['dossiers'] = $this->dossier->select_all_dossier();
         $data['dossiers_archive'] = $this->dossier->select_archive_dossier();
@@ -61,7 +61,7 @@ class CI_Dossier extends MY_Controller
     public function select_dossier()
     {
         $this->load->model('Mappage/dossier', 'dossier');
-        $this->load->model('Mappage/client', 'client');         //DOSSIER EXISTANT
+        $this->load->model('Mappage/client', 'client'); //DOSSIER EXISTANT
         $this->load->model('Mappage/user', 'user');
 
         $idDossier = $this->session->userdata['CI_dossier/select_dossier'];
@@ -80,8 +80,7 @@ class CI_Dossier extends MY_Controller
         $data['usernom'] = $user['nom'];
         $data['userprenom'] = $user['prenom'];
 
-        if($dossier[0]['etude_id'] == 0)
-        {
+        if ($dossier[0]['etude_id'] == 0) {
             $this->session->userdata['HEPP'] = null;
             $this->session->userdata['Ratioc'] = null;
             $this->session->userdata['ID_Ensoleillement'] = null;
@@ -95,9 +94,7 @@ class CI_Dossier extends MY_Controller
             $this->session->userdata['Inflation'] = null;
             $this->session->userdata['Tarifedf'] = null;
             $this->session->userdata['Orientation'] = null;
-        }
-        else
-        {
+        } else {
 
         }
 
@@ -107,9 +104,10 @@ class CI_Dossier extends MY_Controller
 
     public function addDossier()
     {
-            $this->load->model('Mappage/Dossier', 'dossier');
-            $resultSelectIdDossier = $this->dossier->select_idDossier();
-            $iddossier = $resultSelectIdDossier[0]['id'] + 1;
+        $this->load->model('Mappage/Dossier', 'dossier');
+        $resultSelectIdDossier = $this->dossier->select_idDossier();
+        $iddossier = $resultSelectIdDossier[0]['id'] + 1;
+        if (isset($_POST['idClient']) && isset($_POST['nomClient']) && isset($_POST['prenomClient'])) {
             $tabsession = array(
                 'idDossier' => $iddossier,
                 'idClient' => $_POST['idClient'],
@@ -117,11 +115,13 @@ class CI_Dossier extends MY_Controller
                 'prenomClient' => $_POST['prenomClient']
             );
             $this->session->set_userdata($tabsession);
-            $this->load->model('Mappage/Client', 'client');
-            $this->client->link_ClientUser($this->session->userdata['userconnect']['id_login'], $_POST['idClient']);
-            $this->dossier->add_Dossier($_POST['idClient']);
+        }
 
-            $this->choix_action();
+        $this->load->model('Mappage/Client', 'client');
+        $this->client->link_ClientUser($this->session->userdata['userconnect']['id_login'], $this->session->userdata['idClient']);
+        $this->dossier->add_Dossier($this->session->userdata['idClient']);
+
+        $this->choix_action();
     }
 
     public function archiver()
@@ -140,6 +140,7 @@ class CI_Dossier extends MY_Controller
         $this->layout->title('Dossier');
         $this->layout->view('B2E/Dossier_Archives/Devis/detail_article');
     }
+
 }
 
 

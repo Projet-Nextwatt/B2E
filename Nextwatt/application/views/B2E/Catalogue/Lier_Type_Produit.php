@@ -22,7 +22,7 @@ foreach ($produit as $prod) {
         <div class="col-sm-offset-7">
             <?php
             if($soustypes != NULL){
-            $this->fonctionspersos->creerDropdown($soustypes, null, $prod['id']);
+            $this->fonctionspersos->creerDropdown($soustypes, $prod['soustype_id'], $prod['id']);
             }
             else{
                 echo('<h6><strong>Aucune donnée disponible, veuillez rajoutez des sous types</strong></h6> ');

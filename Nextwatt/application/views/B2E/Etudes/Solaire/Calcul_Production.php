@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class='form-group'>
-            <label class="col-sm-6 no-padding-right control-label" for='raccord'>Raccordement : </label>
+            <label class="col-sm-6 no-padding-right control-label" for='raccord'>Auto-consommation : </label>
 
             <div class="col-sm-6">
                 <label>

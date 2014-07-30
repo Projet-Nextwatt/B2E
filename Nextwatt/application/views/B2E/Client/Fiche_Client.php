@@ -1,161 +1,163 @@
 <div class="row form-group">
-<div class="col-xs-12">
+    <div class="col-xs-12">
 
-<div class='row'>
-<div class='col-md-6'>
-    <div class="widget-box">
-        <div class="widget-header widget-header-flat">
-            <h4 class='widget-title'>Fiche client</h4>
-        </div>
-        <div class="widget-body">
-            <div class="widget-main">
-                <h4><strong>
-                        <?php
-                        if (empty($client['prenom1'])) {
-                            $civ = $client['civilite'];
-                            echo($civ == 1 ? 'Madame ' : '');
-                            echo($civ == 2 ? 'Mademoiselle ' : '');
-                            echo($civ == 3 ? 'Monsieur ' : '');
-                        }
-                        echo $client['nom1'] . ' ' . $client['prenom1'];
-                        if (!(empty($client['prenom2']))) {
-                            echo ' et ';
-                            if ($client['nom1'] != $client['nom2']) {
-                                echo $client['nom2'];
-                            }
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class="widget-box">
+                    <div class="widget-header widget-header-flat">
+                        <h4 class='widget-title'>Fiche client</h4>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            <h4><strong>
+                                    <?php
+                                    if (empty($client['prenom1'])) {
+                                        $civ = $client['civilite'];
+                                        echo($civ == 1 ? 'Madame ' : '');
+                                        echo($civ == 2 ? 'Mademoiselle ' : '');
+                                        echo($civ == 3 ? 'Monsieur ' : '');
+                                    }
+                                    echo $client['nom1'] . ' ' . $client['prenom1'];
+                                    if (!(empty($client['prenom2']))) {
+                                        echo ' et ';
+                                        if ($client['nom1'] != $client['nom2']) {
+                                            echo $client['nom2'];
+                                        }
 
-                            echo ' ' . $client['prenom2'];
-                        }
-                        ?>
-                    </strong></h4>
+                                        echo ' ' . $client['prenom2'];
+                                    }
+                                    ?>
+                                </strong></h4>
 
-                <p>
-                    <?php
-                    echo nl2br($client['adresse']) . '<br/>'
-                        . $client['codepostal'] . ' ' . $client['ville'];
-                    ?>
-                </p>
+                            <p>
+                                <?php
+                                echo nl2br($client['adresse']) . '<br/>'
+                                    . $client['codepostal'] . ' ' . $client['ville'];
+                                ?>
+                            </p>
 
 
-                <?php if (!(empty($client['email']))) { ?>
-                    <p>
-                        <strong>E-mail : </strong> <?php echo $client['email'] ?><br/>
-                        <a href="mailto:<?php echo($client['email']) ?>">Envoyer un e-mail au client</a>
-                    </p>
-                <?php } ?>
+                            <?php if (!(empty($client['email']))) { ?>
+                                <p>
+                                    <strong>E-mail : </strong> <?php echo $client['email'] ?><br/>
+                                    <a href="mailto:<?php echo($client['email']) ?>">Envoyer un e-mail au client</a>
+                                </p>
+                            <?php } ?>
 
-                <?php if (!(empty($client['tel1'])) OR !(empty($client['tel2']))) { ?>
-                    <p>
-                        <strong>Téléphone : </strong>
-                        <?php
-                        echo $client['tel1'];
-                        echo((empty($client['tel1']) OR (empty($client['tel2']))) ? '' : ' / ');
-                        echo $client['tel2'];
-                        ?>
-                    </p>
-                <?php } ?>
+                            <?php if (!(empty($client['tel1'])) OR !(empty($client['tel2']))) { ?>
+                                <p>
+                                    <strong>Téléphone : </strong>
+                                    <?php
+                                    echo $client['tel1'];
+                                    echo((empty($client['tel1']) OR (empty($client['tel2']))) ? '' : ' / ');
+                                    echo $client['tel2'];
+                                    ?>
+                                </p>
+                            <?php } ?>
 
-                <p>
-                    <strong>Responsable : </strong> <?php echo $responsable; ?>
-                </p>
+                            <p>
+                                <strong>Responsable : </strong> <?php echo $responsable; ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
 
 
-<div class='col-md-6'>
-<div class='row'>
-<div class='col-xs-12'>
-<div class="widget-box <?php echo (empty($_POST)?'collapsed':''); ?>">
-<div class="widget-header widget-header-flat">
-    <h4 class='widget-title'>Modification des informations</h4>
+            <div class='col-md-6'>
+                <div class='row'>
+                    <div class='col-xs-12'>
+                        <div class="widget-box <?php echo(empty($_POST) ? 'collapsed' : ''); ?>">
+                            <div class="widget-header widget-header-flat">
+                                <h4 class='widget-title'>Modification des informations</h4>
                         <span class="widget-toolbar">
                             <a href="#" data-action="collapse">
-                                <i class="ace-icon fa <?php echo (empty($_POST)?'fa-chevron-down':'fa-chevron-up'); ?>"></i>
+                                <i class="ace-icon fa <?php echo(empty($_POST) ? 'fa-chevron-down' : 'fa-chevron-up'); ?>"></i>
                             </a>
                         </span>
-</div>
-<div class='widget-body'>
-<div class='widget-main'>
+                            </div>
+                            <div class='widget-body'>
+                                <div class='widget-main'>
 
-                            <?php $this->load->view('B2E/Client/Form_Modif_Client') ?>
-</div>
-</div>
-</div>
-</div>
-</div>
+                                    <?php $this->load->view('B2E/Client/Form_Modif_Client') ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
-<div class='row'>
-    <div class='col-xs-12'>
-        <div class="widget-box">
-            <div class="widget-header widget-header-flat">
-                <h4 class='widget-title'>Actions</h4>
+                <div class='row'>
+                    <div class='col-xs-12'>
+                        <div class="widget-box">
+                            <div class="widget-header widget-header-flat">
+                                <h4 class='widget-title'>Actions</h4>
+                            </div>
+                            <div class="widget-body">
+                                <div class="widget-main">
+
+                                    <?php if (isset($client) && $client['actif'] == 0) { ?>
+                                        <button type="button" data-toggle="modal" data-target="#Confsuppr"
+                                                class="btn btn-sm btn-danger">
+                                            <i class="ace-icon fa fa-trash-o bigger-160"></i>
+                                            Supprimer
+                                        </button>
+                                    <?php } ?>
+
+                                    <?php if (isset($client) && $client['actif'] == 1) { ?>
+                                        <button type="button" data-toggle="modal" data-target="#Confarchiver"
+                                                class="btn btn-sm btn-warning">
+                                            <i class="ace-icon fa fa-trash-o bigger-160"></i>
+                                            Archiver
+                                        </button>
+                                    <?php } ?>
+
+                                    <?php if (isset($client) && $client['actif'] == 0) { ?>
+                                        <button type="button" data-toggle="modal" data-target="#Confactiver"
+                                                class="btn btn-sm btn-success">
+                                            <i class="ace-icon fa fa-check bigger-160"></i>
+                                            Désarchiver
+                                        </button>
+                                    <?php } ?>
+
+                                    <button type="button"
+                                            class="btn btn-sm btn-primary" id="addDossier">
+<!--                                            onClick="parent.location='Consult_Client?dossier=TRUE'"-->
+
+                                        <i class="ace-icon fa fa-plus bigger-160"></i>
+                                        Ajouter un dossier
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
-            <div class="widget-body">
-                <div class="widget-main">
-
-                    <?php if (isset($client) && $client['actif'] == 0) { ?>
-                        <button type="button" data-toggle="modal" data-target="#Confsuppr"
-                                class="btn btn-sm btn-danger">
-                            <i class="ace-icon fa fa-trash-o bigger-160"></i>
-                            Supprimer
-                        </button>
-                    <?php } ?>
+            <!-- fin de l'a colonne n°2-->
 
 
-                    <?php if (isset($client) && $client['actif'] == 1) { ?>
-                        <button type="button" data-toggle="modal" data-target="#Confarchiver"
-                                class="btn btn-sm btn-warning">
-                            <i class="ace-icon fa fa-trash-o bigger-160"></i>
-                            Archiver
-                        </button>
-                    <?php } ?>
+        </div>
+        <!-- fin de la première row -->
 
-
-
-
-
-                    <?php if (isset($client) && $client['actif'] == 0) { ?>
-                        <button type="button" data-toggle="modal" data-target="#Confactiver"
-                                class="btn btn-sm btn-success">
-                            <i class="ace-icon fa fa-check bigger-160"></i>
-                            Désarchiver
-                        </button>
-                    <?php } ?>
-
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class="widget-box">
+                    <div class="widget-header widget-header-flat">
+                        <h4 class='widget-title'>Dossiers</h4>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            <?php $this->fonctionspersos->creerTableau($dossiers, array(), 'CI_dossier/select_dossier') ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
-</div>
-
-
-</div>
-<!-- fin de l'a colonne n°2-->
-
-
-</div>
-<!-- fin de la première row -->
-
-<div class='row'>
-<div class='col-md-12'>
-    <div class="widget-box">
-        <div class="widget-header widget-header-flat">
-            <h4 class='widget-title'>Dossiers</h4>
-        </div>
-        <div class="widget-body">
-            <div class="widget-main">
-                <?php $this->fonctionspersos->creerTableau($dossiers, array(), 'CI_dossier/select_dossier') ?>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-
-</div>
-<!-- Fin d conteneur pricipal --></div>
+    <!-- Fin d conteneur pricipal --></div>
 
 
 <!-- Modal box supprimer -->
