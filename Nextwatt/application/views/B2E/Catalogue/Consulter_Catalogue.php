@@ -37,29 +37,21 @@
         <?php
         $this->load->library('fonctionspersos');
         $entete = $this->fonctionspersos->set_entete_catalogue_mini();
+//        va<!--r_dump($catalogue);-->
         ?>
 
 
         <div class="tabbable">
             <ul id="catalogue" class="nav nav-tabs">
                 <li class="active">
-                    <a href="#Photovoltaïque" data-toggle="tab">Catalogue</a>
+                    <a href="#" data-toggle="tab">Catalogue</a>
                 </li>
                 <?php
-                foreach ($Types as $t) {
-                    if ($t['id'] == 1) {
-                        ?>
+                foreach ($catalogue as $index=>$t) {
+                      ?>
                         <li>
-                            <a href="#<?php echo($t['Nom_Type']) ?>" data-toggle="tab"><?php echo($t['Nom_Type']) ?></a>
+                            <a href="#<?php echo($index) ?>" data-toggle="tab"><?php echo($index) ?></a>
                         </li> <?php
-                    } elseif ($t['id'] == 10) {
-
-                    } else {
-                        ?>
-                        <li>
-                            <a href="#<?php echo($t['Nom_Type']) ?>" data-toggle="tab"><?php echo($t['Nom_Type']) ?></a>
-                        </li> <?php
-                    }
                 }
                 ?>
             </ul>

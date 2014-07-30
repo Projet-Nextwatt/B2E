@@ -267,7 +267,7 @@ class Fonctionspersos
 
     public function set_entete_catalogue_mini()
     {
-        $entete = array('ID Sous type','Référence', 'Nom', 'Marque', 'Puissance', 'Prix annonce TTC');
+        $entete = array('Référence', 'Nom', 'Marque', 'Puissance', 'Prix annonce TTC');
         return $entete;
     }
 

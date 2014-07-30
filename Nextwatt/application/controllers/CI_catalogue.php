@@ -23,7 +23,6 @@ class CI_Catalogue extends MY_Controller
         //Remplissage de la variable $data avec l'image pour le layout
         $data = array();
         $data['Types'] = $this->type->select_types(null);
-        $data['Soustypes'] = $this->soustype->select_soustype(null);
         $catalogue = array();
         foreach($data['Types'] as $type)
         {

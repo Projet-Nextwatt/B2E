@@ -246,11 +246,10 @@ class Catalogue extends DataMapper
         $i=0;
         $newtab = array();
         $a = new Catalogue();
-        $a->select('soustype_id, Reference, Nom, Marque,Puissance,Prix_Annonce_TTC');
+        $a->select( 'Reference, Nom, Marque,Puissance,Prix_Annonce_TTC');
         $a->where('soustype_id', $id)->get();
 
         foreach ($a as $ligne) {
-            $newtab[$i]['soustype_id'] = $ligne->soustype_id;
             $newtab[$i]['Reference'] = $ligne->Reference;
             $newtab[$i]['Nom'] = $ligne->Nom;
             $newtab[$i]['Marque'] = $ligne->Marque;
