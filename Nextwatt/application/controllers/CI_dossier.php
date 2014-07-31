@@ -42,17 +42,27 @@ class CI_Dossier extends MY_Controller
         $this->load->model('Mappage/dossier', 'dossier');
         $this->load->model('Mappage/client', 'client');
 
-        $data['dossiers_archive'] = $this->dossier->select_archive_dossier();
-
+        // Mise en forme dossier archive ----------------------
+        $dossiersarchive = $this->dossier->select_archive_dossier();
+        $data['dossiers_archive'] = $dossiersarchive;
+        $newDossierArchive = array();
+        $identifiant = null;
+        foreach ($dossiersarchive as $d) {
+            $newDossierArchive[$d['Identifiant']][] = array('nom1' => $d['nom1'], 'titre' => $d['titre'], 'montant' => $d['montant'], 'idDossier' => $d['id']);
+        }
+        //---------------------------------------------
+        // Mise en forme dossier ----------------------
         $dossiers = $this->dossier->select_all_dossier();
         $data['dossiers'] = $dossiers;
         $newDossier = array();
         $identifiant = null;
         foreach ($dossiers as $d) {
-            $newDossier[$d['Identifiant']][] = array('nom1'=>$d['nom1'],'titre'=>$d['titre'],'montant'=>$d['montant'],'idDossier'=>$d['id']);
+            $newDossier[$d['Identifiant']][] = array('nom1' => $d['nom1'], 'titre' => $d['titre'], 'montant' => $d['montant'], 'idDossier' => $d['id']);
         }
+        //---------------------------------------------
 
         $data['dossiers'] = $newDossier;
+        $data['dossiers_archive'] = $newDossierArchive;
 
         $this->layout->js(js_url('dossier'));
         $this->layout->title('Dossier');
@@ -146,18 +156,19 @@ class CI_Dossier extends MY_Controller
 
     /******************************************* DETAIL ARTICLE  *******************************************/
 
-    public function aff_detail_article($id=null )
+    public function aff_detail_article($id = null)
     {
-        if ($id!=null){
-            $this->session->set_userdata(array('CI_dossier/aff_detail_article'=>$id));
+        if ($id != null) {
+            $this->session->set_userdata(array('CI_dossier/aff_detail_article' => $id));
             header('Location:' . site_url("CI_dossier/aff_detail_article"));
         }
         $this->layout->title('Dossier');
         $this->layout->view('B2E/Dossier_Archives/Devis/detail_article');
     }
 
-    public function ajax_selectdossier(){
-        if(isset($_POST['idDossier'])){
+    public function ajax_selectdossier()
+    {
+        if (isset($_POST['idDossier'])) {
             $this->session->set_userdata(array('CI_dossier/select_dossier' => $_POST['idDossier']));
             echo true;
         }
