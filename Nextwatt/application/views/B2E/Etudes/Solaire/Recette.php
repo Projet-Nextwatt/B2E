@@ -71,7 +71,8 @@
 <div class="inline center col-sm-6" style="padding-top: 3%">
     <?php if (isset($msgsucces)) { ?>
         <a href=" <?php echo site_url("pv/retour_menu_dossier"); ?>">
-            <button class="btn btn-primary btn-white btn-round"><h4><i class="ace-icon fa fa-reply bigger-120"></i> Revenir sur dossier</h4></button>
+            <button class="btn btn-primary btn-white btn-round"><h4><i class="ace-icon fa fa-reply bigger-120"></i>
+                    Revenir sur dossier</h4></button>
         </a>
         <br/><br/>
         <p><?php if (isset($msgsucces)) {
@@ -158,7 +159,7 @@
             </tr>
             <tr>
                 <td> Année 10</td>
-                <td><?php echo number_format($Prodannuelle[9],2, ',', ' ') ?></td>
+                <td><?php echo number_format($Prodannuelle[9], 2, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[9] ?></td>
                 <td><?php echo number_format($flouzannuel[9], 0, ',', ' ') ?></td>
                 <td><?php echo number_format($flouzcumul[9], 0, ',', ' ') ?></td>
@@ -173,7 +174,7 @@
             <tr>
                 <td> Année 20</td>
                 <td><?php echo number_format($Prodannuelle[19], 2, ',', ' ') ?></td>
-                <td><?php echo $tarifannuel[19]?></td>
+                <td><?php echo $tarifannuel[19] ?></td>
                 <td><?php echo number_format($flouzannuel[19], 0, ',', ' ') ?></td>
                 <td><?php echo number_format($flouzcumul[19], 0, ',', ' ') ?></td>
             </tr>
@@ -189,34 +190,41 @@
         </table>
     </div>
 </div>
-<div class="col-xs-12 center">
-    <p><h4><strong>Recette sur 20 ans : <span class="green"><?php echo number_format($flouzcumul[19], 0, ',', ' ') ?> €</span></strong></h4></p>
-    <br/><br/>
+<div class="col-xs-12 col-sm-offset-5">
+    <p><h4><strong>Recette sur 20 ans : <span class="green"><?php echo number_format($flouzcumul[19], 0, ',', ' ') ?>
+                €</span></strong></h4></p>
+    <!--    <br/>-->
 </div>
+<?php if($this->session->userdata('Chauffe') !=null) {?>
+<div class="col-xs-12 col-sm-offset-5">
+    <h4><strong>Et des économies annuelle de chauffage jusqu'à : </strong></h4>
+    <ul class="list-unstyled">
+        <li><h4><strong><i class="ace-icon fa fa-flash green "></i><span
+                        class="green"> - <?php echo number_format($this->session->userdata('ecoElec'), 0, ',', ' ') ?>
+                        €</span> avec un chauffage électrique <span class="green">- </span></strong><i class="ace-icon fa fa-flash green "></i></h4>
+        </li>
+        <li><h4><strong><i class="ace-icon fa fa-tint green"></i><span
+                        class="green"> - <?php echo number_format($this->session->userdata('ecoFioul'), 0, ',', ' ') ?>
+                        €</span> avec un chauffage au fioul <span class="green">- </span></strong><i class="ace-icon fa fa-tint green"></i></h4></li>
+        <li><h4><strong><i class="ace-icon fa fa-cloud green"></i><span
+                        class="green"> - <?php echo number_format($this->session->userdata('ecoGaz'), 0, ',', ' ') ?>
+                        €</span> avec un chauffage au gaz <span class="green">- </span><i class="ace-icon fa fa-cloud green"></i></strong></h4></li>
+    </ul>
+
+    <!--    <p><h4><strong>Economie annu élec : <span class="green">-->
+    <?php //echo number_format($this->session->userdata('ecoElec'), 0, ',', ' ') ?><!-- €</span></strong></h4></p>-->
+    <!--    <p><h4><strong>Eco fioul : <span class="green">-->
+    <?php //echo number_format($this->session->userdata('ecoFioul'), 0, ',', ' ') ?><!-- €</span></strong></h4></p>-->
+    <!--    <p><h4><strong>Eco gaz : <span class="green">-->
+    <?php //echo number_format($this->session->userdata('ecoGaz'), 0, ',', ' ') ?><!-- €</span></strong></h4></p>-->
+</div>
+<?php } ?>
 
 <div class="col - xs - 12">
     <ul class="pager">
         <li class="previous">
-            <a  href=" <?php echo site_url("pv/calculprod"); ?>"><h4>← Choix système</h4></a>
+            <a href=" <?php echo site_url("pv/calculprod"); ?>"><h4>← Choix système</h4></a>
         </li>
-        <!--        --><?php //if (isset($msgsucces)){ ?>
-        <!--        <li class="">-->
-        <!--            <a href=" -->
-        <?php //echo site_url("pv/retour_menu_dossier"); ?><!--"><h4>Revenir sur dossier</h4></a>-->
-        <!--            <br/><br/>-->
-        <!--        </li>-->
-        <!--        <p>--><?php //if (isset($msgsucces)) {
-        //                echo($msgsucces);
-        //            }
-        ?><!--</p>-->
-        <!--        --><?php //} else{ ?>
-        <!--        <li class="center"">-->
-        <!--            <a href=" -->
-        <?php //echo site_url("pv/enregistrer_etude"); ?><!--"><h4>Enregistrer l'étude</h4></a>-->
-        <!--            <br/><br/>-->
-        <!---->
-        <!--            --><?php //} ?>
-        <!--        </li>-->
         <?php
         $disable = null;
         $link = site_url("pv/pdf");

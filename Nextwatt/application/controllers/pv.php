@@ -506,7 +506,7 @@ class PV extends MY_Controller
                     $distanceMin = $distance;
                 }
             }
-            $tabstation = array('ID_Ensoleillement' => $station['id'], 'Ville' => $station['Ville'], 'HEPP' => $station['HEPP']); // Création tableau pour la conversion en json avec la ville et le HEPP correspondant
+            $tabstation = array('ID_Ensoleillement' => $station['id'], 'Ville' => $station['Ville'], 'HEPP' => $station['HEPP'], 'IrradiationChauffe' => $station['Irradiation_chauffe']); // Création tableau pour la conversion en json avec la ville et le HEPP correspondant
             $this->session->set_userdata($tabstation);
             $jsonstationtrouvee = json_encode($station);
             $this->node_Calcul();
@@ -523,7 +523,7 @@ class PV extends MY_Controller
         if (isset($_POST['idVille'])) {
             foreach ($data['station'] as $station) { // Parcours les données du select pour trouver la station correspondante
                 if ($station['id'] == $_POST['idVille']['keyname']) {
-                    $tabstation = array('ID_Ensoleillement' => $station['id'], 'Ville' => $station['Ville'], 'HEPP' => $station['HEPP']); // Création tableau pour la conversion en json avec la ville et le HEPP correspondant
+                    $tabstation = array('ID_Ensoleillement' => $station['id'], 'Ville' => $station['Ville'], 'HEPP' => $station['HEPP'], 'IrradiationChauffe' => $station['Irradiation_chauffe']); // Création tableau pour la conversion en json avec la ville et le HEPP correspondant
                     $this->session->set_userdata($tabstation);
                     $this->node_Calcul();
                     $jsonstation = json_encode($tabstation); // Création du JSON avec le tableau
@@ -627,6 +627,11 @@ class PV extends MY_Controller
             array_push($temparray, $prodtotale);
             array_push($temparray, $this->session->userdata('Heppnet'));
 
+            $chauffage =null;
+            if(isset($temparray['chauffage'])){
+                $chauffage = $temparray['chauffage'];
+            }
+
             $spec = json_encode($temparray);
             $tabsession = array(
                 'Raccordement' => $temparray['raccorde'],
@@ -635,7 +640,8 @@ class PV extends MY_Controller
                 'MarquePanneau' => $data['Marque'],
                 'PrixPanneau' => $data['Prix_Annonce_TTC'],
                 'bonusProd' => $bonusprod,
-                'Puissance' =>$temparray['puissance']
+                'Puissance' => $temparray['puissance'],
+                'Chauffe' => $chauffage
             );
             $this->session->set_userdata($tabsession);
 
@@ -890,7 +896,7 @@ class PV extends MY_Controller
         $this->dompdf->load_html($html);
         $this->dompdf->render();
         //Preview
-        $this->dompdf->stream("welcome.pdf", array('Attachment' => 0));
+        $this->dompdf->stream("Récapitulatif de l'étude solaire.pdf", array('Attachment' => 0));
         //DL direct sans preview
 //        $this->dompdf->stream("welcome.pdf");
 
@@ -913,6 +919,8 @@ class PV extends MY_Controller
         $Inflation = $this->session->userdata('Inflation');
         $Tarifedf = $this->session->userdata('Tarifedf');
         $Puissance = $this->session->userdata('Puissance');
+        $Chauffe = $this->session->userdata('Chauffe');
+        $IrradiationChauffe = $this->session->userdata('IrradiationChauffe');
 
         // Calcul Hepp net --------------------------------
         $heppnette = ($HEPP * ($Orientation / 100) * ($Ratioc) / 100);
@@ -938,7 +946,23 @@ class PV extends MY_Controller
         $data['energie'] = $data['energie'][0]['Prix'];
 
         $this->session->set_userdata(array('Tarifedf' => $data['energie']));
+        // ------------------------------------------------
+
+        // Calcul chauffe ---------------------------------
+        $tarifElec = $this->energie->select_prixrachat(1);
+        $tarifFioul = $this->energie->select_prixrachat(4);
+        $tarifGaz = $this->energie->select_prixrachat(6);
+
+        $ecoElec = $Chauffe * $IrradiationChauffe * $tarifElec[0]['Prix'] / 1000;
+        $ecoFioul = $Chauffe * $IrradiationChauffe * $tarifFioul[0]['Prix'] / 1000;
+        $ecoGaz = $Chauffe * $IrradiationChauffe * $tarifGaz[0]['Prix'] / 1000;
+
+        $this->session->set_userdata(array('ecoElec' => $ecoElec));
+        $this->session->set_userdata(array('ecoFioul' => $ecoFioul));
+        $this->session->set_userdata(array('ecoGaz' => $ecoGaz));
+        // ------------------------------------------------
+
     }
-    // ------------------------------------------------
+
 }
 

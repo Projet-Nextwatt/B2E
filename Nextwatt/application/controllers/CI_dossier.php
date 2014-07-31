@@ -57,7 +57,7 @@ class CI_Dossier extends MY_Controller
         $newDossier = array();
         $identifiant = null;
         foreach ($dossiers as $d) {
-            $newDossier[$d['Identifiant']][] = array('nom1' => $d['nom1'], 'titre' => $d['titre'], 'montant' => $d['montant'], 'idDossier' => $d['id']);
+            $newDossier[$d['Identifiant']][] = array('nom1'=>$d['nom1'],'titre'=>$d['titre'],'montant'=>$d['montant'],'idDossier'=>$d['id']);
         }
         //---------------------------------------------
 
@@ -156,19 +156,18 @@ class CI_Dossier extends MY_Controller
 
     /******************************************* DETAIL ARTICLE  *******************************************/
 
-    public function aff_detail_article($id = null)
+    public function aff_detail_article($id=null )
     {
-        if ($id != null) {
-            $this->session->set_userdata(array('CI_dossier/aff_detail_article' => $id));
+        if ($id!=null){
+            $this->session->set_userdata(array('CI_dossier/aff_detail_article'=>$id));
             header('Location:' . site_url("CI_dossier/aff_detail_article"));
         }
         $this->layout->title('Dossier');
         $this->layout->view('B2E/Dossier_Archives/Devis/detail_article');
     }
 
-    public function ajax_selectdossier()
-    {
-        if (isset($_POST['idDossier'])) {
+    public function ajax_selectdossier(){
+        if(isset($_POST['idDossier'])){
             $this->session->set_userdata(array('CI_dossier/select_dossier' => $_POST['idDossier']));
             echo true;
         }
