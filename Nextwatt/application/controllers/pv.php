@@ -613,7 +613,8 @@ class PV extends MY_Controller
         if (isset($_POST['id'])) {
             $this->load->model('Mappage/catalogue', 'catalogue');
             $data = $this->catalogue->select_panneau($_POST['id']); // Recup des données station avec le model "ensoleillement"
-            $spec = html_entity_decode($data[0]['Spec']);
+//            var_dump($data);
+            $spec = html_entity_decode($data['Spec']);
             $temparray = json_decode($spec, true);
             $production = $temparray['puissance'] * $this->session->userdata('Heppnet');
             if (isset($temparray['bonusProd'])) {
@@ -630,9 +631,9 @@ class PV extends MY_Controller
             $tabsession = array(
                 'Raccordement' => $temparray['raccorde'],
                 'Production' => $prodtotale,
-                'Panneau' => $data['0']['Nom'],
-                'MarquePanneau' => $data['0']['Marque'],
-                'PrixPanneau' => $data['0']['Prix_Annonce_TTC'],
+                'Panneau' => $data['Nom'],
+                'MarquePanneau' => $data['Marque'],
+                'PrixPanneau' => $data['Prix_Annonce_TTC'],
                 'bonusProd' => $bonusprod,
                 'Puissance' =>$temparray['puissance']
             );

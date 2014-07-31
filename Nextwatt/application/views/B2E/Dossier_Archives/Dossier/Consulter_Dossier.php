@@ -1,3 +1,9 @@
+<style>
+    .ddDossier:hover{
+        cursor:pointer;
+    }
+</style>
+
 <div class='row'>
     <div class='col-xs-12'>
         <div class="row">
@@ -48,10 +54,10 @@
                                 <dt><?php echo $d['nom1']; ?></dt>
                                 <?php     $nomClient = $d['nom1'];
                             } ?>
-                            <dd>
-                                <div>Titre : <?php echo $d['titre'] ?> </div>
+                            <dd style="background-color: #F3F3F3;width: 30%" class="ddDossier">
+                                <div><strong><?php echo $d['titre'] ?></strong></div>
                                 <div>Montant : <?php echo number_format($d['montant'], 2, ',', ' ') ?> €</div>
-                                <div class="hidden">ID Dossier : <?php echo $d['idDossier'] ?> </div>
+                                <div class="hidden">ID Dossier : <span class="ddIdDossier"><?php echo $d['idDossier'] ?></span></div>
                             </dd>
                             </dl>
                         <?php } ?>

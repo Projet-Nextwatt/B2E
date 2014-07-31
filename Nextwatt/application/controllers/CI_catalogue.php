@@ -694,9 +694,9 @@ class CI_Catalogue extends MY_Controller
 
             //Remplissage du tableau de tout les produits
             $id = $article['id'];
-            unset($article['id']);
+           // unset($article['id']);
             $article_id = $article['article_id'];
-            unset($article['article_id']);
+            //unset($article['article_id']);
 
             if ($article_id == 0) { //Liste des produits
                 foreach ($article as $key => $data) {

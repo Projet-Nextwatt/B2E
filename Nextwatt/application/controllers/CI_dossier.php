@@ -54,6 +54,7 @@ class CI_Dossier extends MY_Controller
 
         $data['dossiers'] = $newDossier;
 
+        $this->layout->js(js_url('dossier'));
         $this->layout->title('Dossier');
         $this->layout->view('B2E/Dossier_Archives/Dossier/Consulter_Dossier', $data);
     }
@@ -145,10 +146,21 @@ class CI_Dossier extends MY_Controller
 
     /******************************************* DETAIL ARTICLE  *******************************************/
 
-    public function aff_detail_article()
+    public function aff_detail_article($id=null )
     {
+        if ($id!=null){
+            $this->session->set_userdata(array('CI_dossier/aff_detail_article'=>$id));
+            header('Location:' . site_url("CI_dossier/aff_detail_article"));
+        }
         $this->layout->title('Dossier');
         $this->layout->view('B2E/Dossier_Archives/Devis/detail_article');
+    }
+
+    public function ajax_selectdossier(){
+        if(isset($_POST['idDossier'])){
+            $this->session->set_userdata(array('CI_dossier/select_dossier' => $_POST['idDossier']));
+            echo true;
+        }
     }
 
 }
