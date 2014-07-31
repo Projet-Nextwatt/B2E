@@ -52,10 +52,10 @@ class CI_Devis extends MY_Controller
         $produit['dossier_id'] = $this->session->userdata['idDossier'];
 
         $this->article->ajouter_article($produit);
-        $this->devis_form($idprod);
+        header('Location:' . site_url("CI_devis/devis_form"));
     }
 
-    public function devis_form($idprod = NULL)                          //NOUVEAU DOSSER
+    public function devis_form()                          //NOUVEAU DOSSER
     {
         $this->load->model('Mappage/dossier', 'dossier');
         $this->load->model('Mappage/client', 'client');                 //DOSSIER EXISTANT
@@ -310,6 +310,16 @@ class CI_Devis extends MY_Controller
 //        //Preview
 //        $this->dompdf->stream("Devis.pdf", array('Attachment' => 0));
 //    }
+    }
+
+    public function supprimer_article($id=null)
+    {
+        $this->load->model('Mappage/article', 'article');
+
+        $this->article->supprimer_article($this->session->userdata('CI_devis/aff_detail_article'));
+//        $this->article->supprimer_options($this->session->userdata('CI_devis/aff_detail_article'));
+
+        header('Location:' . site_url("CI_devis/devis_form"));
     }
 
     public function aff_detail_article($id=null )

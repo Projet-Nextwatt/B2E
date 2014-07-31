@@ -27,10 +27,10 @@
                                     Faire une remise (en construction)
                                 </button>
 
-
-                                <button style="float: right" type="button" class="btn btn-white disabled">
+                                <a href="<?php echo site_url("CI_devis/supprimer_article"); ?>">
+                                <button style="float: right" type="button" class="btn btn-white">
                                     Supprimer (en construction)
-                                </button>
+                                </button></a>
                             </div>
                         </div>
                         <br/>
