@@ -499,6 +499,21 @@ class CI_Catalogue extends MY_Controller
         );
         return $configtraitementsoustype;
     }
+    
+    
+    ////////////////////////////////  GESTION DES OPTIONS (table catalogue_catalogue//////////////////////
+    public function matrice_liens_produits(){
+        $data = array();
+        $this->load->model('Mappage/catalogue', 'catalogue'); //Chargement du modele
+        $data['catalogue']=$this->catalogue->get_ref_bdd(1);
+        $data['options']=$this->catalogue->get_ref_bdd(2);
+        $this->load->model('Mappage/catalogue_catalogue', 'liens'); //Chargement du modele
+        $data['liens'] = $this->liens->charger_liens(); 
+        
+        //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
+        $this->layout->title('Liens entre les produits');
+        $this->layout->view('B2E/Catalogue/liens_options.php', $data);
+    }
 
 
     ////////////////////////////////  GESTION DU DEVIS (TABLE ARTICLE) ////////////////////////////////////
