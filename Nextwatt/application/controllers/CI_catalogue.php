@@ -508,7 +508,10 @@ class CI_Catalogue extends MY_Controller
         $data['catalogue']=$this->catalogue->get_ref_bdd(1);
         $data['options']=$this->catalogue->get_ref_bdd(2);
         $this->load->model('Mappage/catalogue_catalogue', 'liens'); //Chargement du modele
-        $data['liens'] = $this->liens->charger_liens(); 
+        $liens = $this->liens->charger_liens();
+        foreach ($liens as $value) {
+            $data['liens'][$value['id']]=$value['produit_ref'].'|'.$value['op_ref'];
+        }
         
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->title('Liens entre les produits');
