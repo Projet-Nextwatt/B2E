@@ -325,9 +325,12 @@ class CI_Devis extends MY_Controller
             $this->session->set_userdata(array('CI_devis/aff_detail_article'=>$id));
             header('Location:' . site_url("CI_devis/aff_detail_article"));
         }
-
         $this->load->model('Mappage/article', 'article');
-        $data['article'] = $this->article->list_article_dossier($this->session->userdata('CI_devis/aff_detail_article'));
+
+        $idarticle = $this->session->userdata('CI_devis/aff_detail_article');
+        $data['articles'] = $this->article->list_article_dossier($this->session->userdata('idDossier'));
+        $tableau_articles = $this->mise_en_forme_article($data['articles']);
+        var_dump($tableau_articles);
 
         $this->layout->title('Dossier');
         $this->layout->view('B2E/Dossier_Archives/Devis/detail_article', $data);
