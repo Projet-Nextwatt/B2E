@@ -87,4 +87,8 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> origin/Developpement

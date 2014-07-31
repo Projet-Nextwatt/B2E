@@ -4,7 +4,11 @@
 
 <div class="page-header">
     <h1 align="center">
+<<<<<<< HEAD
         Selectionnez un article</br>
+=======
+        Choisissez un produit
+>>>>>>> origin/Developpement
     </h1>
 </div>
 
