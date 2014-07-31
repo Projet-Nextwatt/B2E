@@ -113,7 +113,7 @@
                 <?php echo $resultClient[0]['adresse'] ?> <br/>
                 <?php echo $resultClient[0]['codepostal'] .' '.$resultClient[0]['ville'] ?> <br/>
                 <a href="<?php echo $resultClient[0]['email'] ?>"><?php echo $resultClient[0]['email'] ?></a><br/>
-                <?php echo $resultClient[0]['tel1'] ?> / <?php echo $resultClient[0]['tel2'] ?>
+                <?php echo $resultClient[0]['tel1']; echo ' / '.$resultClient[0]['tel2'] ?>
             </fieldset>
         </td>
         <td class="alignright"><img src="<?php echo img_url('MiniLogoNextwatt.png'); ?>"/></td>
