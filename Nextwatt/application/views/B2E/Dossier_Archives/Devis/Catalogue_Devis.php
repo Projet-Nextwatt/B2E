@@ -4,21 +4,12 @@
 
 <div class="page-header">
     <h1 align="center">
-<<<<<<< HEAD
-        Choisissez un produit</br>
-        <small><i class="ace-icon fa fa-angle-double-right"></i> Catalogue pour devis</small>
-=======
-        Selectionnez un article
->>>>>>> origin/Developpement
+        Choisissez un produit
     </h1>
 </div>
 
 <div class="row">
     <div class="col-xs-12">
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/Developpement
         <?php
         $this->load->library('fonctionspersos');
         $entete = $this->fonctionspersos->set_entete_catalogue_mini();

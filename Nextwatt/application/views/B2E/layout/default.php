@@ -136,7 +136,7 @@
     echo "<h3>GET</h3>";
     var_dump($_GET);
     echo "<h3>data</h3>";
-var_dump($GLOBALS['CI']->load->_ci_cached_vars);
+    var_dump($GLOBALS['CI']->load->_ci_cached_vars);
     ?>
     <!-- footer area -->
 </div>

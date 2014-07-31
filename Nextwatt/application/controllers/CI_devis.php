@@ -325,6 +325,23 @@ class CI_Devis extends MY_Controller
         $tableau_articles = $this->mise_en_forme_article($tableau_articles);
         $data['articles']= $tableau_articles['produits'][$idarticle];
 
+
+        $this->load->model('Mappage/catalogue_catalogue', 'option');    
+        $this->load->model('Mappage/catalogue', 'catalogue');            
+        $refopt = $this->option->select_option($data['articles']['Reference']);
+        if (isset($refopt))
+        {
+            foreach ($refopt as $opt)
+            {
+                $refoptions = $opt['op_ref'];
+                $options[] = $this->catalogue->select_option_catalogue($refoptions);
+            }
+            if(isset($options))
+            {   
+                $data['options'] = $options;
+            }
+        }
+        
         $this->layout->title('Dossier');
         $this->layout->view('B2E/Dossier_Archives/Devis/detail_article', $data);
     }
