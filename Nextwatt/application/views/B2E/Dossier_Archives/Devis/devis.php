@@ -79,7 +79,7 @@
                         <div class="panel-heading">
                             Votre devis
                             <div class="" style="float: right">
-                                <a href="<?php echo site_url("CI_catalogue/consult_catalogue_devis"); ?>">
+                                <a href="<?php echo site_url("CI_devis/consult_catalogue_devis"); ?>">
                                     <button class="btn btn-white btn-inverse btn-bold btn-xs">
                                         <i class="ace-icon fa fa-plus-square bigger-110"></i>
                                         Ajouter un article
@@ -94,7 +94,7 @@
                         <div class="panel-body">
                             <?php foreach ($devis['produits'] as $d) { ?>
                                 <div class="widget-box divArticle" style="opacity: 1; z-index: 0; margin: 5px;"
-                                     onclick="location.href='../CI_dossier/aff_detail_article/<?php echo $d['id'];?>'">
+                                     onclick="location.href='../CI_devis/aff_detail_article/<?php echo $d['id'];?>'">
                                     <div class="widget-header">
                                         <h4 class="widget-title lighter green"><?php echo $d['Libelle_Mat_SansMarque'] ?></h4>
                                         <h4 class="widget-title lighter green"

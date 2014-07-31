@@ -11,7 +11,14 @@ class Catalogue_catalogue extends DataMapper
         parent ::__construct($id);
     }
 
-    public function select_option($nom_prod = null)
+    public function charger_liens($nom_prod = null)
+    {
+        $option = new Catalogue_catalogue();
+        $option->get();
+        return $option->all_to_array();
+    }
+    
+        public function select_option($nom_prod = null)
     {
         $option = new Catalogue_catalogue();
 

@@ -42,7 +42,7 @@
                 <i class="ace-icon fa fa-folder-open-o"></i>
                 Bilan énergétique (en construction)
             </button></a>
-        <a href="<?php echo site_url("CI_catalogue/devis_form"); ?>">
+        <a href="<?php echo site_url("CI_devis/devis_form"); ?>">
             <button  type="button" class="btn btn-success">
                 <i class="ace-icon fa fa-list"></i>
                 Création de devis

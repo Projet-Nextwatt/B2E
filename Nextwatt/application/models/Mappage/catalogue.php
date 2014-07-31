@@ -43,11 +43,14 @@ class Catalogue extends DataMapper
         parent ::__construct();
     }
 
-    public function get_ref_bdd()
+    public function get_ref_bdd($statut=null)
     {
         $refbddtest = new Catalogue();
 
         $refbddtest->select('Reference,id, Nom');
+        if ($statut!=null){
+            $refbddtest->where('Type_Produit',$statut);
+        }
         $refbddtest->get();
 
         $refbddtest = $refbddtest->all_to_array(array('Reference','id', 'Nom'));
@@ -58,6 +61,8 @@ class Catalogue extends DataMapper
         }
         return $rslt;
     }
+    
+    
     
         public function get_catalogue_lite_orderby_soustype()
     {
