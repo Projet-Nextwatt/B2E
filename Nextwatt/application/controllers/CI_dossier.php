@@ -146,8 +146,12 @@ class CI_Dossier extends MY_Controller
 
     /******************************************* DETAIL ARTICLE  *******************************************/
 
-    public function aff_detail_article()
+    public function aff_detail_article($id=null )
     {
+        if ($id!=null){
+            $this->session->set_userdata(array('CI_dossier/aff_detail_article'=>$id));
+            header('Location:' . site_url("CI_dossier/aff_detail_article"));
+        }
         $this->layout->title('Dossier');
         $this->layout->view('B2E/Dossier_Archives/Devis/detail_article');
     }
