@@ -76,11 +76,10 @@ class CI_Devis extends MY_Controller
         $data['tel'] = $client['tel1'];
         $data['usernom'] = $user['nom'];
         $data['userprenom'] = $user['prenom'];
-        //Articles
-        $data['article'] = $this->aff_Article();
 
-        //-----------Calcul de la somme---
+        //-----------Article---
         $articles = $this->article->list_article_dossier($this->session->userdata['idDossier']);
+        //----------Calcul de la somme
         $data['devis'] = $this->mise_en_forme_article($articles);
         //-----------Mise à jour du projet------------------------------------------
         $this->dossier->modifier_titre_dossier($dossier_id,$data['devis']['titre'],$data['devis']['TOTAL_TTC']);
@@ -264,12 +263,6 @@ class CI_Devis extends MY_Controller
     }
 
 
-    public function aff_Article()
-    {
-        $this->load->model('Mappage/article', 'article');
-        $result = $this->article->list_article_dossier($this->session->userdata('idDossier'));
-        return $result;
-    }
 
     public function pdf()
     {

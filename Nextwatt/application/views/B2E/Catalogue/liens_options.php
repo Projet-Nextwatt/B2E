@@ -34,10 +34,14 @@
 
                             $name = $refp . "|" . $refc;
                             echo "<input type='hidden' name='sup_" . $name . "'>";
-                            //if (in_array($name, $liens))
-                            //echo "<input type='checkbox' name='ajout_" . $name . "' class='squaredTwo' checked>" . "</td>";
-                            //else
-                            echo "<input type='checkbox' name='" . $name . "' >";
+                            if (in_array($name, $liens))
+                            {
+                                echo "<input type='checkbox' name='" . $name . "' checked>" . "</td>";
+                            }
+                            else
+                            {
+                                echo "<input type='checkbox' name='" . $name . "' >";
+                            }
 
                             echo "</td>";
                         }
