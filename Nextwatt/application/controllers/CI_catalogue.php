@@ -61,7 +61,10 @@ class CI_Catalogue extends MY_Controller
                 $refoptions = $opt['op_ref'];
                 $options[] = $this->catalogue->select_option_catalogue($refoptions);
             }
-            $data['options'] = $options;
+            if(isset($options))
+            {
+                $data['options'] = $options;
+            }
         }
         $data['produit'] = $produit;
 

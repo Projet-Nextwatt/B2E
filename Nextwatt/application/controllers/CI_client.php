@@ -315,7 +315,7 @@ class CI_Client extends MY_Controller
         array(
             'field' => 'ville',
             'label' => 'Ville',
-            'rules' => 'required|trim|max_length[255]|mb_strtoupper|alpha'
+            'rules' => 'required|trim|max_length[255]|mb_strtoupper'
         ),
         array(
             'field' => 'tel1',
