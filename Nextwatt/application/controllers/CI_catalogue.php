@@ -14,11 +14,33 @@ class CI_Catalogue extends MY_Controller
 
     public function index()
     {
+        $this->load->model('Mappage/type', 'type');
+        $this->load->model('Mappage/soustypes','soustype');
+        $this->load->model('Mappage/catalogue', 'catalogue');
+
+        // POUR LE COMMIT
         //Remplissage de la variable $data avec l'image pour le layout
         $data = array();
-        $data['tableau'] = $this->create_tableau_catalogue();
+        $data['Types'] = $this->type->select_types(null);
+        $catalogue = array();
+        foreach($data['Types'] as $type)
+        {
+            $type['Nom_Type'] = preg_replace("# #", '-', $type['Nom_Type']);
+            $soustypes = $this->soustype->select_soustype_type($type['id']);
+            foreach($soustypes as $st)
+            {
+                $produits = $this->catalogue->produit_by_soustype($st['id']);
+                foreach($produits as $p)
+                {
+                    $catalogue[$type['Nom_Type']][$st['nomcourt']][$p['Reference']] = $p;
+                }
+            }
+        }
+        $data['catalogue'] = $catalogue;
+//        var_dump($catalogue);
 
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
+        $this->layout->js(js_url('catalogue'));
         $this->layout->title('Catalogue B2E');
         $this->layout->view('B2E/Catalogue/Consulter_Catalogue', $data);
     }
@@ -26,10 +48,21 @@ class CI_Catalogue extends MY_Controller
     public function aff_fiche_produit()
     {
         $this->load->model('Mappage/catalogue', 'catalogue');
+        $this->load->model('Mappage/catalogue_catalogue', 'option');
 
         $idproduit = $this->session->userdata('CI_catalogue/aff_fiche_produit');
         $produit = $this->catalogue->select_panneau($idproduit);
+        $refopt = $this->option->select_option($produit['Reference']);
 
+        if (isset($refopt))
+        {
+            foreach ($refopt as $opt)
+            {
+                $refoptions = $opt['op_ref'];
+                $options[] = $this->catalogue->select_option_catalogue($refoptions);
+            }
+            $data['options'] = $options;
+        }
         $data['produit'] = $produit;
 
         $this->layout->title('Fiche produit');
@@ -121,6 +154,7 @@ class CI_Catalogue extends MY_Controller
                     $nbOptionsOblLu++;
                 else
                     $nbAutre++;
+
 
                 //V�rification de l'exsitence dans la base de donn�es
                 if (!(array_key_exists($ref, $refbdd))) //si il existe pas, on ajoute
@@ -307,7 +341,7 @@ class CI_Catalogue extends MY_Controller
         $this->load->model('Mappage/type', 'type');
 
         $data = array(); // On remplit les variables avec les infos qu'on a besoin en appelant les méthodes des modèles loadés précédemment
-        $data['produit'] = $this->catalogue->get_ref_bdd();
+        $data['produit'] = $this->catalogue->get_catalogue_lite_orderby_soustype();
         $data['soustypes'] = $this->soustype->select_soustype_bytype();
         $data['types'] = $this->type->select_types(null);
 
@@ -358,7 +392,7 @@ class CI_Catalogue extends MY_Controller
         } else {
             $this->form_validation->set_rules($configtraitement);
             $this->mapsoustype->ajouter_soustype($_POST);
-            $this->consult_soustype();
+            header('Location:' . site_url("CI_catalogue/consult_soustype"));
         }
     }
 
@@ -368,8 +402,8 @@ class CI_Catalogue extends MY_Controller
         $this->load->library('fonctionspersos');
 
         $data = array();
-        $data['soustypes'] = $this->mapsoustype->select_soustype_tableau(); //On récupère tous les soustypes
-        $data['entetesoustype'] = array('ID', 'Nom court', 'Nom devis', 'Catégorie bouquet CI', 'Catégorie bouquet EcoPTZ', 'CI unitaire'); //On définit les entêtes
+        $data['soustypes'] = $this->mapsoustype->select_soustype(); //On récupère tous les soustypes
+        $data['entetesoustype'] = null;// array('ID', 'Nom court', 'Nom devis', 'Catégorie bouquet CI', 'Catégorie bouquet EcoPTZ', 'CI unitaire'); //On définit les entêtes
 
         $this->layout->title('Liste des soustypes');
         $this->layout->view('B2E/Catalogue/Consulter_Soustype.php', $data); // Render view and layout
@@ -402,8 +436,15 @@ class CI_Catalogue extends MY_Controller
                 $this->consult_soustype();
             } else {
                 echo 'error';
-            }
+            }   
         }
+    }
+    
+    public function ajax_chargernomcatalogue(){
+        $this->load->model('Mappage/catalogue', 'catalogue');
+        $catalogue=$this->catalogue->get_nom();
+        
+        echo json_encode($catalogue);
     }
 
     public function configsoustype()
@@ -485,7 +526,7 @@ class CI_Catalogue extends MY_Controller
 
         $idprod = ($this->session->userdata('CI_catalogue/select_produit_devis'));
         $produit = $this->catalogue->select_panneau($idprod);
-        $produit[0]['dossier_id'] = $this->session->userdata['idDossier'];
+        $produit['dossier_id'] = $this->session->userdata['idDossier'];
 
         $this->article->ajouter_article($produit);
         $this->devis_form($idprod);
@@ -755,10 +796,4 @@ class CI_Catalogue extends MY_Controller
 //    }
     }
 
-    /********************************* PARTIE OU ON RECUPERE PLEINS DE TRUCS ET QUON LES TRIES A LA BEN LE ZIN **************************/
-
-    public function get_all_type()
-    {
-
-    }
 }

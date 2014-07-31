@@ -18,5 +18,12 @@ class Accueil extends MY_Controller
         $this->layout->view('B2E/Accueil'); // Render view and layout
     }
 
+    public function test()
+    {
+        $this->load->model('Mappage/client','c');
+
+        $this->c->test();
+    }
+
 }
 

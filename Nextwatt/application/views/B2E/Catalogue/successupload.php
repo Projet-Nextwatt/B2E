@@ -39,7 +39,7 @@
         </div>
         <br/>
         <div align="center">
-            <a href="<?php echo site_url("CI_catalogue/consult_catalogue"); ?>">
+            <a href="<?php echo site_url("CI_catalogue"); ?>">
             <button type="button" class="btn btn-success">
                 <i class="ace-icon fa fa-book "></i>
                 Retour au catalogue

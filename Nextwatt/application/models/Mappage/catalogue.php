@@ -51,11 +51,26 @@ class Catalogue extends DataMapper
         $refbddtest->get();
 
         $refbddtest = $refbddtest->all_to_array(array('Reference','id', 'Nom'));
-        /************************************************  GROS TEST DE LA MORT QUI TUE !!!  ***************************************/
         $rslt = array();
         foreach ($refbddtest as $element) {
             $rslt[$element['Reference']]['id'] = $element['id'];
             $rslt[$element['Reference']]['Nom'] = $element['Nom'];
+        }
+        return $rslt;
+    }
+    
+        public function get_catalogue_lite_orderby_soustype()
+    {
+        $cat = new Catalogue();
+
+        $cat->select('Reference,id, Nom, soustype_id');
+        $cat->order_by('soustype_id');
+        $cat->get();
+
+        $cat = $cat->all_to_array(array('Reference','id', 'Nom', 'soustype_id'));
+        $rslt = array();
+        foreach ($cat as $element) {
+            $rslt[$element['soustype_id']][] = $element;
         }
         return $rslt;
     }
@@ -88,6 +103,19 @@ class Catalogue extends DataMapper
                 $rslt[$element['Reference']][$i] = $sub_element;
                 $i++;
             }
+        }
+        return $rslt;
+    }
+    
+    public function get_nom(){
+        $catalogue = new Catalogue();
+        $catalogue->select('Nom');
+        $catalogue->get();
+        $catalogue = $catalogue->all_to_array('Nom');
+        
+                $rslt = array();
+        foreach ($catalogue as $produit){
+            $rslt[]=  html_entity_decode($produit['Nom']);
         }
         return $rslt;
     }
@@ -130,7 +158,8 @@ class Catalogue extends DataMapper
             (isset($produit[14]) ? $newcatalogue->Facturation = $produit[14] : '');
             (isset($produit[15]) ? $newcatalogue->Type_Produit = $produit[15] : '');
             (isset($produit[16]) ? $newcatalogue->Spec = $produit[16] : '');
-            $newcatalogue->Actif = 1;
+            ($newcatalogue->id==null ? $newcatalogue->Actif = 1 : '');
+            ($newcatalogue->id==null ? $newcatalogue->soustype_id = 1 : '');
             (isset($produit[17]) ? $newcatalogue->Fiche_Tech = $produit[17] : '');
             (isset($produit[18]) ? $newcatalogue->Note = $produit[18] : '');
             if ($newcatalogue->save()) {
@@ -160,10 +189,18 @@ class Catalogue extends DataMapper
             return $obj->get()->all_to_array();
         } else {
             $obj = new Catalogue();
-            return $obj->where('id', $id)->get()->all_to_array();
+            return $obj->where('id', $id)->get()->to_array();
         }
     }
 
+    function select_option_catalogue($ref = null)
+    {
+        $opt = new Catalogue();
+
+        $opt->where('Reference', $ref)->get();
+
+        return $opt->to_array();
+    }
     function select_panneau_critere($critere)
     {
         $obj = new Catalogue();
@@ -238,6 +275,26 @@ class Catalogue extends DataMapper
         $prodspec = $prod->where('Nom', $nom)->get();
         $tabprodspec = $prodspec->all_to_array();
         return $tabprodspec;
+    }
+
+    function produit_by_soustype($id = NULL)
+    {
+        $i=0;
+        $newtab = array();
+        $a = new Catalogue();
+        $a->select( 'id, Reference, Nom, Marque,Puissance,Prix_Annonce_TTC');
+        $a->where('soustype_id', $id)->get();
+
+        foreach ($a as $ligne) {
+            $newtab[$i]['id'] = $ligne->id;
+            $newtab[$i]['Reference'] = $ligne->Reference;
+            $newtab[$i]['Nom'] = $ligne->Nom;
+            $newtab[$i]['Marque'] = $ligne->Marque;
+            $newtab[$i]['Puissance'] = $ligne->Puissance;
+            $newtab[$i]['Prix_Annonce_TTC'] = $ligne->Prix_Annonce_TTC;
+            $i++;
+        }
+        return $newtab;
     }
 
 }

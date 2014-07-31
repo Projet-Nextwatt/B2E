@@ -1,15 +1,18 @@
 <?php
+
 /*
  * Classe Modèle pour la table Soustype, définir ici toutes les fonctionnalitées utilisant la table Soustype
  * CRUD de base mis en place.
  */
-class Soustypes extends DataMapper {
+
+class Soustypes extends DataMapper
+{
     /*
      * Variables de relation (entre tables)
      */
-    var $has_one = array ('type');
-    var $has_many = array ('Catalogue', 'Article');
-    
+    var $has_one = array('type');
+    var $has_many = array('Catalogue', 'Article');
+
     /*
      * Variables correspondantes aux colonnes de la table.
      */
@@ -20,13 +23,13 @@ class Soustypes extends DataMapper {
     var $Categorie_BouquetCI = "";
     var $Categorie_BouqetEcoPTZ = "";
     var $CI_Unitaire = "";
-    
-    
-    function __construct() 
+
+
+    function __construct()
     {
         parent ::__construct();
     }
-    
+
     function select_soustype($id = NULL)
     {
         $st = new Soustypes();
@@ -41,25 +44,44 @@ class Soustypes extends DataMapper {
         }
     }
 
+    function select_soustype_type($id = NULL)
+    {
+        $st = new Soustypes();
+
+        $st->where('type_id', $id);
+        $st->get();
+
+        return $st->all_to_array();
+    }
+
+    function select_ID_soustype()
+    {
+        $st = new Soustypes();
+
+        $st->select('id');
+        $st->get();
+
+        return $st->all_to_array();
+    }
+
     function select_soustype_bytype()
     {
         $this->db->select('Nom_Type, soustypes.id, nomdevis')
             ->from('types')
 //            ->where('Nom_Type', $type)
-            ->join('soustypes', 'types.id = soustypes.type_id');
+            ->join('soustypes', 'types.id = soustypes.type_id')
+            ->order_by('type_id');
         $query = $this->db->get();
 
-        if($query->num_rows()>0)
-        {
-            foreach($query->result() as $row)
-            {
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
                 $data[] = $row;
             }
             return $data;
         }
     }
 
-    function select_soustype_tableau($id = NULL)
+    /*function select_soustype_tableau($id = NULL)
     {
         $soustype = new Soustypes();
         if ($id != NULL) {
@@ -69,17 +91,18 @@ class Soustypes extends DataMapper {
             return $retour['0'];
         } else {
             $soustype->get();
-            $champs = array('id','nomcourt', 'nomdevis', 'bouquetCI', 'bouquetEPTZ', 'CIunitaire');
+            $champs = array('id', 'nomcourt', 'nomdevis', 'bouquetCI', 'bouquetEPTZ', 'CIunitaire');
             $retour = $soustype->all_to_array($champs);
             return $retour;
         }
     }
-    
+     */
+
     function ajouter_soustype($data)
     {
 
         $soustype = array(
-            'type_id' => $data['Produit'],
+            'type_id' => $data['type_id'],
             'nomcourt' => $data['nomcourt'],
             'nomdevis' => $data['nomdevis'],
             'bouquetCI' => $data['bouquetCI'],
@@ -89,7 +112,6 @@ class Soustypes extends DataMapper {
 
         $this->db->insert('soustypes', $soustype);
     }
-
 
 
     function modifier_soustype($data)
@@ -106,7 +128,7 @@ class Soustypes extends DataMapper {
         }
         return $st->save();
     }
-    
+
     function supprimer_soustype($id)
     {
         $st = new Soutypes();
@@ -115,4 +137,4 @@ class Soustypes extends DataMapper {
         $st->delete();
     }
 
-    }
+}
