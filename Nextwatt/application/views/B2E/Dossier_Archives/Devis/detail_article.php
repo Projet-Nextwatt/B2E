@@ -2,7 +2,7 @@
     <div class="row form-group">
         <div class="col-xs-12">
             <div class="row" align="center">
-                <a href="<?php echo site_url("CI_catalogue/devis_form"); ?>">
+                <a href="<?php echo site_url("CI_devis/devis_form"); ?>">
                     <button type="button" class="btn btn-white ntn-bold btn-round">
                         <i class="ace-icon fa fa-angle-left bigger-140"></i>
                         Retour au devis
