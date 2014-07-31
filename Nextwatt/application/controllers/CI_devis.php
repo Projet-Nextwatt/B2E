@@ -321,9 +321,9 @@ class CI_Devis extends MY_Controller
         $this->load->model('Mappage/article', 'article');
 
         $idarticle = $this->session->userdata('CI_devis/aff_detail_article');
-        $data['articles'] = $this->article->list_article_dossier($this->session->userdata('idDossier'));
-        $tableau_articles = $this->mise_en_forme_article($data['articles']);
-        var_dump($tableau_articles);
+        $tableau_articles = $this->article->list_article_dossier($this->session->userdata('idDossier'));
+        $tableau_articles = $this->mise_en_forme_article($tableau_articles);
+        $data['articles']= $tableau_articles['produits'][$idarticle];
 
         $this->layout->title('Dossier');
         $this->layout->view('B2E/Dossier_Archives/Devis/detail_article', $data);
