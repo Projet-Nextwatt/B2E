@@ -210,13 +210,6 @@
                         class="green"> - <?php echo number_format($this->session->userdata('ecoGaz'), 0, ',', ' ') ?>
                         €</span> avec un chauffage au gaz <span class="green">- </span><i class="ace-icon fa fa-cloud green"></i></strong></h4></li>
     </ul>
-
-    <!--    <p><h4><strong>Economie annu élec : <span class="green">-->
-    <?php //echo number_format($this->session->userdata('ecoElec'), 0, ',', ' ') ?><!-- €</span></strong></h4></p>-->
-    <!--    <p><h4><strong>Eco fioul : <span class="green">-->
-    <?php //echo number_format($this->session->userdata('ecoFioul'), 0, ',', ' ') ?><!-- €</span></strong></h4></p>-->
-    <!--    <p><h4><strong>Eco gaz : <span class="green">-->
-    <?php //echo number_format($this->session->userdata('ecoGaz'), 0, ',', ' ') ?><!-- €</span></strong></h4></p>-->
 </div>
 <?php } ?>
 

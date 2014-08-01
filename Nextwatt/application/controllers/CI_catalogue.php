@@ -314,12 +314,15 @@ class CI_Catalogue extends MY_Controller
         $this->load->model('Mappage/soustypes', 'soustype');
         $this->load->model('Mappage/type', 'type');
 
+
+        //récup d'info
         $BDD = $this->cata->get_full_bdd();
         $types = $this->type->select_types(null);
 //        $soustypes;
         $i = 0;
         $newtab = array();
 
+        // Remplissage du tableau
         foreach ($BDD as $ligne) {
             $newtab[$i]['id'] = $ligne['id'];
             $newtab[$i]['Reference'] = $ligne['Reference'];
