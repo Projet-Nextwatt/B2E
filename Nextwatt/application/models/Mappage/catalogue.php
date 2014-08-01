@@ -16,27 +16,7 @@ class Catalogue extends DataMapper
     /*
      * Variables correspondantes aux colonnes de la table.
      */
-    var $Reference;
-    var $Nom;
-    var $ID_SousType;
-    var $Marque;
-    var $Puissance;
-    var $Libelle_Mat;
-    var $Libelle_Mat_SansMarque;
-    var $Libelle_MO;
-    var $Libelle_Garantie;
-    var $Prix_MO;
-    var $Prix_Mat_Plancher;
-    var $Prix_Annonce_TTC;
-    var $CEE_TTC;
-    var $TVA_MO;
-    var $TVA_Mat;
-    var $Facturation;
-    var $Type_Produit;
-    var $Spec;
-    var $Actif;
-    var $Fiche_Tech;
-    var $Note;
+    const STATUT = 'blabla';
 
     function __construct()
     {

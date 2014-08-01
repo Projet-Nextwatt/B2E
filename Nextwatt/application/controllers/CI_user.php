@@ -22,7 +22,7 @@ class CI_User extends MY_Controller
         $data['usersinactifs'] = $this->mapuser->list_user(FALSE);  //On récupère tous les users inactifs en passant par la fonction lis_user (FALSE pour dire de prendre les inactifs)
 
         $this->layout->title('Liste des Users');    //On charge la page
-        $this->layout->view('B2E/User/Accueil_user.php', $data);
+        $this->layout->view('B2E/User/Accueil_User.php', $data);
     }
 
     public function add_user()  // Fonction d'ajout d'un utilisateur
@@ -65,7 +65,7 @@ class CI_User extends MY_Controller
         //chargement des catégories pour la liste déroulante
         $categories = $this->categorie->chargercategories();
         $data["categories"] = $categories;
-        $data['user'] = $this->mapuser->select_user($this->session->userdata('CI_User/modif_user'));
+        $data['user'] = $this->mapuser->select_user($this->session->userdata('CI_user/modif_user'));
 
         //On check le booléen renvoyé (True si tout est nickel, False si un champs ne respecte pas les règles)
 

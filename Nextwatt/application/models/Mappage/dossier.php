@@ -7,17 +7,6 @@
 
 class Dossier extends DataMapper
 {
-    /*
-     * Variables de relation (entre tables)
-     */
-
-//    var $has_one = array('Client');
-//    var $has_many = array('Article');
-//
-//    var $table = "dossiers";
-    /*
-     * Variables correspondantes aux colonnes de la table.
-     */
 
     function __construct($id = NULL)
     {
@@ -28,9 +17,6 @@ class Dossier extends DataMapper
 
     function select_all_dossier()
     {
-//        $d = new Dossier();
-//        $dossiers = $d->where('actif', 1)->get();
-//        return $dossiers->all_to_array();
         $dossiers = $this->db->select('users.Identifiant,clients.nom1,dossiers.id,dossiers.actif,dossiers.titre,dossiers.montant')
             ->from('dossiers')
             ->join('clients', 'dossiers.client_id = clients.id', 'left')
@@ -56,9 +42,6 @@ class Dossier extends DataMapper
 
     public function select_archive_dossier()
     {
-//        $d = new Dossier();
-//        $dossiers = $d->where('actif', 0)->get();
-//        return $dossiers->all_to_array();
 
         $dossiers = $this->db->select('users.Identifiant,clients.nom1,dossiers.id,dossiers.actif,dossiers.titre,dossiers.montant')
             ->from('dossiers')

@@ -54,7 +54,7 @@
                                 <?php $x=FALSE;
                                 foreach ($soustypes as $index => $produits) {
                                     echo('<h4>' . $index . '</h4>');
-                                    $this->fonctionspersos->creerTableau($produits, $entete, 'CI_catalogue/aff_fiche_produit', null);
+                                    $this->fonctionspersos->creerTableau($produits, $entete, 'CI_devis/select_produit_devis', null);
                                 }
                                 ?>
                             </div>
@@ -65,7 +65,7 @@
                                 <?php $x=FALSE;
                                 foreach ($soustypes as $index => $produits) {
                                     echo('<h4>' . $index . '</h4>');
-                                    $this->fonctionspersos->creerTableau($produits, $entete, 'CI_catalogue/aff_fiche_produit', null);
+                                    $this->fonctionspersos->creerTableau($produits, $entete, 'CI_devis/select_produit_devis', null);
                                 }
                                 ?>
                             </div>

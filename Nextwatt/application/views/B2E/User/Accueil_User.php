@@ -34,7 +34,7 @@
                     <div class="panel-heading align-left">Liste des utilisateurs  
                         <span class="badge badge-success"><?php echo count($users);?></span>
                     </div>
-                    <?php $this->fonctionspersos->creerTableau($users, array(), 'CI_User/modif_user') ?>
+                    <?php $this->fonctionspersos->creerTableau($users, array(), 'CI_user/modif_user') ?>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
                     <div class="panel-heading align-left">Liste des utilisateurs désactivés
                         <span class="badge badge-success"><?php echo count($usersinactifs);?></span>
                     </div>
-                    <?php $this->fonctionspersos->creerTableau($usersinactifs, array(), 'CI_User/modif_user') ?>
+                    <?php $this->fonctionspersos->creerTableau($usersinactifs, array(), 'CI_user/modif_user') ?>
                 </div>
             </div>
         </div>
