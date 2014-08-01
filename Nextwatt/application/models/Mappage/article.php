@@ -64,10 +64,20 @@ class Article extends DataMapper {
         //Fonction de modification
     }
 
-    function supprimer_article() {
-        $this->db->where('Nom', 'Nom');
-        $this->db->delete('Article');
-        //Et aussi les options
+    function supprimer_article($id = null) {
+        $a = new Article();
+
+        $a->where('id', $id)->get();
+
+        $a->delete();
+    }
+
+    function supprimer_options($id = null) {
+        $a = new Article();
+
+        $a->where('article_id', $id)->get();
+
+        $a->delete();
     }
 
 }
