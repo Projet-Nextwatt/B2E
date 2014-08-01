@@ -358,8 +358,9 @@ class CI_Catalogue extends MY_Controller
     public function lier_type_produit_action() //Fonction de traitement du formulaire de gestion des liaisons soustypes/produits
     {
         $this->load->model('Mappage/catalogue', 'catalogue');
+        $this->load->library('fonctionspersos');
         $data['rsltupdate'] = $this->catalogue->update_soustype_produit($_POST);
-
+        $this->fonctionspersos->printr($data['rsltupdate']);
         if (isset($data['rsltupdate'])) {
             $this->layout->title('Lier type au produit');
             $this->layout->view('B2E/Catalogue/rslt_type_produit', $data); //render view and layout
