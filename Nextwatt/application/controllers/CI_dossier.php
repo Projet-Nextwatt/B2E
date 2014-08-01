@@ -10,58 +10,57 @@ class CI_Dossier extends MY_Controller
 
     }
 
-    public function choix_action() //NOUVEAU DOSSER
+    public function choix_action() //NOUVEAU DOSSiER
     {
         $this->load->model('Mappage/client', 'client');
-        $this->load->model('Mappage/user', 'user');
+        $this->load->model('Mappage/user', 'user');                                             // On load les modèles "client", "user" et "dossier" afin de les utiliser plus tard
         $this->load->model('Mappage/dossier', 'dossier');
 
-        $idDossier = $this->session->userdata['idDossier'];
-        $this->session->set_userdata('CI_dossier/select_dossier', $idDossier);
+        $idDossier = $this->session->userdata['idDossier'];                                     // On s'assure que les variables sessions 'idDossier' et 'CI_dossier/select_dossier'
+        $this->session->set_userdata('CI_dossier/select_dossier', $idDossier);                  // soient bien les mêmes en les "interchangeant !
 
         $dossier = $this->dossier->select_dossier($idDossier);
-        $client = $this->client->select_client($dossier[0]['client_id']);
-        $this->session->set_userdata('idClient', $dossier[0]['client_id']);
+        $client = $this->client->select_client($dossier[0]['client_id']);                       //Suite d'appels/contre appels de requetes pour récupérer les informations dossier
+        $this->session->set_userdata('idClient', $dossier[0]['client_id']);                     //clients et user grâce aux informations en session et au models "client", "user" et "dossier".
         $user = $this->user->select_user($client['user_id']);
 
         $data['nomclient1'] = $client['nom1'];
         $data['prenomclient1'] = $client['prenom1'];
         $data['prenomclient2'] = $client['prenom2'];
-        $data['adresse'] = $client['adresse'];
+        $data['adresse'] = $client['adresse'];                                                  //Récupération des informations clients
         $data['ville'] = $client['ville'];
         $data['tel'] = $client['tel1'];
         $data['usernom'] = $user['nom'];
         $data['userprenom'] = $user['prenom'];
 
         $this->layout->title('Dossier');
-        $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier', $data);
+        $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier', $data);        //Redirection vers la vue avec les informations nécessaires dans la variable $data
     }
 
     public function consult_dossier()
     {
         $this->load->model('Mappage/dossier', 'dossier');
-        $this->load->model('Mappage/client', 'client');
+        $this->load->model('Mappage/client', 'client');                                         // On load les modèles "client" et "dossier" afin de les utiliser plus tard
 
         // Mise en forme dossier archive ----------------------
-        $dossiersarchive = $this->dossier->select_archive_dossier();
-        $data['dossiers_archive'] = $dossiersarchive;
+        $dossiersarchive = $this->dossier->select_archive_dossier();                            // On récupère les dossiers archivés
         $newDossierArchive = array();
         $identifiant = null;
         foreach ($dossiersarchive as $d) {
-            $newDossierArchive[$d['Identifiant']][] = array('nom1' => $d['nom1'], 'titre' => $d['titre'], 'montant' => $d['montant'], 'idDossier' => $d['id']);
-        }
-        //---------------------------------------------
-        // Mise en forme dossier ----------------------
-        $dossiers = $this->dossier->select_all_dossier();
-        $data['dossiers'] = $dossiers;
-        $newDossier = array();
-        $identifiant = null;
-        foreach ($dossiers as $d) {
-            $newDossier[$d['Identifiant']][] = array('nom1'=>$d['nom1'],'titre'=>$d['titre'],'montant'=>$d['montant'],'idDossier'=>$d['id']);
+            $newDossierArchive[$d['Identifiant']][] = array('nom1' => $d['nom1'], 'titre' => $d['titre'], 'montant' => $d['montant'], 'idDossier' => $d['id']);     //Mise en forme avec les informations nécessaires pour la vue
         }
         //---------------------------------------------
 
-        $data['dossiers'] = $newDossier;
+        // Mise en forme dossier ----------------------
+        $dossiers = $this->dossier->select_all_dossier();                                       // On récupère les dossiers non archivés
+        $newDossier = array();
+        $identifiant = null;
+        foreach ($dossiers as $d) {
+            $newDossier[$d['Identifiant']][] = array('nom1'=>$d['nom1'],'titre'=>$d['titre'],'montant'=>$d['montant'],'idDossier'=>$d['id']);           //Mise en forme avec les informations nécessaires pour la vue
+        }
+        //---------------------------------------------
+
+        $data['dossiers'] = $newDossier;                                                        // On met les résultats dans la variable $data pour pouvoir l'utiliser dans la vue
         $data['dossiers_archive'] = $newDossierArchive;
 
         $this->layout->js(js_url('dossier'));
@@ -156,6 +155,22 @@ class CI_Dossier extends MY_Controller
 
     /******************************************* DETAIL ARTICLE  *******************************************/
 
+    public function aff_detail_article($id=null )
+    {
+        if ($id!=null){
+            $this->session->set_userdata(array('CI_dossier/aff_detail_article'=>$id));
+            header('Location:' . site_url("CI_dossier/aff_detail_article"));
+        }
+        $this->layout->title('Dossier');
+        $this->layout->view('B2E/Dossier_Archives/Devis/detail_article');
+    }
+
+    public function ajax_selectdossier(){
+        if(isset($_POST['idDossier'])){
+            $this->session->set_userdata(array('CI_dossier/select_dossier' => $_POST['idDossier']));
+            echo true;
+        }
+    }
 
 }
 

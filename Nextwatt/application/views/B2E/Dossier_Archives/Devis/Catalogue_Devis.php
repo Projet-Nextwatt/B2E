@@ -4,26 +4,22 @@
 
 <div class="page-header">
     <h1 align="center">
-<<<<<<< HEAD
         Selectionnez un article</br>
-=======
-        Choisissez un produit
->>>>>>> origin/Developpement
     </h1>
+
 </div>
 
 <div class="row">
     <div class="col-xs-12">
+        <br/><br/>
         <?php
         $this->load->library('fonctionspersos');
         $entete = $this->fonctionspersos->set_entete_catalogue_mini();
-        //                var_dump($catalogue)<!--;-->
         ?>
+
+
         <div class="tabbable">
             <ul id="catalogue" class="nav nav-tabs">
-                <!--                <li class="active">-->
-                <!--                    <a href="#catalogue" data-toggle="tab">Catalogue</a>-->
-                <!--                </li>-->
                 <?php
                 $i = TRUE;
                 foreach ($catalogue as $index => $t) {
@@ -58,7 +54,7 @@
                                 <?php $x=FALSE;
                                 foreach ($soustypes as $index => $produits) {
                                     echo('<h4>' . $index . '</h4>');
-                                    $this->fonctionspersos->creerTableau($produits, $entete, 'CI_devis/select_produit_devis', null);
+                                    $this->fonctionspersos->creerTableau($produits, $entete, 'CI_catalogue/aff_fiche_produit', null);
                                 }
                                 ?>
                             </div>
@@ -69,7 +65,7 @@
                                 <?php $x=FALSE;
                                 foreach ($soustypes as $index => $produits) {
                                     echo('<h4>' . $index . '</h4>');
-                                    $this->fonctionspersos->creerTableau($produits, $entete, 'CI_devis/select_produit_devis', null);
+                                    $this->fonctionspersos->creerTableau($produits, $entete, 'CI_catalogue/aff_fiche_produit', null);
                                 }
                                 ?>
                             </div>
@@ -77,9 +73,14 @@
                         }
                     }
                 } ?>
+
             </div>
         </div>
     </div>
 </div>
 
-            
+
+
+
+
+
