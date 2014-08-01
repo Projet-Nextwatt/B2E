@@ -5,27 +5,26 @@ class CI_Devis extends MY_Controller
     public function consult_catalogue_devis()
     {
         $this->load->model('Mappage/type', 'type');
-        $this->load->model('Mappage/soustypes','soustype');
+        $this->load->model('Mappage/soustypes','soustype');             // Load des models
         $this->load->model('Mappage/catalogue', 'catalogue');
 
-        //Remplissage de la variable $data avec l'image pour le layout
         $data = array();
-        $data['Types'] = $this->type->select_types(null);
+        $data['Types'] = $this->type->select_types(null);           // On récupère tous les types
         $catalogue = array();
         foreach($data['Types'] as $type)
         {
-            $type['Nom_Type'] = preg_replace("# #", '-', $type['Nom_Type']);
-            $soustypes = $this->soustype->select_soustype_type($type['id']);
+            $type['Nom_Type'] = preg_replace("# #", '-', $type['Nom_Type']);    // Pour chaqe type, on remplace les espaces par des tirets
+            $soustypes = $this->soustype->select_soustype_type($type['id']);    // On va chercher les soustypes qui ont le "type_id" en cours
             foreach($soustypes as $st)
             {
-                $produits = $this->catalogue->produit_by_soustype($st['id']);
+                $produits = $this->catalogue->produit_by_soustype($st['id']);   // Pour chaque sous type, on va chercher les produits qui sont liés
                 foreach($produits as $p)
                 {
-                    $catalogue[$type['Nom_Type']][$st['nomcourt']][$p['Reference']] = $p;
+                    $catalogue[$type['Nom_Type']][$st['nomcourt']][$p['Reference']] = $p;   // Enfin on créer le tableau indexé avec dans l'ordre, un type qui possère un ou plusieurs sous types qui possède un ou plusieurs produits
                 }
             }
         }
-        $data['catalogue'] = $catalogue;
+        $data['catalogue'] = $catalogue;    // Puis on met ce tableau dans la variable $data pour l'utiliser plus tard dans la vue
 
         //Chargement du titre et de la page avec la librairie "Layout" pour l'appliquer sur ladite page
         $this->layout->js(js_url('catalogue'));
@@ -37,55 +36,50 @@ class CI_Devis extends MY_Controller
     {
         $this->load->model('Mappage/catalogue', 'catalogue');
         $this->load->model('Mappage/article', 'article');
-        $this->load->model('Mappage/dossier', 'dossier');
+        $this->load->model('Mappage/dossier', 'dossier');       // Load de tous les models nécessaires
         $this->load->model('Mappage/client', 'client');
         $this->load->model('Mappage/user', 'user');
 
-        $dossier_id = $this->session->userdata['idDossier'];
-        $dossier = $this->dossier->select_dossier($dossier_id);
-        $client = $this->client->select_client($dossier[0]['client_id']);
-        $this->session->set_userdata('idClient', $dossier[0]['client_id']);
-        $user = $this->user->select_user($client['user_id']);
 
-        $idprod = ($this->session->userdata('CI_devis/select_produit_devis'));
-        $produit = $this->catalogue->select_panneau($idprod);
-        $produit['dossier_id'] = $this->session->userdata['idDossier'];
+        $idprod = ($this->session->userdata('CI_devis/select_produit_devis'));  // On récupère l'id du produit sélectionné
+        $produit = $this->catalogue->select_panneau($idprod);                   // On va chercher les infos du produit via son id
+        $produit['dossier_id'] = $this->session->userdata['idDossier'];         // On rajoute dans les infos produits l'id du dossier pour qu'il lui soit lié (dans la table article)
 
-        $this->article->ajouter_article($produit);
+        $this->article->ajouter_article($produit);                              // Puis enfin on rajoute le produit dans la table article (infos du produit + id du dossier)
         header('Location:' . site_url("CI_devis/devis_form"));
     }
 
-    public function devis_form()                          //NOUVEAU DOSSER
+    public function devis_form()
     {
         $this->load->model('Mappage/dossier', 'dossier');
-        $this->load->model('Mappage/client', 'client');                 //DOSSIER EXISTANT
-        $this->load->model('Mappage/user', 'user');
+        $this->load->model('Mappage/client', 'client');
+        $this->load->model('Mappage/user', 'user');         // On load les models
         $this->load->model('Mappage/article', 'article');
 
-        $dossier_id = $this->session->userdata['idDossier'];
-        $dossier = $this->dossier->select_dossier($dossier_id);
-        $client = $this->client->select_client($dossier[0]['client_id']);
-        $this->session->set_userdata('idClient', $dossier[0]['client_id']);
-        $user = $this->user->select_user($client['user_id']);
+        $dossier = $this->dossier->select_dossier($this->session->userdata['idDossier']);     //On récupère les infos du dossier grâce à l'idDossier en session
+
+        $client = $this->client->select_client($dossier[0]['client_id']);               // On va chercher le client qui est lié à ce dossier
+        $this->session->set_userdata('idClient', $dossier[0]['client_id']);             // On met son id en session
+        $user = $this->user->select_user($client['user_id']);                       // On va chercher l'utilisateur lié au client
 
         $data['nomclient1'] = $client['nom1'];
         $data['prenomclient1'] = $client['prenom1'];
         $data['prenomclient2'] = $client['prenom2'];
-        $data['adresse'] = $client['adresse'];
+        $data['adresse'] = $client['adresse'];                  // On rentre les informations client+user dans le tableau $data pour la vue
         $data['ville'] = $client['ville'];
         $data['tel'] = $client['tel1'];
         $data['usernom'] = $user['nom'];
         $data['userprenom'] = $user['prenom'];
 
         //-----------Article---
-        $articles = $this->article->list_article_dossier($this->session->userdata['idDossier']);
+        $articles = $this->article->list_article_dossier($this->session->userdata['idDossier']);    // On va chercher les articles liés au dossier (grâce à l'idDossier en session)
         //----------Calcul de la somme
-        $data['devis'] = $this->mise_en_forme_article($articles);
+        $data['devis'] = $this->mise_en_forme_article($articles);                       // On fait tous les calculs qu'il faut avec la fonction "mise en forme article"
         //-----------Mise à jour du projet------------------------------------------
-        $this->dossier->modifier_titre_dossier($dossier_id,$data['devis']['titre'],$data['devis']['TOTAL_TTC']);
+        $this->dossier->modifier_titre_dossier($this->session->userdata['idDossier'],$data['devis']['titre'],$data['devis']['TOTAL_TTC']);      // On met a jour le titre du dossier (selon les articles)
         //-----------Affichage---------
         $this->layout->title('Devis');
-        $this->layout->view('B2E/Dossier_Archives/Devis/devis', $data);
+        $this->layout->view('B2E/Dossier_Archives/Devis/devis', $data);     // On affiche le tout, à 180° thermostat 5 pendant 1h
 
 
     }
@@ -273,6 +267,7 @@ class CI_Devis extends MY_Controller
         $client = $this->client->select_client($this->session->userdata['idClient']);
         $user = $this->user->select_user($client['user_id']);
         $iddossier = $this->session->userdata['idDossier'];
+
         $data['nomclient1'] = $client['nom1'];
         $data['prenomclient1'] = $client['prenom1'];
         $data['prenomclient2'] = $client['prenom2'];
@@ -298,28 +293,16 @@ class CI_Devis extends MY_Controller
 
         // Load all views as normal
         $this->load->view('B2E/Dossier_Archives/Devis/PDF_Devis', $data);
-        // Get output html
-//        $html = $this->output->get_output();
-//
-//        // Load library
-//        $this->load->library('dompdf_gen');
-//
-//        // Convert to PDF
-//        $this->dompdf->load_html($html);
-//        $this->dompdf->render();
-//        //Preview
-//        $this->dompdf->stream("Devis.pdf", array('Attachment' => 0));
-//    }
     }
 
-    public function supprimer_article($id=null)
+    public function supprimer_article( $id=null )
     {
-        $this->load->model('Mappage/article', 'article');
+        $this->load->model('Mappage/article', 'article');           //Load du model article
 
-        $this->article->supprimer_article($this->session->userdata('CI_devis/aff_detail_article'));
-//        $this->article->supprimer_options($this->session->userdata('CI_devis/aff_detail_article'));
+        $this->article->supprimer_article($this->session->userdata('CI_devis/aff_detail_article'));     // On va supprimer tous les articles liés au dossier
+        $this->article->supprimer_options($this->session->userdata('CI_devis/aff_detail_article'));     // Ainsi que les options qui vont avec
 
-        header('Location:' . site_url("CI_devis/devis_form"));
+        header('Location:' . site_url("CI_devis/devis_form"));      // On redirige vers le header
     }
 
     public function aff_detail_article($id=null )

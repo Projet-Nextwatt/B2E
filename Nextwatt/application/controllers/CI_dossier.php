@@ -71,31 +71,32 @@ class CI_Dossier extends MY_Controller
     public function add_dossier()
     {
         $data = array();
-        $this->load->model('Mappage/client', 'client');
-        $data['listeclient'] = $this->client->list_client(TRUE, array('id', 'nom1', 'prenom1'));
+        $this->load->model('Mappage/client', 'client');     // On load les modèles afin de les utiliser plus tard
+        $data['listeclient'] = $this->client->list_client(TRUE, array('id', 'nom1', 'prenom1'));        // On va récuperer les clients
         $this->layout->js(js_url('dossier'));
         $this->layout->title('Ajouter un dossier');
-        $this->layout->view('B2E/Dossier_Archives/Add_Dossier', $data);
+        $this->layout->view('B2E/Dossier_Archives/Add_Dossier', $data);                         // On redirige vers la vue !
     }
 
     public function select_dossier()
     {
         $this->load->model('Mappage/dossier', 'dossier');
-        $this->load->model('Mappage/client', 'client'); //DOSSIER EXISTANT
+        $this->load->model('Mappage/client', 'client');             // On load les modèles afin de les utiliser plus tard
         $this->load->model('Mappage/user', 'user');
 
         $idDossier = $this->session->userdata['CI_dossier/select_dossier'];
-        $this->session->set_userdata('idDossier', $idDossier);
+        $this->session->set_userdata('idDossier', $idDossier);              // On s'assure que les deux variables correspondants à l'id du dossier en session soient les mêmes !
+
         $dossier = $this->dossier->select_dossier($this->session->userdata['CI_dossier/select_dossier']);
         $client = $this->client->select_client($dossier[0]['client_id']);
-        $this->session->set_userdata('idClient', $dossier[0]['client_id']);
+        $this->session->set_userdata('idClient', $dossier[0]['client_id']);                 //On va bidouiller pleins de trucs, récupérer le dossier entier, le user et le client
         $user = $this->user->select_user($client['user_id']);
 
         $data['nomclient1'] = $client['nom1'];
         $data['prenomclient1'] = $client['prenom1'];
         $data['prenomclient2'] = $client['prenom2'];
         $data['adresse'] = $client['adresse'];
-        $data['ville'] = $client['ville'];
+        $data['ville'] = $client['ville'];                                  // On met les infos clients et user qu'on a besoin dans la variable $data
         $data['tel'] = $client['tel1'];
         $data['usernom'] = $user['nom'];
         $data['userprenom'] = $user['prenom'];
@@ -106,7 +107,7 @@ class CI_Dossier extends MY_Controller
             $this->session->userdata['ID_Ensoleillement'] = null;
             $this->session->userdata['Ville'] = null;
             $this->session->userdata['Heppnet'] = null;
-            $this->session->userdata['Raccordement'] = null;
+            $this->session->userdata['Raccordement'] = null;                // Si le dossier n'a pas d'étude enregistrée, on s'assure que les variables correspondantes à l'étude soient remise à zéro (Null pour être précis)
             $this->session->userdata['Production'] = null;
             $this->session->userdata['Panneau'] = null;
             $this->session->userdata['MarquePanneau'] = null;
@@ -119,13 +120,14 @@ class CI_Dossier extends MY_Controller
         }
 
         $this->layout->title('Dossier');
-        $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier', $data);
+        $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier', $data);        // On redirige vers la vue !
     }
 
     public function addDossier()
     {
-        $this->load->model('Mappage/Dossier', 'dossier');
-        $resultSelectIdDossier = $this->dossier->select_idDossier();
+        $this->load->model('Mappage/Dossier', 'dossier');           // Load du model dossier
+
+        $resultSelectIdDossier = $this->dossier->select_idDossier();    // On va chercher le dernier id_dossier dans la bdd
         $iddossier = $resultSelectIdDossier[0]['id'] + 1;
         if (isset($_POST['idClient']) && isset($_POST['nomClient']) && isset($_POST['prenomClient'])) {
             $tabsession = array(
@@ -134,12 +136,12 @@ class CI_Dossier extends MY_Controller
                 'nomClient' => $_POST['nomClient'],
                 'prenomClient' => $_POST['prenomClient']
             );
-            $this->session->set_userdata($tabsession);
+            $this->session->set_userdata($tabsession);          // Si les informations du client sont dans le post, on remplit la session avec les infos client
         }
 
-        $this->load->model('Mappage/Client', 'client');
+        $this->load->model('Mappage/Client', 'client');         // Load du model client
         $this->client->link_ClientUser($this->session->userdata['userconnect']['id_login'], $this->session->userdata['idClient']);
-        $this->dossier->add_Dossier($this->session->userdata['idClient']);
+        $this->dossier->add_Dossier($this->session->userdata['idClient']);                        // On ajoute l'id du user connecté au client selectionné puis on ajoute un dossier avec l'idClient pour lier le dossier au client
 
         $this->choix_action();
     }
@@ -147,9 +149,10 @@ class CI_Dossier extends MY_Controller
     public function archiver()
     {
         $this->load->model('Mappage/dossier', 'dossier');
-        $this->load->model('Mappage/article', 'article');
+        $this->load->model('Mappage/article', 'article');               // Load des models
 
-        $this->article->archiver_article($this->session->userdata('CI_Dossier/select_dossier'));
+
+        $this->article->archiver_article($this->session->userdata('CI_Dossier/select_dossier'));        // Appel des fonctions qui vont bien pour l'archivage du dossier et des articles liés au dossier
         $this->dossier->archiver_dossier($this->session->userdata('CI_Dossier/select_dossier'));
     }
 
@@ -159,7 +162,7 @@ class CI_Dossier extends MY_Controller
     {
         if ($id!=null){
             $this->session->set_userdata(array('CI_dossier/aff_detail_article'=>$id));
-            header('Location:' . site_url("CI_dossier/aff_detail_article"));
+            header('Location:' . site_url("CI_dossier/aff_detail_article"));                // On met l'id de l'article selectionné en session puis on redirige vers le detail de l'article
         }
         $this->layout->title('Dossier');
         $this->layout->view('B2E/Dossier_Archives/Devis/detail_article');
@@ -167,7 +170,7 @@ class CI_Dossier extends MY_Controller
 
     public function ajax_selectdossier(){
         if(isset($_POST['idDossier'])){
-            $this->session->set_userdata(array('CI_dossier/select_dossier' => $_POST['idDossier']));
+            $this->session->set_userdata(array('CI_dossier/select_dossier' => $_POST['idDossier']));    // On met l'id du dossier en session s'il est dans le $_POST
             echo true;
         }
     }
