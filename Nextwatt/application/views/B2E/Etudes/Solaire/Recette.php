@@ -137,7 +137,7 @@
             </thead>
             <tr>
                 <td> Année 1</td>
-                <td><?php echo number_format($Prodannuelle[0], 2, ',', ' ') ?></td>
+                <td><?php echo number_format($Prodannuelle[0],0, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[0] ?></td>
                 <td><?php echo number_format($flouzannuel[0], 0, ',', ' ') ?></td>
                 <td><?php echo number_format($flouzcumul[0], 0, ',', ' ') ?></td>
@@ -145,45 +145,45 @@
             </tr>
             <tr>
                 <td> Année 2</td>
-                <td><?php echo number_format($Prodannuelle[1], 2, ',', ' ') ?></td>
+                <td><?php echo number_format($Prodannuelle[1], 0, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[1] ?></td>
                 <td><?php echo number_format($flouzannuel[1], 0, ',', ' ') ?></td>
                 <td><?php echo number_format($flouzcumul[1], 0, ',', ' ') ?></td>
             </tr>
             <tr>
                 <td> Année 3</td>
-                <td><?php echo number_format($Prodannuelle[2], 2, ',', ' ') ?></td>
+                <td><?php echo number_format($Prodannuelle[2], 0, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[2] ?></td>
                 <td><?php echo number_format($flouzannuel[2], 0, ',', ' ') ?></td>
                 <td><?php echo number_format($flouzcumul[2], 0, ',', ' ') ?></td>
             </tr>
             <tr>
                 <td> Année 10</td>
-                <td><?php echo number_format($Prodannuelle[9], 2, ',', ' ') ?></td>
+                <td><?php echo number_format($Prodannuelle[9],0, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[9] ?></td>
                 <td><?php echo number_format($flouzannuel[9], 0, ',', ' ') ?></td>
                 <td><?php echo number_format($flouzcumul[9], 0, ',', ' ') ?></td>
             </tr>
             <tr>
                 <td> Année 15</td>
-                <td><?php echo number_format($Prodannuelle[14], 2, ',', ' ') ?></td>
+                <td><?php echo number_format($Prodannuelle[14], 0, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[14] ?></td>
                 <td><?php echo number_format($flouzannuel[14], 0, ',', ' ') ?></td>
                 <td><?php echo number_format($flouzcumul[14], 0, ',', ' ') ?></td>
             </tr>
             <tr>
                 <td> Année 20</td>
-                <td><?php echo number_format($Prodannuelle[19], 2, ',', ' ') ?></td>
+                <td><?php echo number_format($Prodannuelle[19], 0, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[19] ?></td>
                 <td><?php echo number_format($flouzannuel[19], 0, ',', ' ') ?></td>
                 <td><?php echo number_format($flouzcumul[19], 0, ',', ' ') ?></td>
             </tr>
             <tr>
                 <td style="border-color: #ffffff; background-color: white"></td>
+                <td style="border-color: #ffffff; background-color: white">-0.5 % par an source : Etude INES</td>
                 <td style="border-color: #ffffff; background-color: white">
                     +<?php echo $this->session->userdata('Inflation') ?>% par an source : EDF
                 </td>
-                <td style="border-color: #ffffff; background-color: white">-0.5 % par an source : Etude INES</td>
                 <td style="border-color: #ffffff; background-color: white"></td>
                 <td style="border-color: #ffffff; background-color: white"></td>
             </tr>

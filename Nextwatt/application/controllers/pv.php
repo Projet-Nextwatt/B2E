@@ -622,7 +622,7 @@ class PV extends MY_Controller
             for ($i = 0; $i < 20; $i++) {
                 $raisonTarifPuissance = pow($raisonTarif, $i);
                 $tarifAnneeChoisie = $tarifAnneeZero * $raisonTarifPuissance;
-                $ligneTarif[$i] = round($tarifAnneeChoisie, 2);
+                $ligneTarif[$i] = round($tarifAnneeChoisie, 3);
             }
 
             $jsonTarif = json_encode($ligneTarif);
@@ -643,7 +643,7 @@ class PV extends MY_Controller
         for ($i = 0; $i < 20; $i++) {
             $raisonTarifPuissance = pow($raisonTarif, $i);
             $tarifAnneeChoisie = $tarifAnneeZero * $raisonTarifPuissance;
-            $ligneTarif[$i] = round($tarifAnneeChoisie, 2);
+            $ligneTarif[$i] = round($tarifAnneeChoisie, 3);
         }
         return $ligneTarif;
     }
