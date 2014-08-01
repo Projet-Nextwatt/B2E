@@ -1,9 +1,4 @@
 $("tr").click(function () {
-//    console.log($(this).html());
-//    console.log($(this).find("td:first-child").html());
-//    console.log($(this).find("td:nth-child(2)").html());
-//    console.log($(this).find("td:nth-child(3)").html());
-
     var idClient = $(this).find("td:first-child").html();
     var nomClient = $(this).find("td:nth-child(2)").html();
     var prenomClient = $(this).find("td:nth-child(3)").html();
@@ -28,7 +23,6 @@ $("tr").click(function () {
 
 $('.ddDossier').click(function () {
     var idDossier = $(this).children('div').children('.ddIdDossier').html();
-    console.log(idDossier);
     $.post(
         'ajax_selectdossier',
         {

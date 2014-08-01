@@ -164,6 +164,7 @@ $("#produit").change(function () {
         },
         function (data) {
             if (data) {
+                // Récup les infos du panneau, décode le JSON et les réparties dans le formulaire
                 var d = JSON.parse(data);
                 if (d[1] != '0') {
                     $('#puissance').val(d.puissance);
