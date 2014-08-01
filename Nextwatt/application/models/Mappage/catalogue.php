@@ -245,11 +245,8 @@ class Catalogue extends DataMapper
 
         foreach ($data as $key => $value)
         {
-            if($value != 1)
-            {
-                $prod->where('id', $key)->update('soustype_id',$value);
-                $rsltupdate = $compteurupdate++;
-            }
+            $prod->where('id', $key)->update('soustype_id',$value);
+            $rsltupdate = $compteurupdate++;
         }
         return $rsltupdate;
     }
