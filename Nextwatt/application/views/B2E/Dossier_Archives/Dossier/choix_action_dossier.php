@@ -1,51 +1,80 @@
 <div class="page-header">
 
-    <div  class="position-absolute">
-        <a href=""></a>
-        <div class="panel panel-success inline" >
-            <div class="panel-heading">
-                Client
-            </div>
-            <div class="panel-body">
-                <p><?php
-                echo($nomclient1 . '  ' . $prenomclient1);
-                if ($prenomclient2 != null) {
-                    echo(' et ');
-                    echo($prenomclient2);
-                    echo('<br/>');
-                } else {
-                    echo('<br/>');
-                }
-                echo($adresse . '<br/>');
-                echo('Tel :'. $tel . '<br/>');
-                ?></p>
-            </div>
-        </div>
-    </div>
+
     <h1 align="center">
-        DOSSIER</br>
-        <small><i class="ace-icon fa fa-angle-double-right"></i> Que voulez-vous ajouter au dossier ?</small>
+        DOSSIER <small>n°<?php echo $dossier['id'];?></small></br>
+        <small><i class="ace-icon fa fa-angle-double-right"></i>
+            <?php
+            if (empty($client['prenom1'])) {
+                $civ = $client['civilite'];
+                echo($civ == 1 ? 'Madame ' : '');
+                echo($civ == 2 ? 'Mademoiselle ' : '');
+                echo($civ == 3 ? 'Monsieur ' : '');
+            }
+            echo $client['nom1'] . ' ' . $client['prenom1'];
+            if (!(empty($client['prenom2']))) {
+                echo ' et ';
+                if ($client['nom1'] != $client['nom2']) {
+                    echo $client['nom2'];
+                }
+
+                echo ' ' . $client['prenom2'];
+            }
+            ?>
+        </small>
     </h1>
-    <br/>
 </div>
 
-<br/><br/><br/>
 <div class="row">
     <div align="center" >
-        <a href="<?php echo site_url("pv/choixstation"); ?>">
-            <button  type="button" class="btn btn-success">
-                <i class="ace-icon fa fa-file-text-o"></i>
-                Etude simple
-            </button></a>
-        <a href="<?php echo site_url("dossier/consult_dossier"); ?>">
-            <button  type="button" class="btn btn-success disabled">
-                <i class="ace-icon fa fa-folder-open-o"></i>
-                Bilan énergétique (en construction)
-            </button></a>
-        <a href="<?php echo site_url("CI_devis/devis_form"); ?>">
-            <button  type="button" class="btn btn-success">
-                <i class="ace-icon fa fa-list"></i>
-                Création de devis
-            </button></a>
+        <table>
+            <tr>
+                <td>
+                    <a class="btn btn-success btn-block" href="<?php echo site_url("pv/charger_etude_solaire"); ?>">
+                            <i class="ace-icon fa fa-sun-o fa-2x"></i>
+                        Etude solaire
+                    </a>
+                </td>
+                <td>
+                    <?php
+                    echo $dossier['titre_PV'];
+                    if ($dossier['recette_PV']!=0){
+                        echo '<br/>Production sur 20 ans : '.number_format($dossier['recette_PV'], 0, ',', ' ').' €';
+                    }
+                    ?>
+
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a class="btn btn-success btn-block disabled">
+                        <i class="ace-icon fa fa-home fa-2x"></i>
+                        Bilan énergétique <br/>(en construction)
+                    </a>
+                </td>
+                <td>
+                    Pas d'étude
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a class="btn btn-success btn-block" href="<?php echo site_url("CI_devis/devis_form"); ?>">
+                        <i class="ace-icon fa fa-list fa-2x"></i>
+                        Devis
+                    </a>
+                </td>
+                <td>
+                    <?php
+                    echo $dossier['Titre'];
+                    if ($dossier['Montant']!=0){
+                        echo '<br/>Total : '.number_format($dossier['Montant'], 0, ',', ' ').' €';
+                    }
+                    ?>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
+
+Et une finalité

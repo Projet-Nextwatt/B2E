@@ -1,12 +1,19 @@
 <?php $pdf = true; ?>
 <div class="inline col-sm-6">
+
     <table class="table" style="width: auto;">
         <tr>
-            <td style="border:none;">
+            <th colspan="2" style="border:none; border-bottom: 1px solid">
+                Votre sélection
+            </th>
+        </tr>
+        <tr>
+            <td style="border:none; padding: 2px;">
             <span id="valeurhepp">
             <?php
             if (isset($this->session->userdata['HEPP']) && $this->session->userdata['HEPP'] != '') {
-                echo "Vous avez choisi la station météo de : <strong>" . $this->session->userdata['Ville'] . "</strong>";
+                echo "Station météo la plus proche : <strong>" . $this->session->userdata['Ville'] . "</strong>";
+                echo " <small><em>(". $this->session->userdata['HEPP']." HEPP)</em></small>";
             } else {
                 $pdf = false;
                 ?>
@@ -15,7 +22,7 @@
             <?php } ?></span>
             </td>
             <?php if (isset($this->session->userdata['HEPP']) && $this->session->userdata['HEPP'] != '') { ?>
-                <td style="border:none">
+                <td style="border:none; padding: 2px; ">
                     <a href="<?php echo site_url("pv/choixstation") ?>">
                         <button class="btn btn-white btn-primary btn-round btn-sm"><i
                                 class="ace-icon fa fa-edit bigger-120"></i></button>
@@ -24,10 +31,11 @@
             <?php } ?>
         </tr>
         <tr>
-            <td style="border:none">
+            <td style="border:none; padding: 2px;">
             <span id="choixorient"><?php
                 if (isset($this->session->userdata['Orientation']) && $this->session->userdata['Orientation'] != '') {
-                    echo "L'orientation sera de : <strong>" . $this->session->userdata['Orientation'] . " %</strong>";
+                    echo "Orientation du toit : <strong>" . $listorientation[$this->session->userdata('ChoixOrientation')] ."</strong>";
+                    echo " <small><em>(". (100-$this->session->userdata('Orientation'))." % de pertes)</em></small>";
                 } else {
                     $pdf = false;
                     ?>
@@ -36,7 +44,7 @@
                 <?php } ?></span>
             </td>
             <?php if (isset($this->session->userdata['Orientation']) && $this->session->userdata['Orientation'] != '') { ?>
-                <td style="border:none">
+                <td style="border:none; padding: 2px;">
                     <a href="<?php echo site_url("pv/choixorientation") ?>">
                         <button class="btn btn-white btn-primary btn-round btn-sm"><i
                                 class="ace-icon fa fa-edit bigger-120"></i></button>
@@ -45,10 +53,42 @@
             <?php } ?>
         </tr>
         <tr>
-            <td style="border:none">
+            <td style="border:none; padding: 2px;">
+            <span id="masque"><?php
+                $textemasque=(100-($this->session->userdata('Ratioc'))).' % de pertes';
+                echo "Masque : <strong>" . ($this->session->userdata('Ratioc')==100?'Aucun':$textemasque) ."</strong>";?>
+
+            </td>
+            <td style="border:none; padding: 2px;">
+                <a href="<?php echo site_url("pv/calculmasque") ?>">
+                    <button class="btn btn-white btn-primary btn-round btn-sm"><i
+                            class="ace-icon fa fa-edit bigger-120"></i></button>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td style="border:none; padding: 2px;">
             <span id="resultratioc"><?php
                 if (isset($this->session->userdata['Panneau']) && $this->session->userdata['Panneau'] != '') {
                     echo "Le kit choisi est : <strong>" . $this->session->userdata['Panneau'];
+                    if (isset($this->session->userdata['bonusProd']) && $this->session->userdata['bonusProd'] != 0) {
+                        echo "<br/>";
+                        echo '<i class="ace-icon fa fa-plus-circle green bigger-120"></i> ';
+                        echo "<strong>Rentabilité optimisée : +".($this->session->userdata['bonusProd']/100)." %</strong>";
+                    }
+                    if (isset($this->session->userdata['Chauffe']) && $this->session->userdata['Chauffe'] != 0) {
+                        echo "<br/>";
+                        echo '<i class="ace-icon fa fa-plus-circle green bigger-120"></i> ';
+                        echo "<strong>Chauffage</strong>";
+                    }
+                    if (isset($this->session->userdata['ECSsol']) && $this->session->userdata['ECSsol'] != 0) {
+                        echo "<br/>";
+                        echo '<i class="ace-icon fa fa-plus-circle green bigger-120"></i> ';
+                        echo "<strong>Eau Chaude Sanitaire</strong>";
+                    }
+
+
+
                 } else {
                     $pdf = false;
                     ?>
@@ -57,7 +97,7 @@
                 <?php } ?></span>
             </td>
             <?php if (isset($this->session->userdata['Panneau']) && $this->session->userdata['Panneau'] != '') { ?>
-                <td style="border:none">
+                <td style="border:none; padding: 2px;">
                     <a href="<?php echo site_url("pv/calculprod") ?>">
                         <button class="btn  btn-white btn-primary btn-round btn-sm"><i
                                 class="ace-icon fa fa-edit bigger-120"></i></button>
@@ -66,11 +106,11 @@
             <?php } ?>
         </tr>
     </table>
-
 </div>
+
 <div class="inline center col-sm-6" style="padding-top: 3%">
     <?php if (isset($msgsucces)) { ?>
-        <a href=" <?php echo site_url("pv/retour_menu_dossier"); ?>">
+        <a href=" <?php echo site_url("CI_dossier/select_dossier"); ?>">
             <button class="btn btn-primary btn-white btn-round"><h4><i class="ace-icon fa fa-reply bigger-120"></i>
                     Revenir sur dossier</h4></button>
         </a>
@@ -125,13 +165,13 @@
                     Production à l'année ( en kWh )
                 </th>
                 <th>
-                    Tarif à l'année ( en € )
+                    Tarif à l'année ( en €/kWh )
                 </th>
                 <th>
                     Recette à l'année ( en € )
                 </th>
                 <th>
-                    Recette cumulé à l'année ( en € )
+                    Recette cumulé ( en € )
                 </th>
             </tr>
             </thead>
@@ -140,7 +180,7 @@
                 <td><?php echo number_format($Prodannuelle[0],0, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[0] ?></td>
                 <td><?php echo number_format($flouzannuel[0], 0, ',', ' ') ?></td>
-                <td><?php echo number_format($flouzcumul[0], 0, ',', ' ') ?></td>
+                <td><strong><?php echo number_format($flouzcumul[0], 0, ',', ' ') ?></strong></td>
 
             </tr>
             <tr>
@@ -148,41 +188,41 @@
                 <td><?php echo number_format($Prodannuelle[1], 0, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[1] ?></td>
                 <td><?php echo number_format($flouzannuel[1], 0, ',', ' ') ?></td>
-                <td><?php echo number_format($flouzcumul[1], 0, ',', ' ') ?></td>
+                <td><strong><?php echo number_format($flouzcumul[1], 0, ',', ' ') ?></strong></td>
             </tr>
             <tr>
                 <td> Année 3</td>
                 <td><?php echo number_format($Prodannuelle[2], 0, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[2] ?></td>
                 <td><?php echo number_format($flouzannuel[2], 0, ',', ' ') ?></td>
-                <td><?php echo number_format($flouzcumul[2], 0, ',', ' ') ?></td>
+                <td><strong><?php echo number_format($flouzcumul[2], 0, ',', ' ') ?></strong></td>
             </tr>
             <tr>
                 <td> Année 10</td>
                 <td><?php echo number_format($Prodannuelle[9],0, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[9] ?></td>
                 <td><?php echo number_format($flouzannuel[9], 0, ',', ' ') ?></td>
-                <td><?php echo number_format($flouzcumul[9], 0, ',', ' ') ?></td>
+                <td><strong><?php echo number_format($flouzcumul[9], 0, ',', ' ') ?></strong></td>
             </tr>
             <tr>
                 <td> Année 15</td>
                 <td><?php echo number_format($Prodannuelle[14], 0, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[14] ?></td>
                 <td><?php echo number_format($flouzannuel[14], 0, ',', ' ') ?></td>
-                <td><?php echo number_format($flouzcumul[14], 0, ',', ' ') ?></td>
+                <td><strong><?php echo number_format($flouzcumul[14], 0, ',', ' ') ?></strong></td>
             </tr>
             <tr>
                 <td> Année 20</td>
                 <td><?php echo number_format($Prodannuelle[19], 0, ',', ' ') ?></td>
                 <td><?php echo $tarifannuel[19] ?></td>
                 <td><?php echo number_format($flouzannuel[19], 0, ',', ' ') ?></td>
-                <td><?php echo number_format($flouzcumul[19], 0, ',', ' ') ?></td>
+                <td><strong><?php echo number_format($flouzcumul[19], 0, ',', ' ') ?></strong></td>
             </tr>
             <tr>
                 <td style="border-color: #ffffff; background-color: white"></td>
-                <td style="border-color: #ffffff; background-color: white">-0.5 % par an source : Etude INES</td>
+                <td style="border-color: #ffffff; background-color: white">-0.5 %/an - source : Etude INES</td>
                 <td style="border-color: #ffffff; background-color: white">
-                    +<?php echo $this->session->userdata('Inflation') ?>% par an source : EDF
+                    +<?php echo $this->session->userdata('Inflation') ?>%/an - source : EDF
                 </td>
                 <td style="border-color: #ffffff; background-color: white"></td>
                 <td style="border-color: #ffffff; background-color: white"></td>

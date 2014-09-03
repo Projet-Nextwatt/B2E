@@ -37,12 +37,10 @@ class Etude extends DataMapper {
     function ajouter_etude($data)
     {
         $etude = array(                             //création du tableau pour le insert, récupération des valeurs passés par $data
-            'dossier_id' => $data['id_dossier'],
             'HEPP' => $data['HEPP'],
             'PV_Ratio_Orientation' => $data['Orientation'],
             'PV_Ratio_Masque' => $data['Masque'],
             'PV_Puissance_Systeme' => $data['Puisysteme'],
-            'actif' => 1,
         );
 
         if(isset($data['Bonus']))                   // vérification de l'existence de $data['Bonus'] pour ne pas faire planter le insert
@@ -53,12 +51,15 @@ class Etude extends DataMapper {
 
         if ($this->db->insert('etudes', $etude))    // ajout dans la BDD des informations pré-remplis plus haut
         {
-            $idetude = array(
+            $datadossier = array(
                 'etude_id' => mysql_insert_id(),    // On récupère l'ID de la dernière requête exécutée
+                'titre_PV'=> $data['titre'],
+                'recette_PV'=>$data['recette'],
+                'Date_Modification'=>date("Y-m-d"),
             );
 
             $this->db->where('id', $data['id_dossier']); // On va update dans le dossier nous concernant en donnant l'id de l'étude qui vient d'être ajoutée
-            $this->db->update('dossiers ', $idetude);
+            $this->db->update('dossiers ', $datadossier);
             return TRUE;
         } else {
             echo '<p>' . $etude->error->string . '</p>';

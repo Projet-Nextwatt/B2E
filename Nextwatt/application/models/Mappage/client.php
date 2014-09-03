@@ -45,8 +45,7 @@ class Client extends DataMapper
         if ($id != NULL) {
             $clients->where('id', $id);
             $clients->get();
-            $retour = $clients->all_to_array();
-            return $retour['0'];
+            return $clients->to_array();
         } else {
             $clients->get();
             return $clients->all_to_array();
@@ -150,12 +149,5 @@ class Client extends DataMapper
         return $c->where('id', $idClient)->update('user_id', $idUser);
 
     }
-
-    function get_InfoUser($id)
-    {
-        $c = new Client();
-        return $c->where('id',$id)->get()->all_to_array();
-    }
-
 }
 

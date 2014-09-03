@@ -37,13 +37,11 @@ class CI_Devis extends MY_Controller
         $this->load->model('Mappage/catalogue', 'catalogue');
         $this->load->model('Mappage/article', 'article');
         $this->load->model('Mappage/dossier', 'dossier');       // Load de tous les models nécessaires
-        $this->load->model('Mappage/client', 'client');
-        $this->load->model('Mappage/user', 'user');
 
 
         $idprod = ($this->session->userdata('CI_devis/select_produit_devis'));  // On récupère l'id du produit sélectionné
         $produit = $this->catalogue->select_panneau($idprod);                   // On va chercher les infos du produit via son id
-        $produit['dossier_id'] = $this->session->userdata['idDossier'];         // On rajoute dans les infos produits l'id du dossier pour qu'il lui soit lié (dans la table article)
+        $produit['dossier_id'] = $this->session->userdata['CI_dossier/select_dossier'];         // On rajoute dans les infos produits l'id du dossier pour qu'il lui soit lié (dans la table article)
 
         $this->article->ajouter_article($produit);                              // Puis enfin on rajoute le produit dans la table article (infos du produit + id du dossier)
         header('Location:' . site_url("CI_devis/devis_form"));
@@ -56,27 +54,20 @@ class CI_Devis extends MY_Controller
         $this->load->model('Mappage/user', 'user');         // On load les models
         $this->load->model('Mappage/article', 'article');
 
-        $dossier = $this->dossier->select_dossier($this->session->userdata['idDossier']);     //On récupère les infos du dossier grâce à l'idDossier en session
+        $iddossier=$this->session->userdata['CI_dossier/select_dossier'];
+        $data['dossier'] = $this->dossier->select_dossier($iddossier);     //On récupère les infos du dossier grâce à l'idDossier en session
 
-        $client = $this->client->select_client($dossier[0]['client_id']);               // On va chercher le client qui est lié à ce dossier
-        $this->session->set_userdata('idClient', $dossier[0]['client_id']);             // On met son id en session
-        $user = $this->user->select_user($client['user_id']);                       // On va chercher l'utilisateur lié au client
+        $data['client'] = $this->client->select_client($data['dossier']['client_id']);               // On va chercher le client qui est lié à ce dossier
+        //$this->session->set_userdata('idClient', $dossier['client_id']);             // On met son id en session
+        $data['user'] = $this->user->select_user($data['client']['user_id']);                       // On va chercher l'utilisateur lié au client
 
-        $data['nomclient1'] = $client['nom1'];
-        $data['prenomclient1'] = $client['prenom1'];
-        $data['prenomclient2'] = $client['prenom2'];
-        $data['adresse'] = $client['adresse'];                  // On rentre les informations client+user dans le tableau $data pour la vue
-        $data['ville'] = $client['ville'];
-        $data['tel'] = $client['tel1'];
-        $data['usernom'] = $user['nom'];
-        $data['userprenom'] = $user['prenom'];
 
         //-----------Article---
-        $articles = $this->article->list_article_dossier($this->session->userdata['idDossier']);    // On va chercher les articles liés au dossier (grâce à l'idDossier en session)
+        $articles = $this->article->list_article_dossier($this->session->userdata['CI_dossier/select_dossier']);    // On va chercher les articles liés au dossier (grâce à l'idDossier en session)
         //----------Calcul de la somme
         $data['devis'] = $this->mise_en_forme_article($articles);                       // On fait tous les calculs qu'il faut avec la fonction "mise en forme article"
         //-----------Mise à jour du projet------------------------------------------
-        $this->dossier->modifier_titre_dossier($this->session->userdata['idDossier'],$data['devis']['titre'],$data['devis']['TOTAL_TTC']);      // On met a jour le titre du dossier (selon les articles)
+        $this->dossier->modifier_titre_dossier($this->session->userdata['CI_dossier/select_dossier'],$data['devis']['titre'],$data['devis']['TOTAL_TTC']);      // On met a jour le titre du dossier (selon les articles)
         //-----------Affichage---------
         $this->layout->title('Devis');
         $this->layout->view('B2E/Dossier_Archives/Devis/devis', $data);     // On affiche le tout, à 180° thermostat 5 pendant 1h

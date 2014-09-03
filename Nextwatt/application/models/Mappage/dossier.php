@@ -33,11 +33,26 @@ class Dossier extends DataMapper
 
     function select_dossier($id = NULL)
     {
-        $d = new Dossier();
-        $dossiers = $d->where('id', $id)->get();
-        return $dossiers->all_to_array();
+        if ($id==NULL){
+            $dossiers = $this->db->select('users.Identifiant,clients.nom1,dossiers.id,dossiers.actif,dossiers.titre,dossiers.montant')
+                ->from('dossiers')
+                ->join('clients', 'dossiers.client_id = clients.id', 'left')
+                ->join('users', 'clients.user_id = users.id', 'left')
+                ->order_by('users.Identifiant', 'asc')
+                ->order_by('clients.nom1', 'asc')
+                ->order_by('dossiers.Date_Creation', 'asc')
+                ->where('dossiers.actif', '1')
+                ->get()
+                ->result_array();
+            return $dossiers;
+        }
+        else
+        {
+            $d = new Dossier();
+            $dossier = $d->where('id', $id)->get();
+            return $dossier->to_array();
 
-
+        }
     }
 
     public function select_archive_dossier()
@@ -76,10 +91,14 @@ class Dossier extends DataMapper
     {
         $d = new Dossier();
         $d->client_id = $idClient;
+        $d->Titre='Pas de devis';
+        $d->titre_PV="Pas d'étude";
         $d->Date_Creation = date("Y-m-d");
-        $d->Date_Modification = date("Y-m-d");
         $d->actif = 1;
         $d->save();
+
+        return $d->id;
+
     }
 
     function supprimer_dossier()

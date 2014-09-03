@@ -5,11 +5,7 @@ class CI_Dossier extends MY_Controller
 
     public $layout_view = 'B2E/layout/default';
 
-    public function index()
-    {
-
-    }
-
+    /*
     public function choix_action() //NOUVEAU DOSSiER
     {
         $this->load->model('Mappage/client', 'client');
@@ -36,6 +32,7 @@ class CI_Dossier extends MY_Controller
         $this->layout->title('Dossier');
         $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier', $data);        //Redirection vers la vue avec les informations nécessaires dans la variable $data
     }
+    */
 
     public function consult_dossier()
     {
@@ -68,6 +65,46 @@ class CI_Dossier extends MY_Controller
         $this->layout->view('B2E/Dossier_Archives/Dossier/Consulter_Dossier', $data);
     }
 
+    public function select_dossier()
+    {
+        $idDossier = $this->session->userdata['CI_dossier/select_dossier'];
+
+        //reset de la session
+        $array_items = $this->session->all_userdata();
+        unset($array_items['session_id']);
+        unset($array_items['ip_address']);
+        unset($array_items['user_agent']);
+        unset($array_items['last_activity']);
+        unset($array_items['user_data']);
+        unset($array_items['userconnect']);
+        unset($array_items['CI_dossier/select_dossier']);
+        $this->session->unset_userdata($array_items);
+
+
+        $this->load->model('Mappage/dossier', 'dossier');
+        $this->load->model('Mappage/client', 'client');             // On load les modèles afin de les utiliser plus tard
+        $this->load->model('Mappage/user', 'user');
+        $this->load->model('Mappage/etude', 'etude');
+        $data['dossier'] = $this->dossier->select_dossier($idDossier);
+        $data['client'] = $this->client->select_client($data['dossier']['client_id']);
+        $this->session->set_userdata('idClient', $data['dossier']['client_id']);
+
+
+        $this->layout->title('Dossier');
+        $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier', $data);        // On redirige vers la vue !
+    }
+
+    public function nouveau_dossier(){
+        $this->load->model('Mappage/Dossier', 'dossier');           // Load du model dossier
+        $idclient=$this->session->userdata['CI_dossier/nouveau_dossier'];
+        $iddossier=$this->dossier->add_Dossier($idclient);
+
+        $tabsession = array('CI_dossier/select_dossier' => $iddossier);
+        $this->session->set_userdata($tabsession);
+        header('Location:' . site_url('CI_dossier/select_dossier'));
+    }
+
+    /*
     public function add_dossier()
     {
         $data = array();
@@ -77,52 +114,9 @@ class CI_Dossier extends MY_Controller
         $this->layout->title('Ajouter un dossier');
         $this->layout->view('B2E/Dossier_Archives/Add_Dossier', $data);                         // On redirige vers la vue !
     }
+*/
 
-    public function select_dossier()
-    {
-        $this->load->model('Mappage/dossier', 'dossier');
-        $this->load->model('Mappage/client', 'client');             // On load les modèles afin de les utiliser plus tard
-        $this->load->model('Mappage/user', 'user');
-
-        $idDossier = $this->session->userdata['CI_dossier/select_dossier'];
-        $this->session->set_userdata('idDossier', $idDossier);              // On s'assure que les deux variables correspondants à l'id du dossier en session soient les mêmes !
-
-        $dossier = $this->dossier->select_dossier($this->session->userdata['CI_dossier/select_dossier']);
-        $client = $this->client->select_client($dossier[0]['client_id']);
-        $this->session->set_userdata('idClient', $dossier[0]['client_id']);                 //On va bidouiller pleins de trucs, récupérer le dossier entier, le user et le client
-        $user = $this->user->select_user($client['user_id']);
-
-        $data['nomclient1'] = $client['nom1'];
-        $data['prenomclient1'] = $client['prenom1'];
-        $data['prenomclient2'] = $client['prenom2'];
-        $data['adresse'] = $client['adresse'];
-        $data['ville'] = $client['ville'];                                  // On met les infos clients et user qu'on a besoin dans la variable $data
-        $data['tel'] = $client['tel1'];
-        $data['usernom'] = $user['nom'];
-        $data['userprenom'] = $user['prenom'];
-
-        if ($dossier[0]['etude_id'] == 0) {
-            $this->session->userdata['HEPP'] = null;
-            $this->session->userdata['Ratioc'] = null;
-            $this->session->userdata['ID_Ensoleillement'] = null;
-            $this->session->userdata['Ville'] = null;
-            $this->session->userdata['Heppnet'] = null;
-            $this->session->userdata['Raccordement'] = null;                // Si le dossier n'a pas d'étude enregistrée, on s'assure que les variables correspondantes à l'étude soient remise à zéro (Null pour être précis)
-            $this->session->userdata['Production'] = null;
-            $this->session->userdata['Panneau'] = null;
-            $this->session->userdata['MarquePanneau'] = null;
-            $this->session->userdata['PrixPanneau'] = null;
-            $this->session->userdata['Inflation'] = null;
-            $this->session->userdata['Tarifedf'] = null;
-            $this->session->userdata['Orientation'] = null;
-        } else {
-
-        }
-
-        $this->layout->title('Dossier');
-        $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier', $data);        // On redirige vers la vue !
-    }
-
+/*
     public function addDossier()
     {
         $this->load->model('Mappage/Dossier', 'dossier');           // Load du model dossier
@@ -145,6 +139,7 @@ class CI_Dossier extends MY_Controller
 
         $this->choix_action();
     }
+*/
 
     public function archiver()
     {

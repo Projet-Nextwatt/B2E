@@ -43,44 +43,44 @@
             <tr>
 
                 <td><b> SUD</b></td>
-                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                <td id="sud15"><button type="button" class="orientation btn btn-default  btn-lg btn-block">
                       <span  style="color:black">98 %</span></td></button>
-                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                <td id="sud20"><button type="button" class="orientation btn btn-default  btn-lg btn-block">
                         <span  style="color:black">100 %</span></td></button>
-                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                <td id="sud30"><button type="button" class="orientation btn btn-default  btn-lg btn-block">
                         <span  style="color:black">100 %</span></td></button>
-                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                <td id="sud45"><button type="button" class="orientation btn btn-default  btn-lg btn-block">
                         <span  style="color:black">100 %</span></td></button>
-                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                <td id="sud60"><button type="button" class="orientation btn btn-default  btn-lg btn-block">
                         <span  style="color:black">91 %</span></td></button>
             </tr>
 
             <tr>
 
                 <td><b> SUD-EST / SUD-OUEST</b></td>
-                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                <td id="sud-est15"><button type="button" class="orientation btn btn-default  btn-lg btn-block">
                         <span  style="color:black">93 %</span></td></button>
-                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                <td id="sud-est20"><button type="button" class="orientation btn btn-default  btn-lg btn-block">
                         <span  style="color:black">96 %</span></td></button>
-                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                <td id="sud-est30"><button type="button" class="orientation btn btn-default  btn-lg btn-block">
                         <span  style="color:black">95 %</span></td></button>
-                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                <td id="sud-est45"><button type="button" class="orientation btn btn-default  btn-lg btn-block">
                         <span  style="color:black">91 %</span></td></button>
-                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                <td id="sud-est60"><button type="button" class="orientation btn btn-default  btn-lg btn-block">
                         <span  style="color:black">84 %</span></td></button>
             </tr>
 
             <tr>
                 <td><b> EST / OUEST</b></td>
-                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                <td id="est15"><button type="button" class="orientation btn btn-default  btn-lg btn-block">
                         <span  style="color:black">85 %</span></td></button>
-                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                <td id="est20"><button type="button" class="orientation btn btn-default  btn-lg btn-block">
                         <span  style="color:black">88 %</span></td></button>
-                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                <td id="est30"><button type="button" class="orientation btn btn-default  btn-lg btn-block">
                         <span  style="color:black">84 %</span></td></button>
-                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                <td id="est45"><button type="button" class="orientation btn btn-default  btn-lg btn-block">
                         <span  style="color:black">77 %</span></td></button>
-                <td><button type="button" class="orientation btn btn-default  btn-lg btn-block">
+                <td id="est60"><button type="button" class="orientation btn btn-default  btn-lg btn-block">
                         <span  style="color:black">68 %</span></td></button>
             </tr>
             </tbody>
@@ -91,7 +91,10 @@
 <h3 class="choixorient" align="center">
     <?php
     if($this->session->userdata('Orientation'))
-        echo "Orientation choisie : " . $this->session->userdata('Orientation'). " %";
+    {
+        echo "Orientation choisie : " . $listorientation[$this->session->userdata('ChoixOrientation')];
+        echo "<br/>Soit : ".$this->session->userdata('Orientation'). "% d'exposition";
+    }
     ?>
 
 </h3>

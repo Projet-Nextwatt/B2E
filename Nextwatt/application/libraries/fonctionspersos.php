@@ -308,8 +308,7 @@ class Fonctionspersos
     }
 
     public function creerListClient(array $contenu,
-                                    $form = NULL,
-                                    $sup = NULL)
+                                    $form = NULL)
     {
         if ($contenu == NULL OR (isset($contenu[0]) AND $contenu[0] == '')) {
             echo '<p><strong>Attention: Aucun client</strong></p>';

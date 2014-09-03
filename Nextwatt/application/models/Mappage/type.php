@@ -25,7 +25,7 @@ class Type extends DataMapper
         parent ::__construct();
     }
 
-    function select_types($id)
+    function select_types($id=NULL)
     {
         if (empty($id)) {
             $obj = new Type();

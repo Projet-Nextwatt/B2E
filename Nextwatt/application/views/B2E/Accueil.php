@@ -4,7 +4,7 @@
 
 <div class="page-header">
     <h1 align="center">
-        Bienvenue sur Techniwatt.fr !</br>
+        Bienvenue sur le B2E Nextwatt</br>
         <small><i class="ace-icon fa fa-angle-double-right"></i> Que souhaitez vous faire ?</small>
     </h1>
 </div>

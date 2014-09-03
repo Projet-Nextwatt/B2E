@@ -121,12 +121,23 @@
                                     <?php } ?>
 
                                     <button type="button"
-                                            class="btn btn-sm btn-primary" id="addDossier">
-<!--                                            onClick="parent.location='Consult_Client?dossier=TRUE'"-->
+                                            class="btn btn-sm btn-primary" id="addDossier" onclick="nouveau(<?php echo $client['id'];?>)">
 
                                         <i class="ace-icon fa fa-plus bigger-160"></i>
                                         Ajouter un dossier
                                     </button>
+
+                                    <script>
+                                        function nouveau(id){
+                                            $.post(
+                                                '../ajaxfonctionspersos/sessionpourform',
+                                                {'id':id,
+                                                    'form':'CI_dossier/nouveau_dossier'},
+                                                function (){
+                                                    self.location.href='<?php echo site_url('CI_dossier/nouveau_dossier');?>'                               }
+                                            );
+                                        }
+                                    </script>
                                 </div>
                             </div>
                         </div>

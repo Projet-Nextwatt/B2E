@@ -68,11 +68,11 @@ $("#station").change(function () {
     );
 });
 $(".orientation").click(function () {
-    var choixorient = $(this).text();
     $.post(
         'ajax_orientation',
         {
-            orientation: choixorient
+            orientation: $(this).text(),
+            choix: $(this).parent().attr('id')
         },
         function (data) {
             if (data) {
@@ -160,7 +160,8 @@ $("#produit").change(function () {
     $.post(
         'ajax_panneau',
         {
-            id: $('#produit option:selected').val()
+            id: $('#produit option:selected').val(),
+            type: $('#typepanneau').val()
         },
         function (data) {
             if (data) {

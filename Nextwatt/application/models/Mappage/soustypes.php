@@ -25,9 +25,9 @@ class Soustypes extends DataMapper
     var $CI_Unitaire = "";
 
 
-    function __construct()
+    function __construct($id=NULL)
     {
-        parent ::__construct();
+        parent ::__construct($id);
     }
 
     function select_soustype($id = NULL)

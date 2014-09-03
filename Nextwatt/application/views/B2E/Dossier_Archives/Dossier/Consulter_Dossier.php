@@ -4,6 +4,12 @@
     }
 </style>
 
+<div class="page-header">
+    <h1 align="center">
+        Liste des dossiers
+    </h1>
+</div>
+
 <div class='row'>
     <div class='col-xs-12'>
         <div class="row">

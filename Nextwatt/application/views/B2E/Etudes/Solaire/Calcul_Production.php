@@ -2,53 +2,64 @@
 ?>
 <div class="page-header ">
     <h1 align="center">
-        Calcul de production </br >
-        <small><i class="ace-icon fa fa-angle-double-right"></i> Production par an</small>
+        Choix de l'installation</br >
     </h1>
 </div>
-<div class="row form-horizontal">
-    <h4 align="center"> Veuillez renseigner les champs ci-dessous.</h4>
-
+<div class="row">
     <div class="col-sm-12 ">
-        <div class="form-group">
-            <label class="col-sm-6 no-padding-right control-label" for='type'> Type : </label>
+        <div class="form-horizontal">
+
+        <div class="row form-group">
+            <label class="col-sm-6 no-padding-right control-label" for='type'> Fonction(s) des panneaux : </label>
 
             <div class="col-sm-6">
+                <?php $type=$this->session->userdata('typepanneau'); ?>
                 <select name="typepanneau" id="typepanneau" class="dropdown">
-                    <option value="1">PV</option>
-                    <option value="2">ECS</option>
-                    <option value="3">Chauffage</option>
-                    <option value="4">ECS + Chauffage</option>
+                    <option value="1" <?php echo ($type==1?'selected':'');?>>PV</option>
+                    <option value="2" <?php echo ($type==2?'selected':'');?>>PV + ECS</option>
+                    <option value="3" <?php echo ($type==3?'selected':'');?>>PV + Chauffage</option>
+                    <option value="4" <?php echo ($type==4?'selected':'');?>>PV + ECS + Chauffage</option>
                 </select>
             </div>
         </div>
-        <div class='form-group'>
+        <div class='row form-group'>
             <label class="col-sm-6 no-padding-right control-label" for='raccord'>Auto-consommation : </label>
 
             <div class="col-sm-6">
                 <label>
-                    <input name="switch-field-1" class="ace ace-switch" type="checkbox" id="raccord">
+                    <input name="switch-field-1" class="ace ace-switch" type="checkbox" id="raccord"
+                        <?php $AC=$this->session->userdata('Raccordement');
+                        if ($AC=='FALSE'){
+                            echo "checked";
+                        } ?>>
                     <span class="lbl" data-lbl="Oui&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Non"></span>
                 </label>
             </div>
         </div>
+
+        <div class="row form-group">
+            <div class="col-sm-12 center">
+                <i class="ace-icon fa fa-arrow-circle-down fa-3x green"></i>
+            </div>
+        </div>
+
         <div class="form-group">
-            <label class="col-sm-6 no-padding-right control-label" for='produit'> Produit : </label>
+            <label class="col-sm-6 no-padding-right control-label" for='produit'> Produits correspondants: </label>
 
             <div class="col-sm-6">
                 <select name='Produit' id='produit'>
                     <option></option>
                     <?php
                     if (isset($panneau)) {
-                    foreach ($panneau as $p) {
-                    if ($p['Reference'] != $ref) {
-                    ?>
-                        <option value="<?php echo $p['id'] ?>"><?php echo $p['Nom'] ?></option>
-                        <?php
+                        foreach ($panneau as $p) {
+                            if ($p['Reference'] != $ref) {
+                                ?>
+                                <option value="<?php echo $p['id'] ?>" <?php echo($this->session->userdata('panneauid')==$p['id']?'selected':''); ?>><?php echo $p['Nom'] ?></option>
+                            <?php
 
-                        }
+                            }
                         }}
-                        ?>
+                    ?>
                 </select>
             </div>
         </div>
@@ -60,7 +71,7 @@
         <div class="<?php echo $formPersonnalisation ?>">
             <div class='row form-group'>
                 <div class="col-xs-12 label label-lg label-success arrowed-right">
-                    <b>Personnalisation</b>
+                    <b>Personnalisation car tu es administrateur</b>
                 </div>
             </div>
             <div class='form-group'>

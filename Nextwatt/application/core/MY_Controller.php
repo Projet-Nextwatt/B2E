@@ -11,7 +11,6 @@ class MY_Controller extends CI_Controller
 
 
         if (!$this->session->userdata('userconnect')) {
-
             redirect('login');
         }
 

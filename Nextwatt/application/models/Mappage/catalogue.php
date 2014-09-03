@@ -18,9 +18,30 @@ class Catalogue extends DataMapper
      */
     const STATUT = 'blabla';
 
-    function __construct()
+    function __construct($id=NULL)
     {
-        parent ::__construct();
+        parent ::__construct($id);
+    }
+
+    public function get_produits($id=NULL){
+        if ($id==NULL){
+            $produits =  new Catalogue();
+            $produits->order_by('soustype_id,Marque,Puissance');
+            $produits->get();
+            return $produits->all_to_array();
+        }
+        elseif (is_int($id)) {
+            $produit =  new Catalogue($id);
+            return $produit->to_array();
+        }
+        else {
+            //Dans ce cas, on a passé une référence
+            $produit =  new Catalogue();
+            $produit->where('Reference',$id);
+            $produit->get();
+            return $produit->to_array();
+        }
+
     }
 
     public function get_ref_bdd($statut=null)
@@ -41,10 +62,10 @@ class Catalogue extends DataMapper
         }
         return $rslt;
     }
-    
-    
-    
-        public function get_catalogue_lite_orderby_soustype()
+
+
+
+    public function get_catalogue_lite_orderby_soustype()
     {
         $cat = new Catalogue();
 
@@ -91,14 +112,14 @@ class Catalogue extends DataMapper
         }
         return $rslt;
     }
-    
+
     public function get_nom(){
         $catalogue = new Catalogue();
         $catalogue->select('Nom');
         $catalogue->get();
         $catalogue = $catalogue->all_to_array('Nom');
-        
-                $rslt = array();
+
+        $rslt = array();
         foreach ($catalogue as $produit){
             $rslt[]=  html_entity_decode($produit['Nom']);
         }
@@ -189,32 +210,24 @@ class Catalogue extends DataMapper
     function select_panneau_critere($critere)
     {
         $obj = new Catalogue();
-//        $type2 = null;
-//        if ($critere[0] == 1) {
-//            $type = '';
-//        } else if ($critere[0] == 2) {
-//            $type = 'ECS';
-//        } else if ($critere[0] == 3) {
-//            $type = 'Chauffage';
-//        } else if ($critere[0] == 4) {
-//            $type = 'ECS';
-//            $type2 = 'Chauffage';
-//        }
 
-//        if ($critere[1] == 'true') {
-//            $racc = 'raccorde&quot;:&quot;TRUE';
-//        } else {
-//            $racc = 'raccorde&quot;:&quot;FALSE';
-//        }
-//        $obj->like('spec', $type);
-//        if ($type2 == null) {
-//            $obj->like('spec', $type2);
-//        }
-//        $obj->like('spec', $racc);
+        /* $soustypes= new Soustypes();
+         $soustypes->select('id');
+         $soustypes->where('type_id','2');
+         $soustypes->get();
+         $soustypes = $soustypes->all_to_array('id');
 
+         if (isset($soustypes) AND !(empty($soustypes))){
+             foreach ($soustypes as $st){
+                 $obj->or_like('soustype_id',$st['id']);
+             }
+         }
+         */
         foreach ($critere as $c) {
             switch ($c) {
                 case 1 :
+                    $obj->not_like('spec', 'ECS');
+                    $obj->not_like('spec', 'Chauffage');
                     break;
                 case 2 :
                     $obj->like('spec', 'ECS');

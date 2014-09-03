@@ -9,14 +9,8 @@
 
 class CI_Client extends MY_Controller
 {
-
     // layout used in this controller
     public $layout_view = 'B2E/layout/default';
-
-    public function index()
-    {
-        echo 'Hello World!';
-    }
 
     public function consult_client()                    //NOUVEAU DOSSER
     {
@@ -27,8 +21,7 @@ class CI_Client extends MY_Controller
         if (isset($_GET['dossier']) AND $_GET['dossier'] == 'TRUE') {
             //Selection d'un client pour l'associer à un doosier
             $dossier = TRUE;
-            $data['modedossier'] = 'CI_client/choix_clientDossier';
-
+            $data['modedossier'] = 'CI_dossier/nouveau_dossier';
         }
 
         $this->load->model('Mappage/client', 'mapclient'); //Chargement du model
@@ -76,6 +69,11 @@ class CI_Client extends MY_Controller
         //Entete du tableau
         $data['enteteclients'] = array('Id', 'Nom', 'Prenom', 'Email', 'Telephone fixe', 'Telephone Portable', 'Responsable');
 
+
+
+
+
+
         //C'est l'heure de l'affichage
         //Si le fomulaire d'ajout n'a pas été rempli, on redirige normailement
         if (empty($_POST)) {
@@ -96,54 +94,15 @@ class CI_Client extends MY_Controller
 
                 $id_client = $this->mapclient->ajouter_client($_POST);
 
-                if ($dossier == TRUE) {
-
-                    $this->choix_clientDossier($id_client);
-                } else {
-                    $tabsession = array("CI_client/modif_client" => $id_client);
-                    $this->session->set_userdata($tabsession);
-                    header('Location:' . site_url("CI_client/modif_client"));
-                }
+                //redirige vers nouveau dossier ou modif client tout seul
+                $tabsession = array($data['modedossier'] => $id_client);
+                $this->session->set_userdata($tabsession);
+                header('Location:' . site_url($data['modedossier']));
             }
         }
     }
 
-    public
-    function choix_clientDossier($id_client = null)
-    {
 
-        $sessionIdClientDosser = $this->session->userdata('CI_client/choix_clientDossier');
-        if (isset($sessionIdClientDosser) && !empty($sessionIdClientDosser)) {
-            $this->load->model('Mappage/Client', 'client');
-            $infoClient = $this->client->select_client($sessionIdClientDosser);
-            $id_client = $sessionIdClientDosser;
-            $this->session->unset_userdata('CI_client/choix_clientDossier');
-        }
-
-
-        if (isset($_POST['nom1']) && isset($_POST['prenom1'])) {
-            $nom = $_POST['nom1'];
-            $prenom = $_POST['prenom1'];
-        } else {
-            $nom = $infoClient['nom1'];
-            $prenom = $infoClient['prenom1'];
-        }
-
-        $this->load->model('Mappage/Dossier', 'dossier');
-        $resultSelectIdDossier = $this->dossier->select_idDossier();
-        $iddossier = $resultSelectIdDossier[0]['id'] + 1;
-        $tabsession = array(
-            'idDossier' => $iddossier,
-            'idClient' => (int)$id_client,
-            'nomClient' => $nom,
-            'prenomClient' => $prenom
-        );
-        $this->session->set_userdata($tabsession);
-        $this->load->model('Mappage/Client', 'client');
-        $this->client->link_ClientUser($this->session->userdata['userconnect']['id_login'], $id_client);
-        $this->dossier->add_Dossier($id_client);
-          header('Location:' . site_url("CI_dossier/choix_action"));
-    }
 
     public
     function add_client()
@@ -244,6 +203,44 @@ class CI_Client extends MY_Controller
                 echo 'error';
             }
         }
+    }
+
+
+
+    public function choix_clientDossier($id_client = null)
+    {
+
+        $sessionIdClientDosser = $this->session->userdata('CI_client/choix_clientDossier');
+        if (isset($sessionIdClientDosser) && !empty($sessionIdClientDosser)) {
+            $this->load->model('Mappage/Client', 'client');
+            $infoClient = $this->client->select_client($sessionIdClientDosser);
+            $id_client = $sessionIdClientDosser;
+            $this->session->unset_userdata('CI_client/choix_clientDossier');
+        }
+
+
+        if (isset($_POST['nom1']) && isset($_POST['prenom1'])) {
+            $nom = $_POST['nom1'];
+            $prenom = $_POST['prenom1'];
+        } else {
+            $nom = $infoClient['nom1'];
+            $prenom = $infoClient['prenom1'];
+        }
+
+        $this->load->model('Mappage/Dossier', 'dossier');
+        $resultSelectIdDossier = $this->dossier->select_idDossier();
+        $iddossier = $resultSelectIdDossier[0]['id'] + 1;
+        $tabsession = array(
+            'idDossier' => $iddossier,
+            'idClient' => (int)$id_client,
+            'nomClient' => $nom,
+            'prenomClient' => $prenom
+        );
+        $this->session->set_userdata($tabsession);
+        $this->load->model('Mappage/Client', 'client');
+        $this->client->link_ClientUser($this->session->userdata['userconnect']['id_login'], $id_client);
+        $this->dossier->add_Dossier($id_client);
+        header('Location:' . site_url("CI_dossier/choix_action"));
     }
 
     /****************************************** PARTIE AJAX ******************************************/

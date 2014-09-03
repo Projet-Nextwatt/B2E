@@ -2,15 +2,37 @@
 
 class PV extends MY_Controller
 {
-    // layout used in this controller
     public $layout_view = 'B2E/layout/default';
 
-    public function index()
+    public $listeorientation = array(  "sud15"=>"Sud - 15°",
+                                "sud20"=>"Sud - 20°",
+                                "sud30"=>"Sud - 30°",
+                                "sud45"=>"Sud - 45°",
+                                "sud60"=>"Sud - 60°",
+                                "sud-est15"=>"Sud-Est ou Sud-Ouest - 15°",
+                                "sud-est20"=>"Sud-Est ou Sud-Ouest - 20°",
+                                "sud-est30"=>"Sud-Est ou Sud-Ouest - 30°",
+                                "sud-est45"=>"Sud-Est ou Sud-Ouest - 45°",
+                                "sud-est60"=>"Sud-Est ou Sud-Ouest - 60°",
+                                "est15"=>"Est ou Ouest - 15°",
+                                "est20"=>"Est ou Ouest - 20°",
+                                "est30"=>"Est ou Ouest - 30°",
+                                "est45"=>"Est ou Ouest - 45°",
+                                "est60"=>"Est ou Ouest - 60°");
+
+    public function charger_etude_solaire()
     {
+        $this->load->model('Mappage/ensoleillement', 'ensoleillement');
+        $data = array();
+        $data['station'] = $this->ensoleillement->select_ensoleillement();
+        $this->layout->title('Station B2E');
+        $this->layout->js(js_url('etudesolaire'));
 
 
+
+        $this->node_Calcul();
+        redirect('pv/choixstation');
     }
-
 
     public function choixstation()
     {
@@ -96,11 +118,8 @@ class PV extends MY_Controller
 
         //Image
         $data['tablorientation'] = img_url('Tableau-orientation.png');
-        $data['quinze'] = img_url('15.png');
-        $data['vingt'] = img_url('20.png');
-        $data['trente'] = img_url('30.png');
-        $data['quarantecinq'] = img_url('45.png');
-        $data['soixante'] = img_url('60.png');
+
+        $data['listorientation']= ($this->listeorientation);
 
         $this->node_Calcul();
         $this->layout->title('Orientation B2E');
@@ -193,7 +212,19 @@ class PV extends MY_Controller
         // Récupère tous les panneaux solaires pour remplir la dropdown
         $this->load->model('Mappage/catalogue', 'panneau');
         $data = array();
-        $data['panneau'] = $this->panneau->select_panneau(null);
+        $criteres=array();
+        $criteres[]=$this->session->userdata('typepanneau');
+        if ($criteres['0']==false){
+            $criteres['0']=1;
+        }
+        if ($this->session->userdata('Raccordement')=='TRUE' OR !(isset($_SESSION['Raccordement']))){
+            $criteres[]='true';
+        }
+        else
+        {
+            $criteres[]='false';
+        }
+        $data['panneau'] = $this->panneau->select_panneau_critere($criteres); //Il faut mettre les bon critères !!!!!!!!!!!!!!!!!!!!!
 
         $this->node_Calcul();
         $this->layout->breadcrumbs($breadcrumps);
@@ -203,6 +234,7 @@ class PV extends MY_Controller
     }
 
 //    public function calculrecette()
+
 //    {
 //        $breadcrumps = array(
 //            array(
@@ -297,6 +329,8 @@ class PV extends MY_Controller
         $data['tarifannuel'] = $this->tarif();
         $data['flouzannuel'] = $this->anneeflouz();
         $data['flouzcumul'] = $this->cumulflouz();
+        $this->session->userdata['recette']=$data['flouzcumul']['19'];
+
 
         // msgsucces permet de débloquer le bouton PDF ou de renvoyer une erreur
         if (isset($msgsucces)) {
@@ -307,26 +341,33 @@ class PV extends MY_Controller
         $this->layout->breadcrumbs($breadcrumps);
         $this->layout->title('Récap B2E');
         $this->layout->js(js_url('etudesolaire'));
+
+        $data['listorientation']= ($this->listeorientation);
         $this->layout->view('B2E/Etudes/Solaire/Recette.php', $data); // Render view and layout
     }
 
     public function enregistrer_etude()
     {
-        $this->load->model('Mappage/catalogue', 'catalogue'); //On load les deux modèles que nous voulons utiliser
+        $this->load->model('Mappage/catalogue', 'catalogue'); //On load les modèles que nous voulons utiliser
         $this->load->model('Mappage/etude', 'etude');
+        $this->load->model('Mappage/dossier', 'dossier');
 
-        $panneau = $this->catalogue->select_panneau_by_nom($this->session->userdata['Panneau']); //Récupération du produit que l'on souhaite via la fonction "select_panneau_by_non"
-        $spec = html_entity_decode($panneau[0]['Spec']); //On récupère les spec et les décodes pour pouvoir les utiliser après (HTML entities decode puis Json decode
+        $data['id_dossier'] = $this->session->userdata['CI_dossier/select_dossier'];
+
+        $panneau = $this->catalogue->get_produits($this->session->userdata['panneauid']); //Récupération du produit que l'on souhaite via la fonction "select_panneau_by_non"
+        $spec = html_entity_decode($panneau['Spec']); //On récupère les spec et les décodes pour pouvoir les utiliser après (HTML entities decode puis Json decode
         $prodjson = json_decode($spec, true);
 
         $data['HEPP'] = (float)$this->session->userdata['HEPP'];
         $data['Masque'] = $this->session->userdata['Ratioc'];
         $data['Orientation'] = (float)$this->session->userdata['Orientation'];
-        $data['Puisysteme'] = (float)$panneau[0]['Puissance']; // On récupère les variables qui étaient en session pour les passer au modèle pour l'ajout en BDD
+        $data['Puisysteme'] = (float)$panneau['Puissance']; // On récupère les variables qui étaient en session pour les passer au modèle pour l'ajout en BDD
         if (isset($prodjson['bonusProd'])) {
             $data['Bonus'] = (int)$prodjson['bonusProd'];
         }
-        $data['id_dossier'] = $this->session->userdata['idDossier'];
+
+        $data['titre']=$this->session->userdata['Panneau'].'<br/>orientation : '.$this->listeorientation[$this->session->userdata('ChoixOrientation')];
+        $data['recette']=$this->session->userdata['recette'];
 
 
         if ($this->etude->ajouter_etude($data) == TRUE) //On vérifie que la requête s'est bien exécutée
@@ -339,36 +380,120 @@ class PV extends MY_Controller
         }
     }
 
-    public function retour_menu_dossier()
+
+
+    public function pdf()
     {
+        //CSS
+
+        //Image
+//        $this->load->img_url('minilogonextwatt.png');
+//        $this->load->img_url('feuillenextwatt.png');
+
+        $data = array();
+        $data['listorientation']= ($this->listeorientation);
+        $data['Prodannuelle'] = $this->prodannuelle();
+        $data['tarifannuel'] = $this->tarif();
+        $data['flouzannuel'] = $this->anneeflouz();
+
+        $data['flouzcumul'] = $this->cumulflouz();
+
         $this->load->model('Mappage/client', 'client');
-        $this->load->model('Mappage/user', 'user');
-        $this->load->model('Mappage/dossier', 'dossier');
+        $data['client'] = $this->client->select_client($this->session->userdata['idClient']);
+
+        $respo = new User($data['client']['user_id']);
+        $data['responsable'] = $respo->prenom . ' ' . $respo->nom;
 
 
-        // récup les infos client et user en fonction de l'id du dossier en cours
-        $dossier_id = $this->session->userdata['idDossier'];
-        $dossier = $this->dossier->select_dossier($dossier_id);
-        $client = $this->client->select_client($dossier[0]['client_id']);
-        $this->session->set_userdata('idClient', $dossier[0]['client_id']);
-        $user = $this->user->select_user($client['user_id']);
+        // Load all views as normal
+        $this->load->view('B2E/Etudes/Solaire/PDF_Recette.php', $data);
 
-        // Insère les infos dans le data pour la view
-        $data['nomclient1'] = $client['nom1'];
-        $data['prenomclient1'] = $client['prenom1'];
-        $data['prenomclient2'] = $client['prenom2'];
-        $data['adresse'] = $client['adresse'];
-        $data['ville'] = $client['ville'];
-        $data['tel'] = $client['tel1'];
-        $data['usernom'] = $user['nom'];
-        $data['userprenom'] = $user['prenom'];
+        if (!(isset($_GET['paspdf']))){
+            // Get output html
+            $html = $this->output->get_output();
 
-        $this->layout->title('Dossier');
-        $this->layout->view('B2E/Dossier_Archives/Dossier/choix_action_dossier', $data);
+            // Load library
+            $this->load->library('dompdf_gen');
+
+            // Convert to PDF
+            $this->dompdf->load_html($html);
+            $this->dompdf->render();
+            //Preview
+            $this->dompdf->stream("Récapitulatif de l'étude solaire.pdf", array('Attachment' => 0));
+            //DL direct sans preview
+            //        $this->dompdf->stream("welcome.pdf");
+        }
+
+    }
+
+    function node_Calcul()
+    {
+        $ID_Ensoleillement = $this->session->userdata('ID_Ensoleillement');
+        $HEPP = $this->session->userdata('HEPP');
+        $Orientation = $this->session->userdata('Orientation');
+        $Ratioc = $this->session->userdata('Ratioc');
+        $Ville = $this->session->userdata('Ville');
+        $Heppnet = $this->session->userdata('Heppnet');
+        $Raccordement = $this->session->userdata('Raccordement');
+        $Production = $this->session->userdata('Production');
+        $bonusProd = $this->session->userdata('bonusProd');
+        $Panneau = $this->session->userdata('Panneau');
+        $MarquePanneau = $this->session->userdata('MarquePanneau');
+        $PrixPanneau = $this->session->userdata('PrixPanneau');
+        $Inflation = $this->session->userdata('Inflation');
+        $Tarifedf = $this->session->userdata('Tarifedf');
+        $Puissance = $this->session->userdata('Puissance');
+        $Chauffe = $this->session->userdata('Chauffe');
+        $IrradiationChauffe = $this->session->userdata('IrradiationChauffe');
+
+        // Calcul Hepp net --------------------------------
+        $heppnette = ($HEPP * ($Orientation / 100) * ($Ratioc) / 100);
+        $this->session->set_userdata(array('Heppnet' => $heppnette));
+        // ------------------------------------------------
+
+        // Calcul Production ------------------------------
+        $production = $Puissance * $Heppnet;
+        $prodtotale = ($production + $production * $bonusProd / 10000) / 1000;
+        $this->session->set_userdata(array('Production' => $prodtotale));
+        // ------------------------------------------------
+
+        //Récup tarif EDF ---------------------------------
+        $data = array();
+        if ($Raccordement == 'TRUE') {
+            $idraccord = '2';
+        } else {
+            $idraccord = '1';
+        }
+        $this->load->model('Mappage/prixenergie', 'energie');
+        $data['energie'] = $this->energie->select_prixrachat($idraccord);
+        $this->session->set_userdata(array('Inflation' => $data['energie'][0]['Inflation']));
+        $data['energie'] = $data['energie'][0]['Prix'];
+
+        $this->session->set_userdata(array('Tarifedf' => $data['energie']));
+        // ------------------------------------------------
+
+        // Calcul chauffe ---------------------------------
+        $tarifElec = $this->energie->select_prixrachat(1);
+        $tarifFioul = $this->energie->select_prixrachat(4);
+        $tarifGaz = $this->energie->select_prixrachat(6);
+
+        $ecoElec = $Chauffe * $IrradiationChauffe * $tarifElec[0]['Prix'] / 1000;
+        $ecoFioul = $Chauffe * $IrradiationChauffe * $tarifFioul[0]['Prix'] / 1000;
+        $ecoGaz = $Chauffe * $IrradiationChauffe * $tarifGaz[0]['Prix'] / 1000;
+
+        $this->session->set_userdata(array('ecoElec' => $ecoElec));
+        $this->session->set_userdata(array('ecoFioul' => $ecoFioul));
+        $this->session->set_userdata(array('ecoGaz' => $ecoGaz));
+        // ------------------------------------------------
+
     }
 
 
-    /********************* PARTIE AJAX  ************************************/
+
+
+
+
+/********************* PARTIE AJAX  ************************************/
 
 
     public function ajax_geoposition()
@@ -420,21 +545,21 @@ class PV extends MY_Controller
         }
     }
 
-    public
-    function ajax_orientation()
+    public function ajax_orientation()
     {
         //récup la valeur de l'orientation et l'insère en session avec un trim pour les espace et un substr pour le %
         if (isset($_POST['orientation'])) {
             $this->session->set_userdata(array('Orientation' => substr(trim($_POST['orientation']), 0, -2)));
             echo $this->session->userdata('Orientation');
+
+            $this->session->set_userdata(array('ChoixOrientation' => $_POST['choix']));
         } else {
             $message_403 = "Vous n'avez pas acc&egrave;s &agrave; cette URL.";
             show_error($message_403, 403, '403 - Acc&egrave;s interdit');
         }
     }
 
-    public
-    function ajax_envoiratioc()
+    public function ajax_envoiratioc()
     {
         // récupère la liste des cases selectionner du masque
         if (isset($_POST['masque']) || !empty($_POST['masque'])) {
@@ -483,8 +608,7 @@ class PV extends MY_Controller
 
     }
 
-    public
-    function ajax_calculhepp()
+    public function ajax_calculhepp()
     {
         if (isset($_POST['hepp']) && isset($_POST['choixorient']) && isset($_POST['ratioc'])) {
 
@@ -500,7 +624,7 @@ class PV extends MY_Controller
     {
         if (isset($_POST['id'])) {
             $this->load->model('Mappage/catalogue', 'catalogue');
-            $data = $this->catalogue->select_panneau($_POST['id']); // Recup des données station avec le model "ensoleillement"
+            $data = $this->catalogue->select_panneau($_POST['id']);
 
             //Décode des caractère html
             $spec = html_entity_decode($data['Spec']);
@@ -526,6 +650,11 @@ class PV extends MY_Controller
                 $chauffage = $temparray['chauffage'];
             }
 
+            $ECS = null;
+            if (isset($temparray['ECS'])) {
+                $ECS = $temparray['ECS'];
+            }
+
             $spec = json_encode($temparray);
             $tabsession = array(
                 'Raccordement' => $temparray['raccorde'],
@@ -535,7 +664,10 @@ class PV extends MY_Controller
                 'PrixPanneau' => $data['Prix_Annonce_TTC'],
                 'bonusProd' => $bonusprod,
                 'Puissance' => $temparray['puissance'],
-                'Chauffe' => $chauffage
+                'Chauffe' => $chauffage,
+                'ECSsol' => $ECS,
+                'typepanneau'=>$_POST['type'],
+                'panneauid'=>$_POST['id']
             );
             $this->session->set_userdata($tabsession);
 
@@ -543,8 +675,7 @@ class PV extends MY_Controller
         }
     }
 
-    public
-    function ajax_calculprod()
+    public function ajax_calculprod()
     {
         if (isset($_POST['raccordement']) && isset($_POST['systeme']) && isset($_POST['bonus'])) {
             $prod = $_POST['systeme'] * $this->session->userdata('Heppnet');
@@ -608,8 +739,7 @@ class PV extends MY_Controller
         return $ligneProdAnnuelle;
     }
 
-    public
-    function ajax_tarif()
+    public function ajax_tarif()
     {
         $Tarifedf = $this->session->userdata('Tarifedf');
         $raccordement = $this->session->userdata('Inflation');
@@ -643,7 +773,7 @@ class PV extends MY_Controller
         for ($i = 0; $i < 20; $i++) {
             $raisonTarifPuissance = pow($raisonTarif, $i);
             $tarifAnneeChoisie = $tarifAnneeZero * $raisonTarifPuissance;
-            $ligneTarif[$i] = round($tarifAnneeChoisie, 3);
+            $ligneTarif[$i] = round($tarifAnneeChoisie, 4);
         }
         return $ligneTarif;
     }
@@ -762,104 +892,4 @@ class PV extends MY_Controller
         }
     }
 
-    public function pdf()
-    {
-        //CSS
-
-        //Image
-//        $this->load->img_url('minilogonextwatt.png');
-//        $this->load->img_url('feuillenextwatt.png');
-
-        $data = array();
-        $data['Prodannuelle'] = $this->prodannuelle();
-        $data['tarifannuel'] = $this->tarif();
-        $data['flouzannuel'] = $this->anneeflouz();
-
-        $data['flouzcumul'] = $this->cumulflouz();
-
-        $this->load->model('Mappage/client', 'Client');
-        $data['resultClient'] = $this->Client->get_InfoUser($this->session->userdata['idClient']);
-
-
-        // Load all views as normal
-        $this->load->view('B2E/Etudes/Solaire/PDF_Recette.php', $data);
-        // Get output html
-        $html = $this->output->get_output();
-
-        // Load library
-        $this->load->library('dompdf_gen');
-
-        // Convert to PDF
-        $this->dompdf->load_html($html);
-        $this->dompdf->render();
-        //Preview
-        $this->dompdf->stream("Récapitulatif de l'étude solaire.pdf", array('Attachment' => 0));
-        //DL direct sans preview
-//        $this->dompdf->stream("welcome.pdf");
-
-    }
-
-    function node_Calcul()
-    {
-        $ID_Ensoleillement = $this->session->userdata('ID_Ensoleillement');
-        $HEPP = $this->session->userdata('HEPP');
-        $Orientation = $this->session->userdata('Orientation');
-        $Ratioc = $this->session->userdata('Ratioc');
-        $Ville = $this->session->userdata('Ville');
-        $Heppnet = $this->session->userdata('Heppnet');
-        $Raccordement = $this->session->userdata('Raccordement');
-        $Production = $this->session->userdata('Production');
-        $bonusProd = $this->session->userdata('bonusProd');
-        $Panneau = $this->session->userdata('Panneau');
-        $MarquePanneau = $this->session->userdata('MarquePanneau');
-        $PrixPanneau = $this->session->userdata('PrixPanneau');
-        $Inflation = $this->session->userdata('Inflation');
-        $Tarifedf = $this->session->userdata('Tarifedf');
-        $Puissance = $this->session->userdata('Puissance');
-        $Chauffe = $this->session->userdata('Chauffe');
-        $IrradiationChauffe = $this->session->userdata('IrradiationChauffe');
-
-        // Calcul Hepp net --------------------------------
-        $heppnette = ($HEPP * ($Orientation / 100) * ($Ratioc) / 100);
-        $this->session->set_userdata(array('Heppnet' => $heppnette));
-        // ------------------------------------------------
-
-        // Calcul Production ------------------------------
-        $production = $Puissance * $Heppnet;
-        $prodtotale = ($production + $production * $bonusProd / 10000) / 1000;
-        $this->session->set_userdata(array('Production' => $prodtotale));
-        // ------------------------------------------------
-
-        //Récup tarif EDF ---------------------------------
-        $data = array();
-        if ($Raccordement == 'TRUE') {
-            $idraccord = '2';
-        } else {
-            $idraccord = '1';
-        }
-        $this->load->model('Mappage/prixenergie', 'energie');
-        $data['energie'] = $this->energie->select_prixrachat($idraccord);
-        $this->session->set_userdata(array('Inflation' => $data['energie'][0]['Inflation']));
-        $data['energie'] = $data['energie'][0]['Prix'];
-
-        $this->session->set_userdata(array('Tarifedf' => $data['energie']));
-        // ------------------------------------------------
-
-        // Calcul chauffe ---------------------------------
-        $tarifElec = $this->energie->select_prixrachat(1);
-        $tarifFioul = $this->energie->select_prixrachat(4);
-        $tarifGaz = $this->energie->select_prixrachat(6);
-
-        $ecoElec = $Chauffe * $IrradiationChauffe * $tarifElec[0]['Prix'] / 1000;
-        $ecoFioul = $Chauffe * $IrradiationChauffe * $tarifFioul[0]['Prix'] / 1000;
-        $ecoGaz = $Chauffe * $IrradiationChauffe * $tarifGaz[0]['Prix'] / 1000;
-
-        $this->session->set_userdata(array('ecoElec' => $ecoElec));
-        $this->session->set_userdata(array('ecoFioul' => $ecoFioul));
-        $this->session->set_userdata(array('ecoGaz' => $ecoGaz));
-        // ------------------------------------------------
-
-    }
-
 }
-

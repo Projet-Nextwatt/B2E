@@ -10,7 +10,7 @@
         <br/>
 
         <div class="btn-group">
-            <a href="<?php echo site_url("CI_dossier/choix_action"); ?>">
+            <a href="<?php echo site_url("CI_dossier/select_dossier"); ?>">
                 <button type="button" class="btn btn-sm btn-primary">Retour</button>
             </a>
             <a href="<?php echo site_url("CI_dossier/archiver"); ?>">
@@ -40,19 +40,29 @@
                             Client
                         </div>
                         <div class="panel-body">
+                            <strong>
                             <?php
-                            echo($nomclient1 . ' ' . $prenomclient1);
-                            if ($prenomclient2 != null) {
-                                echo(' et ');
-                                echo($prenomclient2);
-                                echo('<br/>');
-                            } else {
-                                echo('<br/>');
+                            if (empty($client['prenom1'])) {
+                                $civ = $client['civilite'];
+                                echo($civ == 1 ? 'Madame ' : '');
+                                echo($civ == 2 ? 'Mademoiselle ' : '');
+                                echo($civ == 3 ? 'Monsieur ' : '');
                             }
-                            echo($adresse . '<br/>');
-                            echo(' ' . $ville . '<br/>');
-                            echo('Votre contact : <strong>' . $userprenom . ' ' . $usernom . '</strong>');
+                            echo $client['nom1'] . ' ' . $client['prenom1'];
+                            if (!(empty($client['prenom2']))) {
+                                echo ' et ';
+                                if ($client['nom1'] != $client['nom2']) {
+                                    echo $client['nom2'];
+                                }
+
+                                echo ' ' . $client['prenom2'];
+                            }
                             ?>
+                            </strong>
+                            <br/>
+                            <br/>
+                    <strong>Votre contact : </strong> <?php echo $user['prenom'].' '.$user['nom']; ?>
+
                         </div>
                     </div>
                 </div>
